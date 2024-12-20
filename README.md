@@ -20,7 +20,8 @@ GitHub user [matxpa](https://github.com/matxpa) has modified this app by updatin
 * 2 buttons have been added
 	* Download installer package
 	* Create app from installer package.
-* Spanish localization ([perez987](https://github.com/perez987)).
+
+* Spanish localization and instructions to prevent sleep while downloading ([perez987](https://github.com/perez987)).
 
 ### Motivation
 
