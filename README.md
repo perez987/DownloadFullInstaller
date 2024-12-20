@@ -56,14 +56,14 @@ The difference is that the other tools then immediately perform the installation
 
 #### Skip sleep while downloading the installer
 
-Download Full Installer does not prevent the system from going to sleep while an installer is being downloaded. You can prevent this with the macOS caffeinate command. Its use is relatively simple:
+Download Full Installer does not prevent the system from going to sleep while an installer is being downloaded. You can prevent this with the `caffeinate` command. Its use is relatively simple:
 
 - open Terminal
 - type `top | grep "Download"`
-- stop top with Ctrl + C
+- stop `top` with Ctrl + C
 - the output shows at the beginning of each line the PID of Download Full Installer
 - type `caffeinate -w PID`(where PID is a number)
-- sleep is suppressed until Download Full Installer is closed.
+- sleep is blocked until Download Full Installer is closed.
 
 ``` bash
 /Users/yo > top | grep "Download"
