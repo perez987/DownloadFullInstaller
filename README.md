@@ -2,11 +2,25 @@
 
 ![](https://img.shields.io/github/v/release/scriptingosx/DownloadFullInstaller)&nbsp;![](https://img.shields.io/github/downloads/scriptingosx/DownloadFullInstaller/latest/total)&nbsp;![](https://img.shields.io/badge/macOS-11.0%2B-success)&nbsp;![](https://img.shields.io/github/license/scriptingosx/DownloadFullInstaller)
 
-![](DownloadFullInstaller-1.0-screenshot.png)
+<img src="DownloadFullInstaller-2.0.png" width="560px">
 
 This is a Swift UI implementation of my [fetch-installer-pkg](https://github.com/scriptingosx/fetch-installer-pkg) script. It will list the full macOS Big Sur (and later) installer pkgs available for download in Apple's software update catalogs.
 
 You can then choose to download one of them.
+
+### Notes about version 2.0
+
+GitHub user [matxpa](https://github.com/matxpa) has substantially modified this app by updating it to the most recent versions of macOS, fixing issues and adding improvements, hence the change to version 2.0:
+
+* Improved Swift code with use of the swiftui Framework
+* Updated up to macOS 15 Sequoia
+* Fixed an issue that prevented displaying a beta version of macOS from a system with an older version. Beta versions are now displayed if the correct catalog is selected (Beta word is only applied to the icon of the most recent macOS version)
+* Preferences for choosing catalog are no longer a separate dialog but are now at the top of the main window
+* A single macOS version or all versions can be displayed at once
+* 2 buttons have been added
+	* Download installer package
+	* Create app from installer package.
+* Spanish localization ([perez987](https://github.com/perez987)).
 
 ### Motivation
 
