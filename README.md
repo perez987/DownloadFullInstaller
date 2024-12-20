@@ -10,7 +10,7 @@ You can then choose to download one of them.
 
 ### Notes about version 2.0
 
-GitHub user [matxpa](https://github.com/matxpa) has substantially modified this app by updating it to the most recent versions of macOS, fixing issues and adding improvements, hence the change to version 2.0:
+GitHub user [matxpa](https://github.com/matxpa) has modified this app by updating it to the most recent versions of macOS, fixing issues and adding improvements, hence the change to version 2.0:
 
 * Improved Swift code
 * Updated up to macOS 15 Sequoia
