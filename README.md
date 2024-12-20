@@ -54,6 +54,24 @@ As far as I can tell, this downloads the same pkg as `softwareupdate --fetch-ful
 
 The difference is that the other tools then immediately perform the installation so that you get the installer application in the `/Applications` folder. This tool just downloads the pkg, so you can use it in your management system, archive the installer pkg, or manually run the installation.
 
+#### Skip sleep while downloading the installer
+
+Download Full Installer does not prevent the system from going to sleep while an installer is being downloaded. You can prevent this with the macOS caffeinate command. Its use is relatively simple:
+
+- open Terminal
+- type `top | grep "Download"`
+- stop top with Ctrl + C
+- the output shows at the beginning of each line the PID of Download Full Installer
+- type `caffeinate -w PID`(where PID is a number)
+- sleep is suppressed until Download Full Installer is closed.
+
+``` bash
+/Users/yo > top | grep "Download"
+2233  Download Full In (more text...)
+#stop with Ctrl + C
+/Users/yo > caffeinate -w 2233
+```
+
 ### Credit
 
 Both [fetch-installer-pkg](https://github.com/scriptingosx/fetch-installer-pkg) and this application are based on [Greg Neagle's installinstallmacos.py](https://github.com/munki/macadmin-scripts/blob/main/installinstallmacos.py) script.
