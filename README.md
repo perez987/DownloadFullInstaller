@@ -12,7 +12,7 @@ You can then choose to download one of them.
 
 GitHub user [matxpa](https://github.com/matxpa) has substantially modified this app by updating it to the most recent versions of macOS, fixing issues and adding improvements, hence the change to version 2.0:
 
-* Improved Swift code with use of the swiftui Framework
+* Improved Swift code
 * Updated up to macOS 15 Sequoia
 * Fixed an issue that prevented displaying a beta version of macOS from a system with an older version. Beta versions are now displayed if the correct catalog is selected (Beta word is only applied to the icon of the most recent macOS version)
 * Preferences for choosing catalog are no longer a separate dialog but are now at the top of the main window
