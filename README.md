@@ -1,6 +1,6 @@
 # Download Full Installer
 
-![](https://img.shields.io/github/v/release/scriptingosx/DownloadFullInstaller)&nbsp;![](https://img.shields.io/github/downloads/scriptingosx/DownloadFullInstaller/latest/total)&nbsp;![](https://img.shields.io/badge/macOS-11.0%2B-success)&nbsp;![](https://img.shields.io/github/license/scriptingosx/DownloadFullInstaller)
+<!-- ![](https://img.shields.io/github/v/release/scriptingosx/DownloadFullInstaller)&nbsp;![](https://img.shields.io/github/downloads/scriptingosx/DownloadFullInstaller/latest/total)&nbsp;![](https://img.shields.io/badge/macOS-11.0%2B-success)&nbsp;![](https://img.shields.io/github/license/scriptingosx/DownloadFullInstaller) -->
 
 <img src="DownloadFullInstaller-2.0.png" width="560px">
 
