@@ -86,7 +86,7 @@ class SUCatalog: ObservableObject {
 				}
             }
             //print("\(self.thisComponent) : \(self.installers.count) installer pkgs found")
-			installers.sort { $0.postDate > $1.postDate }
+			installers.sort { $0.postDate > $1.postDate } // --> Commented to avoid misplacement of the first item in the list
 		}
     }
 }

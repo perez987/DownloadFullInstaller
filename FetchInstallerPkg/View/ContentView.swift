@@ -18,21 +18,26 @@ struct ContentView: View {
         PreferencesView().environmentObject(sucatalog).navigationTitle("Download Full Installer")
         VStack(alignment: .center){
             HStack(alignment: .center) { Text("")
-                Spacer()
-                        //.contentMargins(.leading, 1, for: .scrollContent) // ---> do no use in Xcode 14
-                }
-            //Spacer()
-            List(sucatalog.installers, id: \.id) { installer in
-                InstallerView(product: installer)
+            Spacer()
             }
-            .padding(4)
-            
-            // ---> Test, list border
-            //.border(Color.green, width: 1)
-            
-            // ---> do no use in Xcode 14
-            .contentMargins(.leading, 1, for: .scrollContent)
-            
+     
+            if #available(macOS 14.0, *) {
+                List(sucatalog.installers, id: \.id) { installer in
+                    InstallerView(product: installer)
+                }
+                .padding(4)
+                
+                // ---> Test, list border
+                //.border(Color.green, width: 1)
+                
+                .contentMargins(.leading, 1, for: .scrollContent)
+            } else {
+                List(sucatalog.installers, id: \.id) { installer in
+                    InstallerView(product: installer)
+                }
+                .padding(4)
+            }
+                     
             DownloadView()
         }
         .frame(
@@ -42,10 +47,11 @@ struct ContentView: View {
             alignment: .center
         )
         HStack(alignment: .center) { Text("") .padding(1)
-                 //.contentMargins(.leading, 1, for: .scrollContent) // ---> do no use in Xcode 14
-         }
-             // ---> count of listed packages, it has issues
-             //HStack { Text("(\(sucatalog.installers.count) pkg(s) in \(self.seedProgram) catalog)\n") .font(.headline) }
+
+        }
+            // ---> count of listed packages, it has issues
+            //HStack { Text("(\(sucatalog.installers.count) pkg(s) in \(self.seedProgram) catalog)\n") .font(.headline) }
+
     }
     
     struct ContentView_Previews: PreviewProvider {

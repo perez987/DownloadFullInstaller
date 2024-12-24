@@ -30,25 +30,31 @@ struct PreferencesView: View {
 						Text("  in") .font(.body)
 					}
 
-					Picker("", selection: $seedProgram) {
-						ForEach(SeedProgram.allCases) { program in
-							Text(program.rawValue) .font(.body)
+					// ---> Block for macOS 14 / 15
+					if #available(macOS 14.0, *) {
+						Picker("", selection: $seedProgram) {
+							ForEach(SeedProgram.allCases) { program in
+								Text(program.rawValue) .font(.body)
+							}
 						}
-					}
+						.onChange(of: seedProgram) { sucatalog.load()
+						}
+						.onChange(of: osNameID) { sucatalog.load()
+						}
+						// ---> Block for macOS 13
+					} else {
+						Picker("", selection: $seedProgram) {
+							ForEach(SeedProgram.allCases) { program in
+								Text(program.rawValue) .font(.body)
+							}
+						}						
+						.onChange(of: seedProgram) { _ in
+							sucatalog.load()
+						}
+						.onChange(of: osNameID) { _ in
+							sucatalog.load()
+						}					}
 					
-					// ---> Block for Xcode 14
-//					.onChange(of: seedProgram) { _ in
-//						sucatalog.load()
-//					}
-//					.onChange(of: osNameID) { _ in
-//						sucatalog.load()
-//					}
-					
-					// ---> Block for Xcode 15 / 16
-				.onChange(of: seedProgram) { sucatalog.load()
-				}
-				.onChange(of: osNameID) { sucatalog.load()
-				}
 				}
 			}
 		}
