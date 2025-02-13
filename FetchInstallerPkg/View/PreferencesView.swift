@@ -30,7 +30,7 @@ struct PreferencesView: View {
 						Text("  in") .font(.body)
 					}
 
-					// ---> Block for macOS 14 / 15
+					// ---> Code for macOS 14 / 15
 					if #available(macOS 14.0, *) {
 						Picker("", selection: $seedProgram) {
 							ForEach(SeedProgram.allCases) { program in
@@ -41,7 +41,7 @@ struct PreferencesView: View {
 						}
 						.onChange(of: osNameID) { sucatalog.load()
 						}
-						// ---> Block for macOS 13
+						// ---> Code for macOS 13
 					} else {
 						Picker("", selection: $seedProgram) {
 							ForEach(SeedProgram.allCases) { program in

@@ -87,40 +87,41 @@ struct InstallerView: View {
 					.controlSize(.mini)
 
 
-					Button(action: {
-						for filename in installerURLFiles {
-							downloadManager.filename = filename
-							isReplacingFile = downloadManager.fileExists
-							if !isReplacingFile {
-								do {
-									try downloadManager.download(url: product.installAssistantURL)
-								} catch {
-									failed = true
-								}
-							}
-						}
-					}) {
-						Image(systemName: "building.columns").font(.title)
-					}
-					.help("Create application \(product.osName ?? "") \(product.productVersion ?? "") (\(product.buildVersion ?? ""))")
-					.alert(isPresented: $isReplacingFile) {
-						Alert(
-							title: Text("“\(filename)” already exists! Do you want to replace it?"),
-							message: Text("A file with the same name already exists in that location. Replacing it will overwrite its current contents."),
-							primaryButton: .cancel(Text("Cancel")),
-							secondaryButton: .destructive(
-								Text("Replace"),
-								action: {
-									do { try downloadManager.download(url:  product.installAssistantURL, replacing: true)
-									} catch { failed = true
-									}
-								}
-							)
-						)
-					}
-					.disabled(downloadManager.isDownloading) .buttonStyle(.borderless) .controlSize(.mini)
+//					Button(action: {
+//						for filename in installerURLFiles {
+//							downloadManager.filename = filename
+//							isReplacingFile = downloadManager.fileExists
+//							if !isReplacingFile {
+//								do {
+//									try downloadManager.download(url: product.installAssistantURL)
+//								} catch {
+//									failed = true
+//								}
+//							}
+//						}
+//					}) {
+//						Image(systemName: "building.columns").font(.title)
+//					}
+//					.help("Create application \(product.osName ?? "") \(product.productVersion ?? "") (\(product.buildVersion ?? ""))")
+//					.alert(isPresented: $isReplacingFile) {
+//						Alert(
+//							title: Text("“\(filename)” already exists! Do you want to replace it?"),
+//							message: Text("A file with the same name already exists in that location. Replacing it will overwrite its current contents."),
+//							primaryButton: .cancel(Text("Cancel")),
+//							secondaryButton: .destructive(
+//								Text("Replace"),
+//								action: {
+//									do { try downloadManager.download(url:  product.installAssistantURL, replacing: true)
+//									} catch { failed = true
+//									}
+//								}
+//							)
+//						)
+//					}
+//					.disabled(downloadManager.isDownloading) .buttonStyle(.borderless) .controlSize(.mini)
 
 
+				// Context menu: copy to clipboard the URL of the specified InstallAssistant.pkg
 				}.contextMenu() {
 					Button(action: {
 						if let text = product.installAssistantURL?.absoluteString {
