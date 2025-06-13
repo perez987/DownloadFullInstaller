@@ -7,39 +7,38 @@
 
 import SwiftUI
 
-
 struct ContentView: View {
     @EnvironmentObject var sucatalog: SUCatalog
     @AppStorage(Prefs.key(.seedProgram)) var seedProgram: String = ""
     @AppStorage(Prefs.key(.osNameID)) var osNameID: String = ""
     var countersText: String = ""
-    
+
     var body: some View {
         PreferencesView().environmentObject(sucatalog).navigationTitle("Download Full Installer")
-        VStack(alignment: .center){
+        VStack(alignment: .center) {
             HStack(alignment: .center) { Text("")
-            Spacer()
+                Spacer()
             }
 
-			// ---> Code for macOS 14 / 15   
+            // ---> Code for macOS 14 / 15
             if #available(macOS 14.0, *) {
                 List(sucatalog.installers, id: \.id) { installer in
                     InstallerView(product: installer)
                 }
                 .padding(4)
-                
+
                 // ---> Test, list border
-                //.border(Color.green, width: 1)
-                
+                // .border(Color.green, width: 1)
+
                 .contentMargins(.leading, 1, for: .scrollContent)
-            // ---> Code for macOS 13
+                // ---> Code for macOS 13
             } else {
                 List(sucatalog.installers, id: \.id) { installer in
                     InstallerView(product: installer)
                 }
                 .padding(4)
             }
-                     
+
             DownloadView()
         }
         .frame(
@@ -48,14 +47,12 @@ struct ContentView: View {
             minHeight: 400.0,
             alignment: .center
         )
-        HStack(alignment: .center) { Text("") .padding(1)
-
+        HStack(alignment: .center) { Text("").padding(1)
         }
-            // ---> count of listed packages, it has issues
-            //HStack { Text("(\(sucatalog.installers.count) pkg(s) in \(self.seedProgram) catalog)\n") .font(.headline) }
-
+        // ---> count of listed packages, it has issues
+        // HStack { Text("(\(sucatalog.installers.count) pkg(s) in \(self.seedProgram) catalog)\n") .font(.headline) }
     }
-    
+
     struct ContentView_Previews: PreviewProvider {
         static var previews: some View {
             ContentView()

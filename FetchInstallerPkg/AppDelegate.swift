@@ -5,19 +5,20 @@
 //  Created by Armin Briegel on 2021-06-15.
 //
 
-import Foundation
 import AppKit
+import Foundation
 
 enum DefaultsKeys: String {
     case seedProgram = "SeedProgram"
-	case osNameID = "OsNameID"
+    case osNameID = "OsNameID"
 }
 
 class AppDelegate: NSObject, NSApplicationDelegate {
-    func applicationDidFinishLaunching(_ notification: Notification) {
+    func applicationDidFinishLaunching(_: Notification) {
         Prefs.registerDefaults()
     }
-	func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
-		return true
-	}
+
+    func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {
+        return true
+    }
 }
