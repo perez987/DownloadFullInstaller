@@ -40,7 +40,7 @@ var nameOS: [String: String] = [
     "Ventura": "13",
     "Sonoma": "14",
     "Sequoia": "15",
-    "Tahoe": "16",
+    "Tahoe": "26",
     "macOS": "99",
     "All OS": "99",
 ]
