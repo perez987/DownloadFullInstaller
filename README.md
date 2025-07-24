@@ -1,6 +1,10 @@
 # Download Full Installer
 
-<!-- ![](https://img.shields.io/github/v/release/scriptingosx/DownloadFullInstaller)&nbsp;![](https://img.shields.io/github/downloads/scriptingosx/DownloadFullInstaller/latest/total)&nbsp;![](https://img.shields.io/badge/macOS-11.0%2B-success)&nbsp;![](https://img.shields.io/github/license/scriptingosx/DownloadFullInstaller) -->
+**Note**: As of June 2024, the original repository has been archived by the developer.\
+So, no more changes will be made and it will remain as is.\
+I'll try to keep my repo active and up to date as long as it is useful to other users.
+
+---
 
 <img src="DownloadFullInstaller-2.png" width="560px">
 
