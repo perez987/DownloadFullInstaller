@@ -43,7 +43,6 @@ Since the Big Sur macOS installer application contains a single file larger than
 
 - Copy the download URL for a given installer pkg from the context menu.
 - Change the seed program in the Preferences dropdown menu.
-- Create the installer without leaving the application.
 
 ### Questions
 
