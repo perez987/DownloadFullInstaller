@@ -34,12 +34,25 @@ struct DownloadView: View {
         if downloadManager.isComplete {
             HStack {
                 Text("Downloaded \(downloadManager.filename ?? "InstallAssistant.pkg")")
+                    .padding(.vertical, 6)
                 Spacer()
-                Button(action: {
-                    downloadManager.revealInFinder()
-                }) {
-                    Image(systemName: "magnifyingglass")
-                    Text("Show in Finder")
+                
+                if #available(macOS 26.0, *) {
+                    Button(action: {
+                        downloadManager.revealInFinder()
+                    })
+                    { Text("Show in Finder")
+                            .help("Show the installer in the Downloads folder")
+                    }
+                }
+                else {
+                    Button(action: {
+                        downloadManager.revealInFinder()
+                    }) {
+                        Image(systemName: "magnifyingglass")
+                        Text("Show in Finder")
+                            .help("Show the installer in the Downloads folder")
+                    }
                 }
             }
         }

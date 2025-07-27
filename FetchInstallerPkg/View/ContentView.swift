@@ -20,7 +20,6 @@ struct ContentView: View {
                 Spacer()
             }
 
-            // ---> Code for macOS 14 / 15
             if #available(macOS 14.0, *) {
                 List(sucatalog.installers, id: \.id) { installer in
                     InstallerView(product: installer)
@@ -31,7 +30,6 @@ struct ContentView: View {
                 // .border(Color.green, width: 1)
 
                 .contentMargins(.leading, 1, for: .scrollContent)
-                // ---> Code for macOS 13
             } else {
                 List(sucatalog.installers, id: \.id) { installer in
                     InstallerView(product: installer)
@@ -43,7 +41,7 @@ struct ContentView: View {
         }
         .frame(
             minWidth: 400.0,
-            maxWidth: 600.0,
+            maxWidth: 500.0,
             minHeight: 400.0,
             alignment: .center
         )

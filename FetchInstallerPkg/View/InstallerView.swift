@@ -65,7 +65,7 @@ struct InstallerView: View {
                     .help("Download \(product.osName ?? "") \(product.productVersion ?? "") (\(product.buildVersion ?? "")) Installer")
                     .alert(isPresented: $isReplacingFile) {
                         Alert(
-                            title: Text("“\(filename)” already exists! Do you want to replace it?"),
+                            title: Text("“\(filename)” already exists. Do you want to replace it?"),
                             message: Text("A file with the same name already exists in that location. Replacing it will overwrite its current contents."),
                             primaryButton: .cancel(Text("Cancel")),
                             secondaryButton: .destructive(
