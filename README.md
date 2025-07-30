@@ -23,10 +23,7 @@ As of December 2025, user [matxpa](https://github.com/matxpa) has modified this 
 * Fixed an issue that prevented displaying a beta version of macOS from a system with an older version. Beta versions are now displayed if the correct catalog is selected (Beta word is only applied to the icon of the most recent macOS version)
 * Preferences for choosing catalog are no longer a separate dialog but are now at the top of the main window
 * A single macOS version or all versions can be displayed at once
-* 2 buttons have been added
-	* Download installer package
-	* Create app from installer package.
-
+* "Download installer package" button has been added
 * Spanish localization and instructions to prevent sleep while downloading ([perez987](https://github.com/perez987)).
 
 ### Motivation
