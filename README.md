@@ -2,7 +2,8 @@
 
 ![Swift](https://img.shields.io/badge/Swift-5.5-orange.svg)
 ![Platform](https://img.shields.io/badge/macOS-11+-blue.svg)
-![Doenloads](https://img.shields.io/github/downloads/perez987/SimpleLoader/total?color=white&style=plastic)
+![Downloads](https://img.shields.io/badge/Downloads-43-00cd00)
+<!-- ![Downloads](https://img.shields.io/github/downloads/perez987/SimpleLoader/total?color=white&style=plastic) -->
 
 **Note**: As of June 2025, the original repository has been archived by the developer.\
 So, no more changes will be made and it will remain as is.\
