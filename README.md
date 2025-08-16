@@ -2,6 +2,7 @@
 
 ![Swift](https://img.shields.io/badge/Swift-5.5-orange.svg)
 ![Platform](https://img.shields.io/badge/macOS-11+-blue.svg)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/perez987/DownloadFullInstaller)
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/latest/total?label=Downloads&color=00cd00)
 <!-- ![Downloads](https://img.shields.io/badge/Downloads-43-00cd00) -->
 
