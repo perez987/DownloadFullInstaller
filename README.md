@@ -12,7 +12,7 @@ I'll try to keep my repo active and up to date as long as it is useful to other 
 
 ---
 
-<img src="DownloadFullInstaller-2-Tahoe.png" width="560px">
+<img src="DownloadFullInstaller-2.png" width="560px">
 
 ---
 
