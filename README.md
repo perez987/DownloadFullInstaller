@@ -63,7 +63,7 @@ As far as I can tell, this downloads the same pkg as `softwareupdate --fetch-ful
 
 The difference is that the other tools then immediately perform the installation so that you get the installer application in the `/Applications` folder. This tool just downloads the pkg, so you can use it in your management system, archive the installer pkg, or manually run the installation.
 
-#### Skip sleep while downloading the installer
+#### Skip sleep while downloading the installer (obsolete)
 
 > **Note**: In August 2025, this has been superseded by Swift code integrated into the app.
 
