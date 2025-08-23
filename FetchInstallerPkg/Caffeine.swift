@@ -1,0 +1,33 @@
+//
+//  Caffeine.swift
+//  Download Full Installer
+//
+//  Created by Emilio P Egido on 2025-08-25.
+//
+
+// Code to prevent sleep while the app is running
+
+import SwiftUI
+import Foundation
+import IOKit.pwr_mgt
+
+var assertionID: IOPMAssertionID = 0
+var sleepDisabled = false
+
+func disableScreenSleep(reason: String = "DownloadFullInstaller prevents sleep") {
+    if !sleepDisabled {
+        sleepDisabled = IOPMAssertionCreateWithName(kIOPMAssertionTypeNoIdleSleep as CFString, IOPMAssertionLevel(kIOPMAssertionLevelOn), reason as CFString, &assertionID) == kIOReturnSuccess
+        let text = "### DownloadFullInstaller prevents sleep ###"
+        print(text)
+    }
+
+}
+func enableScreenSleep() {
+    if sleepDisabled {
+        IOPMAssertionRelease(assertionID)
+        sleepDisabled = false
+        let text = "### DownloadFullInstaller allows sleep ###"
+        print(text)
+    }
+
+}

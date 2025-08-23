@@ -26,9 +26,6 @@ struct ContentView: View {
                 }
                 .padding(4)
 
-                // ---> Test, list border
-                // .border(Color.green, width: 1)
-
                 .contentMargins(.leading, 1, for: .scrollContent)
             } else {
                 List(sucatalog.installers, id: \.id) { installer in
@@ -36,18 +33,23 @@ struct ContentView: View {
                 }
                 .padding(4)
             }
-
+            
             DownloadView()
-        }
-        .frame(
-            minWidth: 400.0,
-            maxWidth: 500.0,
-            minHeight: 400.0,
-            alignment: .center
-        )
+                    }
+        
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+        
+//        .frame(
+//            minWidth: 400.0,
+//            maxWidth: 500.0,
+//            minHeight: 400.0,
+//            alignment: .center
+//        )
+        
         HStack(alignment: .center) { Text("").padding(1)
+            
         }
-        // ---> count of listed packages, it has issues
+        // ---> there are issues with the count of listed installers
         // HStack { Text("(\(sucatalog.installers.count) pkg(s) in \(self.seedProgram) catalog)\n") .font(.headline) }
     }
 
@@ -56,4 +58,5 @@ struct ContentView: View {
             ContentView()
         }
     }
+    
 }

@@ -17,8 +17,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_: Notification) {
         Prefs.registerDefaults()
     }
-
-    func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {
-        return true
-    }
+    
+//  Code to prevent and allow sleep, better in FetchInstallerPkgApp.swift
+    
+//    func viewDidLoad() {
+//        disableScreenSleep()
+//    }
+//
+//    func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {
+//        enableScreenSleep()
+//        return true
+//    }
+    
 }
