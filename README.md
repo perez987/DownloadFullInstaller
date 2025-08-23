@@ -65,6 +65,8 @@ The difference is that the other tools then immediately perform the installation
 
 #### Skip sleep while downloading the installer
 
+<span style="background-color: #98fb98;">**Note**: In August 2025, this has been superseded by Swift code integrated into the app.</span>
+
 Download Full Installer does not prevent the system from going to sleep while an installer is being downloaded. You can prevent this with the `caffeinate` command:
 
 - open Terminal
