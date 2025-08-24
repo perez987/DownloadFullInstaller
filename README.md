@@ -1,10 +1,10 @@
 # Download Full Installer
 
-![Swift](https://img.shields.io/badge/Swift-5.5-orange.svg)
 ![Platform](https://img.shields.io/badge/macOS-11+-blue.svg)
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/2.0.2/total?label=Downloads-v2.0.2&color=00cd00)
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/2.0.3/total?label=Downloads-v2.0.3&color=00cd00)
-<!-- ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?label=Downloads&color=00cd00) 
+<!-- ![Swift](https://img.shields.io/badge/Swift-5.5-orange.svg)
+![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?label=Downloads&color=00cd00) 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/perez987/DownloadFullInstaller) -->
 
 
