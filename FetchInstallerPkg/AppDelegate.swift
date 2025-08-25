@@ -18,14 +18,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         Prefs.registerDefaults()
     }
     
-//  Code to prevent and allow sleep, better in FetchInstallerPkgApp.swift
+// Code to prevent and allow sleep, I decided to put it in 
+// FetchInstallerPkgApp.swift using OnAppear / OnDisappear
     
 //    func viewDidLoad() {
-//        disableScreenSleep()
+//        disableSystemSleep()
 //    }
 //
 //    func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {
-//        enableScreenSleep()
+//        enableSystemSleep()
 //        return true
 //    }
     

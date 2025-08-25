@@ -1,14 +1,14 @@
 # Download Full Installer
 
-![Platform](https://img.shields.io/badge/macOS-11+-blue.svg)
+![Platform](https://img.shields.io/badge/macOS-11+-lavender.svg)
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/2.0.2/total?label=Downloads-v2.0.2&color=00cd00)
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/2.0.3/total?label=Downloads-v2.0.3&color=00cd00)
 <!-- ![Swift](https://img.shields.io/badge/Swift-5.5-orange.svg)
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?label=Downloads&color=00cd00) 
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/perez987/DownloadFullInstaller) -->
-
-
-<!-- ![Downloads](https://img.shields.io/badge/Downloads-43-00cd00) -->
+<!-- ![Swift](https://img.shields.io/badge/Swift-5.5-orange.svg)
+![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?label=Downloads&color=00cd00) 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/perez987/DownloadFullInstaller)
+![Downloads](https://img.shields.io/badge/Downloads-43-00cd00) -->
 
 **Note**: As of June 2025, the original repository has been archived by the developer.\
 So, no more changes will be made and it will remain as is.\
@@ -91,4 +91,3 @@ Download Full Installer does not prevent the system from going to sleep while an
 
 - Both [fetch-installer-pkg](https://github.com/scriptingosx/fetch-installer-pkg) and this application are based on [Greg Neagle's installinstallmacos.py](https://github.com/munki/macadmin-scripts/blob/main/installinstallmacos.py) script.
 - Thanks to [matxpa](https://github.com/matxpa) for so many improvements introduced in version 2.0.
-

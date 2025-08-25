@@ -22,11 +22,11 @@ struct FetchInstallerPkgApp: App {
             // Enable sleep mode when the window disappears
             
                 .onAppear {
-                    disableScreenSleep()
+                    disableSystemSleep()
                 }
             
                 .onDisappear {
-                    enableScreenSleep()
+                    enableSystemSleep()
                 }
                         
         }

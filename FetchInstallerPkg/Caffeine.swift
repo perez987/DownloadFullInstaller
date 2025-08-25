@@ -14,7 +14,7 @@ import IOKit.pwr_mgt
 var assertionID: IOPMAssertionID = 0
 var sleepDisabled = false
 
-func disableScreenSleep(reason: String = "DownloadFullInstaller prevents sleep") {
+func disableSystemSleep(reason: String = "DownloadFullInstaller prevents sleep") {
     if !sleepDisabled {
         sleepDisabled = IOPMAssertionCreateWithName(kIOPMAssertionTypeNoIdleSleep as CFString, IOPMAssertionLevel(kIOPMAssertionLevelOn), reason as CFString, &assertionID) == kIOReturnSuccess
         let text = "### DownloadFullInstaller prevents sleep ###"
@@ -22,7 +22,7 @@ func disableScreenSleep(reason: String = "DownloadFullInstaller prevents sleep")
     }
 
 }
-func enableScreenSleep() {
+func enableSystemSleep() {
     if sleepDisabled {
         IOPMAssertionRelease(assertionID)
         sleepDisabled = false

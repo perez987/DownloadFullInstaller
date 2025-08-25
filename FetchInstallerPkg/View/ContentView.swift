@@ -15,7 +15,7 @@ struct ContentView: View {
 
     var body: some View {
         PreferencesView().environmentObject(sucatalog).navigationTitle("Download Full Installer")
-        VStack(alignment: .center) {
+        VStack(alignment: .center, spacing: 4) {
             HStack(alignment: .center) { Text("")
                 Spacer()
             }
@@ -25,7 +25,6 @@ struct ContentView: View {
                     InstallerView(product: installer)
                 }
                 .padding(4)
-
                 .contentMargins(.leading, 1, for: .scrollContent)
             } else {
                 List(sucatalog.installers, id: \.id) { installer in
@@ -36,15 +35,16 @@ struct ContentView: View {
             
             DownloadView()
                     }
-        
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-        
-//        .frame(
-//            minWidth: 400.0,
-//            maxWidth: 500.0,
-//            minHeight: 400.0,
-//            alignment: .center
-//        )
+                
+        .frame(
+            minWidth: 460.0,
+            idealWidth: 460.0,
+            maxWidth: 460.0,
+            minHeight: 500.0,
+            idealHeight: 500.0,
+            maxHeight: 500.0,
+            alignment: .center
+        )
         
         HStack(alignment: .center) { Text("").padding(1)
             
@@ -57,6 +57,7 @@ struct ContentView: View {
         static var previews: some View {
             ContentView()
         }
+        
     }
     
 }
