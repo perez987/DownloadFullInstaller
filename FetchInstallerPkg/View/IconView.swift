@@ -30,7 +30,6 @@ struct IconView: View {
     ]
 
     var body: some View {
-        //		ZStack(alignment: .bottomTrailing) {
         ZStack(alignment: .center) {
             let iconName = iconOS[product.darwinVersion] ?? "macOS"
             Image(iconName)
@@ -38,6 +37,7 @@ struct IconView: View {
                 .aspectRatio(contentMode: .fit)
                 .foregroundColor(Color.blue)
 
+            // Beta text placed over the icon if the installer is beta
             let isBeta = "beta"
             if product.title != nil && product.title!.lowercased().contains(isBeta) {
                 Text(" " + isBeta + " ")

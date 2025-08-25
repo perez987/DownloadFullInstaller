@@ -17,17 +17,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_: Notification) {
         Prefs.registerDefaults()
     }
-    
-// Code to prevent and allow sleep, I decided to put it in 
-// FetchInstallerPkgApp.swift using OnAppear / OnDisappear
-    
-//    func viewDidLoad() {
-//    disableSystemSleep()
-//    }
+        
+    func viewDidLoad() {
+    }
 
-func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {
-//    enableSystemSleep()
-return true
-}
+    // Close app from red button (thanks Chris1111)
+    func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {
+        return true
+    }
     
 }

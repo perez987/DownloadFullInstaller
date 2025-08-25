@@ -25,14 +25,19 @@ struct ContentView: View {
                     InstallerView(product: installer)
                 }
                 .padding(4)
+                
+                // ---> Test, VStack border
+                //.border(.mint, width: 1)
+                
                 .contentMargins(.leading, 1, for: .scrollContent)
             } else {
                 List(sucatalog.installers, id: \.id) { installer in
                     InstallerView(product: installer)
                 }
                 .padding(4)
+
             }
-            
+                        
             DownloadView()
                     }
                 
@@ -41,8 +46,8 @@ struct ContentView: View {
             idealWidth: 460.0,
             maxWidth: 460.0,
             minHeight: 500.0,
-            idealHeight: 500.0,
-            maxHeight: 500.0,
+            //idealHeight: 500.0,
+            //maxHeight: 500.0,
             alignment: .center
         )
         
