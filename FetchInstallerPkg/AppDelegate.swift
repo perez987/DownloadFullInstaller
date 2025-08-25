@@ -21,12 +21,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 // Code to prevent and allow sleep, I decided to put it in 
 // FetchInstallerPkgApp.swift using OnAppear / OnDisappear
     
-func viewDidLoad() {
-disableSystemSleep()
-}
+//    func viewDidLoad() {
+//    disableSystemSleep()
+//    }
 
 func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {
-enableSystemSleep()
+//    enableSystemSleep()
 return true
 }
     
