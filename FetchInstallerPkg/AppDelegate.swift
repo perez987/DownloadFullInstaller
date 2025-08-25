@@ -22,12 +22,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 // FetchInstallerPkgApp.swift using OnAppear / OnDisappear
     
 //    func viewDidLoad() {
-//        disableSystemSleep()
+//    disableSystemSleep()
 //    }
-//
-//    func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {
-//        enableSystemSleep()
-//        return true
-//    }
+
+func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {
+//    enableSystemSleep()
+return true
+}
     
 }
