@@ -1,3 +1,7 @@
+### 2.0.3-87 — Add fr.lproj and fr-CA.lproj
+
+- Added French and Canadian French language, thanks [**Chris1111**](https://github.com/chris1111). 
+
 ### 2.0.3-80 — Refactor project structure
 
 - Migrated Xcode project from groups to folders (supported before Sequoia).
