@@ -89,6 +89,8 @@
 			knownRegions = (
 				en,
 				es,
+				"fr-CA",
+				fr,
 			);
 			mainGroup = C63643552670E1B800301DC8;
 			productRefGroup = C636435F2670E1B800301DC8 /* Products */;
@@ -281,7 +283,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 80;
+				CURRENT_PROJECT_VERSION = 87;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
 				DRIVERKIT_DEPLOYMENT_TARGET = 21.4;
@@ -323,7 +325,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 80;
+				CURRENT_PROJECT_VERSION = 87;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
 				DRIVERKIT_DEPLOYMENT_TARGET = 21.4;
