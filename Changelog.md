@@ -1,10 +1,10 @@
 ### 2.0.3-95 - Add uk.lproj
 
-- Add Ukrainian language, thanks [ClassicUA](https://github.com/ClassicUA).
+- Added Ukrainian language, thanks [ClassicUA](https://github.com/ClassicUA).
 
 ### 2.0.3-93 - Add it.lproj
 
-- Add Italian language, thanks [**Anto65**](https://github.com/antuneddu).
+- Added Italian language, thanks [**Anto65**](https://github.com/antuneddu).
 
 ### 2.0.3-87 — Add fr.lproj and fr-CA.lproj
 
