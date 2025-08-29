@@ -13,9 +13,9 @@
 ### 2.0.3-80 — Refactor project structure
 
 - Migrated Xcode project from groups to folders (supported before Sequoia).
-- Updated language function.
 - Quit the application by closing the window from the red button, thanks [Chris1111](https://github.com/chris1111). 
 - Minor UI and documentation updates.
+- Updated language function.
 - Added SeedCatalogs.plist containing actual system seed URLs.
 
 ### 2.0.3-71 — Update UI layout and copyright info
