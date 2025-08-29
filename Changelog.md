@@ -4,7 +4,7 @@
 
 ### 2.0.3-93 - Add it.lproj
 
-Add Italian language, thanks [**Anto65**](https://github.com/antuneddu).
+- Add Italian language, thanks [**Anto65**](https://github.com/antuneddu).
 
 ### 2.0.3-87 — Add fr.lproj and fr-CA.lproj
 
