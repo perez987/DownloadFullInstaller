@@ -1,3 +1,7 @@
+### 2.0.3-93 - Add it.lproj
+
+Add Italian language, thanks to [**Anto65**](https://github.com/antuneddu).
+
 ### 2.0.3-87 — Add fr.lproj and fr-CA.lproj
 
 - Added French and Canadian French languages, thanks [**Chris1111**](https://github.com/chris1111). 
