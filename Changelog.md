@@ -1,12 +1,20 @@
+### 2.0.3-95 - Add uk.lproj
+
+- Add Ukrainian language, thanks [ClassicUA](https://github.com/ClassicUA).
+
+### 2.0.3-93 - Add it.lproj
+
+- Add Italian language, thanks [Anto65](https://github.com/antuneddu).
+
 ### 2.0.3-87 — Add fr.lproj and fr-CA.lproj
 
-- Added French and Canadian French languages, thanks [**Chris1111**](https://github.com/chris1111). 
+- Added French and Canadian French languages, thanks [Chris1111](https://github.com/chris1111). 
 
 ### 2.0.3-80 — Refactor project structure
 
 - Migrated Xcode project from groups to folders (supported before Sequoia).
 - Updated language function.
-- Quit the application by closing the window from the red button, thanks [**Chris1111**](https://github.com/chris1111). 
+- Quit the application by closing the window from the red button, thanks [Chris1111](https://github.com/chris1111). 
 - Minor UI and documentation updates.
 - Added SeedCatalogs.plist containing actual system seed URLs.
 
