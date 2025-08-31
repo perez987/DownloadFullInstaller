@@ -19,6 +19,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_: Notification) {
         Prefs.registerDefaults()
+        
+        // Initialize LanguageManager
+        _ = LanguageManager.shared
+        
         setupLanguageMenu()
     }
     
