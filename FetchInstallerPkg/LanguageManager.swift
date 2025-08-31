@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import AppKit
 
 class LanguageManager: ObservableObject {
     static let shared = LanguageManager()
@@ -70,7 +71,19 @@ class LanguageManager: ObservableObject {
         UserDefaults.standard.synchronize()
         
         // Post notification to update UI
-        NotificationCenter.default.post(name: .languageChanged, object: nil)
+        NotificationCenter.default.post(name: .languageChanged, object: languageCode)
+        
+        print("Language switched to: \(languageCode)")
+        
+        // Show an alert to the user about the language change
+        DispatchQueue.main.async {
+            let alert = NSAlert()
+            alert.messageText = NSLocalizedString("Language Changed", comment: "Language changed alert title")
+            alert.informativeText = NSLocalizedString("The application language has been changed. Please restart the application for the changes to take full effect.", comment: "Language changed alert message")
+            alert.alertStyle = .informational
+            alert.addButton(withTitle: NSLocalizedString("OK", comment: "OK button"))
+            alert.runModal()
+        }
     }
     
     private func displayNameForLanguageCode(_ code: String) -> String {

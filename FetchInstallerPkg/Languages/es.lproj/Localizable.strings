@@ -63,3 +63,8 @@
 "Italian" = "Italiano";
 "Ukrainian" = "Ucraniano";
 
+/* Language change alert */
+"Language Changed" = "Idioma Cambiado";
+"The application language has been changed. Please restart the application for the changes to take full effect." = "El idioma de la aplicación ha sido cambiado. Por favor reinicia la aplicación para que los cambios tengan efecto completo.";
+"OK" = "OK";
+

@@ -62,3 +62,8 @@
 "French (Canada)" = "French (Canada)";
 "Italian" = "Italian";
 "Ukrainian" = "Ukrainian";
+
+/* Language change alert */
+"Language Changed" = "Language Changed";
+"The application language has been changed. Please restart the application for the changes to take full effect." = "The application language has been changed. Please restart the application for the changes to take full effect.";
+"OK" = "OK";

@@ -62,3 +62,8 @@
 "French (Canada)" = "Французька (Канада)";
 "Italian" = "Італійська";
 "Ukrainian" = "Українська";
+
+/* Language change alert */
+"Language Changed" = "Мову Змінено";
+"The application language has been changed. Please restart the application for the changes to take full effect." = "Мову програми було змінено. Будь ласка, перезапустіть програму, щоб зміни набули повного ефекту.";
+"OK" = "OK";
