@@ -51,3 +51,18 @@
 
 /* No comment provided by engineer. */
 "Could not load catalog" = "Could not load the catalog";
+
+/* Language menu items */
+"Language" = "Language";
+"System Default" = "System Default";
+"English" = "English";
+"Spanish" = "Spanish";
+"French" = "French";
+"French (Canada)" = "French (Canada)";
+"Italian" = "Italian";
+"Ukrainian" = "Ukrainian";
+
+/* Language change alert */
+"Language Changed" = "Language Changed";
+"Please restart the application for the language change to take full effect." = "Please restart the application for the language change to take full effect.";
+"OK" = "OK";

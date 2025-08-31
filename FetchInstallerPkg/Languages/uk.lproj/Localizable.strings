@@ -51,3 +51,18 @@
 
 /* No comment provided by engineer. */
 "Could not load catalog" = "Не вдалося завантажити каталог";
+
+/* Language menu items */
+"Language" = "Мова";
+"System Default" = "Системна за замовчуванням";
+"English" = "Англійська";
+"Spanish" = "Іспанська";
+"French" = "Французька";
+"French (Canada)" = "Французька (Канада)";
+"Italian" = "Італійська";
+"Ukrainian" = "Українська";
+
+/* Language change alert */
+"Language Changed" = "Мову змінено";
+"Please restart the application for the language change to take full effect." = "Будь ласка, перезапустіть додаток, щоб зміна мови набула повного ефекту.";
+"OK" = "Гаразд";

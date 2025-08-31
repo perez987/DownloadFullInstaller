@@ -51,3 +51,18 @@
 
 /* No comment provided by engineer. */
 "Could not load catalog" = "Impossibile caricare il catalogo";
+
+/* Language menu items */
+"Language" = "Lingua";
+"System Default" = "Predefinito del sistema";
+"English" = "Inglese";
+"Spanish" = "Spagnolo";
+"French" = "Francese";
+"French (Canada)" = "Francese (Canada)";
+"Italian" = "Italiano";
+"Ukrainian" = "Ucraino";
+
+/* Language change alert */
+"Language Changed" = "Lingua cambiata";
+"Please restart the application for the language change to take full effect." = "Riavvia l'applicazione per rendere effettivo il cambio di lingua.";
+"OK" = "OK";

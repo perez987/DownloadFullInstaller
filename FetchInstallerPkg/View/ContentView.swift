@@ -11,10 +11,11 @@ struct ContentView: View {
     @EnvironmentObject var sucatalog: SUCatalog
     @AppStorage(Prefs.key(.seedProgram)) var seedProgram: String = ""
     @AppStorage(Prefs.key(.osNameID)) var osNameID: String = ""
+    @StateObject var languageManager = LanguageManager.shared
     var countersText: String = ""
 
     var body: some View {
-        PreferencesView().environmentObject(sucatalog).navigationTitle("Download Full Installer")
+        PreferencesView().environmentObject(sucatalog).navigationTitle(NSLocalizedString("Download Full Installer", comment: ""))
         VStack(alignment: .center, spacing: 4) {
             HStack(alignment: .center) { Text("")
                 Spacer()
@@ -56,6 +57,11 @@ struct ContentView: View {
         }
         // ---> there are issues with the count of listed installers
         // HStack { Text("(\(sucatalog.installers.count) pkg(s) in \(self.seedProgram) catalog)\n") .font(.headline) }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .languageChanged)) { _ in
+            // Force UI refresh when language changes
+            languageManager.objectWillChange.send()
+        }
     }
 
     struct ContentView_Previews: PreviewProvider {
