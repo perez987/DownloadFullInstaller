@@ -1,23 +1,28 @@
-### 2.0.3-105 - Standalone repo. Refactor localization
+### 2.0.3-107
+
+- Update project version to 107.
+- Update English localization string.
+
+### 2.0.3-105
 
 - Import project to unfork from original repo. 
 - Move all localization files into a new Languages directory.
 - Add new localized strings.
 - Update comments.
 
-### 2.0.3-95 - Add uk.lproj
+### 2.0.3-95
 
 - Add Ukrainian language, thanks [ClassicUA](https://github.com/ClassicUA).
 
-### 2.0.3-93 - Add it.lproj
+### 2.0.3-93
 
 - Add Italian language, thanks [Anto65](https://github.com/antuneddu).
 
-### 2.0.3-87 — Add fr.lproj and fr-CA.lproj
+### 2.0.3-87
 
 - Add French and Canadian French languages, thanks [Chris1111](https://github.com/chris1111). 
 
-### 2.0.3-80 — Refactor project structure
+### 2.0.3-80
 
 - Migrate Xcode project from groups to folders (supported before Sequoia).
 - Quit the application by closing the window from the red button, thanks [Chris1111](https://github.com/chris1111). 
@@ -25,7 +30,7 @@
 - Update language function.
 - Add SeedCatalogs.plist containing actual system seed URLs.
 
-### 2.0.3-71 — Update UI layout and copyright info
+### 2.0.3-71
 
 - Fix ContentView layout and DownloadView UI spacing.
 - Rename sleep prevention functions for clarity.
@@ -33,13 +38,13 @@
 - Remove user-specific Xcode workspace files.
 - Update README badge color and formatting.
 
-### 2.0.3-57 — Prevent sleep while running
+### 2.0.3-57
 
 - Installation packages are quite large (up to 17 GB on Tahoe); computer may go to sleep before completing the download.
 - Add logic to disable sleep while the app window is open.
 - Sleep resumes when the app window is closed.
 
-### 2.0.2-52 — Update to macOS Tahoe
+### 2.0.3-52
 
 - Add constants and URL catalog for Tahoe.
 - Add new Tahoe icons.
