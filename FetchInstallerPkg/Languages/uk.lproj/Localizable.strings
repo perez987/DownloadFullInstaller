@@ -51,3 +51,14 @@
 
 /* No comment provided by engineer. */
 "Could not load catalog" = "Не вдалося завантажити каталог";
+
+/* Language menu */
+"Language" = "Мова";
+
+/* Language names */
+"English" = "Англійська";
+"Spanish" = "Іспанська";
+"French" = "Французька";
+"French (Canada)" = "Французька (Канада)";
+"Italian" = "Італійська";
+"Ukrainian" = "Українська";

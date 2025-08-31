@@ -51,3 +51,14 @@
 
 /* No comment provided by engineer. */
 "Could not load catalog" = "Could not load the catalog";
+
+/* Language menu */
+"Language" = "Language";
+
+/* Language names */
+"English" = "English";
+"Spanish" = "Spanish";
+"French" = "French";
+"French (Canada)" = "French (Canada)";
+"Italian" = "Italian";
+"Ukrainian" = "Ukrainian";

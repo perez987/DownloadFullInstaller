@@ -52,3 +52,14 @@
 /* No comment provided by engineer. */
 "Could not load catalog" = "No se puede descargar el catálogo";
 
+/* Language menu */
+"Language" = "Idioma";
+
+/* Language names */
+"English" = "Inglés";
+"Spanish" = "Español";
+"French" = "Francés";
+"French (Canada)" = "Francés (Canadá)";
+"Italian" = "Italiano";
+"Ukrainian" = "Ucraniano";
+

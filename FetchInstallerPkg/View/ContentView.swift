@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var sucatalog: SUCatalog
+    @EnvironmentObject var languageManager: LanguageManager
     @AppStorage(Prefs.key(.seedProgram)) var seedProgram: String = ""
     @AppStorage(Prefs.key(.osNameID)) var osNameID: String = ""
     var countersText: String = ""
@@ -50,6 +51,10 @@ struct ContentView: View {
             //maxHeight: 500.0,
             alignment: .center
         )
+        .onReceive(NotificationCenter.default.publisher(for: .languageChanged)) { _ in
+            // Force UI refresh when language changes
+            // The SwiftUI system should handle most of the localization automatically
+        }
         
         HStack(alignment: .center) { Text("").padding(1)
             

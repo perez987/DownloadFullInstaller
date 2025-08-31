@@ -16,6 +16,11 @@ enum DefaultsKeys: String {
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_: Notification) {
         Prefs.registerDefaults()
+        
+        // Set the initial language preference
+        let selectedLanguage = Prefs.selectedLanguage
+        UserDefaults.standard.set([selectedLanguage], forKey: "AppleLanguages")
+        UserDefaults.standard.synchronize()
     }
         
     func viewDidLoad() {

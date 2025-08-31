@@ -13,10 +13,14 @@ import SwiftUI
 struct FetchInstallerPkgApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject var sucatalog = SUCatalog()
+    @StateObject var languageManager = LanguageManager.shared
 
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(sucatalog).navigationTitle("")
+            ContentView()
+                .environmentObject(sucatalog)
+                .environmentObject(languageManager)
+                .navigationTitle("")
             
             // Disable sleep mode when the window appears
             // Enable sleep mode when the window disappears
@@ -29,6 +33,9 @@ struct FetchInstallerPkgApp: App {
                     enableSystemSleep()
                 }
                         
+        }
+        .commands {
+            LanguageCommands()
         }
 
 //        Settings {
