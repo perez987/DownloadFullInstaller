@@ -62,7 +62,7 @@ struct InstallerView: View {
                     }) {
                         Image(systemName: "arrow.down.circle").font(.title)
                     }
-                    .help("Download \(product.osName ?? "") \(product.productVersion ?? "") (\(product.buildVersion ?? "")) Installer")
+                    .help(String(format: NSLocalizedString("Download %@ %@ (%@) Installer", comment: "Download button help text"), product.osName ?? "", product.productVersion ?? "", product.buildVersion ?? ""))
                     .alert(isPresented: $isReplacingFile) {
                         Alert(
                             title: Text("“\(filename)” already exists. Do you want to replace it?"),

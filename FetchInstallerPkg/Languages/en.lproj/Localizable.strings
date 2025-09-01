@@ -51,3 +51,18 @@
 
 /* No comment provided by engineer. */
 "Could not load catalog" = "Could not load the catalog";
+
+/* Language Selection Dialog */
+"Language Selection" = "Language Selection";
+
+/* No comment provided by engineer. */
+"Choose your preferred language" = "Choose your preferred language";
+
+/* No comment provided by engineer. */
+"Select Language" = "Select Language";
+
+/* No comment provided by engineer. */
+"Continue" = "Continue";
+
+/* No comment provided by engineer. */
+"The app will restart to apply the language change" = "The app will restart to apply the language change";

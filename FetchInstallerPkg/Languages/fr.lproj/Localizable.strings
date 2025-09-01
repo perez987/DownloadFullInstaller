@@ -51,3 +51,18 @@
 
 /* No comment provided by engineer. */
 "Could not load catalog" = "Impossible de charger le catalogue";
+
+/* Language Selection Dialog */
+"Language Selection" = "Sélection de langue";
+
+/* No comment provided by engineer. */
+"Choose your preferred language" = "Choisissez votre langue préférée";
+
+/* No comment provided by engineer. */
+"Select Language" = "Sélectionner la langue";
+
+/* No comment provided by engineer. */
+"Continue" = "Continuer";
+
+/* No comment provided by engineer. */
+"The app will restart to apply the language change" = "L'application redémarrera pour appliquer le changement de langue";

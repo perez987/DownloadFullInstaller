@@ -51,3 +51,18 @@
 
 /* No comment provided by engineer. */
 "Could not load catalog" = "Не вдалося завантажити каталог";
+
+/* Language Selection Dialog */
+"Language Selection" = "Вибір мови";
+
+/* No comment provided by engineer. */
+"Choose your preferred language" = "Оберіть бажану мову";
+
+/* No comment provided by engineer. */
+"Select Language" = "Вибрати мову";
+
+/* No comment provided by engineer. */
+"Continue" = "Продовжити";
+
+/* No comment provided by engineer. */
+"The app will restart to apply the language change" = "Програма перезапуститься для застосування зміни мови";
