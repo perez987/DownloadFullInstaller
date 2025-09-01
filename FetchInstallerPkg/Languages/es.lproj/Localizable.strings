@@ -52,3 +52,15 @@
 /* No comment provided by engineer. */
 "Could not load catalog" = "No se puede descargar el catálogo";
 
+/* No comment provided by engineer. */
+"<no title>" = "<sin título>";
+
+/* No comment provided by engineer. */
+"<no version>" = "<sin versión>";
+
+/* No comment provided by engineer. */
+"<no build>" = "<sin build>";
+
+/* No comment provided by engineer. */
+"could not load catalog" = "no se pudo cargar el catálogo";
+

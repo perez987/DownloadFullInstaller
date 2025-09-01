@@ -51,3 +51,15 @@
 
 /* No comment provided by engineer. */
 "Could not load catalog" = "Impossibile caricare il catalogo";
+
+/* No comment provided by engineer. */
+"<no title>" = "<nessun titolo>";
+
+/* No comment provided by engineer. */
+"<no version>" = "<nessuna versione>";
+
+/* No comment provided by engineer. */
+"<no build>" = "<nessuna build>";
+
+/* No comment provided by engineer. */
+"could not load catalog" = "impossibile caricare il catalogo";
