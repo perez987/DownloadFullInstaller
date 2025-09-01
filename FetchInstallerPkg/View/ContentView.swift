@@ -14,7 +14,7 @@ struct ContentView: View {
     var countersText: String = ""
 
     var body: some View {
-        PreferencesView().environmentObject(sucatalog).navigationTitle("Download Full Installer")
+        PreferencesView().environmentObject(sucatalog).navigationTitle(Text("Download Full Installer"))
         VStack(alignment: .center, spacing: 4) {
             HStack(alignment: .center) { Text("")
                 Spacer()

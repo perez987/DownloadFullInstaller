@@ -28,10 +28,10 @@ struct InstallerView: View {
 
                     VStack(alignment: .leading) {
                         HStack {
-                            Text(product.title ?? "<no title>")
+                            Text(product.title ?? NSLocalizedString("<no title>", comment: ""))
                                 .font(.headline)
                             Spacer()
-                            Text(product.productVersion ?? "<no version>")
+                            Text(product.productVersion ?? NSLocalizedString("<no version>", comment: ""))
                                 .frame(alignment: .trailing)
                         }
                         HStack {
@@ -40,7 +40,7 @@ struct InstallerView: View {
                             Text(Prefs.byteFormatter.string(fromByteCount: Int64(product.installAssistantSize)))
                                 .font(.footnote)
                             Spacer()
-                            Text(product.buildVersion ?? "<no build>")
+                            Text(product.buildVersion ?? NSLocalizedString("<no build>", comment: ""))
                                 .frame(alignment: .trailing)
                                 .font(.footnote)
                         }
@@ -62,11 +62,11 @@ struct InstallerView: View {
                     }) {
                         Image(systemName: "arrow.down.circle").font(.title)
                     }
-                    .help("Download \(product.osName ?? "") \(product.productVersion ?? "") (\(product.buildVersion ?? "")) Installer")
+                    .help(String(format: NSLocalizedString("Download %@ %@ (%@) Installer", comment: ""), product.osName ?? "", product.productVersion ?? "", product.buildVersion ?? ""))
                     .alert(isPresented: $isReplacingFile) {
                         Alert(
-                            title: Text("“\(filename)” already exists. Do you want to replace it?"),
-                            message: Text("A file with the same name already exists in that location. Replacing it will overwrite its current contents."),
+                            title: Text(String(format: NSLocalizedString(""%@" already exists. Do you want to replace it?", comment: ""), filename)),
+                            message: Text(NSLocalizedString("A file with the same name already exists in that location. Replacing it will overwrite its current contents.", comment: "")),
                             primaryButton: .cancel(Text("Cancel")),
                             secondaryButton: .destructive(
                                 Text("Replace"),
@@ -105,7 +105,7 @@ struct InstallerView: View {
 //            .alert(isPresented: $isReplacingFile) {
 //                Alert(
 //                    title: Text("“\(filename)” already exists! Do you want to replace it?"),
-//                    message: Text("A file with the same name already exists in that location. Replacing it will overwrite its current contents."),
+//                    message: Text(NSLocalizedString("A file with the same name already exists in that location. Replacing it will overwrite its current contents.", comment: "")),
 //                    primaryButton: .cancel(Text("Cancel")),
 //                    secondaryButton: .destructive(
 //                        Text("Replace"),
@@ -132,7 +132,7 @@ struct InstallerView: View {
                     }) {
                         Image(systemName: "doc.on.clipboard")
                         let package = (product.installAssistantURL?.absoluteString.components(separatedBy: "/").last ?? "")
-                        Text("Copy \(product.osName ?? "") \(product.productVersion ?? "") (\(product.buildVersion ?? "")) \(package) URL")
+                        Text(String(format: NSLocalizedString("Copy %@ %@ (%@) %@ URL", comment: ""), product.osName ?? "", product.productVersion ?? "", product.buildVersion ?? "", package))
                     }
                 }
             

@@ -15,7 +15,7 @@ struct DownloadView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Text(" ")
-                    Text("Downloading \(downloadManager.filename ?? "InstallAssistant.pkg")")
+                    Text(String(format: NSLocalizedString("Downloading %@", comment: ""), downloadManager.filename ?? "InstallAssistant.pkg"))
                     Spacer()
                     Text(downloadManager.progressString)
                         .font(.footnote)
@@ -28,7 +28,7 @@ struct DownloadView: View {
                     ProgressView(value: downloadManager.progress)
                     Button(action: { downloadManager.cancel() }) {
                         Image(systemName: "xmark.circle.fill").accentColor(.gray)
-                            .help("Cancel \(downloadManager.filename ?? "InstallAssistant.pkg") download")
+                            .help(String(format: NSLocalizedString("Cancel %@ download", comment: ""), downloadManager.filename ?? "InstallAssistant.pkg"))
                     }.buttonStyle(.borderless)
                     Text(" ")
                 }
@@ -37,7 +37,7 @@ struct DownloadView: View {
         }
         if downloadManager.isComplete {
             HStack {
-                Text("Downloaded \(downloadManager.filename ?? "InstallAssistant.pkg")")
+                Text(String(format: NSLocalizedString("Downloaded %@", comment: ""), downloadManager.filename ?? "InstallAssistant.pkg"))
                     .padding(.vertical, 6)
                 Spacer()
                 
@@ -46,7 +46,7 @@ struct DownloadView: View {
                         downloadManager.revealInFinder()
                     })
                     { Text("Show in Finder")
-                            .help("Show the installer in the Downloads folder")
+                            .help(NSLocalizedString("Show the installer in the Downloads folder", comment: ""))
                     }
                 }
                 else {
@@ -55,7 +55,7 @@ struct DownloadView: View {
                     }) {
                         Image(systemName: "magnifyingglass")
                         Text("Show in Finder")
-                            .help("Show the installer in the Downloads folder")
+                            .help(NSLocalizedString("Show the installer in the Downloads folder", comment: ""))
                     }
                 }
             }

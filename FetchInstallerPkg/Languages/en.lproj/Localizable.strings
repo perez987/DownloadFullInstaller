@@ -51,3 +51,15 @@
 
 /* No comment provided by engineer. */
 "Could not load catalog" = "Could not load the catalog";
+
+/* No comment provided by engineer. */
+"<no title>" = "<no title>";
+
+/* No comment provided by engineer. */
+"<no version>" = "<no version>";
+
+/* No comment provided by engineer. */
+"<no build>" = "<no build>";
+
+/* No comment provided by engineer. */
+"could not load catalog" = "could not load catalog";
