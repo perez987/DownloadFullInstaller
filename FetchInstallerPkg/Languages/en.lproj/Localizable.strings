@@ -8,7 +8,7 @@
 "  in" = "  in catalog";
 
 /* No comment provided by engineer. */
-"“%@” already exists. Do you want to replace it?" = "%@ already exists. Do you want to replace it?";
+"%@ already exists. Do you want to replace it?" = "%@ already exists. Do you want to replace it?";
 
 /* No comment provided by engineer. */
 "A file with the same name already exists in that location. Replacing it will overwrite its current contents." = "A file with the same name already exists in that location. Replacing it will overwrite its current contents.";
@@ -62,4 +62,4 @@
 "<no build>" = "<no build>";
 
 /* No comment provided by engineer. */
-"could not load catalog" = "could not load catalog";
+"Could not load catalog" = "Could not load catalog";

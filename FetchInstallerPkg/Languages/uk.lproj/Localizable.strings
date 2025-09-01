@@ -8,7 +8,7 @@
 "  in" = " у каталозі";
 
 /* No comment provided by engineer. */
-"“%@” already exists. Do you want to replace it?" = "%@ вже існує. Чи хочете ви його замінити?";
+"%@ already exists. Do you want to replace it?" = "%@ вже існує. Чи хочете ви його замінити?";
 
 /* No comment provided by engineer. */
 "A file with the same name already exists in that location. Replacing it will overwrite its current contents." = "Файл з такою ж назвою вже існує в цьому місці. Його заміна призведе до перезапису поточного вмісту.";
@@ -62,4 +62,4 @@
 "<no build>" = "<немає збірки>";
 
 /* No comment provided by engineer. */
-"could not load catalog" = "не вдалося завантажити каталог";
+"Could not load catalog" = "не вдалося завантажити каталог";

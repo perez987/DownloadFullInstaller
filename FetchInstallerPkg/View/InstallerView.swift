@@ -65,7 +65,7 @@ struct InstallerView: View {
                     .help(String(format: NSLocalizedString("Download %@ %@ (%@) Installer", comment: ""), product.osName ?? "", product.productVersion ?? "", product.buildVersion ?? ""))
                     .alert(isPresented: $isReplacingFile) {
                         Alert(
-                            title: Text(String(format: NSLocalizedString(""%@" already exists. Do you want to replace it?", comment: ""), filename)),
+                            title: Text(String(format: NSLocalizedString("%@ already exists. Do you want to replace it?", comment: ""), filename)),
                             message: Text(NSLocalizedString("A file with the same name already exists in that location. Replacing it will overwrite its current contents.", comment: "")),
                             primaryButton: .cancel(Text("Cancel")),
                             secondaryButton: .destructive(
@@ -148,7 +148,7 @@ struct InstallerView_Previews: PreviewProvider {
         if let preview_product = catalog.installers.first {
             InstallerView(product: preview_product)
         } else {
-            Text("could not load catalog")
+            Text("Could not load catalog")
         }
     }
 }
