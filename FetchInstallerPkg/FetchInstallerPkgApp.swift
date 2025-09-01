@@ -50,6 +50,14 @@ struct FetchInstallerPkgApp: App {
                 }
                         
         }
+        .commands {
+            CommandGroup(replacing: .appSettings) {
+                Button(NSLocalizedString("Select Language", comment: "Menu item to show language selection")) {
+                    showLanguageSelection = true
+                }
+                .keyboardShortcut("l", modifiers: [.command])
+            }
+        }
 
 //        Settings {
 //            PreferencesView().environmentObject(sucatalog).navigationTitle("Program")

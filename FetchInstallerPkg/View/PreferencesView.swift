@@ -28,7 +28,7 @@ struct PreferencesView: View {
 					}
 
 					HStack(alignment: .center) {
-						Text("  in").font(.body)
+						Text(NSLocalizedString("  in", comment: "OS selection separator")).font(.body)
 					}
 
 					if #available(macOS 14.0, *) {

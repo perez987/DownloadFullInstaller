@@ -57,6 +57,10 @@ struct Prefs {
     static func setLanguageSelectionShown() {
         UserDefaults.standard.set(true, forKey: Prefs.key(.languageSelectionShown))
     }
+    
+    static func resetLanguageSelectionShown() {
+        UserDefaults.standard.set(false, forKey: Prefs.key(.languageSelectionShown))
+    }
 
     static let byteFormatter = ByteCountFormatter()
 }
