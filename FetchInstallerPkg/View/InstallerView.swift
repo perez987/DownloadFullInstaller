@@ -62,14 +62,14 @@ struct InstallerView: View {
                     }) {
                         Image(systemName: "arrow.down.circle").font(.title)
                     }
-                    .help("Download \(product.osName ?? "") \(product.productVersion ?? "") (\(product.buildVersion ?? "")) Installer")
+                    .help(String(format: NSLocalizedString("Download %@ %@ (%@) Installer", comment: "Download button help text"), product.osName ?? "", product.productVersion ?? "", product.buildVersion ?? ""))
                     .alert(isPresented: $isReplacingFile) {
                         Alert(
                             title: Text("“\(filename)” already exists. Do you want to replace it?"),
-                            message: Text("A file with the same name already exists in that location. Replacing it will overwrite its current contents."),
-                            primaryButton: .cancel(Text("Cancel")),
+                            message: Text(NSLocalizedString("A file with the same name already exists in that location. Replacing it will overwrite its current contents.", comment: "File replacement alert message")),
+                            primaryButton: .cancel(Text(NSLocalizedString("Cancel", comment: "Cancel button"))),
                             secondaryButton: .destructive(
-                                Text("Replace"),
+                                Text(NSLocalizedString("Replace", comment: "Replace button")),
                                 action: {
                                     do {
                                         try downloadManager.download(url: product.installAssistantURL, replacing: true)
@@ -105,10 +105,10 @@ struct InstallerView: View {
 //            .alert(isPresented: $isReplacingFile) {
 //                Alert(
 //                    title: Text("“\(filename)” already exists! Do you want to replace it?"),
-//                    message: Text("A file with the same name already exists in that location. Replacing it will overwrite its current contents."),
-//                    primaryButton: .cancel(Text("Cancel")),
+//                    message: Text(NSLocalizedString("A file with the same name already exists in that location. Replacing it will overwrite its current contents.", comment: "File replacement alert message")),
+//                    primaryButton: .cancel(Text(NSLocalizedString("Cancel", comment: "Cancel button"))),
 //                    secondaryButton: .destructive(
-//                        Text("Replace"),
+//                        Text(NSLocalizedString("Replace", comment: "Replace button")),
 //                        action: {
 //                            do { try downloadManager.download(url:  product.installAssistantURL, replacing: true)
 //                            } catch { failed = true
@@ -132,7 +132,7 @@ struct InstallerView: View {
                     }) {
                         Image(systemName: "doc.on.clipboard")
                         let package = (product.installAssistantURL?.absoluteString.components(separatedBy: "/").last ?? "")
-                        Text("Copy \(product.osName ?? "") \(product.productVersion ?? "") (\(product.buildVersion ?? "")) \(package) URL")
+                        Text(String(format: NSLocalizedString("Copy %@ %@ (%@) %@ URL", comment: "Copy URL context menu item"), product.osName ?? "", product.productVersion ?? "", product.buildVersion ?? "", package))
                     }
                 }
             
@@ -148,7 +148,7 @@ struct InstallerView_Previews: PreviewProvider {
         if let preview_product = catalog.installers.first {
             InstallerView(product: preview_product)
         } else {
-            Text("could not load catalog")
+            Text(NSLocalizedString("Could not load catalog", comment: "Preview error message"))
         }
     }
 }

@@ -1,0 +1,135 @@
+//
+//  LanguageSelectionView.swift
+//  FetchInstallerPkg
+//
+//  Created for language selection dialog implementation
+//
+
+import SwiftUI
+
+struct LanguageSelectionView: View {
+    @ObservedObject var languageManager: LanguageManager
+    @Binding var isPresented: Bool
+    @State private var selectedLanguage: String
+    
+    init(languageManager: LanguageManager, isPresented: Binding<Bool>) {
+        self.languageManager = languageManager
+        self._isPresented = isPresented
+        self._selectedLanguage = State(initialValue: languageManager.currentLanguage)
+    }
+    
+    var body: some View {
+        VStack(spacing: 20) {
+            // Header
+            VStack(spacing: 8) {
+                Image(systemName: "globe")
+                    .font(.system(size: 48))
+                    .foregroundColor(.blue)
+                
+                Text(NSLocalizedString("Language Selection", comment: "Language Selection Dialog title"))
+                    .font(.title)
+                    .fontWeight(.bold)
+                
+                Text(NSLocalizedString("Choose your preferred language", comment: "Language selection description"))
+                    .font(.body)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+            }
+            .padding(.top, 20)
+            
+            // Language list
+            VStack(spacing: 0) {
+                ForEach(languageManager.availableLanguages, id: \.code) { language in
+                    LanguageRow(
+                        language: language,
+                        isSelected: selectedLanguage == language.code,
+                        action: {
+                            selectedLanguage = language.code
+                        }
+                    )
+                }
+            }
+            .background(Color(NSColor.controlBackgroundColor))
+            .cornerRadius(8)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.gray.opacity(0.3), lineWidth: 1)
+            )
+            
+            // Buttons
+            HStack(spacing: 12) {
+                Button(NSLocalizedString("Cancel", comment: "Cancel button")) {
+                    isPresented = false
+                }
+                .keyboardShortcut(.escape)
+                
+                Spacer()
+                
+                Button(NSLocalizedString("Continue", comment: "Continue button")) {
+                    languageManager.setLanguage(selectedLanguage)
+                    isPresented = false
+                }
+                .keyboardShortcut(.return)
+                .buttonStyle(.borderedProminent)
+                .disabled(selectedLanguage == languageManager.currentLanguage)
+            }
+            .padding(.bottom, 20)
+        }
+        .padding(.horizontal, 30)
+        .frame(width: 400, height: 500)
+        .background(Color(NSColor.windowBackgroundColor))
+    }
+}
+
+struct LanguageRow: View {
+    let language: SupportedLanguage
+    let isSelected: Bool
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            HStack {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(language.nativeName)
+                        .font(.body)
+                        .fontWeight(.medium)
+                        .foregroundColor(.primary)
+                    
+                    if language.nativeName != language.localizedName {
+                        Text(language.localizedName)
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                }
+                
+                Spacer()
+                
+                if isSelected {
+                    Image(systemName: "checkmark.circle.fill")
+                        .foregroundColor(.blue)
+                        .font(.title3)
+                }
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 12)
+            .background(isSelected ? Color.blue.opacity(0.1) : Color.clear)
+        }
+        .buttonStyle(PlainButtonStyle())
+        .overlay(
+            Rectangle()
+                .frame(height: 1)
+                .foregroundColor(Color.gray.opacity(0.2)),
+            alignment: .bottom
+        )
+    }
+}
+
+#Preview {
+    @State var isPresented = true
+    let languageManager = LanguageManager()
+    
+    return LanguageSelectionView(
+        languageManager: languageManager,
+        isPresented: $isPresented
+    )
+}

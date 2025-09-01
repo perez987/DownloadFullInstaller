@@ -9,12 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var sucatalog: SUCatalog
+    @EnvironmentObject var languageManager: LanguageManager
     @AppStorage(Prefs.key(.seedProgram)) var seedProgram: String = ""
     @AppStorage(Prefs.key(.osNameID)) var osNameID: String = ""
+    @State private var refreshID = UUID()
     var countersText: String = ""
 
     var body: some View {
-        PreferencesView().environmentObject(sucatalog).navigationTitle("Download Full Installer")
+        PreferencesView().environmentObject(sucatalog).navigationTitle(NSLocalizedString("Download Full Installer", comment: "Main window title"))
         VStack(alignment: .center, spacing: 4) {
             HStack(alignment: .center) { Text("")
                 Spacer()
@@ -56,6 +58,11 @@ struct ContentView: View {
         }
         // ---> there are issues with the count of listed installers
         // HStack { Text("(\(sucatalog.installers.count) pkg(s) in \(self.seedProgram) catalog)\n") .font(.headline) }
+        
+        .id(refreshID) // Force view refresh when language changes
+        .onReceive(NotificationCenter.default.publisher(for: .languageChanged)) { _ in
+            refreshID = UUID()
+        }
     }
 
     struct ContentView_Previews: PreviewProvider {
