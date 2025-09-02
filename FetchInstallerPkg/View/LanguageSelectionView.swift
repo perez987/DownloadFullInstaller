@@ -24,7 +24,7 @@ struct LanguageSelectionView: View {
             // Header
             VStack(spacing: 8) {
                 Image(systemName: "globe")
-                    .font(.system(size: 48))
+                    .font(.system(size: 32))
                     .foregroundColor(.blue)
                 
                 Text(NSLocalizedString("Language Selection", comment: "Language Selection Dialog title"))
@@ -83,14 +83,40 @@ struct LanguageSelectionView: View {
                                 isPresented = false
                             }
                         ),
-                        secondaryButton: .cancel(Text(NSLocalizedString("Cancel", comment: "Cancel button")))
+                        secondaryButton: .cancel(Text(NSLocalizedString("Cancel", comment: "Cancel button"))),
                     )
                 }
             }
+            
+            Divider()
+
+//            .padding(.bottom, 20)
+            HStack(spacing: 12) {
+                
+                Image(systemName: "exclamationmark.triangle")
+                    .font(.system(size: 16))
+                    .foregroundColor(.blue)
+                
+                Text(NSLocalizedString("Clear app's settings?", comment: "Reset settings 1"))
+                    .font(.body)
+                
+                Button(NSLocalizedString("Yes", comment: "Yes button")) {
+                    UserDefaults.resetDefaults()
+                    
+                }
+                .buttonStyle(.bordered)
+            }
+            
+            HStack(spacing: 10) {
+                Text(NSLocalizedString("(This will erase any saved settings)", comment: "Reset settings 2"))
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+            }
             .padding(.bottom, 20)
+
         }
         .padding(.horizontal, 30)
-        .frame(width: 420, height: 600)
+        .frame(width: 380, height: 666)
         .background(Color(NSColor.windowBackgroundColor))
     }
 }
