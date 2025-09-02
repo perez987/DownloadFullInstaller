@@ -1,3 +1,7 @@
+### 2.0.3-21
+
+- Add Simplified Chinese language.
+
 ### 2.0.3-20
 
 - Change build numbering: project version is 20.
