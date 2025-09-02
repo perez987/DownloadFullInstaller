@@ -1,3 +1,13 @@
+### 2.0.4-33
+
+- Refactor language files to region-specific folders.
+- Add language selection system (to test languages).
+- Add restart alert to language selection view.
+- Add Simplified Chinese.
+- Add option to clear app's language settings.
+- Update translations.
+- Bump project version to 2.0.4 build 33.
+
 ### 2.0.3-20
 
 - Change build numbering: project version is 20.
