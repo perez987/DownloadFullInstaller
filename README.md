@@ -27,7 +27,7 @@ Main changes:
 - Add restart alert to language selection view.
 - Update translations with new strings.
 - Bump project version to 2.0.5.
-- Add option to clear app's settings (stored in `~/Library/Containers/DownloadFullInstaller/Data/Library/Preferences/DownloadFullInstaller.plist`).
+- Add option to clear app's settings, stored in `~/Library/Containers/DownloadFullInstaller/Data/Library/Preferences/DownloadFullInstaller.plist`
 
 
 <img src="Images/DownloadFullInstaller-test.png" width="560px">
