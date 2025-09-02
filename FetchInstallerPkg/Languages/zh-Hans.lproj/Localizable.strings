@@ -84,3 +84,12 @@
 
 /* No comment provided by engineer. */
 "OK" = "好的";
+
+/* No comment provided by engineer. */
+"Clear app's settings?" = "清除应用程序的设置";
+
+/* No comment provided by engineer. */
+"(This will erase any saved settings)" = "(这将删除所有已保存的设置)";
+
+/* No comment provided by engineer. */
+"Yes" = "是的";

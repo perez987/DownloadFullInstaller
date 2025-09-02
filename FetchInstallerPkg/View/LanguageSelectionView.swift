@@ -116,7 +116,7 @@ struct LanguageSelectionView: View {
 
         }
         .padding(.horizontal, 30)
-        .frame(width: 380, height: 666)
+        .frame(width: 400, height: 666)
         .background(Color(NSColor.windowBackgroundColor))
     }
 }
