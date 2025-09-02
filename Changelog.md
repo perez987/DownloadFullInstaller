@@ -1,7 +1,7 @@
 ### 2.0.4-40
 
-Bum version to 2.0.4.
-Fix localization strings.
+- Bum version to 2.0.4.
+- Fix localization strings.
 
 ### 2.0.3-21
 
