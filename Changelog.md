@@ -1,6 +1,6 @@
 ### 2.0.5-36
 
-- Bump project version to 2.0.5 build 36 (test branch).
+- Bump project version to 2.0.5 (test branch).
 
 ### 2.0.4-33
 
@@ -10,11 +10,10 @@
 - Add Simplified Chinese.
 - Add option to clear app's language settings.
 - Update translations.
-- Bump project version to 2.0.4 build 33.
+- Bump project version to 2.0.4.
 
 ### 2.0.3-20
 
-- Change build numbering: project version is 20.
 - Update English localization string.
 
 ### 2.0.3-105
