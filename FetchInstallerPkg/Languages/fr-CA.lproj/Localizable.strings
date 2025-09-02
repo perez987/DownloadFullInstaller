@@ -26,7 +26,7 @@
 "Download %@ %@ (%@) Installer" = "Télécharger %@ %@ (%@) Le programme";
 
 /* No comment provided by engineer. */
-"Download Full Installer" = "Télécharger le programme d'installation complet";
+"Download Full Installer" = "Download Full Installer";
 
 /* No comment provided by engineer. */
 "Downloaded %@" = "Téléchargé %@";
@@ -56,7 +56,7 @@
 "Language Selection" = "Sélection de langue";
 
 /* No comment provided by engineer. */
-"Choose your preferred language" = "Choisissez votre langue préférée";
+"Choose a language" = "Choisissez une langue";
 
 /* No comment provided by engineer. */
 "Select Language" = "Sélectionner la langue";

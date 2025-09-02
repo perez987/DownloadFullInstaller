@@ -30,7 +30,7 @@ struct LanguageSelectionView: View {
                     .font(.title)
                     .fontWeight(.bold)
                 
-                Text(NSLocalizedString("Choose your preferred language", comment: "Language selection description"))
+                Text(NSLocalizedString("Choose a language", comment: "Language selection description"))
                     .font(.body)
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
@@ -70,13 +70,13 @@ struct LanguageSelectionView: View {
                     isPresented = false
                 }
                 .keyboardShortcut(.return)
-                .buttonStyle(.borderedProminent)
+                .buttonStyle(.bordered)
                 .disabled(selectedLanguage == languageManager.currentLanguage)
             }
             .padding(.bottom, 20)
         }
         .padding(.horizontal, 30)
-        .frame(width: 400, height: 500)
+        .frame(width: 420, height: 600)
         .background(Color(NSColor.windowBackgroundColor))
     }
 }
@@ -125,7 +125,9 @@ struct LanguageRow: View {
 }
 
 #Preview {
+    
     @State var isPresented = true
+    
     let languageManager = LanguageManager()
     
     return LanguageSelectionView(
