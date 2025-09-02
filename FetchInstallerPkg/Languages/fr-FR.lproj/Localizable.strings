@@ -66,3 +66,12 @@
 
 /* No comment provided by engineer. */
 "The app will restart to apply the language change" = "L'application redémarrera pour appliquer le changement de langue";
+
+/* No comment provided by engineer. */
+"Restart Required" = "Redémarrage requis";
+
+/* No comment provided by engineer. */
+"The app must be restarted for changes to take effect." = "L'application doit être redémarrée pour que les modifications soient prises en compte.";
+
+/* No comment provided by engineer. */
+"OK" = "OK";

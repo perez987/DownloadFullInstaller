@@ -66,3 +66,12 @@
 
 /* No comment provided by engineer. */
 "The app will restart to apply the language change" = "Програма перезапуститься для застосування зміни мови";
+
+/* No comment provided by engineer. */
+"Restart Required" = "Потрібен перезапуск";
+
+/* No comment provided by engineer. */
+"The app must be restarted for changes to take effect." = "Щоб зміни набули чинності, необхідно перезапустити програму.";
+
+/* No comment provided by engineer. */
+"OK" = "OK";

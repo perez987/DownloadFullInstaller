@@ -1,0 +1,86 @@
+/* No comment provided by engineer. */
+"" = "";
+
+/* No comment provided by engineer. */
+"\n\n" = "\n\n";
+
+/* No comment provided by engineer. */
+"  in" = "  在目录中";
+
+/* No comment provided by engineer. */
+"%@ already exists. Do you want to replace it?" = "%@ 已存在。您要替换它吗？";
+
+/* No comment provided by engineer. */
+"A file with the same name already exists in that location. Replacing it will overwrite its current contents." = "该位置已存在同名文件。替换它将覆盖其当前内容。";
+
+/* No comment provided by engineer. */
+"Cancel" = "取消";
+
+/* No comment provided by engineer. */
+"Copy %@ %@ (%@) %@ URL" = "复制 %@ %@ (%@) %@ URL";
+
+/* No comment provided by engineer. */
+"Create application %@ %@ (%@)" = "创建应用程序 %@ %@ (%@)";
+
+/* No comment provided by engineer. */
+"Download %@ %@ (%@) Installer" = "下载 %@ %@ (%@) 安装程序";
+
+/* No comment provided by engineer. */
+"Download Full Installer" = "Download Full Installer";
+
+/* No comment provided by engineer. */
+"Downloaded %@" = "已下载 %@";
+
+/* No comment provided by engineer. */
+"Downloading %@" = "正在下载 %@";
+
+/* No comment provided by engineer. */
+"Replace" = "替换";
+
+/* No comment provided by engineer. */
+"Show in Finder" = "在访达中显示";
+
+/* No comment provided by engineer. */
+"Cancel %@ download" = "取消 %@ 下载";
+
+/* No comment provided by engineer. */
+"Show the installer in the Downloads folder" = "在下载文件夹中显示安装程序";
+
+/* No comment provided by engineer. */
+"Create application" = "创建应用程序";
+
+/* No comment provided by engineer. */
+"Could not load catalog" = "无法加载目录";
+
+/* No comment provided by engineer. */
+"<no title>" = "<无标题>";
+
+/* No comment provided by engineer. */
+"<no version>" = "<无版本>";
+
+/* No comment provided by engineer. */
+"<no build>" = "<无构建版本>";
+
+/* Language Selection Dialog */
+"Language Selection" = "语言选择";
+
+/* No comment provided by engineer. */
+"Choose a language" = "选择语言";
+
+/* No comment provided by engineer. */
+"Select Language" = "选择语言";
+
+/* No comment provided by engineer. */
+"Continue" = "继续";
+
+/* No comment provided by engineer. */
+"The app will restart to apply the language change" = "应用程序将重新启动以应用语言更改";
+
+/* No comment provided by engineer. */
+"Restart Required" = "需要重新启动";
+
+/* No comment provided by engineer. */
+"The app must be restarted for changes to take effect." = "必须重新启动应用程序才能使更改生效。";
+
+/* No comment provided by engineer. */
+"OK" = "好的";

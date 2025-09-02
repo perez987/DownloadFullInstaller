@@ -65,5 +65,14 @@
 "Continue" = "Continuar";
 
 /* No comment provided by engineer. */
-"The app will restart to apply the language change" = "La aplicación se reiniciará para aplicar el cambio de idioma";
+"The app will restart to apply the language change" = "La aplicación se reiniciará para aplicar los cambios";
+
+/* No comment provided by engineer. */
+"Restart Required" = "Se requiere reiniciar";
+
+/* No comment provided by engineer. */
+"The app must be restarted for changes to take effect." = "Has de reiniciar la aplicación para aplicar el cambio de idioma.";
+
+/* No comment provided by engineer. */
+"OK" = "OK";
 

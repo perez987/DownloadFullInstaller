@@ -29,6 +29,11 @@ struct FetchInstallerPkgApp: App {
                 .onAppear {
                     disableSystemSleep()
                     
+                    if #available(macOS 13.0, *) {
+                        print("### Preferences:  \(URL.libraryDirectory.appending(path: "Preferences").path())")
+                    } else {
+                    }
+                    
                     // Show language selection dialog if not shown before
                     if !Prefs.languageSelectionShown {
                         showLanguageSelection = true

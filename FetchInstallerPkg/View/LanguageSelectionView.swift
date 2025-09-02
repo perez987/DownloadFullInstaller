@@ -148,4 +148,5 @@ struct LanguageRow: View {
         languageManager: languageManager,
         isPresented: $isPresented
     )
+    
 }
