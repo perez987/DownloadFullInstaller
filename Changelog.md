@@ -1,3 +1,7 @@
+### 2.0.5-36
+
+- Bump project version to 2.0.5 build 36 (test branch).
+
 ### 2.0.4-33
 
 - Refactor language files to region-specific folders.
