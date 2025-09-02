@@ -93,6 +93,7 @@
 				fr,
 				it,
 				uk,
+				"zh-Hans",
 			);
 			mainGroup = C63643552670E1B800301DC8;
 			productRefGroup = C636435F2670E1B800301DC8 /* Products */;
