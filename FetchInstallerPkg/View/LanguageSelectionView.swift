@@ -11,6 +11,7 @@ struct LanguageSelectionView: View {
     @ObservedObject var languageManager: LanguageManager
     @Binding var isPresented: Bool
     @State private var selectedLanguage: String
+    @State private var showRestartAlert = false
     
     init(languageManager: LanguageManager, isPresented: Binding<Bool>) {
         self.languageManager = languageManager
@@ -66,12 +67,25 @@ struct LanguageSelectionView: View {
                 Spacer()
                 
                 Button(NSLocalizedString("Continue", comment: "Continue button")) {
-                    languageManager.setLanguage(selectedLanguage)
-                    isPresented = false
+                    showRestartAlert = true
                 }
                 .keyboardShortcut(.return)
                 .buttonStyle(.bordered)
                 .disabled(selectedLanguage == languageManager.currentLanguage)
+                .alert(isPresented: $showRestartAlert) {
+                    Alert(
+                        title: Text(NSLocalizedString("Restart Required", comment: "Restart alert title")),
+                        message: Text(NSLocalizedString("The app must be restarted for changes to take effect.", comment: "Restart alert message")),
+                        primaryButton: .default(
+                            Text(NSLocalizedString("OK", comment: "OK button")),
+                            action: {
+                                languageManager.setLanguage(selectedLanguage)
+                                isPresented = false
+                            }
+                        ),
+                        secondaryButton: .cancel(Text(NSLocalizedString("Cancel", comment: "Cancel button")))
+                    )
+                }
             }
             .padding(.bottom, 20)
         }
