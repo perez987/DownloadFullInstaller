@@ -9,7 +9,6 @@
 
 ### 2.0.3-20
 
-- Change build numbering: project version is 20.
 - Update English localization string.
 
 ### 2.0.3-105
