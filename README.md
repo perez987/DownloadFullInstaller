@@ -16,7 +16,20 @@ This DownloadFullInstaller-2 repo is a standalone (<em>not forked</em>) version.
 
 ---
 
-<img src="Images/DownloadFullInstaller.png" width="560px">
+### test branch
+
+`test` branch differs in the language selection system, missing from `main`, which has been added to quickly and easily test the app's languages ​​(English, Spanish, French, Canadian French, Italian, Ukrainian and Simplified Chinese).
+The rest of functionalities are the same, including app's languages ​​but without the option to switch without having to change system language.
+
+Main changes:
+
+- Add language selection system.
+- Add restart alert to language selection view.
+- Add option to clear app's saved settings.
+- Update translations with new strings.
+- Bump project version to 2.0.5.
+
+<img src="Images/DownloadFullInstaller-test.png" width="560px">
 
 This is a Swift UI implementation of the [fetch-installer-pkg](https://github.com/scriptingosx/fetch-installer-pkg) script. It will list the full macOS Big Sur (and later) installer pkgs available for download in Apple's software update catalogs.
 
