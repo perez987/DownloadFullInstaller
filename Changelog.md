@@ -1,3 +1,8 @@
+### 2.0.3-32
+
+- Add translations for settings reset prompt.
+- Update project version to 32.
+
 ### 2.0.3-20
 
 - Change build numbering: project version is 20.
