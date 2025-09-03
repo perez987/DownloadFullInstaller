@@ -45,7 +45,7 @@ As of December 2025, user [matxpa](https://github.com/matxpa) has modified this 
 * Preferences for choosing catalog are no longer a separate dialog but are now at the top of the main window
 * A single macOS version or all versions can be displayed at once
 * "Download installer package" button has been added
-* Spanish localization and instructions to prevent sleep while downloading ([perez987](https://github.com/perez987)).
+* Spanish localization ~~and instructions to prevent sleep while downloading~~ ([perez987](https://github.com/perez987)).
 
 ### Motivation
 
