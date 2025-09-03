@@ -18,8 +18,7 @@ This DownloadFullInstaller-2 repo is a standalone (<em>not forked</em>) version.
 
 ### test branch
 
-`test` branch differs in the language selection system, missing from `main`, which has been added to quickly and easily test the app's languages ​​(English, Spanish, French, Canadian French, Italian, Ukrainian and Simplified Chinese).
-The rest of functionalities are the same, including app's languages ​​but without the option to switch without having to change system language.
+The `test` branch differs from `main` in the language selection system, which has been added to quickly and easily test the app's languages ​​(English, Spanish, French, Canadian French, Italian, Ukrainian and Simplified Chinese).
 
 Main changes:
 
