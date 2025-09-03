@@ -29,7 +29,7 @@ Main changes:
 - Add option to clear app's settings, stored in `~/Library/Containers/DownloadFullInstaller/Data/Library/Preferences/DownloadFullInstaller.plist`
 
 
-<img src="Images/DownloadFullInstaller-test.png" width="560px">
+<img src="Images/DownloadFullInstaller-test.png" width="624px">
 
 This is a Swift UI implementation of the [fetch-installer-pkg](https://github.com/scriptingosx/fetch-installer-pkg) script. It will list the full macOS Big Sur (and later) installer pkgs available for download in Apple's software update catalogs.
 
