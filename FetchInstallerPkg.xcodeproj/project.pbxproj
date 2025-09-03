@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 73;
 	objects = {
 
 /* Begin PBXFileReference section */
@@ -11,8 +11,28 @@
 		C6B969B92681D3BE005717F1 /* Download-Full-Installer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Download-Full-Installer-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D9EA38A82E68EB3200BAC8AE /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Model/ExtensionScene.swift,
+			);
+			target = C636435D2670E1B800301DC8 /* Download Full Installer */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		D9EA38A92E68EB3200BAC8AE /* PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = C636435C2670E1B800301DC8 /* Resources */;
+			membershipExceptions = (
+				Model/ExtensionScene.swift,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		D96F2FED2E5CEC9400226672 /* FetchInstallerPkg */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = FetchInstallerPkg; sourceTree = "<group>"; };
+		D96F2FED2E5CEC9400226672 /* FetchInstallerPkg */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (D9EA38A82E68EB3200BAC8AE /* PBXFileSystemSynchronizedBuildFileExceptionSet */, D9EA38A92E68EB3200BAC8AE /* PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = FetchInstallerPkg; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +103,6 @@
 				};
 			};
 			buildConfigurationList = C63643592670E1B800301DC8 /* Build configuration list for PBXProject "FetchInstallerPkg" */;
-			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -96,6 +115,7 @@
 				"zh-Hans",
 			);
 			mainGroup = C63643552670E1B800301DC8;
+			preferredProjectObjectVersion = 55;
 			productRefGroup = C636435F2670E1B800301DC8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -286,7 +306,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 44;
+				CURRENT_PROJECT_VERSION = 46;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
 				DRIVERKIT_DEPLOYMENT_TARGET = 21.4;
@@ -328,7 +348,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 44;
+				CURRENT_PROJECT_VERSION = 46;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
 				DRIVERKIT_DEPLOYMENT_TARGET = 21.4;

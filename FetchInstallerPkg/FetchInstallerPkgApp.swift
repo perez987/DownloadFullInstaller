@@ -15,20 +15,23 @@ struct FetchInstallerPkgApp: App {
     @StateObject var sucatalog = SUCatalog()
 
     var body: some Scene {
-        WindowGroup {
-            ContentView().environmentObject(sucatalog).navigationTitle("")
-            
-            // Disable sleep mode when the window appears
-            // Enable sleep mode when the window disappears
-            
-                .onAppear {
-                    disableSystemSleep()
-                }
-            
-                .onDisappear {
-                    enableSystemSleep()
-                }
-                        
+
+            WindowGroup {
+                ContentView().environmentObject(sucatalog).navigationTitle("")
+                
+                // Disable sleep mode when the window appears
+                // Enable sleep mode when the window disappears
+                
+                    .onAppear {
+                        disableSystemSleep()
+                    }
+                
+                    .onDisappear {
+                        enableSystemSleep()
+                    }
+                
+            }
+
         }
 
 //        Settings {
@@ -36,5 +39,3 @@ struct FetchInstallerPkgApp: App {
 //        }
         
     }
-    
-}

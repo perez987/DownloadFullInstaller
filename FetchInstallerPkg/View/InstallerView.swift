@@ -83,10 +83,10 @@ struct InstallerView: View {
                     .disabled(downloadManager.isDownloading)
                     .buttonStyle(.borderless)
                     .controlSize(.mini)
-                    
 
-            // Commented block doesn't work, it adds an icon to create the app from the
-            // installer but the logic to create the app has not been implemented
+                    // Commented block doesn't work, it adds an icon to create the app from the
+                    // installer but the logic to create the app has not been implemented
+
 //            Button(action: {
 //                for filename in installerURLFiles {
 //                    downloadManager.filename = filename
@@ -118,7 +118,7 @@ struct InstallerView: View {
 //                )
 //            }
 //            .disabled(downloadManager.isDownloading) .buttonStyle(.borderless) .controlSize(.mini)
-                    
+
 
                 // Context menu: copy to clipboard the URL of the specified InstallAssistant.pkg
                 }.contextMenu {
