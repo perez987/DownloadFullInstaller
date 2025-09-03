@@ -18,8 +18,7 @@ This DownloadFullInstaller-2 repo is a standalone (<em>not forked</em>) version.
 
 ### test branch
 
-`test` branch differs in the language selection system, missing from `main`, which has been added to quickly and easily test the app's languages ​​(English, Spanish, French, Canadian French, Italian, Ukrainian and Simplified Chinese).
-The rest of functionalities are the same, including app's languages ​​but without the option to switch without having to change system language.
+The `test` branch differs from `main` in the language selection system, which has been added to quickly and easily test the app's languages ​​(English, Spanish, French, Canadian French, Italian, Ukrainian and Simplified Chinese).
 
 Main changes:
 
@@ -30,7 +29,7 @@ Main changes:
 - Add option to clear app's settings, stored in `~/Library/Containers/DownloadFullInstaller/Data/Library/Preferences/DownloadFullInstaller.plist`
 
 
-<img src="Images/DownloadFullInstaller-test.png" width="560px">
+<img src="Images/DownloadFullInstaller-test.png" width="624px">
 
 This is a Swift UI implementation of the [fetch-installer-pkg](https://github.com/scriptingosx/fetch-installer-pkg) script. It will list the full macOS Big Sur (and later) installer pkgs available for download in Apple's software update catalogs.
 
@@ -46,7 +45,7 @@ As of December 2025, user [matxpa](https://github.com/matxpa) has modified this 
 * Preferences for choosing catalog are no longer a separate dialog but are now at the top of the main window
 * A single macOS version or all versions can be displayed at once
 * "Download installer package" button has been added
-* Spanish localization and instructions to prevent sleep while downloading ([perez987](https://github.com/perez987)).
+* Spanish localization ~~and instructions to prevent sleep while downloading~~ ([perez987](https://github.com/perez987)).
 
 ### Motivation
 
