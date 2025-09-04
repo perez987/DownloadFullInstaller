@@ -44,18 +44,22 @@ struct ContentView: View {
                     }
                 
         .frame(
-            minWidth: 460.0,
-            idealWidth: 460.0,
-            maxWidth: 460.0,
-            minHeight: 500.0,
-            //idealHeight: 500.0,
-            //maxHeight: 500.0,
+            minWidth: 472.0,
+            idealWidth: 472.0,
+            maxWidth: 472.0,
+//            minHeight: 500.0,
+//            idealHeight: 500.0,
+//            maxHeight: 500.0,
             alignment: .center
         )
-        
+
+        .padding(.bottom, 12)
+        .padding(.horizontal, 28)
+
         HStack(alignment: .center) { Text("").padding(1)
             
         }
+        
         // ---> there are issues with the count of listed installers
         // HStack { Text("(\(sucatalog.installers.count) pkg(s) in \(self.seedProgram) catalog)\n") .font(.headline) }
         

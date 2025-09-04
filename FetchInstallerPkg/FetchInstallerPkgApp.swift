@@ -55,6 +55,13 @@ struct FetchInstallerPkgApp: App {
                 }
                         
         }
+
+        // set width of 580 pixels to the main window
+        .defaultSize(width: 580, height: 640)
+
+        // window resizability derived from the window’s content
+        .windowResizability(.contentSize)
+        
         .commands {
             CommandGroup(replacing: .appSettings) {
                 Button(NSLocalizedString("Select Language", comment: "Menu item to show language selection")) {
@@ -62,6 +69,7 @@ struct FetchInstallerPkgApp: App {
                 }
                 .keyboardShortcut("l", modifiers: [.command])
             }
+
         }
 
 //        Settings {
