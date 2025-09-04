@@ -18,7 +18,7 @@ struct FetchInstallerPkgApp: App {
 
             WindowGroup {
                 ContentView().environmentObject(sucatalog).navigationTitle("")
-                
+
                 // Disable sleep mode when the window appears
                 // Enable sleep mode when the window disappears
                 
@@ -32,7 +32,10 @@ struct FetchInstallerPkgApp: App {
                 
             }
 
-            .defaultSize(width: 580, height: 600)
+            // set width of 580 pixels to the main window
+            .defaultSize(width: 580, height: 640)
+
+            // window resizability derived from the window’s content
             .windowResizability(.contentSize)
 
         }

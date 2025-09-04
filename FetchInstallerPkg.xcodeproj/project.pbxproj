@@ -306,7 +306,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 50;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
 				DRIVERKIT_DEPLOYMENT_TARGET = 21.4;
@@ -319,6 +319,7 @@
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Download-Full-Installer-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = DownloadFullInstaller;
 				INFOPLIST_KEY_CFBundleExecutable = "Download Full Installer";
 				INFOPLIST_KEY_CFBundleName = "Download Full Installer";
 				INFOPLIST_KEY_CFBundleVersion = 17;
@@ -327,7 +328,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
 				MARKETING_VERSION = 2.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = DownloadFullInstaller;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -348,7 +349,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 50;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
 				DRIVERKIT_DEPLOYMENT_TARGET = 21.4;
@@ -361,6 +362,7 @@
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Download-Full-Installer-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = DownloadFullInstaller;
 				INFOPLIST_KEY_CFBundleExecutable = "Download Full Installer";
 				INFOPLIST_KEY_CFBundleName = "Download Full Installer";
 				INFOPLIST_KEY_CFBundleVersion = 17;
@@ -369,7 +371,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
 				MARKETING_VERSION = 2.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = DownloadFullInstaller;
 				PRODUCT_NAME = "$(TARGET_NAME)";
