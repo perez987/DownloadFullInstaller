@@ -32,6 +32,9 @@ struct FetchInstallerPkgApp: App {
                 
             }
 
+            .defaultSize(width: 580, height: 600)
+            .windowResizability(.contentSize)
+
         }
 
 //        Settings {
