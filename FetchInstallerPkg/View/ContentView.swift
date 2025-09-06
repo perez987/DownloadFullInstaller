@@ -18,8 +18,10 @@ struct ContentView: View {
 
         VStack(alignment: .center, spacing: 4) {
 
-                HStack(alignment: .center) { Text("")
+                HStack(alignment: .center) { 
+                    Text("")
                     Spacer()
+                    LanguageSelectorView()
                 }
 
                 if #available(macOS 14.0, *) {
