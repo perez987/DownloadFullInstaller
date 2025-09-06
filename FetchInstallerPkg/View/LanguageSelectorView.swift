@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LanguageSelectorView: View {
-    @State private var selectedLanguage: Language = Language.currentLanguage
+    @StateObject private var languageManager = LanguageManager()
     @State private var showingLanguageSelector = false
     
     var body: some View {
@@ -17,9 +17,9 @@ struct LanguageSelectorView: View {
                 showingLanguageSelector.toggle()
             }) {
                 HStack(spacing: 4) {
-                    Text(selectedLanguage.flagIcon)
+                    Text(languageManager.currentLanguage.flagIcon)
                         .font(.system(size: 16))
-                    Text(selectedLanguage.name)
+                    Text(languageManager.currentLanguage.name)
                         .font(.caption)
                         .foregroundColor(.primary)
                     Image(systemName: "chevron.down")
@@ -34,7 +34,7 @@ struct LanguageSelectorView: View {
             .buttonStyle(PlainButtonStyle())
             .popover(isPresented: $showingLanguageSelector, arrowEdge: .bottom) {
                 LanguageSelectionPopover(
-                    selectedLanguage: $selectedLanguage,
+                    languageManager: languageManager,
                     isPresented: $showingLanguageSelector
                 )
             }
@@ -43,7 +43,7 @@ struct LanguageSelectorView: View {
 }
 
 struct LanguageSelectionPopover: View {
-    @Binding var selectedLanguage: Language
+    @ObservedObject var languageManager: LanguageManager
     @Binding var isPresented: Bool
     
     var body: some View {
@@ -54,8 +54,7 @@ struct LanguageSelectionPopover: View {
             
             ForEach(Language.allLanguages) { language in
                 Button(action: {
-                    selectedLanguage = language
-                    changeLanguage(to: language.code)
+                    languageManager.changeLanguage(to: language)
                     isPresented = false
                 }) {
                     HStack {
@@ -68,7 +67,7 @@ struct LanguageSelectionPopover: View {
                             .font(.body)
                             .foregroundColor(.primary)
                         Spacer()
-                        if language.id == selectedLanguage.id {
+                        if language.id == languageManager.currentLanguage.id {
                             Image(systemName: "checkmark")
                                 .foregroundColor(.accentColor)
                         }
@@ -77,7 +76,7 @@ struct LanguageSelectionPopover: View {
                     .padding(.vertical, 6)
                     .background(
                         RoundedRectangle(cornerRadius: 4)
-                            .fill(language.id == selectedLanguage.id ? Color.accentColor.opacity(0.1) : Color.clear)
+                            .fill(language.id == languageManager.currentLanguage.id ? Color.accentColor.opacity(0.1) : Color.clear)
                     )
                 }
                 .buttonStyle(PlainButtonStyle())
@@ -85,16 +84,6 @@ struct LanguageSelectionPopover: View {
         }
         .padding(12)
         .frame(minWidth: 200)
-    }
-    
-    private func changeLanguage(to languageCode: String) {
-        // Change the app's language
-        UserDefaults.standard.set([languageCode], forKey: "AppleLanguages")
-        UserDefaults.standard.synchronize()
-        
-        // Note: In a real app, you might want to restart the app or 
-        // implement a more sophisticated language switching mechanism
-        print("Language changed to: \(languageCode)")
     }
 }
 
