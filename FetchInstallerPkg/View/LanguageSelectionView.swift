@@ -29,7 +29,7 @@ struct LanguageSelectionView: View {
                     .foregroundColor(.blue)
                 
                 Text(NSLocalizedString("Language Selection", comment: "Language Selection Dialog title"))
-                    .font(.title)
+                    .font(.title3)
                     .fontWeight(.bold)
                 
                 Text(NSLocalizedString("Choose a language", comment: "Language selection description"))
