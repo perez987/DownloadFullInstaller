@@ -3,7 +3,7 @@
 //  FetchInstallerPkg
 //
 //  Created by Armin Briegel on 2021-06-09.
-//  Modified by Emilio P Egido on 2025-08-23.
+//  Modified by Emilio P Egido on 2025-08-25.
 //
 
 import SwiftUI

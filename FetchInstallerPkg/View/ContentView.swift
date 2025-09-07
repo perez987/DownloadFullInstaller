@@ -3,6 +3,7 @@
 //  FetchInstallerPkg
 //
 //  Created by Armin Briegel on 2021-06-09.
+//  Modified by Emilio P Egido on 2025-08-25.
 //
 
 import SwiftUI
@@ -18,8 +19,10 @@ struct ContentView: View {
     var body: some View {
         PreferencesView().environmentObject(sucatalog).navigationTitle(NSLocalizedString("Download Full Installer", comment: "Main window title"))
         VStack(alignment: .center, spacing: 4) {
-            HStack(alignment: .center) { Text("")
-                Spacer()
+                 HStack(alignment: .center) { 
+                    Text("")
+                    Spacer()
+                    LanguageSelectorView()
             }
 
             if #available(macOS 14.0, *) {
@@ -47,9 +50,9 @@ struct ContentView: View {
             minWidth: 472.0,
             idealWidth: 472.0,
             maxWidth: 472.0,
-//            minHeight: 500.0,
-//            idealHeight: 500.0,
-//            maxHeight: 500.0,
+            minHeight: 550.0,
+//            idealHeight: 540.0,
+//            maxHeight: 540.0,
             alignment: .center
         )
 

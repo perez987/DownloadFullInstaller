@@ -1,4 +1,4 @@
-# DownloadFullInstaller 2
+# Download Full Installer 2
 
 ![Platform](https://img.shields.io/badge/macOS-11+-lavender.svg)
 ![Swift](https://img.shields.io/badge/Swift-5.5-orange.svg)
@@ -11,8 +11,11 @@
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/perez987/DownloadFullInstaller-2)
 ![Downloads](https://img.shields.io/badge/Downloads-43-00cd00) -->
 
-**Note**: As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) by <em>scriptingosx</em> (no movement in more than 3 years) has been archived by the developer. So, original repository will not be updated anymore.<br>
-This DownloadFullInstaller-2 repo is a standalone (<em>not forked</em>) version. I'll keep my repo active and up to date as long as it is useful to other users.
+**Note**: As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) by <em>scriptingosx</em> (no movement in more than 3 years) has been archived by the developer. This DownloadFullInstaller-2 repo is a standalone (<em>not forked</em>) version. I'll keep my repo active and up to date as long as it is useful to other users.
+
+### Download Full Installer 2 from macOS 11 up to 26 
+
+DownloadFullInstaller should work on macOS 11 Big Sur through macOS 26 Tahoe. Tested only on macOS Ventura and later, as I don't have Big Sur or Monterey systems.
 
 ---
 
@@ -26,10 +29,13 @@ Main changes:
 - Add restart alert to language selection view.
 - Update translations with new strings.
 - Bump project version to 2.0.5.
-- Add option to clear app's settings, stored in `~/Library/Containers/DownloadFullInstaller/Data/Library/Preferences/DownloadFullInstaller.plist`
+- Add option to clear app's settings, stored in `~/Library/Containers/DownloadFullInstaller/Data/Library/Preferences`
 
+<img src="Images/DownloadFullInstaller.png" width="624px">
 
 <img src="Images/DownloadFullInstaller-test.png" width="624px">
+
+### Preface
 
 This is a Swift UI implementation of the [fetch-installer-pkg](https://github.com/scriptingosx/fetch-installer-pkg) script. It will list the full macOS Big Sur (and later) installer pkgs available for download in Apple's software update catalogs.
 
@@ -37,14 +43,13 @@ You can then choose to download one of them.
 
 ### Notes about version 2.0
 
-As of December 2025, user [matxpa](https://github.com/matxpa) has modified this app by updating it to the most recent versions of macOS, fixing issues and adding improvements, hence the change to version 2.0:
+As of December 2025, user [matxpa](https://github.com/matxpa) has modified this app by updating it to recent versions of macOS, fixing issues and adding improvements, hence the change to version 2.0:
 
-* (widely) Improved Swift code
+* Improved Swift code
 * Updated up to macOS 15 Sequoia
-* Fixed an issue that prevented displaying a beta version of macOS from a system with an older version. Beta versions are now displayed if the correct catalog is selected (Beta word is only applied to the icon of the most recent macOS version)
+* Fixed an issue that fixed beta versions displayed in wrong catalogs. Beta word is applied to the icon if the official version has not released yet
 * Preferences for choosing catalog are no longer a separate dialog but are now at the top of the main window
 * A single macOS version or all versions can be displayed at once
-* "Download installer package" button has been added
 * Spanish localization ~~and instructions to prevent sleep while downloading~~ ([perez987](https://github.com/perez987)).
 
 ### Motivation
@@ -99,4 +104,4 @@ Download Full Installer does not prevent the system from going to sleep while an
 ### Credits
 
 - Both [fetch-installer-pkg](https://github.com/scriptingosx/fetch-installer-pkg) and this application are based on [Greg Neagle's installinstallmacos.py](https://github.com/munki/macadmin-scripts/blob/main/installinstallmacos.py) script.
-- Thanks to [matxpa](https://github.com/matxpa) for so many improvements in version 2.0.
+- Thanks to [matxpa](https://github.com/matxpa): improvements in version 2.0.

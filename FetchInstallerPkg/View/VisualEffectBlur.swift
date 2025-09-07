@@ -1,13 +1,5 @@
 //
 //  VisualEffectBlur.swift
-//  Download Full Installer
-//
-//  Created by Emilio P Egido on 4/9/25.
-//
-
-
-//
-//  VisualEffectBlur.swift
 //  MacOS-Calculator
 //
 //  Created by Oliwer Pawelski on 20/11/2024.

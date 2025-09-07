@@ -5,10 +5,10 @@
 "\n\n" = "\n\n";
 
 /* No comment provided by engineer. */
-"  in" = "  dans le catalogue";
+"  in catalog" = "  dans le catalogue";
 
 /* No comment provided by engineer. */
-"“%@” already exists. Do you want to replace it?" = "%@ existe déjà. Voulez-vous le remplacer?";
+"%@ already exists. Do you want to replace it?" = "%@ existe déjà. Voulez-vous le remplacer?";
 
 /* No comment provided by engineer. */
 "A file with the same name already exists in that location. Replacing it will overwrite its current contents." = "Un fichier portant le même nom existe déjà à cet emplacement. Remplacer écrasera son contenu actuel.";

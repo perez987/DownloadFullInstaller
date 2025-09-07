@@ -4,8 +4,8 @@
 //
 //  Created by Emilio P Egido on 2025-08-25.
 //
-
-// Not used
+// NOT USED
+//
 // It is a pre-test of a standalone app capable of preventing
 // or allowing sleep by pressing a toggle button
 // Create a SwiftUI app with a single file, noSleepApp.swift
