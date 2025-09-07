@@ -62,6 +62,15 @@ Since the Big Sur macOS installer application contains a single file larger than
 
 - Copy the download URL for a given installer pkg from the context menu.
 - Change the seed program in the Preferences dropdown menu.
+- Language Selector: Choose from multiple languages with flag icons. Supported languages include:
+  - 🇺🇸 English
+  - 🇪🇸 Español (Spanish)
+  - 🇫🇷 Français (French)
+  - 🇨🇦 Français (Canada)
+  - 🇮🇹 Italiano (Italian)
+  - 🇺🇦 Українська (Ukrainian)
+  - 🇨🇳 简体中文 (Simplified Chinese).
+
 
 ### Questions
 
