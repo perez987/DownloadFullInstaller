@@ -125,11 +125,37 @@ struct LanguageRow: View {
     let language: SupportedLanguage
     let isSelected: Bool
     let action: () -> Void
-    
+
+    private func flagEmoji(for languageCode: String) -> String {
+         switch languageCode {
+         case "en-US", "en":
+             return "🇺🇸"
+         case "es-ES", "es":
+             return "🇪🇸"
+         case "fr-CA":
+             return "🇨🇦"
+         case "fr-FR", "fr":
+             return "🇫🇷"
+         case "it-IT", "it":
+             return "🇮🇹"
+         case "uk-UA", "uk":
+             return "🇺🇦"
+         case "zh-Hans", "zh":
+             return "🇨🇳"
+         default:
+             return "🇺🇸"
+         }
+     }
+
     var body: some View {
         Button(action: action) {
             HStack {
-                VStack(alignment: .leading, spacing: 2) {
+//                VStack(alignment: .leading, spacing: 2) {
+
+                    Text(flagEmoji(for: language.code))
+                        .font(.title2)
+                        .frame(width: 24, height: 24)
+
                     Text(language.nativeName)
                         .font(.body)
                         .fontWeight(.medium)
@@ -140,7 +166,7 @@ struct LanguageRow: View {
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
-                }
+//                }
                 
                 Spacer()
                 
@@ -161,7 +187,9 @@ struct LanguageRow: View {
                 .foregroundColor(Color.gray.opacity(0.2)),
             alignment: .bottom
         )
+
     }
+
 }
 
 #Preview {

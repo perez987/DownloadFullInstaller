@@ -17,8 +17,6 @@
 
 DownloadFullInstaller should work on macOS 11 Big Sur through macOS 26 Tahoe. Tested only on macOS Ventura and later, as I don't have Big Sur or Monterey systems. Xcode 15 or newer required.
 
----
-
 ### test branch
 
 The `test` branch differs from `main` in the language selection system, which has been added to quickly and easily test the app's languages ​​(English, Spanish, French, Canadian French, Italian, Ukrainian and Simplified Chinese).
@@ -28,13 +26,21 @@ Main changes:
 - Add language selection system.
 - Add restart alert to language selection view.
 - Update translations with new strings.
-- Bump project version to 2.0.5.
 - Add option to clear app's settings, stored in `~/Library/Containers/DownloadFullInstaller/Data/Library/Preferences`
-
+- Bump project version to 2.0.5.
+- Language selection: choose from multiple languages with flag icons:
+  - 🇺🇸 English (United States)
+  - 🇪🇸 Español (Spanish)
+  - 🇫🇷 Français (French)
+  - 🇨🇦 Français (Canada)
+  - 🇮🇹 Italiano (Italian)
+  - 🇺🇦 Українська (Ukrainian)
+  - 🇨🇳 简体中文 (Simplified Chinese).
 
 <img src="Images/DownloadFullInstaller.png" width="624px">
 
-<img src="Images/DownloadFullInstaller-test.png" width="624px">
+<img src="Images/DownloadFullInstaller-test2.png" width="624px">
+
 
 ### Preface
 

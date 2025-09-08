@@ -77,7 +77,7 @@ import Foundation
 
 extension DownloadManager: URLSessionDownloadDelegate {
     func urlSession(_: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        NSLog("urlSession, didFinishDownloading")
+        print("urlSession -> didFinishDownloading")
         let destination = Prefs.downloadURL
 
         // get the suggest file name or create a uuid string
@@ -86,7 +86,7 @@ extension DownloadManager: URLSessionDownloadDelegate {
         do {
             let file = destination.appendingPathComponent(suggestedFilename)
             let newURL = try FileManager.default.replaceItemAt(file, withItemAt: location)
-            NSLog("downloaded to \(newURL?.path ?? "### something went wrong ###")")
+            print("Downloaded to \(newURL?.path ?? "### Something went wrong ###")")
             DispatchQueue.main.async {
                 self.isDownloading = false
                 self.localURL = newURL
@@ -98,7 +98,7 @@ extension DownloadManager: URLSessionDownloadDelegate {
     }
 
     func urlSession(_: URLSession, downloadTask _: URLSessionDownloadTask, didWriteData _: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
-        NSLog("urlSession, didWriteData: \(totalBytesWritten)/\(totalBytesExpectedToWrite)")
+        print("urlSession -> didWriteData: \(totalBytesWritten)/\(totalBytesExpectedToWrite)")
         DispatchQueue.main.async {
             self.progress = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
             self.progressString = "\(self.byteFormatter.string(fromByteCount: totalBytesWritten))/\(self.byteFormatter.string(fromByteCount: totalBytesExpectedToWrite))"
