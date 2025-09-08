@@ -1,10 +1,8 @@
-
 //
 //  PreferencesView.swift
-//  FetchInstallerPkg
 //
-//  Created by Armin Briegel on 2021-06-15.
-//  Modified by Emilio P Egido on 2025-08-25.
+//  Created by Armin Briegel on 2021-06-15
+//  Modified by Emilio P Egido on 2025-08-25
 
 import SwiftUI
 

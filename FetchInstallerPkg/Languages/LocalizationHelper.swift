@@ -1,8 +1,8 @@
 //
 //  LocalizationHelper.swift
-//  FetchInstallerPkg
+//  Language selection dialog implementation
 //
-//  Created for language selection dialog implementation
+//  Created by Emilio P Egido on 2025/07/09
 //
 
 import Foundation

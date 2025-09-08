@@ -1,9 +1,8 @@
 //
 //  FetchInstallerPkgApp.swift
-//  FetchInstallerPkg
 //
-//  Created by Armin Briegel on 2021-06-09.
-//  Modified by Emilio P Egido on 2025-08-25.
+//  Created by Armin Briegel on 2021-06-09
+//  Modified by Emilio P Egido on 2025-08-25
 //
 
 import SwiftUI
@@ -29,10 +28,9 @@ struct FetchInstallerPkgApp: App {
                 .onAppear {
                     disableSystemSleep()
                     
-                    if #available(macOS 13.0, *) {
-                        print("### Preferences:  \(URL.libraryDirectory.appending(path: "Preferences").path())")
-                    } else {
-                    }
+//                    if #available(macOS 13.0, *) {
+//                        print("### Preferences:  \(URL.libraryDirectory.appending(path: "Preferences").path())")
+//                    }
                     
                     // Show language selection dialog if not shown before
                     if !Prefs.languageSelectionShown {
@@ -57,7 +55,7 @@ struct FetchInstallerPkgApp: App {
         }
 
         // set width of 580 pixels to the main window
-        .defaultSize(width: 580, height: 640)
+//        .defaultSize(width: 580, height: 640)
 
         // window resizability derived from the window’s content
         .windowResizability(.contentSize)

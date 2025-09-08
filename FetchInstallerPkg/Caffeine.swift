@@ -2,7 +2,7 @@
 // Caffeine.swift
 // Code to prevent sleep while the app is running
 //
-// Created by Emilio P Egido on 2025-08-25.
+// Created by Emilio P Egido on 2025-08-25
 //
 
 import SwiftUI

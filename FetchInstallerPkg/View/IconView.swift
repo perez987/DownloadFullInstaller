@@ -1,8 +1,7 @@
 //
 //  IconView.swift
-//  FetchInstallerPkg
 //
-//  Created by Armin Briegel on 2021-06-16.
+//  Created by Armin Briegel on 2021-06-16
 //
 
 import SwiftUI

@@ -1,8 +1,7 @@
 //
 //  DownloadManager.swift
-//  FetchInstallerPkg
 //
-//  Created by Armin Briegel on 2021-06-14.
+//  Created by Armin Briegel on 2021-06-14
 //
 
 import AppKit

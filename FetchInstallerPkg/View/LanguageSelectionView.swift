@@ -1,9 +1,8 @@
 //
 //  LanguageSelectionView.swift
-//  FetchInstallerPkg
-//
 //  Created for language selection dialog implementation
-//  Created by Emilio P Egido on 2025-08-25.
+//
+//  Created by Emilio P Egido on 2025-08-25
 //
 
 import SwiftUI
@@ -32,10 +31,10 @@ struct LanguageSelectionView: View {
                     .font(.title3)
                     .fontWeight(.bold)
                 
-                Text(NSLocalizedString("Choose a language", comment: "Language selection description"))
-                    .font(.body)
-                    .foregroundColor(.secondary)
-                    .multilineTextAlignment(.center)
+//                Text(NSLocalizedString("Choose a language", comment: "Language selection description"))
+//                    .font(.body)
+//                    .foregroundColor(.secondary)
+//                    .multilineTextAlignment(.center)
             }
             .padding(.top, 20)
             
@@ -117,7 +116,7 @@ struct LanguageSelectionView: View {
 
         }
         .padding(.horizontal, 30)
-        .frame(width: 400, height: 666)
+        .frame(width: 400, height: 636)
         .background(Color(NSColor.windowBackgroundColor))
     }
 }

@@ -1,7 +1,7 @@
 # Download Full Installer 2
 
 ![Platform](https://img.shields.io/badge/macOS-11+-lavender.svg)
-![Xcode](https://img.shields.io/badge/Xcode-15+-orange.svg)
+![Xcode](https://img.shields.io/badge/Xcode-15-orange.svg)
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/total?label=Downloads&color=00cd00)
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/latest/total?label=Latest&color=00cd00)
 <!--![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/2.0.3-71/total?label=v2.0.3-71&color=00cd00)
@@ -15,7 +15,7 @@
 
 ### Download Full Installer 2 from macOS 11 up to 26 
 
-DownloadFullInstaller should work on macOS 11 Big Sur through macOS 26 Tahoe. Tested only on macOS Ventura and later, as I don't have Big Sur or Monterey systems.
+DownloadFullInstaller should work on macOS 11 Big Sur through macOS 26 Tahoe. Tested only on macOS Ventura and later, as I don't have Big Sur or Monterey systems. Xcode 15 or newer required.
 
 ---
 
@@ -31,6 +31,7 @@ Main changes:
 - Bump project version to 2.0.5.
 - Add option to clear app's settings, stored in `~/Library/Containers/DownloadFullInstaller/Data/Library/Preferences`
 
+
 <img src="Images/DownloadFullInstaller.png" width="624px">
 
 <img src="Images/DownloadFullInstaller-test.png" width="624px">
@@ -43,7 +44,7 @@ You can then choose to download one of them.
 
 ### Notes about version 2.0
 
-As of December 2025, user [matxpa](https://github.com/matxpa) has modified this app by updating it to recent versions of macOS, fixing issues and adding improvements, hence the change to version 2.0:
+As of December 2025, user [matxpa](https://github.com/matxpa) has modified this app by updating it to the most recent versions of macOS, fixing issues and adding improvements, hence the change to version 2.0:
 
 * Improved Swift code
 * Updated up to macOS 15 Sequoia
@@ -62,15 +63,6 @@ Since the Big Sur macOS installer application contains a single file larger than
 
 - Copy the download URL for a given installer pkg from the context menu.
 - Change the seed program in the Preferences dropdown menu.
-- Language Selector: Choose from multiple languages with flag icons. Supported languages include:
-  - 🇺🇸 English
-  - 🇪🇸 Español (Spanish)
-  - 🇫🇷 Français (French)
-  - 🇨🇦 Français (Canada)
-  - 🇮🇹 Italiano (Italian)
-  - 🇺🇦 Українська (Ukrainian)
-  - 🇨🇳 简体中文 (Simplified Chinese).
-
 
 ### Questions
 

@@ -2,7 +2,7 @@
 //  noSleepApp.swift
 //  noSleep
 //
-//  Created by Emilio P Egido on 2025-08-25.
+//  Created by Emilio P Egido on 2025-08-25
 //
 // NOT USED
 //
