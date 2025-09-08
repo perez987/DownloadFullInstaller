@@ -1,3 +1,11 @@
+### 2.0.6
+
+- Add flag icons to language selection view.
+- Introduce flag emojis for each language in the language selection view.
+- Add debug print statements for language changes.
+- Update project version to 2.0.6.
+- Update screenshots and documentation in README.
+
 ### 2.0.5-36
 
 - Bump project version to 2.0.5 (test branch).
