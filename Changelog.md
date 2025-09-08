@@ -1,3 +1,10 @@
+
+### 2.0.6-66
+
+- Add flag icons to language selection view.
+- Bump project version to 2.0.6 (test branch).
+- Update screenshots and documentation in README.
+
 ### 2.0.5-36
 
 - Bump project version to 2.0.5 (test branch).
