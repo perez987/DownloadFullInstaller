@@ -27,7 +27,8 @@ struct FetchInstallerPkgApp: App {
             
                 .onAppear {
                     disableSystemSleep()
-                    
+
+                    // plist preferences path
 //                    if #available(macOS 13.0, *) {
 //                        print("### Preferences:  \(URL.libraryDirectory.appending(path: "Preferences").path())")
 //                    }

@@ -286,7 +286,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 69;
+				CURRENT_PROJECT_VERSION = 70;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
 				DRIVERKIT_DEPLOYMENT_TARGET = 21.4;
@@ -307,9 +307,9 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.5;
-				MARKETING_VERSION = 2.0.6;
-				PRODUCT_BUNDLE_IDENTIFIER = DownloadFullInstaller;
+				MACOSX_DEPLOYMENT_TARGET = 15.6;
+				MARKETING_VERSION = 2.0.7;
+				PRODUCT_BUNDLE_IDENTIFIER = perez987.es;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -328,7 +328,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 69;
+				CURRENT_PROJECT_VERSION = 70;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
 				DRIVERKIT_DEPLOYMENT_TARGET = 21.4;
@@ -349,9 +349,9 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.5;
-				MARKETING_VERSION = 2.0.6;
-				PRODUCT_BUNDLE_IDENTIFIER = DownloadFullInstaller;
+				MACOSX_DEPLOYMENT_TARGET = 15.6;
+				MARKETING_VERSION = 2.0.7;
+				PRODUCT_BUNDLE_IDENTIFIER = perez987.es;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;

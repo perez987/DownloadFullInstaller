@@ -18,8 +18,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         Prefs.registerDefaults()
     }
         
-    func viewDidLoad() {
-    }
+//    func viewDidLoad() {
+//    }
 
     // Close app from red button (thanks Chris1111)
     func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {

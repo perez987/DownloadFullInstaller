@@ -1,10 +1,12 @@
 # Download Full Installer 2
 
-![Platform](https://img.shields.io/badge/macOS-11+-lavender.svg)
-![Xcode](https://img.shields.io/badge/Xcode-15-orange.svg)
+![Platform](https://img.shields.io/badge/macOS-15+-orange.svg)
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/total?label=Downloads&color=00cd00)
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/latest/total?label=Latest&color=00cd00)
-<!--![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/2.0.3-71/total?label=v2.0.3-71&color=00cd00)
+<!--
+![Xcode](https://img.shields.io/badge/Xcode-15-orange.svg)
+![Swift](https://img.shields.io/badge/Swift-5.5-orange.svg)
+![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/2.0.3-71/total?label=v2.0.3-71&color=00cd00)
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/total?label=Downloads&color=00cd00)
 <!-- ![Swift](https://img.shields.io/badge/Swift-5.5-orange.svg)
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/total?label=Downloads&color=00cd00) 
@@ -13,16 +15,15 @@
 
 **Note**: As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) by <em>scriptingosx</em> (no movement in more than 3 years) has been archived by the developer. This DownloadFullInstaller-2 repo is a standalone (<em>not forked</em>) version. I'll keep my repo active and up to date as long as it is useful to other users.
 
-### Download Full Installer 2 from macOS 11 up to 26 
+### Download Full Installer from macOS 11 up to 26 
 
-DownloadFullInstaller should work on macOS 11 Big Sur through macOS 26 Tahoe. Tested only on macOS Ventura and later, as I don't have Big Sur or Monterey systems. Xcode 15 or newer required.
+DownloadFullInstaller should work on macOS 15 Sequoia and macOS 26 Tahoe. 
 
 ### test branch
 
-The `test` branch differs from `main` in the language selection system, which has been added to quickly and easily test the app's languages ​​(English, Spanish, French, Canadian French, Italian, Ukrainian and Simplified Chinese).
+Differences with the `main` branch:
 
-Main changes:
-
+- Xcode project requires Sequoia or Tahoe.
 - Add language selection system.
 - Add restart alert to language selection view.
 - Update translations with new strings.
