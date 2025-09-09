@@ -15,33 +15,24 @@
 
 **Note**: As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) by <em>scriptingosx</em> (no movement in more than 3 years) has been archived by the developer. This DownloadFullInstaller-2 repo is a standalone (<em>not forked</em>) version. I'll keep my repo active and up to date as long as it is useful to other users.
 
+<img src="Images/DownloadFullInstaller.png" width="624px">
+
 ### Download Full Installer from macOS 11 up to 26 
 
-DownloadFullInstaller should work on macOS 15 Sequoia and macOS 26 Tahoe. 
+DownloadFullInstaller works on macOS 15 Sequoia and macOS 26 Tahoe. 
 
 ### test branch
 
 Differences with the `main` branch:
 
-- Xcode project requires Sequoia or Tahoe.
+- Xcode project requires macOS Sequoia or Tahoe.
 - Add language selection system.
 - Add restart alert to language selection view.
 - Update translations with new strings.
 - Add option to clear app's settings, stored in `~/Library/Containers/DownloadFullInstaller/Data/Library/Preferences`
 - Bump project version to 2.0.5.
-- Language selection: choose from multiple languages with flag icons:
-  - 🇺🇸 English (United States)
-  - 🇪🇸 Español (Spanish)
-  - 🇫🇷 Français (French)
-  - 🇨🇦 Français (Canada)
-  - 🇮🇹 Italiano (Italian)
-  - 🇺🇦 Українська (Ukrainian)
-  - 🇨🇳 简体中文 (Simplified Chinese).
-
-<img src="Images/DownloadFullInstaller.png" width="624px">
 
 <img src="Images/DownloadFullInstaller-test2.png" width="624px">
-
 
 ### Preface
 
