@@ -83,8 +83,9 @@ struct LanguageSelectionView: View {
                                 isPresented = false
                             }
                         ),
-                        secondaryButton: .cancel(Text(NSLocalizedString("Cancel", comment: "Cancel button"))),
+                        secondaryButton: .cancel(Text(NSLocalizedString("Cancel", comment: "Cancel button")))
                     )
+                    
                 }
             }
             
