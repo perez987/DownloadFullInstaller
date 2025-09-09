@@ -11,7 +11,12 @@
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/perez987/DownloadFullInstaller-2)
 ![Downloads](https://img.shields.io/badge/Downloads-43-00cd00) -->
 
-**Note**: As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) by <em>scriptingosx</em> (no movement in more than 3 years) has been archived by the developer. This DownloadFullInstaller-2 repo is a standalone (<em>not forked</em>) version. I'll keep my repo active and up to date as long as it is useful to other users.
+### Download Full Installer 2 from macOS 11 up to 26
+
+As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) by <em>scriptingosx</em> (no movement in more than 3 years) has been archived by the developer. This DownloadFullInstaller-2 repo is a standalone (<em>not forked</em>) version. I'll keep my repo active and up to date as long as it is useful to other users. It's updated up to macOS 26 Tahoe.
+
+
+DownloadFullInstaller should work on macOS 11 Big Sur through macOS 26 Tahoe. Tested only on macOS Ventura and later, as I don't have Big Sur or Monterey systems. Xcode 15 or newer required.
 
 <img src="Images/DownloadFullInstaller.png" width="600px">
 
@@ -23,7 +28,7 @@ You can then choose to download one of them.
 
 As of December 2025, user [matxpa](https://github.com/matxpa) has modified this app by updating it to the most recent versions of macOS, fixing issues and adding improvements, hence the change to version 2.0:
 
-* (widely) Improved Swift code
+* Improved Swift code
 * Updated up to macOS 15 Sequoia
 * Fixed an issue that prevented displaying a beta version of macOS from a system with an older version. Beta versions are now displayed if the correct catalog is selected (Beta word is only applied to the icon of the most recent macOS version)
 * Preferences for choosing catalog are no longer a separate dialog but are now at the top of the main window
