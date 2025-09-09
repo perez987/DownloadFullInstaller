@@ -56,8 +56,7 @@ As of December 2025, user [matxpa](https://github.com/matxpa) has modified this 
 * Updated up to macOS 15 Sequoia
 * Fixed an issue that fixed beta versions displayed in wrong catalogs. Beta word is applied to the icon if the official version has not released yet
 * Preferences for choosing catalog are no longer a separate dialog but are now at the top of the main window
-* A single macOS version or all versions can be displayed at once
-* Spanish localization ~~and instructions to prevent sleep while downloading~~ ([perez987](https://github.com/perez987)).
+* A single macOS version or all versions can be displayed at once.
 
 ### Motivation
 
@@ -111,4 +110,4 @@ Download Full Installer does not prevent the system from going to sleep while an
 ### Credits
 
 - Both [fetch-installer-pkg](https://github.com/scriptingosx/fetch-installer-pkg) and this application are based on [Greg Neagle's installinstallmacos.py](https://github.com/munki/macadmin-scripts/blob/main/installinstallmacos.py) script.
-- Thanks to [matxpa](https://github.com/matxpa): improvements in version 2.0.
+- Thanks to [matxpa](https://github.com/matxpa): fixes and improvements in version 2.0.
