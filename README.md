@@ -11,7 +11,7 @@
 
 ### DownloadFullInstaller from macOS 11 up to 26 
 
-DownloadFullInstaller works on macOS 11 Big Sur through macOS 26 Tahoe. Tested only on macOS Ventura and later, as I don't have Big Sur or Monterey systems.
+DownloadFullInstaller runs on macOS 11 Big Sur through macOS 26 Tahoe. Tested only on macOS Ventura and later, as I don't have Big Sur or Monterey systems.
 
 ### Preface
 
