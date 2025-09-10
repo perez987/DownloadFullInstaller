@@ -26,7 +26,7 @@ DownloadFullInstaller runs on macOS 11 Big Sur through macOS 26 Tahoe. Tested on
 Differences with the `main` branch:
 
 - Xcode project requires macOS Sequoia or Tahoe.
-- Add language selection system.
+- Add language selection system with flag icons.
 - Add restart alert to language selection view.
 - Update translations with new strings.
 - Add option to clear app's settings, stored in `~/Library/Containers/DownloadFullInstaller/Data/Library/Preferences`
