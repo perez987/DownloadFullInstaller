@@ -5,7 +5,7 @@
 "\n\n" = "\n\n";
 
 /* No comment provided by engineer. */
-"  in" = "  in catalog";
+"  in catalog" = "  in catalog";
 
 /* No comment provided by engineer. */
 "%@ already exists. Do you want to replace it?" = "%@ already exists. Do you want to replace it?";
@@ -47,19 +47,37 @@
 "Show the installer in the Downloads folder" = "Show the installer in the Downloads folder";
 
 /* No comment provided by engineer. */
-"Create application" = "Create Application";
-
-/* No comment provided by engineer. */
-"Could not load catalog" = "Could not load the catalog";
-
-/* No comment provided by engineer. */
-"<no title>" = "<no title>";
-
-/* No comment provided by engineer. */
-"<no version>" = "<no version>";
-
-/* No comment provided by engineer. */
-"<no build>" = "<no build>";
-
-/* No comment provided by engineer. */
 "Could not load catalog" = "Could not load catalog";
+
+/* Language Selection Dialog */
+"Language Selection" = "Language Selection";
+
+/* No comment provided by engineer. */
+"Choose a language" = "Choose a language";
+
+/* No comment provided by engineer. */
+"Select Language" = "Select Language";
+
+/* No comment provided by engineer. */
+"Continue" = "Continue";
+
+/* No comment provided by engineer. */
+"The app will restart to apply the language change" = "The app will restart to apply the language change";
+
+/* No comment provided by engineer. */
+"Restart Required" = "Restart Required";
+
+/* No comment provided by engineer. */
+"The app must be restarted for changes to take effect." = "The app must be restarted for changes to take effect.";
+
+/* No comment provided by engineer. */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"Clear app's settings?" = "Clear app's settings?";
+
+/* No comment provided by engineer. */
+"(This will erase any saved settings)" = "(This will erase any saved settings)";
+
+/* No comment provided by engineer. */
+"Yes" = "Yes";

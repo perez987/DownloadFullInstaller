@@ -1,3 +1,10 @@
+### 2.0.5-52
+
+- Add language selection system: English, Spanish, French, Italian, Ukrainian and Simplified Chinese.
+- Add restart alert to language selection view.
+- Update translations with new strings.
+- Add option to clear app's settings, stored in `~/Library/Containers/DownloadFullInstaller/Data/Library/Preferences`.
+
 ### 2.0.4-40
 
 - Bum version to 2.0.4.

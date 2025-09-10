@@ -2,10 +2,9 @@
 //  Caffeine.swift
 //  Download Full Installer
 //
-//  Created by Emilio P Egido on 2025-08-25.
+//  Code to prevent sleep while the app is running
+//  Created by Emilio P Egido on 2025-08-25
 //
-
-// Code to prevent sleep while the app is running
 
 import SwiftUI
 import Foundation

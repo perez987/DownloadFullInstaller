@@ -5,7 +5,7 @@
 "\n\n" = "\n\n";
 
 /* No comment provided by engineer. */
-"  in" = "  dans le catalogue";
+"  in catalog" = "  dans le catalogue";
 
 /* No comment provided by engineer. */
 "%@ already exists. Do you want to replace it?" = "%@ existe déjà. Voulez-vous le remplacer?";
@@ -26,7 +26,7 @@
 "Download %@ %@ (%@) Installer" = "Télécharger %@ %@ (%@) Le programme";
 
 /* No comment provided by engineer. */
-"Download Full Installer" = "Télécharger le programme d'installation complet";
+"Download Full Installer" = "Download Full Installer";
 
 /* No comment provided by engineer. */
 "Downloaded %@" = "Téléchargé %@";
@@ -52,14 +52,35 @@
 /* No comment provided by engineer. */
 "Could not load catalog" = "Impossible de charger le catalogue";
 
-/* No comment provided by engineer. */
-"<no title>" = "<aucun titre>";
+/* Language Selection Dialog */
+"Language Selection" = "Sélection de langue";
 
 /* No comment provided by engineer. */
-"<no version>" = "<aucune version>";
+"Choose a language" = "Choisissez une langue";
 
 /* No comment provided by engineer. */
-"<no build>" = "<aucune compilation>";
+"Select Language" = "Sélectionner la langue";
 
 /* No comment provided by engineer. */
-"Could not load catalog" = "Impossible de charger le catalogue";
+"Continue" = "Continuer";
+
+/* No comment provided by engineer. */
+"The app will restart to apply the language change" = "L'application redémarrera pour appliquer le changement de langue";
+
+/* No comment provided by engineer. */
+"Restart Required" = "Redémarrage requis";
+
+/* No comment provided by engineer. */
+"The app must be restarted for changes to take effect." = "L'application doit être redémarrée pour que les modifications soient prises en compte.";
+
+/* No comment provided by engineer. */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"Clear app's settings?" = "Effacer paramètres de l'app?";
+
+/* No comment provided by engineer. */
+"(This will erase any saved settings)" = "(Cela effacera tous les paramètres enregistrés)";
+
+/* No comment provided by engineer. */
+"Yes" = "Oui";

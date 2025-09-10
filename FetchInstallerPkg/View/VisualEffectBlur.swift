@@ -2,7 +2,7 @@
 //  VisualEffectBlur.swift
 //  MacOS-Calculator
 //
-//  Created by Oliwer Pawelski on 20/11/2024.
+//  Created by Oliwer Pawelski on 20/11/2024
 //
 
 // NOT USED

@@ -5,7 +5,7 @@
 "\n\n" = "\n\n";
 
 /* No comment provided by engineer. */
-"  in" = "  nel catalogo";
+"  in catalog" = "  nel catalogo";
 
 /* No comment provided by engineer. */
 "%@ already exists. Do you want to replace it?" = "%@ esiste già. Vuoi sostituirlo?";
@@ -52,14 +52,36 @@
 /* No comment provided by engineer. */
 "Could not load catalog" = "Impossibile caricare il catalogo";
 
-/* No comment provided by engineer. */
-"<no title>" = "<nessun titolo>";
+/* Language Selection Dialog */
+"Language Selection" = "Selezione lingua";
 
 /* No comment provided by engineer. */
-"<no version>" = "<nessuna versione>";
+"Choose a language" = "Scegli una lingua";
 
 /* No comment provided by engineer. */
-"<no build>" = "<nessuna build>";
+"Select Language" = "Seleziona lingua";
 
 /* No comment provided by engineer. */
-"Could not load catalog" = "impossibile caricare il catalogo";
+"Continue" = "Continua";
+
+/* No comment provided by engineer. */
+"The app will restart to apply the language change" = "L'app si riavvierà per applicare il cambio di lingua";
+
+/* No comment provided by engineer. */
+"Restart Required" = "Riavvio richiesto";
+
+/* No comment provided by engineer. */
+"The app must be restarted for changes to take effect." = "L'app deve essere riavviata affinché le modifiche abbiano effetto.";
+
+/* No comment provided by engineer. */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"Clear app's settings?" = "Cancellare impostazioni dell'app?";
+
+/* No comment provided by engineer. */
+"(This will erase any saved settings)" = "(Questo cancellerà tutte le impostazioni)";
+
+/* No comment provided by engineer. */
+"Yes" = "SÌ";
+

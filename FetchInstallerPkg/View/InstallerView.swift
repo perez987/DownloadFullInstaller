@@ -2,7 +2,7 @@
 //  InstallerView.swift
 //  FetchInstallerPkg
 //
-//  Created by Armin Briegel on 2021-06-15.
+//  Created by Armin Briegel on 2021-06-15
 //
 
 import SwiftUI
@@ -27,7 +27,6 @@ struct InstallerView: View {
                     IconView(product: product)
 
                     VStack(alignment: .leading) {
-
                         HStack {
                             Text(product.title ?? NSLocalizedString("<no title>", comment: ""))
                                 .font(.headline)
@@ -67,7 +66,7 @@ struct InstallerView: View {
                     .alert(isPresented: $isReplacingFile) {
                         Alert(
                             title: Text(String(format: NSLocalizedString("%@ already exists. Do you want to replace it?", comment: ""), filename)),
-                            message: Text(NSLocalizedString("A file with the same name already exists in that location. Replacing it will overwrite its current contents.", comment: "")),
+                             message: Text(NSLocalizedString("A file with the same name already exists in that location. Replacing it will overwrite its current contents.", comment: "")),
                             primaryButton: .cancel(Text("Cancel")),
                             secondaryButton: .destructive(
                                 Text("Replace"),
@@ -85,46 +84,11 @@ struct InstallerView: View {
                     .buttonStyle(.borderless)
                     .controlSize(.mini)
 
-                // Commented block doesn't work, it adds an icon to create the app from the
-                // installer but the logic has not been implemented
-
-//                Button(action: {
-//                    for filename in installerURLFiles {
-//                        downloadManager.filename = filename
-//                        isReplacingFile = downloadManager.fileExists
-//                        if !isReplacingFile {
-//                            do {
-//                                try downloadManager.download(url: product.installAssistantURL)
-//                            } catch {
-//                                failed = true
-//                            }
-//                        }
-//                    }
-//                })
-//                {Image(systemName: "building.columns").font(.title)}
-//                .help("Create application \(product.osName ?? "") \(product.productVersion ?? "") (\(product.buildVersion ?? ""))")
-//                .alert(isPresented: $isReplacingFile) {
-//                    Alert(
-//                        title: Text("“\(filename)” already exists! Do you want to replace it?"),
-//                        message: Text(NSLocalizedString("A file with the same name already exists in that location. Replacing it will overwrite its current contents.", comment: "")),
-//                        primaryButton: .cancel(Text("Cancel")),
-//                        secondaryButton: .destructive(
-//                            Text("Replace"),
-//                            action: {
-//                                do { try downloadManager.download(url:  product.installAssistantURL, replacing: true)
-//                                } catch { failed = true
-//                                }
-//                            }
-//                        )
-//                    )
-//                }
-//                .disabled(downloadManager.isDownloading) .buttonStyle(.borderless) .controlSize(.mini)
-
                 // Context menu: copy to clipboard the URL of the specified InstallAssistant.pkg
                 }.contextMenu {
                     Button(action: {
                         if let text = product.installAssistantURL?.absoluteString {
-                            print(text)
+                            print("Copy \(text)")
                             let pb = NSPasteboard.general
                             pb.clearContents()
                             pb.setString(text, forType: .string)
@@ -135,7 +99,6 @@ struct InstallerView: View {
                         Text(String(format: NSLocalizedString("Copy %@ %@ (%@) %@ URL", comment: ""), product.osName ?? "", product.productVersion ?? "", product.buildVersion ?? "", package))
                     }
                 }
-            
             }
         }
     }
@@ -148,7 +111,7 @@ struct InstallerView_Previews: PreviewProvider {
         if let preview_product = catalog.installers.first {
             InstallerView(product: preview_product)
         } else {
-            Text("Could not load catalog")
+            Text(NSLocalizedString("Could not load catalog", comment: ""))
         }
     }
 }
