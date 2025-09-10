@@ -27,7 +27,7 @@ Differences with the `main` branch:
 
 - Xcode project requires macOS Sequoia or Tahoe.
 - Add flag icons to languages in language selection view.
-- Bump project version to 2.0.5.
+- Bump project version to 2.0.7.
 
 <img src="Images/DownloadFullInstaller-test2.png" width="624px">
 
