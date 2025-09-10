@@ -26,8 +26,8 @@ DownloadFullInstaller runs on macOS 11 Big Sur through macOS 26 Tahoe. Tested on
 Differences with the `main` branch:
 
 - Xcode project requires macOS Sequoia or Tahoe.
+- Bump project version to 2.0.7
 - Add flag icons to languages in language selection view.
-- Bump project version to 2.0.7.
 
 <img src="Images/DownloadFullInstaller-test2.png" width="624px">
 
