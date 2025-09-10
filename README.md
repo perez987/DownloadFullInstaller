@@ -19,7 +19,7 @@
 
 ### Download Full Installer from macOS 11 up to 26 
 
-DownloadFullInstaller works on macOS 15 Sequoia and macOS 26 Tahoe. 
+DownloadFullInstaller runs on macOS 11 Big Sur through macOS 26 Tahoe. Tested only on macOS Ventura and later, as I don't have Big Sur or Monterey systems.
 
 ### test branch
 
