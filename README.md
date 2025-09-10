@@ -19,6 +19,7 @@ This is a Swift UI implementation of my [fetch-installer-pkg](https://github.com
 
 ### Notes about version 2.0.5
 
+- Xcode project requires macOS 13 Ventura up to Tahoe.
 - Added language selection system.
 - Added restart alert to language selection view.
 - Updated translations with new strings.
