@@ -1,6 +1,6 @@
 # Download Full Installer 2
 
-![Platform](https://img.shields.io/badge/macOS-15+-orange.svg)
+![Platform](https://img.shields.io/badge/macOS-11+-orange.svg)
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/total?label=Downloads&color=00cd00)
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/latest/total?label=Latest&color=00cd00)
 <!--
