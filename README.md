@@ -38,7 +38,7 @@ DownloadFullInstaller runs on macOS 11 Big Sur through macOS 26 Tahoe.
 - Updated translations with new strings.
 - Added option to clear app's settings, stored in `~/Library/Containers/DownloadFullInstaller/Data/Library/Preferences`.
 
-<img src="Images/DownloadFullInstaller-lang.png" width="600px">
+<img src="Images/DownloadFullInstaller-lang-noflags.png" width="600px">
 
 ### Notes about version 2.0.0
 
