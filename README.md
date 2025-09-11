@@ -27,7 +27,7 @@ DownloadFullInstaller runs on macOS 11 Big Sur through macOS 26 Tahoe.
 - Bump project version to 2.0.7
 - Add flag icons to languages in language selection view.
 
-<img src="Images/DownloadFullInstaller-test2.png" width="624px">
+<img src="Images/DownloadFullInstaller-lang.png" width="624px">
 
 ### Notes about version 2.0.5
 
