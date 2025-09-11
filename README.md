@@ -5,21 +5,18 @@
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/latest/total?label=Latest&color=00cd00)
 <!-- ![Swift](https://img.shields.io/badge/Swift-5.5-lavender.svg) -->
 
-**Note**: As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) by <em>scriptingosx</em> (no movement in more than 3 years) has been archived by the developer. This DownloadFullInstaller-2 repo is a standalone (<em>not forked</em>) version. I'll keep my repo active and up to date as long as it is useful to other users.
+As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) by <em>scriptingosx</em> (no movement in more than 3 years) has been archived by the developer. This DownloadFullInstaller-2 repo is a standalone (<em>not forked</em>) version. I'll keep my repo active and up to date as long as it is useful to other users.
 
 <img src="Images/DownloadFullInstaller.png" width="600px">
 
-### DownloadFullInstaller from macOS 11 up to 26 
+###  For macOS 11 up to 26 
 
-DownloadFullInstaller runs on macOS 11 Big Sur through macOS 26 Tahoe. Tested only on macOS Ventura and later, as I don't have Big Sur or Monterey systems.
-
-### Preface
-
-This is a Swift UI implementation of my [fetch-installer-pkg](https://github.com/scriptingosx/fetch-installer-pkg) script. It will list the full macOS Big Sur (and later) installer pkgs available for download in Apple's software update catalogs. You can then choose to download one of them.
+DownloadFullInstaller runs on macOS 11 Big Sur through macOS 26 Tahoe. 
 
 ### Notes about version 2.0.5
 
-- Xcode project requires macOS 13 Ventura up to Tahoe.
+- Updated up to macOS 26 Tahoe. 
+- Xcode project requires macOS 13 Ventura or newer.
 - Added language selection system.
 - Added restart alert to language selection view.
 - Updated translations with new strings.
@@ -29,13 +26,20 @@ This is a Swift UI implementation of my [fetch-installer-pkg](https://github.com
 
 ### Notes about version 2.0.0
 
-GitHub user [matxpa](https://github.com/matxpa) has fixed issues and added improvements:
+GitHub user [matxpa](https://github.com/matxpa) was the main contributor at this stage.
 
-* Improved Swift code
-* Updated up to macOS 15 Sequoia
-* Fixed an issue that fixed beta versions displayed in wrong catalogs. Beta word is applied to the icon if the official version has not released yet
-* Preferences for choosing catalog are no longer a separate dialog but are now at the top of the main window
+* Updated up to macOS 15 Sequoia.
+* Improved Swift code.
+* Preferences for choosing catalog are no longer a separate dialpog but are now at the top of the main window.
 * A single macOS version or all versions can be displayed at once.
+* Fixed an issue with beta versions (displayed in wrong catalog).
+<!-- * Beta word is overlaid on the installer icon if `product.title` contains `isBeta`. This happens when the official version of macOS hasn't been released yet. Beta versions after the official version of macOS don't have `isBeta` in `product.title`. Hence they do not have overlaid the word Beta. -->
+
+## Original repository
+
+### Preface
+
+This is a Swift UI implementation of my python [fetch-installer-pkg](https://github.com/scriptingosx/fetch-installer-pkg) script. It will list the full macOS Big Sur (and later) installer pkgs available for download in Apple's software update catalogs. You can then choose to download one of them.
 
 ### Motivation
 
