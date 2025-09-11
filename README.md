@@ -13,17 +13,15 @@
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/perez987/DownloadFullInstaller-2)
 ![Downloads](https://img.shields.io/badge/Downloads-43-00cd00) -->
 
-**Note**: As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) by <em>scriptingosx</em> (no movement in more than 3 years) has been archived by the developer. This DownloadFullInstaller-2 repo is a standalone (<em>not forked</em>) version. I'll keep my repo active and up to date as long as it is useful to other users.
+As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) by <em>scriptingosx</em> (no movement in more than 3 years) has been archived by the developer. This DownloadFullInstaller-2 repo is a standalone (<em>not forked</em>) version. I'll keep my repo active and up to date as long as it is useful to other users.
 
 <img src="Images/DownloadFullInstaller.png" width="624px">
 
 ### Download Full Installer from macOS 11 up to 26 
 
-DownloadFullInstaller runs on macOS 11 Big Sur through macOS 26 Tahoe. Tested only on macOS Ventura and later, as I don't have Big Sur or Monterey systems.
+DownloadFullInstaller runs on macOS 11 Big Sur through macOS 26 Tahoe.
 
-### test branch
-
-Differences with the `main` branch:
+### Notes about 2.0.7
 
 - Xcode project requires macOS Sequoia or Tahoe.
 - Bump project version to 2.0.7
@@ -31,21 +29,33 @@ Differences with the `main` branch:
 
 <img src="Images/DownloadFullInstaller-test2.png" width="624px">
 
+### Notes about version 2.0.5
+
+- Updated up to macOS 26 Tahoe. 
+- Xcode project requires macOS 13 Ventura or newer.
+- Added language selection system.
+- Added restart alert to language selection view.
+- Updated translations with new strings.
+- Added option to clear app's settings, stored in `~/Library/Containers/DownloadFullInstaller/Data/Library/Preferences`.
+
+<img src="Images/DownloadFullInstaller-lang.png" width="600px">
+
+### Notes about version 2.0.0
+
+GitHub user [matxpa](https://github.com/matxpa) was the main contributor at this stage.
+
+* Updated up to macOS 15 Sequoia.
+* Improved Swift code.
+* Preferences for choosing catalog are no longer a separate dialpog but are now at the top of the main window.
+* A single macOS version or all versions can be displayed at once.
+* Fixed an issue with beta versions (displayed in wrong catalog).
+<!-- * Beta word is overlaid on the installer icon if `product.title` contains `isBeta`. This happens when the official version of macOS hasn't been released yet. Beta versions after the official version of macOS don't have `isBeta` in `product.title`. Hence they do not have overlaid the word Beta. -->
+
+## Original repository
+
 ### Preface
 
-This is a Swift UI implementation of the [fetch-installer-pkg](https://github.com/scriptingosx/fetch-installer-pkg) script. It will list the full macOS Big Sur (and later) installer pkgs available for download in Apple's software update catalogs.
-
-You can then choose to download one of them.
-
-### Notes about version 2.0
-
-As of December 2025, user [matxpa](https://github.com/matxpa) has modified this app by updating it to the most recent versions of macOS, fixing issues and adding improvements, hence the change to version 2.0:
-
-* Improved Swift code
-* Updated up to macOS 15 Sequoia
-* Fixed an issue that fixed beta versions displayed in wrong catalogs. Beta word is applied to the icon if the official version has not released yet
-* Preferences for choosing catalog are no longer a separate dialog but are now at the top of the main window
-* A single macOS version or all versions can be displayed at once.
+This is a Swift UI implementation of my [fetch-installer-pkg](https://github.com/scriptingosx/fetch-installer-pkg) script. It will list the full macOS Big Sur (and later) installer pkgs available for download in Apple's software update catalogs. You can then choose to download one of them.
 
 ### Motivation
 
@@ -57,6 +67,7 @@ Since the Big Sur macOS installer application contains a single file larger than
 
 - Copy the download URL for a given installer pkg from the context menu.
 - Change the seed program in the Preferences dropdown menu.
+- Create the installer without leaving the application.
 
 ### Questions
 
