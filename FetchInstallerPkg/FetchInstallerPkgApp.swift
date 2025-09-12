@@ -34,9 +34,10 @@ struct FetchInstallerPkgApp: App {
 //                    }
                     
                     // Show language selection dialog if not shown before
-                    if !Prefs.languageSelectionShown {
-                        showLanguageSelection = true
-                    }
+                    // Not needed at first launch
+//                    if !Prefs.languageSelectionShown {
+//                        showLanguageSelection = true
+//                    }
                 }
             
                 .onDisappear {
