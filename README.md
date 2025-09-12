@@ -1,7 +1,7 @@
 # Download Full Installer 2
 
-![Platform](https://img.shields.io/badge/macOS-11+-orange.svg)
-![Xcode](https://img.shields.io/badge/macOS-13+-lavender.svg)
+![Platform](https://img.shields.io/badge/Run-on-macOS-11+-orange.svg)
+![Xcode](https://img.shields.io/badge/Xcode-needs-macOS-13+-lavender.svg)
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/total?label=Downloads&color=00cd00)
 <!--![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/latest/total?label=Latest&color=00cd00)
 ![Xcode](https://img.shields.io/badge/Xcode-15-orange.svg)
