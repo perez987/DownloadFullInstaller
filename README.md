@@ -19,7 +19,7 @@ As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/Downloa
 
 ### Download Full Installer from macOS 11 up to 26 
 
-DownloadFullInstaller runs on macOS 11 Big Sur through macOS 26 Tahoe.
+DownloadFullInstaller runs on macOS 13 Ventura through macOS 26 Tahoe.
 
 ### Notes about 2.0.7
 
