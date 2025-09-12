@@ -1,3 +1,8 @@
+### 2.0.7-96
+
+- 2 Separate branches: `main` for the most up-to-date project and to use some recent Xcode features (the app runs only on Sequoia and Tahoe) and `old` to maintain compatibility with older macOS (the app runs on Big Sur and newer).
+- The operation of both branches is almost entirely the same except for the code that adjusts the size of the main window relative to the content.
+
 ### 2.0.7-70
 
 - Bump project version to 2.0.7.
@@ -6,7 +11,7 @@
 
 - Add flag icons to language selection view.
 - Bump project version to 2.0.6.
-- Update screenshots and documentation in README.
+- Update screenshots.
 
 ### 2.0.5-36
 
