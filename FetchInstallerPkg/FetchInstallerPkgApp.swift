@@ -34,7 +34,7 @@ struct FetchInstallerPkgApp: App {
 //                    }
                     
                     // Show language selection dialog if not shown before
-                    // Not needed at first launch
+                    // Not needed at first launch of the app
 //                    if !Prefs.languageSelectionShown {
 //                        showLanguageSelection = true
 //                    }
@@ -62,7 +62,7 @@ struct FetchInstallerPkgApp: App {
 
         // window resizability derived from the window’s content
         // macOS 13 Ventura or newer
-        .windowResizability(.contentSize)
+            .windowResizability(.contentSize)
         
         .commands {
             CommandGroup(replacing: .appSettings) {
@@ -71,7 +71,6 @@ struct FetchInstallerPkgApp: App {
                 }
                 .keyboardShortcut("l", modifiers: [.command])
             }
-
         }
 
 //        Settings {
