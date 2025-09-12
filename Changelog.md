@@ -29,6 +29,7 @@
 ### 2.0.3-105
 
 Unfork repository:
+
 - Import project to unfork from original repo. 
 - Move all localization files into a new Languages directory.
 - Add new localized strings.
@@ -65,6 +66,7 @@ Unfork repository:
 ### 2.0.3-57
 
 Add sleep prevention logic:
+
 - Installation packages are quite large (up to 17 GB on Tahoe); computer may go to sleep before completing the download.
 - Add logic to disable sleep while the app window is open.
 - Sleep resumes when the app window is closed.
