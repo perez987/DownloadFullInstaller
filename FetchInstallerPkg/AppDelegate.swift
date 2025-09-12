@@ -1,6 +1,5 @@
 //
 //  AppDelegate.swift
-//  FetchInstallerPkg
 //
 //  Created by Armin Briegel on 2021-06-15
 //  Modified by Emilio P Egido on 2025-08-23
@@ -19,8 +18,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         Prefs.registerDefaults()
     }
         
-    func viewDidLoad() {
-    }
+//    func viewDidLoad() {
+//    }
 
     // Close app from red button (thanks Chris1111)
     func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {

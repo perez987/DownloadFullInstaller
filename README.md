@@ -1,17 +1,34 @@
-# Download Full Installer
+# Download Full Installer 2
 
 ![Platform](https://img.shields.io/badge/macOS-11+-orange.svg)
+![Xcode](https://img.shields.io/badge/macOS-11+-lavender.svg)
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/total?label=Downloads&color=00cd00)
-![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/latest/total?label=Latest&color=00cd00)
-<!-- ![Swift](https://img.shields.io/badge/Swift-5.5-lavender.svg) -->
+<!--![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/latest/total?label=Latest&color=00cd00)
+![Xcode](https://img.shields.io/badge/Xcode-15-orange.svg)
+![Swift](https://img.shields.io/badge/Swift-5.5-orange.svg)
+![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/2.0.3-71/total?label=v2.0.3-71&color=00cd00)
+![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/total?label=Downloads&color=00cd00)
+<!-- ![Swift](https://img.shields.io/badge/Swift-5.5-orange.svg)
+![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/total?label=Downloads&color=00cd00) 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/perez987/DownloadFullInstaller-2)
+![Downloads](https://img.shields.io/badge/Downloads-43-00cd00) -->
 
 As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) by <em>scriptingosx</em> (no movement in more than 3 years) has been archived by the developer. This DownloadFullInstaller-2 repo is a standalone (<em>not forked</em>) version. I'll keep my repo active and up to date as long as it is useful to other users.
 
-<img src="Images/DownloadFullInstaller.png" width="600px">
+<img src="Images/DownloadFullInstaller.png" width="624px">
 
-###  For macOS 11 up to 26 
+### Download Full Installer from macOS 11 up to 26 
 
-DownloadFullInstaller runs on macOS 11 Big Sur through macOS 26 Tahoe. 
+DownloadFullInstaller runs on macOS 11 Big Sur through macOS 26 Tahoe.
+
+### Notes about 2.0.6
+
+- DownloadFullInstaller app runs on macOS 11 Big Sur and newer.
+- Xcode project requires macOS Ventura, Sequoia or Tahoe.
+- Bump project version to 2.0.6
+- Added flag icons to languages in language selection view.
+
+<img src="Images/DownloadFullInstaller-lang.png" width="624px">
 
 ### Notes about version 2.0.5
 
@@ -22,7 +39,7 @@ DownloadFullInstaller runs on macOS 11 Big Sur through macOS 26 Tahoe.
 - Updated translations with new strings.
 - Added option to clear app's settings, stored in `~/Library/Containers/DownloadFullInstaller/Data/Library/Preferences`.
 
-<img src="Images/DownloadFullInstaller-lang.png" width="600px">
+<img src="Images/DownloadFullInstaller-lang-noflags.png" width="600px">
 
 ### Notes about version 2.0.0
 
@@ -39,7 +56,7 @@ GitHub user [matxpa](https://github.com/matxpa) was the main contributor at this
 
 ### Preface
 
-This is a Swift UI implementation of my python [fetch-installer-pkg](https://github.com/scriptingosx/fetch-installer-pkg) script. It will list the full macOS Big Sur (and later) installer pkgs available for download in Apple's software update catalogs. You can then choose to download one of them.
+This is a Swift UI implementation of my [fetch-installer-pkg](https://github.com/scriptingosx/fetch-installer-pkg) script. It will list the full macOS Big Sur (and later) installer pkgs available for download in Apple's software update catalogs. You can then choose to download one of them.
 
 ### Motivation
 
@@ -55,19 +72,15 @@ Since the Big Sur macOS installer application contains a single file larger than
 
 ### Questions
 
-#### Is this different than the fetch-installer-pkg script?
-
-Not really, other than it is a UI app and written in Swift and SwiftUI instead of a command line script written in python. I used this as a project to learn more about SwiftUI.
-
 #### Can this download older versions of the macOS installer application?
 
-No. Apple only provides installer pkgs for Big Sur and later. Earlier versions of the Big Sur installer are removed regularly.
+No. Apple only provides installer PKGs for Big Sur and later. Earlier versions of the Big Sur installer are removed regularly.
 
 #### Will you update this so it can download older versions?
 
 No.
 
-#### How is this different than `softwareupdate` or `installinstallmacOS.py`
+#### How is this different from other command tools?
 
 As far as I can tell, this downloads the same pkg as `softwareupdate --fetch-full-installer` and `installinstallmacOS.py`.
 
@@ -98,5 +111,4 @@ Download Full Installer does not prevent the system from going to sleep while an
 ### Credits
 
 - Both [fetch-installer-pkg](https://github.com/scriptingosx/fetch-installer-pkg) and this application are based on [Greg Neagle's installinstallmacos.py](https://github.com/munki/macadmin-scripts/blob/main/installinstallmacos.py) script.
-- Thanks to [matxpa](https://github.com/matxpa): improvements in version 2.0.
-
+- Thanks to [matxpa](https://github.com/matxpa): fixes and improvements in version 2.0.

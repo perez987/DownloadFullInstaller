@@ -1,24 +1,30 @@
-### 2.0.5-52
+### 2.0.6-71
 
-- Add language selection system: English, Spanish, French, Italian, Ukrainian and Simplified Chinese.
+- Add flag icons to language selection view.
+- Bump project version to 2.0.6.
+- Update screenshots and documentation in README.
+
+### 2.0.5-36
+
+- Bump project version to 2.0.5.
+
+### 2.0.4-33
+
+- Refactor language code.
+- Add language selection system.
 - Add restart alert to language selection view.
-- Update translations with new strings.
-- Add option to clear app's settings, stored in `~/Library/Containers/DownloadFullInstaller/Data/Library/Preferences`.
-
-### 2.0.4-40
-
-- Bum version to 2.0.4.
-- Fix localization strings.
-
-### 2.0.3-21
-
-- Add Simplified Chinese language.
+- Add Simplified Chinese.
+- Add option to clear app's language settings.
+- Update translations.
+- Bump project version to 2.0.4.
 
 ### 2.0.3-20
 
 - Update English localization string.
 
 ### 2.0.3-105
+
+Unfork repository:
 
 - Import project to unfork from original repo. 
 - Move all localization files into a new Languages directory.
@@ -55,6 +61,8 @@
 
 ### 2.0.3-57
 
+Add sleep prevention logic:
+
 - Installation packages are quite large (up to 17 GB on Tahoe); computer may go to sleep before completing the download.
 - Add logic to disable sleep while the app window is open.
 - Sleep resumes when the app window is closed.
@@ -62,4 +70,4 @@
 ### 2.0.3-52
 
 - Add constants and URL catalog for Tahoe.
-- Add new Tahoe icons.
+- Add Tahoe icons.
