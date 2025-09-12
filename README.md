@@ -33,13 +33,10 @@ DownloadFullInstaller runs on macOS 11 Big Sur through macOS 26 Tahoe.
 ### Notes about version 2.0.5
 
 - Updated up to macOS 26 Tahoe. 
-- Xcode project requires macOS 13 Ventura or newer.
 - Added language selection system.
 - Added restart alert to language selection view.
 - Updated translations with new strings.
 - Added option to clear app's settings, stored in `~/Library/Containers/DownloadFullInstaller/Data/Library/Preferences`.
-
-<img src="Images/DownloadFullInstaller-lang-noflags.png" width="600px">
 
 ### Notes about version 2.0.0
 
