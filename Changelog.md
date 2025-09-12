@@ -1,3 +1,6 @@
+### 2.0.7-70
+
+- Bump project version to 2.0.7.
 
 ### 2.0.6-66
 
