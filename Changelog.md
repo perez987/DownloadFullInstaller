@@ -1,7 +1,6 @@
 
-### 2.0.7-95
+### 2.0.6-95
 
-- Bump project version to 2.0.7.
 - 2 Separate branches: `main` for the most up-to-date project and to use some recent Xcode features (the app runs only on Sequoia and Tahoe) and `old` to maintain compatibility with older macOS (the app runs on Big Sur and newer).
 - The operation of both branches is almost entirely the same except for the code that adjusts the size of the main window relative to the content.
 
