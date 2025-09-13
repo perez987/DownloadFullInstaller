@@ -27,11 +27,6 @@ struct FetchInstallerPkgApp: App {
             
                 .onAppear {
                     disableSystemSleep()
-
-                    // plist preferences path
-//                    if #available(macOS 13.0, *) {
-//                        print("### Preferences:  \(URL.libraryDirectory.appending(path: "Preferences").path())")
-//                    }
                     
                     // Show language selection dialog if not shown before
                     // Not needed at first launch of the app
