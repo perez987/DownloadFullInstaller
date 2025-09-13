@@ -1,9 +1,8 @@
 //
 //  LanguageSelectionView.swift
-//  Download Full Installer
+//  Created for language selection dialog implementation
 //
-// Language selection dialog implementation
-// Created by Emilio P Egido on 2025-08-25
+//  Created by Emilio P Egido on 2025-08-25
 //
 
 import SwiftUI
@@ -32,10 +31,10 @@ struct LanguageSelectionView: View {
                     .font(.title3)
                     .fontWeight(.bold)
                 
-                Text(NSLocalizedString("Choose a language", comment: "Language selection description"))
-                    .font(.body)
-                    .foregroundColor(.secondary)
-                    .multilineTextAlignment(.center)
+//                Text(NSLocalizedString("Choose a language", comment: "Language selection description"))
+//                    .font(.body)
+//                    .foregroundColor(.secondary)
+//                    .multilineTextAlignment(.center)
             }
             .padding(.top, 20)
             
@@ -86,6 +85,7 @@ struct LanguageSelectionView: View {
                         ),
                         secondaryButton: .cancel(Text(NSLocalizedString("Cancel", comment: "Cancel button")))
                     )
+                    
                 }
             }
             
@@ -117,7 +117,7 @@ struct LanguageSelectionView: View {
 
         }
         .padding(.horizontal, 30)
-        .frame(width: 380, height: 590)
+        .frame(width: 400, height: 636)
         .background(Color(NSColor.windowBackgroundColor))
     }
 }
@@ -126,11 +126,37 @@ struct LanguageRow: View {
     let language: SupportedLanguage
     let isSelected: Bool
     let action: () -> Void
-    
+
+    private func flagEmoji(for languageCode: String) -> String {
+         switch languageCode {
+         case "en-US", "en":
+             return "🇺🇸"
+         case "es-ES", "es":
+             return "🇪🇸"
+         case "fr-CA":
+             return "🇨🇦"
+         case "fr-FR", "fr":
+             return "🇫🇷"
+         case "it-IT", "it":
+             return "🇮🇹"
+         case "uk-UA", "uk":
+             return "🇺🇦"
+         case "zh-Hans", "zh":
+             return "🇨🇳"
+         default:
+             return "🇺🇸"
+         }
+     }
+
     var body: some View {
         Button(action: action) {
             HStack {
-                VStack(alignment: .leading, spacing: 2) {
+//                VStack(alignment: .leading, spacing: 2) {
+
+                    Text(flagEmoji(for: language.code))
+                        .font(.title2)
+                        .frame(width: 24, height: 24)
+
                     Text(language.nativeName)
                         .font(.body)
                         .fontWeight(.medium)
@@ -141,7 +167,7 @@ struct LanguageRow: View {
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
-                }
+//                }
                 
                 Spacer()
                 
@@ -162,7 +188,9 @@ struct LanguageRow: View {
                 .foregroundColor(Color.gray.opacity(0.2)),
             alignment: .bottom
         )
+
     }
+
 }
 
 #Preview {
