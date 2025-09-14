@@ -18,8 +18,8 @@ This branch of DownloadFullInstaller runs on macOS 11 Big Sur up to macOS 26 Tah
 - Platform:
 
 	- x86_64.
-	- DownloadFullInstaller.app runs on macOS 11 Big Sur or newer.
-	- Xcode requires macOS Big Sur 11 or newer.
+	- DownloadFullInstaller.app runs on macOS 11+.
+	- Xcode requires macOS 11+.
 
 - Add constants and URL catalog for Tahoe.
 
