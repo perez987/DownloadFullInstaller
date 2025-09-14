@@ -1,0 +1,48 @@
+
+/* No comment provided by engineer. */
+"" = "";
+
+/* No comment provided by engineer. */
+"\n\n" = "\n\n";
+
+/* No comment provided by engineer. */
+"%@ already exists. Do you want to replace it?" = "%@ ya existe. ¿Quieres reemplazarlo?";
+
+/* No comment provided by engineer. */
+"A file with the same name already exists in that location. Replacing it will overwrite its current contents." = "Ya existe un archivo con el mismo nombre en esta ubicación. Si lo reemplazas, se sobrescribirá su contenido actual.";
+
+/* No comment provided by engineer. */
+"Cancel" = "Cancelar";
+
+/* No comment provided by engineer. */
+"Loading..." = "Cargando...";
+
+/* No comment provided by engineer. */
+"Copy macOS %@ (%@) URL" = "Copiar macOS %@ (%@) URL";
+
+/* No comment provided by engineer. */
+"Download macOS %@ (%@) Installer" = "Descargar Instalador de macOS %@ (%@)";
+
+/* No comment provided by engineer. */
+"Download Full Installer" = "Download Full Installer";
+
+/* No comment provided by engineer. */
+"Downloaded %@" = "Descargado %@";
+
+/* No comment provided by engineer. */
+"Downloading %@" = "Descargando %@";
+
+/* No comment provided by engineer. */
+"Replace" = "Reemplazar";
+
+/* No comment provided by engineer. */
+"Show in Finder" = "Mostrar en el Finder";
+
+/* No comment provided by engineer. */
+"Cancel %@ download" = "Cancelar descarga de %@";
+
+/* No comment provided by engineer. */
+"Show the installer in the Downloads folder" = "Ver el instalador en la carpeta de Descargas";
+
+/* No comment provided by engineer. */
+"Preferences" = "Preferencias";

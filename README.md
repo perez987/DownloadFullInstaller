@@ -3,51 +3,34 @@
 ![Platform](https://img.shields.io/badge/macOS-11+-orange.svg)
 ![Xcode](https://img.shields.io/badge/Xcode-macOS13+-lavender.svg)
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/total?label=Downloads&color=00cd00)
-<!--![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/latest/total?label=Latest&color=00cd00)
-![Xcode](https://img.shields.io/badge/Xcode-15-orange.svg)
-![Swift](https://img.shields.io/badge/Swift-5.5-orange.svg)
-![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/2.0.3-71/total?label=v2.0.3-71&color=00cd00)
-![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/total?label=Downloads&color=00cd00)
-<!-- ![Swift](https://img.shields.io/badge/Swift-5.5-orange.svg)
-![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/total?label=Downloads&color=00cd00) 
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/perez987/DownloadFullInstaller-2)
-![Downloads](https://img.shields.io/badge/Downloads-43-00cd00) -->
 
-As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) by <em>scriptingosx</em> (no movement in more than 3 years) has been archived by the developer. This DownloadFullInstaller-2 repo is a standalone (<em>not forked</em>) version. I'll keep my repo active and up to date as long as it is useful to other users.
 
-<img src="Images/DownloadFullInstaller.png" width="624px">
+<img src="Images/DownloadFullInstaller-bigsur.png" width="624px">
 
-### Download Full Installer from macOS 11 up to 26 
+## Download Full Installer from macOS 11 up to 26 
 
-DownloadFullInstaller runs on macOS 11 Big Sur through macOS 26 Tahoe.
+This branch of DownloadFullInstaller runs on macOS 11 Big Sur up to macOS 26 Tahoe.
 
-### Notes about 2.0.6
+### Build 1.8 (35)
 
-- DownloadFullInstaller app runs on macOS 11 Big Sur and newer.
-- Xcode project requires macOS Ventura, Sequoia or Tahoe.
-- Bump project version to 2.0.6
-- Added flag icons to languages in language selection view.
+- Platform:
 
-<img src="Images/DownloadFullInstaller-lang.png" width="624px">
+	- x86_64.
+	- DownloadFullInstaller.app runs on macOS 11 Big Sur or newer.
+	- Xcode requires macOS Ventura or newer.
 
-### Notes about version 2.0.5
+- Add constants and URL catalog for Tahoe.
 
-- Updated up to macOS 26 Tahoe. 
-- Added language selection system.
-- Added restart alert to language selection view.
-- Updated translations with new strings.
-- Added option to clear app's settings, stored in `~/Library/Containers/DownloadFullInstaller/Data/Library/Preferences`.
+- Add Tahoe icons.
 
-### Notes about version 2.0.0
+- Add sleep prevention logic:
+	- Installation packages are quite large (up to 17 GB on Tahoe); computer may go to sleep before completing the download.
+	- Add logic to disable sleep while the app window is open.
+	- Sleep resumes when the app window is closed.
 
-GitHub user [matxpa](https://github.com/matxpa) was the main contributor at this stage.
+- Update copyright info.
 
-* Updated up to macOS 15 Sequoia.
-* Improved Swift code.
-* Preferences for choosing catalog are no longer a separate dialpog but are now at the top of the main window.
-* A single macOS version or all versions can be displayed at once.
-* Fixed an issue with beta versions (displayed in wrong catalog).
-<!-- * Beta word is overlaid on the installer icon if `product.title` contains `isBeta`. This happens when the official version of macOS hasn't been released yet. Beta versions after the official version of macOS don't have `isBeta` in `product.title`. Hence they do not have overlaid the word Beta. -->
+- Add localization (English, Spanish, French).
 
 ## Original repository
 
