@@ -11,9 +11,9 @@
 
 This branch of DownloadFullInstaller runs on macOS 11 Big Sur up to macOS 26 Tahoe.
 
-### Build 1.8 (81)
+### Build 1.9 (83)
 
-- App and project for macOS Big Sur, Monterey and newer.
+- App and Xcode project for macOS Big Sur, Monterey and newer.
 
 - Platform:
 

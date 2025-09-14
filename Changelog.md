@@ -1,4 +1,4 @@
-## 1.8 (81)
+## 1.9 (83)
 
 ### App for macOS 11+
 
@@ -6,7 +6,7 @@
 
 	- x86_64.
 	- DownloadFullInstaller.app runs on macOS 11 Big Sur or newer.
-	- Xcode requires macOS Ventura or newer.
+	- Xcode requires macOS 11 Big Sur or newer.
 
 - Add constants and URL catalog for Tahoe.
 
