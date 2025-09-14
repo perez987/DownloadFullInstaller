@@ -15,7 +15,7 @@
 
 As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) by <em>scriptingosx</em> (no movement in more than 3 years) has been archived by the developer. This DownloadFullInstaller-2 repo is a standalone (<em>not forked</em>) version. I'll keep my repo active and up to date as long as it is useful to other users.
 
-<img src="Images/DownloadFullInstaller.png" width="624px">
+<img src="Images/DownloadFullInstallerx2.png" width="700px">
 
 ### Download Full Installer from macOS 13 up to 26 
 
@@ -27,7 +27,7 @@ DownloadFullInstaller runs on macOS 13 Ventura through macOS 26 Tahoe.
 - Bump project version to 2.0.7
 - Added flag icons to languages in language selection view.
 
-<img src="Images/DownloadFullInstaller-lang.png" width="624px">
+<!-- <img src="Images/DownloadFullInstaller-lang.png" width="624px"> -->
 
 ### Notes about version 2.0.5
 
@@ -38,7 +38,7 @@ DownloadFullInstaller runs on macOS 13 Ventura through macOS 26 Tahoe.
 - Updated translations with new strings.
 - Added option to clear app's settings, stored in `~/Library/Containers/DownloadFullInstaller/Data/Library/Preferences`.
 
-<img src="Images/DownloadFullInstaller-lang-noflags.png" width="600px">
+<!-- <img src="Images/DownloadFullInstaller-lang-noflags.png" width="600px"> -->
 
 ### Notes about version 2.0.0
 
