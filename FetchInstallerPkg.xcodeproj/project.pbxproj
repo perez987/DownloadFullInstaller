@@ -27,6 +27,7 @@
 		C6E3CB99267A2AFB007084F6 /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E3CB98267A2AFB007084F6 /* IconView.swift */; };
 		D91A1C122E76372B0040DF7E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D91A1C142E76372B0040DF7E /* Localizable.strings */; };
 		D91A1C152E7637350040DF7E /* Download-Full-Installer-InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D91A1C172E7637350040DF7E /* Download-Full-Installer-InfoPlist.strings */; };
+		D9641B932E76455500A32D05 /* Caffeine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9641B922E76455500A32D05 /* Caffeine.swift */; };
 		D9D89C742E761E9D00CC70CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9D89C732E761E9D00CC70CB /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		D91A1C192E7637590040DF7E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = "es.lproj/Download-Full-Installer-InfoPlist.strings"; sourceTree = "<group>"; };
 		D91A1C1A2E7637650040DF7E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D91A1C1B2E7637650040DF7E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = "fr.lproj/Download-Full-Installer-InfoPlist.strings"; sourceTree = "<group>"; };
+		D9641B922E76455500A32D05 /* Caffeine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Caffeine.swift; sourceTree = "<group>"; };
 		D9D89C732E761E9D00CC70CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,13 +94,14 @@
 		C63643602670E1B800301DC8 /* FetchInstallerPkg */ = {
 			isa = PBXGroup;
 			children = (
-				D9D89C732E761E9D00CC70CB /* Assets.xcassets */,
-				D91A1C142E76372B0040DF7E /* Localizable.strings */,
-				D91A1C172E7637350040DF7E /* Download-Full-Installer-InfoPlist.strings */,
 				C635B0AD2678AC9F001EEA82 /* AppDelegate.swift */,
+				D9D89C732E761E9D00CC70CB /* Assets.xcassets */,
+				D9641B922E76455500A32D05 /* Caffeine.swift */,
+				D91A1C172E7637350040DF7E /* Download-Full-Installer-InfoPlist.strings */,
 				C69C80CB267787DE00E20E20 /* DownloadManager.swift */,
 				C63643712670E82000301DC8 /* FetchInstallerPkg.entitlements */,
 				C63643612670E1B800301DC8 /* FetchInstallerPkgApp.swift */,
+				D91A1C142E76372B0040DF7E /* Localizable.strings */,
 				C69C80D926788BD700E20E20 /* Model */,
 				C635B0D92678E9C4001EEA82 /* Prefs.swift */,
 				C63643672670E1B900301DC8 /* Preview Content */,
@@ -255,6 +258,7 @@
 				C69C80D426788BA100E20E20 /* Package.swift in Sources */,
 				C69C80D226788B8D00E20E20 /* Catalog.swift in Sources */,
 				C69C80CC267787DE00E20E20 /* DownloadManager.swift in Sources */,
+				D9641B932E76455500A32D05 /* Caffeine.swift in Sources */,
 				C69C80D026788B6B00E20E20 /* DistParserDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,7 +422,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 81;
+				CURRENT_PROJECT_VERSION = 82;
 				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
 				ENABLE_APP_SANDBOX = YES;
@@ -459,7 +463,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 81;
+				CURRENT_PROJECT_VERSION = 82;
 				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
 				ENABLE_APP_SANDBOX = YES;

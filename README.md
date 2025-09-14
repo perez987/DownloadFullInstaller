@@ -11,7 +11,7 @@
 
 This branch of DownloadFullInstaller runs on macOS 11 Big Sur up to macOS 26 Tahoe.
 
-### Build 1.8 (35)
+### Build 1.8 (81)
 
 - Platform:
 
@@ -91,4 +91,3 @@ Download Full Installer does not prevent the system from going to sleep while an
 ### Credits
 
 - Both [fetch-installer-pkg](https://github.com/scriptingosx/fetch-installer-pkg) and this application are based on [Greg Neagle's installinstallmacos.py](https://github.com/munki/macadmin-scripts/blob/main/installinstallmacos.py) script.
-- Thanks to [matxpa](https://github.com/matxpa): fixes and improvements in version 2.0.

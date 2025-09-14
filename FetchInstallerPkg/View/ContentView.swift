@@ -43,7 +43,7 @@ struct ContentView: View {
              minWidth: 482.0,
              idealWidth: 482.0,
              maxWidth: 482.0,
-             minHeight: 582.0,
+             minHeight: 590.0,
  //            idealHeight: 540.0,
  //            maxHeight: 540.0,
              alignment: .center

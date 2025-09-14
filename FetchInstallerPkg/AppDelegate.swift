@@ -16,4 +16,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         Prefs.registerDefaults()
     }
+    
+    // Close app from red button (thanks Chris1111)
+    func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {
+        return true
+    }
+    
 }
