@@ -53,6 +53,7 @@ import AppKit
         if url != nil {
             downloadTask = urlSession.downloadTask(with: url!)
             downloadTask!.resume()
+            print("Downloading \(filename ?? "InstallerAssistant.pkg")")
         }
     }
     
@@ -64,6 +65,7 @@ import AppKit
             downloadURL = nil
             progress = 0.0
         }
+        print("Download of \(filename ?? "InstallerAssistant.pkg") cancelled")
     }
     
     func revealInFinder() {
@@ -76,7 +78,6 @@ import AppKit
 
 extension DownloadManager : URLSessionDownloadDelegate {
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        NSLog("urlSession, didFinishDownloading")
         let destination = Prefs.downloadURL
         
         // get the suggest file name or create a uuid string
@@ -85,7 +86,7 @@ extension DownloadManager : URLSessionDownloadDelegate {
         do {
             let file = destination.appendingPathComponent(suggestedFilename)
             let newURL = try FileManager.default.replaceItemAt(file, withItemAt: location)
-            NSLog("downloaded to \(newURL?.path ?? "### something went wrong ###")")
+            print("Downloaded of \(filename ?? "Download unspecified error") finished")
             DispatchQueue.main.async {
                 self.isDownloading = false
                 self.localURL = newURL
@@ -93,12 +94,11 @@ extension DownloadManager : URLSessionDownloadDelegate {
             }
         }
         catch {
-            NSLog(error.localizedDescription)
+//            print(error.localizedDescription)
         }
     }
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
-        NSLog("urlSession, didWriteData: \(totalBytesWritten)/\(totalBytesExpectedToWrite)")
         DispatchQueue.main.async {
             self.progress = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
             self.progressString = "\(self.byteFormatter.string(fromByteCount: totalBytesWritten))/\(self.byteFormatter.string(fromByteCount: totalBytesExpectedToWrite))"

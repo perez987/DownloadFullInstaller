@@ -86,7 +86,6 @@ class Product: Codable, Identifiable, ObservableObject {
                 print(httpResponse.statusCode)
             } else {
                 if data != nil {
-                    //print(String(decoding: data!, as: UTF8.self))
                     DispatchQueue.main.async {
                         self.decodeBuildManifest(data: data!)                    }
                  }
@@ -110,7 +109,6 @@ class Product: Codable, Identifiable, ObservableObject {
         if let buildManifest = try? decoder.decode(BuildManifest.self, from: data) {
             self.buildVersion = buildManifest.productBuildVersion
             self.productVersion = buildManifest.productVersion
-            //print("     Build Version: \(self.buildVersion ?? "<none>")")
         }
     }
     
@@ -134,7 +132,6 @@ class Product: Codable, Identifiable, ObservableObject {
                 print(httpResponse.statusCode)
             } else {
                 if data != nil {
-                    //print(String(decoding: data!, as: UTF8.self))
                     DispatchQueue.main.async {
                         self.parseDistXML(data: data!)                    }
                  }
@@ -163,8 +160,6 @@ class Product: Codable, Identifiable, ObservableObject {
         self.installerVersion = delegate.installerVersion
         self.isLoading = false
         self.hasLoaded = true
-        //print(self.title ?? "<no title>")
-        //print(self.buildVersion ?? "<no buildversion>")
     }
     
     enum CodingKeys: String, CodingKey {

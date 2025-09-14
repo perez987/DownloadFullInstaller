@@ -14,12 +14,17 @@ enum DefaultsKeys: String {
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
+        disableSystemSleep() // disable sleep
         Prefs.registerDefaults()
     }
     
     // Close app from red button (thanks Chris1111)
     func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {
         return true
+    }
+    
+    func applicationWillTerminate(_ aNotification: Notification) {
+        enableSystemSleep() // enable sleep
     }
     
 }
