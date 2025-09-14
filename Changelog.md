@@ -1,7 +1,13 @@
 ### 2.0.7-96
 
-- 2 Separate branches: `main` for the most up-to-date project and to use some recent Xcode features (the app runs only on Sequoia and Tahoe) and `old` to maintain compatibility with older macOS (the app runs on Big Sur and newer).
-- The operation of both branches is almost entirely the same except for the code that adjusts the size of the main window relative to the content.
+- 2 branches:<br>
+	- `main` for the most up-to-date project:
+		-  the app runs on Ventura 13+
+		-  Xcode project requites Sequoia or Tahoe
+		-  complete language system
+		-  updated code to set the size of the main window relative to content<br>
+	- `old` to maintain compatibility with older macOS<br>
+		-  app and Xcode project run on Big Sur 11+.
 
 ### 2.0.7-70
 
