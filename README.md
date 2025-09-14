@@ -1,7 +1,7 @@
 # Download Full Installer 2
 
 ![Platform](https://img.shields.io/badge/macOS-11+-orange.svg)
-![Xcode](https://img.shields.io/badge/Xcode-macOS13+-lavender.svg)
+![Xcode](https://img.shields.io/badge/Xcode-macOS11+-lavender.svg)
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/total?label=Downloads&color=00cd00)
 
 
@@ -13,11 +13,13 @@ This branch of DownloadFullInstaller runs on macOS 11 Big Sur up to macOS 26 Tah
 
 ### Build 1.8 (81)
 
+- App and project for macOS Big Sur, Monterey and newer.
+
 - Platform:
 
 	- x86_64.
-	- DownloadFullInstaller.app runs on macOS 11 Big Sur or newer.
-	- Xcode requires macOS Ventura or newer.
+	- DownloadFullInstaller.app runs on macOS 11+.
+	- Xcode requires macOS 11+.
 
 - Add constants and URL catalog for Tahoe.
 
