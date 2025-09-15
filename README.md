@@ -21,9 +21,16 @@ As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/Downloa
 
 Download Full Installer runs on macOS 13 Ventura through macOS 26 Tahoe.
 
+**New in macOS Tahoe**: Enhanced with **Liquid Glass UI** support
+- Translucent visual effects and enhanced depth
+- Dynamic materials that adapt to system appearance
+- Improved visual hierarchy and readability
+- Maintains full backward compatibility with macOS Sequoia (15.0+)
+
 For Download Full Installer running on macOS 11+, you can get the [1.9.0-83](https://github.com/perez987/DownloadFullInstaller-2/releases/tag/1.9.0-83) version or the Xcode project from the `old` branch.
 
 - Updated up to macOS 26 Tahoe
+- **New**: Liquid Glass UI support for enhanced visual experience on macOS 15+ (Sequoia and Tahoe)
 - Xcode project requires macOS Sequoia+
 - Preferences for choosing catalog are no longer a separate dialog but are now at the top of the main window
 - A single macOS version or all versions can be displayed at once

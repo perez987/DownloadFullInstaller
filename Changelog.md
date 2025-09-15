@@ -1,4 +1,37 @@
 
+### 2.1.1-103
+
+- `main` branch.
+- App runs on macOS 13+.
+- Xcode project requires Sequoia or Tahoe.
+- Architecture x86_64.
+
+**New Feature: Liquid Glass UI Support**
+
+- **Enhanced Visual Experience**: Added comprehensive Liquid Glass UI support for macOS Sequoia (15.0+) and Tahoe (26.0+)
+- **Translucent Effects**: Implemented translucent backgrounds, enhanced depth, and vibrancy throughout the interface
+- **Dynamic Materials**: Utilized NSVisualEffectView materials that adapt to system appearance and lighting
+- **Backward Compatibility**: Maintains full compatibility with macOS 13-14 with graceful fallbacks
+- **Centralized Styling**: New LiquidGlassUI utility system for consistent visual effects across all components
+- **Enhanced Components**: 
+  - Main window with translucent background
+  - Installer list items with glass effect cards
+  - Download progress with enhanced materials
+  - Language selection dialog with improved visuals
+  - Interactive buttons with glass styling
+
+Changelog:
+
+- Add LiquidGlassUI.swift utility system for centralized liquid glass styling
+- Enhance VisualEffectBlur.swift with comprehensive material variants
+- Update ContentView.swift with translucent backgrounds and enhanced list styling
+- Improve InstallerView.swift with glass effect cards and styled buttons
+- Enhance DownloadView.swift with translucent progress indicators
+- Update LanguageSelectionView.swift with improved dialog appearance
+- Add availability checks for macOS 15+ liquid glass features
+- Implement graceful fallbacks for older macOS versions
+- Update README.md with liquid glass UI documentation
+
 ### 2.1.0-102
 
 - `main` branch.
