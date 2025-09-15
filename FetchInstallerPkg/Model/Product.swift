@@ -63,11 +63,11 @@ class Product: Codable, Identifiable, ObservableObject {
 
     var installAssistantURL: URL? {
         if let installAssistant = installerASSPackage {
-            print("\(thisComponent) : \(installAssistant)")
+//            print("\(thisComponent) : \(installAssistant)")
             return URL(string: installAssistant.url)
         } else {
             if let installAssistant = installerESDPackage {
-                print("\(thisComponent) : \(installAssistant)")
+//                print("\(thisComponent) : \(installAssistant)")
                 return URL(string: installAssistant.url)
             } else {
                 return nil
@@ -97,13 +97,13 @@ class Product: Codable, Identifiable, ObservableObject {
         let task = session.dataTask(with: url) { data, response, error in
 
             if error != nil {
-                print("\(self.thisComponent) : \(error!.localizedDescription)")
+//                print("\(self.thisComponent) : \(error!.localizedDescription)")
                 return
             }
 
             let httpResponse = response as! HTTPURLResponse
             if httpResponse.statusCode != 200 {
-                print("\(self.thisComponent) : \(httpResponse.statusCode)")
+//                print("\(self.thisComponent) : \(httpResponse.statusCode)")
             } else {
                 if data != nil {
                     // print("\(self.thisComponent) : \(String(decoding: data!, as: UTF8.self))")
@@ -132,7 +132,7 @@ class Product: Codable, Identifiable, ObservableObject {
         if let buildManifest = try? decoder.decode(BuildManifest.self, from: data) {
             buildVersion = buildManifest.productBuildVersion
             productVersion = buildManifest.productVersion
-            print("\(thisComponent) :      Build Version: \(buildVersion ?? "<none>")")
+//            print("\(thisComponent) :      Build Version: \(buildVersion ?? "<none>")")
         }
     }
 
@@ -146,13 +146,13 @@ class Product: Codable, Identifiable, ObservableObject {
         let task = session.dataTask(with: url) { data, response, error in
 
             if error != nil {
-                print("\(self.thisComponent) : \(error!.localizedDescription)")
+//                print("\(self.thisComponent) : \(error!.localizedDescription)")
                 return
             }
 
             let httpResponse = response as! HTTPURLResponse
             if httpResponse.statusCode != 200 {
-                print("\(self.thisComponent) : \(httpResponse.statusCode)")
+//                print("\(self.thisComponent) : \(httpResponse.statusCode)")
             } else {
                 if data != nil {
                     // print("\(self.thisComponent) : \(String(decoding: data!, as: UTF8.self))")

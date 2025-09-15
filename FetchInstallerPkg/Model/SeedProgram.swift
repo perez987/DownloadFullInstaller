@@ -68,6 +68,6 @@ func catalogURL(for selectedseed: SeedProgram, for selectedosname: OsNameID) -> 
     } else {
         catalogURL.append(URL(string: regularCatalog)!)
     }
-    print("\(thisComponent) : \(catalogURL)")
+    print("Catalog URL : \(catalogURL)")
     return catalogURL
 }

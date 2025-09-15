@@ -25,7 +25,7 @@ class SUCatalog: ObservableObject {
     func load() {
         uniqueInstallersList = []
         let catalogURLArray: [URL] = catalogURL(for: Prefs.seedProgram, for: Prefs.osNameID)
-        // print("\(self.thisComponent) : \(String(describing: catalogURL))")
+//        print("\(self.thisComponent) : \(String(describing: catalogURL))")
 
         catalogURLArray.forEach {
             let sessionConfig = URLSessionConfiguration.ephemeral
@@ -66,7 +66,7 @@ class SUCatalog: ObservableObject {
         catalog = try! decoder.decode(Catalog.self, from: data)
 
         if let products = products {
-            print("\(thisComponent) : Installer Nb : loaded \(Prefs.seedProgram) catalog with \(products.count) products")
+            print("Loaded \(Prefs.seedProgram) catalog with \(products.count) products")
 
             for (productKey, product) in products {
                 product.key = productKey
@@ -74,7 +74,7 @@ class SUCatalog: ObservableObject {
                     if metainfo.sharedSupport != nil {
                         if !uniqueInstallersList.contains(productKey) {
                             // this is an installer, add to list
-                            print("\(thisComponent) : Installer ID : \(productKey)")
+//                            print("\(thisComponent) : Installer ID : \(productKey)")
                             uniqueInstallersList.append(productKey)
                             installers.append(product)
                             // print("\(self.thisComponent) :     BuildManifest: \(product.buildManifestURL ?? "<no>")")

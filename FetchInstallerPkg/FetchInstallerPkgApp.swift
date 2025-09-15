@@ -26,12 +26,7 @@ struct FetchInstallerPkgApp: App {
             // Enable sleep mode when the window disappears
             
                 .onAppear {
-                    disableSystemSleep()
-
-                    // plist preferences path
-//                    if #available(macOS 13.0, *) {
-//                        print("### Preferences:  \(URL.libraryDirectory.appending(path: "Preferences").path())")
-//                    }
+//                    disableSystemSleep()
                     
                     // Show language selection dialog if not shown before
                     // Not needed at first launch of the app
@@ -41,7 +36,7 @@ struct FetchInstallerPkgApp: App {
                 }
             
                 .onDisappear {
-                    enableSystemSleep()
+//                    enableSystemSleep()
                 }
                 
                 .sheet(isPresented: $showLanguageSelection) {
