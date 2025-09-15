@@ -27,6 +27,7 @@ For Download Full Installer running on macOS 11+, you can get the [1.9.0-83](htt
 - Xcode project requires macOS Sequoia+
 - Preferences for choosing catalog are no longer a separate dialog but are now at the top of the main window
 - A single macOS version or all versions can be displayed at once
+- Added sleep prevention logic to avoid sleep while app is running
 - Added language selection system
 - Updated translations with new strings.
 
