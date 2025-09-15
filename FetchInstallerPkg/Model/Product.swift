@@ -106,7 +106,7 @@ class Product: Codable, Identifiable, ObservableObject {
 //                print("\(self.thisComponent) : \(httpResponse.statusCode)")
             } else {
                 if data != nil {
-                    // print("\(self.thisComponent) : \(String(decoding: data!, as: UTF8.self))")
+//                    print("\(self.thisComponent) : \(String(decoding: data!, as: UTF8.self))")
                     DispatchQueue.main.async {
                         self.decodeBuildManifest(data: data!)
                     }
@@ -155,7 +155,7 @@ class Product: Codable, Identifiable, ObservableObject {
 //                print("\(self.thisComponent) : \(httpResponse.statusCode)")
             } else {
                 if data != nil {
-                    // print("\(self.thisComponent) : \(String(decoding: data!, as: UTF8.self))")
+//                    print("\(self.thisComponent) : \(String(decoding: data!, as: UTF8.self))")
                     DispatchQueue.main.async {
                         self.parseDistXML(data: data!)
                     }

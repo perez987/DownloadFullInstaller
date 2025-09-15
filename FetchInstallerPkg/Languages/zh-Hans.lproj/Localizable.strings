@@ -86,10 +86,16 @@
 "OK" = "好的";
 
 /* No comment provided by engineer. */
-"Clear app's settings?" = "清除应用程序的设置";
-
-/* No comment provided by engineer. */
-"(This will erase any saved settings)" = "(这将删除所有已保存的设置)";
-
-/* No comment provided by engineer. */
 "Yes" = "是的";
+
+/* No comment provided by engineer. */
+"Clear language settings?" = "清除语言设置?";
+
+/* No comment provided by engineer. */
+"(Language saved settings will be cleared)" = "(已保存的语言设置将被删除)";
+
+/* No comment provided by engineer. */
+"You will lose the preferred language you have saved." = "已保存的首选语言将被删除.";
+
+/* No comment provided by engineer. */
+"Warning" = "警告";

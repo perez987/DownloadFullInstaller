@@ -49,9 +49,6 @@
 /* No comment provided by engineer. */
 "Create application" = "Create Application";
 
-/* No comment provided by engineer. */
-"Could not load catalog" = "Could not load the catalog";
-
 /* Language Selection Dialog */
 "Language Selection" = "Language Selection";
 
@@ -65,7 +62,7 @@
 "Continue" = "Continue";
 
 /* No comment provided by engineer. */
-"The app will restart to apply the language change" = "The app will restart to apply the language change";
+"The app will restart to apply the language change" = "The app will restart to apply the language change.";
 
 /* No comment provided by engineer. */
 "Restart Required" = "Restart Required";
@@ -77,10 +74,16 @@
 "OK" = "OK";
 
 /* No comment provided by engineer. */
-"Clear app's settings?" = "Clear app's settings?";
-
-/* No comment provided by engineer. */
-"(This will erase any saved settings)" = "(This will erase any saved settings)";
-
-/* No comment provided by engineer. */
 "Yes" = "Yes";
+
+/* No comment provided by engineer. */
+"Clear language settings?" = "Clear language settings?";
+
+/* No comment provided by engineer. */
+"(Language saved settings will be cleared)" = "(Saved language settings will be deleted)";
+
+/* No comment provided by engineer. */
+"You will lose the preferred language you have saved." = "The saved preferred language will be deleted.";
+
+/* No comment provided by engineer. */
+"Warning" = "Warning";

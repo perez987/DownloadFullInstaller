@@ -45,7 +45,6 @@ import Foundation
 
         if replacing {
             let destination = Prefs.downloadURL
-            //			let suggestedFilename: [String] = filename ?? "InstallerAssistant.pkg"
             let suggestedFilename = filename ?? "InstallerAssistant.pkg"
             let file = destination.appendingPathComponent(suggestedFilename)
             try FileManager.default.removeItem(at: file)
@@ -54,6 +53,7 @@ import Foundation
         if url != nil {
             downloadTask = urlSession.downloadTask(with: url!)
             downloadTask!.resume()
+            print("Downloading \(filename ?? "InstallerAssistant.pkg")")
         }
     }
 
@@ -65,6 +65,7 @@ import Foundation
             downloadURL = nil
             progress = 0.0
         }
+        print("Download of \(filename ?? "InstallerAssistant.pkg") cancelled")
     }
 
     func revealInFinder() {
@@ -77,7 +78,6 @@ import Foundation
 
 extension DownloadManager: URLSessionDownloadDelegate {
     func urlSession(_: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        print("urlSession -> didFinishDownloading")
         let destination = Prefs.downloadURL
 
         // get the suggest file name or create a uuid string
@@ -86,7 +86,7 @@ extension DownloadManager: URLSessionDownloadDelegate {
         do {
             let file = destination.appendingPathComponent(suggestedFilename)
             let newURL = try FileManager.default.replaceItemAt(file, withItemAt: location)
-            print("Downloaded to \(newURL?.path ?? "### Something went wrong ###")")
+            print("Download of \(filename ?? "InstallerAssistant.pkg") finished")
             DispatchQueue.main.async {
                 self.isDownloading = false
                 self.localURL = newURL
@@ -98,7 +98,7 @@ extension DownloadManager: URLSessionDownloadDelegate {
     }
 
     func urlSession(_: URLSession, downloadTask _: URLSessionDownloadTask, didWriteData _: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
-        print("urlSession -> didWriteData: \(totalBytesWritten)/\(totalBytesExpectedToWrite)")
+//        print("urlSession -> didWriteData: \(totalBytesWritten)/\(totalBytesExpectedToWrite)")
         DispatchQueue.main.async {
             self.progress = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
             self.progressString = "\(self.byteFormatter.string(fromByteCount: totalBytesWritten))/\(self.byteFormatter.string(fromByteCount: totalBytesExpectedToWrite))"

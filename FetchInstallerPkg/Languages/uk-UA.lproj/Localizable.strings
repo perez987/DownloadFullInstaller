@@ -77,10 +77,16 @@
 "OK" = "OK";
 
 /* No comment provided by engineer. */
-"Clear app's settings?" = "Очистити налаштування програми?";
-
-/* No comment provided by engineer. */
-"(This will erase any saved settings)" = "(Це видалить усі збережені налаштування)";
-
-/* No comment provided by engineer. */
 "Yes" = "так";
+
+/* No comment provided by engineer. */
+"Clear language settings?" = "Очистити мовні налаштування?";
+
+/* No comment provided by engineer. */
+"(Language saved settings will be cleared)" = "(Збережені мовні налаштування будуть видалені)";
+
+/* No comment provided by engineer. */
+"You will lose the preferred language you have saved." = "Збережену бажану мову буде видалено.";
+
+/* No comment provided by engineer. */
+"Warning" = "Попередження";

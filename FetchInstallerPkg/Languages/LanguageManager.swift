@@ -118,26 +118,26 @@ class LanguageManager: ObservableObject {
         NotificationCenter.default.post(name: .languageChanged, object: nil)
 
         if languageCode.contains("en") {
-            print("### Language changed to: English (\(languageCode)) ###")
-        }
-        else if languageCode.contains("es") {
-            print("### Language changed to: Spanish (\(languageCode)) ###")
-        }
-        else if languageCode.contains("it") {
-            print("### Language changed to: Italian (\(languageCode)) ###")
-        }
-        else if languageCode.contains("fr") {
-            print("### Language changed to: French (\(languageCode)) ###")
-        }
-        else if languageCode.contains("CA") {
-            print("### Language changed to: Canadian French (\(languageCode)) ###")
-        }
-        else if languageCode.contains("uk") {
-            print("### Language changed to: Ukrainian (\(languageCode)) ###")
-        }
-        else if languageCode.contains("zh") {
-            print("### Language changed to: Simplified Chinese (\(languageCode)) ###")
-        }
+                   print("Language changed to: English (\(languageCode))")
+               }
+               else if languageCode.contains("es") {
+                   print("Language changed to: Spanish (\(languageCode))")
+               }
+               else if languageCode.contains("it") {
+                   print("Language changed to: Italian (\(languageCode))")
+               }
+               else if languageCode.contains("fr") {
+                   print("Language changed to: French (\(languageCode))")
+               }
+               else if languageCode.contains("CA") {
+                   print("Language changed to: Canadian French (\(languageCode))")
+               }
+               else if languageCode.contains("uk") {
+                   print("Language changed to: Ukrainian (\(languageCode))")
+               }
+               else if languageCode.contains("zh") {
+                   print("Language changed to: Simplified Chinese (\(languageCode))")
+               }
 
 
     }

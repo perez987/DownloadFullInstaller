@@ -77,10 +77,16 @@
 "OK" = "OK";
 
 /* No comment provided by engineer. */
-"Clear app's settings?" = "¿Borrar ajustes de la app?";
-
-/* No comment provided by engineer. */
-"(This will erase any saved settings)" = "(Esto borrará cualquier ajuste guardado)";
-
-/* No comment provided by engineer. */
 "Yes" = "Sí";
+
+/* No comment provided by engineer. */
+"Clear language settings?" = "¿Borrar ajustes de idioma?";
+
+/* No comment provided by engineer. */
+"(Language saved settings will be cleared)" = "(Se borrarán los ajustes de idioma guardados)";
+
+/* No comment provided by engineer. */
+"You will lose the preferred language you have saved." = "Perderás el idioma preferido que has guardado.";
+
+/* No comment provided by engineer. */
+"Warning" = "Aviso";

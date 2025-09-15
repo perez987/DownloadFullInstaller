@@ -15,7 +15,8 @@ enum DefaultsKeys: String {
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_: Notification) {
-        disableSystemSleep() // disable sleep
+        // Disable sleep mode while app is running
+        disableSystemSleep()
         Prefs.registerDefaults()
     }
         
@@ -28,7 +29,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
-        enableSystemSleep() // enable sleep
+        // Enable sleep mode when app exits
+        enableSystemSleep()
     }
     
 }

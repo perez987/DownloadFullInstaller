@@ -21,23 +21,23 @@ struct FetchInstallerPkgApp: App {
                 .environmentObject(sucatalog)
                 .environmentObject(languageManager)
                 .navigationTitle("")
-            
-            // Disable sleep mode when the window appears
-            // Enable sleep mode when the window disappears
-            
+
                 .onAppear {
+                    // Disable sleep mode when the window appears
 //                    disableSystemSleep()
                     
                     // Show language selection dialog if not shown before
-                    // Not needed at first launch of the app
-//                    if !Prefs.languageSelectionShown {
-//                        showLanguageSelection = true
-//                    }
+                    // Uncomment to show the dialog when there is no settings saved
+                    if !Prefs.languageSelectionShown {
+                        showLanguageSelection = true
+                        print("First run, language selection dialog displayed")
+                    }
                 }
             
-                .onDisappear {
+//                .onDisappear {
+                    // Enable sleep mode when the window disappears
 //                    enableSystemSleep()
-                }
+//                }
                 
                 .sheet(isPresented: $showLanguageSelection) {
                     LanguageSelectionView(

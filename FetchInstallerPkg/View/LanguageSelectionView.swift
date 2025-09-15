@@ -12,7 +12,8 @@ struct LanguageSelectionView: View {
     @Binding var isPresented: Bool
     @State private var selectedLanguage: String
     @State private var showRestartAlert = false
-    
+    @State private var showSettingsAlert = false
+
     init(languageManager: LanguageManager, isPresented: Binding<Bool>) {
         self.languageManager = languageManager
         self._isPresented = isPresented
@@ -59,14 +60,14 @@ struct LanguageSelectionView: View {
             
             // Buttons
             HStack(spacing: 12) {
-                Button(NSLocalizedString("Cancel", comment: "Cancel button")) {
+                Button(NSLocalizedString("Cancel", comment: "")) {
                     isPresented = false
                 }
                 .keyboardShortcut(.escape)
                 
                 Spacer()
                 
-                Button(NSLocalizedString("Continue", comment: "Continue button")) {
+                Button(NSLocalizedString("Continue", comment: "")) {
                     showRestartAlert = true
                 }
                 .keyboardShortcut(.return)
@@ -74,16 +75,16 @@ struct LanguageSelectionView: View {
                 .disabled(selectedLanguage == languageManager.currentLanguage)
                 .alert(isPresented: $showRestartAlert) {
                     Alert(
-                        title: Text(NSLocalizedString("Restart Required", comment: "Restart alert title")),
-                        message: Text(NSLocalizedString("The app must be restarted for changes to take effect.", comment: "Restart alert message")),
+                        title: Text(NSLocalizedString("Restart Required", comment: "")),
+                        message: Text(NSLocalizedString("The app must be restarted for changes to take effect.", comment: "")),
                         primaryButton: .default(
-                            Text(NSLocalizedString("OK", comment: "OK button")),
+                            Text(NSLocalizedString("OK", comment: "")),
                             action: {
                                 languageManager.setLanguage(selectedLanguage)
                                 isPresented = false
                             }
                         ),
-                        secondaryButton: .cancel(Text(NSLocalizedString("Cancel", comment: "Cancel button")))
+                        secondaryButton: .cancel(Text(NSLocalizedString("Cancel", comment: "")))
                     )
                     
                 }
@@ -98,22 +99,38 @@ struct LanguageSelectionView: View {
                     .font(.system(size: 16))
                     .foregroundColor(.blue)
                 
-                Text(NSLocalizedString("Clear app's settings?", comment: "Reset settings 1"))
+                Text(NSLocalizedString("Clear language settings?", comment: ""))
                     .font(.body)
                 
-                Button(NSLocalizedString("Yes", comment: "Yes button")) {
-                    UserDefaults.resetDefaults()
-                    
+                Button(NSLocalizedString("Yes", comment: "")) {
+                    showSettingsAlert = true
+
                 }
                 .buttonStyle(.bordered)
             }
             
             HStack(spacing: 10) {
-                Text(NSLocalizedString("(This will erase any saved settings)", comment: "Reset settings 2"))
+                Text(NSLocalizedString("(Language saved settings will be cleared)", comment: ""))
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
             }
             .padding(.bottom, 20)
+
+            .alert(isPresented: $showSettingsAlert) {
+                Alert(
+                    title: Text(NSLocalizedString("Warning", comment: "")),
+                    message: Text(NSLocalizedString("You will lose the preferred language you have saved.", comment: "")),
+                    primaryButton: .default(
+                        Text(NSLocalizedString("OK", comment: "")),
+                        action: {
+                            UserDefaults.resetDefaults()
+                            isPresented = false
+                        }
+                    ),
+                    secondaryButton: .cancel(Text(NSLocalizedString("Cancel", comment: "")))
+                )
+
+            }
 
         }
         .padding(.horizontal, 30)
