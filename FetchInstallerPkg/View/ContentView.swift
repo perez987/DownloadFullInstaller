@@ -15,34 +15,58 @@ struct ContentView: View {
     @State private var refreshID = UUID()
     var countersText: String = ""
 
+struct ContentView: View {
+    @EnvironmentObject var sucatalog: SUCatalog
+    @EnvironmentObject var languageManager: LanguageManager
+    @AppStorage(Prefs.key(.seedProgram)) var seedProgram: String = ""
+    @AppStorage(Prefs.key(.osNameID)) var osNameID: String = ""
+    @State private var refreshID = UUID()
+    var countersText: String = ""
+
     var body: some View {
-        PreferencesView().environmentObject(sucatalog).navigationTitle(NSLocalizedString("Download Full Installer", comment: "Main window title"))
-        VStack(alignment: .center, spacing: 4) {
-                 HStack(alignment: .center) { 
+        ZStack {
+            // Liquid glass background for macOS 15+ (Sequoia and Tahoe)
+            if LiquidGlassUI.isLiquidGlassAvailable {
+                VisualEffectBlur.liquidGlassContent
+                    .ignoresSafeArea()
+            }
+            
+            VStack(alignment: .center, spacing: 4) {
+                // Header with liquid glass effect
+                ZStack {
+                    if LiquidGlassUI.isLiquidGlassAvailable {
+                        VisualEffectBlur.liquidGlassHeader
+                    }
+                    
+                    PreferencesView()
+                        .environmentObject(sucatalog)
+                        .navigationTitle(NSLocalizedString("Download Full Installer", comment: "Main window title"))
+                }
+                
+                HStack(alignment: .center) { 
                     Text("")
                     Spacer()
-            }
-
-            if #available(macOS 14.0, *) {
-                List(sucatalog.installers, id: \.id) { installer in
-                    InstallerView(product: installer)
                 }
-                .padding(4)
-                
-                // ---> Test, VStack border
-                //.border(.mint, width: 1)
-                
-                .contentMargins(.leading, 1, for: .scrollContent)
-            } else {
-                List(sucatalog.installers, id: \.id) { installer in
-                    InstallerView(product: installer)
-                }
-                .padding(4)
 
-            }
-                        
-            DownloadView()
+                // Main content list with enhanced visual effects
+                if #available(macOS 14.0, *) {
+                    List(sucatalog.installers, id: \.id) { installer in
+                        InstallerView(product: installer)
+                            .liquidGlassListRow()
                     }
+                    .padding(4)
+                    .scrollContentBackground(LiquidGlassUI.isLiquidGlassAvailable ? .hidden : .automatic)
+                    .contentMargins(.leading, 1, for: .scrollContent)
+                } else {
+                    List(sucatalog.installers, id: \.id) { installer in
+                        InstallerView(product: installer)
+                    }
+                    .padding(4)
+                }
+                            
+                DownloadView()
+            }
+        }
                 
         .frame(
             minWidth: 472.0,

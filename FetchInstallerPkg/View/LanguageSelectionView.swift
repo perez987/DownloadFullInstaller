@@ -21,58 +21,107 @@ struct LanguageSelectionView: View {
     }
     
     var body: some View {
-        VStack(spacing: 20) {
-            // Header
-            VStack(spacing: 8) {
-                Image(systemName: "globe")
-                    .font(.system(size: 32))
-                    .foregroundColor(.blue)
-                
-                Text(NSLocalizedString("Language Selection", comment: "Language Selection Dialog title"))
-                    .font(.title3)
-                    .fontWeight(.bold)
-                
-//                Text(NSLocalizedString("Choose a language", comment: "Language selection description"))
-//                    .font(.body)
-//                    .foregroundColor(.secondary)
-//                    .multilineTextAlignment(.center)
+        ZStack {
+            // Liquid glass background for the entire dialog on macOS 15+
+            if #available(macOS 15.0, *) {
+                VisualEffectBlur.liquidGlassContent
+                    .ignoresSafeArea()
+            } else {
+                Color(NSColor.windowBackgroundColor)
             }
-            .padding(.top, 20)
             
-            // Language list
-            VStack(spacing: 0) {
-                ForEach(languageManager.availableLanguages, id: \.code) { language in
-                    LanguageRow(
-                        language: language,
-                        isSelected: selectedLanguage == language.code,
-                        action: {
-                            selectedLanguage = language.code
+            VStack(spacing: 20) {
+                // Header with enhanced styling
+                VStack(spacing: 8) {
+                    ZStack {
+                        if #available(macOS 15.0, *) {
+                            Circle()
+                                .fill(.thinMaterial)
+                                .opacity(0.6)
+                                .frame(width: 64, height: 64)
+                        }
+                        Image(systemName: "globe")
+                            .font(.system(size: 32))
+                            .foregroundColor(.blue)
+                    }
+                    
+                    Text(NSLocalizedString("Language Selection", comment: "Language Selection Dialog title"))
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .foregroundStyle(
+                            Group {
+                                if #available(macOS 15.0, *) {
+                                    .primary.opacity(0.9)
+                                } else {
+                                    .primary
+                                }
+                            }
+                        )
+                }
+                .padding(.top, 20)
+                
+                // Language list with enhanced glass effect
+                VStack(spacing: 0) {
+                    ForEach(languageManager.availableLanguages, id: \.code) { language in
+                        LanguageRow(
+                            language: language,
+                            isSelected: selectedLanguage == language.code,
+                            action: {
+                                selectedLanguage = language.code
+                            }
+                        )
+                    }
+                }
+                .background(
+                    Group {
+                        if #available(macOS 15.0, *) {
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(.regularMaterial)
+                                .opacity(0.8)
+                        } else {
+                            Color(NSColor.controlBackgroundColor)
+                        }
+                    }
+                )
+                .cornerRadius(12)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(
+                            Group {
+                                if #available(macOS 15.0, *) {
+                                    Color.gray.opacity(0.2)
+                                } else {
+                                    Color.gray.opacity(0.3)
+                                }
+                            }, 
+                            lineWidth: 1
+                        )
+                )
+            
+                // Buttons with enhanced styling
+                HStack(spacing: 12) {
+                    Button(NSLocalizedString("Cancel", comment: "")) {
+                        isPresented = false
+                    }
+                    .keyboardShortcut(.escape)
+                    .buttonStyle(
+                        Group {
+                            if #available(macOS 15.0, *) {
+                                .bordered
+                            } else {
+                                .automatic
+                            }
                         }
                     )
-                }
-            }
-            .background(Color(NSColor.controlBackgroundColor))
-            .cornerRadius(8)
-            .overlay(
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color.gray.opacity(0.3), lineWidth: 1)
-            )
-            
-            // Buttons
-            HStack(spacing: 12) {
-                Button(NSLocalizedString("Cancel", comment: "")) {
-                    isPresented = false
-                }
-                .keyboardShortcut(.escape)
-                
-                Spacer()
-                
-                Button(NSLocalizedString("Continue", comment: "")) {
-                    showRestartAlert = true
-                }
-                .keyboardShortcut(.return)
-                .buttonStyle(.bordered)
-                .disabled(selectedLanguage == languageManager.currentLanguage)
+                    
+                    Spacer()
+                    
+                    Button(NSLocalizedString("Continue", comment: "")) {
+                        showRestartAlert = true
+                    }
+                    .keyboardShortcut(.return)
+                    .buttonStyle(.bordered)
+                    .disabled(selectedLanguage == languageManager.currentLanguage)
                 .alert(isPresented: $showRestartAlert) {
                     Alert(
                         title: Text(NSLocalizedString("Restart Required", comment: "")),
@@ -132,10 +181,10 @@ struct LanguageSelectionView: View {
 
             }
 
+            }
+            .padding(.horizontal, 30)
+            .frame(width: 400, height: 636)
         }
-        .padding(.horizontal, 30)
-        .frame(width: 400, height: 636)
-        .background(Color(NSColor.windowBackgroundColor))
     }
 }
 
@@ -168,44 +217,70 @@ struct LanguageRow: View {
     var body: some View {
         Button(action: action) {
             HStack {
-//                VStack(alignment: .leading, spacing: 2) {
+                Text(flagEmoji(for: language.code))
+                    .font(.title2)
+                    .frame(width: 24, height: 24)
 
-                    Text(flagEmoji(for: language.code))
-                        .font(.title2)
-                        .frame(width: 24, height: 24)
-
-                    Text(language.nativeName)
-                        .font(.body)
-                        .fontWeight(.medium)
-                        .foregroundColor(.primary)
-                    
-                    if language.nativeName != language.localizedName {
-                        Text(language.localizedName)
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                    }
-//                }
+                Text(language.nativeName)
+                    .font(.body)
+                    .fontWeight(.medium)
+                    .foregroundColor(.primary)
+                
+                if language.nativeName != language.localizedName {
+                    Text(language.localizedName)
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
                 
                 Spacer()
                 
                 if isSelected {
-                    Image(systemName: "checkmark.circle.fill")
-                        .foregroundColor(.blue)
-                        .font(.title3)
+                    ZStack {
+                        if #available(macOS 15.0, *) {
+                            Circle()
+                                .fill(.thinMaterial)
+                                .opacity(0.6)
+                                .frame(width: 24, height: 24)
+                        }
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor(.blue)
+                            .font(.title3)
+                    }
                 }
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 12)
-            .background(isSelected ? Color.blue.opacity(0.1) : Color.clear)
+            .background(
+                Group {
+                    if #available(macOS 15.0, *) {
+                        if isSelected {
+                            RoundedRectangle(cornerRadius: 6)
+                                .fill(.thinMaterial)
+                                .opacity(0.7)
+                        } else {
+                            Color.clear
+                        }
+                    } else {
+                        isSelected ? Color.blue.opacity(0.1) : Color.clear
+                    }
+                }
+            )
         }
         .buttonStyle(PlainButtonStyle())
         .overlay(
             Rectangle()
                 .frame(height: 1)
-                .foregroundColor(Color.gray.opacity(0.2)),
+                .foregroundColor(
+                    Group {
+                        if #available(macOS 15.0, *) {
+                            Color.gray.opacity(0.1)
+                        } else {
+                            Color.gray.opacity(0.2)
+                        }
+                    }
+                ),
             alignment: .bottom
         )
-
     }
 
 }

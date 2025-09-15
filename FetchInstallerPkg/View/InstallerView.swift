@@ -23,26 +23,56 @@ struct InstallerView: View {
 
             // Filter data on osName if needed
             if (Prefs.osNameID.rawValue == OsNameID.osAll.rawValue) || (Prefs.osNameID.rawValue != OsNameID.osAll.rawValue && product.osName == Prefs.osNameID.rawValue) {
-                HStack {
+                ZStack {
+                    // Liquid glass background for individual installer items on macOS 15+
+                    if #available(macOS 15.0, *) {
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(.thinMaterial)
+                            .opacity(0.4)
+                    }
+                    
+                    HStack {
                     IconView(product: product)
 
                     VStack(alignment: .leading) {
                         HStack {
                             Text(product.title ?? "<no title>")
                                 .font(.headline)
+                                .foregroundStyle(
+                                    // Enhanced text styling for liquid glass
+                                    Group {
+                                        if #available(macOS 15.0, *) {
+                                            .primary.opacity(0.9)
+                                        } else {
+                                            .primary
+                                        }
+                                    }
+                                )
                             Spacer()
                             Text(product.productVersion ?? "<no version>")
                                 .frame(alignment: .trailing)
+                                .foregroundStyle(
+                                    Group {
+                                        if #available(macOS 15.0, *) {
+                                            .secondary.opacity(0.8)
+                                        } else {
+                                            .secondary
+                                        }
+                                    }
+                                )
                         }
                         HStack {
                             Text(product.postDate, style: .date)
                                 .font(.footnote)
+                                .foregroundStyle(.secondary)
                             Text(Prefs.byteFormatter.string(fromByteCount: Int64(product.installAssistantSize)))
                                 .font(.footnote)
+                                .foregroundStyle(.secondary)
                             Spacer()
                             Text(product.buildVersion ?? "<no build>")
                                 .frame(alignment: .trailing)
                                 .font(.footnote)
+                                .foregroundStyle(.secondary)
                         }
                     }
 
@@ -60,7 +90,27 @@ struct InstallerView: View {
                         }
 
                     }) {
-                        Image(systemName: "arrow.down.circle").font(.title)
+                        ZStack {
+                            // Enhanced button styling for liquid glass
+                            if #available(macOS 15.0, *) {
+                                Circle()
+                                    .fill(.thinMaterial)
+                                    .opacity(0.6)
+                                    .frame(width: 32, height: 32)
+                            }
+                            
+                            Image(systemName: "arrow.down.circle")
+                                .font(.title)
+                                .foregroundStyle(
+                                    Group {
+                                        if #available(macOS 15.0, *) {
+                                            .tint.opacity(0.9)
+                                        } else {
+                                            .tint
+                                        }
+                                    }
+                                )
+                        }
                     }
                     .help(String(format: NSLocalizedString("Download %@ %@ (%@) Installer", comment: "Download button help text"), product.osName ?? "", product.productVersion ?? "", product.buildVersion ?? ""))
                     .alert(isPresented: $isReplacingFile) {
@@ -85,6 +135,9 @@ struct InstallerView: View {
                     .controlSize(.mini)
 
                 // Context menu: copy to clipboard the URL of the specified InstallAssistant.pkg
+                    }
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
                 }.contextMenu {
                     Button(action: {
                         if let text = product.installAssistantURL?.absoluteString {
