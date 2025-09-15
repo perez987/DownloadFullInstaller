@@ -1,3 +1,20 @@
+
+### 2.1.0-102
+
+- `main` branch.
+- App runs on macOS 13+.
+- Xcode project requires Sequoia or Tahoe.
+- Architecture x86_64.
+
+Changelog:
+
+- Revise language flow
+- Update localization strings for all supported languages
+- Clean up debug print statements
+- Updated project version and bundle identifier in Xcode project settings
+- Bump to 2.1.0 version.
+
+
 ### 2.0.7-96
 
 - 2 branches:<br>
