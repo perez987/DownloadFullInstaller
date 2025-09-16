@@ -16,11 +16,12 @@ struct ContentView: View {
     var countersText: String = ""
 
     var body: some View {
+
         PreferencesView().environmentObject(sucatalog).navigationTitle(NSLocalizedString("Download Full Installer", comment: "Main window title"))
         VStack(alignment: .center, spacing: 4) {
-                 HStack(alignment: .center) { 
-                    Text("")
-                    Spacer()
+            HStack(alignment: .center) { 
+                Text("")
+                Spacer()
             }
 
             if #available(macOS 14.0, *) {
