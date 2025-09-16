@@ -51,6 +51,7 @@ struct LanguageSelectionView: View {
                     )
                 }
             }
+            .liquidGlassContainer()
             .background(Color(NSColor.controlBackgroundColor))
             .cornerRadius(8)
             .overlay(
