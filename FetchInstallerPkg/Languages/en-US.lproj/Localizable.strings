@@ -77,13 +77,13 @@
 "Yes" = "Yes";
 
 /* No comment provided by engineer. */
-"Clear language settings?" = "Clear language settings?";
+"Clear app settings?" = "Clear app settings?";
 
 /* No comment provided by engineer. */
-"(Language saved settings will be cleared)" = "(Saved language settings will be deleted)";
+"(App preferences will be cleared)" = "(App preferences will be cleared)";
 
 /* No comment provided by engineer. */
-"You will lose the preferred language you have saved." = "The saved preferred language will be deleted.";
+"You will lose user settings and saved language." = "You will lose user settings and saved language.";
 
 /* No comment provided by engineer. */
 "Warning" = "Warning";

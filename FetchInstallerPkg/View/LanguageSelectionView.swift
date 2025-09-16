@@ -104,23 +104,23 @@ struct LanguageSelectionView: View {
 
 //            .padding(.bottom, 20)
             HStack(spacing: 12) {
-                
+
                 Image(systemName: "exclamationmark.triangle")
                     .font(.system(size: 16))
                     .foregroundColor(.blue)
-                
-                Text(NSLocalizedString("Clear language settings?", comment: ""))
+
+                Text(NSLocalizedString("Clear app settings?", comment: ""))
                     .font(.body)
-                
+
                 Button(NSLocalizedString("Yes", comment: "")) {
                     showSettingsAlert = true
 
                 }
                 .buttonStyle(.bordered)
             }
-            
+
             HStack(spacing: 10) {
-                Text(NSLocalizedString("(Language saved settings will be cleared)", comment: ""))
+                Text(NSLocalizedString("(App preferences will be cleared)", comment: ""))
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
             }
@@ -129,12 +129,12 @@ struct LanguageSelectionView: View {
             .alert(isPresented: $showSettingsAlert) {
                 Alert(
                     title: Text(NSLocalizedString("Warning", comment: "")),
-                    message: Text(NSLocalizedString("You will lose the preferred language you have saved.", comment: "")),
+                    message: Text(NSLocalizedString("You will lose user settings and saved language.", comment: "")),
                     primaryButton: .default(
                         Text(NSLocalizedString("OK", comment: "")),
                         action: {
 //                            UserDefaults.resetDefaults() // partial deletion of saved user preferences (AppleLanguages and SelectedLanguage)
-                            delPlist() // complete deletion of saved user preferences
+                            delPlist() // complete deletion of saved app preferences
                             isPresented = false
                         }
                     ),

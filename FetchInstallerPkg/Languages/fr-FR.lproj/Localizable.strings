@@ -80,13 +80,13 @@
 "Yes" = "Oui";
 
 /* No comment provided by engineer. */
-"Clear language settings?" = "Effacer les paramètres de langue?";
+"Clear app settings?" = "Effacer les paramètres de l'application?";
 
 /* No comment provided by engineer. */
-"(Language saved settings will be cleared)" = "(Les paramètres de langue enregistrés seront supprimés)";
+"(App preferences will be cleared)" = "(Les préférences de l'application seront effacées)";
 
 /* No comment provided by engineer. */
-"You will lose the preferred language you have saved." = "La langue préférée enregistrée sera supprimée.";
+"You will lose user settings and saved language." = "Vous perdrez les paramètres utilisateur et la langue enregistrée.";
 
 /* No comment provided by engineer. */
 "Warning" = "Avertissement";

@@ -80,13 +80,13 @@
 "Yes" = "так";
 
 /* No comment provided by engineer. */
-"Clear language settings?" = "Очистити мовні налаштування?";
+"Clear app settings?" = "Очистити налаштування програми?";
 
 /* No comment provided by engineer. */
-"(Language saved settings will be cleared)" = "(Збережені мовні налаштування будуть видалені)";
+"(App preferences will be cleared)" = "(Налаштування програми буде очищено)";
 
 /* No comment provided by engineer. */
-"You will lose the preferred language you have saved." = "Збережену бажану мову буде видалено.";
+"You will lose user settings and saved language." = "Ви втратите налаштування користувача та збережену мову.";
 
 /* No comment provided by engineer. */
 "Warning" = "Попередження";

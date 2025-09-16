@@ -80,13 +80,13 @@
 "Yes" = "Sí";
 
 /* No comment provided by engineer. */
-"Clear language settings?" = "¿Borrar ajustes de idioma?";
+"Clear app settings?" = "Eliminar ajustes de la app?";
 
 /* No comment provided by engineer. */
-"(Language saved settings will be cleared)" = "(Se borrarán los ajustes de idioma guardados)";
+"(App preferences will be cleared)" = "(Las preferencias de la aplicación se borrarán)";
 
 /* No comment provided by engineer. */
-"You will lose the preferred language you have saved." = "Perderás el idioma preferido que has guardado.";
+"You will lose user settings and saved language." = "Perderás los ajustes de usuario y el idioma guardado.";
 
 /* No comment provided by engineer. */
 "Warning" = "Aviso";

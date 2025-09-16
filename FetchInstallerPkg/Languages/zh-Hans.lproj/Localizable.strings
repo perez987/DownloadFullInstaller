@@ -89,13 +89,12 @@
 "Yes" = "是的";
 
 /* No comment provided by engineer. */
-"Clear language settings?" = "清除语言设置?";
+"Clear app settings?" = "清除应用设置?";
 
 /* No comment provided by engineer. */
-"(Language saved settings will be cleared)" = "(已保存的语言设置将被删除)";
+"(App preferences will be cleared)" = "(应用偏好设置将被清除)";
 
 /* No comment provided by engineer. */
-"You will lose the preferred language you have saved." = "已保存的首选语言将被删除.";
-
+"You will lose user settings and saved language." = "Y您将丢失用户设置和已保存的语言.";
 /* No comment provided by engineer. */
 "Warning" = "警告";
