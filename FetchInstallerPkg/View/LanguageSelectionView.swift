@@ -19,7 +19,21 @@ struct LanguageSelectionView: View {
         self._isPresented = isPresented
         self._selectedLanguage = State(initialValue: languageManager.currentLanguage)
     }
-    
+
+    // Delete preferences plist file, the app will run as if it were the first time
+    func delPlist(){
+            let fileManager = FileManager.default
+            let directory = URL.libraryDirectory.appending(path: "Preferences").path()
+            let documentURL = directory + "/perez987.DownloadFullInstaller.plist"
+//            print("Preferences plist file: \(documentURL)")
+            do {
+               try fileManager.removeItem(atPath: documentURL)
+               print("Preferences plist file deleted sucessfully")
+            } catch {
+               print("Error deleting Preferences plist file: \(error)")
+            }
+        }
+
     var body: some View {
         VStack(spacing: 20) {
             // Header
@@ -31,11 +45,7 @@ struct LanguageSelectionView: View {
                 Text(NSLocalizedString("Language Selection", comment: "Language Selection Dialog title"))
                     .font(.title3)
                     .fontWeight(.bold)
-                
-//                Text(NSLocalizedString("Choose a language", comment: "Language selection description"))
-//                    .font(.body)
-//                    .foregroundColor(.secondary)
-//                    .multilineTextAlignment(.center)
+
             }
             .padding(.top, 20)
             
@@ -58,7 +68,7 @@ struct LanguageSelectionView: View {
                     .stroke(Color.gray.opacity(0.3), lineWidth: 1)
             )
             
-            // Buttons
+            // Buttons and alert
             HStack(spacing: 12) {
                 Button(NSLocalizedString("Cancel", comment: "")) {
                     isPresented = false
@@ -123,7 +133,8 @@ struct LanguageSelectionView: View {
                     primaryButton: .default(
                         Text(NSLocalizedString("OK", comment: "")),
                         action: {
-                            UserDefaults.resetDefaults()
+//                            UserDefaults.resetDefaults() // partial deletion of saved user preferences (AppleLanguages and SelectedLanguage)
+                            delPlist() // complete deletion of saved user preferences
                             isPresented = false
                         }
                     ),

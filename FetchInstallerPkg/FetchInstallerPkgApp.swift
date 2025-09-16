@@ -32,16 +32,6 @@ struct FetchInstallerPkgApp: App {
                         showLanguageSelection = true
                         print("First run, language selection dialog displayed")
                     }
-                    
-                    // plist preferences path
-                    if #available(macOS 13.0, *) {
-//                        print("Preferences:  \(URL.libraryDirectory.appending(path: "Preferences").path())")
-                        
-                        let fileManager = FileManager.default
-                        let directory = URL.libraryDirectory.appending(path: "Preferences").path()
-                        let documentURL = directory + "/perez987.DownloadFullInstaller.plist"
-                        print("Preferences plist file: \(documentURL)")
-                    }
 
                 }
             

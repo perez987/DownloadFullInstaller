@@ -26,6 +26,7 @@ struct Prefs {
 
         guard let downloadURL = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first else { return }
         prefs[Prefs.key(.downloadPath)] = downloadURL.path
+//        print("Download path: \(downloadURL.path)")
 
         UserDefaults.standard.register(defaults: prefs)
     }
