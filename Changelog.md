@@ -13,6 +13,10 @@ Changelog:
 - Clean up debug print statements
 - Updated project version and bundle identifier in Xcode project settings
 - Bump to 2.1.0 version.
+- Added Liquid Glass visual effects with backward compatibility:
+  - macOS 13-14: No visual changes (backward compatibility)
+  - macOS 15+ (Sequoia): Basic liquid glass effects using material backgrounds
+  - macOS 26+ (Tahoe): Enhanced liquid glass effects with improved materials and shadows
 
 
 ### 2.0.7-96

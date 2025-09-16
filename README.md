@@ -29,7 +29,8 @@ For Download Full Installer running on macOS 11+, you can get the [1.9.0-83](htt
 - A single macOS version or all versions can be displayed at once
 - Added sleep prevention logic to avoid sleep while app is running
 - Added language selection system
-- Updated translations with new strings.
+- Updated translations with new strings
+- Added Liquid Glass visual effects (progressive enhancement for macOS 15+ with enhanced features on macOS 26+)
 
 <!-- ### Notes about 2.0.7
 
