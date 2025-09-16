@@ -13,7 +13,7 @@
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/perez987/DownloadFullInstaller-2)
 ![Downloads](https://img.shields.io/badge/Downloads-43-00cd00) -->
 
-As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) by <em>scriptingosx</em> (no movement in more than 3 years) has been archived by the developer. This DownloadFullInstaller-2 repo is a standalone (<em>not forked</em>) version. I'll keep my repo active and up to date as long as it is useful to other users.
+As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) by <em>scriptingosx</em> has been archived by the developer. This DownloadFullInstaller-2 repo is a standalone (<em>not forked</em>) version. I'll keep my repo active and up to date as long as it is useful to other users.
 
 <img src="Images/DownloadFullInstallerx2.png" width="700px">
 
@@ -21,30 +21,36 @@ As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/Downloa
 
 Download Full Installer runs on macOS 13 Ventura through macOS 26 Tahoe.
 
-For Download Full Installer running on macOS 11+, you can download the [1.9.0-83](https://github.com/perez987/DownloadFullInstaller-2/releases/tag/1.9.0-83) version or work the Xcode project from the `old` branch.
+For Download Full Installer running on macOS 11+, you can get the [1.9.0-83](https://github.com/perez987/DownloadFullInstaller-2/releases/tag/1.9.0-83) version or the Xcode project from the `old` branch.
 
+- Updated up to macOS 26 Tahoe
+- Xcode project requires macOS Sequoia+
+- Preferences for choosing catalog are no longer a separate dialog but are now at the top of the main window
+- A single macOS version or all versions can be displayed at once
+- Added sleep prevention logic to avoid sleep while app is running
+- Added language selection system
+- Updated translations with new strings.
 
-
-### Notes about 2.0.7
+<!-- ### Notes about 2.0.7
 
 - Xcode project requires macOS Sequoia or Tahoe.
 - Bump project version to 2.0.7
-- Added flag icons to languages in language selection view.
+- Added flag icons to languages in language selection view.-->
 
 <!-- <img src="Images/DownloadFullInstaller-lang.png" width="624px"> -->
 
-### Notes about version 2.0.5
+<!-- ### Notes about version 2.0.5
 
 - Updated up to macOS 26 Tahoe. 
 - Xcode project requires macOS 13 Ventura or newer.
 - Added language selection system.
 - Added restart alert to language selection view.
 - Updated translations with new strings.
-- Added option to clear app's settings, stored in `~/Library/Containers/DownloadFullInstaller/Data/Library/Preferences`.
+- Added option to clear app's settings, stored in `~/Library/Containers/DownloadFullInstaller/Data/Library/Preferences`. -->
 
 <!-- <img src="Images/DownloadFullInstaller-lang-noflags.png" width="600px"> -->
 
-### Notes about version 2.0.0
+<!-- ### Notes about version 2.0.0
 
 GitHub user [matxpa](https://github.com/matxpa) was the main contributor at this stage.
 
@@ -52,7 +58,7 @@ GitHub user [matxpa](https://github.com/matxpa) was the main contributor at this
 * Improved Swift code.
 * Preferences for choosing catalog are no longer a separate dialpog but are now at the top of the main window.
 * A single macOS version or all versions can be displayed at once.
-* Fixed an issue with beta versions (displayed in wrong catalog).
+* Fixed an issue with beta versions (displayed in wrong catalog). -->
 <!-- * Beta word is overlaid on the installer icon if `product.title` contains `isBeta`. This happens when the official version of macOS hasn't been released yet. Beta versions after the official version of macOS don't have `isBeta` in `product.title`. Hence they do not have overlaid the word Beta. -->
 
 ## Original repository
