@@ -32,6 +32,7 @@ struct DownloadView: View {
                     Text(" ")
                 }
             }
+            .liquidGlass(intensity: .medium)
             .multilineTextAlignment(.leading)
         }
         if downloadManager.isComplete {
@@ -58,6 +59,8 @@ struct DownloadView: View {
                     }
                 }
             }
+            .liquidGlass(intensity: .medium)
+
         }
     }
 }

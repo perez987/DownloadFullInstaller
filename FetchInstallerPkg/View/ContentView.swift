@@ -29,6 +29,7 @@ struct ContentView: View {
                     InstallerView(product: installer)
                 }
                 .padding(4)
+                .liquidGlassContainer()
                 
                 // ---> Test, VStack border
                 //.border(.mint, width: 1)
@@ -39,6 +40,7 @@ struct ContentView: View {
                     InstallerView(product: installer)
                 }
                 .padding(4)
+                .liquidGlassContainer()
 
             }
                         
