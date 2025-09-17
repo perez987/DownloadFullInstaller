@@ -5,7 +5,7 @@
 "\n\n" = "\n\n";
 
 /* No comment provided by engineer. */
-"  in" = "  dans le catalogue";
+"  in catalog" = "  dans le catalogue";
 
 /* No comment provided by engineer. */
 "“%@” already exists. Do you want to replace it?" = "%@ existe déjà. Voulez-vous le remplacer?";

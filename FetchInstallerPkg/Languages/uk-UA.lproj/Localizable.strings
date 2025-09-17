@@ -5,7 +5,7 @@
 "\n\n" = "\n\n";
 
 /* No comment provided by engineer. */
-"  in" = " у каталозі";
+"  in catalog" = " у каталозі";
 
 /* No comment provided by engineer. */
 "“%@” already exists. Do you want to replace it?" = "%@ вже існує. Чи хочете ви його замінити?";

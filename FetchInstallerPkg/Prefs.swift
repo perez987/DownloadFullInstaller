@@ -18,6 +18,7 @@ struct Prefs {
         return key.rawValue
     }
 
+    // Save user preferences (AppleLanguages and LanguageSelectionShown)
     static func registerDefaults() {
         var prefs = [String: Any]()
         prefs[Prefs.key(.seedProgram)] = SeedProgram.noSeed.rawValue
@@ -30,6 +31,20 @@ struct Prefs {
 
         UserDefaults.standard.register(defaults: prefs)
     }
+
+    // Delete preferences plist file, the app will run as if it were the first time
+    static func delPlist(){
+            let fileManager = FileManager.default
+            let directory = URL.libraryDirectory.appending(path: "Preferences").path()
+            let documentURL = directory + "/perez987.DownloadFullInstaller.plist"
+//            print("Preferences plist file: \(documentURL)")
+            do {
+               try fileManager.removeItem(atPath: documentURL)
+               print("Preferences plist file deleted sucessfully")
+            } catch {
+               print("Error deleting Preferences plist file: \(error)")
+            }
+        }
 
     static var seedProgram: SeedProgram {
         let seedValue = UserDefaults.standard.string(forKey: Prefs.key(.seedProgram)) ?? ""
@@ -53,7 +68,8 @@ struct Prefs {
     static var languageSelectionShown: Bool {
         return UserDefaults.standard.bool(forKey: Prefs.key(.languageSelectionShown))
     }
-    
+
+    // Save user preferences (LanguageSelectionShown)
     static func setLanguageSelectionShown() {
         UserDefaults.standard.set(true, forKey: Prefs.key(.languageSelectionShown))
     }

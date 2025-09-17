@@ -16,7 +16,7 @@ struct PreferencesView: View {
 	var body: some View {
 		Form {
 			VStack(alignment: .trailing) {
-				HStack(alignment: .center) { Text("\n\n") }
+//				HStack(alignment: .center) { Text("\n\n") }
 
 				HStack(alignment: .center) {
 					Picker("", selection: $osNameID) {
@@ -26,7 +26,7 @@ struct PreferencesView: View {
 					}
 
 					HStack(alignment: .center) {
-						Text(NSLocalizedString("  in", comment: "OS selection separator")).font(.body)
+						Text(NSLocalizedString("  in catalog", comment: "")).font(.body)
 					}
 
 					if #available(macOS 14.0, *) {
@@ -57,9 +57,9 @@ struct PreferencesView: View {
 		}
         .liquidGlass(intensity: .subtle)
 		.frame(
-			width: 370.0,
-			height: 30.0,
-			alignment: .center
+			width: 380.0,
+			height: 38.0,
+            alignment: .centerFirstTextBaseline
 		)
 	}
 }

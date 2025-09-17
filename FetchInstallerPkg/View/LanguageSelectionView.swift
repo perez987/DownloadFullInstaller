@@ -20,19 +20,19 @@ struct LanguageSelectionView: View {
         self._selectedLanguage = State(initialValue: languageManager.currentLanguage)
     }
 
-    // Delete preferences plist file, the app will run as if it were the first time
-    func delPlist(){
-            let fileManager = FileManager.default
-            let directory = URL.libraryDirectory.appending(path: "Preferences").path()
-            let documentURL = directory + "/perez987.DownloadFullInstaller.plist"
-//            print("Preferences plist file: \(documentURL)")
-            do {
-               try fileManager.removeItem(atPath: documentURL)
-               print("Preferences plist file deleted sucessfully")
-            } catch {
-               print("Error deleting Preferences plist file: \(error)")
-            }
-        }
+//    // Delete preferences plist file, the app will run as if it were the first time
+//    func delPlist(){
+//            let fileManager = FileManager.default
+//            let directory = URL.libraryDirectory.appending(path: "Preferences").path()
+//            let documentURL = directory + "/perez987.DownloadFullInstaller.plist"
+////            print("Preferences plist file: \(documentURL)")
+//            do {
+//               try fileManager.removeItem(atPath: documentURL)
+//               print("Preferences plist file deleted sucessfully")
+//            } catch {
+//               print("Error deleting Preferences plist file: \(error)")
+//            }
+//        }
 
     var body: some View {
         VStack(spacing: 20) {
@@ -42,13 +42,17 @@ struct LanguageSelectionView: View {
                     .font(.system(size: 32))
                     .foregroundColor(.blue)
                 
-                Text(NSLocalizedString("Language Selection", comment: "Language Selection Dialog title"))
+                Text(NSLocalizedString("Language Selection", comment: ""))
                     .font(.title3)
                     .fontWeight(.bold)
-
             }
             .padding(.top, 20)
-            
+            .frame(
+                minWidth: 400,
+                idealWidth: 400,
+                maxWidth: 400
+            )
+
             // Language list
             VStack(spacing: 0) {
                 ForEach(languageManager.availableLanguages, id: \.code) { language in
@@ -74,7 +78,8 @@ struct LanguageSelectionView: View {
                     isPresented = false
                 }
                 .keyboardShortcut(.escape)
-                
+                .liquidGlass(intensity: .subtle)
+
                 Spacer()
                 
                 Button(NSLocalizedString("Continue", comment: "")) {
@@ -98,6 +103,7 @@ struct LanguageSelectionView: View {
                     )
                     
                 }
+                .liquidGlass(intensity: .subtle)
             }
             
             Divider()
@@ -114,9 +120,9 @@ struct LanguageSelectionView: View {
 
                 Button(NSLocalizedString("Yes", comment: "")) {
                     showSettingsAlert = true
-
                 }
                 .buttonStyle(.bordered)
+                .liquidGlass(intensity: .subtle)
             }
 
             HStack(spacing: 10) {
@@ -134,7 +140,7 @@ struct LanguageSelectionView: View {
                         Text(NSLocalizedString("OK", comment: "")),
                         action: {
 //                            UserDefaults.resetDefaults() // partial deletion of saved user preferences (AppleLanguages and SelectedLanguage)
-                            delPlist() // complete deletion of saved app preferences
+                            Prefs.delPlist() // complete deletion of saved app preferences
                             isPresented = false
                         }
                     ),
@@ -195,8 +201,7 @@ struct LanguageRow: View {
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
-//                }
-                
+
                 Spacer()
                 
                 if isSelected {
@@ -207,6 +212,7 @@ struct LanguageRow: View {
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 12)
+            .liquidGlass(intensity: .subtle)
             .background(isSelected ? Color.blue.opacity(0.1) : Color.clear)
         }
         .buttonStyle(PlainButtonStyle())

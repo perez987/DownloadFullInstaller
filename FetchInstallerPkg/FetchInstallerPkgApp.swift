@@ -58,7 +58,7 @@ struct FetchInstallerPkgApp: App {
 
         // window resizability derived from the window’s content
         // macOS 13 Ventura or newer
-            .windowResizability(.contentSize)
+//            .windowResizability(.contentSize)
         
         .commands {
             CommandGroup(replacing: .appSettings) {

@@ -5,7 +5,7 @@
 "\n\n" = "\n\n";
 
 /* No comment provided by engineer. */
-"  in" = "  en catálogo";
+"  in catalog" = "  en catálogo";
 
 /* No comment provided by engineer. */
 "“%@” already exists. Do you want to replace it?" = "%@ ya existe. ¿Quieres reemplazarlo?";
@@ -80,7 +80,7 @@
 "Yes" = "Sí";
 
 /* No comment provided by engineer. */
-"Clear app settings?" = "Eliminar ajustes de la app?";
+"Clear app settings?" = "¿Eliminar ajustes de la app?";
 
 /* No comment provided by engineer. */
 "(App preferences will be cleared)" = "(Las preferencias de la aplicación se borrarán)";
