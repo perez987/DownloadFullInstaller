@@ -1,7 +1,7 @@
 
-### 2.2.0-113
+### 2.2.0-115
 
-Add Liquid Glass for visual effects with backward compatibility:
+Initial Liquid Glass support with backward compatibility:
 
 - macOS 13-14: No visual changes
 - macOS 15+: Basic liquid glass effects
