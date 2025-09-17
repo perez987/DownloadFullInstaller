@@ -1,4 +1,13 @@
 
+### 2.2.0-113
+
+Add Liquid Glass for visual effects with backward compatibility:
+
+- macOS 13-14: No visual changes
+- macOS 15+: Basic liquid glass effects
+- macOS 26+: Enhanced effects.
+
+
 ### 2.1.0-102
 
 - `main` branch.
