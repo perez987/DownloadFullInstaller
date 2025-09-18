@@ -22,7 +22,7 @@ class SUCatalog: ObservableObject {
     
     func load() {
         let catalogURL = catalogURL(for: Prefs.seedProgram)
-        print("Default catalog: \(catalogURL.absoluteString)")
+//        print("Default catalog: \(catalogURL.absoluteString)")
         
         let sessionConfig = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)

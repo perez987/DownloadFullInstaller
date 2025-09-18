@@ -5,7 +5,7 @@
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/total?label=Downloads&color=00cd00)
 
 
-<img src="Images/DownloadFullInstaller-bigsur.png" width="624px">
+<img src="Images/DownloadFullInstaller-light.png" width="624px">
 
 ## Download Full Installer from macOS 11 up to 26 
 
@@ -17,7 +17,6 @@ This branch of DownloadFullInstaller runs on macOS 11 Big Sur up to macOS 26 Tah
 
 - Platform:
 
-	- x86_64.
 	- DownloadFullInstaller.app runs on macOS 11+.
 	- Xcode requires macOS 11+.
 

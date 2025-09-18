@@ -28,6 +28,7 @@
 		D91A1C122E76372B0040DF7E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D91A1C142E76372B0040DF7E /* Localizable.strings */; };
 		D91A1C152E7637350040DF7E /* Download-Full-Installer-InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D91A1C172E7637350040DF7E /* Download-Full-Installer-InfoPlist.strings */; };
 		D9641B932E76455500A32D05 /* Caffeine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9641B922E76455500A32D05 /* Caffeine.swift */; };
+		D99904832E7CCB8C000F53A4 /* OSNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99904822E7CCB87000F53A4 /* OSNames.swift */; };
 		D9D89C742E761E9D00CC70CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9D89C732E761E9D00CC70CB /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,7 @@
 		D91A1C1A2E7637650040DF7E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D91A1C1B2E7637650040DF7E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = "fr.lproj/Download-Full-Installer-InfoPlist.strings"; sourceTree = "<group>"; };
 		D9641B922E76455500A32D05 /* Caffeine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Caffeine.swift; sourceTree = "<group>"; };
+		D99904822E7CCB87000F53A4 /* OSNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSNames.swift; sourceTree = "<group>"; };
 		D9D89C732E761E9D00CC70CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,6 +127,7 @@
 				C69C80D126788B8D00E20E20 /* Catalog.swift */,
 				C69C80CF26788B6B00E20E20 /* DistParserDelegate.swift */,
 				C69C80D526788BB600E20E20 /* MetaInfo.swift */,
+				D99904822E7CCB87000F53A4 /* OSNames.swift */,
 				C69C80D326788BA100E20E20 /* Package.swift */,
 				C69C80CD26788B1400E20E20 /* Product.swift */,
 				C635B0AB26789F5F001EEA82 /* SeedProgram.swift */,
@@ -249,6 +252,7 @@
 				C635B0AA26789DA9001EEA82 /* PreferencesView.swift in Sources */,
 				C69C80DD26788C7900E20E20 /* InstallerView.swift in Sources */,
 				C635B0DA2678E9C4001EEA82 /* Prefs.swift in Sources */,
+				D99904832E7CCB8C000F53A4 /* OSNames.swift in Sources */,
 				C69C80CE26788B1400E20E20 /* Product.swift in Sources */,
 				C63643622670E1B800301DC8 /* FetchInstallerPkgApp.swift in Sources */,
 				C635B0AC26789F5F001EEA82 /* SeedProgram.swift in Sources */,
@@ -413,7 +417,7 @@
 		C636436D2670E1B900301DC8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = x86_64;
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
@@ -422,7 +426,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 89;
+				CURRENT_PROJECT_VERSION = 92;
 				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
 				ENABLE_APP_SANDBOX = YES;
@@ -454,7 +458,7 @@
 		C636436E2670E1B900301DC8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = x86_64;
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
@@ -463,7 +467,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 89;
+				CURRENT_PROJECT_VERSION = 92;
 				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
 				ENABLE_APP_SANDBOX = YES;
