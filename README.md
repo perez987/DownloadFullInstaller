@@ -15,13 +15,13 @@
 
 As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) by <em>scriptingosx</em> has been archived by the developer. This DownloadFullInstaller-2 repo is a standalone (<em>not forked</em>) version. I'll keep my repo active and up to date as long as it is useful to other users.
 
-<img src="Images/DownloadFullInstallerx2.png" width="700px">
+<img src="Images/DownloadFullInstaller-light.png" width="700px">
 
 ### Download Full Installer from macOS 13 up to 26 
 
 Download Full Installer runs on macOS 13 Ventura through macOS 26 Tahoe.
 
-For Download Full Installer running on macOS 11+, you can get the [1.9.0-83](https://github.com/perez987/DownloadFullInstaller-2/releases/tag/1.9.0-83) version or the Xcode project from the `old` branch.
+For Download Full Installer running on macOS 11+, you can get the [1.9.0-83](https://github.com/perez987/DownloadFullInstaller-2/releases/tag/1.9.0-83) app version or the `old` branch  Xcode project and build it from source.
 
 - Updated up to macOS 26 Tahoe
 - Xcode project requires macOS Sequoia+
@@ -29,7 +29,8 @@ For Download Full Installer running on macOS 11+, you can get the [1.9.0-83](htt
 - A single macOS version or all versions can be displayed at once
 - Added sleep prevention logic to avoid sleep while app is running
 - Added language selection system
-- Updated translations with new strings.
+- Updated translations with new strings
+- Initial support for Liquid Glass wirh backward compatibility.
 
 <!-- ### Notes about 2.0.7
 

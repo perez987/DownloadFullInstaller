@@ -1,4 +1,9 @@
 
+### 2.2.1-118
+
+- Architecture universal: `x86_64` + `arm64`.
+- App runs on Intel and Apple Silicon.
+
 ### 2.2.0-115
 
 Initial Liquid Glass support with backward compatibility:
