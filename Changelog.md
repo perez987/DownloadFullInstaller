@@ -1,10 +1,10 @@
-## 1.9 (83)
+## 1.9 (92)
 
 ### App for macOS 11+
 
 - Platform:
 
-	- x86_64.
+	- Standard architecture `x86_64` + `arm64`.
 	- DownloadFullInstaller.app runs on macOS 11 Big Sur or newer.
 	- Xcode requires macOS 11 Big Sur or newer.
 
