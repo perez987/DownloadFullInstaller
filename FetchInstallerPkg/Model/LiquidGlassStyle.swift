@@ -36,7 +36,7 @@ struct LiquidGlassEffect: ViewModifier {
     
     func body(content: Content) -> some View {
         if SystemVersion.isTahoeOrLater {
-            // macOS 26+ (Tahoe): Enhanced liquid glass effects
+            // macOS 26: Enhanced effects
             content
                 .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 12))
                 .overlay(
@@ -45,7 +45,7 @@ struct LiquidGlassEffect: ViewModifier {
                 )
                 .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 2)
         } else if SystemVersion.isSequoiaOrLater {
-            // macOS 15+ (Sequoia): Basic liquid glass effects
+            // macOS 15+: Basic effects
             content
                 .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 8))
                 .overlay(
@@ -53,7 +53,7 @@ struct LiquidGlassEffect: ViewModifier {
                         .stroke(.tertiary, lineWidth: 0.3)
                 )
         } else {
-            // macOS 13-14: No changes to maintain backward compatibility
+            // macOS 13-14: No changes
             content
         }
     }
