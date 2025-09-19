@@ -1,19 +1,9 @@
 {
   "images": [
     {
-      "filename": "macOS Big Sur Light.png",
+      "filename": "macOS Big Sur.png",
       "idiom": "mac"
-    },
-	{
-		"appearances": [
-			{
-				"appearance": "luminosity",
-				"value": "dark"
-			}
-   ],
-   "filename": "macOS Big Sur Dark.png",
-   "idiom": "mac"
- }
+    }
   ],
   "info": {
     "author": "xcode",
