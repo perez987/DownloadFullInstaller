@@ -48,11 +48,11 @@ From this point on, Download Full Installer will run without security prompts be
 > com.apple.quarantine
 ```
 
-`xattr -cr` removes extended attributes:
+- `xattr -cr` removes extended attributes:
 
 `> sudo xattr -cr /Applications/Download\ Full\ Installer.app`
 
-After this command, xattr no longer displays `com.apple.quarantine` extended attribute:
+- After this command, xattr no longer displays `com.apple.quarantine` extended attribute:
 
 ```
 > sudo xattr /Applications/Download\ Full\ Installer.app 
