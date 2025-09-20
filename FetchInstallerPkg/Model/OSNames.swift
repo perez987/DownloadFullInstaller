@@ -1,8 +1,7 @@
 //
 //  OSNames.swift
-//  OSNames
 //
-//  Created on 09/12/2024.
+//  Created on 09/12/2024
 //
 
 import Foundation

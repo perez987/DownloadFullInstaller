@@ -1,15 +1,14 @@
 //
 //  IconView.swift
-//  FetchInstallerPkg
 //
-//  Created by Armin Briegel on 2021-06-16.
+//  Created by Armin Briegel on 2021-06-16
 //
 
 import SwiftUI
 
 struct IconView: View {
     @ObservedObject var product: Product
-    
+
     let iconOS: [String: String] = [
         "11": "Lion",
         "12": "Mountain Lion",
@@ -37,6 +36,7 @@ struct IconView: View {
                 .aspectRatio(contentMode: .fit)
                 .foregroundColor(Color.blue)
 
+            // Beta text placed over the icon if the installer is beta
             let isBeta = "beta"
             if product.title != nil && product.title!.lowercased().contains(isBeta) {
                 Text(" " + isBeta + " ")
@@ -47,5 +47,12 @@ struct IconView: View {
             }
         }.frame(width: 50.0, height: 50.0, alignment: .center)
     }
-    
 }
+
+/*
+ struct IconView_Previews: PreviewProvider {
+     static var previews: some View {
+         IconView(product: nil)
+     }
+ }
+ */

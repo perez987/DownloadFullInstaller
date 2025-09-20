@@ -1,8 +1,7 @@
 //
 //  Package.swift
-//  FetchInstallerPkg
 //
-//  Created by Armin Briegel on 2021-06-15.
+//  Created by Armin Briegel on 2021-06-15
 //
 
 import Foundation
@@ -12,7 +11,7 @@ struct Package: Codable {
     let url: String
     let digest: String?
     let metadataURL: String?
-        
+
     enum CodingKeys: String, CodingKey {
         case size = "Size"
         case url = "URL"

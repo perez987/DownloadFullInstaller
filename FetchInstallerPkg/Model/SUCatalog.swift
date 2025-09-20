@@ -1,83 +1,92 @@
 //
 //  SUCatalog.swift
-//  FetchInstallerPkg
 //
-//  Created by Armin Briegel on 2021-06-09.
+//  Created by Armin Briegel on 2021-06-09
 //
 
 import Foundation
 
 class SUCatalog: ObservableObject {
+    var thisComponent: String { return String(describing: self) }
+
     @Published var catalog: Catalog?
     var products: [String: Product]? { return catalog?.products }
-    
+
     @Published var installers = [Product]()
-    
+    var uniqueInstallersList: [String] = []
+
     @Published var isLoading = false
     @Published var hasLoaded = false
-    
+
     init() {
         load()
     }
-    
-    func load() {
-        let catalogURL = catalogURL(for: Prefs.seedProgram)
-//        print("Default catalog: \(catalogURL.absoluteString)")
-        
-        let sessionConfig = URLSessionConfiguration.ephemeral
-        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
 
-        let task = session.dataTask(with: catalogURL) { data, response, error in
-            
-            if error != nil {
-                print(error!.localizedDescription)
-                return
+    func load() {
+        uniqueInstallersList = []
+        let catalogURLArray: [URL] = catalogURL(for: Prefs.seedProgram, for: Prefs.osNameID)
+
+        catalogURLArray.forEach {
+            let sessionConfig = URLSessionConfiguration.ephemeral
+            let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
+
+            let task = session.dataTask(with: $0) { data, response, error in
+
+                if error != nil {
+                    print("\(self.thisComponent) : \(error!.localizedDescription)")
+                    return
+                }
+
+                let httpResponse = response as! HTTPURLResponse
+                if httpResponse.statusCode != 200 {
+//                    print("\(self.thisComponent) : \(httpResponse.statusCode)")
+                } else {
+                    if data != nil {
+//                        print("\(self.thisComponent) : \(String(decoding: data!, as: UTF8.self))")
+                        DispatchQueue.main.async {
+                            self.decode(data: data!)
+                        }
+                    }
+                }
             }
-            
-            let httpResponse = response as! HTTPURLResponse
-            if httpResponse.statusCode != 200 {
-                print(httpResponse.statusCode)
-            } else {
-                if data != nil {
-                    DispatchQueue.main.async {
-                        self.decode(data: data!)                    }
-                 }
-            }
+            isLoading = true
+            hasLoaded = false
+            self.catalog = nil
+            self.installers = [Product]()
+            task.resume()
         }
-        isLoading = true
-        hasLoaded = false
-        self.catalog = nil
-        self.installers = [Product]()
-        task.resume()
+
     }
-    
+
     private func decode(data: Data) {
-        self.isLoading = false
-        self.hasLoaded = true
+        isLoading = false
+        hasLoaded = true
 
         let decoder = PropertyListDecoder()
-        self.catalog = try! decoder.decode(Catalog.self, from: data)
-        
-        if let products = self.products {
-            print("Loaded catalog with \(products.count) products")
-                        
+        catalog = try! decoder.decode(Catalog.self, from: data)
+
+        if let products = products {
+
             for (productKey, product) in products {
                 product.key = productKey
                 if let metainfo = product.extendedMetaInfo {
                     if metainfo.sharedSupport != nil {
-                        // this is an installer, add to list
-                        self.installers.append(product)
-                        product.loadDistribution()
+                        if !uniqueInstallersList.contains(productKey) {
+                            // this is an installer, add to list
+                            uniqueInstallersList.append(productKey)
+                            installers.append(product)
+                            product.loadDistribution()
+                        }
                     }
                 }
+
             }
-            print("Found \(self.installers.count) installer PKGs")
+
+//            print("\(self.thisComponent) : \(products.count) products found")
+//            print("\(self.thisComponent) : \(self.installers.count) installer pkgs found")
+
             installers.sort { $0.postDate > $1.postDate }
         }
+
     }
 }
-
-
-
-
-

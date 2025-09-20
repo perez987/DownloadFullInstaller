@@ -1,12 +1,11 @@
 //
 //  DownloadManager.swift
-//  FetchInstallerPkg
 //
-//  Created by Armin Briegel on 2021-06-14.
+//  Created by Armin Briegel on 2021-06-14
 //
 
-import Foundation
 import AppKit
+import Foundation
 
 @objc class DownloadManager: NSObject, ObservableObject {
     @Published var downloadURL: URL?
@@ -16,23 +15,24 @@ import AppKit
     @Published var progressString: String = ""
     @Published var isComplete = false
     @Published var filename: String?
-    
+    @Published var installerURLFiles: [URL]?
+
     lazy var urlSession = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: nil)
-    var downloadTask : URLSessionDownloadTask?
+    var downloadTask: URLSessionDownloadTask?
     var byteFormatter = ByteCountFormatter()
-    
+
     static let shared = DownloadManager()
-    
+
     var fileExists: Bool {
         let destination = Prefs.downloadURL
-        if self.filename != nil {
+        if filename != nil {
             let file = destination.appendingPathComponent(filename!)
             return FileManager.default.fileExists(atPath: file.path)
         } else {
             return false
         }
     }
-    
+
     func download(url: URL?, replacing: Bool = false) throws {
         // reset the variables
         progress = 0.0
@@ -40,23 +40,23 @@ import AppKit
         localURL = nil
         downloadURL = url
         isComplete = false
-        
+
         byteFormatter.countStyle = .file
-        
+
         if replacing {
             let destination = Prefs.downloadURL
             let suggestedFilename = filename ?? "InstallerAssistant.pkg"
             let file = destination.appendingPathComponent(suggestedFilename)
             try FileManager.default.removeItem(at: file)
         }
-        
+
         if url != nil {
             downloadTask = urlSession.downloadTask(with: url!)
             downloadTask!.resume()
             print("Downloading \(filename ?? "InstallerAssistant.pkg")")
         }
     }
-    
+
     func cancel() {
         if isDownloading && downloadTask != nil {
             downloadTask?.cancel()
@@ -67,7 +67,7 @@ import AppKit
         }
         print("Download of \(filename ?? "InstallerAssistant.pkg") cancelled")
     }
-    
+
     func revealInFinder() {
         if isComplete {
             let destination = Prefs.downloadPath
@@ -76,29 +76,29 @@ import AppKit
     }
 }
 
-extension DownloadManager : URLSessionDownloadDelegate {
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+extension DownloadManager: URLSessionDownloadDelegate {
+    func urlSession(_: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         let destination = Prefs.downloadURL
-        
+
         // get the suggest file name or create a uuid string
         let suggestedFilename = filename ?? downloadTask.response?.suggestedFilename ?? UUID().uuidString
-        
+
         do {
             let file = destination.appendingPathComponent(suggestedFilename)
             let newURL = try FileManager.default.replaceItemAt(file, withItemAt: location)
-            print("Downloaded of \(filename ?? "Download unspecified error") finished")
+            print("Download of \(filename ?? "InstallerAssistant.pkg") finished")
             DispatchQueue.main.async {
                 self.isDownloading = false
                 self.localURL = newURL
                 self.isComplete = true
             }
-        }
-        catch {
-//            print(error.localizedDescription)
+        } catch {
+            NSLog(error.localizedDescription)
         }
     }
-    
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+
+    func urlSession(_: URLSession, downloadTask _: URLSessionDownloadTask, didWriteData _: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+//        print("urlSession -> didWriteData: \(totalBytesWritten)/\(totalBytesExpectedToWrite)")
         DispatchQueue.main.async {
             self.progress = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
             self.progressString = "\(self.byteFormatter.string(fromByteCount: totalBytesWritten))/\(self.byteFormatter.string(fromByteCount: totalBytesExpectedToWrite))"

@@ -6,6 +6,9 @@
 "\n\n" = "\n\n";
 
 /* No comment provided by engineer. */
+"  in catalog" = "  in catalog";
+
+/* No comment provided by engineer. */
 "%@ already exists. Do you want to replace it?" = "%@ already exists. Do you want to replace it?";
 
 /* No comment provided by engineer. */
@@ -18,10 +21,7 @@
 "Loading..." = "Loading...";
 
 /* No comment provided by engineer. */
-"Copy macOS %@ (%@) URL" = "Copy macOS %@ (%@) URL";
-
-/* No comment provided by engineer. */
-"Create application %@ %@ (%@)" = "Create application %@ %@ (%@)";
+"Copy macOS %@ %@ (%@) %@ URL" = "Copy macOS %@ %@ (%@) %@ URL";
 
 /* No comment provided by engineer. */
 "Download macOS %@ (%@) Installer" = "Download macOS %@ (%@) Installer";
