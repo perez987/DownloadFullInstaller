@@ -28,6 +28,7 @@ First, go to Privacy & Security to see if there's a message about blocking Downl
 <kbd>
 <img src="Images/xattr2.png" width="480px"">
 </kbd>
+<br>
 
 By clicking Open Anyway, macOS will ask again if you want to open the file, and if you answer yes, it will ask for the user password and open it. 
 
