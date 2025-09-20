@@ -19,7 +19,9 @@ As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/Downloa
 
 ### Download Full Installer from macOS 13 up to 26 
 
-Download Full Installer runs on macOS 13 Ventura through macOS 26 Tahoe. 
+Download Full Installer runs on macOS 13 Ventura through macOS 26 Tahoe.
+
+**Note**: For Download Full Installer running and compiling on macOS 11+, you can get the [1.9.0-83](https://github.com/perez987/DownloadFullInstaller-2/releases/tag/1.9.0-83) app version or the Xcode project from the [`old`](https://github.com/perez987/DownloadFullInstaller-2/tree/old) branch and build the app from source.
 
 - Updated up to macOS 26 Tahoe
 - Xcode project requires macOS Sequoia+
@@ -30,7 +32,9 @@ Download Full Installer runs on macOS 13 Ventura through macOS 26 Tahoe.
 - Updated translations with new strings
 - Initial support for Liquid Glass wirh backward compatibility.
 
-**Note**: For Download Full Installer running and compiling on macOS 11+, you can get the [1.9.0-83](https://github.com/perez987/DownloadFullInstaller-2/releases/tag/1.9.0-83) app version or the Xcode project from the [`old`](https://github.com/perez987/DownloadFullInstaller-2/tree/old) branch and build the app from source. 
+### App is damaged and can't be opened
+
+If you see `App is damaged and can't be opened` when you open DownloadFullInstaller for the first time, read [this](App-damaged.md).
 
 <!-- ### Notes about 2.0.7
 
