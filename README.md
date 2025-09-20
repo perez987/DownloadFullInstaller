@@ -16,7 +16,7 @@ This branch of DownloadFullInstaller runs on macOS 11 Big Sur up to macOS 26 Tah
 - Add constants and URL catalog for Tahoe.
 - Add Tahoe icons.
 - Add sleep prevention logic:
-	- Add logic to disable sleep while the app is open.
+	- Disable sleep while the app is open.
 	- Sleep resumes when the app is closed.
 - A single macOS version or all versions can be displayed at once
 - Prerences are no longer in a dialog but at the top of main view.
