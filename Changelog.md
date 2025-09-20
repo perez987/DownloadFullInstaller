@@ -3,7 +3,7 @@
 - Refactor Preferences logic.
 - A single macOS version or all versions can be displayed at once
 - Prerences are no longer in a dialog but at the top of main view.
-- - Remove localization (English default).
+- Remove localization (English default).
 
 
 ## 1.9 (92)
