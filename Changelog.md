@@ -1,6 +1,12 @@
-## 1.9 (92)
+## 2.0 (97)
 
-### App for macOS 11+
+- Refactor Preferences logic.
+- A single macOS version or all versions can be displayed at once
+- Prerences are no longer in a dialog but at the top of main view.
+- - Remove localization (English default).
+
+
+## 1.9 (92)
 
 - Platform:
 
@@ -13,7 +19,6 @@
 - Add Tahoe icons.
 
 - Add sleep prevention logic:
-	- Installation packages are quite large (up to 17 GB on Tahoe); computer may go to sleep before completing the download.
 	- Add logic to disable sleep while the app window is open.
 	- Sleep resumes when the app window is closed.
 

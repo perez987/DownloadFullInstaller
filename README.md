@@ -4,34 +4,23 @@
 ![Xcode](https://img.shields.io/badge/Xcode-macOS11+-lavender.svg)
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/total?label=Downloads&color=00cd00)
 
-
 <img src="Images/DownloadFullInstaller-light.png" width="624px">
 
 ## Download Full Installer from macOS 11 up to 26 
 
 This branch of DownloadFullInstaller runs on macOS 11 Big Sur up to macOS 26 Tahoe.
 
-### Build 1.9 (83)
-
-- App and Xcode project for macOS Big Sur, Monterey and newer.
-
 - Platform:
-
 	- DownloadFullInstaller.app runs on macOS 11+.
 	- Xcode requires macOS 11+.
-
 - Add constants and URL catalog for Tahoe.
-
 - Add Tahoe icons.
-
 - Add sleep prevention logic:
-	- Installation packages are quite large (up to 17 GB on Tahoe); computer may go to sleep before completing the download.
-	- Add logic to disable sleep while the app window is open.
-	- Sleep resumes when the app window is closed.
-
+	- Add logic to disable sleep while the app is open.
+	- Sleep resumes when the app is closed.
+- A single macOS version or all versions can be displayed at once
+- Prerences are no longer in a dialog but at the top of main view.
 - Update copyright info.
-
-- Add localization (English, Spanish, French).
 
 ## Original repository
 
