@@ -25,7 +25,9 @@ How to fix this issue?
 
 First, go to Privacy & Security to see if there's a message about blocking Download Full Installer with Open Anyway option. This is the easiest way to fix it.
 
-<img src="Images/xattr2.png" width="480px" style="border-width:1px; border-style:solid; border-color:lightgrey;">
+<kbd>
+<img src="Images/xattr2.png" width="480px"">
+</kbd>
 
 By clicking Open Anyway, macOS will ask again if you want to open the file, and if you answer yes, it will ask for the user password and open it. 
 
