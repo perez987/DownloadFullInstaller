@@ -1,12 +1,12 @@
 # Download Full Installer 2
 
 [![DownloadFullInstaller-2](https://github.com/perez987/DownloadFullInstaller-2/actions/workflows/Build.yml/badge.svg)](https://github.com/perez987/DownloadFullInstaller-2/actions/workflows/Build.yml)
-[![License: MIT](https://github.com/perez987/DownloadFullInstaller-2/blob/main/Images/MIT.svg)](https://github.com/perez987/DownloadFullInstaller-2/blob/main/LICENSE)
 ![Platform](https://img.shields.io/badge/macOS-13+-orange.svg)
 ![Xcode](https://img.shields.io/badge/Xcode-macOS15+-lavender.svg)
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/total?label=Downloads&color=9494ff)
 
-<!-- ![Swift](https://img.shields.io/badge/Swift-5.5-orange.svg)
+<!-- [![License: MIT](https://github.com/perez987/DownloadFullInstaller-2/blob/main/Images/MIT.svg)](https://github.com/perez987/DownloadFullInstaller-2/blob/main/LICENSE)
+![Swift](https://img.shields.io/badge/Swift-5.5-orange.svg)
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/latest/total?label=Latest&color=00cd00)
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/2.0.3-71/total?label=v2.0.3-71&color=00cd00)
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/total?label=Downloads&color=00cd00)
