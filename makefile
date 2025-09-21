@@ -1,5 +1,5 @@
 FetchInstallerPkg:
-	@echo "Building OpenCore Creator..."
+	@echo "Building FetchInstallerPkg..."
 	@$/xcodebuild -project "FetchInstallerPkg.xcodeproj" -alltargets -configuration Release
 	@$/Open ./build/Release
 
