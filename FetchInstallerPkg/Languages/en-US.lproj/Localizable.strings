@@ -22,6 +22,9 @@
 /* No comment provided by engineer. */
 "Download %@ %@ (%@) Installer" = "Download %@ %@ (%@) Installer";
 
+/* Create installer app button help text */
+"Create %@ %@ (%@) Install App" = "Create %@ %@ (%@) Install App";
+
 /* No comment provided by engineer. */
 "Download Full Installer" = "Download Full Installer";
 
