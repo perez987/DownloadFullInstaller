@@ -1,4 +1,6 @@
 # Download Full Installer 2
+
+[![DownloadFullInstaller-2](https://github.com/perez987/DownloadFullInstaller-2/actions/workflows/Build.yml/badge.svg)](https://github.com/perez987/DownloadFullInstaller-2/actions/workflows/Build.yml)
 ![License: MIT](https://github.com/perez987/DownloadFullInstaller-2/blob/main/Images/MIT.svg)
 ![Platform](https://img.shields.io/badge/macOS-13+-orange.svg)
 ![Xcode](https://img.shields.io/badge/Xcode-macOS15+-lavender.svg)
