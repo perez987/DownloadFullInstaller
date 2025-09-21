@@ -90,7 +90,12 @@ struct InstallerView: View {
                     Button(action: {
                         createInstallerApp()
                     }) {
-                        Image(systemName: "externaldrive.badge.plus").font(.title)
+                        if isCreatingInstaller {
+                            ProgressView()
+                                .scaleEffect(0.8)
+                        } else {
+                            Image(systemName: "externaldrive.badge.plus").font(.title)
+                        }
                     }
                     .help(String(format: NSLocalizedString("Create %@ %@ (%@) Install App", comment: "Create installer app button help text"), product.osName ?? "", product.productVersion ?? "", product.buildVersion ?? ""))
                     .disabled(downloadManager.isDownloading || isCreatingInstaller || !downloadManager.isComplete)
