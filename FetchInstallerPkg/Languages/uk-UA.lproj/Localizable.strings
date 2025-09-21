@@ -20,9 +20,6 @@
 "Copy %@ %@ (%@) %@ URL" = "Копіювати %@ %@ (%@) %@ URL";
 
 /* No comment provided by engineer. */
-"Create application %@ %@ (%@)" = "Створити програму %@ %@ (%@)";
-
-/* No comment provided by engineer. */
 "Download %@ %@ (%@) Installer" = "Завантажити інсталятор %@ %@ (%@)";
 
 /* No comment provided by engineer. */

@@ -64,6 +64,7 @@ struct LanguageSelectionView: View {
                         }
                     )
                 }
+//                .liquidGlass(intensity: .subtle)
             }
             .background(Color(NSColor.controlBackgroundColor))
             .cornerRadius(8)
@@ -185,7 +186,6 @@ struct LanguageRow: View {
     var body: some View {
         Button(action: action) {
             HStack {
-//                VStack(alignment: .leading, spacing: 2) {
 
                     Text(flagEmoji(for: language.code))
                         .font(.title2)
@@ -203,7 +203,8 @@ struct LanguageRow: View {
                     }
 
                 Spacer()
-                
+//                    .liquidGlass(intensity: .subtle)
+
                 if isSelected {
                     Image(systemName: "checkmark.circle.fill")
                         .foregroundColor(.blue)

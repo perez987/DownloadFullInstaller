@@ -20,9 +20,6 @@
 "Copy %@ %@ (%@) %@ URL" = "Copier %@ %@ (%@) %@ URL";
 
 /* No comment provided by engineer. */
-"Create application %@ %@ (%@)" = "Créer une application %@ %@ (%@)";
-
-/* No comment provided by engineer. */
 "Download %@ %@ (%@) Installer" = "Télécharger %@ %@ (%@) Le programme";
 
 /* No comment provided by engineer. */

@@ -20,9 +20,6 @@
 "Copy %@ %@ (%@) %@ URL" = "复制 %@ %@ (%@) %@ URL";
 
 /* No comment provided by engineer. */
-"Create application %@ %@ (%@)" = "创建应用程序 %@ %@ (%@)";
-
-/* No comment provided by engineer. */
 "Download %@ %@ (%@) Installer" = "下载 %@ %@ (%@) 安装程序";
 
 /* No comment provided by engineer. */

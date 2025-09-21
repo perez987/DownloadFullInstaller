@@ -19,20 +19,29 @@ struct PreferencesView: View {
 //				HStack(alignment: .center) { Text("\n\n") }
 
 				HStack(alignment: .center) {
-					Picker("", selection: $osNameID) {
+
+                    // Three ways to hide label text in a Picker:
+                    // - empty string as first parameter: Picker("", selection: $osNameID) {
+                    // - label: EmptyView() as second parametePicker(selection: $osNameID, label: EmptyView()) {
+                    // - .labelsHidden() as View property: Picker("osNameID", selection: $osNameID) {
+
+					Picker("osNameID", selection: $osNameID) {
 						ForEach(OsNameID.allCases) { osName in
 							Text(osName.rawValue).font(.body)
 						}
 					}
 
-					HStack(alignment: .center) {
+                    HStack(alignment: .center) {
 						Text(NSLocalizedString("  in catalog", comment: "")).font(.body)
 					}
 
 					if #available(macOS 14.0, *) {
-						Picker("", selection: $seedProgram) {
+						Picker(selection: $seedProgram, label: EmptyView()) {
 							ForEach(SeedProgram.allCases) { program in
-								Text(program.rawValue).font(.body)
+                                HStack {
+                                    Spacer()
+                                    Text(program.rawValue).font(.body)
+                                }
 							}
 						}
 						.onChange(of: seedProgram) { sucatalog.load()
@@ -40,10 +49,12 @@ struct PreferencesView: View {
 						.onChange(of: osNameID) { sucatalog.load()
 						}
 					} else {
-						Picker("", selection: $seedProgram) {
+						Picker(selection: $seedProgram, label: EmptyView()) {
 							ForEach(SeedProgram.allCases) { program in
-								Text(program.rawValue).font(.body)
-							}
+                                HStack {
+                                    Spacer()
+                                    Text(program.rawValue).font(.body)
+                                }							}
 						}
 						.onChange(of: seedProgram) { _ in
 							sucatalog.load()
@@ -57,10 +68,14 @@ struct PreferencesView: View {
 		}
         .liquidGlass(intensity: .subtle)
 		.frame(
-			width: 380.0,
+			width: 400.0,
 			height: 38.0,
             alignment: .centerFirstTextBaseline
 		)
+
+        // Hide label texts in the Pickers
+        .labelsHidden()
+
 	}
 }
 
