@@ -1,4 +1,8 @@
 
+### 2.2.1-131
+
+- New app icon, thanks to [Anto65](https://github.com/antuneddu).
+
 ### 2.2.1-118
 
 - Architecture universal: `x86_64` + `arm64`.
