@@ -4,7 +4,7 @@
 ![License: MIT](https://github.com/perez987/DownloadFullInstaller-2/blob/main/Images/MIT.svg)
 ![Platform](https://img.shields.io/badge/macOS-13+-orange.svg)
 ![Xcode](https://img.shields.io/badge/Xcode-macOS15+-lavender.svg)
-![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/total?label=Downloads&color=00cd00)
+![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/total?label=Downloads&color=9494ff)
 
 <!-- ![Swift](https://img.shields.io/badge/Swift-5.5-orange.svg)
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/latest/total?label=Latest&color=00cd00)
