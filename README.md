@@ -32,7 +32,7 @@ Download Full Installer runs on macOS 13 Ventura through macOS 26 Tahoe.
 - Added sleep prevention logic to avoid sleep while app is running
 - Added language selection system
 - Updated translations with new strings
-- Initial support for Liquid Glass wirh backward compatibility.
+- Initial support for Liquid Glass with backward compatibility.
 
 ### App is damaged and can't be opened
 
