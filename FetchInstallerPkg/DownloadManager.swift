@@ -20,6 +20,13 @@ import Foundation
     lazy var urlSession = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: nil)
     var downloadTask: URLSessionDownloadTask?
     var byteFormatter = ByteCountFormatter()
+    
+    // Resume functionality properties
+    private var resumeData: Data?
+    private var retryCount = 0
+    private var maxRetries = 3
+    private var retryTimer: Timer?
+    @Published var isRetrying = false
 
     static let shared = DownloadManager()
 
@@ -34,13 +41,9 @@ import Foundation
     }
 
     func download(url: URL?, replacing: Bool = false) throws {
-        // reset the variables
-        progress = 0.0
-        isDownloading = true
-        localURL = nil
+        // Store the URL for potential resume attempts
         downloadURL = url
         isComplete = false
-
         byteFormatter.countStyle = .file
 
         if replacing {
@@ -48,24 +51,80 @@ import Foundation
             let suggestedFilename = filename ?? "InstallerAssistant.pkg"
             let file = destination.appendingPathComponent(suggestedFilename)
             try FileManager.default.removeItem(at: file)
+            // Clear resume data if replacing file
+            resumeData = nil
         }
 
-        if url != nil {
-            downloadTask = urlSession.downloadTask(with: url!)
-            downloadTask!.resume()
-            print("Downloading \(filename ?? "InstallerAssistant.pkg")")
+        startDownload()
+    }
+    
+    private func startDownload() {
+        guard let url = downloadURL else { return }
+        
+        isDownloading = true
+        isRetrying = false
+        retryCount = 0
+        
+        // Try to resume from previous download if resume data exists
+        if let resumeData = resumeData {
+            downloadTask = urlSession.downloadTask(withResumeData: resumeData)
+            print("Resuming download of \(filename ?? "InstallerAssistant.pkg")")
+        } else {
+            downloadTask = urlSession.downloadTask(with: url)
+            progress = 0.0
+            localURL = nil
+            print("Starting download of \(filename ?? "InstallerAssistant.pkg")")
         }
+        
+        downloadTask?.resume()
     }
 
     func cancel() {
         if isDownloading && downloadTask != nil {
-            downloadTask?.cancel()
+            // Cancel but preserve resume data for manual user cancellation
+            downloadTask?.cancel { [weak self] resumeDataOrNil in
+                DispatchQueue.main.async {
+                    // Don't preserve resume data for manual cancellation
+                    self?.resumeData = nil
+                }
+            }
             isDownloading = false
+            isRetrying = false
             localURL = nil
             downloadURL = nil
             progress = 0.0
+            retryCount = 0
+            retryTimer?.invalidate()
+            retryTimer = nil
         }
         print("Download of \(filename ?? "InstallerAssistant.pkg") cancelled")
+    }
+    
+    private func retryDownload() {
+        guard retryCount < maxRetries else {
+            print("Max retry attempts reached. Download failed.")
+            DispatchQueue.main.async {
+                self.isDownloading = false
+                self.isRetrying = false
+                self.resumeData = nil
+            }
+            return
+        }
+        
+        retryCount += 1
+        let retryDelay = pow(2.0, Double(retryCount)) // Exponential backoff: 2, 4, 8 seconds
+        
+        print("Connection lost. Retrying download in \(Int(retryDelay)) seconds... (Attempt \(retryCount)/\(maxRetries))")
+        
+        DispatchQueue.main.async {
+            self.isRetrying = true
+        }
+        
+        retryTimer = Timer.scheduledTimer(withTimeInterval: retryDelay, repeats: false) { [weak self] _ in
+            DispatchQueue.main.async {
+                self?.startDownload()
+            }
+        }
     }
 
     func revealInFinder() {
@@ -89,8 +148,13 @@ extension DownloadManager: URLSessionDownloadDelegate {
             print("Download of \(filename ?? "InstallerAssistant.pkg") finished")
             DispatchQueue.main.async {
                 self.isDownloading = false
+                self.isRetrying = false
                 self.localURL = newURL
                 self.isComplete = true
+                self.resumeData = nil // Clear resume data on successful completion
+                self.retryCount = 0
+                self.retryTimer?.invalidate()
+                self.retryTimer = nil
             }
         } catch {
             NSLog(error.localizedDescription)
@@ -102,6 +166,56 @@ extension DownloadManager: URLSessionDownloadDelegate {
         DispatchQueue.main.async {
             self.progress = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
             self.progressString = "\(self.byteFormatter.string(fromByteCount: totalBytesWritten))/\(self.byteFormatter.string(fromByteCount: totalBytesExpectedToWrite))"
+        }
+    }
+    
+    // Handle download resumption
+    func urlSession(_: URLSession, downloadTask: URLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
+        print("Download resumed at offset: \(fileOffset) bytes")
+        DispatchQueue.main.async {
+            self.progress = Double(fileOffset) / Double(expectedTotalBytes)
+            self.progressString = "\(self.byteFormatter.string(fromByteCount: fileOffset))/\(self.byteFormatter.string(fromByteCount: expectedTotalBytes))"
+        }
+    }
+}
+
+// MARK: - URLSessionTaskDelegate methods for error handling
+extension DownloadManager: URLSessionTaskDelegate {
+    func urlSession(_: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        guard let error = error else { return }
+        
+        print("Download error occurred: \(error.localizedDescription)")
+        
+        // Check if this is a network error that we can recover from
+        let nsError = error as NSError
+        let isNetworkError = nsError.domain == NSURLErrorDomain && 
+                           (nsError.code == NSURLErrorNotConnectedToInternet ||
+                            nsError.code == NSURLErrorNetworkConnectionLost ||
+                            nsError.code == NSURLErrorTimedOut ||
+                            nsError.code == NSURLErrorCannotConnectToHost)
+        
+        if isNetworkError {
+            // Try to get resume data if available
+            if let resumeDataFromError = (error as NSError).userInfo[NSURLSessionDownloadTaskResumeData] as? Data {
+                self.resumeData = resumeDataFromError
+                print("Resume data saved for future retry")
+            }
+            
+            // Attempt to retry the download
+            DispatchQueue.main.async {
+                self.retryDownload()
+            }
+        } else {
+            // Non-recoverable error
+            print("Non-recoverable download error: \(error.localizedDescription)")
+            DispatchQueue.main.async {
+                self.isDownloading = false
+                self.isRetrying = false
+                self.resumeData = nil
+                self.retryCount = 0
+                self.retryTimer?.invalidate()
+                self.retryTimer = nil
+            }
         }
     }
 }

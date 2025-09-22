@@ -32,6 +32,9 @@
 "Downloading %@" = "Downloading %@";
 
 /* No comment provided by engineer. */
+"Retrying download of %@..." = "Retrying download of %@...";
+
+/* No comment provided by engineer. */
 "Replace" = "Replace";
 
 /* No comment provided by engineer. */

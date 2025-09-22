@@ -14,7 +14,12 @@ struct DownloadView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Text(" ")
-                    Text(String(format: NSLocalizedString("Downloading %@", comment: "Downloading progress text"), downloadManager.filename ?? "InstallAssistant.pkg"))
+                    if downloadManager.isRetrying {
+                        Text(String(format: NSLocalizedString("Retrying download of %@...", comment: "Retrying download text"), downloadManager.filename ?? "InstallAssistant.pkg"))
+                            .foregroundColor(.orange)
+                    } else {
+                        Text(String(format: NSLocalizedString("Downloading %@", comment: "Downloading progress text"), downloadManager.filename ?? "InstallAssistant.pkg"))
+                    }
                     Spacer()
                     Text(downloadManager.progressString)
                         .font(.footnote)
