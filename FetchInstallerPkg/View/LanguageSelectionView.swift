@@ -20,20 +20,6 @@ struct LanguageSelectionView: View {
         self._selectedLanguage = State(initialValue: languageManager.currentLanguage)
     }
 
-//    // Delete preferences plist file, the app will run as if it were the first time
-//    func delPlist(){
-//            let fileManager = FileManager.default
-//            let directory = URL.libraryDirectory.appending(path: "Preferences").path()
-//            let documentURL = directory + "/perez987.DownloadFullInstaller.plist"
-////            print("Preferences plist file: \(documentURL)")
-//            do {
-//               try fileManager.removeItem(atPath: documentURL)
-//               print("Preferences plist file deleted sucessfully")
-//            } catch {
-//               print("Error deleting Preferences plist file: \(error)")
-//            }
-//        }
-
     var body: some View {
         VStack(spacing: 20) {
             // Header
@@ -152,7 +138,7 @@ struct LanguageSelectionView: View {
 
         }
         .padding(.horizontal, 30)
-        .frame(width: 400, height: 636)
+        .frame(width: 400, height: 640)
         .background(Color(NSColor.windowBackgroundColor))
     }
 }
@@ -178,6 +164,8 @@ struct LanguageRow: View {
              return "🇺🇦"
          case "zh-Hans", "zh":
              return "🇨🇳"
+		 case "pt-BR":
+			 return "🇧🇷"
          default:
              return "🇺🇸"
          }
