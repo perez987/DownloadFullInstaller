@@ -32,6 +32,9 @@
 "Downloading %@" = "Scaricamento %@";
 
 /* No comment provided by engineer. */
+"Retrying download of %@..." = "Riprova il download di %@...";
+
+/* No comment provided by engineer. */
 "Replace" = "Sostituisci";
 
 /* No comment provided by engineer. */

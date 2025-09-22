@@ -32,6 +32,9 @@
 "Downloading %@" = "正在下载 %@";
 
 /* No comment provided by engineer. */
+"Retrying download of %@..." = "正在重新下载 %@...";
+
+/* No comment provided by engineer. */
 "Replace" = "替换";
 
 /* No comment provided by engineer. */
