@@ -1,3 +1,8 @@
+
+### 2.2.0-145
+
+- Image set icons as badges with a more Tahoe style, thanks [Chris1111](https://github.com/chris1111).
+
 ### 2.2.1-145
 
 - Add Brazilian Portuguese language.
