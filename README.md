@@ -4,9 +4,9 @@
 ![Xcode](https://img.shields.io/badge/Xcode-macOS11+-lavender.svg)
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/total?label=Downloads&color=00cd00)
 
-<img src="Images/DownloadFullInstaller-light.png" width="624px">
+<img src="Images/DownloadFullInstaller-dark.png" width="624px">
 
-## Download Full Installer from macOS 11 up to 26 
+## Download Full Installer for macOS 11+ 
 
 This branch of DownloadFullInstaller runs on macOS 11 Big Sur up to macOS 26 Tahoe.
 
@@ -20,6 +20,7 @@ This branch of DownloadFullInstaller runs on macOS 11 Big Sur up to macOS 26 Tah
 	- Sleep resumes when the app is closed.
 - A single macOS version or all versions can be displayed at once
 - Prerences are no longer in a dialog but at the top of main view.
+- Add languages: English, Spanish, French, Italian, Ukrainian and Simplified Chinese.
 - Update copyright info.
 
 ## Original repository
