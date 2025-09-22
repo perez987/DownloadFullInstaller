@@ -23,7 +23,7 @@
 "Download %@ %@ (%@) Installer" = "Transferir Instalador do %@ %@ (%@)";
 
 /* No comment provided by engineer. */
-"Download Full Installer" = "Transferir Instalador Completo";
+"Download Full Installer" = "Download Full Installer";
 
 /* No comment provided by engineer. */
 "Downloaded %@" = "%@ transferido";
