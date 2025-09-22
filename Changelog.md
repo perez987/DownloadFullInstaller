@@ -1,7 +1,7 @@
 
 ### 2.2.0-145
 
-- Image set icons as badges with a more Tahoe style, thanks [Chris1111](https://github.com/chris1111).
+- Image set icons as badges with a more Tahoe style, thanks [chris1111](https://github.com/chris1111).
 
 ### 2.2.1-145
 
@@ -99,12 +99,12 @@ Unfork repository:
 
 ### 2.0.3-87
 
-- Add French and Canadian French languages, thanks [Chris1111](https://github.com/chris1111). 
+- Add French and Canadian French languages, thanks [chris1111](https://github.com/chris1111). 
 
 ### 2.0.3-80
 
 - Migrate Xcode project from groups to folders (supported before Sequoia).
-- Quit the application by closing the window from the red button, thanks [Chris1111](https://github.com/chris1111). 
+- Quit the application by closing the window from the red button, thanks [chris1111](https://github.com/chris1111). 
 - Minor UI and documentation updates.
 - Update language function.
 - Add SeedCatalogs.plist containing actual system seed URLs.
