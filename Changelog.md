@@ -1,7 +1,7 @@
 ## 2.0-100
 
 - Add languages (Spanish, French, Italian, Ukrainian, Simplified Chinese).
-- Asset icons as badges Tahoe style, thanks [Chris1111](https://github.com/chris1111).
+- Asset icons as badges Tahoe style, thanks [chris1111](https://github.com/chris1111).
 
 ## 2.0 (97)
 
