@@ -1,0 +1,48 @@
+
+/* No comment provided by engineer. */
+"" = "";
+
+/* No comment provided by engineer. */
+"\n\n" = "\n\n";
+
+/* No comment provided by engineer. */
+"  in catalog" = " у каталозі";
+
+/* No comment provided by engineer. */
+"%@ already exists. Do you want to replace it?" = "%@ вже існує. Чи хочете ви його замінити?";
+
+/* No comment provided by engineer. */
+"A file with the same name already exists in that location. Replacing it will overwrite its current contents." = "Файл з такою ж назвою вже існує в цьому місці. Його заміна призведе до перезапису поточного вмісту.";
+
+/* No comment provided by engineer. */
+"Cancel" = "Скасувати";
+
+/* No comment provided by engineer. */
+"Loading..." = "Завантаження...";
+
+/* No comment provided by engineer. */
+"Copy %@ %@ (%@) %@ URL" = "Копіювати %@ %@ (%@) %@ URL";
+
+/* No comment provided by engineer. */
+"Download %@ %@ (%@) Installer" = "Завантажити інсталятор %@ %@ (%@)";
+
+/* No comment provided by engineer. */
+"Download Full Installer" = "Download Full Installer";
+
+/* No comment provided by engineer. */
+"Downloaded %@" = "Завантажено %@";
+
+/* No comment provided by engineer. */
+"Downloading %@" = "Завантаження %@";
+
+/* No comment provided by engineer. */
+"Replace" = "Замінити";
+
+/* No comment provided by engineer. */
+"Show in Finder" = "Показати у Finder";
+
+/* No comment provided by engineer. */
+"Cancel %@ download" = "Скасувати завантаження %@";
+
+/* No comment provided by engineer. */
+"Show the installer in the Downloads folder" = "Показати інсталятор у теці «Завантаження»";

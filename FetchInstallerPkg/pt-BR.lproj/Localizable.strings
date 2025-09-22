@@ -1,0 +1,48 @@
+
+/* No comment provided by engineer. */
+"" = "";
+
+/* No comment provided by engineer. */
+"\n\n" = "\n\n";
+
+/* No comment provided by engineer. */
+"  in catalog" = "  no catálogo";
+
+/* No comment provided by engineer. */
+"%@ already exists. Do you want to replace it?" = "%@ já existe. Deseja substituí-lo?";
+
+/* No comment provided by engineer. */
+"A file with the same name already exists in that location. Replacing it will overwrite its current contents." = "Já existe um ficheiro com o mesmo nome nesta localização. Substituí-lo irá sobrescrever o seu conteúdo atual.";
+
+/* No comment provided by engineer. */
+"Cancel" = "Cancelar";
+
+/* No comment provided by engineer. */
+"Loading..." = "Carregando......";
+
+/* No comment provided by engineer. */
+"Copy %@ %@ (%@) %@ URL" = "Copiar URL do %@ %@ (%@) %@";
+
+/* No comment provided by engineer. */
+"Download %@ %@ (%@) Installer" = "Transferir Instalador do %@ %@ (%@)";
+
+/* No comment provided by engineer. */
+"Download Full Installer" = "Download Full Installer";
+
+/* No comment provided by engineer. */
+"Downloaded %@" = "%@ transferido";
+
+/* No comment provided by engineer. */
+"Downloading %@" = "A transferir %@";
+
+/* No comment provided by engineer. */
+"Replace" = "Substituir";
+
+/* No comment provided by engineer. */
+"Show in Finder" = "Mostrar no Finder";
+
+/* No comment provided by engineer. */
+"Cancel %@ download" = "Cancelar transferência de %@";
+
+/* No comment provided by engineer. */
+"Show the installer in the Downloads folder" = "Mostrar o instalador na pasta de Transferências";

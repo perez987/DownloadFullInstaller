@@ -58,6 +58,18 @@
 		D925AB6F2E7F474A00953133 /* DownloadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadView.swift; sourceTree = "<group>"; };
 		D925AB702E7F474A00953133 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D9641B922E76455500A32D05 /* Caffeine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Caffeine.swift; sourceTree = "<group>"; };
+		D9CED1B72E81D9820073558D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = "fr.lproj/Download-Full-Installer-InfoPlist.strings"; sourceTree = "<group>"; };
+		D9CED1B82E81D9820073558D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D9CED1B92E81DA0F0073558D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = "es.lproj/Download-Full-Installer-InfoPlist.strings"; sourceTree = "<group>"; };
+		D9CED1BA2E81DA0F0073558D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D9CED1BB2E81DC630073558D /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Download-Full-Installer-InfoPlist.strings"; sourceTree = "<group>"; };
+		D9CED1BC2E81DC630073558D /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		D9CED1BD2E81DCED0073558D /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = "uk.lproj/Download-Full-Installer-InfoPlist.strings"; sourceTree = "<group>"; };
+		D9CED1BE2E81DCED0073558D /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D9CED1C12E81DDBE0073558D /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = "it.lproj/Download-Full-Installer-InfoPlist.strings"; sourceTree = "<group>"; };
+		D9CED1C22E81DDBE0073558D /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D9CED1C32E81DE270073558D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Download-Full-Installer-InfoPlist.strings"; sourceTree = "<group>"; };
+		D9CED1C42E81DE270073558D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D9D89C732E761E9D00CC70CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -186,7 +198,12 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
+				fr,
+				es,
+				"pt-BR",
+				uk,
+				it,
+				"zh-Hans",
 			);
 			mainGroup = C63643552670E1B800301DC8;
 			productRefGroup = C636435F2670E1B800301DC8 /* Products */;
@@ -268,6 +285,12 @@
 			isa = PBXVariantGroup;
 			children = (
 				D91A1C132E76372B0040DF7E /* en */,
+				D9CED1B82E81D9820073558D /* fr */,
+				D9CED1BA2E81DA0F0073558D /* es */,
+				D9CED1BC2E81DC630073558D /* pt-BR */,
+				D9CED1BE2E81DCED0073558D /* uk */,
+				D9CED1C22E81DDBE0073558D /* it */,
+				D9CED1C42E81DE270073558D /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -276,6 +299,12 @@
 			isa = PBXVariantGroup;
 			children = (
 				D91A1C162E7637350040DF7E /* en */,
+				D9CED1B72E81D9820073558D /* fr */,
+				D9CED1B92E81DA0F0073558D /* es */,
+				D9CED1BB2E81DC630073558D /* pt-BR */,
+				D9CED1BD2E81DCED0073558D /* uk */,
+				D9CED1C12E81DDBE0073558D /* it */,
+				D9CED1C32E81DE270073558D /* zh-Hans */,
 			);
 			name = "Download-Full-Installer-InfoPlist.strings";
 			sourceTree = "<group>";
@@ -416,7 +445,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 97;
+				CURRENT_PROJECT_VERSION = 100;
 				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
 				ENABLE_APP_SANDBOX = YES;
@@ -438,7 +467,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 2.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = perez987.downloadfullinstaller;
+				PRODUCT_BUNDLE_IDENTIFIER = perez987.fetchinstallerpkg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -457,7 +486,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 97;
+				CURRENT_PROJECT_VERSION = 100;
 				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
 				ENABLE_APP_SANDBOX = YES;
@@ -479,7 +508,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 2.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = perez987.downloadfullinstaller;
+				PRODUCT_BUNDLE_IDENTIFIER = perez987.fetchinstallerpkg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

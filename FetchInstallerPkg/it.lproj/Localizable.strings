@@ -1,0 +1,48 @@
+
+/* No comment provided by engineer. */
+"" = "";
+
+/* No comment provided by engineer. */
+"\n\n" = "\n\n";
+
+/* No comment provided by engineer. */
+"  in catalog" = "  nel catalogo";
+
+/* No comment provided by engineer. */
+"%@ already exists. Do you want to replace it?" = "%@ esiste già. Vuoi sostituirlo?";
+
+/* No comment provided by engineer. */
+"A file with the same name already exists in that location. Replacing it will overwrite its current contents." = "Un file con lo stesso nome esiste già in quella posizione. Sostituirlo sovrascriverà i suoi contenuti attuali.";
+
+/* No comment provided by engineer. */
+"Cancel" = "Annulla";
+
+/* No comment provided by engineer. */
+"Loading..." = "Caricamento...";
+
+/* No comment provided by engineer. */
+"Copy %@ %@ (%@) %@ URL" = "Copia %@ %@ (%@) %@ URL";
+
+/* No comment provided by engineer. */
+"Download %@ %@ (%@) Installer" = "Scarica %@ %@ (%@) il programma di installazione";
+
+/* No comment provided by engineer. */
+"Download Full Installer" = "Download Full Installer";
+
+/* No comment provided by engineer. */
+"Downloaded %@" = "Scaricato %@";
+
+/* No comment provided by engineer. */
+"Downloading %@" = "Scaricamento %@";
+
+/* No comment provided by engineer. */
+"Replace" = "Sostituisci";
+
+/* No comment provided by engineer. */
+"Show in Finder" = "Mostra nel Finder";
+
+/* No comment provided by engineer. */
+"Cancel %@ download" = "Annulla %@ il download";
+
+/* No comment provided by engineer. */
+"Show the installer in the Downloads folder" = "Mostra il programma di installazione nella cartella Download";
