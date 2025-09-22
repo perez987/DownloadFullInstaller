@@ -1,3 +1,6 @@
+### 2.2.1-145
+
+- Add Brazilian Portuguese language.
 
 ### 2.2.1-131
 
