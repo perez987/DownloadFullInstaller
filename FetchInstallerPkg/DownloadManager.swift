@@ -63,8 +63,11 @@ import Foundation
 		guard let url = downloadURL else { return }
 
 		isDownloading = true
+		// Only reset retryCount when starting a new download (not during retries)
+		if !isRetrying {
+			retryCount = 0
+		}
 		isRetrying = false
-		retryCount = 0
 
 			// Try to resume from previous download if resume data exists
 		if let resumeData = resumeData {
