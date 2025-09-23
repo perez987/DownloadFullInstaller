@@ -1,3 +1,8 @@
+
+## 2.0-104
+
+- Add download resume functionality that automatically handles network interruptions.
+
 ## 2.0-100
 
 - Add languages (Spanish, French, Italian, Ukrainian, Simplified Chinese).
@@ -9,7 +14,6 @@
 - A single macOS version or all versions can be displayed at once.
 - Prerences are no longer in a dialog but at the top of main view.
 - Remove localization (English default).
-
 
 ## 1.9 (92)
 
