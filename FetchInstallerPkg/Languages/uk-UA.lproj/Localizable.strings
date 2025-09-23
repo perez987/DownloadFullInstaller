@@ -32,6 +32,9 @@
 "Downloading %@" = "Завантаження %@";
 
 /* No comment provided by engineer. */
+"Retrying download of InstallAssistant.pkg..." = "Повторна спроба завантаження...";
+
+/* No comment provided by engineer. */
 "Replace" = "Замінити";
 
 /* No comment provided by engineer. */

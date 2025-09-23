@@ -32,6 +32,9 @@
 "Downloading %@" = "Downloading %@";
 
 /* No comment provided by engineer. */
+"Retrying download of InstallAssistant.pkg..." = "Retrying download of InstallAssistant.pkg...";
+
+/* No comment provided by engineer. */
 "Replace" = "Replace";
 
 /* No comment provided by engineer. */
