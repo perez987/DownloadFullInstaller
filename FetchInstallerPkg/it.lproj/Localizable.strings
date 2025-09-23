@@ -36,6 +36,9 @@
 "Downloading %@" = "Scaricamento %@";
 
 /* No comment provided by engineer. */
+"Retrying download of InstallAssistant.pkg..." = "Nuovo tentativo di download...";
+
+/* No comment provided by engineer. */
 "Replace" = "Sostituisci";
 
 /* No comment provided by engineer. */

@@ -35,6 +35,9 @@
 "Downloading %@" = "正在下载 %@";
 
 /* No comment provided by engineer. */
+"Retrying download of InstallAssistant.pkg..." = "重新尝试下载 InstallAssistant.pkg...";
+
+/* No comment provided by engineer. */
 "Replace" = "替换";
 
 /* No comment provided by engineer. */
