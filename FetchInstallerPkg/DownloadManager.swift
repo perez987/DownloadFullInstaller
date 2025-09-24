@@ -25,7 +25,7 @@ var byteFormatter = ByteCountFormatter()
     // Resume functionality properties
 private var resumeData: Data?
 private var retryCount = 0
-private var maxRetries = 3
+private var maxRetries = 100
 private var retryTimer: Timer?
 @Published var isRetrying = false
 
@@ -63,8 +63,11 @@ private func startDownload() {
     guard let url = downloadURL else { return }
 
     isDownloading = true
-    isRetrying = false
-    retryCount = 0
+	// Only reset retryCount when starting a new download (not during retries)
+	if !isRetrying {
+		retryCount = 0
+	}
+	isRetrying = false
 
         // Try to resume from previous download if resume data exists
     if let resumeData = resumeData {
@@ -111,11 +114,13 @@ private func retryDownload() {
         return
     }
 
-    retryCount += 1
-    let retryDelay = pow(2.0, Double(retryCount)) // Exponential backoff: 2, 4, 8 seconds
+	retryCount += 1 // Number of resume attempts made
 
-//        print("Connection lost. Retrying download in \(Int(retryDelay)) seconds... (Attempt \(retryCount)/\(maxRetries))")
-    print("Connection lost. Retrying download of InstallerAssistant.pkg...")
+//    let retryDelay = pow(2.0, Double(retryCount)) // Exponential backoff: 2, 4, 8... seconds
+	let retryDelay : Double = 5 // Retry interval 5 seconds
+
+	print("Connection lost. Retrying download in \(Int(retryDelay)) seconds... (Attempt \(retryCount)/\(maxRetries))")
+//    print("Trying to resume download of \(filename ?? "InstallerAssistant.pkg")")
 
     DispatchQueue.main.async {
         self.isRetrying = true
@@ -158,7 +163,7 @@ func urlSession(_: URLSession, downloadTask: URLSessionDownloadTask, didFinishDo
             self.retryTimer = nil
         }
     } catch {
-        NSLog(error.localizedDescription)
+        print("Error: \(error.localizedDescription)")
     }
 }
 
@@ -175,8 +180,8 @@ func urlSession(_: URLSession, downloadTask: URLSessionDownloadTask, didResumeAt
     DispatchQueue.main.async {
         self.progress = Double(fileOffset) / Double(expectedTotalBytes)
         self.progressString = "\(self.byteFormatter.string(fromByteCount: fileOffset))/\(self.byteFormatter.string(fromByteCount: expectedTotalBytes))"
-    }
-}
+		}
+	}
 }
 
 // MARK: - URLSessionTaskDelegate methods for error handling
@@ -184,8 +189,8 @@ extension DownloadManager: URLSessionTaskDelegate {
 func urlSession(_: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
     guard let error = error else { return }
 
-    print("Download error occurred: \(error.localizedDescription)")
-
+//    print("Download error occurred: \(error.localizedDescription)")
+	print("Download error occurred: the Internet connection has been lost")
         // Check if this is a network error that we can recover from
     let nsError = error as NSError
     let isNetworkError = nsError.domain == NSURLErrorDomain &&
