@@ -100,7 +100,7 @@ import Foundation
 			retryTimer?.invalidate()
 			retryTimer = nil
 		}
-		print("Download of \(filename ?? "InstallerAssistant.pkg") cancelled")
+		print("Cancelled download of \(filename ?? "InstallerAssistant.pkg")")
 	}
 
 	private func retryDownload() {
@@ -119,7 +119,7 @@ import Foundation
 			//    let retryDelay = pow(2.0, Double(retryCount)) // Exponential backoff: 2, 4, 8... seconds
 		let retryDelay : Double = 5 // Retry interval 5 seconds
 
-		print("Connection lost. Retrying download in \(Int(retryDelay)) seconds... (Attempt \(retryCount)/\(maxRetries))")
+		print("Connection lost. Retrying download in \(Int(retryDelay))\"... (Attempt \(retryCount)/\(maxRetries))")
 			//    print("Trying to resume download of \(filename ?? "InstallerAssistant.pkg")")
 
 		DispatchQueue.main.async {
@@ -151,7 +151,7 @@ extension DownloadManager: URLSessionDownloadDelegate {
 		do {
 			let file = destination.appendingPathComponent(suggestedFilename)
 			let newURL = try FileManager.default.replaceItemAt(file, withItemAt: location)
-			print("Download of \(filename ?? "InstallerAssistant.pkg") finished")
+			print("Finished download of \(filename ?? "InstallerAssistant.pkg")")
 			DispatchQueue.main.async {
 				self.isDownloading = false
 				self.isRetrying = false
@@ -189,9 +189,10 @@ extension DownloadManager: URLSessionTaskDelegate {
 	func urlSession(_: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
 	guard let error = error else { return }
 
-			//    print("Download error occurred: \(error.localizedDescription)")
-		print("Download error occurred: the Internet connection has been lost")
-			// Check if this is a network error that we can recover from
+		print("Download error occurred: \(error.localizedDescription)")
+//		print("Download error occurred: the Internet connection has been lost")
+
+		// Check if this is a network error that we can recover from
 		let nsError = error as NSError
 		let isNetworkError = nsError.domain == NSURLErrorDomain &&
 		(nsError.code == NSURLErrorNotConnectedToInternet ||

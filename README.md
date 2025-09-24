@@ -29,10 +29,11 @@ Download Full Installer runs on macOS 13 Ventura through macOS 26 Tahoe.
 - Xcode project requires macOS Sequoia+
 - Preferences for choosing catalog are no longer a separate dialog but are now at the top of the main window
 - A single macOS version or all versions can be displayed at once
-- Added sleep prevention logic to avoid sleep while app is running
+- Added sleep prevention logic to avoid sleeping while the application is running
 - Added language selection system
-- Updated translations with new strings
-- Initial support for Liquid Glass with backward compatibility.
+- Updated translations
+- Initial support for Liquid Glass with backward compatibility
+- Added download resume functionality that automatically handles network interruptions.
 
 ### App is damaged and can't be opened
 
