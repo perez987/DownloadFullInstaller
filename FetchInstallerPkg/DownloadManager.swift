@@ -25,7 +25,7 @@ import Foundation
 		// Resume functionality properties
 	private var resumeData: Data?
 	private var retryCount = 0
-	private var maxRetries = 3
+	private var maxRetries = 100
 	private var retryTimer: Timer?
 	@Published var isRetrying = false
 
@@ -63,8 +63,11 @@ import Foundation
 		guard let url = downloadURL else { return }
 
 		isDownloading = true
+			// Only reset retryCount when starting a new download (not during retries)
+		if !isRetrying {
+			retryCount = 0
+		}
 		isRetrying = false
-		retryCount = 0
 
 			// Try to resume from previous download if resume data exists
 		if let resumeData = resumeData {
@@ -111,11 +114,13 @@ import Foundation
 			return
 		}
 
-		retryCount += 1
-		let retryDelay = pow(2.0, Double(retryCount)) // Exponential backoff: 2, 4, 8 seconds
+		retryCount += 1 // Number of resume attempts made
 
-//		print("Connection lost. Retrying download in \(Int(retryDelay)) seconds... (Attempt \(retryCount)/\(maxRetries))")
-		print("Connection lost. Retrying download of InstallerAssistant.pkg...")
+			//    let retryDelay = pow(2.0, Double(retryCount)) // Exponential backoff: 2, 4, 8... seconds
+		let retryDelay : Double = 5 // Retry interval 5 seconds
+
+		print("Connection lost. Retrying download in \(Int(retryDelay)) seconds... (Attempt \(retryCount)/\(maxRetries))")
+			//    print("Trying to resume download of \(filename ?? "InstallerAssistant.pkg")")
 
 		DispatchQueue.main.async {
 			self.isRetrying = true
@@ -138,7 +143,7 @@ import Foundation
 
 extension DownloadManager: URLSessionDownloadDelegate {
 	func urlSession(_: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-		let destination = Prefs.downloadURL
+	let destination = Prefs.downloadURL
 
 			// get the suggest file name or create a uuid string
 		let suggestedFilename = filename ?? downloadTask.response?.suggestedFilename ?? UUID().uuidString
@@ -158,7 +163,7 @@ extension DownloadManager: URLSessionDownloadDelegate {
 				self.retryTimer = nil
 			}
 		} catch {
-			NSLog(error.localizedDescription)
+			print("Error: \(error.localizedDescription)")
 		}
 	}
 
@@ -182,10 +187,10 @@ extension DownloadManager: URLSessionDownloadDelegate {
 // MARK: - URLSessionTaskDelegate methods for error handling
 extension DownloadManager: URLSessionTaskDelegate {
 	func urlSession(_: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-		guard let error = error else { return }
+	guard let error = error else { return }
 
-		print("Download error occurred: \(error.localizedDescription)")
-
+			//    print("Download error occurred: \(error.localizedDescription)")
+		print("Download error occurred: the Internet connection has been lost")
 			// Check if this is a network error that we can recover from
 		let nsError = error as NSError
 		let isNetworkError = nsError.domain == NSURLErrorDomain &&
@@ -219,3 +224,4 @@ extension DownloadManager: URLSessionTaskDelegate {
 		}
 	}
 }
+
