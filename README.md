@@ -23,7 +23,7 @@ This branch of DownloadFullInstaller runs on macOS 11 Big Sur up to macOS 26 Tah
 - Update copyright info
 - Added download resume functionality that automatically handles network interruptions.
 
-## Original repository
+## Original repository README
 
 ### Preface
 
