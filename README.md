@@ -67,7 +67,7 @@ GitHub user [matxpa](https://github.com/matxpa) was the main contributor at this
 * Fixed an issue with beta versions (displayed in wrong catalog). -->
 <!-- * Beta word is overlaid on the installer icon if `product.title` contains `isBeta`. This happens when the official version of macOS hasn't been released yet. Beta versions after the official version of macOS don't have `isBeta` in `product.title`. Hence they do not have overlaid the word Beta. -->
 
-## Original repository
+## Original repository README
 
 ### Preface
 
