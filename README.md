@@ -1,19 +1,19 @@
-# Download Full Installer 2
+# Download Full Installer
 
-[![DownloadFullInstaller-2](https://github.com/perez987/DownloadFullInstaller-2/actions/workflows/Build.yml/badge.svg)](https://github.com/perez987/DownloadFullInstaller-2/actions/workflows/Build.yml)
+[![DownloadFullInstaller](https://github.com/perez987/DownloadFullInstaller-2/actions/workflows/Build.yml/badge.svg)](https://github.com/perez987/DownloadFullInstaller/actions/workflows/Build.yml)
 ![Platform](https://img.shields.io/badge/macOS-13+-orange.svg)
 ![Xcode](https://img.shields.io/badge/Xcode-macOS15+-lavender.svg)
-![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/total?label=Downloads&color=9494ff)
+![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?label=Downloads&color=9494ff)
 
-<!-- [![License: MIT](https://github.com/perez987/DownloadFullInstaller-2/blob/main/Images/MIT.svg)](https://github.com/perez987/DownloadFullInstaller-2/blob/main/LICENSE)
+<!-- [![License: MIT](https://github.com/perez987/DownloadFullInstaller/blob/main/Images/MIT.svg)](https://github.com/perez987/DownloadFullInstaller-2/blob/main/LICENSE)
 ![Swift](https://img.shields.io/badge/Swift-5.5-orange.svg)
-![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/latest/total?label=Latest&color=00cd00)
-![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/2.0.3-71/total?label=v2.0.3-71&color=00cd00)
-![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/total?label=Downloads&color=00cd00)
+![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/latest/total?label=Latest&color=00cd00)
+![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/2.0.3-71/total?label=v2.0.3-71&color=00cd00)
+![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?label=Downloads&color=00cd00)
 ![Swift](https://img.shields.io/badge/Swift-5.5-orange.svg)
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/perez987/DownloadFullInstaller-2) -->
 
-As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) by <em>scriptingosx</em> has been archived by the developer. For over three years, my DownloadFullInstaller repo was a fork of the source. However, after it was archived, I created a new repo, DownloadFullInstaller-2. This new repo is a standalone (<em>not forked</em>) version. I'll keep this project active and up to date as long as it is useful to other users.
+As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) by <em>scriptingosx</em> has been archived by the developer. For over three years, my DownloadFullInstaller repo was a fork of the source. However, after it was archived, I created a new repo. This new repo is a standalone (<em>not forked</em>) version. I'll keep this project active and up to date as long as it is useful to other users.
 
 <img src="Images/DownloadFullInstaller-light.png" width="700px">
 
