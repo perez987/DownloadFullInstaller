@@ -1,12 +1,12 @@
-# Download Full Installer 2
+# Download Full Installer
 
 ![Platform](https://img.shields.io/badge/macOS-11+-orange.svg)
 ![Xcode](https://img.shields.io/badge/Xcode-macOS11+-lavender.svg)
-![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller-2/total?label=Downloads&color=00cd00)
+![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?label=Downloads&color=00cd00)
 
 <img src="Images/DownloadFullInstaller-dark.png" width="624px">
 
-As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) by <em>scriptingosx</em> has been archived by the developer. For over three years, my DownloadFullInstaller repo was a fork of the source. However, after it was archived, I created a new repo, DownloadFullInstaller-2. This new repo is a standalone (<em>not forked</em>) version. I'll keep this project active and up to date as long as it is useful to other users.
+As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) by <em>scriptingosx</em> has been archived by the developer. For over three years, my DownloadFullInstaller repo was a fork of the source. However, after it was archived, I created a new repo. This new repo is a standalone (<em>not forked</em>) version. I'll keep this project active and up to date as long as it is useful to other users.
 
 ## Download Full Installer for macOS 11+ 
 
