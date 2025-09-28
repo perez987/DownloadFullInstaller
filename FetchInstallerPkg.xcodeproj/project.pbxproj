@@ -41,6 +41,8 @@
 		C63643712670E82000301DC8 /* FetchInstallerPkg.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FetchInstallerPkg.entitlements; sourceTree = "<group>"; };
 		C69C80CB267787DE00E20E20 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		C6B969B92681D3BE005717F1 /* Download-Full-Installer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Download-Full-Installer-Info.plist"; sourceTree = "<group>"; };
+		D915FC162E89B85C00A2128C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = "ru.lproj/Download-Full-Installer-InfoPlist.strings"; sourceTree = "<group>"; };
+		D915FC172E89B85C00A2128C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D91A1C132E76372B0040DF7E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D91A1C162E7637350040DF7E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/Download-Full-Installer-InfoPlist.strings"; sourceTree = "<group>"; };
 		D925AB562E7F472900953133 /* DistParserDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistParserDelegate.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				uk,
 				it,
 				"zh-Hans",
+				ru,
 			);
 			mainGroup = C63643552670E1B800301DC8;
 			productRefGroup = C636435F2670E1B800301DC8 /* Products */;
@@ -291,6 +294,7 @@
 				D9CED1BE2E81DCED0073558D /* uk */,
 				D9CED1C22E81DDBE0073558D /* it */,
 				D9CED1C42E81DE270073558D /* zh-Hans */,
+				D915FC172E89B85C00A2128C /* ru */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -305,6 +309,7 @@
 				D9CED1BD2E81DCED0073558D /* uk */,
 				D9CED1C12E81DDBE0073558D /* it */,
 				D9CED1C32E81DE270073558D /* zh-Hans */,
+				D915FC162E89B85C00A2128C /* ru */,
 			);
 			name = "Download-Full-Installer-InfoPlist.strings";
 			sourceTree = "<group>";
@@ -445,7 +450,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 113;
+				CURRENT_PROJECT_VERSION = 115;
 				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
 				ENABLE_APP_SANDBOX = YES;
@@ -486,7 +491,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 113;
+				CURRENT_PROJECT_VERSION = 115;
 				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
 				ENABLE_APP_SANDBOX = YES;
