@@ -5,10 +5,10 @@
 "\n\n" = "\n\n";
 
 /* No comment provided by engineer. */
-"  in catalog" = "  nel catalogo";
+" in catalog" = "  nel catalogo";
 
 /* No comment provided by engineer. */
-"“%@” already exists. Do you want to replace it?" = "%@ esiste già. Vuoi sostituirlo?";
+"%@ already exists. Do you want to replace it?" = "%@ esiste già. Vuoi sostituirlo?";
 
 /* No comment provided by engineer. */
 "A file with the same name already exists in that location. Replacing it will overwrite its current contents." = "Un file con lo stesso nome esiste già in quella posizione. Sostituirlo sovrascriverà i suoi contenuti attuali.";
@@ -63,9 +63,6 @@
 
 /* No comment provided by engineer. */
 "Continue" = "Continua";
-
-/* No comment provided by engineer. */
-"The app will restart to apply the language change" = "L'app si riavvierà per applicare il cambio di lingua";
 
 /* No comment provided by engineer. */
 "Restart Required" = "Riavvio richiesto";

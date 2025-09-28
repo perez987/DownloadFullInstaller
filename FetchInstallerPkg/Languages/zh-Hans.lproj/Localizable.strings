@@ -5,7 +5,7 @@
 "\n\n" = "\n\n";
 
 /* No comment provided by engineer. */
-"  in catalog" = "  在目录中";
+" in catalog" = "  在目录中";
 
 /* No comment provided by engineer. */
 "%@ already exists. Do you want to replace it?" = "%@ 已存在。您要替换它吗？";
@@ -72,9 +72,6 @@
 
 /* No comment provided by engineer. */
 "Continue" = "继续";
-
-/* No comment provided by engineer. */
-"The app will restart to apply the language change" = "应用程序将重新启动以应用语言更改";
 
 /* No comment provided by engineer. */
 "Restart Required" = "需要重新启动";

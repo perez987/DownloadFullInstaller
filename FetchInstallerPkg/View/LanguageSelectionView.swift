@@ -33,11 +33,11 @@ struct LanguageSelectionView: View {
                     .fontWeight(.bold)
             }
             .padding(.top, 20)
-            .frame(
-                minWidth: 400,
-                idealWidth: 400,
-                maxWidth: 400
-            )
+//            .frame(
+//                minWidth: 400,
+//                idealWidth: 400,
+//                maxWidth: 400
+//            )
 
             // Language list
             VStack(spacing: 0) {
@@ -138,7 +138,7 @@ struct LanguageSelectionView: View {
 
         }
         .padding(.horizontal, 30)
-        .frame(width: 400, height: 640)
+        .frame(width: 440, height: 698)
         .background(Color(NSColor.windowBackgroundColor))
     }
 }
@@ -166,6 +166,8 @@ struct LanguageRow: View {
              return "🇨🇳"
 		 case "pt-BR":
 			 return "🇧🇷"
+		 case "ru-RU", "ru":
+			 return "🇷🇺"
          default:
              return "🇺🇸"
          }

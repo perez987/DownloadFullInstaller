@@ -65,7 +65,7 @@ struct InstallerView: View {
                     .help(String(format: NSLocalizedString("Download %@ %@ (%@) Installer", comment: "Download button help text"), product.osName ?? "", product.productVersion ?? "", product.buildVersion ?? ""))
                     .alert(isPresented: $isReplacingFile) {
                         Alert(
-                            title: Text("“\(filename)” already exists. Do you want to replace it?"),
+                            title: Text("\(filename) already exists. Do you want to replace it?"),
                             message: Text(NSLocalizedString("A file with the same name already exists in that location. Replacing it will overwrite its current contents.", comment: "File replacement alert message")),
                             primaryButton: .cancel(Text(NSLocalizedString("Cancel", comment: "Cancel button"))),
                             secondaryButton: .destructive(
