@@ -1,4 +1,10 @@
 
+### 2.2.3-120
+
+- Changes to the Xcode project for greater compatibility:
+	-  App runs on macOS 13+ (as before)
+	-  Xcode project requires version 15.2 on macOS 13+ (macOS 15+ was previously required).
+
 ### 2.2.0-157
 
 - Add download resume functionality that automatically handles network interruptions.
@@ -50,7 +56,7 @@ Changelog:
 - 2 branches:<br>
 	- `main` for the most up-to-date project:
 		-  the app runs on Ventura 13+
-		-  Xcode project requites Sequoia or Tahoe
+		-  Xcode project requires Sequoia or Tahoe
 		-  complete language system
 		-  updated code to set the size of the main window relative to content<br>
 	- `old` to maintain compatibility with older macOS<br>

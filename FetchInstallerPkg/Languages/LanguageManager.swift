@@ -98,25 +98,25 @@ class LanguageManager: ObservableObject {
 
         switch languageCode {
         case "en-US", "en":
-            print("Language changed to: English (\(languageCode))")
+            print("### Language changed to: English (\(languageCode))")
         case "es-ES", "es":
-            print("Language changed to: Spanish (\(languageCode))")
+            print("### Language changed to: Spanish (\(languageCode))")
         case "fr-CA":
-            print("Language changed to: Canadian French (\(languageCode))")
+            print("### Language changed to: Canadian French (\(languageCode))")
         case "fr-FR", "fr":
-            print("Language changed to: French (\(languageCode))")
+            print("### Language changed to: French (\(languageCode))")
         case "it-IT", "it":
-            print("Language changed to: Italian (\(languageCode))")
+            print("### Language changed to: Italian (\(languageCode))")
         case "uk-UA", "uk":
-            print("Language changed to: Ukrainian (\(languageCode))")
+            print("### Language changed to: Ukrainian (\(languageCode))")
         case "zh-Hans", "zh":
-            print("Language changed to: Simplified Chinese (\(languageCode))")
+            print("### Language changed to: Simplified Chinese (\(languageCode))")
 		case "pt-BR", "pt":
-			print("Language changed to: Brazilian Portuguese (\(languageCode))")
+			print("### Language changed to: Brazilian Portuguese (\(languageCode))")
 		case "ru-RU", "ru":
-			print("Language changed to: Russian (\(languageCode))")
+			print("### Language changed to: Russian (\(languageCode))")
         default:
-            print("Language changed to default: English (\(languageCode))")
+            print("### Language changed to default: English (\(languageCode))")
         }
 
     }

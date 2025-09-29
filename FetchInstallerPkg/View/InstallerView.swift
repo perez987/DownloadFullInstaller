@@ -90,8 +90,8 @@ struct InstallerView: View {
                 .contextMenu {
                     Button(action: {
                         if let text = product.installAssistantURL?.absoluteString {
-//                            print(text)
-                            print("InstallAssistant URL copied to clipboard")
+//                            print("### \(text)")
+                            print("### InstallAssistant URL copied to clipboard")
                             let pb = NSPasteboard.general
                             pb.clearContents()
                             pb.setString(text, forType: .string)

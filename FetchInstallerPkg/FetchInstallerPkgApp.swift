@@ -30,7 +30,7 @@ struct FetchInstallerPkgApp: App {
                     // Uncomment to show the dialog when there is no settings saved
                     if !Prefs.languageSelectionShown {
                         showLanguageSelection = true
-                        print("First run, language selection dialog displayed")
+                        print("### First run, language selection dialog displayed")
                     }
 
                 }

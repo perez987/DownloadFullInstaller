@@ -27,7 +27,7 @@ struct Prefs {
 
         guard let downloadURL = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first else { return }
         prefs[Prefs.key(.downloadPath)] = downloadURL.path
-//        print("Download path: \(downloadURL.path)")
+//        print("### Download path: \(downloadURL.path)")
 
         UserDefaults.standard.register(defaults: prefs)
     }
@@ -37,12 +37,12 @@ struct Prefs {
             let fileManager = FileManager.default
             let directory = URL.libraryDirectory.appending(path: "Preferences").path()
             let documentURL = directory + "/perez987.DownloadFullInstaller.plist"
-//            print("Preferences plist file: \(documentURL)")
+//            print("### Preferences plist file: \(documentURL)")
             do {
                try fileManager.removeItem(atPath: documentURL)
-               print("Preferences plist file deleted sucessfully")
+               print("### Preferences plist file deleted sucessfully")
             } catch {
-               print("Error deleting Preferences plist file: \(error)")
+               print("### Error deleting Preferences plist file: \(error)")
             }
         }
 
