@@ -36,7 +36,7 @@ class LanguageManager: ObservableObject {
             availableLanguages = languagePaths.compactMap { path in
                 let languageCode = URL(fileURLWithPath: path).deletingPathExtension().lastPathComponent
                 return createSupportedLanguage(from: languageCode)
-            }
+            }.sorted { $0.code < $1.code }
             return
         }
         
@@ -54,7 +54,7 @@ class LanguageManager: ObservableObject {
                 return createSupportedLanguage(from: languageCode)
             }
             return nil
-        }.sorted { $0.nativeName < $1.nativeName }
+        }.sorted { $0.code < $1.code }
     }
     
     private func createSupportedLanguage(from code: String) -> SupportedLanguage {
