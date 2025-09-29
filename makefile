@@ -4,5 +4,5 @@ FetchInstallerPkg:
 	@$/Open ./build/Release
 
 
-.PHONY: FetchInstallerPkg clean
+.PHONY: DownloadFullInstaller clean
 
