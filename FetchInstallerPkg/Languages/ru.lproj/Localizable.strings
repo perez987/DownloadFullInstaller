@@ -71,7 +71,7 @@
 "(App preferences will be cleared)" = "(Настройки приложения будут очищены)";
 
 /* No comment provided by engineer. */
-"You will lose your user settings and saved language." = "Вы потеряете пользовательские настройки и сохраненный язык.";
+"You will lose user settings and saved language." = "Вы потеряете пользовательские настройки и сохраненный язык.";
 
 /* No comment provided by engineer. */
 "Warning" = "Предупреждение";

@@ -24,9 +24,9 @@ struct LanguageSelectionView: View {
         VStack(spacing: 20) {
             // Header
             VStack(spacing: 8) {
-                Image(systemName: "globe")
-                    .font(.system(size: 32))
-                    .foregroundColor(.blue)
+//                Image(systemName: "globe")
+//                    .font(.system(size: 32))
+//                    .foregroundColor(.blue)
                 
                 Text(NSLocalizedString("Language Selection", comment: ""))
                     .font(.title3)
@@ -112,11 +112,11 @@ struct LanguageSelectionView: View {
                 .liquidGlass(intensity: .subtle)
             }
 
-            HStack(spacing: 10) {
-                Text(NSLocalizedString("(App preferences will be cleared)", comment: ""))
-                    .foregroundColor(.secondary)
-                    .multilineTextAlignment(.center)
-            }
+//            HStack(spacing: 10) {
+//                Text(NSLocalizedString("(App preferences will be cleared)", comment: ""))
+//                    .foregroundColor(.secondary)
+//                    .multilineTextAlignment(.center)
+//            }
             .padding(.bottom, 20)
 
             .alert(isPresented: $showSettingsAlert) {
@@ -138,7 +138,7 @@ struct LanguageSelectionView: View {
 
         }
         .padding(.horizontal, 30)
-        .frame(width: 440, height: 698)
+        .frame(width: 440, height: 620)
         .background(Color(NSColor.windowBackgroundColor))
     }
 }
