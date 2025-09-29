@@ -1,6 +1,6 @@
 FetchInstallerPkg:
-	@echo "Building FetchInstallerPkg..."
-	@$/xcodebuild -project "FetchInstallerPkg.xcodeproj" -alltargets -configuration Release
+	@echo "Building DownloadFullInstaller..."
+	@$/xcodebuild -project "DownloadFullInstaller.xcodeproj" -alltargets -configuration Release
 	@$/Open ./build/Release
 
 
