@@ -1,78 +1,77 @@
-/* Комментарий инженера не предоставлен. */
+/* No comment provided by engineer. */
 "" = "";
 
-/* Комментарий инженера не предоставлен. */
+/* No comment provided by engineer. */
 "\n\n" = "\n\n";
 
-/* Комментарий инженера не предоставлен. */
+/* No comment provided by engineer. */
 " in catalog" = " в каталоге";
 
-/* Комментарий инженера не предоставлен. */
+/* No comment provided by engineer. */
 "%@ already exists. Do you want to replace it?" = "%@ уже существует. Хотите заменить его?";
 
-/* Комментарий инженера не предоставлен. */
+/* No comment provided by engineer. */
 "A file with the same name already exists in that location. Replacing it will overwrite its current contents." = "Файл с таким же именем уже существует в этом месте. Его замена перезапишет его текущее содержимое.";
 
-/* Комментарий инженера не предоставлен. */
+/* No comment provided by engineer. */
 "Cancel" = "Отмена";
 
-/* Комментарий инженера не предоставлен. */
+/* No comment provided by engineer. */
 "Copy %@ %@ (%@) %@ URL" = "Копировать %@ %@ (%@) %@ URL";
 
-/* Комментарий инженера не предоставлен. */
+/* No comment provided by engineer. */
 "Download %@ %@ (%@) Installer" = "Загрузить %@ %@ (%@) Установщик";
 
-/* Комментарий инженера не предоставлен. */
-"Загрузить полный установщик" = "Загрузить полный установщик";
+/* No comment provided by engineer. */
+"Download Full Installer" = "Загрузить полный установщик";
 
-/* Комментарий инженера не предоставлен. */
+/* No comment provided by engineer. */
 "Downloaded %@" = "Загружено %@";
 
-/* Комментарий инженера не предоставлен. */
+/* No comment provided by engineer. */
 "Downloading %@" = "Загрузка %@";
 
-/* Комментарий инженера не предоставлен. */
+/* No comment provided by engineer. */
 "Replace" = "Заменить";
 
-/* Комментарий инженера не предоставлен. */
+/* No comment provided by engineer. */
 "Show in Finder" = "Показать в Finder";
 
-/* Комментарий инженера не предоставлен. */
+/* No comment provided by engineer. */
 "Cancel %@ download" = "Отменить %@ загрузку";
 
-/* Комментарий инженера не предоставлен. */
+/* No comment provided by engineer. */
 "Show installer in Downloads" = "Показать установщик в папке Загрузки";
 
-/* Диалог выбора языка */
+/* No comment provided by engineer. */
 "Language Selection" = "Выбор языка";
 
-/* Комментарий инженера не предоставлен. */
+/* No comment provided by engineer. */
 "Select Language" = "Выберите язык";
 
-/* Комментарий инженера не предоставлен. */
+/* No comment provided by engineer. */
 "Continue" = "Продолжить";
 
-/* Комментарий инженера не предоставлен. */
+/* No comment provided by engineer. */
 "The app must be restarted for changes to take effect." = "Приложение перезапустится, чтобы применить изменение языка.";
 
-/* Комментарий инженера не предоставлен. */
+/* No comment provided by engineer. */
 "Restart Required" = "Требуется перезапуск";
 
-/* Комментарий инженера не предоставлен. */
+/* No comment provided by engineer. */
 "ОК" = "ОК";
 
-/* Комментарий инженера не предоставлен. */
+/* No comment provided by engineer. */
 "Yes" = "Да";
 
-/* Комментарий инженера не предоставлен. */
+/* No comment provided by engineer. */
 "Clear app settings?" = "Очистить настройки приложения?";
 
-/* Комментарий инженера не предоставлен. */
+/* No comment provided by engineer. */
 "(App preferences will be cleared)" = "(Настройки приложения будут очищены)";
 
-/* Комментарий инженера не предоставлен. */
+/* No comment provided by engineer. */
 "You will lose your user settings and saved language." = "Вы потеряете пользовательские настройки и сохраненный язык.";
 
-/* Комментарий инженера не предоставлен. */
+/* No comment provided by engineer. */
 "Warning" = "Предупреждение";
-
