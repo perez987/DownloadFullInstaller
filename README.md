@@ -14,14 +14,14 @@ This branch of DownloadFullInstaller runs on macOS 11 Big Sur up to macOS 26 Tah
 
 - Platform:
 	- DownloadFullInstaller.app runs on macOS 11+.
-	- Xcode requires macOS 11+.
+	- Xcode requires macOS 11 or newer.
 - Add constants, icons and URL catalog for Tahoe.
 - Add sleep prevention logic:
 	- Disable sleep while the app is open.
 	- Sleep resumes when the app is closed.
 - A single macOS version or all versions can be displayed at once
 - Prerences are no longer in a dialog but at the top of main view.
-- Add languages: English, Spanish, French, Italian, Ukrainian and Simplified Chinese.
+- Add languages: English, Spanish, French, Italian, Ukrainian, Russian and Simplified Chinese.
 - Update copyright info
 - Added download resume functionality that automatically handles network interruptions.
 
