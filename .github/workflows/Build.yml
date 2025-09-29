@@ -1,4 +1,4 @@
-name: DownloadFullInstaller-2
+name: DownloadFullInstaller
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-macos:
-    name: Build DownloadFullInstaller-2
+    name: Build DownloadFullInstaller
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,7 +19,7 @@ jobs:
           echo "GIT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
 
-      - name: Build DownloadFullInstaller-2
+      - name: Build DownloadFullInstaller
         run: |
           chmod +x ./makefile
           
@@ -36,6 +36,6 @@ jobs:
       - name: Upload to Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: DownloadFullInstaller-2-${{ env.GIT_SHA }}
+          name: DownloadFullInstaller-${{ env.GIT_SHA }}
           path: |
             build/Release.tar
