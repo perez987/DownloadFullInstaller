@@ -194,7 +194,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C63643592670E1B800301DC8 /* Build configuration list for PBXProject "FetchInstallerPkg" */;
+			buildConfigurationList = C63643592670E1B800301DC8 /* Build configuration list for PBXProject "DownloadFullInstaller-old" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -524,7 +524,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C63643592670E1B800301DC8 /* Build configuration list for PBXProject "FetchInstallerPkg" */ = {
+		C63643592670E1B800301DC8 /* Build configuration list for PBXProject "DownloadFullInstaller-old" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C636436A2670E1B900301DC8 /* Debug */,

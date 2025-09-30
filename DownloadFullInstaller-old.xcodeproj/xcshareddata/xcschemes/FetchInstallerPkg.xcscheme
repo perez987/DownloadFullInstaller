@@ -17,7 +17,7 @@
                BlueprintIdentifier = "C636435D2670E1B800301DC8"
                BuildableName = "Download Full Installer.app"
                BlueprintName = "Download Full Installer"
-               ReferencedContainer = "container:FetchInstallerPkg.xcodeproj">
+               ReferencedContainer = "container:DownloadFullInstaller-old.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -48,7 +48,7 @@
             BlueprintIdentifier = "C636435D2670E1B800301DC8"
             BuildableName = "Download Full Installer.app"
             BlueprintName = "Download Full Installer"
-            ReferencedContainer = "container:FetchInstallerPkg.xcodeproj">
+            ReferencedContainer = "container:DownloadFullInstaller-old.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
@@ -76,7 +76,7 @@
             BlueprintIdentifier = "C636435D2670E1B800301DC8"
             BuildableName = "Download Full Installer.app"
             BlueprintName = "Download Full Installer"
-            ReferencedContainer = "container:FetchInstallerPkg.xcodeproj">
+            ReferencedContainer = "container:DownloadFullInstaller-old.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
