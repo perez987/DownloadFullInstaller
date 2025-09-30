@@ -37,35 +37,13 @@ Download Full Installer runs on macOS 13 Ventura through macOS 26 Tahoe.
 
 If you see `App is damaged and can't be opened` when you open DownloadFullInstaller for the first time, read [this](App-damaged.md).
 
-<!-- ### Notes about 2.0.7
+### Download appears to be complete, but the installer is not in the Downloads folder
 
-- Xcode project requires macOS Sequoia or Tahoe.
-- Bump project version to 2.0.7
-- Added flag icons to languages in language selection view.-->
+The first few times you use the app, you can see that the download appears to be complete, with the GB downloaded matching the expected amount, but the installer is not in the Downloads folder. DownloadFullInstaller also does not show the Show in Finder button
 
-<!-- <img src="Images/DownloadFullInstaller-lang.png" width="624px"> -->
+To fix this, go to the Sandbox settings in `Xcode` ➡️ `Target` ➡️ `Signing & Capabilities `➡️ `Sandbox` to grant read/write permissions to the Downloads folder.
 
-<!-- ### Notes about version 2.0.5
-
-- Updated up to macOS 26 Tahoe. 
-- Xcode project requires macOS 13 Ventura or newer.
-- Added language selection system.
-- Added restart alert to language selection view.
-- Updated translations with new strings.
-- Added option to clear app's settings, stored in `~/Library/Containers/DownloadFullInstaller/Data/Library/Preferences`. -->
-
-<!-- <img src="Images/DownloadFullInstaller-lang-noflags.png" width="600px"> -->
-
-<!-- ### Notes about version 2.0.0
-
-GitHub user [matxpa](https://github.com/matxpa) was the main contributor at this stage.
-
-* Updated up to macOS 15 Sequoia.
-* Improved Swift code.
-* Preferences for choosing catalog are no longer a separate dialpog but are now at the top of the main window.
-* A single macOS version or all versions can be displayed at once.
-* Fixed an issue with beta versions (displayed in wrong catalog). -->
-<!-- * Beta word is overlaid on the installer icon if `product.title` contains `isBeta`. This happens when the official version of macOS hasn't been released yet. Beta versions after the official version of macOS don't have `isBeta` in `product.title`. Hence they do not have overlaid the word Beta. -->
+<img src="Images/Sandbox.png" width="550">
 
 ## Original repository README
 
