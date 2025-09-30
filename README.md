@@ -45,7 +45,7 @@ To fix this, go to the Sandbox settings in `Xcode` ➡️ `Target` ➡️ `Signi
 
 <img src="Images/Sandbox.png" width="550">
 
-## Original repository README
+# Original repository README
 
 ### Preface
 
