@@ -63,12 +63,12 @@ var body: some View {
                     Image(systemName: "magnifyingglass")
                     Text(NSLocalizedString("Show in Finder", comment: "Show in Finder button"))
                         .help(NSLocalizedString("Show the installer in the Downloads folder", comment: "Show in Finder button help"))
-                }
-            }
-        }
+					}
+				}
+			}
 
-    }
-}
+		}
+	}
 }
 
 struct DownloadView_Previews: PreviewProvider {

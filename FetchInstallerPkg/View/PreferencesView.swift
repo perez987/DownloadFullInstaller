@@ -68,8 +68,8 @@ struct PreferencesView: View {
 			height: 38.0,
             alignment: .centerFirstTextBaseline
 		)
-        
-        // Hide label texts in the Pickers
+
+			// Hide label texts in the Pickers
         .labelsHidden()
         
 	}

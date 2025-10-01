@@ -17,8 +17,9 @@ struct ContentView: View {
     var body: some View {
 
         PreferencesView().environmentObject(sucatalog).navigationTitle(NSLocalizedString("Download Full Installer", comment: "Main window title"))
-        VStack(alignment: .center, spacing: 4) {
-            HStack(alignment: .center) { 
+        VStack(alignment: .center, spacing: 4)
+		{
+            HStack(alignment: .center) {
                 Text("")
                 Spacer()
             }
