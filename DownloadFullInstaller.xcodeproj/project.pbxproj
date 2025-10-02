@@ -194,7 +194,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C63643592670E1B800301DC8 /* Build configuration list for PBXProject "DownloadFullInstaller-old" */;
+			buildConfigurationList = C63643592670E1B800301DC8 /* Build configuration list for PBXProject "DownloadFullInstaller" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -451,7 +451,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 125;
+				CURRENT_PROJECT_VERSION = 126;
 				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
 				ENABLE_APP_SANDBOX = YES;
@@ -492,7 +492,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 125;
+				CURRENT_PROJECT_VERSION = 126;
 				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
 				ENABLE_APP_SANDBOX = YES;
@@ -524,7 +524,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C63643592670E1B800301DC8 /* Build configuration list for PBXProject "DownloadFullInstaller-old" */ = {
+		C63643592670E1B800301DC8 /* Build configuration list for PBXProject "DownloadFullInstaller" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C636436A2670E1B900301DC8 /* Debug */,
