@@ -1,6 +1,6 @@
 # Download Full Installer
 
-[![DownloadFullInstaller](https://github.com/perez987/DownloadFullInstaller-2/actions/workflows/Build.yml/badge.svg)](https://github.com/perez987/DownloadFullInstaller/actions/workflows/Build.yml)
+[![DownloadFullInstaller](https://github.com/perez987/DownloadFullInstaller/actions/workflows/Build.yml/badge.svg)](https://github.com/perez987/DownloadFullInstaller/actions/workflows/Build.yml)
 ![Platform](https://img.shields.io/badge/macOS-13+-orange.svg)
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?label=Downloads&color=9494ff)
 
