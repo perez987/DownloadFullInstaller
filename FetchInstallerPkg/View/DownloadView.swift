@@ -16,11 +16,9 @@ struct DownloadView: View {
 				HStack {
 					Text(" ")
 					if downloadManager.isRetrying {
-//						Text(String(format: NSLocalizedString("Retrying download of %@...", comment: "Retrying download text"), downloadManager.filename ?? "InstallAssistant.pkg"))
-						Text(String(format: NSLocalizedString("Retrying download of InstallAssistant.pkg...", comment: "Retrying download text")))
-//							.foregroundColor(.orange)
+						Text(String(format: NSLocalizedString("Retrying download of InstallAssistant.pkg...", comment: "")))
 					} else {
-						Text(String(format: NSLocalizedString("Downloading %@", comment: "Downloading progress text"), downloadManager.filename ?? "InstallAssistant.pkg"))
+						Text(String(format: NSLocalizedString("Downloading %@", comment: ""), downloadManager.filename ?? "InstallAssistant.pkg"))
 					}
 					Spacer()
 					Text(downloadManager.progressString)
@@ -34,7 +32,7 @@ struct DownloadView: View {
 					ProgressView(value: downloadManager.progress)
 					Button(action: { downloadManager.cancel() }) {
 						Image(systemName: "xmark.circle.fill").accentColor(.gray)
-							.help(String(format: NSLocalizedString("Cancel %@ download", comment: "Cancel download button help"), downloadManager.filename ?? "InstallAssistant.pkg"))
+							.help(String(format: NSLocalizedString("Cancel %@ download", comment: ""), downloadManager.filename ?? "InstallAssistant.pkg"))
 					}.buttonStyle(.borderless)
 					Text(" ")
 				}
@@ -44,7 +42,7 @@ struct DownloadView: View {
 		}
 		if downloadManager.isComplete {
 			HStack {
-				Text(String(format: NSLocalizedString("Downloaded %@", comment: "Downloaded complete text"), downloadManager.filename ?? "InstallAssistant.pkg"))
+				Text(String(format: NSLocalizedString("Downloaded %@", comment: ""), downloadManager.filename ?? "InstallAssistant.pkg"))
 					.padding(.vertical, 6)
 				Spacer()
 
@@ -52,8 +50,8 @@ struct DownloadView: View {
 					Button(action: {
 						downloadManager.revealInFinder()
 					})
-					{ Text(NSLocalizedString("Show in Finder", comment: "Show in Finder button"))
-							.help(NSLocalizedString("Show the installer in the Downloads folder", comment: "Show in Finder button help"))
+					{ Text(NSLocalizedString("Show in Finder", comment: ""))
+							.help(NSLocalizedString("Show the installer in the Downloads folder", comment: ""))
 					}
 				}
 				else {
@@ -61,8 +59,8 @@ struct DownloadView: View {
 						downloadManager.revealInFinder()
 					}) {
 						Image(systemName: "magnifyingglass")
-						Text(NSLocalizedString("Show in Finder", comment: "Show in Finder button"))
-							.help(NSLocalizedString("Show the installer in the Downloads folder", comment: "Show in Finder button help"))
+						Text(NSLocalizedString("Show in Finder", comment: ""))
+							.help(NSLocalizedString("Show the installer in the Downloads folder", comment: ""))
 					}
 				}
 			}

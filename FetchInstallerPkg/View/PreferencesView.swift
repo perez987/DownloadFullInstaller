@@ -20,10 +20,10 @@ struct PreferencesView: View {
 
 				HStack(alignment: .center) {
 
-                    // Three ways to hide label text in a Picker:
-                    // - empty string as first parameter: Picker("", selection: $osNameID) {
-                    // - label: EmptyView() as second parametePicker(selection: $osNameID, label: EmptyView()) {
-                    // - .labelsHidden() as View property: Picker("osNameID", selection: $osNameID) {
+                        // Three ways to hide label text in a Picker:
+                        // - empty string as first parameter: Picker("", selection: $osNameID) {
+                        // - label: EmptyView() as second parametePicker(selection: $osNameID, label: EmptyView()) {
+                        // - .labelsHidden() as View property: Picker("osNameID", selection: $osNameID) {
 
 					Picker("osNameID", selection: $osNameID) {
 						ForEach(OsNameID.allCases) { osName in
@@ -73,7 +73,7 @@ struct PreferencesView: View {
             alignment: .centerFirstTextBaseline
 		)
 
-        // Hide label texts in the Pickers
+            // Hide label texts in the Pickers
         .labelsHidden()
 
 	}

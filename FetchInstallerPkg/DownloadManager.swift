@@ -192,7 +192,7 @@ extension DownloadManager: URLSessionTaskDelegate {
 		print("### Download error occurred: \(error.localizedDescription)")
 //		print("### Download error occurred: the Internet connection has been lost")
 
-		// Check if this is a network error that we can recover from
+        // Check if this is a network error that we can recover from
 		let nsError = error as NSError
 		let isNetworkError = nsError.domain == NSURLErrorDomain &&
 		(nsError.code == NSURLErrorNotConnectedToInternet ||

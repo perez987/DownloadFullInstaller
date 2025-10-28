@@ -11,19 +11,19 @@
 "%@ already exists. Do you want to replace it?" = "%@ уже существует. Хотите заменить его?";
 
 /* No comment provided by engineer. */
-"A file with the same name already exists in that location. Replacing it will overwrite its current contents." = "Файл с таким же именем уже существует в этом месте. Его замена перезапишет его текущее содержимое.";
+"A file with the same name already exists in that location. Replacing it will overwrite its current contents." = "Файл с таким именем уже существует в этом месте. Замена перезапишет его текущее содержимое.";
 
 /* No comment provided by engineer. */
-"Cancel" = "Отмена";
+"Cancel" = "Отменить";
 
 /* No comment provided by engineer. */
-"Copy %@ %@ (%@) %@ URL" = "Копировать %@ %@ (%@) %@ URL";
+"Copy %@ %@ (%@) %@ URL" = "Скопировать %@ %@ (%@) %@ URL";
 
 /* No comment provided by engineer. */
-"Download %@ %@ (%@) Installer" = "Загрузить %@ %@ (%@) Установщик";
+"Download %@ %@ (%@) Installer" = "Загрузить установщик %@ %@ (%@)";
 
 /* No comment provided by engineer. */
-"Download Full Installer" = "Загрузить полный установщик";
+"Download Full Installer" = "Download Full Installer";
 
 /* No comment provided by engineer. */
 "Downloaded %@" = "Загружено %@";
@@ -32,34 +32,40 @@
 "Downloading %@" = "Загрузка %@";
 
 /* No comment provided by engineer. */
+"Retrying download of InstallAssistant.pkg..." = "Повторная попытка загрузки InstallAssistant.pkg...";
+
+/* No comment provided by engineer. */
 "Replace" = "Заменить";
 
 /* No comment provided by engineer. */
 "Show in Finder" = "Показать в Finder";
 
 /* No comment provided by engineer. */
-"Cancel %@ download" = "Отменить %@ загрузку";
+"Cancel %@ download" = "Отменить загрузку %@";
 
 /* No comment provided by engineer. */
-"Show installer in Downloads" = "Показать установщик в папке Загрузки";
+"Show the installer in the Downloads folder" = "Показать установщик в папке Загрузки";
 
 /* No comment provided by engineer. */
 "Language Selection" = "Выбор языка";
 
 /* No comment provided by engineer. */
-"Select Language" = "Выберите язык";
+"Choose a language" = "Выберите язык";
+
+/* No comment provided by engineer. */
+"Select Language" = "Выбрать язык";
 
 /* No comment provided by engineer. */
 "Continue" = "Продолжить";
 
 /* No comment provided by engineer. */
-"The app must be restarted for changes to take effect." = "Приложение перезапустится, чтобы применить изменение языка.";
-
-/* No comment provided by engineer. */
 "Restart Required" = "Требуется перезапуск";
 
 /* No comment provided by engineer. */
-"ОК" = "ОК";
+"The app must be restarted for changes to take effect." = "Приложение необходимо перезапустить, чтобы изменения вступили в силу.";
+
+/* No comment provided by engineer. */
+"OK" = "OK";
 
 /* No comment provided by engineer. */
 "Yes" = "Да";
@@ -75,3 +81,33 @@
 
 /* No comment provided by engineer. */
 "Warning" = "Предупреждение";
+
+/* No comment provided by engineer. */
+"Create Installer App from %@ %@ (%@)" = "Создать приложение-установщик из %@ %@ (%@)";
+
+/* No comment provided by engineer. */
+"Error Creating Installer" = "Ошибка создания установщика macOS";
+
+/* No comment provided by engineer. */
+"The installer package %@ does not exist in the Downloads folder. Please download it first" = "Пакет установки %@ не существует в папке Загрузки. Сначала загрузите его";
+
+/* No comment provided by engineer. */
+"Success" = "Успех";
+
+/* No comment provided by engineer. */
+"The installer app has been created successfully in /Applications" = "Приложение установки macOS успешно создано в /Applications";
+
+/* No comment provided by engineer. */
+"The installer package has been opened. Follow the on-screen instructions to complete the installation" = "Пакет установки открыт. Следуйте инструкциям на экране для завершения установки";
+
+/* No comment provided by engineer. */
+"Failed to open the installer package. Please try opening it manually from the Downloads folder" = "Не удалось открыть пакет установки. Попробуйте открыть его вручную из папки Загрузки";
+
+/* No comment provided by engineer. */
+"Failed to create installer app. Error: %@" = "Не удалось создать приложение установки macOS. Ошибка: %@";
+
+/* No comment provided by engineer. */
+"No write permission to /Applications folder" = "Нет разрешения на запись в папку /Applications";
+
+/* No comment provided by engineer. */
+"Failed to create AppleScript" = "Не удалось создать AppleScript";

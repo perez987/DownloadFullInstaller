@@ -1,17 +1,5 @@
 # Download Full Installer
 
-[![DownloadFullInstaller](https://github.com/perez987/DownloadFullInstaller/actions/workflows/Build.yml/badge.svg)](https://github.com/perez987/DownloadFullInstaller/actions/workflows/Build.yml)
-![Platform](https://img.shields.io/badge/macOS-13+-orange.svg)
-![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?label=Downloads&color=9494ff)
-
-<!-- ![Swift](https://img.shields.io/badge/Swift-5.5-orange.svg)
-![Xcode](https://img.shields.io/badge/Xcode-15.2+-lavender.svg)
-![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/latest/total?label=Latest&color=00cd00)
-![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/2.0.3-71/total?label=v2.0.3-71&color=00cd00)
-![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?label=Downloads&color=00cd00)
-![Swift](https://img.shields.io/badge/Swift-5.5-orange.svg)
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/perez987/DownloadFullInstaller-2) -->
-
 As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) by <em>scriptingosx</em> has been archived by the developer. For over three years, my DownloadFullInstaller repo was a fork of the source. However, after it was archived, I created a new repo. This new repo is a standalone (<em>not forked</em>) version. I'll keep this project active and up to date as long as it is useful to other users.
 
 <img src="Images/DownloadFullInstaller.png" width="700px">
@@ -22,6 +10,8 @@ Download Full Installer runs on macOS 13 Ventura through macOS 26 Tahoe.
 
 **Note**: For Download Full Installer running and compiling on macOS 11+, you can get the [version 2.0](https://github.com/perez987/DownloadFullInstaller/releases/tag/2.0-123) or the Xcode project from the [`old`](https://github.com/perez987/DownloadFullInstaller/tree/old) branch and build the app from source.
 
+### Features
+
 - Updated up to macOS 26 Tahoe
 - Xcode project requires macOS 13 Ventura or newer
 - Preferences for choosing catalog are no longer a separate dialog but are now at the top of the main window
@@ -31,6 +21,16 @@ Download Full Installer runs on macOS 13 Ventura through macOS 26 Tahoe.
 - Updated translations
 - Initial support for Liquid Glass with backward compatibility
 - Added download resume functionality that automatically handles network interruptions.
+
+#### Create Installer App Feature
+
+After downloading an InstallAssistant.pkg file, you can create the macOS installer application (e.g., "Install macOS Sequoia.app") directly from within Download Full Installer:
+
+1. Download the installer PKG using the download button (↓)
+2. Click the "Create Installer App" button next to the download button
+3. The PKG file will open with the standard macOS installer
+4. Follow the on-screen instructions to complete the installation
+5. The macOS installer app will be created in the `/Applications` folder
 
 ### App is damaged and can't be opened
 
@@ -60,7 +60,7 @@ Since the Big Sur macOS installer application contains a single file larger than
 
 - Copy the download URL for a given installer pkg from the context menu.
 - Change the seed program in the Preferences dropdown menu.
-- Create the installer without leaving the application.
+- Create the installer app directly from the downloaded PKG without leaving the application.
 
 ### Questions
 

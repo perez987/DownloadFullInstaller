@@ -5,34 +5,34 @@
 "\n\n" = "\n\n";
 
 /* No comment provided by engineer. */
-" in catalog" = "  no catálogo";
+" in catalog" = " no catálogo";
 
 /* No comment provided by engineer. */
-"%@ already exists. Do you want to replace it?" = "“%@” já existe. Deseja substituí-lo?";
+"%@ already exists. Do you want to replace it?" = "%@ já existe. Deseja substituí-lo?";
 
 /* No comment provided by engineer. */
-"A file with the same name already exists in that location. Replacing it will overwrite its current contents." = "Já existe um ficheiro com o mesmo nome nesta localização. Substituí-lo irá sobrescrever o seu conteúdo atual.";
+"A file with the same name already exists in that location. Replacing it will overwrite its current contents." = "Um arquivo com o mesmo nome já existe nesse local. Substituí-lo irá sobrescrever seu conteúdo atual.";
 
 /* No comment provided by engineer. */
 "Cancel" = "Cancelar";
 
 /* No comment provided by engineer. */
-"Copy %@ %@ (%@) %@ URL" = "Copiar URL do %@ %@ (%@) %@";
+"Copy %@ %@ (%@) %@ URL" = "Copiar %@ %@ (%@) %@ URL";
 
 /* No comment provided by engineer. */
-"Download %@ %@ (%@) Installer" = "Transferir Instalador do %@ %@ (%@)";
+"Download %@ %@ (%@) Installer" = "Baixar Instalador %@ %@ (%@)";
 
 /* No comment provided by engineer. */
 "Download Full Installer" = "Download Full Installer";
 
 /* No comment provided by engineer. */
-"Downloaded %@" = "%@ transferido";
+"Downloaded %@" = "Baixado %@";
 
 /* No comment provided by engineer. */
-"Downloading %@" = "A transferir %@";
+"Downloading %@" = "Baixando %@";
 
 /* No comment provided by engineer. */
-"Retrying download of InstallAssistant.pkg..." = "Tentando novamente o download...";
+"Retrying download of InstallAssistant.pkg..." = "Tentando novamente baixar InstallAssistant.pkg...";
 
 /* No comment provided by engineer. */
 "Replace" = "Substituir";
@@ -41,31 +41,28 @@
 "Show in Finder" = "Mostrar no Finder";
 
 /* No comment provided by engineer. */
-"Cancel %@ download" = "Cancelar transferência de %@";
+"Cancel %@ download" = "Cancelar download de %@";
 
 /* No comment provided by engineer. */
-"Show the installer in the Downloads folder" = "Mostrar o instalador na pasta de Transferências";
+"Show the installer in the Downloads folder" = "Mostrar o instalador na pasta Downloads";
 
 /* No comment provided by engineer. */
-"Create application" = "Criar Aplicação";
-
-/* Language Selection Dialog */
-"Language Selection" = "Seleção de Idioma";
+"Language Selection" = "Seleção de idioma";
 
 /* No comment provided by engineer. */
-"Choose a language" = "Escolher um idioma";
+"Choose a language" = "Escolha um idioma";
 
 /* No comment provided by engineer. */
-"Select Language" = "Selecionar Idioma";
+"Select Language" = "Selecionar idioma";
 
 /* No comment provided by engineer. */
 "Continue" = "Continuar";
 
 /* No comment provided by engineer. */
-"Restart Required" = "Reinício Necessário";
+"Restart Required" = "Reinicialização necessária";
 
 /* No comment provided by engineer. */
-"The app must be restarted for changes to take effect." = "A aplicação deve ser reiniciada para que as alterações tenham efeito.";
+"The app must be restarted for changes to take effect." = "O aplicativo deve ser reiniciado para que as alterações entrem em vigor.";
 
 /* No comment provided by engineer. */
 "OK" = "OK";
@@ -74,31 +71,43 @@
 "Yes" = "Sim";
 
 /* No comment provided by engineer. */
-"Clear app settings?" = "Limpar definições da aplicação?";
+"Clear app settings?" = "Limpar configurações do aplicativo?";
 
 /* No comment provided by engineer. */
-"(App preferences will be cleared)" = "(As preferências da aplicação serão limpas)";
+"(App preferences will be cleared)" = "(As preferências do aplicativo serão apagadas)";
 
 /* No comment provided by engineer. */
-"You will lose user settings and saved language." = "Irá perder as definições de utilizador e o idioma guardado.";
+"You will lose user settings and saved language." = "Você perderá as configurações do usuário e o idioma salvo.";
 
 /* No comment provided by engineer. */
 "Warning" = "Aviso";
 
-/* Create installer app button help text */
-"Create macOS %@ %@ (%@) Install App" = "Criar Aplicação de Instalação do macOS %@ %@ (%@)";
+/* No comment provided by engineer. */
+"Create Installer App from %@ %@ (%@)" = "Criar aplicativo de instalação de %@ %@ (%@)";
 
 /* No comment provided by engineer. */
-"Failed to extract PKG installer" = "Falha ao extrair o instalador PKG";
+"Error Creating Installer" = "Erro ao criar o instalador do macOS";
 
 /* No comment provided by engineer. */
-"Payload not found in PKG installer" = "Payload não encontrado no instalador PKG";
+"The installer package %@ does not exist in the Downloads folder. Please download it first" = "O pacote de instalação %@ não existe na pasta Downloads. Por favor, baixe-o primeiro";
 
 /* No comment provided by engineer. */
-"Failed to extract payload from PKG installer" = "Falha ao extrair o payload do instalador PKG";
+"Success" = "Sucesso";
 
 /* No comment provided by engineer. */
-"Install app not found in extracted payload" = "Aplicação de instalação não encontrada no payload extraído";
+"The installer app has been created successfully in /Applications" = "O aplicativo de instalação do macOS foi criado com sucesso em /Applications";
+
+/* No comment provided by engineer. */
+"The installer package has been opened. Follow the on-screen instructions to complete the installation" = "O pacote de instalação foi aberto. Siga as instruções na tela para concluir a instalação";
+
+/* No comment provided by engineer. */
+"Failed to open the installer package. Please try opening it manually from the Downloads folder" = "Falha ao abrir o pacote de instalação. Tente abri-lo manualmente da pasta Downloads";
+
+/* No comment provided by engineer. */
+"Failed to create installer app. Error: %@" = "Falha ao criar o aplicativo de instalação do macOS. Erro: %@";
 
 /* No comment provided by engineer. */
 "No write permission to /Applications folder" = "Sem permissão de escrita na pasta /Applications";
+
+/* No comment provided by engineer. */
+"Failed to create AppleScript" = "Falha ao criar AppleScript";

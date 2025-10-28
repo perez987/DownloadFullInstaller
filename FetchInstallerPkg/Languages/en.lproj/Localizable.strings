@@ -47,9 +47,6 @@
 "Show the installer in the Downloads folder" = "Show the installer in the Downloads folder";
 
 /* No comment provided by engineer. */
-"Create application" = "Create Application";
-
-/* Language Selection Dialog */
 "Language Selection" = "Language Selection";
 
 /* No comment provided by engineer. */
@@ -85,3 +82,32 @@
 /* No comment provided by engineer. */
 "Warning" = "Warning";
 
+/* No comment provided by engineer. */
+"Create Installer App from %@ %@ (%@)" = "Create Installer App from %@ %@ (%@)";
+
+/* No comment provided by engineer. */
+"Error Creating Installer" = "Error Creating macOS Installer";
+
+/* No comment provided by engineer. */
+"The installer package %@ does not exist in the Downloads folder. Please download it first" = "The installer package %@ does not exist in the Downloads folder. Please download it first";
+
+/* No comment provided by engineer. */
+"Success" = "Success";
+
+/* No comment provided by engineer. */
+"The installer app has been created successfully in /Applications" = "The macOS Install app has been created successfully in /Applications";
+
+/* No comment provided by engineer. */
+"The installer package has been opened. Follow the on-screen instructions to complete the installation" = "The installer package has been opened. Follow the on-screen instructions to complete the installation";
+
+/* No comment provided by engineer. */
+"Failed to open the installer package. Please try opening it manually from the Downloads folder" = "Failed to open the installer package. Please try opening it manually from the Downloads folder";
+
+/* No comment provided by engineer. */
+"Failed to create installer app. Error: %@" = "Failed to create macOS Install app. Error: %@";
+
+/* No comment provided by engineer. */
+"No write permission to /Applications folder" = "No write permission to /Applications folder";
+
+/* No comment provided by engineer. */
+"Failed to create AppleScript" = "Failed to create AppleScript";

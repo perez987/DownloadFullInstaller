@@ -52,7 +52,7 @@
 /* No comment provided by engineer. */
 "Could not load catalog" = "No se puede descargar el catálogo";
 
-/* Language Selection Dialog */
+/* No comment provided by engineer. */
 "Language Selection" = "Selección de Idioma";
 
 /* No comment provided by engineer. */
@@ -87,4 +87,34 @@
 
 /* No comment provided by engineer. */
 "Warning" = "Aviso";
+
+/* No comment provided by engineer. */
+"Create Installer App from %@ %@ (%@)" = "Crear la aplicación Instalar macOS desde %@ %@ (%@)";
+
+/* No comment provided by engineer. */
+"Error Creating Installer" = "Error al crear la aplicación Instalar macOS";
+
+/* No comment provided by engineer. */
+"The installer package %@ does not exist in the Downloads folder. Please download it first" = "El paquete instalador %@ no existe en la carpeta Descargas. Descárgalo en primer lugar";
+
+/* No comment provided by engineer. */
+"Success" = "Éxito";
+
+/* No comment provided by engineer. */
+"The installer app has been created successfully in /Applications" = "La aplicación Instalar macOS se ha creado con éxito en /Aplicaciones";
+
+/* No comment provided by engineer. */
+"The installer package has been opened. Follow the on-screen instructions to complete the installation" = "Se ha abierto el paquete instalador. Sigue las instrucciones en pantalla para completar la instalación";
+
+/* No comment provided by engineer. */
+"Failed to open the installer package. Please try opening it manually from the Downloads folder" = "No se pudo abrir el paquete instalador. Intenta abrirlo manualmente desde la carpeta Aplicaciones";
+
+/* No comment provided by engineer. */
+"Failed to create installer app. Error: %@" = "No se pudo crear la aplicación Instalar macOS. Error: %@";
+
+/* No comment provided by engineer. */
+"No write permission to /Applications folder" = "No tienes permisos de escritura en la carpeta /Aplicaciones";
+
+/* No comment provided by engineer. */
+"Failed to create AppleScript" = "No se pudo crear AppleScript";
 

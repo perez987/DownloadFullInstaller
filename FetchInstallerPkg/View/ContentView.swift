@@ -31,8 +31,8 @@ struct ContentView: View {
                 .padding(4)
                 .liquidGlassContainer()
                 
-                // ---> Test, VStack border
-                //.border(.mint, width: 1)
+                    // ---> Test, VStack border
+//                .border(.mint, width: 1)
                 
                 .contentMargins(.leading, 1, for: .scrollContent)
             } else {
@@ -52,8 +52,6 @@ struct ContentView: View {
             idealWidth: 490.0,
             maxWidth: 490.0,
             minHeight: 562.0,
-//            idealHeight: 540.0,
-//            maxHeight: 540.0,
             alignment: .center
         )
 
@@ -64,8 +62,8 @@ struct ContentView: View {
             
         }
         
-        // ---> there are issues with the count of listed installers
-        // HStack { Text("(\(sucatalog.installers.count) pkg(s) in \(self.seedProgram) catalog)\n") .font(.headline) }
+            // ---> the count of listed installers has issues
+//         HStack { Text("(\(sucatalog.installers.count) pkg(s) in \(self.seedProgram) catalog)\n") .font(.headline) }
         
         .id(refreshID) // Force view refresh when language changes
         .onReceive(NotificationCenter.default.publisher(for: .languageChanged)) { _ in

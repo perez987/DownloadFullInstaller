@@ -22,7 +22,7 @@ struct LanguageSelectionView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            // Header
+                // Header
             VStack(spacing: 8) {
 //                Image(systemName: "globe")
 //                    .font(.system(size: 32))
@@ -39,7 +39,7 @@ struct LanguageSelectionView: View {
 //                maxWidth: 400
 //            )
 
-            // Language list
+                // Language list
             VStack(spacing: 0) {
                 ForEach(languageManager.availableLanguages, id: \.code) { language in
                     LanguageRow(
@@ -59,7 +59,7 @@ struct LanguageSelectionView: View {
                     .stroke(Color.gray.opacity(0.3), lineWidth: 1)
             )
             
-            // Buttons and alert
+                // Buttons and alert
             HStack(spacing: 12) {
                 Button(NSLocalizedString("Cancel", comment: "")) {
                     isPresented = false

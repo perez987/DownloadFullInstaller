@@ -23,21 +23,16 @@ struct FetchInstallerPkgApp: App {
                 .navigationTitle("")
 
                 .onAppear {
-                    // Disable sleep mode when the window appears
-//                    disableSystemSleep()
-                    
-                    // Show language selection dialog if not shown before
-                    // Uncomment to show the dialog when there is no settings saved
-                    if !Prefs.languageSelectionShown {
-                        showLanguageSelection = true
-                        print("### First run, language selection dialog displayed")
-                    }
+                            // Show language selection dialog if there is no saved preference
+                            // Uncomment to show the dialog, comment to hide it
+//                    if !Prefs.languageSelectionShown {
+//                        showLanguageSelection = true
+//                        print("### First run, language selection dialog displayed")
+//                    }
 
                 }
             
 //                .onDisappear {
-                    // Enable sleep mode when the window disappears
-//                    enableSystemSleep()
 //                }
                 
                 .sheet(isPresented: $showLanguageSelection) {
@@ -52,12 +47,12 @@ struct FetchInstallerPkgApp: App {
                         
         }
 
-        // set width of 580 pixels to the main window
-        // macOS 13 Ventura or newer
-//        .defaultSize(width: 580, height: 640)
+                    // set width of 580 pixels to the main window
+                    // macOS 13 Ventura or newer
+//            .defaultSize(width: 580, height: 640)
 
-        // window resizability derived from the window’s content
-        // macOS 13 Ventura or newer
+                    // window resizability derived from the window’s content
+                    // macOS 13 Ventura or newer
             .windowResizability(.contentSize)
         
         .commands {
