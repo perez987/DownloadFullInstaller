@@ -7,8 +7,8 @@
 import SwiftUI
 
 struct PreferencesView: View {
-	@AppStorage(Prefs.key(.seedProgram)) var seedProgram: String = ""
-	@AppStorage(Prefs.key(.osNameID)) var osNameID: String = ""
+	@AppStorage(Prefs.key(.seedProgram)) var seedProgram: String = SeedProgram.noSeed.rawValue
+	@AppStorage(Prefs.key(.osNameID)) var osNameID: String = OsNameID.osAll.rawValue
 	@AppStorage(Prefs.key(.downloadPath)) var downloadPath: String = ""
 	@EnvironmentObject var sucatalog: SUCatalog
 
