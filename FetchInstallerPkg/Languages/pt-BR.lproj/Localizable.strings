@@ -89,7 +89,7 @@
 "Error Creating Installer" = "Erro ao criar o instalador do macOS";
 
 /* No comment provided by engineer. */
-"The installer package %@ does not exist in the Downloads folder. Please download it first" = "O pacote de instalação %@ não existe na pasta Downloads. Por favor, baixe-o primeiro";
+"The installer package %@ does not exist in the Downloads folder. Please download it first." = "O pacote de instalação %@ não existe na pasta Downloads. Por favor, baixe-o primeiro.";
 
 /* No comment provided by engineer. */
 "Success" = "Sucesso";

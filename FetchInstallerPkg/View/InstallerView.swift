@@ -143,7 +143,7 @@ struct InstallerView: View {
             // Check if the PKG file exists
         guard FileManager.default.fileExists(atPath: pkgPath) else {
             installerCreationAlertTitle = NSLocalizedString("Error Creating Installer", comment: "")
-            installerCreationAlertMessage = String(format: NSLocalizedString("The installer package %@ does not exist in the Downloads folder. Please download it first", comment: ""), filename)
+            installerCreationAlertMessage = String(format: NSLocalizedString("The installer package %@ does not exist in the Downloads folder. Please download it first.", comment: ""), filename)
             showInstallerCreationAlert = true
             return
         }
@@ -166,7 +166,7 @@ struct InstallerView: View {
                 } else {
                     print("### Failed to open installer package: \(error?.localizedDescription ?? "Unknown error")")
                     self.installerCreationAlertTitle = NSLocalizedString("Error Creating Installer", comment: "")
-                    self.installerCreationAlertMessage = NSLocalizedString("Failed to open the installer package. Please try opening it manually from the Downloads folder", comment: "")
+                    self.installerCreationAlertMessage = NSLocalizedString("Failed to open the installer package. Please try opening it manually from the Downloads folder.", comment: "")
                     self.showInstallerCreationAlert = true
                 }
             }

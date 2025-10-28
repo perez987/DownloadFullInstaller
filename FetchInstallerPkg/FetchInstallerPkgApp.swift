@@ -22,16 +22,15 @@ struct FetchInstallerPkgApp: App {
                 .environmentObject(languageManager)
                 .navigationTitle("")
 
-                .onAppear {
-                            // Show language selection dialog if there is no saved preference
-                            // Uncomment to show the dialog, comment to hide it
-//                    if !Prefs.languageSelectionShown {
-//                        showLanguageSelection = true
-//                        print("### First run, language selection dialog displayed")
-//                    }
+				.onAppear {
+						// Show language selection dialog if there is no saved preference
+						// Uncomment to show the dialog, comment to hide it
+//					if !Prefs.languageSelectionShown {
+//						showLanguageSelection = true
+//						print("### First run, language selection dialog displayed")
+//					}
+				}
 
-                }
-            
 //                .onDisappear {
 //                }
                 

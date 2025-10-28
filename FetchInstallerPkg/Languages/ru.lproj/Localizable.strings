@@ -89,7 +89,7 @@
 "Error Creating Installer" = "Ошибка создания установщика macOS";
 
 /* No comment provided by engineer. */
-"The installer package %@ does not exist in the Downloads folder. Please download it first" = "Пакет установки %@ не существует в папке Загрузки. Сначала загрузите его";
+"The installer package %@ does not exist in the Downloads folder. Please download it first." = "Пакет установки %@ не существует в папке Загрузки. Сначала загрузите его.";
 
 /* No comment provided by engineer. */
 "Success" = "Успех";
