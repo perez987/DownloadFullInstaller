@@ -42,7 +42,7 @@ If you see `App is damaged and can't be opened` when you open DownloadFullInstal
 
 ### Download appears to be complete, but the installer is not in the Downloads folder
 
-The first few times you use the app, you can see that the download appears to be complete, with the GB downloaded matching the expected amount, but the installer is not in the Downloads folder. DownloadFullInstaller also does not show the Show in Finder button
+The first time you use the app in Xcode, you can see that the download appears to be complete, with the GB downloaded matching the expected amount, but the installer is not in the Downloads folder. DownloadFullInstaller also does not show the Show in Finder button
 
 To fix this, go to the Sandbox settings in `Xcode` ➡️ `Target` ➡️ `Signing & Capabilities `➡️ `Sandbox` to grant read/write permissions to the Downloads folder.
 
