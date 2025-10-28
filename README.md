@@ -1,5 +1,9 @@
 # Download Full Installer
 
+[![DownloadFullInstaller](https://github.com/perez987/DownloadFullInstaller/actions/workflows/Build.yml/badge.svg)](https://github.com/perez987/DownloadFullInstaller/actions/workflows/Build.yml)
+![Platform](https://img.shields.io/badge/macOS-13+-orange.svg)
+![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?label=Downloads&color=9494ff)
+
 As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) by <em>scriptingosx</em> has been archived by the developer. For over three years, my DownloadFullInstaller repo was a fork of the source. However, after it was archived, I created a new repo. This new repo is a standalone (<em>not forked</em>) version. I'll keep this project active and up to date as long as it is useful to other users.
 
 <img src="Images/DownloadFullInstaller.png" width="700px">
