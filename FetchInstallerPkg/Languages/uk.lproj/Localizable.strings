@@ -20,7 +20,7 @@
 "Copy %@ %@ (%@) %@ URL" = "Скопіювати %@ %@ (%@) %@ URL";
 
 /* No comment provided by engineer. */
-"Download %@ %@ (%@) Installer" = "Завантажити інсталятор %@ %@ (%@)";
+"Download %@ %@ (%@) Installer" = "Завантажити установник %@ %@ (%@)";
 
 /* No comment provided by engineer. */
 "Download Full Installer" = "Download Full Installer";
@@ -44,7 +44,7 @@
 "Cancel %@ download" = "Скасувати завантаження %@";
 
 /* No comment provided by engineer. */
-"Show the installer in the Downloads folder" = "Показати інсталятор у папці Завантаження";
+"Show the installer in the Downloads folder" = "Показати установник у папці Завантаження";
 
 /* No comment provided by engineer. */
 "Language Selection" = "Вибір мови";
@@ -83,10 +83,10 @@
 "Warning" = "Попередження";
 
 /* No comment provided by engineer. */
-"Create Installer App from %@ %@ (%@)" = "Створити інсталятор програми з %@ %@ (%@)";
+"Create Installer App from %@ %@ (%@)" = "Створити установник програми з %@ %@ (%@)";
 
 /* No comment provided by engineer. */
-"Error Creating Installer" = "Помилка створення інсталятора macOS";
+"Error Creating Installer" = "Помилка створення установника macOS";
 
 /* No comment provided by engineer. */
 "The installer package %@ does not exist in the Downloads folder. Please download it first." = "Пакет встановлення %@ не існує в папці Завантаження. Спочатку завантажте його.";
