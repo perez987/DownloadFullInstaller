@@ -1,7 +1,6 @@
 # Download Full Installer
 
 ![Platform](https://img.shields.io/badge/macOS-11+-orange.svg)
-![Platform](https://img.shields.io/badge/Xcode-15+-lavender.svg)
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?label=Downloads&color=00cd00)
 
 <img src="Images/DownloadFullInstaller-dark.png" width="624px">
