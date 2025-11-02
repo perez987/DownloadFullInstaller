@@ -32,7 +32,7 @@ struct PreferencesView: View {
 					}
 
 					HStack(alignment: .center) {
-						Text(NSLocalizedString("  in catalog", comment: "")).font(.body)
+						Text(NSLocalizedString(" in catalog", comment: "")).font(.body)
 					}
 
 					if #available(macOS 14.0, *) {
