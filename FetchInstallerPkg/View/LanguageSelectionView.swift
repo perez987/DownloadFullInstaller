@@ -218,15 +218,19 @@ struct LanguageRow: View {
 
 }
 
-#Preview {
+struct LanguageSelectionView_Previews: PreviewProvider {
+    static var previews: some View {
+        LanguageSelectionWrapper()
+    }
     
-    @State var isPresented = true
-    
-    let languageManager = LanguageManager()
-    
-    return LanguageSelectionView(
-        languageManager: languageManager,
-        isPresented: $isPresented
-    )
-    
+    struct LanguageSelectionWrapper: View {
+        @State private var isPresented = true
+        
+        var body: some View {
+            LanguageSelectionView(
+                languageManager: LanguageManager(),
+                isPresented: $isPresented
+            )
+        }
+    }
 }
