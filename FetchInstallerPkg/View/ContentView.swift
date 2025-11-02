@@ -57,10 +57,6 @@ struct ContentView: View {
 
         .padding(.bottom, 12)
         .padding(.horizontal, 28)
-
-        HStack(alignment: .center) { Text("").padding(1)
-            
-        }
     
     }
 
