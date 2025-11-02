@@ -58,11 +58,11 @@ struct ContentView: View {
         .padding(.bottom, 12)
         .padding(.horizontal, 28)
 
-        HStack(alignment: .center) { Text("").padding(1)
+        HStack(alignment: .center) {
             
         }
         
-            // ---> the count of listed installers has issues
+            // ---> Count of listed installers has issues, always shows all OSes count
 //         HStack { Text("(\(sucatalog.installers.count) pkg(s) in \(self.seedProgram) catalog)\n") .font(.headline) }
         
         .id(refreshID) // Force view refresh when language changes
