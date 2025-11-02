@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,8 +12,6 @@
 		C63643622670E1B800301DC8 /* FetchInstallerPkgApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63643612670E1B800301DC8 /* FetchInstallerPkgApp.swift */; };
 		C63643692670E1B900301DC8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C63643682670E1B900301DC8 /* Preview Assets.xcassets */; };
 		C69C80CC267787DE00E20E20 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69C80CB267787DE00E20E20 /* DownloadManager.swift */; };
-		D91A1C122E76372B0040DF7E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D91A1C142E76372B0040DF7E /* Localizable.strings */; };
-		D91A1C152E7637350040DF7E /* Download-Full-Installer-InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D91A1C172E7637350040DF7E /* Download-Full-Installer-InfoPlist.strings */; };
 		D925AB612E7F472900953133 /* DistParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D925AB562E7F472900953133 /* DistParserDelegate.swift */; };
 		D925AB622E7F472900953133 /* OSNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = D925AB572E7F472900953133 /* OSNames.swift */; };
 		D925AB632E7F472900953133 /* BuildManifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D925AB582E7F472900953133 /* BuildManifest.swift */; };
@@ -41,10 +39,6 @@
 		C63643712670E82000301DC8 /* FetchInstallerPkg.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FetchInstallerPkg.entitlements; sourceTree = "<group>"; };
 		C69C80CB267787DE00E20E20 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		C6B969B92681D3BE005717F1 /* Download-Full-Installer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Download-Full-Installer-Info.plist"; sourceTree = "<group>"; };
-		D915FC162E89B85C00A2128C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = "ru.lproj/Download-Full-Installer-InfoPlist.strings"; sourceTree = "<group>"; };
-		D915FC172E89B85C00A2128C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D91A1C132E76372B0040DF7E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D91A1C162E7637350040DF7E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/Download-Full-Installer-InfoPlist.strings"; sourceTree = "<group>"; };
 		D925AB562E7F472900953133 /* DistParserDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistParserDelegate.swift; sourceTree = "<group>"; };
 		D925AB572E7F472900953133 /* OSNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSNames.swift; sourceTree = "<group>"; };
 		D925AB582E7F472900953133 /* BuildManifest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildManifest.swift; sourceTree = "<group>"; };
@@ -60,20 +54,12 @@
 		D925AB6F2E7F474A00953133 /* DownloadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadView.swift; sourceTree = "<group>"; };
 		D925AB702E7F474A00953133 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D9641B922E76455500A32D05 /* Caffeine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Caffeine.swift; sourceTree = "<group>"; };
-		D9CED1B72E81D9820073558D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = "fr.lproj/Download-Full-Installer-InfoPlist.strings"; sourceTree = "<group>"; };
-		D9CED1B82E81D9820073558D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D9CED1B92E81DA0F0073558D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = "es.lproj/Download-Full-Installer-InfoPlist.strings"; sourceTree = "<group>"; };
-		D9CED1BA2E81DA0F0073558D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D9CED1BB2E81DC630073558D /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Download-Full-Installer-InfoPlist.strings"; sourceTree = "<group>"; };
-		D9CED1BC2E81DC630073558D /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		D9CED1BD2E81DCED0073558D /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = "uk.lproj/Download-Full-Installer-InfoPlist.strings"; sourceTree = "<group>"; };
-		D9CED1BE2E81DCED0073558D /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D9CED1C12E81DDBE0073558D /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = "it.lproj/Download-Full-Installer-InfoPlist.strings"; sourceTree = "<group>"; };
-		D9CED1C22E81DDBE0073558D /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D9CED1C32E81DE270073558D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Download-Full-Installer-InfoPlist.strings"; sourceTree = "<group>"; };
-		D9CED1C42E81DE270073558D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D9D89C732E761E9D00CC70CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		C044CDEC2EB79A7A00A902D4 /* Laguages */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Laguages; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		C636435B2670E1B800301DC8 /* Frameworks */ = {
@@ -106,14 +92,13 @@
 		C63643602670E1B800301DC8 /* FetchInstallerPkg */ = {
 			isa = PBXGroup;
 			children = (
+				C044CDEC2EB79A7A00A902D4 /* Laguages */,
 				C635B0AD2678AC9F001EEA82 /* AppDelegate.swift */,
 				D9D89C732E761E9D00CC70CB /* Assets.xcassets */,
 				D9641B922E76455500A32D05 /* Caffeine.swift */,
-				D91A1C172E7637350040DF7E /* Download-Full-Installer-InfoPlist.strings */,
 				C69C80CB267787DE00E20E20 /* DownloadManager.swift */,
 				C63643712670E82000301DC8 /* FetchInstallerPkg.entitlements */,
 				C63643612670E1B800301DC8 /* FetchInstallerPkgApp.swift */,
-				D91A1C142E76372B0040DF7E /* Localizable.strings */,
 				C69C80D926788BD700E20E20 /* Model */,
 				C635B0D92678E9C4001EEA82 /* Prefs.swift */,
 				C63643672670E1B900301DC8 /* Preview Content */,
@@ -174,6 +159,9 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				C044CDEC2EB79A7A00A902D4 /* Laguages */,
+			);
 			name = "Download Full Installer";
 			productName = FetchInstallerPkg;
 			productReference = C636435E2670E1B800301DC8 /* Download Full Installer.app */;
@@ -224,8 +212,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9D89C742E761E9D00CC70CB /* Assets.xcassets in Resources */,
-				D91A1C152E7637350040DF7E /* Download-Full-Installer-InfoPlist.strings in Resources */,
-				D91A1C122E76372B0040DF7E /* Localizable.strings in Resources */,
 				C63643692670E1B900301DC8 /* Preview Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,39 +268,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		D91A1C142E76372B0040DF7E /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D91A1C132E76372B0040DF7E /* en */,
-				D9CED1B82E81D9820073558D /* fr */,
-				D9CED1BA2E81DA0F0073558D /* es */,
-				D9CED1BC2E81DC630073558D /* pt-BR */,
-				D9CED1BE2E81DCED0073558D /* uk */,
-				D9CED1C22E81DDBE0073558D /* it */,
-				D9CED1C42E81DE270073558D /* zh-Hans */,
-				D915FC172E89B85C00A2128C /* ru */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		D91A1C172E7637350040DF7E /* Download-Full-Installer-InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D91A1C162E7637350040DF7E /* en */,
-				D9CED1B72E81D9820073558D /* fr */,
-				D9CED1B92E81DA0F0073558D /* es */,
-				D9CED1BB2E81DC630073558D /* pt-BR */,
-				D9CED1BD2E81DCED0073558D /* uk */,
-				D9CED1C12E81DDBE0073558D /* it */,
-				D9CED1C32E81DE270073558D /* zh-Hans */,
-				D915FC162E89B85C00A2128C /* ru */,
-			);
-			name = "Download-Full-Installer-InfoPlist.strings";
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C636436A2670E1B900301DC8 /* Debug */ = {
@@ -451,7 +404,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 136;
+				CURRENT_PROJECT_VERSION = 137;
 				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
 				ENABLE_APP_SANDBOX = YES;
@@ -492,7 +445,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 136;
+				CURRENT_PROJECT_VERSION = 137;
 				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
 				ENABLE_APP_SANDBOX = YES;
