@@ -38,7 +38,7 @@ After downloading an InstallAssistant.pkg file, you can create the macOS install
 
 ### App is damaged and can't be opened
 
-If you see `App is damaged and can't be opened` when you open DownloadFullInstaller for the first time, read [this](App-damaged.md).
+If you see `App is damaged and can't be opened` when you open DownloadFullInstaller for the first time, read [this](DOCS/APP-DAMAGED.md).
 
 ### Download appears to be complete, but the installer is not in the Downloads folder
 

@@ -11,7 +11,7 @@ Therefore, when you open DownloadFullInstaller for the first time you may see a 
 > App is damaged and can't be opened.<br>
 You should move it to the Trash.
 
-<img src="Images/xattr1.png" width="480px">
+<img src="../Images/xattr1.png" width="480px">
 
 Although the source code is available and can be explored to determine if there are any conditions that weaken security by hiding it from the user, this warning may raise some eyebrows. 
 
@@ -26,16 +26,14 @@ How to fix this issue?
 First, go to Privacy & Security to see if there's a message about blocking Download Full Installer with Open Anyway option. This is the easiest way to fix it.
 
 <kbd>
-<img src="Images/xattr2.png" width="480px"">
+<img src="../Images/xattr2.png" width="480px"">
 </kbd>
 <br><br>
 By clicking Open Anyway, macOS will ask again if you want to open the file, and if you answer yes, it will ask for the user password and open it. 
 
-<img src="Images/xattr3.png" width="480px">
+<img src="../Images/xattr3.png" width="480px">
 
-<img src="Images/xattr4.png" width="480px">
-
-From this point on, Download Full Installer will run without security prompts because macOS has removed the `com.apple.quarantine` attribute.
+<img src="../Images/xattr4.png" width="480px">
 
 ### `xattr` command line tool
 
@@ -59,4 +57,6 @@ From this point on, Download Full Installer will run without security prompts be
 > (no output)
 ```
 
-From this point on, Download Full Installer will run without security prompts because `xattr` has removed the `com.apple.quarantine` attribute.
+### Result
+
+Either way, System Settings or xattr, from this point on, Download Full Installer will run without security prompts because the `com.apple.quarantine` attribute has been removed.
