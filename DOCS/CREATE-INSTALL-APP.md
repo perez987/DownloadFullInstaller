@@ -99,3 +99,4 @@ When the user clicks the "Create Installer App" button:
 - The installer app will be placed in /Applications, ready to create bootable installers or perform clean installations
 - The button is disabled during downloads to prevent conflicts
 - The button is disabled while another installer is being created
+		

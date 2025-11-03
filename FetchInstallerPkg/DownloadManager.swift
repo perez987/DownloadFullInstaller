@@ -189,7 +189,7 @@ extension DownloadManager: URLSessionTaskDelegate {
 	func urlSession(_: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
 	guard let error = error else { return }
 
-		print("### Download error occurred: \(error.localizedDescription)")
+		print("### Download error: \(error.localizedDescription)")
 //		print("### Download error occurred: the Internet connection has been lost")
 
         // Check if this is a network error that we can recover from
