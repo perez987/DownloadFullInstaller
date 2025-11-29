@@ -1,5 +1,6 @@
 # Download Full Installer
 
+![Swift](https://img.shields.io/badge/Swift-5+-lavender.svg)
 ![Platform](https://img.shields.io/badge/macOS-11+-orange.svg)
 ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?label=Downloads&color=00cd00)
 
