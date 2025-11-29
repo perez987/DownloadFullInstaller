@@ -6,6 +6,7 @@
 	//
 
 import AppKit
+import DockProgress
 import Foundation
 
 @objc class DownloadManager: NSObject, ObservableObject {
@@ -69,6 +70,14 @@ import Foundation
 		}
 		isRetrying = false
 
+		// Set dock progress style to bar
+		DispatchQueue.main.async {
+            // Classic white progress bar
+            DockProgress.style = .bar
+            // Small circle in the lower right corner, download progresses like a slice of pie
+//            DockProgress.style = .pie(color: .blue)
+		}
+
 			// Try to resume from previous download if resume data exists
 		if let resumeData = resumeData {
 			downloadTask = urlSession.downloadTask(withResumeData: resumeData)
@@ -76,6 +85,9 @@ import Foundation
 		} else {
 			downloadTask = urlSession.downloadTask(with: url)
 			progress = 0.0
+			DispatchQueue.main.async {
+				DockProgress.progress = 0.0
+			}
 			localURL = nil
 			print("### Starting download of \(filename ?? "InstallerAssistant.pkg")")
 		}
@@ -96,6 +108,9 @@ import Foundation
 			localURL = nil
 			downloadURL = nil
 			progress = 0.0
+			DispatchQueue.main.async {
+				DockProgress.progress = 0.0
+			}
 			retryCount = 0
 			retryTimer?.invalidate()
 			retryTimer = nil
@@ -110,6 +125,7 @@ import Foundation
 				self.isDownloading = false
 				self.isRetrying = false
 				self.resumeData = nil
+				DockProgress.progress = 0.0
 			}
 			return
 		}
@@ -161,6 +177,7 @@ extension DownloadManager: URLSessionDownloadDelegate {
 				self.retryCount = 0
 				self.retryTimer?.invalidate()
 				self.retryTimer = nil
+				DockProgress.progress = 0.0
 			}
 		} catch {
 			print("### Error: \(error.localizedDescription)")
@@ -171,6 +188,7 @@ extension DownloadManager: URLSessionDownloadDelegate {
 		DispatchQueue.main.async {
 			self.progress = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
 			self.progressString = "\(self.byteFormatter.string(fromByteCount: totalBytesWritten))/\(self.byteFormatter.string(fromByteCount: totalBytesExpectedToWrite))"
+			DockProgress.progress = self.progress
 		}
 	}
 
@@ -180,6 +198,7 @@ extension DownloadManager: URLSessionDownloadDelegate {
 		DispatchQueue.main.async {
 			self.progress = Double(fileOffset) / Double(expectedTotalBytes)
 			self.progressString = "\(self.byteFormatter.string(fromByteCount: fileOffset))/\(self.byteFormatter.string(fromByteCount: expectedTotalBytes))"
+			DockProgress.progress = self.progress
 		}
 	}
 }
@@ -221,8 +240,8 @@ extension DownloadManager: URLSessionTaskDelegate {
 				self.retryCount = 0
 				self.retryTimer?.invalidate()
 				self.retryTimer = nil
+				DockProgress.progress = 0.0
 			}
 		}
 	}
 }
-
