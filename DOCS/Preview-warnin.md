@@ -1,4 +1,6 @@
-# Replace #Preview macro with PreviewProvider for macOS 13 compatibility
+# Preview warning
+
+Replace #Preview macro with PreviewProvider for macOS 13 compatibility.
 
 ## Overview
 
