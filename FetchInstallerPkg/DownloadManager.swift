@@ -32,6 +32,34 @@ import Foundation
 
 	static let shared = DownloadManager()
 
+	// Active download count tracking
+	// Thread-safe counter for active downloads, designed for future multi-download support
+	private static var activeDownloadCount: Int = 0
+	private static let downloadCountLock = NSLock()
+
+	/// Returns the current number of active downloads
+	/// This function can be used with DockProgress badge style:
+	/// DockProgress.style = .badge(color: .blue, badgeValue: { getDownloadCount() })
+	static func getDownloadCount() -> Int {
+		downloadCountLock.lock()
+		defer { downloadCountLock.unlock() }
+		return activeDownloadCount
+	}
+
+	private static func incrementDownloadCount() {
+		downloadCountLock.lock()
+		defer { downloadCountLock.unlock() }
+		activeDownloadCount += 1
+	}
+
+	private static func decrementDownloadCount() {
+		downloadCountLock.lock()
+		defer { downloadCountLock.unlock() }
+		if activeDownloadCount > 0 {
+			activeDownloadCount -= 1
+		}
+	}
+
 	var fileExists: Bool {
 		let destination = Prefs.downloadURL
 		if filename != nil {
@@ -57,6 +85,8 @@ import Foundation
 			resumeData = nil
 		}
 
+		// Increment active download count when starting a new download
+		DownloadManager.incrementDownloadCount()
 		startDownload()
 	}
 
@@ -73,9 +103,11 @@ import Foundation
 		// Set dock progress style to bar
 		DispatchQueue.main.async {
             // Classic white progress bar
-            DockProgress.style = .bar
+//            DockProgress.style = .bar
             // Small circle in the lower right corner, download progresses like a slice of pie
 //            DockProgress.style = .pie(color: .blue)
+            // Badge with the number of active downloads
+            DockProgress.style = .badge(color: .blue, badgeValue: { DownloadManager.getDownloadCount() })
 		}
 
 			// Try to resume from previous download if resume data exists
@@ -114,6 +146,8 @@ import Foundation
 			retryCount = 0
 			retryTimer?.invalidate()
 			retryTimer = nil
+			// Decrement active download count when cancelled
+			DownloadManager.decrementDownloadCount()
 		}
 		print("### Cancelled download of \(filename ?? "InstallerAssistant.pkg")")
 	}
@@ -127,6 +161,8 @@ import Foundation
 				self.resumeData = nil
 				DockProgress.progress = 0.0
 			}
+			// Decrement active download count when max retries reached
+			DownloadManager.decrementDownloadCount()
 			return
 		}
 
@@ -168,6 +204,8 @@ extension DownloadManager: URLSessionDownloadDelegate {
 			let file = destination.appendingPathComponent(suggestedFilename)
 			let newURL = try FileManager.default.replaceItemAt(file, withItemAt: location)
 			print("### Finished download of \(filename ?? "InstallerAssistant.pkg")")
+			// Decrement active download count on successful completion
+			DownloadManager.decrementDownloadCount()
 			DispatchQueue.main.async {
 				self.isDownloading = false
 				self.isRetrying = false
@@ -233,6 +271,8 @@ extension DownloadManager: URLSessionTaskDelegate {
 		} else {
 				// Non-recoverable error
 			print("### Non-recoverable download error: \(error.localizedDescription)")
+			// Decrement active download count on non-recoverable error
+			DownloadManager.decrementDownloadCount()
 			DispatchQueue.main.async {
 				self.isDownloading = false
 				self.isRetrying = false

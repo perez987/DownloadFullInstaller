@@ -1,6 +1,6 @@
 # DockProgress Package
 
-This document describes the integration of the DockProgress package by Sindre Sorhus into Download Full Installer. The package adds a progress bar overlay to the application's dock tile icon during PKG downloads.
+This document describes the integration of the [DockProgress](https://github.com/sindresorhus/DockProgress) package by Sindre Sorhus into Download Full Installer. The package adds a progress bar overlay to the application's dock tile icon during PKG downloads.
 
 ## Package Details
 
@@ -9,9 +9,7 @@ This document describes the integration of the DockProgress package by Sindre So
 - **License**: MIT
 - **macOS Requirement**: 10.14+
 
-### Install
-
-Add `https://github.com/sindresorhus/DockProgress` in the “Swift Package Manager” tab in Xcode.
+The package is added through Xcode's Swift Package Manager.
 
 ### Import
 
@@ -134,14 +132,28 @@ While this project uses `.bar`, DockProgress supports these built-in styles:
 
 ![](../Images/Dock-circle.png)
 
--  `.squircle` - Fits around macOS app icons
-- `.badge` - Badge-style progress
-
-![](../Images/Dock-badge.png)
-
 - `.pie` - Circular progress like a slice of pie
 
 ![](../Images/Dock-pie.png)
+
+-  `.squircle` - Fits around macOS app icons
+- `.badge` - Badge-style progress showing a number
+
+### Badge Style with Download Count
+
+The project includes a `getDownloadCount()` function in `DownloadManager.swift` that tracks the number of active downloads. This can be used with the badge style to display the active download count on the dock icon:
+
+```swift
+DockProgress.style = .badge(color: .blue, badgeValue: { DownloadManager.getDownloadCount() })
+```
+
+The download count is:
+- Incremented when a new download starts
+- Decremented when a download completes successfully, is cancelled, or fails
+
+This implementation is thread-safe and designed for future multi-download support.
+
+![](../Images/Dock-badge.png)
 
 ## Troubleshooting
 
