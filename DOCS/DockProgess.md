@@ -1,6 +1,6 @@
 # DockProgress Package
 
-This document describes the integration of the [DockProgress](https://github.com/sindresorhus/DockProgress) package by Sindre Sorhus into Download Full Installer. The package adds a progress bar overlay to the application's dock tile icon during PKG downloads.
+This document describes the integration of the DockProgress package by Sindre Sorhus into Download Full Installer. The package adds a progress bar overlay to the application's dock tile icon during PKG downloads.
 
 ## Package Details
 
@@ -9,7 +9,9 @@ This document describes the integration of the [DockProgress](https://github.com
 - **License**: MIT
 - **macOS Requirement**: 10.14+
 
-The package is added through Xcode's Swift Package Manager.
+### Install
+
+Add `https://github.com/sindresorhus/DockProgress` in the “Swift Package Manager” tab in Xcode.
 
 ### Import
 
