@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C03916EE2EDBB6DC00187185 /* DockProgress in Frameworks */ = {isa = PBXBuildFile; productRef = C03916ED2EDBB6DC00187185 /* DockProgress */; };
 		C0000001A000000100000001 /* MultiDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000001A000000200000001 /* MultiDownloadManager.swift */; };
+		C03916EE2EDBB6DC00187185 /* DockProgress in Frameworks */ = {isa = PBXBuildFile; productRef = C03916ED2EDBB6DC00187185 /* DockProgress */; };
 		D9E20C6C2E8B2C570086992F /* FetchInstallerPkgApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E20C6B2E8B2C570086992F /* FetchInstallerPkgApp.swift */; };
 		D9E20C732E8B2C590086992F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9E20C722E8B2C590086992F /* Preview Assets.xcassets */; };
 		D9E20C7B2E8B2CE80086992F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9E20C7A2E8B2CE80086992F /* Assets.xcassets */; };
@@ -473,7 +473,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 145;
+				CURRENT_PROJECT_VERSION = 152;
 				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
 				ENABLE_APP_SANDBOX = YES;
@@ -498,7 +498,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 2.7.0;
+				MARKETING_VERSION = 3.0.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = perez987.DownloadFullInstaller;
 				PRODUCT_NAME = "Download Full Installer";
@@ -517,7 +517,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 145;
+				CURRENT_PROJECT_VERSION = 152;
 				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
 				ENABLE_APP_SANDBOX = YES;
@@ -542,7 +542,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 2.7.0;
+				MARKETING_VERSION = 3.0.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = perez987.DownloadFullInstaller;
 				PRODUCT_NAME = "Download Full Installer";

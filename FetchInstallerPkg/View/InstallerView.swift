@@ -2,7 +2,6 @@
 //  InstallerView.swift
 //
 //  Created by Armin Briegel on 2021-06-15
-//  Modified by Copilot on 2025-12-01 - Added multi-download support
 //
 
 import SwiftUI

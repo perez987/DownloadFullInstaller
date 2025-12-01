@@ -1,7 +1,6 @@
 //
 //  MultiDownloadManager.swift
 //
-//  Created by Copilot on 2025-12-01
 //  Manages multiple simultaneous downloads (up to 3)
 //
 
@@ -337,7 +336,7 @@ class MultiDownloadManager: ObservableObject {
     /// Update dock progress style to show download count
     private func updateDockProgressStyle() {
         DispatchQueue.main.async {
-            DockProgress.style = .badge(color: .blue, badgeValue: { self.activeDownloads.count })
+			DockProgress.style = .badge(color: .orange, badgeValue: { self.activeDownloads.count })
         }
     }
 }

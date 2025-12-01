@@ -107,7 +107,7 @@ import Foundation
             // Small circle in the lower right corner, download progresses like a slice of pie
 //            DockProgress.style = .pie(color: .blue)
             // Badge with the number of active downloads
-            DockProgress.style = .badge(color: .blue, badgeValue: { DownloadManager.getDownloadCount() })
+			DockProgress.style = .badge(color: .orange, badgeValue: { DownloadManager.getDownloadCount() })
 		}
 
 			// Try to resume from previous download if resume data exists
