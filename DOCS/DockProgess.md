@@ -1,6 +1,6 @@
 # DockProgress Package
 
-This document describes the integration of the [DockProgress](https://github.com/sindresorhus/DockProgress) package by Sindre Sorhus into Download Full Installer. The package adds a progress bar overlay to the application's dock tile icon during PKG downloads.
+This document describes the integration of the `DockProgress` package into Download Full Installer. The package adds a progress bar overlay to the application's dock tile icon during PKG downloads.
 
 ## Package Details
 
@@ -9,7 +9,9 @@ This document describes the integration of the [DockProgress](https://github.com
 - **License**: MIT
 - **macOS Requirement**: 10.14+
 
-The package is added through Xcode's Swift Package Manager.
+### Install
+
+Add `https://github.com/sindresorhus/DockProgress` in the “Swift Package Manager” tab in Xcode.
 
 ### Import
 
@@ -17,16 +19,20 @@ The package is added through Xcode's Swift Package Manager.
 import DockProgress
 ```
 
-`import` is added to `FetchInstallerPkg/DownloadManager.swift`.
+`import` is added to `DownloadManager.swift` and `MultiDownloadManager.swift`.
 
 ## Implementation
 
 ### Style Configuration
 
-DockProgress supports multiple built-in styles. This project uses the **bar** style which displays a horizontal progress bar at the bottom of the dock icon:
+DockProgress supports multiple built-in styles.
 
 ```swift
 DockProgress.style = .bar
+DockProgress.style = .squircle(color: .white.opacity(0.5))
+DockProgress.style = .circle(radius: 55, color: .blue)
+DockProgress.style = .badge(color: .blue, badgeValue: { getDownloadCount() })
+DockProgress.style = .pie(color: .blue)
 ```
 
 ### Progress Updates
