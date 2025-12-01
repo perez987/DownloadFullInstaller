@@ -103,6 +103,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D95D3BFA2EDDFF95002AF7DA /* Downloaders */ = {
+			isa = PBXGroup;
+			children = (
+				D9E20C802E8B2D1C0086992F /* DownloadManager.swift */,
+				C0000001A000000200000001 /* MultiDownloadManager.swift */,
+			);
+			path = Downloaders;
+			sourceTree = "<group>";
+		};
+		D95D3BFB2EDDFFAE002AF7DA /* Sleep */ = {
+			isa = PBXGroup;
+			children = (
+				D9E20C7F2E8B2D1C0086992F /* Caffeine.swift */,
+				D9E20C812E8B2D1C0086992F /* noSleep.swift */,
+			);
+			path = Sleep;
+			sourceTree = "<group>";
+		};
 		D9E20C5F2E8B2C570086992F = {
 			isa = PBXGroup;
 			children = (
@@ -124,16 +142,14 @@
 			children = (
 				D9E20C832E8B2D1C0086992F /* AppDelegate.swift */,
 				D9E20C7A2E8B2CE80086992F /* Assets.xcassets */,
-				D9E20C7F2E8B2D1C0086992F /* Caffeine.swift */,
-				D9E20C802E8B2D1C0086992F /* DownloadManager.swift */,
-				C0000001A000000200000001 /* MultiDownloadManager.swift */,
+				D95D3BFA2EDDFF95002AF7DA /* Downloaders */,
 				D9E20C742E8B2C590086992F /* FetchInstallerPkg.entitlements */,
 				D9E20C6B2E8B2C570086992F /* FetchInstallerPkgApp.swift */,
 				D9E20C7C2E8B2CF20086992F /* Languages */,
 				D9E20C7D2E8B2CFF0086992F /* Model */,
-				D9E20C812E8B2D1C0086992F /* noSleep.swift */,
 				D9E20C822E8B2D1C0086992F /* Prefs.swift */,
 				D9E20C712E8B2C590086992F /* Preview Content */,
+				D95D3BFB2EDDFFAE002AF7DA /* Sleep */,
 				D9E20C7E2E8B2D060086992F /* View */,
 			);
 			path = FetchInstallerPkg;
