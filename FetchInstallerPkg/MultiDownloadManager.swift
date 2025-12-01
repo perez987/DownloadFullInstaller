@@ -136,7 +136,7 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
     
     func revealInFinder() {
         if isComplete {
-            let destination = Prefs.downloadPath
+            let destination = Prefs.downloadURL.path
             NSWorkspace.shared.selectFile(localURL?.path, inFileViewerRootedAtPath: destination)
         }
     }
