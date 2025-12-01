@@ -118,3 +118,11 @@
 /* No comment provided by engineer. */
 "Failed to create AppleScript" = "No se pudo crear AppleScript";
 
+/* Multi-download support */
+"Maximum Downloads Reached" = "Máximo de descargas alcanzado";
+
+/* Multi-download support */
+"You can only download up to 3 installers at the same time. Please wait for a download to complete before starting a new one." = "Solo puedes descargar hasta 3 instaladores a la vez. Espera a que termine una descarga antes de iniciar otra nueva.";
+
+/* Multi-download support */
+"Dismiss" = "Descartar";

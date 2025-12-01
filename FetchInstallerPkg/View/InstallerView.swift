@@ -2,6 +2,7 @@
 //  InstallerView.swift
 //
 //  Created by Armin Briegel on 2021-06-15
+//  Modified by Copilot on 2025-12-01 - Added multi-download support
 //
 
 import SwiftUI
@@ -12,7 +13,7 @@ class DisplayedCount {
 
 struct InstallerView: View {
     @ObservedObject var product: Product
-    @StateObject var downloadManager = DownloadManager.shared
+    @StateObject var multiDownloadManager = MultiDownloadManager.shared
     @State var isReplacingFile = false
     @State var failed = false
     @State var filename = "InstallerAssistant.pkg"
@@ -21,6 +22,7 @@ struct InstallerView: View {
     @State var showInstallerCreationAlert = false
     @State var installerCreationAlertTitle = ""
     @State var installerCreationAlertMessage = ""
+    @State var showMaxDownloadsAlert = false
 
     var body: some View {
         if product.hasLoaded {
@@ -52,12 +54,26 @@ struct InstallerView: View {
 
                     Button(action: {
                         filename = "InstallAssistant-\(product.productVersion ?? "V")-\(product.buildVersion ?? "B").pkg"
-                        downloadManager.filename = filename
-                        isReplacingFile = downloadManager.fileExists
+                        
+                        // Check if max downloads reached
+                        if !multiDownloadManager.canStartNewDownload {
+                            showMaxDownloadsAlert = true
+                            return
+                        }
+                        
+                        // Check if this file is already being downloaded
+                        if multiDownloadManager.isDownloading(filename: filename) {
+                            return
+                        }
+                        
+                        // Check if file exists on disk
+                        let destination = Prefs.downloadURL
+                        let file = destination.appendingPathComponent(filename)
+                        isReplacingFile = FileManager.default.fileExists(atPath: file.path)
 
                         if !isReplacingFile {
                             do {
-                                try downloadManager.download(url: product.installAssistantURL)
+                                _ = try multiDownloadManager.startDownload(url: product.installAssistantURL, filename: filename)
                             } catch {
                                 failed = true
                             }
@@ -67,6 +83,13 @@ struct InstallerView: View {
                         Image(systemName: "arrow.down.circle").font(.title)
                     }
                     .help(String(format: NSLocalizedString("Download %@ %@ (%@) Installer", comment: ""), product.osName ?? "", product.productVersion ?? "", product.buildVersion ?? ""))
+                    .alert(isPresented: $showMaxDownloadsAlert) {
+                        Alert(
+                            title: Text(NSLocalizedString("Maximum Downloads Reached", comment: "")),
+                            message: Text(NSLocalizedString("You can only download up to 3 installers at the same time. Please wait for a download to complete before starting a new one.", comment: "")),
+                            dismissButton: .default(Text(NSLocalizedString("OK", comment: "")))
+                        )
+                    }
                     .alert(isPresented: $isReplacingFile) {
                         Alert(
                             title: Text("\(filename) already exists. Do you want to replace it?"),
@@ -76,7 +99,7 @@ struct InstallerView: View {
                                 Text(NSLocalizedString("Replace", comment: "")),
                                 action: {
                                     do {
-                                        try downloadManager.download(url: product.installAssistantURL, replacing: true)
+                                        _ = try multiDownloadManager.startDownload(url: product.installAssistantURL, filename: filename, replacing: true)
                                     } catch {
                                         failed = true
                                     }
@@ -84,7 +107,7 @@ struct InstallerView: View {
                             )
                         )
                     }
-                    .disabled(downloadManager.isDownloading)
+                    .disabled(multiDownloadManager.isDownloading(filename: "InstallAssistant-\(product.productVersion ?? "V")-\(product.buildVersion ?? "B").pkg"))
                     .buttonStyle(.borderless)
                     .controlSize(.mini)
 
@@ -108,7 +131,7 @@ struct InstallerView: View {
                             dismissButton: .default(Text(NSLocalizedString("OK", comment: "")))
                         )
                     }
-                    .disabled(downloadManager.isDownloading || isCreatingInstaller)
+                    .disabled(multiDownloadManager.isDownloading(filename: "InstallAssistant-\(product.productVersion ?? "V")-\(product.buildVersion ?? "B").pkg") || isCreatingInstaller)
                     .buttonStyle(.borderless)
                     .controlSize(.mini)
 
