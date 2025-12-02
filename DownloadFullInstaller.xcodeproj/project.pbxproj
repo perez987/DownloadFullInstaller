@@ -103,6 +103,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C096F6172EDEF412009D0B82 /* Downloads */ = {
+			isa = PBXGroup;
+			children = (
+				D9E20C802E8B2D1C0086992F /* DownloadManager.swift */,
+				C0000001A000000200000001 /* MultiDownloadManager.swift */,
+			);
+			path = Downloads;
+			sourceTree = "<group>";
+		};
 		D95D3BFB2EDDFFAE002AF7DA /* Sleep */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +142,7 @@
 			children = (
 				D9E20C832E8B2D1C0086992F /* AppDelegate.swift */,
 				D9E20C7A2E8B2CE80086992F /* Assets.xcassets */,
+				C096F6172EDEF412009D0B82 /* Downloads */,
 				D9E20C742E8B2C590086992F /* FetchInstallerPkg.entitlements */,
 				D9E20C6B2E8B2C570086992F /* FetchInstallerPkgApp.swift */,
 				D9E20C7C2E8B2CF20086992F /* Languages */,
@@ -140,7 +150,7 @@
 				D9E20C822E8B2D1C0086992F /* Prefs.swift */,
 				D9E20C712E8B2C590086992F /* Preview Content */,
 				D95D3BFB2EDDFFAE002AF7DA /* Sleep */,
-				D9E20C7E2E8B2D060086992F /* View */,
+				D9E20C7E2E8B2D060086992F /* Views */,
 			);
 			path = FetchInstallerPkg;
 			sourceTree = "<group>";
@@ -170,10 +180,8 @@
 				D9E20C8E2E8B2D3B0086992F /* BuildManifest.swift */,
 				D9E20C8C2E8B2D3B0086992F /* Catalog.swift */,
 				D9E20C8D2E8B2D3B0086992F /* DistParserDelegate.swift */,
-				D9E20C802E8B2D1C0086992F /* DownloadManager.swift */,
 				D9E20C8F2E8B2D3B0086992F /* LiquidGlassStyle.swift */,
 				D9E20C8B2E8B2D3B0086992F /* MetaInfo.swift */,
-				C0000001A000000200000001 /* MultiDownloadManager.swift */,
 				D9E20C8A2E8B2D3B0086992F /* OSNames.swift */,
 				D9E20C902E8B2D3B0086992F /* Package.swift */,
 				D9E20C912E8B2D3B0086992F /* Product.swift */,
@@ -184,7 +192,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		D9E20C7E2E8B2D060086992F /* View */ = {
+		D9E20C7E2E8B2D060086992F /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				D9E20CA22E8B2D490086992F /* ContentView.swift */,
@@ -194,7 +202,7 @@
 				D9E20CA02E8B2D490086992F /* LanguageSelectionView.swift */,
 				D9E20C9F2E8B2D490086992F /* PreferencesView.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
