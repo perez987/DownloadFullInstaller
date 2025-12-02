@@ -248,7 +248,6 @@ class MultiDownloadManager: ObservableObject {
     /// Start a new download if slots are available
     func startDownload(url: URL?, filename: String, replacing: Bool = false) throws -> DownloadItem? {
         guard canStartNewDownload else {
-            print("Maximum concurrent downloads reached (3). Please wait for a download to complete.")
             return nil
         }
         

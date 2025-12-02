@@ -57,6 +57,7 @@ struct InstallerView: View {
                         // Check if max downloads reached
                         if !multiDownloadManager.canStartNewDownload {
                             showMaxDownloadsAlert = true
+							print("Maximum concurrent downloads reached (3). Please wait for a download to complete")
                             return
                         }
                         
