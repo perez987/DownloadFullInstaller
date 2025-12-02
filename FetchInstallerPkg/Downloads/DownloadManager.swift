@@ -270,7 +270,7 @@ extension DownloadManager: URLSessionTaskDelegate {
 			}
 		} else {
 				// Non-recoverable error
-			print("Non-recoverable download error: \(error.localizedDescription)")
+			print("Non-recoverable error: \(error.localizedDescription)")
 			// Decrement active download count on non-recoverable error
 			DownloadManager.decrementDownloadCount()
 			DispatchQueue.main.async {

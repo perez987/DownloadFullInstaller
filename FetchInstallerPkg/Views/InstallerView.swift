@@ -82,13 +82,6 @@ struct InstallerView: View {
                         Image(systemName: "arrow.down.circle").font(.title)
                     }
                     .help(String(format: NSLocalizedString("Download %@ %@ (%@) Installer", comment: ""), product.osName ?? "", product.productVersion ?? "", product.buildVersion ?? ""))
-                    .alert(isPresented: $showMaxDownloadsAlert) {
-                        Alert(
-                            title: Text(NSLocalizedString("Maximum Downloads Reached", comment: "")),
-                            message: Text(NSLocalizedString("You can only download up to 3 installers at the same time. Please wait for a download to complete before starting a new one.", comment: "")),
-                            dismissButton: .default(Text(NSLocalizedString("OK", comment: "")))
-                        )
-                    }
                     .alert(isPresented: $isReplacingFile) {
                         Alert(
                             title: Text("\(filename) already exists. Do you want to replace it?"),
@@ -151,6 +144,13 @@ struct InstallerView: View {
                         let package = (product.installAssistantURL?.absoluteString.components(separatedBy: "/").last ?? "")
                         Text(String(format: NSLocalizedString("Copy %@ %@ (%@) %@ URL", comment: ""), product.osName ?? "", product.productVersion ?? "", product.buildVersion ?? "", package))
                     }
+                }
+                .alert(isPresented: $showMaxDownloadsAlert) {
+                    Alert(
+                        title: Text(NSLocalizedString("Maximum Downloads Reached", comment: "")),
+                        message: Text(NSLocalizedString("You can only download up to 3 installers at the same time. Please wait for a download to complete before starting a new one.", comment: "")),
+                        dismissButton: .default(Text(NSLocalizedString("OK", comment: "")))
+                    )
                 }
 
             }

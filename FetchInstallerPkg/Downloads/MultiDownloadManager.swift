@@ -209,7 +209,7 @@ extension DownloadItem: URLSessionTaskDelegate {
                 self.retryDownload()
             }
         } else {
-            print("Non-recoverable download error: \(error.localizedDescription)")
+            print("Non-recoverable error: \(error.localizedDescription)")
             DispatchQueue.main.async {
                 self.isDownloading = false
                 self.isRetrying = false
