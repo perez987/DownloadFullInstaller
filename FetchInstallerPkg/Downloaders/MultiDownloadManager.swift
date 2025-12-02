@@ -74,12 +74,12 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
         
         if let resumeData = resumeData {
             downloadTask = urlSession.downloadTask(withResumeData: resumeData)
-            print("### Resuming download of \(filename ?? "InstallerAssistant.pkg")")
+            print("Resuming download of \(filename ?? "InstallerAssistant.pkg")")
         } else {
             downloadTask = urlSession.downloadTask(with: url)
             progress = 0.0
             localURL = nil
-            print("### Starting download of \(filename ?? "InstallerAssistant.pkg")")
+            print("Starting download of \(filename ?? "InstallerAssistant.pkg")")
         }
         
         downloadTask?.resume()
@@ -102,12 +102,12 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
             retryTimer = nil
             manager?.downloadCancelled(self)
         }
-        print("### Cancelled download of \(filename ?? "InstallerAssistant.pkg")")
+        print("Cancelled download of \(filename ?? "InstallerAssistant.pkg")")
     }
     
     private func retryDownload() {
         guard retryCount < maxRetries else {
-            print("### Max retry attempts reached. Download failed.")
+            print("Max retry attempts reached. Download failed.")
             DispatchQueue.main.async {
                 self.isDownloading = false
                 self.isRetrying = false
@@ -120,7 +120,7 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
         retryCount += 1
         let retryDelay: Double = 5
         
-        print("### Connection lost. Retrying download in \(Int(retryDelay))\"... (Attempt \(retryCount)/\(maxRetries))")
+        print("Connection lost. Retrying download in \(Int(retryDelay))\"... (Attempt \(retryCount)/\(maxRetries))")
         
         DispatchQueue.main.async {
             self.isRetrying = true
@@ -150,7 +150,7 @@ extension DownloadItem: URLSessionDownloadDelegate {
         do {
             let file = destination.appendingPathComponent(suggestedFilename)
             let newURL = try FileManager.default.replaceItemAt(file, withItemAt: location)
-            print("### Finished download of \(filename ?? "InstallerAssistant.pkg")")
+            print("Finished download of \(filename ?? "InstallerAssistant.pkg")")
             DispatchQueue.main.async {
                 self.isDownloading = false
                 self.isRetrying = false
@@ -163,7 +163,7 @@ extension DownloadItem: URLSessionDownloadDelegate {
                 self.manager?.downloadCompleted(self)
             }
         } catch {
-            print("### Error: \(error.localizedDescription)")
+            print("Error: \(error.localizedDescription)")
         }
     }
     
@@ -176,7 +176,7 @@ extension DownloadItem: URLSessionDownloadDelegate {
     }
     
     func urlSession(_: URLSession, downloadTask: URLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
-        print("### Download resumed at offset: \(fileOffset) bytes")
+        print("Download resumed at offset: \(fileOffset) bytes")
         DispatchQueue.main.async {
             self.progress = Double(fileOffset) / Double(expectedTotalBytes)
             self.progressString = "\(self.byteFormatter.string(fromByteCount: fileOffset))/\(self.byteFormatter.string(fromByteCount: expectedTotalBytes))"
@@ -190,7 +190,7 @@ extension DownloadItem: URLSessionTaskDelegate {
     func urlSession(_: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         guard let error = error else { return }
         
-        print("### Download error: \(error.localizedDescription)")
+        print("Download error: \(error.localizedDescription)")
         
         let nsError = error as NSError
         let isNetworkError = nsError.domain == NSURLErrorDomain &&
@@ -202,14 +202,14 @@ extension DownloadItem: URLSessionTaskDelegate {
         if isNetworkError {
             if let resumeDataFromError = (error as NSError).userInfo[NSURLSessionDownloadTaskResumeData] as? Data {
                 self.resumeData = resumeDataFromError
-                print("### Resume data saved for future retry")
+                print("Resume data saved for future retry")
             }
             
             DispatchQueue.main.async {
                 self.retryDownload()
             }
         } else {
-            print("### Non-recoverable download error: \(error.localizedDescription)")
+            print("Non-recoverable download error: \(error.localizedDescription)")
             DispatchQueue.main.async {
                 self.isDownloading = false
                 self.isRetrying = false
@@ -248,13 +248,13 @@ class MultiDownloadManager: ObservableObject {
     /// Start a new download if slots are available
     func startDownload(url: URL?, filename: String, replacing: Bool = false) throws -> DownloadItem? {
         guard canStartNewDownload else {
-            print("### Maximum concurrent downloads reached (3). Please wait for a download to complete.")
+            print("Maximum concurrent downloads reached (3). Please wait for a download to complete.")
             return nil
         }
         
         // Check if this file is already being downloaded
         if isDownloading(filename: filename) {
-            print("### File \(filename) is already being downloaded.")
+            print("File \(filename) is already being downloaded.")
             return nil
         }
         

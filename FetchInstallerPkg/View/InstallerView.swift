@@ -140,8 +140,8 @@ struct InstallerView: View {
                 .contextMenu {
                     Button(action: {
                         if let text = product.installAssistantURL?.absoluteString {
-//                            print("### \(text)")
-                            print("### InstallAssistant URL copied to clipboard")
+//                            print("\(text)")
+                            print("InstallAssistant URL copied to clipboard")
                             let pb = NSPasteboard.general
                             pb.clearContents()
                             pb.setString(text, forType: .string)
@@ -180,13 +180,13 @@ struct InstallerView: View {
                 self.isCreatingInstaller = false
                 
                 if error == nil {
-                    print("### Installer package opened successfully")
+                    print("Installer package opened successfully")
                         // Show success alert
 //                    self.installerCreationAlertTitle = NSLocalizedString("Success", comment: "")
 //                    self.installerCreationAlertMessage = NSLocalizedString("The installer package has been opened. Follow the on-screen instructions to complete the installation", comment: "")
 //                    self.showInstallerCreationAlert = true
                 } else {
-                    print("### Failed to open installer package: \(error?.localizedDescription ?? "Unknown error")")
+                    print("Failed to open installer package: \(error?.localizedDescription ?? "Unknown error")")
                     self.installerCreationAlertTitle = NSLocalizedString("Error Creating Installer", comment: "")
                     self.installerCreationAlertMessage = NSLocalizedString("Failed to open the installer package. Please try opening it manually from the Downloads folder.", comment: "")
                     self.showInstallerCreationAlert = true

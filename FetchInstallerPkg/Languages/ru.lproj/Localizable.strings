@@ -111,3 +111,12 @@
 
 /* No comment provided by engineer. */
 "Failed to create AppleScript" = "Не удалось создать AppleScript";
+
+/* Multi-download support */
+"Maximum Downloads Reached" = "Достигнуто максимальное количество загрузок";
+
+/* Multi-download support */
+"You can only download up to 3 installers at the same time. Please wait for a download to complete before starting a new one." = "Вы можете загружать только 3 установщика одновременно. Пожалуйста, дождитесь завершения загрузки, прежде чем начать новую.";
+
+/* Multi-download support */
+"Dismiss" = "Закрыть";

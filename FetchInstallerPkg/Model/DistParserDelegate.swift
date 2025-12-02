@@ -36,7 +36,7 @@ import Foundation
                 }
             }
             if attributeDict["id"] == "InstallESDDmg" {
-                print("### AttribureDict: \(attributeDict)")
+                print("AttribureDict: \(attributeDict)")
             }
         }
 

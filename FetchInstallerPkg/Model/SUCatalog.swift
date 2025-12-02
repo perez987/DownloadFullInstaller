@@ -33,16 +33,16 @@ class SUCatalog: ObservableObject {
             let task = session.dataTask(with: $0) { data, response, error in
 
                 if error != nil {
-                    print("### \(self.thisComponent) : \(error!.localizedDescription)")
+                    print("\(self.thisComponent) : \(error!.localizedDescription)")
                     return
                 }
 
                 let httpResponse = response as! HTTPURLResponse
                 if httpResponse.statusCode != 200 {
-//                    print("### \(self.thisComponent) : \(httpResponse.statusCode)")
+//                    print("\(self.thisComponent) : \(httpResponse.statusCode)")
                 } else {
                     if data != nil {
-//                        print("### \(self.thisComponent) : \(String(decoding: data!, as: UTF8.self))")
+//                        print("\(self.thisComponent) : \(String(decoding: data!, as: UTF8.self))")
                         DispatchQueue.main.async {
                             self.decode(data: data!)
                         }
@@ -82,8 +82,8 @@ class SUCatalog: ObservableObject {
 
             }
 
-//            print("### \(self.thisComponent) : \(products.count) products found")
-//            print("### \(self.thisComponent) : \(self.installers.count) installer pkgs found")
+//            print("\(self.thisComponent) : \(products.count) products found")
+//            print("\(self.thisComponent) : \(self.installers.count) installer pkgs found")
 
             installers.sort { $0.postDate > $1.postDate }
         }

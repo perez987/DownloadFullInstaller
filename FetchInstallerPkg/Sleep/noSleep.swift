@@ -49,7 +49,7 @@
 //            &assertionID
 //        )
 //        if success == kIOReturnSuccess {
-//            print("### Sleep prevented")
+//            print("Sleep prevented")
 //        }
 //    }
 //    
@@ -57,7 +57,7 @@
 //        if assertionID != 0 {
 //            IOPMAssertionRelease(assertionID)
 //            assertionID = 0
-//            print("### Sleep allowed")
+//            print("Sleep allowed")
 //        }
 //    }
 //}

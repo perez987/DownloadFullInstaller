@@ -15,7 +15,7 @@ var sleepDisabled = false
 func disableSystemSleep(reason: String = "DownloadFullInstaller prevents sleep") {
     if !sleepDisabled {
         sleepDisabled = IOPMAssertionCreateWithName(kIOPMAssertionTypeNoIdleSleep as CFString, IOPMAssertionLevel(kIOPMAssertionLevelOn), reason as CFString, &assertionID) == kIOReturnSuccess
-        let text = "### DownloadFullInstaller prevents sleep"
+        let text = "DownloadFullInstaller prevents sleep"
         print(text)
     }
 
@@ -24,7 +24,7 @@ func enableSystemSleep() {
     if sleepDisabled {
         IOPMAssertionRelease(assertionID)
         sleepDisabled = false
-        let text = "### DownloadFullInstaller allows sleep"
+        let text = "DownloadFullInstaller allows sleep"
         print(text)
     }
 

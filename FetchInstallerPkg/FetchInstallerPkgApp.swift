@@ -27,7 +27,7 @@ struct FetchInstallerPkgApp: App {
 						// Uncomment to show the dialog, comment to hide it
 //					if !Prefs.languageSelectionShown {
 //						showLanguageSelection = true
-//						print("### First run, language selection dialog displayed")
+//						print("First run, language selection dialog displayed")
 //					}
 				}
 

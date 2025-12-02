@@ -113,7 +113,7 @@ import Foundation
 			// Try to resume from previous download if resume data exists
 		if let resumeData = resumeData {
 			downloadTask = urlSession.downloadTask(withResumeData: resumeData)
-			print("### Resuming download of \(filename ?? "InstallerAssistant.pkg")")
+			print("Resuming download of \(filename ?? "InstallerAssistant.pkg")")
 		} else {
 			downloadTask = urlSession.downloadTask(with: url)
 			progress = 0.0
@@ -121,7 +121,7 @@ import Foundation
 				DockProgress.progress = 0.0
 			}
 			localURL = nil
-			print("### Starting download of \(filename ?? "InstallerAssistant.pkg")")
+			print("Starting download of \(filename ?? "InstallerAssistant.pkg")")
 		}
 
 		downloadTask?.resume()
@@ -149,12 +149,12 @@ import Foundation
 			// Decrement active download count when cancelled
 			DownloadManager.decrementDownloadCount()
 		}
-		print("### Cancelled download of \(filename ?? "InstallerAssistant.pkg")")
+		print("Cancelled download of \(filename ?? "InstallerAssistant.pkg")")
 	}
 
 	private func retryDownload() {
 		guard retryCount < maxRetries else {
-			print("### Max retry attempts reached. Download failed.")
+			print("Max retry attempts reached. Download failed.")
 			DispatchQueue.main.async {
 				self.isDownloading = false
 				self.isRetrying = false
@@ -171,8 +171,8 @@ import Foundation
 			//    let retryDelay = pow(2.0, Double(retryCount)) // Exponential backoff: 2, 4, 8... seconds
 		let retryDelay : Double = 5 // Retry interval 5 seconds
 
-		print("### Connection lost. Retrying download in \(Int(retryDelay))\"... (Attempt \(retryCount)/\(maxRetries))")
-			//    print("### Trying to resume download of \(filename ?? "InstallerAssistant.pkg")")
+		print("Connection lost. Retrying download in \(Int(retryDelay))\"... (Attempt \(retryCount)/\(maxRetries))")
+			//    print("Trying to resume download of \(filename ?? "InstallerAssistant.pkg")")
 
 		DispatchQueue.main.async {
 			self.isRetrying = true
@@ -203,7 +203,7 @@ extension DownloadManager: URLSessionDownloadDelegate {
 		do {
 			let file = destination.appendingPathComponent(suggestedFilename)
 			let newURL = try FileManager.default.replaceItemAt(file, withItemAt: location)
-			print("### Finished download of \(filename ?? "InstallerAssistant.pkg")")
+			print("Finished download of \(filename ?? "InstallerAssistant.pkg")")
 			// Decrement active download count on successful completion
 			DownloadManager.decrementDownloadCount()
 			DispatchQueue.main.async {
@@ -218,7 +218,7 @@ extension DownloadManager: URLSessionDownloadDelegate {
 				DockProgress.progress = 0.0
 			}
 		} catch {
-			print("### Error: \(error.localizedDescription)")
+			print("Error: \(error.localizedDescription)")
 		}
 	}
 
@@ -232,7 +232,7 @@ extension DownloadManager: URLSessionDownloadDelegate {
 
 		// Handle download resumption
 	func urlSession(_: URLSession, downloadTask: URLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
-		print("### Download resumed at offset: \(fileOffset) bytes")
+		print("Download resumed at offset: \(fileOffset) bytes")
 		DispatchQueue.main.async {
 			self.progress = Double(fileOffset) / Double(expectedTotalBytes)
 			self.progressString = "\(self.byteFormatter.string(fromByteCount: fileOffset))/\(self.byteFormatter.string(fromByteCount: expectedTotalBytes))"
@@ -246,8 +246,8 @@ extension DownloadManager: URLSessionTaskDelegate {
 	func urlSession(_: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
 	guard let error = error else { return }
 
-		print("### Download error: \(error.localizedDescription)")
-//		print("### Download error occurred: the Internet connection has been lost")
+		print("Download error: \(error.localizedDescription)")
+//		print("Download error occurred: the Internet connection has been lost")
 
         // Check if this is a network error that we can recover from
 		let nsError = error as NSError
@@ -261,7 +261,7 @@ extension DownloadManager: URLSessionTaskDelegate {
 				// Try to get resume data if available
 			if let resumeDataFromError = (error as NSError).userInfo[NSURLSessionDownloadTaskResumeData] as? Data {
 				self.resumeData = resumeDataFromError
-				print("### Resume data saved for future retry")
+				print("Resume data saved for future retry")
 			}
 
 				// Attempt to retry the download
@@ -270,7 +270,7 @@ extension DownloadManager: URLSessionTaskDelegate {
 			}
 		} else {
 				// Non-recoverable error
-			print("### Non-recoverable download error: \(error.localizedDescription)")
+			print("Non-recoverable download error: \(error.localizedDescription)")
 			// Decrement active download count on non-recoverable error
 			DownloadManager.decrementDownloadCount()
 			DispatchQueue.main.async {
