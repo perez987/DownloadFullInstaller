@@ -11,24 +11,6 @@ class DisplayedCount {
     var displayedRows = 0
 }
 
-// Single unified .alert(item:) modifier using an InstallerAlertType enum that handles three alert types:
-// - replaceFile - File replacement confirmation
-// - maxDownloads - Maximum downloads warning
-// - installerCreation - Installer creation status
-enum InstallerAlertType: Identifiable {
-    case replaceFile
-    case maxDownloads
-    case installerCreation
-    
-    var id: Int {
-        switch self {
-        case .replaceFile: return 0
-        case .maxDownloads: return 1
-        case .installerCreation: return 2
-        }
-    }
-}
-
 struct InstallerView: View {
     @ObservedObject var product: Product
     @StateObject var multiDownloadManager = MultiDownloadManager.shared
@@ -36,9 +18,7 @@ struct InstallerView: View {
     @State var filename = "InstallerAssistant.pkg"
     @State var installerURLFiles: [String] = []
     @State var isCreatingInstaller = false
-    @State var installerCreationAlertTitle = ""
-    @State var installerCreationAlertMessage = ""
-    @State private var activeAlert: InstallerAlertType?
+    @State private var activeAlert: AppAlertType?
 
     var body: some View {
         if product.hasLoaded {
@@ -89,7 +69,7 @@ struct InstallerView: View {
                         let fileExists = FileManager.default.fileExists(atPath: file.path)
 
                         if fileExists {
-                            activeAlert = .replaceFile
+                            activeAlert = .replaceFile(filename: filename)
                         } else {
                             do {
                                 _ = try multiDownloadManager.startDownload(url: product.installAssistantURL, filename: filename)
@@ -140,37 +120,17 @@ struct InstallerView: View {
                         Text(String(format: NSLocalizedString("Copy %@ %@ (%@) %@ URL", comment: ""), product.osName ?? "", product.productVersion ?? "", product.buildVersion ?? "", package))
                     }
                 }
-				// Handle multiple different alerts in a single view
-                .alert(item: $activeAlert) { alertType in
+				// Handle multiple different alerts in a single view using appAlert extension
+                .appAlert(item: $activeAlert) { alertType in
                     switch alertType {
                     case .replaceFile:
-                        return Alert(
-                            title: Text("\(filename) already exists. Do you want to replace it?"),
-                            message: Text(NSLocalizedString("A file with the same name already exists in that location. Replacing it will overwrite its current contents.", comment: "")),
-                            primaryButton: .cancel(Text(NSLocalizedString("Cancel", comment: ""))),
-                            secondaryButton: .destructive(
-                                Text(NSLocalizedString("Replace", comment: "")),
-                                action: {
-                                    do {
-                                        _ = try multiDownloadManager.startDownload(url: product.installAssistantURL, filename: filename, replacing: true)
-                                    } catch {
-                                        failed = true
-                                    }
-                                }
-                            )
-                        )
-                    case .maxDownloads:
-                        return Alert(
-                            title: Text(NSLocalizedString("Maximum Downloads Reached", comment: "")),
-                            message: Text(NSLocalizedString("You can only download up to 3 installers at the same time. Please wait for a download to complete before starting a new one.", comment: "")),
-                            dismissButton: .default(Text(NSLocalizedString("OK", comment: "")))
-                        )
-                    case .installerCreation:
-                        return Alert(
-                            title: Text(installerCreationAlertTitle),
-                            message: Text(installerCreationAlertMessage),
-                            dismissButton: .default(Text(NSLocalizedString("OK", comment: "")))
-                        )
+                        do {
+                            _ = try multiDownloadManager.startDownload(url: product.installAssistantURL, filename: filename, replacing: true)
+                        } catch {
+                            failed = true
+                        }
+                    default:
+                        break
                     }
                 }
 
@@ -185,9 +145,10 @@ struct InstallerView: View {
         
             // Check if the PKG file exists
         guard FileManager.default.fileExists(atPath: pkgPath) else {
-            installerCreationAlertTitle = NSLocalizedString("Error Creating Installer", comment: "")
-            installerCreationAlertMessage = String(format: NSLocalizedString("The installer package %@ does not exist in the Downloads folder. Please download it first.", comment: ""), filename)
-            activeAlert = .installerCreation
+            activeAlert = .installerCreation(
+                title: NSLocalizedString("Error Creating Installer", comment: ""),
+                message: String(format: NSLocalizedString("The installer package %@ does not exist in the Downloads folder. Please download it first.", comment: ""), filename)
+            )
             return
         }
         
@@ -203,14 +164,16 @@ struct InstallerView: View {
                 if error == nil {
                     print("Installer package opened successfully")
                         // Show success alert
-//                    self.installerCreationAlertTitle = NSLocalizedString("Success", comment: "")
-//                    self.installerCreationAlertMessage = NSLocalizedString("The installer package has been opened. Follow the on-screen instructions to complete the installation", comment: "")
-//                    self.activeAlert = .installerCreation
+//                    self.activeAlert = .installerCreation(
+//                        title: NSLocalizedString("Success", comment: ""),
+//                        message: NSLocalizedString("The installer package has been opened. Follow the on-screen instructions to complete the installation", comment: "")
+//                    )
                 } else {
                     print("Failed to open installer package: \(error?.localizedDescription ?? "Unknown error")")
-                    self.installerCreationAlertTitle = NSLocalizedString("Error Creating Installer", comment: "")
-                    self.installerCreationAlertMessage = NSLocalizedString("Failed to open the installer package. Please try opening it manually from the Downloads folder.", comment: "")
-                    self.activeAlert = .installerCreation
+                    self.activeAlert = .installerCreation(
+                        title: NSLocalizedString("Error Creating Installer", comment: ""),
+                        message: NSLocalizedString("Failed to open the installer package. Please try opening it manually from the Downloads folder.", comment: "")
+                    )
                 }
             }
         }

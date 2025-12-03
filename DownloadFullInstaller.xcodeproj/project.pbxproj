@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C0000001A000000100000001 /* MultiDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000001A000000200000001 /* MultiDownloadManager.swift */; };
+		C0000002A000000100000001 /* Alert+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000002A000000200000001 /* Alert+Extensions.swift */; };
 		C03916EE2EDBB6DC00187185 /* DockProgress in Frameworks */ = {isa = PBXBuildFile; productRef = C03916ED2EDBB6DC00187185 /* DockProgress */; };
 		D9E20C6C2E8B2C570086992F /* FetchInstallerPkgApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E20C6B2E8B2C570086992F /* FetchInstallerPkgApp.swift */; };
 		D9E20C732E8B2C590086992F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9E20C722E8B2C590086992F /* Preview Assets.xcassets */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		C0000001A000000200000001 /* MultiDownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiDownloadManager.swift; sourceTree = "<group>"; };
+		C0000002A000000200000001 /* Alert+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+Extensions.swift"; sourceTree = "<group>"; };
 		D9296C672EAEBACE00E9BE5A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D9296C682EAEBACE00E9BE5A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9296C692EAEBAD500E9BE5A /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 		D9E20C7E2E8B2D060086992F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C0000002A000000200000001 /* Alert+Extensions.swift */,
 				D9E20CA22E8B2D490086992F /* ContentView.swift */,
 				D9E20CA42E8B2D490086992F /* DownloadView.swift */,
 				D9E20CA32E8B2D490086992F /* IconView.swift */,
@@ -288,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0000002A000000100000001 /* Alert+Extensions.swift in Sources */,
 				D9E20C962E8B2D3B0086992F /* MetaInfo.swift in Sources */,
 				D9E20CA92E8B2D490086992F /* IconView.swift in Sources */,
 				D9E20C942E8B2D3B0086992F /* SeedProgram.swift in Sources */,
@@ -489,7 +493,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 155;
+				CURRENT_PROJECT_VERSION = 157;
 				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
 				ENABLE_APP_SANDBOX = YES;
@@ -533,7 +537,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 155;
+				CURRENT_PROJECT_VERSION = 157;
 				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
 				ENABLE_APP_SANDBOX = YES;

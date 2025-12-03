@@ -11,8 +11,7 @@ struct LanguageSelectionView: View {
     @ObservedObject var languageManager: LanguageManager
     @Binding var isPresented: Bool
     @State private var selectedLanguage: String
-    @State private var showRestartAlert = false
-    @State private var showSettingsAlert = false
+    @State private var activeAlert: AppAlertType?
 
     init(languageManager: LanguageManager, isPresented: Binding<Bool>) {
         self.languageManager = languageManager
@@ -70,26 +69,11 @@ struct LanguageSelectionView: View {
                 Spacer()
                 
                 Button(NSLocalizedString("Continue", comment: "")) {
-                    showRestartAlert = true
+                    activeAlert = .restartRequired
                 }
                 .keyboardShortcut(.return)
                 .buttonStyle(.bordered)
                 .disabled(selectedLanguage == languageManager.currentLanguage)
-                .alert(isPresented: $showRestartAlert) {
-                    Alert(
-                        title: Text(NSLocalizedString("Restart Required", comment: "")),
-                        message: Text(NSLocalizedString("The app must be restarted for changes to take effect.", comment: "")),
-                        primaryButton: .default(
-                            Text(NSLocalizedString("OK", comment: "")),
-                            action: {
-                                languageManager.setLanguage(selectedLanguage)
-                                isPresented = false
-                            }
-                        ),
-                        secondaryButton: .cancel(Text(NSLocalizedString("Cancel", comment: "")))
-                    )
-                    
-                }
                 .liquidGlass(intensity: .subtle)
             }
             
@@ -106,7 +90,7 @@ struct LanguageSelectionView: View {
                     .font(.body)
 
                 Button(NSLocalizedString("Yes", comment: "")) {
-                    showSettingsAlert = true
+                    activeAlert = .warningSettings
                 }
                 .buttonStyle(.bordered)
                 .liquidGlass(intensity: .subtle)
@@ -119,27 +103,22 @@ struct LanguageSelectionView: View {
 //            }
             .padding(.bottom, 20)
 
-            .alert(isPresented: $showSettingsAlert) {
-                Alert(
-                    title: Text(NSLocalizedString("Warning", comment: "")),
-                    message: Text(NSLocalizedString("You will lose user settings and saved language.", comment: "")),
-                    primaryButton: .default(
-                        Text(NSLocalizedString("OK", comment: "")),
-                        action: {
-//                            UserDefaults.resetDefaults() // partial deletion of saved user preferences (AppleLanguages and SelectedLanguage)
-                            Prefs.delPlist() // complete deletion of saved app preferences
-                            isPresented = false
-                        }
-                    ),
-                    secondaryButton: .cancel(Text(NSLocalizedString("Cancel", comment: "")))
-                )
-
-            }
-
         }
         .padding(.horizontal, 30)
         .frame(width: 440, height: 620)
         .background(Color(NSColor.windowBackgroundColor))
+        .appAlert(item: $activeAlert) { alertType in
+            switch alertType {
+            case .restartRequired:
+                languageManager.setLanguage(selectedLanguage)
+                isPresented = false
+            case .warningSettings:
+                Prefs.delPlist()
+                isPresented = false
+            default:
+                break
+            }
+        }
     }
 }
 
