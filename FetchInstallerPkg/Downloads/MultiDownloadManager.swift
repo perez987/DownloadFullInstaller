@@ -1,6 +1,7 @@
 //
 //  MultiDownloadManager.swift
 //
+// Created by Emilio P Egido on 2025-12-01
 //  Manages multiple simultaneous downloads (up to 3)
 //
 

@@ -2,6 +2,7 @@
 //  InstallerView.swift
 //
 //  Created by Armin Briegel on 2021-06-15
+//  Modified by Emilio P Egido on 2025-12-03
 //
 
 import SwiftUI
@@ -10,18 +11,34 @@ class DisplayedCount {
     var displayedRows = 0
 }
 
+// Single unified .alert(item:) modifier using an InstallerAlertType enum that handles three alert types:
+// - replaceFile - File replacement confirmation
+// - maxDownloads - Maximum downloads warning
+// - installerCreation - Installer creation status
+enum InstallerAlertType: Identifiable {
+    case replaceFile
+    case maxDownloads
+    case installerCreation
+    
+    var id: Int {
+        switch self {
+        case .replaceFile: return 0
+        case .maxDownloads: return 1
+        case .installerCreation: return 2
+        }
+    }
+}
+
 struct InstallerView: View {
     @ObservedObject var product: Product
     @StateObject var multiDownloadManager = MultiDownloadManager.shared
-    @State var isReplacingFile = false
     @State var failed = false
     @State var filename = "InstallerAssistant.pkg"
     @State var installerURLFiles: [String] = []
     @State var isCreatingInstaller = false
-    @State var showInstallerCreationAlert = false
     @State var installerCreationAlertTitle = ""
     @State var installerCreationAlertMessage = ""
-    @State var showMaxDownloadsAlert = false
+    @State private var activeAlert: InstallerAlertType?
 
     var body: some View {
         if product.hasLoaded {
@@ -50,14 +67,14 @@ struct InstallerView: View {
                                 .font(.footnote)
                         }
                     }
-
+                    
                     Button(action: {
                         filename = "InstallAssistant-\(product.productVersion ?? "V")-\(product.buildVersion ?? "B").pkg"
                         
                         // Check if max downloads reached
                         if !multiDownloadManager.canStartNewDownload {
-                            showMaxDownloadsAlert = true
-							print("Maximum concurrent downloads reached (3). Please wait for a download to complete")
+                            activeAlert = .maxDownloads
+                            print("Maximum concurrent downloads reached (3). Please wait for a download to complete")
                             return
                         }
                         
@@ -69,9 +86,11 @@ struct InstallerView: View {
                         // Check if file exists on disk
                         let destination = Prefs.downloadURL
                         let file = destination.appendingPathComponent(filename)
-                        isReplacingFile = FileManager.default.fileExists(atPath: file.path)
+                        let fileExists = FileManager.default.fileExists(atPath: file.path)
 
-                        if !isReplacingFile {
+                        if fileExists {
+                            activeAlert = .replaceFile
+                        } else {
                             do {
                                 _ = try multiDownloadManager.startDownload(url: product.installAssistantURL, filename: filename)
                             } catch {
@@ -83,23 +102,6 @@ struct InstallerView: View {
                         Image(systemName: "arrow.down.circle").font(.title)
                     }
                     .help(String(format: NSLocalizedString("Download %@ %@ (%@) Installer", comment: ""), product.osName ?? "", product.productVersion ?? "", product.buildVersion ?? ""))
-                    .alert(isPresented: $isReplacingFile) {
-                        Alert(
-                            title: Text("\(filename) already exists. Do you want to replace it?"),
-                            message: Text(NSLocalizedString("A file with the same name already exists in that location. Replacing it will overwrite its current contents.", comment: "")),
-                            primaryButton: .cancel(Text(NSLocalizedString("Cancel", comment: ""))),
-                            secondaryButton: .destructive(
-                                Text(NSLocalizedString("Replace", comment: "")),
-                                action: {
-                                    do {
-                                        _ = try multiDownloadManager.startDownload(url: product.installAssistantURL, filename: filename, replacing: true)
-                                    } catch {
-                                        failed = true
-                                    }
-                                }
-                            )
-                        )
-                    }
                     .disabled(multiDownloadManager.isDownloading(filename: "InstallAssistant-\(product.productVersion ?? "V")-\(product.buildVersion ?? "B").pkg"))
                     .buttonStyle(.borderless)
                     .controlSize(.mini)
@@ -116,14 +118,6 @@ struct InstallerView: View {
                         }
                     }
                     .help(String(format: NSLocalizedString("Create Installer App from %@ %@ (%@)", comment: ""), product.osName ?? "", product.productVersion ?? "", product.buildVersion ?? ""))
-
-                    .alert(isPresented: $showInstallerCreationAlert) {
-                        Alert(
-                            title: Text(installerCreationAlertTitle),
-                            message: Text(installerCreationAlertMessage),
-                            dismissButton: .default(Text(NSLocalizedString("OK", comment: "")))
-                        )
-                    }
                     .disabled(multiDownloadManager.isDownloading(filename: "InstallAssistant-\(product.productVersion ?? "V")-\(product.buildVersion ?? "B").pkg") || isCreatingInstaller)
                     .buttonStyle(.borderless)
                     .controlSize(.mini)
@@ -146,12 +140,38 @@ struct InstallerView: View {
                         Text(String(format: NSLocalizedString("Copy %@ %@ (%@) %@ URL", comment: ""), product.osName ?? "", product.productVersion ?? "", product.buildVersion ?? "", package))
                     }
                 }
-                .alert(isPresented: $showMaxDownloadsAlert) {
-                    Alert(
-                        title: Text(NSLocalizedString("Maximum Downloads Reached", comment: "")),
-                        message: Text(NSLocalizedString("You can only download up to 3 installers at the same time. Please wait for a download to complete before starting a new one.", comment: "")),
-                        dismissButton: .default(Text(NSLocalizedString("OK", comment: "")))
-                    )
+				// Handle multiple different alerts in a single view
+                .alert(item: $activeAlert) { alertType in
+                    switch alertType {
+                    case .replaceFile:
+                        return Alert(
+                            title: Text("\(filename) already exists. Do you want to replace it?"),
+                            message: Text(NSLocalizedString("A file with the same name already exists in that location. Replacing it will overwrite its current contents.", comment: "")),
+                            primaryButton: .cancel(Text(NSLocalizedString("Cancel", comment: ""))),
+                            secondaryButton: .destructive(
+                                Text(NSLocalizedString("Replace", comment: "")),
+                                action: {
+                                    do {
+                                        _ = try multiDownloadManager.startDownload(url: product.installAssistantURL, filename: filename, replacing: true)
+                                    } catch {
+                                        failed = true
+                                    }
+                                }
+                            )
+                        )
+                    case .maxDownloads:
+                        return Alert(
+                            title: Text(NSLocalizedString("Maximum Downloads Reached", comment: "")),
+                            message: Text(NSLocalizedString("You can only download up to 3 installers at the same time. Please wait for a download to complete before starting a new one.", comment: "")),
+                            dismissButton: .default(Text(NSLocalizedString("OK", comment: "")))
+                        )
+                    case .installerCreation:
+                        return Alert(
+                            title: Text(installerCreationAlertTitle),
+                            message: Text(installerCreationAlertMessage),
+                            dismissButton: .default(Text(NSLocalizedString("OK", comment: "")))
+                        )
+                    }
                 }
 
             }
@@ -167,7 +187,7 @@ struct InstallerView: View {
         guard FileManager.default.fileExists(atPath: pkgPath) else {
             installerCreationAlertTitle = NSLocalizedString("Error Creating Installer", comment: "")
             installerCreationAlertMessage = String(format: NSLocalizedString("The installer package %@ does not exist in the Downloads folder. Please download it first.", comment: ""), filename)
-            showInstallerCreationAlert = true
+            activeAlert = .installerCreation
             return
         }
         
@@ -185,12 +205,12 @@ struct InstallerView: View {
                         // Show success alert
 //                    self.installerCreationAlertTitle = NSLocalizedString("Success", comment: "")
 //                    self.installerCreationAlertMessage = NSLocalizedString("The installer package has been opened. Follow the on-screen instructions to complete the installation", comment: "")
-//                    self.showInstallerCreationAlert = true
+//                    self.activeAlert = .installerCreation
                 } else {
                     print("Failed to open installer package: \(error?.localizedDescription ?? "Unknown error")")
                     self.installerCreationAlertTitle = NSLocalizedString("Error Creating Installer", comment: "")
                     self.installerCreationAlertMessage = NSLocalizedString("Failed to open the installer package. Please try opening it manually from the Downloads folder.", comment: "")
-                    self.showInstallerCreationAlert = true
+                    self.activeAlert = .installerCreation
                 }
             }
         }

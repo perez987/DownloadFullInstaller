@@ -103,7 +103,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C096F6172EDEF412009D0B82 /* Downloads */ = {
+		D95D3BFA2EDDFF95002AF7DA /* Downloads */ = {
 			isa = PBXGroup;
 			children = (
 				D9E20C802E8B2D1C0086992F /* DownloadManager.swift */,
@@ -142,7 +142,7 @@
 			children = (
 				D9E20C832E8B2D1C0086992F /* AppDelegate.swift */,
 				D9E20C7A2E8B2CE80086992F /* Assets.xcassets */,
-				C096F6172EDEF412009D0B82 /* Downloads */,
+				D95D3BFA2EDDFF95002AF7DA /* Downloads */,
 				D9E20C742E8B2C590086992F /* FetchInstallerPkg.entitlements */,
 				D9E20C6B2E8B2C570086992F /* FetchInstallerPkgApp.swift */,
 				D9E20C7C2E8B2CF20086992F /* Languages */,
@@ -489,7 +489,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 152;
+				CURRENT_PROJECT_VERSION = 155;
 				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
 				ENABLE_APP_SANDBOX = YES;
@@ -533,7 +533,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 152;
+				CURRENT_PROJECT_VERSION = 155;
 				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
 				ENABLE_APP_SANDBOX = YES;
