@@ -16,10 +16,9 @@ struct ContentView: View {
     var countersText: String = ""
 
     var body: some View {
-
         PreferencesView().environmentObject(sucatalog).navigationTitle(NSLocalizedString("Download Full Installer", comment: "Main window title"))
         VStack(alignment: .center, spacing: 4) {
-            HStack(alignment: .center) { 
+            HStack(alignment: .center) {
                 Text("")
                 Spacer()
             }
@@ -30,10 +29,8 @@ struct ContentView: View {
                 }
                 .padding(4)
                 .liquidGlassContainer()
-                
-                    // ---> Test, VStack border
+                // ---> Test, VStack border
 //                .border(.mint, width: 1)
-                
                 .contentMargins(.leading, 1, for: .scrollContent)
             } else {
                 List(sucatalog.installers, id: \.id) { installer in
@@ -41,9 +38,8 @@ struct ContentView: View {
                 }
                 .padding(4)
                 .liquidGlassContainer()
-
             }
-                        
+
             DownloadView()
         }
 
@@ -58,24 +54,20 @@ struct ContentView: View {
         .padding(.bottom, 12)
         .padding(.horizontal, 28)
 
-        HStack(alignment: .center) {
-            
-        }
-        
+        HStack(alignment: .center) {}
+
             // ---> Count of listed installers has issues, always shows all OSes count
 //         HStack { Text("(\(sucatalog.installers.count) pkg(s) in \(self.seedProgram) catalog)\n") .font(.headline) }
-        
-        .id(refreshID) // Force view refresh when language changes
-        .onReceive(NotificationCenter.default.publisher(for: .languageChanged)) { _ in
-            refreshID = UUID()
-        }
+
+            .id(refreshID) // Force view refresh when language changes
+            .onReceive(NotificationCenter.default.publisher(for: .languageChanged)) { _ in
+                refreshID = UUID()
+            }
     }
 
     struct ContentView_Previews: PreviewProvider {
         static var previews: some View {
             ContentView()
         }
-        
     }
-    
 }

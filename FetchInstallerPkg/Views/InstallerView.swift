@@ -22,8 +22,7 @@ struct InstallerView: View {
 
     var body: some View {
         if product.hasLoaded {
-
-                // Filter data on osName if needed
+            // Filter data on osName if needed
             if (Prefs.osNameID.rawValue == OsNameID.osAll.rawValue) || (Prefs.osNameID.rawValue != OsNameID.osAll.rawValue && product.osName == Prefs.osNameID.rawValue) {
                 HStack {
                     IconView(product: product)
@@ -47,22 +46,22 @@ struct InstallerView: View {
                                 .font(.footnote)
                         }
                     }
-                    
+
                     Button(action: {
                         filename = "InstallAssistant-\(product.productVersion ?? "V")-\(product.buildVersion ?? "B").pkg"
-                        
+
                         // Check if max downloads reached
                         if !multiDownloadManager.canStartNewDownload {
                             activeAlert = .maxDownloads
                             print("Maximum concurrent downloads reached (3). Please wait for a download to complete")
                             return
                         }
-                        
+
                         // Check if this file is already being downloaded
                         if multiDownloadManager.isDownloading(filename: filename) {
                             return
                         }
-                        
+
                         // Check if file exists on disk
                         let destination = Prefs.downloadURL
                         let file = destination.appendingPathComponent(filename)
@@ -120,7 +119,7 @@ struct InstallerView: View {
                         Text(String(format: NSLocalizedString("Copy %@ %@ (%@) %@ URL", comment: ""), product.osName ?? "", product.productVersion ?? "", product.buildVersion ?? "", package))
                     }
                 }
-				// Handle multiple different alerts in a single view using appAlert extension
+                // Handle multiple different alerts in a single view using appAlert extension
                 .appAlert(item: $activeAlert) { alertType in
                     switch alertType {
                     case .replaceFile:
@@ -133,17 +132,16 @@ struct InstallerView: View {
                         break
                     }
                 }
-
             }
         }
     }
-    
+
     func createInstallerApp() {
-            // Build the filename
+        // Build the filename
         filename = "InstallAssistant-\(product.productVersion ?? "V")-\(product.buildVersion ?? "B").pkg"
         let pkgPath = Prefs.downloadURL.appendingPathComponent(filename).path
-        
-            // Check if the PKG file exists
+
+        // Check if the PKG file exists
         guard FileManager.default.fileExists(atPath: pkgPath) else {
             activeAlert = .installerCreation(
                 title: NSLocalizedString("Error Creating Installer", comment: ""),
@@ -151,19 +149,19 @@ struct InstallerView: View {
             )
             return
         }
-        
+
         isCreatingInstaller = true
-        
-            // Open the PKG file with the default installer application
-            // This works within sandbox constraints and shows the standard macOS installer UI
+
+        // Open the PKG file with the default installer application
+        // This works within sandbox constraints and shows the standard macOS installer UI
         let pkgURL = URL(fileURLWithPath: pkgPath)
-        NSWorkspace.shared.open(pkgURL, configuration: NSWorkspace.OpenConfiguration()) { app, error in
+        NSWorkspace.shared.open(pkgURL, configuration: NSWorkspace.OpenConfiguration()) { _, error in
             DispatchQueue.main.async {
                 self.isCreatingInstaller = false
-                
+
                 if error == nil {
                     print("Installer package opened successfully")
-                        // Show success alert
+                    // Show success alert
 //                    self.activeAlert = .installerCreation(
 //                        title: NSLocalizedString("Success", comment: ""),
 //                        message: NSLocalizedString("The installer package has been opened. Follow the on-screen instructions to complete the installation", comment: "")
@@ -186,7 +184,6 @@ struct InstallerView_Previews: PreviewProvider {
 
         if let preview_product = catalog.installers.first {
             InstallerView(product: preview_product)
-
         }
     }
 }

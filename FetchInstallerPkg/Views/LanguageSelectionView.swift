@@ -15,18 +15,18 @@ struct LanguageSelectionView: View {
 
     init(languageManager: LanguageManager, isPresented: Binding<Bool>) {
         self.languageManager = languageManager
-        self._isPresented = isPresented
-        self._selectedLanguage = State(initialValue: languageManager.currentLanguage)
+        _isPresented = isPresented
+        _selectedLanguage = State(initialValue: languageManager.currentLanguage)
     }
 
     var body: some View {
         VStack(spacing: 20) {
-                // Header
+            // Header
             VStack(spacing: 8) {
 //                Image(systemName: "globe")
 //                    .font(.system(size: 32))
 //                    .foregroundColor(.blue)
-                
+
                 Text(NSLocalizedString("Language Selection", comment: ""))
                     .font(.title3)
                     .fontWeight(.bold)
@@ -38,7 +38,7 @@ struct LanguageSelectionView: View {
 //                maxWidth: 400
 //            )
 
-                // Language list
+            // Language list
             VStack(spacing: 0) {
                 ForEach(languageManager.availableLanguages, id: \.code) { language in
                     LanguageRow(
@@ -57,8 +57,8 @@ struct LanguageSelectionView: View {
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(Color.gray.opacity(0.3), lineWidth: 1)
             )
-            
-                // Buttons and alert
+
+            // Buttons and alert
             HStack(spacing: 12) {
                 Button(NSLocalizedString("Cancel", comment: "")) {
                     isPresented = false
@@ -67,7 +67,7 @@ struct LanguageSelectionView: View {
                 .liquidGlass(intensity: .subtle)
 
                 Spacer()
-                
+
                 Button(NSLocalizedString("Continue", comment: "")) {
                     activeAlert = .restartRequired
                 }
@@ -76,12 +76,11 @@ struct LanguageSelectionView: View {
                 .disabled(selectedLanguage == languageManager.currentLanguage)
                 .liquidGlass(intensity: .subtle)
             }
-            
+
             Divider()
 
 //            .padding(.bottom, 20)
             HStack(spacing: 12) {
-
                 Image(systemName: "exclamationmark.triangle")
                     .font(.system(size: 16))
                     .foregroundColor(.blue)
@@ -102,7 +101,6 @@ struct LanguageSelectionView: View {
 //                    .multilineTextAlignment(.center)
 //            }
             .padding(.bottom, 20)
-
         }
         .padding(.horizontal, 30)
         .frame(width: 440, height: 620)
@@ -128,48 +126,47 @@ struct LanguageRow: View {
     let action: () -> Void
 
     private func flagEmoji(for languageCode: String) -> String {
-         switch languageCode {
-         case "en-US", "en":
-             return "🇺🇸"
-         case "es-ES", "es":
-             return "🇪🇸"
-         case "fr-CA":
-             return "🇨🇦"
-         case "fr-FR", "fr":
-             return "🇫🇷"
-         case "it-IT", "it":
-             return "🇮🇹"
-		 case "pt-BR":
-			 return "🇧🇷"
-		 case "ru-RU", "ru":
-			 return "🇷🇺"
-         case "uk-UA", "uk":
-             return "🇺🇦"
-         case "zh-Hans", "zh":
-             return "🇨🇳"
-         default:
-             return "🇺🇸"
-         }
-     }
+        switch languageCode {
+        case "en-US", "en":
+            return "🇺🇸"
+        case "es-ES", "es":
+            return "🇪🇸"
+        case "fr-CA":
+            return "🇨🇦"
+        case "fr-FR", "fr":
+            return "🇫🇷"
+        case "it-IT", "it":
+            return "🇮🇹"
+        case "pt-BR":
+            return "🇧🇷"
+        case "ru-RU", "ru":
+            return "🇷🇺"
+        case "uk-UA", "uk":
+            return "🇺🇦"
+        case "zh-Hans", "zh":
+            return "🇨🇳"
+        default:
+            return "🇺🇸"
+        }
+    }
 
     var body: some View {
         Button(action: action) {
             HStack {
+                Text(flagEmoji(for: language.code))
+                    .font(.title2)
+                    .frame(width: 24, height: 24)
 
-                    Text(flagEmoji(for: language.code))
-                        .font(.title2)
-                        .frame(width: 24, height: 24)
+                Text(language.nativeName)
+                    .font(.body)
+                    .fontWeight(.medium)
+                    .foregroundColor(.primary)
 
-                    Text(language.nativeName)
-                        .font(.body)
-                        .fontWeight(.medium)
-                        .foregroundColor(.primary)
-                    
-                    if language.nativeName != language.localizedName {
-                        Text(language.localizedName)
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                    }
+                if language.nativeName != language.localizedName {
+                    Text(language.localizedName)
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
 
                 Spacer()
 //                    .liquidGlass(intensity: .subtle)
@@ -192,19 +189,17 @@ struct LanguageRow: View {
                 .foregroundColor(Color.gray.opacity(0.2)),
             alignment: .bottom
         )
-
     }
-
 }
 
 struct LanguageSelectionView_Previews: PreviewProvider {
     static var previews: some View {
         LanguageSelectionWrapper()
     }
-    
+
     struct LanguageSelectionWrapper: View {
         @State private var isPresented = true
-        
+
         var body: some View {
             LanguageSelectionView(
                 languageManager: LanguageManager(),

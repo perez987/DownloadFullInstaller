@@ -10,10 +10,11 @@ import DockProgress
 import Foundation
 
 // MARK: - DownloadItem
+
 /// Represents a single download instance with its own progress tracking
 class DownloadItem: NSObject, ObservableObject, Identifiable {
     let id = UUID()
-    
+
     @Published var downloadURL: URL?
     @Published var localURL: URL?
     @Published var isDownloading = false
@@ -22,19 +23,19 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
     @Published var isComplete = false
     @Published var filename: String?
     @Published var isRetrying = false
-    
+
     private var resumeData: Data?
     private var retryCount = 0
     private var maxRetries = 100
     private var retryTimer: Timer?
-    
+
     lazy var urlSession = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: nil)
     var downloadTask: URLSessionDownloadTask?
     var byteFormatter = ByteCountFormatter()
-    
+
     // Reference to parent manager for notifications
     weak var manager: MultiDownloadManager?
-    
+
     var fileExists: Bool {
         let destination = Prefs.downloadURL
         if filename != nil {
@@ -44,12 +45,12 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
             return false
         }
     }
-    
+
     func download(url: URL?, replacing: Bool = false) throws {
         downloadURL = url
         isComplete = false
         byteFormatter.countStyle = .file
-        
+
         if replacing {
             let destination = Prefs.downloadURL
             let suggestedFilename = filename ?? "InstallerAssistant.pkg"
@@ -57,22 +58,22 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
             try FileManager.default.removeItem(at: file)
             resumeData = nil
         }
-        
+
         startDownload()
     }
-    
+
     private func startDownload() {
         guard let url = downloadURL else { return }
-        
+
         isDownloading = true
         if !isRetrying {
             retryCount = 0
         }
         isRetrying = false
-        
+
         // Update dock progress
         manager?.updateDockProgress()
-        
+
         if let resumeData = resumeData {
             downloadTask = urlSession.downloadTask(withResumeData: resumeData)
             print("Resuming download of \(filename ?? "InstallerAssistant.pkg")")
@@ -82,13 +83,13 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
             localURL = nil
             print("Starting download of \(filename ?? "InstallerAssistant.pkg")")
         }
-        
+
         downloadTask?.resume()
     }
-    
+
     func cancel() {
-        if isDownloading && downloadTask != nil {
-            downloadTask?.cancel { [weak self] resumeDataOrNil in
+        if isDownloading, downloadTask != nil {
+            downloadTask?.cancel { [weak self] _ in
                 DispatchQueue.main.async {
                     self?.resumeData = nil
                 }
@@ -105,7 +106,7 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
         }
         print("Cancelled download of \(filename ?? "InstallerAssistant.pkg")")
     }
-    
+
     private func retryDownload() {
         guard retryCount < maxRetries else {
             print("Max retry attempts reached. Download failed.")
@@ -117,23 +118,23 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
             }
             return
         }
-        
+
         retryCount += 1
         let retryDelay: Double = 5
-        
+
         print("Connection lost. Retrying download in \(Int(retryDelay))\"... (Attempt \(retryCount)/\(maxRetries))")
-        
+
         DispatchQueue.main.async {
             self.isRetrying = true
         }
-        
+
         retryTimer = Timer.scheduledTimer(withTimeInterval: retryDelay, repeats: false) { [weak self] _ in
             DispatchQueue.main.async {
                 self?.startDownload()
             }
         }
     }
-    
+
     func revealInFinder() {
         if isComplete {
             let destination = Prefs.downloadURL.path
@@ -143,11 +144,12 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
 }
 
 // MARK: - URLSessionDownloadDelegate
+
 extension DownloadItem: URLSessionDownloadDelegate {
     func urlSession(_: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         let destination = Prefs.downloadURL
         let suggestedFilename = filename ?? downloadTask.response?.suggestedFilename ?? UUID().uuidString
-        
+
         do {
             let file = destination.appendingPathComponent(suggestedFilename)
             let newURL = try FileManager.default.replaceItemAt(file, withItemAt: location)
@@ -167,7 +169,7 @@ extension DownloadItem: URLSessionDownloadDelegate {
             print("Error: \(error.localizedDescription)")
         }
     }
-    
+
     func urlSession(_: URLSession, downloadTask _: URLSessionDownloadTask, didWriteData _: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         DispatchQueue.main.async {
             self.progress = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
@@ -175,8 +177,8 @@ extension DownloadItem: URLSessionDownloadDelegate {
             self.manager?.updateDockProgress()
         }
     }
-    
-    func urlSession(_: URLSession, downloadTask: URLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
+
+    func urlSession(_: URLSession, downloadTask _: URLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
         print("Download resumed at offset: \(fileOffset) bytes")
         DispatchQueue.main.async {
             self.progress = Double(fileOffset) / Double(expectedTotalBytes)
@@ -187,25 +189,26 @@ extension DownloadItem: URLSessionDownloadDelegate {
 }
 
 // MARK: - URLSessionTaskDelegate
+
 extension DownloadItem: URLSessionTaskDelegate {
-    func urlSession(_: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+    func urlSession(_: URLSession, task _: URLSessionTask, didCompleteWithError error: Error?) {
         guard let error = error else { return }
-        
+
         print("Download error: \(error.localizedDescription)")
-        
+
         let nsError = error as NSError
         let isNetworkError = nsError.domain == NSURLErrorDomain &&
-        (nsError.code == NSURLErrorNotConnectedToInternet ||
-         nsError.code == NSURLErrorNetworkConnectionLost ||
-         nsError.code == NSURLErrorTimedOut ||
-         nsError.code == NSURLErrorCannotConnectToHost)
-        
+            (nsError.code == NSURLErrorNotConnectedToInternet ||
+                nsError.code == NSURLErrorNetworkConnectionLost ||
+                nsError.code == NSURLErrorTimedOut ||
+                nsError.code == NSURLErrorCannotConnectToHost)
+
         if isNetworkError {
             if let resumeDataFromError = (error as NSError).userInfo[NSURLSessionDownloadTaskResumeData] as? Data {
-                self.resumeData = resumeDataFromError
+                resumeData = resumeDataFromError
                 print("Resume data saved for future retry")
             }
-            
+
             DispatchQueue.main.async {
                 self.retryDownload()
             }
@@ -225,53 +228,54 @@ extension DownloadItem: URLSessionTaskDelegate {
 }
 
 // MARK: - MultiDownloadManager
+
 /// Manages multiple simultaneous downloads (up to 3)
 class MultiDownloadManager: ObservableObject {
     static let shared = MultiDownloadManager()
     static let maxConcurrentDownloads = 3
-    
+
     @Published var activeDownloads: [DownloadItem] = []
     @Published var completedDownloads: [DownloadItem] = []
-    
+
     var canStartNewDownload: Bool {
         return activeDownloads.count < MultiDownloadManager.maxConcurrentDownloads
     }
-    
+
     var activeDownloadCount: Int {
         return activeDownloads.count
     }
-    
+
     /// Check if a file is already being downloaded
     func isDownloading(filename: String) -> Bool {
         return activeDownloads.contains { $0.filename == filename }
     }
-    
+
     /// Start a new download if slots are available
     func startDownload(url: URL?, filename: String, replacing: Bool = false) throws -> DownloadItem? {
         guard canStartNewDownload else {
             return nil
         }
-        
+
         // Check if this file is already being downloaded
         if isDownloading(filename: filename) {
             print("File \(filename) is already being downloaded.")
             return nil
         }
-        
+
         let downloadItem = DownloadItem()
         downloadItem.filename = filename
         downloadItem.manager = self
-        
+
         DispatchQueue.main.async {
             self.activeDownloads.append(downloadItem)
             self.updateDockProgressStyle()
         }
-        
+
         try downloadItem.download(url: url, replacing: replacing)
-        
+
         return downloadItem
     }
-    
+
     /// Called when a download completes successfully
     func downloadCompleted(_ item: DownloadItem) {
         DispatchQueue.main.async {
@@ -282,7 +286,7 @@ class MultiDownloadManager: ObservableObject {
             self.updateDockProgress()
         }
     }
-    
+
     /// Called when a download is cancelled
     func downloadCancelled(_ item: DownloadItem) {
         DispatchQueue.main.async {
@@ -292,7 +296,7 @@ class MultiDownloadManager: ObservableObject {
             self.updateDockProgress()
         }
     }
-    
+
     /// Called when a download fails
     func downloadFailed(_ item: DownloadItem) {
         DispatchQueue.main.async {
@@ -302,7 +306,7 @@ class MultiDownloadManager: ObservableObject {
             self.updateDockProgress()
         }
     }
-    
+
     /// Clear a completed download from the list
     func clearCompleted(_ item: DownloadItem) {
         DispatchQueue.main.async {
@@ -311,14 +315,14 @@ class MultiDownloadManager: ObservableObject {
             }
         }
     }
-    
+
     /// Clear all completed downloads
     func clearAllCompleted() {
         DispatchQueue.main.async {
             self.completedDownloads.removeAll()
         }
     }
-    
+
     /// Update dock progress based on all active downloads
     func updateDockProgress() {
         DispatchQueue.main.async {
@@ -332,11 +336,11 @@ class MultiDownloadManager: ObservableObject {
             }
         }
     }
-    
+
     /// Update dock progress style to show download count
     private func updateDockProgressStyle() {
         DispatchQueue.main.async {
-			DockProgress.style = .badge(color: .blue, badgeValue: { self.activeDownloads.count })
+            DockProgress.style = .badge(color: .blue, badgeValue: { self.activeDownloads.count })
         }
     }
 }

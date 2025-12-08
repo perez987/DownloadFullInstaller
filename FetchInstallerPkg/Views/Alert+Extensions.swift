@@ -8,6 +8,7 @@
 import SwiftUI
 
 // MARK: - AppAlertType
+
 /// Enum defining all alert types used in the application
 /// Each case includes properties to get the title, message, and button configuration
 enum AppAlertType: Identifiable {
@@ -15,14 +16,14 @@ enum AppAlertType: Identifiable {
     case replaceFile(filename: String)
     case maxDownloads
     case installerCreation(title: String, message: String)
-    
+
     // LanguageSelectionView alerts
     case restartRequired
     case warningSettings
-    
+
     var id: String {
         switch self {
-        case .replaceFile(let filename):
+        case let .replaceFile(filename):
             return "replaceFile_\(filename)"
         case .maxDownloads:
             return "maxDownloads"
@@ -34,15 +35,15 @@ enum AppAlertType: Identifiable {
             return "warningSettings"
         }
     }
-    
+
     /// Returns the localized title for the alert
     var title: String {
         switch self {
-        case .replaceFile(let filename):
+        case let .replaceFile(filename):
             return String(format: NSLocalizedString("%@ already exists. Do you want to replace it?", comment: ""), filename)
         case .maxDownloads:
             return NSLocalizedString("Maximum Downloads Reached", comment: "")
-        case .installerCreation(let title, _):
+        case let .installerCreation(title, _):
             return title
         case .restartRequired:
             return NSLocalizedString("Restart Required", comment: "")
@@ -50,7 +51,7 @@ enum AppAlertType: Identifiable {
             return NSLocalizedString("Warning", comment: "")
         }
     }
-    
+
     /// Returns the localized message for the alert
     var message: String {
         switch self {
@@ -58,7 +59,7 @@ enum AppAlertType: Identifiable {
             return NSLocalizedString("A file with the same name already exists in that location. Replacing it will overwrite its current contents.", comment: "")
         case .maxDownloads:
             return NSLocalizedString("You can only download up to 3 installers at the same time. Please wait for a download to complete before starting a new one.", comment: "")
-        case .installerCreation(_, let message):
+        case let .installerCreation(_, message):
             return message
         case .restartRequired:
             return NSLocalizedString("The app must be restarted for changes to take effect.", comment: "")
@@ -66,7 +67,7 @@ enum AppAlertType: Identifiable {
             return NSLocalizedString("You will lose user settings and saved language.", comment: "")
         }
     }
-    
+
     /// Returns whether this alert has a primary action (requires two buttons)
     var hasPrimaryAction: Bool {
         switch self {
@@ -76,7 +77,7 @@ enum AppAlertType: Identifiable {
             return false
         }
     }
-    
+
     /// Returns the primary button text for alerts with two buttons
     var primaryButtonText: String {
         switch self {
@@ -88,7 +89,7 @@ enum AppAlertType: Identifiable {
             return NSLocalizedString("OK", comment: "")
         }
     }
-    
+
     /// Returns whether the primary button should be destructive
     var isPrimaryDestructive: Bool {
         switch self {
@@ -98,7 +99,7 @@ enum AppAlertType: Identifiable {
             return false
         }
     }
-    
+
     /// Returns the cancel/dismiss button text
     var dismissButtonText: String {
         switch self {
@@ -108,7 +109,7 @@ enum AppAlertType: Identifiable {
             return NSLocalizedString("OK", comment: "")
         }
     }
-    
+
     /// Creates an Alert from this alert type
     /// - Parameter primaryAction: Optional action to perform when the primary button is tapped (for alerts with two buttons)
     /// - Returns: A configured Alert
@@ -146,6 +147,7 @@ enum AppAlertType: Identifiable {
 }
 
 // MARK: - View Extension for Alert Handling
+
 extension View {
     /// Applies an app-wide alert modifier with type-based action handling
     /// - Parameters:
@@ -156,11 +158,11 @@ extension View {
         item alertType: Binding<AppAlertType?>,
         onAction: @escaping (AppAlertType) -> Void
     ) -> some View {
-        self.alert(item: alertType) { alert in
+        alert(item: alertType) { alert in
             alert.createAlert(primaryAction: { onAction(alert) })
         }
     }
-    
+
     /// Applies an app-wide alert modifier with a simple primary action
     /// - Parameters:
     ///   - alertType: Binding to the optional AppAlertType to display
@@ -170,7 +172,7 @@ extension View {
         item alertType: Binding<AppAlertType?>,
         primaryAction: (() -> Void)? = nil
     ) -> some View {
-        self.alert(item: alertType) { alert in
+        alert(item: alertType) { alert in
             alert.createAlert(primaryAction: primaryAction)
         }
     }

@@ -26,12 +26,11 @@ class SUCatalog: ObservableObject {
         uniqueInstallersList = []
         let catalogURLArray: [URL] = catalogURL(for: Prefs.seedProgram, for: Prefs.osNameID)
 
-        catalogURLArray.forEach {
+        for item in catalogURLArray {
             let sessionConfig = URLSessionConfiguration.ephemeral
             let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
 
-            let task = session.dataTask(with: $0) { data, response, error in
-
+            let task = session.dataTask(with: item) { data, response, error in
                 if error != nil {
                     print("\(self.thisComponent) : \(error!.localizedDescription)")
                     return
@@ -51,11 +50,10 @@ class SUCatalog: ObservableObject {
             }
             isLoading = true
             hasLoaded = false
-            self.catalog = nil
-            self.installers = [Product]()
+            catalog = nil
+            installers = [Product]()
             task.resume()
         }
-
     }
 
     private func decode(data: Data) {
@@ -68,7 +66,7 @@ class SUCatalog: ObservableObject {
         if let products = products {
             // Build the installers array without triggering multiple SwiftUI updates
             var newInstallers: [Product] = []
-            
+
             for (productKey, product) in products {
                 product.key = productKey
                 if let metainfo = product.extendedMetaInfo {
@@ -80,7 +78,6 @@ class SUCatalog: ObservableObject {
                         }
                     }
                 }
-
             }
 
 //            print("\(self.thisComponent) : \(products.count) products found")
@@ -89,7 +86,7 @@ class SUCatalog: ObservableObject {
             // Sort and assign once to minimize SwiftUI updates
             newInstallers.sort { $0.postDate > $1.postDate }
             installers = newInstallers
-            
+
             // Defer loadDistribution() calls to avoid reentrant NSTableView operations
             // Use asyncAfter to ensure the List view completes its initial rendering
             // before the @Published properties in Product are updated
@@ -99,6 +96,5 @@ class SUCatalog: ObservableObject {
                 }
             }
         }
-
     }
 }

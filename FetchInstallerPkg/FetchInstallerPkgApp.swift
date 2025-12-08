@@ -21,19 +21,18 @@ struct FetchInstallerPkgApp: App {
                 .environmentObject(sucatalog)
                 .environmentObject(languageManager)
                 .navigationTitle("")
-
-				.onAppear {
-						// Show language selection dialog if there is no saved preference
-						// Uncomment to show the dialog, comment to hide it
-//					if !Prefs.languageSelectionShown {
-//						showLanguageSelection = true
-//						print("First run, language selection dialog displayed")
-//					}
-				}
+                .onAppear {
+                    // Show language selection dialog if there is no saved preference
+                    // Uncomment to show the dialog, comment to hide it
+                    //					if !Prefs.languageSelectionShown {
+                    //						showLanguageSelection = true
+                    //						print("First run, language selection dialog displayed")
+                    //					}
+                }
 
 //                .onDisappear {
 //                }
-                
+
                 .sheet(isPresented: $showLanguageSelection) {
                     LanguageSelectionView(
                         languageManager: languageManager,
@@ -43,17 +42,15 @@ struct FetchInstallerPkgApp: App {
                         Prefs.setLanguageSelectionShown()
                     }
                 }
-                        
         }
 
-                    // set width of 580 pixels to the main window
-                    // macOS 13 Ventura or newer
+        // set width of 580 pixels to the main window
+        // macOS 13 Ventura or newer
 //            .defaultSize(width: 580, height: 640)
 
-                    // window resizability derived from the window’s content
-                    // macOS 13 Ventura or newer
-            .windowResizability(.contentSize)
-        
+        // window resizability derived from the window’s content
+        // macOS 13 Ventura or newer
+        .windowResizability(.contentSize)
         .commands {
             CommandGroup(replacing: .appSettings) {
                 Button(NSLocalizedString("Select Language", comment: "Menu item to show language selection")) {
@@ -66,7 +63,5 @@ struct FetchInstallerPkgApp: App {
 //        Settings {
 //            PreferencesView().environmentObject(sucatalog).navigationTitle("Program")
 //        }
-        
     }
-    
 }

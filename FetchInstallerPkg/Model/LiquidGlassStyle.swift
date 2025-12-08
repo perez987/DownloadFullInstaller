@@ -9,18 +9,18 @@ import SwiftUI
 
 // macOS Version Detection
 
-struct SystemVersion {
+enum SystemVersion {
     static var current: OperatingSystemVersion {
         ProcessInfo.processInfo.operatingSystemVersion
     }
-    
+
     static var isSequoiaOrLater: Bool {
         if #available(macOS 15.0, *) {
             return true
         }
         return false
     }
-    
+
     static var isTahoeOrLater: Bool {
         if #available(macOS 26.0, *) {
             return true
@@ -33,7 +33,7 @@ struct SystemVersion {
 
 struct LiquidGlassEffect: ViewModifier {
     let intensity: LiquidGlassIntensity
-    
+
     func body(content: Content) -> some View {
         if SystemVersion.isTahoeOrLater {
             // macOS 26: Enhanced effects
@@ -93,10 +93,10 @@ enum LiquidGlassIntensity {
 
 extension View {
     func liquidGlass(intensity: LiquidGlassIntensity = .medium) -> some View {
-        self.modifier(LiquidGlassEffect(intensity: intensity))
+        modifier(LiquidGlassEffect(intensity: intensity))
     }
-    
+
     func liquidGlassContainer() -> some View {
-        self.modifier(LiquidGlassContainer())
+        modifier(LiquidGlassContainer())
     }
 }

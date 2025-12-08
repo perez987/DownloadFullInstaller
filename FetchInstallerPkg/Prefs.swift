@@ -6,7 +6,7 @@
 
 import Foundation
 
-struct Prefs {
+enum Prefs {
     enum Key: String {
         case seedProgram = "SeedProgram"
         case osNameID = "OsNameID"
@@ -33,18 +33,18 @@ struct Prefs {
     }
 
     // Delete preferences plist file, the app will run as if it were the first time
-    static func delPlist(){
-            let fileManager = FileManager.default
-            let directory = URL.libraryDirectory.appending(path: "Preferences").path()
-            let documentURL = directory + "/perez987.DownloadFullInstaller.plist"
+    static func delPlist() {
+        let fileManager = FileManager.default
+        let directory = URL.libraryDirectory.appending(path: "Preferences").path()
+        let documentURL = directory + "/perez987.DownloadFullInstaller.plist"
 //            print("Preferences plist file: \(documentURL)")
-            do {
-               try fileManager.removeItem(atPath: documentURL)
-               print("Preferences plist file deleted sucessfully")
-            } catch {
-               print("Error deleting Preferences plist file: \(error)")
-            }
+        do {
+            try fileManager.removeItem(atPath: documentURL)
+            print("Preferences plist file deleted sucessfully")
+        } catch {
+            print("Error deleting Preferences plist file: \(error)")
         }
+    }
 
     static var seedProgram: SeedProgram {
         let seedValue = UserDefaults.standard.string(forKey: Prefs.key(.seedProgram)) ?? ""
@@ -64,7 +64,7 @@ struct Prefs {
         let downloadURL = URL(fileURLWithPath: downloadPath)
         return downloadURL
     }
-    
+
     static var languageSelectionShown: Bool {
         return UserDefaults.standard.bool(forKey: Prefs.key(.languageSelectionShown))
     }
@@ -73,7 +73,7 @@ struct Prefs {
     static func setLanguageSelectionShown() {
         UserDefaults.standard.set(true, forKey: Prefs.key(.languageSelectionShown))
     }
-    
+
     static func resetLanguageSelectionShown() {
         UserDefaults.standard.set(false, forKey: Prefs.key(.languageSelectionShown))
     }

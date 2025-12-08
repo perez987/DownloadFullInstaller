@@ -5,9 +5,9 @@
 // Created by Emilio P Egido on 2025-08-25
 //
 
-import SwiftUI
 import Foundation
 import IOKit.pwr_mgt
+import SwiftUI
 
 var assertionID: IOPMAssertionID = 0
 var sleepDisabled = false
@@ -18,8 +18,8 @@ func disableSystemSleep(reason: String = "DownloadFullInstaller prevents sleep")
         let text = "DownloadFullInstaller prevents sleep"
         print(text)
     }
-
 }
+
 func enableSystemSleep() {
     if sleepDisabled {
         IOPMAssertionRelease(assertionID)
@@ -27,5 +27,4 @@ func enableSystemSleep() {
         let text = "DownloadFullInstaller allows sleep"
         print(text)
     }
-
 }

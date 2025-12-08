@@ -19,7 +19,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         disableSystemSleep()
         Prefs.registerDefaults()
     }
-        
+
 //    func viewDidLoad() {
 //    }
 
@@ -27,10 +27,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {
         return true
     }
-    
-    func applicationWillTerminate(_ aNotification: Notification) {
+
+    func applicationWillTerminate(_: Notification) {
         // Enable sleep mode when app exits
         enableSystemSleep()
     }
-    
 }

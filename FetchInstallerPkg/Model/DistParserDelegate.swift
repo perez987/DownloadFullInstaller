@@ -79,9 +79,9 @@ import Foundation
         if !data.isEmpty {
             if elementName == Elements.title.rawValue {
                 title += data
-            } else if elementName == "key" && parsingAuxinfo {
+            } else if elementName == "key", parsingAuxinfo {
                 currentKey += data
-            } else if elementName == "string" && parsingAuxinfo {
+            } else if elementName == "string", parsingAuxinfo {
                 currentString += data
             }
         }
