@@ -104,7 +104,7 @@ class SUCatalog: ObservableObject {
                 }
             }
 
-            print("\(self.thisComponent) : \(accumulatedInstallers.count) total number of installer found")
+//            print("\(self.thisComponent) : \(accumulatedInstallers.count) installer/s found")
 //            print("\(self.thisComponent) : \(pendingCatalogCount) catalog/s found")
             
         }
