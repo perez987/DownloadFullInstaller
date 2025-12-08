@@ -2,7 +2,7 @@
 //  SUCatalog.swift
 //
 //  Created by Armin Briegel on 2021-06-09
-//  Modified by Emilio P Egido on 2025-12-8
+//  Modified by Emilio P Egido on 2025-12-7
 //
 
 import Foundation
@@ -103,9 +103,6 @@ class SUCatalog: ObservableObject {
                     }
                 }
             }
-
-//            print("\(self.thisComponent) : \(accumulatedInstallers.count) installer/s found")
-//            print("\(self.thisComponent) : \(pendingCatalogCount) catalog/s found")
             
         }
         
@@ -122,7 +119,8 @@ class SUCatalog: ObservableObject {
             hasLoaded = true
             isLoadInProgress = false
             
-//            print("\(self.thisComponent) : \(self.accumulatedInstallers.count) installer pkgs found")
+//            print("\(self.thisComponent) : \(pendingCatalogCount) catalog/s found")
+//            print("\(self.thisComponent) : \(self.accumulatedInstallers.count) installer PKGs found")
             
             // Sort and assign once to minimize SwiftUI updates
             accumulatedInstallers.sort { $0.postDate > $1.postDate }
