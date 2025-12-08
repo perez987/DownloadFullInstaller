@@ -43,9 +43,15 @@ struct PreferencesView: View {
                                 }
                             }
                         }
-                        .onChange(of: seedProgram) { sucatalog.load()
+                        .onChange(of: seedProgram) {
+                            DispatchQueue.main.async {
+                                sucatalog.load()
+                            }
                         }
-                        .onChange(of: osNameID) { sucatalog.load()
+                        .onChange(of: osNameID) {
+                            DispatchQueue.main.async {
+                                sucatalog.load()
+                            }
                         }
                     } else {
                         Picker(selection: $seedProgram, label: EmptyView()) {
@@ -57,10 +63,14 @@ struct PreferencesView: View {
                             }
                         }
                         .onChange(of: seedProgram) { _ in
-                            sucatalog.load()
+                            DispatchQueue.main.async {
+                                sucatalog.load()
+                            }
                         }
                         .onChange(of: osNameID) { _ in
-                            sucatalog.load()
+                            DispatchQueue.main.async {
+                                sucatalog.load()
+                            }
                         }
                     }
                 }
