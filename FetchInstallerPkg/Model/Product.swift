@@ -95,7 +95,6 @@ class Product: Codable, Identifiable, ObservableObject {
         let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
 
         let task = session.dataTask(with: url) { data, response, error in
-
             if error != nil {
 //                print("\(self.thisComponent) : \(error!.localizedDescription)")
                 return
@@ -144,7 +143,6 @@ class Product: Codable, Identifiable, ObservableObject {
         let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
 
         let task = session.dataTask(with: url) { data, response, error in
-
             if error != nil {
 //                print("\(self.thisComponent) : \(error!.localizedDescription)")
                 return
