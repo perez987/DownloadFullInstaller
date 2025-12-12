@@ -42,11 +42,11 @@ After downloading an InstallAssistant.pkg file, you can create the macOS install
 
 ### App is damaged and can't be opened
 
-If you see `App is damaged and can't be opened` when you open DownloadFullInstaller for the first time, read [this](DOCS/App-damaged.md).
+If you see `App is damaged and can't be opened` when you open Download Full Installer for the first time, read this [document](DOCS/App-damaged.md).
 
 ### Download appears to be complete, but the installer is not in the Downloads folder
 
-The first time you use the app in Xcode, you can see that the download appears to be complete, with the GB downloaded matching the expected amount, but the installer is not in the Downloads folder. DownloadFullInstaller also does not show the Show in Finder button
+The first time you use the app in Xcode, you can see that the download appears to be complete, with the GB downloaded matching the expected amount, but the installer is not in the Downloads folder. Download Full Installer also does not show the Show in Finder button
 
 To fix this, go to the Sandbox settings in `Xcode` ➡️ `Target` ➡️ `Signing & Capabilities `➡️ `Sandbox` to grant read/write permissions to the Downloads folder.
 
