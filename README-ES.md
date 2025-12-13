@@ -12,7 +12,7 @@ A partir de junio de 2025, [DownloadFullInstaller](https://github.com/scriptingo
 
 Download Full Installer funciona desde macOS 13 Ventura hasta macOS 26 Tahoe.
 
-**Nota**: Para urilizar Download Full Installer en macOS 11 o posterior, puedes obtener la [versión 2.0](https://github.com/perez987/DownloadFullInstaller/releases/tag/2.0-139) o el proyecto Xcode de la rama [`old`](https://github.com/perez987/DownloadFullInstaller/tree/old) y compilar la aplicación desde el código fuente.
+**Nota**: Para utilizar Download Full Installer en macOS 11 o posterior, puedes obtener la [versión 2.0](https://github.com/perez987/DownloadFullInstaller/releases/tag/2.0-139) o el proyecto Xcode de la rama [`old`](https://github.com/perez987/DownloadFullInstaller/tree/old) y compilar la aplicación desde el código fuente.
 
 ### Características
 
