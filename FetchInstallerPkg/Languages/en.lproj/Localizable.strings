@@ -120,3 +120,6 @@
 
 /* Multi-download support */
 "Dismiss" = "Dismiss";
+
+/* Visual indicator*/
+"This installer has been downloaded" = "This installer has been downloaded";

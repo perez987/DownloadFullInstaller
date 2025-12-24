@@ -121,3 +121,5 @@
 /* Multi-download support */
 "Dismiss" = "Chiudi";
 
+/* Visual indicator*/
+"This installer has been downloaded" = "Questo programma di installazione è stato scaricato";

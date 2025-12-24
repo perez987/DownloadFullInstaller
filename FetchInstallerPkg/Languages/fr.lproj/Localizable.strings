@@ -121,3 +121,8 @@
 /* Multi-download support */
 "Dismiss" = "Fermer";
 
+/* Visual indicator*/
+"This installer has been downloaded" = "This installer has been downloaded";
+
+/* Visual indicator*/
+"This installer has been downloaded" = "Ce programme d'installation a été téléchargé";

@@ -6,7 +6,9 @@
 
 As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) by <em>scriptingosx</em> has been archived by the developer. For over three years, my DownloadFullInstaller repo was a fork of the source. However, after it was archived, I created a new repo. This new repo is a standalone (<em>not forked</em>) version. I'll keep this project active and up to date as long as it is useful to other users.
 
-<img src="Images/Main-window1.png" width="700px">
+<img src="Images/EN/Main-window1a.png" width="700px">
+
+<img src="Images/EN/Main-window1b.png" width="700px">
 
 ### Download Full Installer from macOS 13 up to 26 
 

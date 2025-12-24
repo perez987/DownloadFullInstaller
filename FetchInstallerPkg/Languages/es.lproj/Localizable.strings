@@ -126,3 +126,6 @@
 
 /* Multi-download support */
 "Dismiss" = "Descartar";
+
+/* Visual indicator*/
+"This installer has been downloaded" = "Este instalador ya ha sido descargado";

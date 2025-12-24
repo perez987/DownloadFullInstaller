@@ -19,6 +19,28 @@ struct InstallerView: View {
     @State var installerURLFiles: [String] = []
     @State var isCreatingInstaller = false
     @State private var activeAlert: AppAlertType?
+    
+    // Computed property for the installer filename
+    var installerFilename: String {
+        return "InstallAssistant-\(product.productVersion ?? "V")-\(product.buildVersion ?? "B").pkg"
+    }
+    
+    // Computed property to check if the installer has been downloaded
+    // This checks the file system and is re-evaluated when the view updates
+    var isDownloaded: Bool {
+        let destination = Prefs.downloadURL
+        let file = destination.appendingPathComponent(installerFilename)
+        
+        // Check if file exists on disk (primary check)
+        if FileManager.default.fileExists(atPath: file.path) {
+            return true
+        }
+        
+        // Also check if this file is in the completed downloads list
+        // This ensures the view updates immediately when a download completes
+        // (before the user dismisses the completion notification)
+        return multiDownloadManager.completedDownloads.contains { $0.filename == installerFilename }
+    }
 
     var body: some View {
         if product.hasLoaded {
@@ -46,9 +68,17 @@ struct InstallerView: View {
                                 .font(.footnote)
                         }
                     }
+                    
+                    // Visual indicator for downloaded installers
+                    if isDownloaded {
+                        Image(systemName: "checkmark.circle.fill")
+                            .font(.title2)
+                            .foregroundColor(.green)
+                            .help(NSLocalizedString("This installer has been downloaded", comment: ""))
+                    }
 
                     Button(action: {
-                        filename = "InstallAssistant-\(product.productVersion ?? "V")-\(product.buildVersion ?? "B").pkg"
+                        filename = installerFilename
 
                         // Check if max downloads reached
                         if !multiDownloadManager.canStartNewDownload {
@@ -81,7 +111,7 @@ struct InstallerView: View {
                         Image(systemName: "arrow.down.circle").font(.title)
                     }
                     .help(String(format: NSLocalizedString("Download %@ %@ (%@) Installer", comment: ""), product.osName ?? "", product.productVersion ?? "", product.buildVersion ?? ""))
-                    .disabled(multiDownloadManager.isDownloading(filename: "InstallAssistant-\(product.productVersion ?? "V")-\(product.buildVersion ?? "B").pkg"))
+                    .disabled(multiDownloadManager.isDownloading(filename: installerFilename))
                     .buttonStyle(.borderless)
                     .controlSize(.mini)
 
@@ -97,7 +127,7 @@ struct InstallerView: View {
                         }
                     }
                     .help(String(format: NSLocalizedString("Create Installer App from %@ %@ (%@)", comment: ""), product.osName ?? "", product.productVersion ?? "", product.buildVersion ?? ""))
-                    .disabled(multiDownloadManager.isDownloading(filename: "InstallAssistant-\(product.productVersion ?? "V")-\(product.buildVersion ?? "B").pkg") || isCreatingInstaller)
+                    .disabled(multiDownloadManager.isDownloading(filename: installerFilename) || isCreatingInstaller)
                     .buttonStyle(.borderless)
                     .controlSize(.mini)
 
@@ -138,7 +168,7 @@ struct InstallerView: View {
 
     func createInstallerApp() {
         // Build the filename
-        filename = "InstallAssistant-\(product.productVersion ?? "V")-\(product.buildVersion ?? "B").pkg"
+        filename = installerFilename
         let pkgPath = Prefs.downloadURL.appendingPathComponent(filename).path
 
         // Check if the PKG file exists
