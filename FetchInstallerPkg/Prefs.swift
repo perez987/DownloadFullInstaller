@@ -6,7 +6,7 @@
 
 import Foundation
 
-struct Prefs {
+enum Prefs {
     enum Key: String {
         case seedProgram = "SeedProgram"
         case osNameID = "OsNameID"
@@ -51,4 +51,3 @@ struct Prefs {
 
     static let byteFormatter = ByteCountFormatter()
 }
-

@@ -12,32 +12,30 @@ import SwiftUI
 struct FetchInstallerPkgApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject var sucatalog = SUCatalog()
-    @State private var showLanguageSelection = false
 
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(sucatalog)
                 .navigationTitle("")
-
-//                .onAppear {
-                    // Disable sleep mode when the window appears
-//                    disableSystemSleep()
-                }
             
-//                .onDisappear {
-                    // Enable sleep mode when the window disappears
-//                    enableSystemSleep()
+//                .onAppear {
 //                }
-                        
+
+//                .onDisappear {
+//                }
         }
 
         // set width of 580 pixels to the main window
         // macOS 13 Ventura or newer
-//        .defaultSize(width: 580, height: 640)
+//            .defaultSize(width: 580, height: 640)
 
         // window resizability derived from the window’s content
         // macOS 13 Ventura or newer
-//            .windowResizability(.contentSize)
-        
+//        .windowResizability(.contentSize)
+
+//        Settings {
+//            PreferencesView().environmentObject(sucatalog).navigationTitle("Program")
+//        }
     }
+}

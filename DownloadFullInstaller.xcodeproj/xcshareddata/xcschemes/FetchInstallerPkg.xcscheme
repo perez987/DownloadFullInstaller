@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1300"
+   LastUpgradeVersion = "1540"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C636435D2670E1B800301DC8"
+               BlueprintIdentifier = "D9E20C672E8B2C570086992F"
                BuildableName = "Download Full Installer.app"
-               BlueprintName = "Download Full Installer"
+               BlueprintName = "DownloadFullInstaller"
                ReferencedContainer = "container:DownloadFullInstaller.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -26,9 +26,8 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
-      <Testables>
-      </Testables>
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      shouldAutocreateTestPlan = "YES">
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -39,15 +38,14 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      enableGPUValidationMode = "1"
       allowLocationSimulation = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C636435D2670E1B800301DC8"
+            BlueprintIdentifier = "D9E20C672E8B2C570086992F"
             BuildableName = "Download Full Installer.app"
-            BlueprintName = "Download Full Installer"
+            BlueprintName = "DownloadFullInstaller"
             ReferencedContainer = "container:DownloadFullInstaller.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -58,10 +56,6 @@
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
-      <LocationScenarioReference
-         identifier = "com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier"
-         referenceType = "1">
-      </LocationScenarioReference>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -73,9 +67,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C636435D2670E1B800301DC8"
+            BlueprintIdentifier = "D9E20C672E8B2C570086992F"
             BuildableName = "Download Full Installer.app"
-            BlueprintName = "Download Full Installer"
+            BlueprintName = "DownloadFullInstaller"
             ReferencedContainer = "container:DownloadFullInstaller.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -85,6 +79,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "Download Full Installer"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
