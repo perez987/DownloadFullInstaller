@@ -30,8 +30,6 @@ Download Full Installer runs on macOS 13 Ventura through macOS 26 Tahoe.
 - Added progress bar overlaying to the application's dock tile icon during PKG downloads
 - Added support for up to 3 simultaneous downloads
 
-**Note**: Not all features are available in the macOS 11+ version
-
 #### Create Installer App Feature
 
 After downloading an InstallAssistant.pkg file, you can create the macOS installer application (e.g., "Install macOS Sequoia.app") directly from within Download Full Installer:
