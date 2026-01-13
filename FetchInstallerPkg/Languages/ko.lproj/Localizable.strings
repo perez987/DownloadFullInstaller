@@ -5,7 +5,7 @@
 "\n\n" = "\n\n";
 
 /* No comment provided by engineer. */
-" in catalog" = " 카탈로그에서";
+" in catalog" = " 카탈로그:";
 
 /* No comment provided by engineer. */
 "%@ already exists. Do you want to replace it?" = "%@이 이미 존재합니다. 바꾸시겠습니까?";
