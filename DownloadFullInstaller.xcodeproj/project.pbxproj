@@ -55,6 +55,8 @@
 		D9296C6E2EAEBAE900E9BE5A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9296C6F2EAEBAEF00E9BE5A /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D9296C702EAEBAEF00E9BE5A /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D9811C172F1700A600EB2ACF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D9811C182F1700A600EB2ACF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9B13C8A2EB0E91E00342DC8 /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "fr-CA.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		D9B13C8B2EB0E91E00342DC8 /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "fr-CA.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D9BDA0142EB01D4000096F47 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				uk,
 				"zh-Hans",
 				"fr-CA",
+				ko,
 			);
 			mainGroup = D9E20C5F2E8B2C570086992F;
 			packageReferences = (
@@ -340,6 +343,7 @@
 				D9296C702EAEBAEF00E9BE5A /* uk */,
 				D9BDA0152EB01D4000096F47 /* zh-Hans */,
 				D9B13C8B2EB0E91E00342DC8 /* fr-CA */,
+				D9811C182F1700A600EB2ACF /* ko */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -356,6 +360,7 @@
 				D9296C6F2EAEBAEF00E9BE5A /* uk */,
 				D9BDA0142EB01D4000096F47 /* zh-Hans */,
 				D9B13C8A2EB0E91E00342DC8 /* fr-CA */,
+				D9811C172F1700A600EB2ACF /* ko */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

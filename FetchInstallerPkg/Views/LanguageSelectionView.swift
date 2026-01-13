@@ -103,7 +103,7 @@ struct LanguageSelectionView: View {
             .padding(.bottom, 20)
         }
         .padding(.horizontal, 30)
-        .frame(width: 440, height: 620)
+        .frame(width: 440, height: 640)
         .background(Color(NSColor.windowBackgroundColor))
         .appAlert(item: $activeAlert) { alertType in
             switch alertType {
@@ -135,6 +135,8 @@ struct LanguageRow: View {
             return "🇨🇦"
         case "fr-FR", "fr":
             return "🇫🇷"
+        case "ko":
+            return "🇰🇷"
         case "it-IT", "it":
             return "🇮🇹"
         case "pt-BR":
