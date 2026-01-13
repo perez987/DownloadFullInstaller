@@ -1,0 +1,125 @@
+/* No comment provided by engineer. */
+"" = "";
+
+/* No comment provided by engineer. */
+"\n\n" = "\n\n";
+
+/* No comment provided by engineer. */
+" in catalog" = " 카탈로그:";
+
+/* No comment provided by engineer. */
+"%@ already exists. Do you want to replace it?" = "%@이 이미 존재합니다. 바꾸시겠습니까?";
+
+/* No comment provided by engineer. */
+"A file with the same name already exists in that location. Replacing it will overwrite its current contents." = "같은 이름의 파일이 이미 해당 위치에 있습니다. 파일을 교체하면 현재 내용이 덮어쓰여집니다.";
+
+/* No comment provided by engineer. */
+"Cancel" = "취소";
+
+/* No comment provided by engineer. */
+"Copy %@ %@ (%@) %@ URL" = "%@ %@ (%@) %@ URL 복사";
+
+/* No comment provided by engineer. */
+"Download %@ %@ (%@) Installer" = "%@ %@ (%@) 설치 프로그램 다운로드";
+
+/* No comment provided by engineer. */
+"Download Full Installer" = "Download Full Installer";
+
+/* No comment provided by engineer. */
+"Downloaded %@" = "%@ 다운로드됨";
+
+/* No comment provided by engineer. */
+"Downloading %@" = "%@ 다운로드됨";
+
+/* No comment provided by engineer. */
+"Retrying download of InstallAssistant.pkg..." = "InstallAssistant.pkg 다운로드를 다시 시도하는 중...";
+
+/* No comment provided by engineer. */
+"Replace" = "교체";
+
+/* No comment provided by engineer. */
+"Show in Finder" = "Finder에서 표시";
+
+/* No comment provided by engineer. */
+"Cancel %@ download" = "%@ 다운로드 취소";
+
+/* No comment provided by engineer. */
+"Show the installer in the Downloads folder" = "다운로드 폴더에 설치 프로그램 표시";
+
+/* No comment provided by engineer. */
+"Language Selection" = "언어 선택";
+
+/* No comment provided by engineer. */
+"Choose a language" = "언어 선택";
+
+/* No comment provided by engineer. */
+"Select Language" = "언어 선택";
+
+/* No comment provided by engineer. */
+"Continue" = "계속";
+
+/* No comment provided by engineer. */
+"Restart Required" = "재시작 필요";
+
+/* No comment provided by engineer. */
+"The app must be restarted for changes to take effect." = "변경 사항이 적용되려면 앱을 재시작해야 합니다.";
+
+/* No comment provided by engineer. */
+"OK" = "확인";
+
+/* No comment provided by engineer. */
+"Yes" = "예";
+
+/* No comment provided by engineer. */
+"Clear app settings?" = "앱 설정을 지우시겠습니까?";
+
+/* No comment provided by engineer. */
+"(App preferences will be cleared)" = "(앱 환경설정이 지워집니다)";
+
+/* No comment provided by engineer. */
+"You will lose user settings and saved language." = "사용자 설정과 저장된 언어를 잃게 될 것입니다.";
+
+/* No comment provided by engineer. */
+"Warning" = "경고";
+
+/* No comment provided by engineer. */
+"Create Installer App from %@ %@ (%@)" = "%@ %@ (%@)에서 설치 프로그램 만들기";
+
+/* No comment provided by engineer. */
+"Error Creating Installer" = "macOS 설치 프로그램을 만드는 중 오류 발생";
+
+/* No comment provided by engineer. */
+"The installer package %@ does not exist in the Downloads folder. Please download it first." = "설치 프로그램 패키지 %@이(가) 다운로드 폴더에 없습니다. 먼저 다운로드해 주세요.";
+
+/* No comment provided by engineer. */
+"Success" = "성공";
+
+/* No comment provided by engineer. */
+"The installer app has been created successfully in /Applications" = "macOS 설치 앱이 /Applications 폴더에 성공적으로 생성되었습니다";
+
+/* No comment provided by engineer. */
+"The installer package has been opened. Follow the on-screen instructions to complete the installation" = "설치 프로그램 패키지가 열렸습니다. 화면의 지시에 따라 설치를 완료하세요";
+
+/* No comment provided by engineer. */
+"Failed to open the installer package. Please try opening it manually from the Downloads folder" = "설치 프로그램 패키지를 열지 못했습니다. 다운로드 폴더에서 수동으로 열어보세요";
+
+/* No comment provided by engineer. */
+"Failed to create installer app. Error: %@" = "macOS 설치 앱을 만들지 못했습니다. 오류: %@";
+
+/* No comment provided by engineer. */
+"No write permission to /Applications folder" = "/Applications 폴더에 쓰기 권한이 없습니다";
+
+/* No comment provided by engineer. */
+"Failed to create AppleScript" = "AppleScript를 생성하는 데 실패했습니다";
+
+/* Multi-download support */
+"Maximum Downloads Reached" = "최대 다운로드 횟수 도달";
+
+/* Multi-download support */
+"You can only download up to 3 installers at the same time. Please wait for a download to complete before starting a new one." = "동시에 최대 3개의 설치 프로그램만 다운로드할 수 있습니다. 새 설치 프로그램을 시작하기 전에 다운로드가 완료될 때까지 기다려 주세요.";
+
+/* Multi-download support */
+"Dismiss" = "닫기";
+
+/* Visual indicator*/
+"This installer has been downloaded" = "이 설치 프로그램이 다운로드되었습니다";
