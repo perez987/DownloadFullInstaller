@@ -108,7 +108,7 @@ class LanguageManager: ObservableObject {
         case "it-IT", "it":
             print("Language changed to: Italian (\(languageCode))")
         case "ko-KR", "ko":
-            print("Language changed to: Korean (\(languageCode))")
+            print("Language changed to: South Korean (\(languageCode))")
         case "uk-UA", "uk":
             print("Language changed to: Ukrainian (\(languageCode))")
         case "zh-Hans", "zh":
