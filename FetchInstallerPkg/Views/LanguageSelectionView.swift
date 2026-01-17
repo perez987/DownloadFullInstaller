@@ -135,10 +135,10 @@ struct LanguageRow: View {
             return "🇨🇦"
         case "fr-FR", "fr":
             return "🇫🇷"
-        case "ko-KR", "ko":
-            return "🇰🇷"
         case "it-IT", "it":
             return "🇮🇹"
+        case "ko-KR", "ko":
+            return "🇰🇷"
         case "pt-BR":
             return "🇧🇷"
         case "ru-RU", "ru":
