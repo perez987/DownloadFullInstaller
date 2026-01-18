@@ -43,14 +43,10 @@ Después de descargar el archivo InstallAssistant.pkg, puedes crear la aplicaci�
 4. Sigue las instrucciones en pantalla para completar la instalación.
 5. El instalador de macOS se crea en la carpeta `/Aplicaciones`.
 
+#### Ajustes para seleccionar la carpeta de descargas
+
+El menú "Acerca de este hack" -> Ajustes (⌘,) abre una ventana donde puedes seleccionar una carpeta diferente para los instaladores descargados. La carpeta predeterminada es ~/Descargas. Los indicadores visuales (marcas verdes) de los instaladores descargados se actualizan para coincidir con los de la carpeta seleccionada.
+
 ### La aplicación está dañada y no se puede abrir.
 
 Si ves el mensaje `La aplicación está dañada y no se puede abrir` al abrir Download Full Installer por primera vez, lee este [documento](DOCS/App-damaged-es.md).
-
-### La descarga parece haberse completado, pero el instalador no está en la carpeta Descargas.
-
-La primera vez que uses la aplicación desde Xcode, puede parecer que la descarga se completa, con la cantidad de GB descargados según lo esperado, pero el instalador no está en la carpeta Descargas. Download Full Installer tampoco muestra el botón "Mostrar en el Finder".
-
-Para solucionar esto, ve a la configuración Sandbox en «Xcode» ➡️ «Target» ➡️ «Firma y capacidades» ➡️ «Sandbox» para otorgar permisos de lectura y escritura a la carpeta Descargas.
-
-<img src="Images/Sandbox.png" width="550">

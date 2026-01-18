@@ -35,23 +35,21 @@ Download Full Installer runs on macOS 13 Ventura through macOS 26 Tahoe.
 
 After downloading an InstallAssistant.pkg file, you can create the macOS installer application (e.g., "Install macOS Sequoia.app") directly from within Download Full Installer:
 
-1. Download the installer PKG using the download button (↓)
+1. Download the PKG using the download button (↓)
 2. Click the "Create Installer App" button next to the download button
 3. The PKG file will open with the standard macOS installer
 4. Follow the on-screen instructions to complete the installation
 5. The macOS installer app will be created in the `/Applications` folder
 
+#### Settings to select downloads folder
+
+The About This Hack -> Settings menu (⌘ ,) opens a window where you can select a different folder for downloaded installers. Default is ~/Downloads. Visual indicators (green marcks) of downloaded installers are updated to match those in the selected folder.
+
+![](Images/Custom-destination.png)
+
 ### App is damaged and can't be opened
 
 If you see `App is damaged and can't be opened` when you open Download Full Installer for the first time, read this [document](DOCS/App-damaged.md).
-
-### Download appears to be complete, but the installer is not in the Downloads folder
-
-The first time you use the app in Xcode, you can see that the download appears to be complete, with the GB downloaded matching the expected amount, but the installer is not in the Downloads folder. Download Full Installer also does not show the Show in Finder button
-
-To fix this, go to the Sandbox settings in `Xcode` ➡️ `Target` ➡️ `Signing & Capabilities `➡️ `Sandbox` to grant read/write permissions to the Downloads folder.
-
-<img src="Images/Sandbox.png" width="550">
 
 # Original repository README
 (by scriptingosx)
