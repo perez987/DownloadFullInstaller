@@ -31,6 +31,14 @@ struct InstallerView: View {
         let destination = Prefs.downloadURL
         let file = destination.appendingPathComponent(installerFilename)
         
+        // Start accessing security-scoped resource for file check
+        let accessStarted = destination.startAccessingSecurityScopedResource()
+        defer {
+            if accessStarted {
+                destination.stopAccessingSecurityScopedResource()
+            }
+        }
+        
         // Check if file exists on disk (primary check)
         if FileManager.default.fileExists(atPath: file.path) {
             return true
@@ -95,6 +103,14 @@ struct InstallerView: View {
                         // Check if file exists on disk
                         let destination = Prefs.downloadURL
                         let file = destination.appendingPathComponent(filename)
+                        
+                        // Start accessing security-scoped resource for file check
+                        let accessStarted = destination.startAccessingSecurityScopedResource()
+                        defer {
+                            if accessStarted {
+                                destination.stopAccessingSecurityScopedResource()
+                            }
+                        }
                         let fileExists = FileManager.default.fileExists(atPath: file.path)
 
                         if fileExists {
@@ -169,13 +185,22 @@ struct InstallerView: View {
     func createInstallerApp() {
         // Build the filename
         filename = installerFilename
-        let pkgPath = Prefs.downloadURL.appendingPathComponent(filename).path
+        let destination = Prefs.downloadURL
+        let pkgPath = destination.appendingPathComponent(filename).path
+        
+        // Start accessing security-scoped resource for file operations
+        let accessStarted = destination.startAccessingSecurityScopedResource()
 
         // Check if the PKG file exists
         guard FileManager.default.fileExists(atPath: pkgPath) else {
+            // Stop accessing if we're returning early
+            if accessStarted {
+                destination.stopAccessingSecurityScopedResource()
+            }
+            let folderName = destination.lastPathComponent
             activeAlert = .installerCreation(
                 title: NSLocalizedString("Error Creating Installer", comment: ""),
-                message: String(format: NSLocalizedString("The installer package %@ does not exist in the Downloads folder. Please download it first.", comment: ""), filename)
+                message: String(format: NSLocalizedString("The installer package %@ does not exist in the %@ folder. Please download it first.", comment: ""), filename, folderName)
             )
             return
         }
@@ -186,6 +211,11 @@ struct InstallerView: View {
         // This works within sandbox constraints and shows the standard macOS installer UI
         let pkgURL = URL(fileURLWithPath: pkgPath)
         NSWorkspace.shared.open(pkgURL, configuration: NSWorkspace.OpenConfiguration()) { _, error in
+            // Stop accessing security-scoped resource after the operation completes
+            if accessStarted {
+                destination.stopAccessingSecurityScopedResource()
+            }
+            
             DispatchQueue.main.async {
                 self.isCreatingInstaller = false
 
@@ -198,9 +228,10 @@ struct InstallerView: View {
 //                    )
                 } else {
                     print("Failed to open installer package: \(error?.localizedDescription ?? "Unknown error")")
+                    let folderName = destination.lastPathComponent
                     self.activeAlert = .installerCreation(
                         title: NSLocalizedString("Error Creating Installer", comment: ""),
-                        message: NSLocalizedString("Failed to open the installer package. Please try opening it manually from the Downloads folder.", comment: "")
+                        message: String(format: NSLocalizedString("Failed to open the installer package. Please try opening it manually from the %@ folder.", comment: ""), folderName)
                     )
                 }
             }

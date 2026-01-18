@@ -29,6 +29,7 @@ Download Full Installer funciona desde macOS 13 Ventura hasta macOS 26 Tahoe.
 - Se ha añadido la función de reanudación de descarga que gestiona automáticamente las interrupciones de red
 - Se ha añadido una barra de progreso superpuesta al icono del mosaico del dock de la aplicación durante las descargas de PKG
 - Se ha añadido compatibilidad con hasta 3 descargas simultáneas
+- Se ha añadido la capacidad de personalizar el directorio de las descargas
 
 **Nota**: No todas las funciones están disponibles en la versión macOS 11+
 

@@ -44,7 +44,7 @@
 "Cancel %@ download" = "Cancelar download de %@";
 
 /* No comment provided by engineer. */
-"Show the installer in the Downloads folder" = "Mostrar o instalador na pasta Downloads";
+"Show the installer in the Downloads folder" = "Mostrar o instalador na pasta de downloads";
 
 /* No comment provided by engineer. */
 "Language Selection" = "Seleção de idioma";
@@ -89,7 +89,7 @@
 "Error Creating Installer" = "Erro ao criar o instalador do macOS";
 
 /* No comment provided by engineer. */
-"The installer package %@ does not exist in the Downloads folder. Please download it first." = "O pacote de instalação %@ não existe na pasta Downloads. Por favor, baixe-o primeiro.";
+"The installer package %@ does not exist in the Downloads folder. Please download it first." = "O pacote de instalação %@ não existe na pasta de downloads. Por favor, baixe-o primeiro.";
 
 /* No comment provided by engineer. */
 "Success" = "Sucesso";
@@ -101,7 +101,7 @@
 "The installer package has been opened. Follow the on-screen instructions to complete the installation" = "O pacote de instalação foi aberto. Siga as instruções na tela para concluir a instalação";
 
 /* No comment provided by engineer. */
-"Failed to open the installer package. Please try opening it manually from the Downloads folder" = "Falha ao abrir o pacote de instalação. Tente abri-lo manualmente da pasta Downloads";
+"Failed to open the installer package. Please try opening it manually from the Downloads folder" = "Falha ao abrir o pacote de instalação. Tente abri-lo manualmente da pasta de downloads";
 
 /* No comment provided by engineer. */
 "Failed to create installer app. Error: %@" = "Falha ao criar o aplicativo de instalação do macOS. Erro: %@";
@@ -123,3 +123,18 @@
 
 /* Visual indicator*/
 "This installer has been downloaded" = "Este instalador foi baixado";
+
+/* Settings window */
+"Settings" = "Configurações";
+
+/* Settings window */
+"Close" = "Fechar";
+
+/* Settings window */
+"Download Location" = "Pasta de Download";
+
+/* Download folder selection */
+"Select Download Folder" = "Escolha Pasta de Download";
+
+/* Download folder selection */
+"Choose where to save downloaded installers" = "Escolha onde salvar os instaladores baixados";

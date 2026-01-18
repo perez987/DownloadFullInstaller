@@ -18,6 +18,7 @@ import Foundation
     @Published var isComplete = false
     @Published var filename: String?
     @Published var installerURLFiles: [URL]?
+    @Published var errorMessage: String?
 
     lazy var urlSession = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: nil)
     var downloadTask: URLSessionDownloadTask?
@@ -29,6 +30,10 @@ import Foundation
     private var maxRetries = 100
     private var retryTimer: Timer?
     @Published var isRetrying = false
+    
+    // Security-scoped resource tracking
+    private var destinationURL: URL?
+    private var isAccessingSecurityScope = false
 
     static let shared = DownloadManager()
 
@@ -64,6 +69,15 @@ import Foundation
         let destination = Prefs.downloadURL
         if filename != nil {
             let file = destination.appendingPathComponent(filename!)
+            
+            // Start accessing security-scoped resource for file check
+            let accessStarted = destination.startAccessingSecurityScopedResource()
+            defer {
+                if accessStarted {
+                    destination.stopAccessingSecurityScopedResource()
+                }
+            }
+            
             return FileManager.default.fileExists(atPath: file.path)
         } else {
             return false
@@ -75,11 +89,18 @@ import Foundation
         downloadURL = url
         isComplete = false
         byteFormatter.countStyle = .file
+        
+        // Get destination URL and start accessing security-scoped resource for the entire download lifecycle
+        let destination = Prefs.downloadURL
+        destinationURL = destination
+        if !isAccessingSecurityScope {
+            isAccessingSecurityScope = destination.startAccessingSecurityScopedResource()
+        }
 
         if replacing {
-            let destination = Prefs.downloadURL
             let suggestedFilename = filename ?? "InstallerAssistant.pkg"
             let file = destination.appendingPathComponent(suggestedFilename)
+            
             try FileManager.default.removeItem(at: file)
             // Clear resume data if replacing file
             resumeData = nil
@@ -148,8 +169,17 @@ import Foundation
             retryTimer = nil
             // Decrement active download count when cancelled
             DownloadManager.decrementDownloadCount()
+            // Stop accessing security-scoped resource
+            stopAccessingSecurityScope()
         }
         print("Cancelled download of \(filename ?? "InstallerAssistant.pkg")")
+    }
+    
+    private func stopAccessingSecurityScope() {
+        if isAccessingSecurityScope, let destination = destinationURL {
+            destination.stopAccessingSecurityScopedResource()
+            isAccessingSecurityScope = false
+        }
     }
 
     private func retryDownload() {
@@ -163,6 +193,8 @@ import Foundation
             }
             // Decrement active download count when max retries reached
             DownloadManager.decrementDownloadCount()
+            // Stop accessing security-scoped resource
+            stopAccessingSecurityScope()
             return
         }
 
@@ -195,17 +227,47 @@ import Foundation
 
 extension DownloadManager: URLSessionDownloadDelegate {
     func urlSession(_: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        let destination = Prefs.downloadURL
+        // Use the stored destination URL that already has security-scoped access
+        guard let destination = destinationURL else {
+            print("Error: No destination URL available")
+            DownloadManager.decrementDownloadCount()
+            stopAccessingSecurityScope()
+            return
+        }
 
         // get the suggest file name or create a uuid string
         let suggestedFilename = filename ?? downloadTask.response?.suggestedFilename ?? UUID().uuidString
 
         do {
             let file = destination.appendingPathComponent(suggestedFilename)
-            let newURL = try FileManager.default.replaceItemAt(file, withItemAt: location)
+            let fileExists = FileManager.default.fileExists(atPath: file.path)
+            
+            let newURL: URL?
+            if fileExists {
+                // Remove existing file first
+                try FileManager.default.removeItem(at: file)
+            }
+            
+            // Copy the file from temp location to destination
+            // Using copy instead of move to avoid cross-volume issues and sandbox permissions
+            try FileManager.default.copyItem(at: location, to: file)
+            newURL = file
+            
+            // Clean up the temporary file
+            do {
+                try FileManager.default.removeItem(at: location)
+            } catch {
+                // Non-critical: temp files will be cleaned by OS eventually
+                print("Note: Could not remove temporary file at \(location.path): \(error.localizedDescription)")
+            }
+            
             print("Finished download of \(filename ?? "InstallerAssistant.pkg")")
+            
             // Decrement active download count on successful completion
             DownloadManager.decrementDownloadCount()
+            // Stop accessing security-scoped resource after successful save
+            stopAccessingSecurityScope()
+            
             DispatchQueue.main.async {
                 self.isDownloading = false
                 self.isRetrying = false
@@ -215,10 +277,32 @@ extension DownloadManager: URLSessionDownloadDelegate {
                 self.retryCount = 0
                 self.retryTimer?.invalidate()
                 self.retryTimer = nil
+                self.errorMessage = nil
                 DockProgress.progress = 0.0
             }
         } catch {
-            print("Error: \(error.localizedDescription)")
+            print("Error saving file: \(error.localizedDescription)")
+            
+            // Decrement download count on failure too
+            DownloadManager.decrementDownloadCount()
+            // Stop accessing security-scoped resource on failure
+            stopAccessingSecurityScope()
+            
+            // Extract folder name from destination path for error message
+            let folderName = destination.lastPathComponent
+            let errorMsg = String(format: NSLocalizedString("The file '%@' could not be saved to the '%@' folder. Error: %@", comment: "Download save error"), suggestedFilename, folderName, error.localizedDescription)
+            
+            DispatchQueue.main.async {
+                self.isDownloading = false
+                self.isRetrying = false
+                self.isComplete = false
+                self.errorMessage = errorMsg
+                self.resumeData = nil
+                self.retryCount = 0
+                self.retryTimer?.invalidate()
+                self.retryTimer = nil
+                DockProgress.progress = 0.0
+            }
         }
     }
 
@@ -274,6 +358,8 @@ extension DownloadManager: URLSessionTaskDelegate {
             print("Non-recoverable error: \(error.localizedDescription)")
             // Decrement active download count on non-recoverable error
             DownloadManager.decrementDownloadCount()
+            // Stop accessing security-scoped resource on non-recoverable error
+            stopAccessingSecurityScope()
             DispatchQueue.main.async {
                 self.isDownloading = false
                 self.isRetrying = false

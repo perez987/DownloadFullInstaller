@@ -89,7 +89,7 @@
 "Error Creating Installer" = "创建 macOS 安装程序时出错";
 
 /* No comment provided by engineer. */
-"The installer package %@ does not exist in the Downloads folder. Please download it first." = "下载文件夹中不存在安装包%@。请先下载.";
+"The installer package %@ does not exist in the Downloads folder. Please download it first." = "下载文件夹中不存在安装包%@。请先下载。";
 
 /* No comment provided by engineer. */
 "Success" = "成功";
@@ -123,3 +123,18 @@
 
 /* Visual indicator*/
 "This installer has been downloaded" = "此安装程序已下载";
+
+/* Settings window */
+"Settings" = "设置";
+
+/* Settings window */
+"Close" = "关闭";
+
+/* Settings window */
+"Download Location" = "选择文件夹";
+
+/* Download folder selection */
+"Select Download Folder" = "选择下载文件夹";
+
+/* Download folder selection */
+"Choose where to save downloaded installers" = "选择保存下载的安装程序的位置";

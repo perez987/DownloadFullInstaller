@@ -29,6 +29,7 @@ Download Full Installer runs on macOS 13 Ventura through macOS 26 Tahoe.
 - Added download resume functionality that automatically handles network interruptions
 - Added progress bar overlaying to the application's dock tile icon during PKG downloads
 - Added support for up to 3 simultaneous downloads
+- Added customizable download folder selection
 
 #### Create Installer App Feature
 

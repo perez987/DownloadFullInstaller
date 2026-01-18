@@ -16,6 +16,7 @@ enum AppAlertType: Identifiable {
     case replaceFile(filename: String)
     case maxDownloads
     case installerCreation(title: String, message: String)
+    case downloadError(message: String)
 
     // LanguageSelectionView alerts
     case restartRequired
@@ -29,6 +30,8 @@ enum AppAlertType: Identifiable {
             return "maxDownloads"
         case .installerCreation:
             return "installerCreation"
+        case .downloadError:
+            return "downloadError"
         case .restartRequired:
             return "restartRequired"
         case .warningSettings:
@@ -45,6 +48,8 @@ enum AppAlertType: Identifiable {
             return NSLocalizedString("Maximum Downloads Reached", comment: "")
         case let .installerCreation(title, _):
             return title
+        case .downloadError:
+            return NSLocalizedString("Download Error", comment: "")
         case .restartRequired:
             return NSLocalizedString("Restart Required", comment: "")
         case .warningSettings:
@@ -61,6 +66,8 @@ enum AppAlertType: Identifiable {
             return NSLocalizedString("You can only download up to 3 installers at the same time. Please wait for a download to complete before starting a new one.", comment: "")
         case let .installerCreation(_, message):
             return message
+        case let .downloadError(message):
+            return message
         case .restartRequired:
             return NSLocalizedString("The app must be restarted for changes to take effect.", comment: "")
         case .warningSettings:
@@ -73,7 +80,7 @@ enum AppAlertType: Identifiable {
         switch self {
         case .replaceFile, .restartRequired, .warningSettings:
             return true
-        case .maxDownloads, .installerCreation:
+        case .maxDownloads, .installerCreation, .downloadError:
             return false
         }
     }
@@ -105,7 +112,7 @@ enum AppAlertType: Identifiable {
         switch self {
         case .replaceFile, .restartRequired, .warningSettings:
             return NSLocalizedString("Cancel", comment: "")
-        case .maxDownloads, .installerCreation:
+        case .maxDownloads, .installerCreation, .downloadError:
             return NSLocalizedString("OK", comment: "")
         }
     }

@@ -42,7 +42,7 @@ struct ContentView: View {
 
             DownloadView()
         }
-
+        .id(refreshID) // Force view refresh when language or download path changes
         .frame(
             minWidth: 490.0,
             idealWidth: 490.0,
@@ -53,16 +53,18 @@ struct ContentView: View {
 
         .padding(.bottom, 12)
         .padding(.horizontal, 28)
+        .onReceive(NotificationCenter.default.publisher(for: .languageChanged)) { _ in
+            refreshID = UUID()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .downloadPathChanged)) { _ in
+            print("Download path changed notification received, refreshing view")
+            refreshID = UUID()
+        }
 
         HStack(alignment: .center) {}
 
             // ---> Count of listed installers has issues, always shows all OSes count
 //         HStack { Text("(\(sucatalog.installers.count) pkg(s) in \(self.seedProgram) catalog)\n") .font(.headline) }
-
-            .id(refreshID) // Force view refresh when language changes
-            .onReceive(NotificationCenter.default.publisher(for: .languageChanged)) { _ in
-                refreshID = UUID()
-            }
     }
 
     struct ContentView_Previews: PreviewProvider {

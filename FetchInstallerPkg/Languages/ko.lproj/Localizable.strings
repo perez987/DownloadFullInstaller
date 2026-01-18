@@ -89,7 +89,7 @@
 "Error Creating Installer" = "macOS 설치 프로그램을 만드는 중 오류 발생";
 
 /* No comment provided by engineer. */
-"The installer package %@ does not exist in the Downloads folder. Please download it first." = "설치 프로그램 패키지 %@이(가) 다운로드 폴더에 없습니다. 먼저 다운로드해 주세요.";
+"The installer package %@ does not exist in the Downloads folder. Please download it first." = "설치 프로그램 패키지 %@이(가) 다운로드 폴더에 존재하지 않습니다. 먼저 다운로드해 주세요.";
 
 /* No comment provided by engineer. */
 "Success" = "성공";
@@ -124,3 +124,17 @@
 /* Visual indicator*/
 "This installer has been downloaded" = "이 설치 프로그램이 다운로드되었습니다";
 
+/* Settings window */
+"Settings" = "설정";
+
+/* Settings window */
+"Close" = "닫기";
+
+/* Settings window */
+"Download Location" = "다운로드 폴더";
+
+/* Download folder selection */
+"Select Download Folder" = "다운로드 폴더를 선택하세요";
+
+/* Download folder selection */
+"Choose where to save downloaded installers" = "다운로드한 설치 프로그램을 저장할 위치 선택";

@@ -14,6 +14,7 @@ struct FetchInstallerPkgApp: App {
     @StateObject var sucatalog = SUCatalog()
     @StateObject var languageManager = LanguageManager()
     @State private var showLanguageSelection = false
+    @State private var showSettings = false
 
     var body: some Scene {
         WindowGroup {
@@ -42,6 +43,9 @@ struct FetchInstallerPkgApp: App {
                         Prefs.setLanguageSelectionShown()
                     }
                 }
+                .sheet(isPresented: $showSettings) {
+                    SettingsView()
+                }
         }
 
         // set width of 580 pixels to the main window
@@ -53,6 +57,13 @@ struct FetchInstallerPkgApp: App {
         .windowResizability(.contentSize)
         .commands {
             CommandGroup(replacing: .appSettings) {
+                Button(NSLocalizedString("Settings", comment: "Menu item to show settings window")) {
+                    showSettings = true
+                }
+                .keyboardShortcut(",", modifiers: [.command])
+                
+                Divider()
+                
                 Button(NSLocalizedString("Select Language", comment: "Menu item to show language selection")) {
                     showLanguageSelection = true
                 }

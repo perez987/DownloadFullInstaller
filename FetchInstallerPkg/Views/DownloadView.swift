@@ -85,6 +85,7 @@ struct DownloadView: View {
     @StateObject var multiDownloadManager = MultiDownloadManager.shared
     // Keep reference to old download manager for backward compatibility during transition
     @StateObject var downloadManager = DownloadManager.shared
+    @State private var activeAlert: AppAlertType?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
@@ -99,6 +100,11 @@ struct DownloadView: View {
                 DownloadItemView(downloadItem: item)
                     .liquidGlass(intensity: .medium)
                     .multilineTextAlignment(.leading)
+                    .onChange(of: item.errorMessage) { errorMessage in
+                        if let errorMessage = errorMessage {
+                            activeAlert = .downloadError(message: errorMessage)
+                        }
+                    }
             }
 
             // Backward compatibility: Show old single download manager if it's downloading
@@ -131,6 +137,11 @@ struct DownloadView: View {
                 }
                 .liquidGlass(intensity: .medium)
                 .multilineTextAlignment(.leading)
+                .onChange(of: downloadManager.errorMessage) { errorMessage in
+                    if let errorMessage = errorMessage {
+                        activeAlert = .downloadError(message: errorMessage)
+                    }
+                }
             }
 
             // Backward compatibility: Show old single download manager completion
@@ -159,6 +170,7 @@ struct DownloadView: View {
                 .liquidGlass(intensity: .medium)
             }
         }
+        .appAlert(item: $activeAlert)
     }
 }
 
