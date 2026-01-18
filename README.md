@@ -43,7 +43,7 @@ After downloading an InstallAssistant.pkg file, you can create the macOS install
 
 #### Settings to select downloads folder
 
-The About This Hack -> Settings menu (⌘ ,) opens a window where you can select a different folder for downloaded installers. Default is ~/Downloads. Visual indicators (green marcks) of downloaded installers are updated to match those in the selected folder.
+The About This Hack -> Settings menu (⌘ ,) opens a window where you can select a different folder for downloaded installers. Default is ~/Downloads. Visual indicators (green marks) of downloaded installers are updated to match those in the selected folder.
 
 ![](Images/Custom-destination.png)
 
