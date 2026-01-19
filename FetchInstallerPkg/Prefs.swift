@@ -2,7 +2,7 @@
 //  Prefs.swift
 //
 //  Created by Armin Briegel on 2021-06-15
-// Modified by Emilio P Egido on 2026-01-17
+// Modified by Emilio P Egido on 2026-01-18
 //
 
 import Foundation
@@ -20,7 +20,7 @@ enum Prefs {
         return key.rawValue
     }
 
-    // Save user preferences (AppleLanguages, LanguageSelectionShown, downloadURL)
+    // Save user preferences (AppleLanguages, LanguageSelectionShown and downloadURL)
     static func registerDefaults() {
         var prefs = [String: Any]()
         prefs[Prefs.key(.seedProgram)] = SeedProgram.noSeed.rawValue
@@ -34,7 +34,7 @@ enum Prefs {
         UserDefaults.standard.register(defaults: prefs)
     }
 
-    // Delete preferences plist file, the app will run as if it is the first time
+    // Delete preferences plist file, the app will run as if it were the first time
     static func delPlist() {
         let fileManager = FileManager.default
         let directory = URL.libraryDirectory.appending(path: "Preferences").path()

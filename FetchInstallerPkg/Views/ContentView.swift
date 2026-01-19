@@ -57,7 +57,7 @@ struct ContentView: View {
             refreshID = UUID()
         }
         .onReceive(NotificationCenter.default.publisher(for: .downloadPathChanged)) { _ in
-            print("Download path changed notification received, refreshing view")
+            print("Download path changed notification, refreshing view")
             refreshID = UUID()
         }
 

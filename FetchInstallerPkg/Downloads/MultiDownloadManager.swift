@@ -198,18 +198,11 @@ extension DownloadItem: URLSessionDownloadDelegate {
                 try FileManager.default.removeItem(at: file)
             }
             
-            // Copy the file from temp location to destination
-            // Using copy instead of move to avoid cross-volume issues and sandbox permissions
-            try FileManager.default.copyItem(at: location, to: file)
+            // Move the file from temp location to destination
+            // Using moveItem to avoid requiring double disk space
+            // moveItem handles cross-volume moves internally
+            try FileManager.default.moveItem(at: location, to: file)
             newURL = file
-            
-            // Clean up the temporary file
-            do {
-                try FileManager.default.removeItem(at: location)
-            } catch {
-                // Non-critical: temp files will be cleaned by OS eventually
-                print("Note: Could not remove temporary file at \(location.path): \(error.localizedDescription)")
-            }
             
             print("Finished download of \(filename ?? "InstallerAssistant.pkg")")
             
