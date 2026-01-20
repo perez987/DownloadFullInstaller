@@ -89,7 +89,7 @@
 "Error Creating Installer" = "Error Creating macOS Installer";
 
 /* No comment provided by engineer. */
-"The installer package %@ does not exist in the Downloads folder. Please download it first." = "The installer package %@ does not exist in the download folder. Please download it first.";
+"The installer package %@ does not exist in the %@ folder. Please download it first." = "The installer package %@ does not exist in the %@ folder. Please download it first.";
 
 /* No comment provided by engineer. */
 "Success" = "Success";

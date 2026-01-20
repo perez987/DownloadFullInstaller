@@ -124,8 +124,8 @@
  "خطأ في إنشاء تطبيق التثبيت";
 
 /* No comment provided by engineer. */
-"The installer package %@ does not exist in the Downloads folder. Please download it first." =
-"حزمة التثبيت المختارة غير موجودة في مجلد التنزيلات. يرجى تنزيلها أولاً.";
+"The installer package %@ does not exist in the %@ folder. Please download it first." =
+"حزمة التثبيت %@ غير موجودة في مجلد %@. يرجى تنزيلها أولاً.";
 
 /* No comment provided by engineer. */
 "Success" =

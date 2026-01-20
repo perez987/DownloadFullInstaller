@@ -89,7 +89,7 @@
 "Error Creating Installer" = "macOS 설치 프로그램을 만드는 중 오류 발생";
 
 /* No comment provided by engineer. */
-"The installer package %@ does not exist in the Downloads folder. Please download it first." = "설치 프로그램 패키지 %@이(가) 다운로드 폴더에 존재하지 않습니다. 먼저 다운로드해 주세요.";
+"The installer package %@ does not exist in the %@ folder. Please download it first." = "%@ 폴더에 설치 패키지 %@가 없습니다. 먼저 다운로드하십시오.";
 
 /* No comment provided by engineer. */
 "Success" = "성공";

@@ -89,7 +89,7 @@
 "Error Creating Installer" = "创建 macOS 安装程序时出错";
 
 /* No comment provided by engineer. */
-"The installer package %@ does not exist in the Downloads folder. Please download it first." = "下载文件夹中不存在安装包%@。请先下载。";
+"The installer package %@ does not exist in the %@ folder. Please download it first." = "安装包 %@ 不存在于 %@ 文件夹中。请先下载它。";
 
 /* No comment provided by engineer. */
 "Success" = "成功";
