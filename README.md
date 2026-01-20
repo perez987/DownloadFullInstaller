@@ -45,7 +45,7 @@ After downloading an InstallAssistant.pkg file, you can create the macOS install
 
 The About This Hack -> Settings menu (⌘ ,) opens a window where you can select a different folder to download installers. Default is ~/Downloads. Visual indicators (green marks) of downloaded installers are updated to match those in the selected folder.
 
-<img src="Images/Custom-destination.png" width="480">
+<img src="Images/EN/Custom-destination.png" width="480">
 
 ### App is damaged and can't be opened
 

@@ -47,6 +47,8 @@ Después de descargar el archivo InstallAssistant.pkg, puedes crear la aplicaci�
 
 El menú "Acerca de este hack" -> Ajustes (⌘,) abre una ventana donde puedes seleccionar una carpeta diferente para los instaladores descargados. La carpeta predeterminada es ~/Descargas. Los indicadores visuales (marcas verdes) de los instaladores descargados se actualizan para coincidir con los de la carpeta seleccionada.
 
+<img src="Images/ES/Custom-destination.png" width="480">
+
 ### La aplicación está dañada y no se puede abrir.
 
 Si ves el mensaje `La aplicación está dañada y no se puede abrir` al abrir Download Full Installer por primera vez, lee este [documento](DOCS/App-damaged-es.md).
