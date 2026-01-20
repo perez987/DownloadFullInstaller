@@ -125,9 +125,45 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
             retryTimer = nil
             // Stop accessing security-scoped resource
             stopAccessingSecurityScope()
+            // Clean up temporary files
+            cleanupTempDirectory()
             manager?.downloadCancelled(self)
         }
         print("Cancelled download of \(filename ?? "InstallerAssistant.pkg")")
+    }
+    
+    private func cleanupTempDirectory() {
+        let tempDir = URL(fileURLWithPath: NSTemporaryDirectory())
+        do {
+            let tempFiles = try FileManager.default.contentsOfDirectory(at: tempDir, includingPropertiesForKeys: [.isRegularFileKey, .fileSizeKey])
+            var deletedCount = 0
+            var totalSize: Int64 = 0
+            
+            for file in tempFiles {
+                do {
+                    // Only delete regular files (not directories)
+                    let resourceValues = try file.resourceValues(forKeys: [.isRegularFileKey, .fileSizeKey])
+                    guard resourceValues.isRegularFile == true else { continue }
+                    
+                    // Get file size before deletion
+                    let fileSize = resourceValues.fileSize ?? 0
+                    
+                    try FileManager.default.removeItem(at: file)
+                    deletedCount += 1
+                    totalSize += Int64(fileSize)
+                } catch {
+                    // Continue with other files if one fails
+                    print("Failed to delete temp file \(file.lastPathComponent): \(error.localizedDescription)")
+                }
+            }
+            
+            if deletedCount > 0 {
+                let sizeString = ByteCountFormatter.string(fromByteCount: totalSize, countStyle: .file)
+                print("Cleaned up temporary directory: deleted \(deletedCount) file(s), freed \(sizeString)")
+            }
+        } catch {
+            print("Failed to access temporary directory for cleanup: \(error.localizedDescription)")
+        }
     }
     
     private func stopAccessingSecurityScope() {

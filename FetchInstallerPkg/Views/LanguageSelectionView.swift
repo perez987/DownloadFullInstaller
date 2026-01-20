@@ -103,7 +103,7 @@ struct LanguageSelectionView: View {
             .padding(.bottom, 20)
         }
         .padding(.horizontal, 30)
-        .frame(width: 440, height: 660)
+        .frame(width: 440, height: 710)
         .background(Color(NSColor.windowBackgroundColor))
         .appAlert(item: $activeAlert) { alertType in
             switch alertType {
@@ -127,6 +127,8 @@ struct LanguageRow: View {
 
     private func flagEmoji(for languageCode: String) -> String {
         switch languageCode {
+        case "ar":
+            return "🇸🇦"
         case "en-US", "en":
             return "🇺🇸"
         case "es-ES", "es":
