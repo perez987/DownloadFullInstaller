@@ -39,18 +39,21 @@ struct LanguageSelectionView: View {
 //            )
 
             // Language list
-            VStack(spacing: 0) {
-                ForEach(languageManager.availableLanguages, id: \.code) { language in
-                    LanguageRow(
-                        language: language,
-                        isSelected: selectedLanguage == language.code,
-                        action: {
-                            selectedLanguage = language.code
-                        }
-                    )
+            ScrollView(.vertical, showsIndicators: true) {
+                VStack(spacing: 0) {
+                    ForEach(languageManager.availableLanguages, id: \.code) { language in
+                        LanguageRow(
+                            language: language,
+                            isSelected: selectedLanguage == language.code,
+                            action: {
+                                selectedLanguage = language.code
+                            }
+                        )
+                    }
+                    .liquidGlass(intensity: .subtle)
                 }
-//                .liquidGlass(intensity: .subtle)
             }
+            .frame(height: 350)
             .background(Color(NSColor.controlBackgroundColor))
             .cornerRadius(8)
             .overlay(
@@ -103,7 +106,7 @@ struct LanguageSelectionView: View {
             .padding(.bottom, 20)
         }
         .padding(.horizontal, 30)
-        .frame(width: 440, height: 710)
+        .frame(width: 440, height: 560)
         .background(Color(NSColor.windowBackgroundColor))
         .appAlert(item: $activeAlert) { alertType in
             switch alertType {

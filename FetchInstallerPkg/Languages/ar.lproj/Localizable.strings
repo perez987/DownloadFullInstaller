@@ -117,7 +117,7 @@
 
 /* No comment provided by engineer. */
 "Create Installer App from %@ %@ (%@)" =
-"إنشاء تطبيق مثبت macOS من %@ %@ (%@)";
+"إنشاء تطبيق التثبيت من %@ %@ (%@)";
 
 /* No comment provided by engineer. */
 "Error Creating Installer" =
