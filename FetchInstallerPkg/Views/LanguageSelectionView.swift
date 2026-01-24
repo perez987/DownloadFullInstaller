@@ -53,7 +53,8 @@ struct LanguageSelectionView: View {
                     .liquidGlass(intensity: .subtle)
                 }
             }
-            .frame(height: 350)
+//            .frame(height: 350) // Lest tall Language list
+//            .frame(height: .infinity) // Taller language list
             .background(Color(NSColor.controlBackgroundColor))
             .cornerRadius(8)
             .overlay(
@@ -106,7 +107,8 @@ struct LanguageSelectionView: View {
             .padding(.bottom, 20)
         }
         .padding(.horizontal, 30)
-        .frame(width: 440, height: 560)
+//        .frame(width: 440, height: 560) // Less tall window
+        .frame(width: 440, height: 765) // Taller window
         .background(Color(NSColor.windowBackgroundColor))
         .appAlert(item: $activeAlert) { alertType in
             switch alertType {
