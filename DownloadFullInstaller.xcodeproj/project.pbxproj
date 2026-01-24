@@ -61,6 +61,8 @@
 		D9811C182F1700A600EB2ACF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9B13C8A2EB0E91E00342DC8 /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "fr-CA.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		D9B13C8B2EB0E91E00342DC8 /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "fr-CA.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		D9B18AC12F255D5F0026A5E0 /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D9B18AC22F255D5F0026A5E0 /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9BDA0142EB01D4000096F47 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		D9BDA0152EB01D4000096F47 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D9E20C682E8B2C570086992F /* Download Full Installer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Download Full Installer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -271,6 +273,7 @@
 				"fr-CA",
 				ko,
 				ar,
+				sl,
 			);
 			mainGroup = D9E20C5F2E8B2C570086992F;
 			packageReferences = (
@@ -352,6 +355,7 @@
 				D9B13C8B2EB0E91E00342DC8 /* fr-CA */,
 				D9811C182F1700A600EB2ACF /* ko */,
 				D9F598CE2F1FE21800EB2A27 /* ar */,
+				D9B18AC22F255D5F0026A5E0 /* sl */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -370,6 +374,7 @@
 				D9B13C8A2EB0E91E00342DC8 /* fr-CA */,
 				D9811C172F1700A600EB2ACF /* ko */,
 				D9F598CD2F1FE21800EB2A27 /* ar */,
+				D9B18AC12F255D5F0026A5E0 /* sl */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -513,7 +518,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 178;
+				CURRENT_PROJECT_VERSION = 179;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
@@ -539,7 +544,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 3.6;
+				MARKETING_VERSION = 3.7;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = perez987.DownloadFullInstaller;
 				PRODUCT_NAME = "Download Full Installer";
@@ -559,7 +564,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 178;
+				CURRENT_PROJECT_VERSION = 179;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
@@ -585,7 +590,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 3.6;
+				MARKETING_VERSION = 3.7;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = perez987.DownloadFullInstaller;
 				PRODUCT_NAME = "Download Full Installer";

@@ -11,7 +11,7 @@
 "%@ already exists. Do you want to replace it?" = "%@ že obstaja. Ali ga želite zamenjati?";
 
 /* No comment provided by engineer. */
-"A file with the same name already exists in that location. Replacing it will overwrite its current contents." = "Datoteka z istim imenom že obstaja na tem mestu. Če jo zamenjate, boste prepisali njeno trenutno vsebino.
+"A file with the same name already exists in that location. Replacing it will overwrite its current contents." = "Datoteka z istim imenom že obstaja na tem mestu. Če jo zamenjate, boste prepisali njeno trenutno vsebino.";
 
 /* No comment provided by engineer. */
 "Cancel" = "Prekliči";
