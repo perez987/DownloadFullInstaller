@@ -148,6 +148,8 @@ struct LanguageRow: View {
             return "🇧🇷"
         case "ru-RU", "ru":
             return "🇷🇺"
+		case "sl-SI", "sl":
+            return "🇸🇮"	
         case "uk-UA", "uk":
             return "🇺🇦"
         case "zh-Hans", "zh":
