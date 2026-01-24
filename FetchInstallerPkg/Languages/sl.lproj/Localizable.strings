@@ -1,0 +1,140 @@
+/* No comment provided by engineer. */
+"" = "";
+
+/* No comment provided by engineer. */
+"\n\n" = "\n\n";
+
+/* No comment provided by engineer. */
+" in catalog" = " v katalogu";
+
+/* No comment provided by engineer. */
+"%@ already exists. Do you want to replace it?" = "%@ že obstaja. Ali ga želite zamenjati?";
+
+/* No comment provided by engineer. */
+"A file with the same name already exists in that location. Replacing it will overwrite its current contents." = "Datoteka z istim imenom že obstaja na tem mestu. Če jo zamenjate, boste prepisali njeno trenutno vsebino.
+
+/* No comment provided by engineer. */
+"Cancel" = "Prekliči";
+
+/* No comment provided by engineer. */
+"Copy %@ %@ (%@) %@ URL" = "Kopiraj %@ %@ (%@) %@ URL";
+
+/* No comment provided by engineer. */
+"Download %@ %@ (%@) Installer" = "Prenesi namestitveni program %@ %@ (%@)";
+
+/* No comment provided by engineer. */
+"Download Full Installer" = "Prenesite celoten namestitveni program";
+
+/* No comment provided by engineer. */
+"Downloaded %@" = "Preneseno %@";
+
+/* No comment provided by engineer. */
+"Downloading %@" = "Prenašanje %@";
+
+/* No comment provided by engineer. */
+"Retrying download of InstallAssistant.pkg..." = "Ponovni poskus prenosa datoteke InstallAssistant.pkg...";
+
+/* No comment provided by engineer. */
+"Replace" = "Zamenjaj";
+
+/* No comment provided by engineer. */
+"Show in Finder" = "Prikaži v iskalniku";
+
+/* No comment provided by engineer. */
+"Cancel %@ download" = "Prekliči prenos %@";
+
+/* No comment provided by engineer. */
+"Show the installer in the Downloads folder" = "Prikaži namestitveni program v mapi za prenose";
+
+/* No comment provided by engineer. */
+"Language Selection" = "Izbira jezika";
+
+/* No comment provided by engineer. */
+"Choose a language" = "Izberite jezik";
+
+/* No comment provided by engineer. */
+"Select Language" = "Izberite jezik";
+
+/* No comment provided by engineer. */
+"Continue" = "Nadaljuj";
+
+/* No comment provided by engineer. */
+"Restart Required" = "Zahtevan je ponovni zagon";
+
+/* No comment provided by engineer. */
+"The app must be restarted for changes to take effect." = "Aplikacijo je treba znova zagnati, da spremembe začnejo veljati.";
+
+/* No comment provided by engineer. */
+"OK" = "V redu";
+
+/* No comment provided by engineer. */
+"Yes" = "Da";
+
+/* No comment provided by engineer. */
+"Clear app settings?" = "Želite počistiti nastavitve aplikacije?";
+
+/* No comment provided by engineer. */
+"(App preferences will be cleared)" = "(Nastavitve aplikacije bodo izbrisane)";
+
+/* No comment provided by engineer. */
+"You will lose user settings and saved language." = "Izgubili boste uporabniške nastavitve in shranjeni jezik.";
+
+/* No comment provided by engineer. */
+"Warning" = "Opozorilo";
+
+/* No comment provided by engineer. */
+"Create Installer App from %@ %@ (%@)" = "Ustvari namestitveno aplikacijo iz %@ %@ (%@)";
+
+/* No comment provided by engineer. */
+"Error Creating Installer" = "Napaka pri ustvarjanju namestitvenega programa za macOS";
+
+/* No comment provided by engineer. */
+"The installer package %@ does not exist in the %@ folder. Please download it first." = "Namestitveni paket %@ ne obstaja v mapi %@. Najprej ga prenesite.";
+
+/* No comment provided by engineer. */
+"Success" = "Uspeh";
+
+/* No comment provided by engineer. */
+"The installer app has been created successfully in /Applications" = "Aplikacija za namestitev macOS je bila uspešno ustvarjena v /Aplikacijah";
+
+/* No comment provided by engineer. */
+"The installer package has been opened. Follow the on-screen instructions to complete the installation" = "Namestitveni paket je bil odprt. Za dokončanje namestitve sledite navodilom na zaslonu.";
+
+/* No comment provided by engineer. */
+"Failed to open the installer package. Please try opening it manually from the Downloads folder" = "Namestitvenega paketa ni bilo mogoče odpreti. Poskusite ga odpreti ročno iz mape za prenose.";
+
+/* No comment provided by engineer. */
+"Failed to create installer app. Error: %@" = "Ustvarjanje namestitvene aplikacije za macOS ni uspelo. Napaka: %@";
+
+/* No comment provided by engineer. */
+"No write permission to /Applications folder" = "Ni dovoljenja za pisanje v mapo /Aplikacije";
+
+/* No comment provided by engineer. */
+"Failed to create AppleScript" = "Ustvarjanje AppleScripta ni uspelo";
+
+/* Multi-download support */
+"Maximum Downloads Reached" = "Doseženo je bilo največje število prenosov";
+
+/* Multi-download support */
+"You can only download up to 3 installers at the same time. Please wait for a download to complete before starting a new one." = "Hkrati lahko prenesete največ 3 namestitvene programe. Preden začnete novega, počakajte, da se prenos prejšnjega zaključi.";
+
+/* Multi-download support */
+"Dismiss" = "Opusti";
+
+/* Visual indicator*/
+"This installer has been downloaded" = "Ta namestitveni program je bil prenesen";
+
+/* Settings window */
+"Settings" = "Nastavitve";
+
+/* Settings window */
+"Close" = "Zapri";
+
+/* Settings window */
+"Download Location" = "Mapa s prenosi";
+
+/* Download folder selection */
+"Select Download Folder" = "Izberite mapo za prenose";
+
+/* Download folder selection */
+"Choose where to save downloaded installers" = "Izberite, kam želite shraniti prenesene namestitvene datoteke";
