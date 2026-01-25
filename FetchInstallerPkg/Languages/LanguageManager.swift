@@ -26,6 +26,19 @@ class LanguageManager: ObservableObject {
         loadCurrentLanguage()
     }
 
+    private func sortLanguages(_ lhs: SupportedLanguage, _ rhs: SupportedLanguage) -> Bool {
+        // English should always be first
+        if lhs.code == "en" { return true }
+        if rhs.code == "en" { return false }
+        
+        // Spanish should be second (after English)
+        if lhs.code == "es" && rhs.code != "en" { return true }
+        if rhs.code == "es" && lhs.code != "en" { return false }
+        
+        // All other languages sorted alphabetically by code
+        return lhs.code < rhs.code
+    }
+
     private func loadAvailableLanguages() {
         // Check main bundle for .lproj directories in Languages subdirectory
         guard let languagesPath = Bundle.main.path(forResource: "Languages", ofType: nil) else {
@@ -36,7 +49,7 @@ class LanguageManager: ObservableObject {
             availableLanguages = languagePaths.compactMap { path in
                 let languageCode = URL(fileURLWithPath: path).deletingPathExtension().lastPathComponent
                 return createSupportedLanguage(from: languageCode)
-            }.sorted { $0.code < $1.code }
+            }.sorted(by: sortLanguages)
             return
         }
 
@@ -54,7 +67,7 @@ class LanguageManager: ObservableObject {
                 return createSupportedLanguage(from: languageCode)
             }
             return nil
-        }.sorted { $0.code < $1.code }
+        }.sorted(by: sortLanguages)
     }
 
     private func createSupportedLanguage(from code: String) -> SupportedLanguage {
