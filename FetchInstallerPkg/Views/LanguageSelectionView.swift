@@ -52,7 +52,7 @@ struct LanguageSelectionView: View {
                     }
                 }
             }
-            .frame(height: 335) // Lest tall Language list
+            .frame(height: 350) // Lest tall Language list
 //            .frame(height: .infinity) // Taller language list
             .background(Color(NSColor.controlBackgroundColor))
             .cornerRadius(8)
@@ -103,7 +103,7 @@ struct LanguageSelectionView: View {
             .padding(.bottom, 20)
         }
         .padding(.horizontal, 30)
-        .frame(width: 416, height: 534) // Less tall window
+        .frame(width: 416, height: 560) // Less tall window
 //        .frame(width: 440, height: 765) // Taller window
         .background(Color(NSColor.windowBackgroundColor))
         .appAlert(item: $activeAlert) { alertType in
@@ -146,8 +146,8 @@ struct LanguageRow: View {
             return "🇧🇷"
         case "ru-RU", "ru":
             return "🇷🇺"
-		case "sl-SI", "sl":
-            return "🇸🇮"	
+        case "sl-SI", "sl":
+            return "🇸🇮"
         case "uk-UA", "uk":
             return "🇺🇦"
         case "zh-Hans", "zh":
@@ -158,44 +158,45 @@ struct LanguageRow: View {
     }
 
     var body: some View {
-        Button(action: action) {
-            HStack {
-                Text(flagEmoji(for: language.code))
-                    .font(.title2)
-                    .frame(width: 24, height: 24)
+        HStack {
+            Text(flagEmoji(for: language.code))
+                .font(.title2)
+                .frame(width: 24, height: 24)
 
-                Text(language.nativeName)
-                    .font(.body)
-                    .fontWeight(.medium)
-                    .foregroundColor(.primary)
+            Text(language.nativeName)
+                .font(.body)
+                .fontWeight(.medium)
+                .foregroundColor(.primary)
 
-                if language.nativeName != language.localizedName {
-                    Text(language.localizedName)
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                }
-
-                Spacer()
-
-                if isSelected {
-                    Image(systemName: "checkmark.circle.fill")
-                        .foregroundColor(.blue)
-                        .font(.title3)
-                }
+            if language.nativeName != language.localizedName {
+                Text(language.localizedName)
+                    .font(.caption)
+                    .foregroundColor(.secondary)
             }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 12)
-            .background(isSelected ? Color.blue.opacity(0.1) : Color.clear)
+
+            Spacer()
+//                    .liquidGlass(intensity: .subtle)
+
+            if isSelected {
+                Image(systemName: "checkmark.circle.fill")
+                    .foregroundColor(.blue)
+                    .font(.title3)
+            }
         }
-        .buttonStyle(PlainButtonStyle())
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.horizontal, 16)
+        .padding(.vertical, 12)
+        .background(isSelected ? Color.blue.opacity(0.1) : Color.clear)
         .contentShape(Rectangle())
+        .onTapGesture {
+            action()
+        }
         .overlay(
             Rectangle()
                 .frame(height: 1)
                 .foregroundColor(Color.gray.opacity(0.2)),
             alignment: .bottom
         )
-        
     }
 }
 
