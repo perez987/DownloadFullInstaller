@@ -48,8 +48,6 @@ After downloading an InstallAssistant.pkg file, you can create the macOS install
 
 The About This Hack -> Settings menu (⌘ ,) opens a window where you can select a different folder to download installers. Default is ~/Downloads. Visual indicators (green marks) of downloaded installers are updated to match those in the selected folder.
 
-![Custom destination](Images/EN/Custom-destination.png)
-
 #### Language selector window
 
 The language selector can be opened from the menubar (`Languages` > `Select Language`) or by keyboard shortcut (`⌘ + L`).

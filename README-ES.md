@@ -49,8 +49,6 @@ Después de descargar el archivo InstallAssistant.pkg, puedes crear la aplicaci�
 
 El menú "Acerca de este hack" -> Ajustes (⌘,) abre una ventana donde puedes seleccionar una carpeta diferente para los instaladores descargados. La carpeta predeterminada es ~/Descargas. Los indicadores visuales (marcas verdes) de los instaladores descargados se actualizan para coincidir con los de la carpeta seleccionada.
 
-![Custom destination](Images/ES/Custom-destination.png)
-
 #### Ventana de selección de idioma
 
 La ventana de idiomas puede ser abierta desde la barra de menús (`Idiomas` > `Selección de Idioma`) o por teclado (`⌘ + L`).
