@@ -52,7 +52,7 @@ struct LanguageSelectionView: View {
                     }
                 }
             }
-            .frame(height: 350) // Lest tall Language list
+            .frame(height: 335) // Lest tall Language list
 //            .frame(height: .infinity) // Taller language list
             .background(Color(NSColor.controlBackgroundColor))
             .cornerRadius(8)
@@ -103,7 +103,7 @@ struct LanguageSelectionView: View {
             .padding(.bottom, 20)
         }
         .padding(.horizontal, 30)
-        .frame(width: 416, height: 560) // Less tall window
+        .frame(width: 416, height: 534) // Less tall window
 //        .frame(width: 440, height: 765) // Taller window
         .background(Color(NSColor.windowBackgroundColor))
         .appAlert(item: $activeAlert) { alertType in
@@ -176,7 +176,6 @@ struct LanguageRow: View {
                 }
 
                 Spacer()
-//                    .liquidGlass(intensity: .subtle)
 
                 if isSelected {
                     Image(systemName: "checkmark.circle.fill")
@@ -189,12 +188,14 @@ struct LanguageRow: View {
             .background(isSelected ? Color.blue.opacity(0.1) : Color.clear)
         }
         .buttonStyle(PlainButtonStyle())
+        .contentShape(Rectangle())
         .overlay(
             Rectangle()
                 .frame(height: 1)
                 .foregroundColor(Color.gray.opacity(0.2)),
             alignment: .bottom
         )
+        
     }
 }
 
