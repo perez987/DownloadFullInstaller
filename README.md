@@ -28,7 +28,7 @@ Download Full Installer runs on macOS 13 Ventura through macOS 26 Tahoe.
 - Added sleep prevention logic to avoid sleeping while the application is running
 - Added language selection system
 - Updated translations
-- Initial support for Liquid Glass with backward compatibility
+~~- Initial support for Liquid Glass~~
 - Added download resume functionality that automatically handles network interruptions
 - Added progress bar overlaying to the application's dock tile icon during PKG downloads
 - Added support for up to 3 simultaneous downloads
@@ -48,7 +48,13 @@ After downloading an InstallAssistant.pkg file, you can create the macOS install
 
 The About This Hack -> Settings menu (⌘ ,) opens a window where you can select a different folder to download installers. Default is ~/Downloads. Visual indicators (green marks) of downloaded installers are updated to match those in the selected folder.
 
-<img src="Images/EN/Custom-destination.png" width="480">
+![Custom destination](Images/EN/Custom-destination.png)
+
+#### Language selector window
+
+The language selector can be opened from the menubar (`Languages` > `Select Language`) or by keyboard shortcut (`⌘ + L`).
+
+![Languages list](Images/EN/Languages.png)
 
 ### App is damaged and can't be opened
 

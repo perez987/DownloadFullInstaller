@@ -10,9 +10,7 @@
 
 A partir de junio de 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) de <em>scriptingosx</em> fue archivado por el desarrollador. Durante más de tres años, mi repositorio DownloadFullInstaller fue una bifurcación del original. Sin embargo, tras archivarlo, creé un nuevo repositorio que es una versión independiente (no bifurcada). Mantendré este proyecto activo y actualizado mientras sea útil para otros usuarios.
 
-<img src="Images/ES/Main-window1a.png" width="700px">
-
-<img src="Images/ES/Main-window1b.png" width="700px">
+<img src="Images/ES/Main-window.png" width="700px">
 
 ### Download Full Installer desde macOS 13 hasta macOS 26
 
@@ -29,7 +27,7 @@ Download Full Installer funciona desde macOS 13 Ventura hasta macOS 26 Tahoe.
 - Se ha añadido lógica para prevenir la suspensión del sistema mientras se ejecuta la aplicación
 - Se ha añadido un sistema de selección de idioma
 - Traducciones actualizadas
-- Compatibilidad inicial con Liquid Glass con retrocompatibilidad
+- ~~Compatibilidad inicial con Liquid Glass~~
 - Se ha añadido la función de reanudación de descarga que gestiona automáticamente las interrupciones de red
 - Se ha añadido una barra de progreso superpuesta al icono del mosaico del dock de la aplicación durante las descargas de PKG
 - Se ha añadido compatibilidad con hasta 3 descargas simultáneas
@@ -51,7 +49,13 @@ Después de descargar el archivo InstallAssistant.pkg, puedes crear la aplicaci�
 
 El menú "Acerca de este hack" -> Ajustes (⌘,) abre una ventana donde puedes seleccionar una carpeta diferente para los instaladores descargados. La carpeta predeterminada es ~/Descargas. Los indicadores visuales (marcas verdes) de los instaladores descargados se actualizan para coincidir con los de la carpeta seleccionada.
 
-<img src="Images/ES/Custom-destination.png" width="480">
+![Custom destination](Images/ES/Custom-destination.png)
+
+#### Ventana de selección de idioma
+
+La ventana de idiomas puede ser abierta desde la barra de menús (`Idiomas` > `Selección de Idioma`) o por teclado (`⌘ + L`).
+
+![Languages list](Images/ES/Idiomas.png)
 
 ### La aplicación está dañada y no se puede abrir.
 
