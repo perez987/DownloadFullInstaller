@@ -25,7 +25,6 @@
 		D9E20C972E8B2D3B0086992F /* Catalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E20C8C2E8B2D3B0086992F /* Catalog.swift */; };
 		D9E20C982E8B2D3B0086992F /* DistParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E20C8D2E8B2D3B0086992F /* DistParserDelegate.swift */; };
 		D9E20C992E8B2D3B0086992F /* BuildManifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E20C8E2E8B2D3B0086992F /* BuildManifest.swift */; };
-		D9E20C9A2E8B2D3B0086992F /* LiquidGlassStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E20C8F2E8B2D3B0086992F /* LiquidGlassStyle.swift */; };
 		D9E20C9B2E8B2D3B0086992F /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E20C902E8B2D3B0086992F /* Package.swift */; };
 		D9E20C9C2E8B2D3B0086992F /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E20C912E8B2D3B0086992F /* Product.swift */; };
 		D9E20C9D2E8B2D3B0086992F /* SeedCatalogs.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9E20C922E8B2D3B0086992F /* SeedCatalogs.plist */; };
@@ -81,7 +80,6 @@
 		D9E20C8C2E8B2D3B0086992F /* Catalog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Catalog.swift; sourceTree = "<group>"; };
 		D9E20C8D2E8B2D3B0086992F /* DistParserDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistParserDelegate.swift; sourceTree = "<group>"; };
 		D9E20C8E2E8B2D3B0086992F /* BuildManifest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildManifest.swift; sourceTree = "<group>"; };
-		D9E20C8F2E8B2D3B0086992F /* LiquidGlassStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiquidGlassStyle.swift; sourceTree = "<group>"; };
 		D9E20C902E8B2D3B0086992F /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		D9E20C912E8B2D3B0086992F /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		D9E20C922E8B2D3B0086992F /* SeedCatalogs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SeedCatalogs.plist; sourceTree = "<group>"; };
@@ -192,7 +190,6 @@
 				D9E20C8E2E8B2D3B0086992F /* BuildManifest.swift */,
 				D9E20C8C2E8B2D3B0086992F /* Catalog.swift */,
 				D9E20C8D2E8B2D3B0086992F /* DistParserDelegate.swift */,
-				D9E20C8F2E8B2D3B0086992F /* LiquidGlassStyle.swift */,
 				D9E20C8B2E8B2D3B0086992F /* MetaInfo.swift */,
 				D9E20C8A2E8B2D3B0086992F /* OSNames.swift */,
 				D9E20C902E8B2D3B0086992F /* Package.swift */,
@@ -329,7 +326,6 @@
 				D9E20CA72E8B2D490086992F /* InstallerView.swift in Sources */,
 				D9E20C992E8B2D3B0086992F /* BuildManifest.swift in Sources */,
 				D9E20C9B2E8B2D3B0086992F /* Package.swift in Sources */,
-				D9E20C9A2E8B2D3B0086992F /* LiquidGlassStyle.swift in Sources */,
 				D9E20C9E2E8B2D3B0086992F /* SUCatalog.swift in Sources */,
 				D9E20C952E8B2D3B0086992F /* OSNames.swift in Sources */,
 				D9E20CAD2E8B2D5E0086992F /* LocalizationHelper.swift in Sources */,

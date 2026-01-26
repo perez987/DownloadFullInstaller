@@ -50,7 +50,6 @@ struct LanguageSelectionView: View {
                             }
                         )
                     }
-                    .liquidGlass(intensity: .subtle)
                 }
             }
             .frame(height: 350) // Lest tall Language list
@@ -68,7 +67,6 @@ struct LanguageSelectionView: View {
                     isPresented = false
                 }
                 .keyboardShortcut(.escape)
-                .liquidGlass(intensity: .subtle)
 
                 Spacer()
 
@@ -78,7 +76,6 @@ struct LanguageSelectionView: View {
                 .keyboardShortcut(.return)
                 .buttonStyle(.bordered)
                 .disabled(selectedLanguage == languageManager.currentLanguage)
-                .liquidGlass(intensity: .subtle)
             }
 
             Divider()
@@ -96,7 +93,6 @@ struct LanguageSelectionView: View {
                     activeAlert = .warningSettings
                 }
                 .buttonStyle(.bordered)
-                .liquidGlass(intensity: .subtle)
             }
 
 //            HStack(spacing: 10) {
@@ -190,7 +186,6 @@ struct LanguageRow: View {
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 12)
-            .liquidGlass(intensity: .subtle)
             .background(isSelected ? Color.blue.opacity(0.1) : Color.clear)
         }
         .buttonStyle(PlainButtonStyle())

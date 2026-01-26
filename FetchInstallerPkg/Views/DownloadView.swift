@@ -92,13 +92,12 @@ struct DownloadView: View {
             // Show completed downloads first (they appear at the top)
             ForEach(multiDownloadManager.completedDownloads) { item in
                 CompletedDownloadItemView(downloadItem: item, manager: multiDownloadManager)
-                    .liquidGlass(intensity: .medium)
             }
 
             // Show active downloads (growing upward means new ones appear at the bottom)
             ForEach(multiDownloadManager.activeDownloads) { item in
                 DownloadItemView(downloadItem: item)
-                    .liquidGlass(intensity: .medium)
+//                    .liquidGlass(intensity: .medium)
                     .multilineTextAlignment(.leading)
                     .onChange(of: item.errorMessage) { errorMessage in
                         if let errorMessage = errorMessage {
@@ -135,7 +134,6 @@ struct DownloadView: View {
                         Text(" ")
                     }
                 }
-                .liquidGlass(intensity: .medium)
                 .multilineTextAlignment(.leading)
                 .onChange(of: downloadManager.errorMessage) { errorMessage in
                     if let errorMessage = errorMessage {
@@ -167,7 +165,6 @@ struct DownloadView: View {
                         }
                     }
                 }
-                .liquidGlass(intensity: .medium)
             }
         }
         .appAlert(item: $activeAlert)

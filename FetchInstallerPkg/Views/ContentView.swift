@@ -28,16 +28,17 @@ struct ContentView: View {
                     InstallerView(product: installer)
                 }
                 .padding(4)
-                .liquidGlassContainer()
-                // ---> Test, VStack border
-//                .border(.mint, width: 1)
+                // VStack border
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(.tertiary, lineWidth: 1)
+                )
                 .contentMargins(.leading, 1, for: .scrollContent)
             } else {
                 List(sucatalog.installers, id: \.id) { installer in
                     InstallerView(product: installer)
                 }
                 .padding(4)
-                .liquidGlassContainer()
             }
 
             DownloadView()
@@ -50,7 +51,6 @@ struct ContentView: View {
             minHeight: 562.0,
             alignment: .center
         )
-
         .padding(.bottom, 12)
         .padding(.horizontal, 28)
         .onReceive(NotificationCenter.default.publisher(for: .languageChanged)) { _ in
