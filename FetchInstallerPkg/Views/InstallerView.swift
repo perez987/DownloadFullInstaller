@@ -149,7 +149,7 @@ struct InstallerView: View {
 
                     // Context menu: copy to clipboard the URL of the specified InstallAssistant.pkg
                 }
-                .contextMenu {
+                    .contextMenu {
                     Button(action: {
                         if let text = product.installAssistantURL?.absoluteString {
 //                            print("\(text)")

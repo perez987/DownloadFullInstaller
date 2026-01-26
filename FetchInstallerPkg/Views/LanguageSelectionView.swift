@@ -103,7 +103,7 @@ struct LanguageSelectionView: View {
             .padding(.bottom, 20)
         }
         .padding(.horizontal, 30)
-        .frame(width: 440, height: 560) // Less tall window
+        .frame(width: 416, height: 560) // Less tall window
 //        .frame(width: 440, height: 765) // Taller window
         .background(Color(NSColor.windowBackgroundColor))
         .appAlert(item: $activeAlert) { alertType in
