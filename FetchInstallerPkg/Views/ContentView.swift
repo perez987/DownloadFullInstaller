@@ -28,14 +28,14 @@ struct ContentView: View {
                     InstallerView(product: installer)
                 }
                 .padding(4)
-                // VStack border
-//                .border(.tertiary, width: 1) // lineal border
-                    // rounded border
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(.tertiary, lineWidth: 1)
-                        .padding(5)
-                    )
+                // VStack border lineal border
+//                .border(.tertiary, width: 1)
+                // VStack border rounded border
+//                .overlay(
+//                    RoundedRectangle(cornerRadius: 6)
+//                        .stroke(.tertiary, lineWidth: 1)
+//                        .padding(5)
+//                    )
                 .contentMargins(.leading, 1, for: .scrollContent)
             } else {
                 List(sucatalog.installers, id: \.id) { installer in
