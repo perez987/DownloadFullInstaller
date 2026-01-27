@@ -31,11 +31,11 @@ struct ContentView: View {
                 // VStack border
 //                .border(.tertiary, width: 1) // lineal border
                     // rounded border
-//                .overlay(
-//                    RoundedRectangle(cornerRadius: 16)
-//                        .stroke(.tertiary, lineWidth: 1)
-//                        .padding(5)
-//                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(.tertiary, lineWidth: 1)
+                        .padding(5)
+                )
                 .contentMargins(.leading, 1, for: .scrollContent)
             } else {
                 List(sucatalog.installers, id: \.id) { installer in
