@@ -130,7 +130,7 @@ struct InstallerView: View {
                     .disabled(multiDownloadManager.isDownloading(filename: installerFilename))
                     .buttonStyle(.borderless)
                     .controlSize(.mini)
-
+                    
                     Button(action: {
                         createInstallerApp()
                     }) {
