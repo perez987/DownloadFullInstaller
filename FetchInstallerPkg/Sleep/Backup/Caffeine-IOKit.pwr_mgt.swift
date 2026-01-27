@@ -6,25 +6,24 @@
 //
 
 import Foundation
+import IOKit.pwr_mgt
 import SwiftUI
 
-var activityToken: NSObjectProtocol?
+var assertionID: IOPMAssertionID = 0
+var sleepDisabled = false
 
 func disableSystemSleep(reason: String = "DownloadFullInstaller prevents sleep") {
-    if activityToken == nil {
-        activityToken = ProcessInfo.processInfo.beginActivity(
-            options: [.idleSystemSleepDisabled, .suddenTerminationDisabled],
-            reason: reason
-        )
+    if !sleepDisabled {
+        sleepDisabled = IOPMAssertionCreateWithName(kIOPMAssertionTypeNoIdleSleep as CFString, IOPMAssertionLevel(kIOPMAssertionLevelOn), reason as CFString, &assertionID) == kIOReturnSuccess
         let text = "DownloadFullInstaller prevents sleep"
         print(text)
     }
 }
 
 func enableSystemSleep() {
-    if let token = activityToken {
-        ProcessInfo.processInfo.endActivity(token)
-        activityToken = nil
+    if sleepDisabled {
+        IOPMAssertionRelease(assertionID)
+        sleepDisabled = false
         let text = "DownloadFullInstaller allows sleep"
         print(text)
     }
