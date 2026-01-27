@@ -23,20 +23,12 @@ struct LanguageSelectionView: View {
         VStack(spacing: 20) {
             // Header
             VStack(spacing: 8) {
-//                Image(systemName: "globe")
-//                    .font(.system(size: 32))
-//                    .foregroundColor(.blue)
 
                 Text(NSLocalizedString("Language Selection", comment: ""))
                     .font(.title3)
                     .fontWeight(.bold)
             }
             .padding(.top, 20)
-//            .frame(
-//                minWidth: 400,
-//                idealWidth: 400,
-//                maxWidth: 400
-//            )
 
             // Language list
             ScrollView(.vertical, showsIndicators: true) {
@@ -52,13 +44,12 @@ struct LanguageSelectionView: View {
                     }
                 }
             }
-            .frame(height: 350) // Lest tall Language list
-//            .frame(height: .infinity) // Taller language list
+            .frame(height: 350)
             .background(Color(NSColor.controlBackgroundColor))
             .cornerRadius(8)
             .overlay(
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color.gray.opacity(0.3), lineWidth: 1)
+                RoundedRectangle(cornerRadius: 6)
+                    .stroke(.tertiary, lineWidth: 1)
             )
 
             // Buttons and alert
@@ -80,7 +71,6 @@ struct LanguageSelectionView: View {
 
             Divider()
 
-//            .padding(.bottom, 20)
             HStack(spacing: 12) {
                 Image(systemName: "exclamationmark.triangle")
                     .font(.system(size: 16))
@@ -94,17 +84,10 @@ struct LanguageSelectionView: View {
                 }
                 .buttonStyle(.bordered)
             }
-
-//            HStack(spacing: 10) {
-//                Text(NSLocalizedString("(App preferences will be cleared)", comment: ""))
-//                    .foregroundColor(.secondary)
-//                    .multilineTextAlignment(.center)
-//            }
             .padding(.bottom, 20)
         }
         .padding(.horizontal, 30)
-        .frame(width: 416, height: 560) // Less tall window
-//        .frame(width: 440, height: 765) // Taller window
+        .frame(width: 416, height: 560)
         .background(Color(NSColor.windowBackgroundColor))
         .appAlert(item: $activeAlert) { alertType in
             switch alertType {

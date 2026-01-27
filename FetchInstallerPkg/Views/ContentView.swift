@@ -23,25 +23,36 @@ struct ContentView: View {
                 Spacer()
             }
 
-            if #available(macOS 14.0, *) {
+            if #available(macOS 15.0, *) {
+                // macOS 15 Sequoia and later - no overlay
                 List(sucatalog.installers, id: \.id) { installer in
                     InstallerView(product: installer)
                 }
                 .padding(4)
-                // VStack border lineal border
-//                .border(.tertiary, width: 1)
-                // VStack border rounded border
-//                .overlay(
-//                    RoundedRectangle(cornerRadius: 6)
-//                        .stroke(.tertiary, lineWidth: 1)
-//                        .padding(5)
-//                    )
+                .contentMargins(.leading, 1, for: .scrollContent)
+            } else if #available(macOS 14.0, *) {
+                // macOS 14 Sonoma - with overlay
+                List(sucatalog.installers, id: \.id) { installer in
+                    InstallerView(product: installer)
+                }
+                .padding(4)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 6)
+                        .stroke(.tertiary, lineWidth: 1)
+                        .padding(5)
+                )
                 .contentMargins(.leading, 1, for: .scrollContent)
             } else {
+                // macOS 13 Ventura - with overlay
                 List(sucatalog.installers, id: \.id) { installer in
                     InstallerView(product: installer)
                 }
                 .padding(4)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 6)
+                        .stroke(.tertiary, lineWidth: 1)
+                        .padding(5)
+                )
             }
 
             DownloadView()
@@ -65,9 +76,7 @@ struct ContentView: View {
         }
 
         HStack(alignment: .center) {}
-
-            // ---> Count of listed installers has issues, always shows all OSes count
-//         HStack { Text("(\(sucatalog.installers.count) pkg(s) in \(self.seedProgram) catalog)\n") .font(.headline) }
+        
     }
 
     struct ContentView_Previews: PreviewProvider {
