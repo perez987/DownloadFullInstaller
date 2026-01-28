@@ -28,6 +28,7 @@ struct ContentView: View {
                 List(sucatalog.installers, id: \.id) { installer in
                     InstallerView(product: installer)
                 }
+                .cornerRadius(8)
                 .padding(4)
                 .contentMargins(.leading, 1, for: .scrollContent)
             } else if #available(macOS 14.0, *) {
@@ -35,6 +36,7 @@ struct ContentView: View {
                 List(sucatalog.installers, id: \.id) { installer in
                     InstallerView(product: installer)
                 }
+                .cornerRadius(8)
                 .padding(4)
                 .overlay(
                     RoundedRectangle(cornerRadius: 6)
@@ -47,6 +49,7 @@ struct ContentView: View {
                 List(sucatalog.installers, id: \.id) { installer in
                     InstallerView(product: installer)
                 }
+                .cornerRadius(8)
                 .padding(4)
                 .overlay(
                     RoundedRectangle(cornerRadius: 6)
