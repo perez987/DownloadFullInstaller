@@ -11,8 +11,7 @@
 		C0000002A000000100000001 /* Alert+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000002A000000200000001 /* Alert+Extensions.swift */; };
 		C03916EE2EDBB6DC00187185 /* DockProgress in Frameworks */ = {isa = PBXBuildFile; productRef = C03916ED2EDBB6DC00187185 /* DockProgress */; };
 		D91B7DCB2EFC3D24008914AF /* DockProgress in Frameworks */ = {isa = PBXBuildFile; productRef = D91B7DCA2EFC3D24008914AF /* DockProgress */; };
-		D9E20C6C2E8B2C570086992F /* FetchInstallerPkgApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E20C6B2E8B2C570086992F /* FetchInstallerPkgApp.swift */; };
-		D9E20C732E8B2C590086992F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9E20C722E8B2C590086992F /* Preview Assets.xcassets */; };
+		D9E20C6C2E8B2C570086992F /* DownloadFullInstallerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E20C6B2E8B2C570086992F /* DownloadFullInstallerApp.swift */; };
 		D9E20C7B2E8B2CE80086992F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9E20C7A2E8B2CE80086992F /* Assets.xcassets */; };
 		D9E20C842E8B2D1C0086992F /* Caffeine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E20C7F2E8B2D1C0086992F /* Caffeine.swift */; };
 		D9E20C852E8B2D1C0086992F /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E20C802E8B2D1C0086992F /* DownloadManager.swift */; };
@@ -65,9 +64,8 @@
 		D9BDA0142EB01D4000096F47 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		D9BDA0152EB01D4000096F47 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D9E20C682E8B2C570086992F /* Download Full Installer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Download Full Installer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D9E20C6B2E8B2C570086992F /* FetchInstallerPkgApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchInstallerPkgApp.swift; sourceTree = "<group>"; };
-		D9E20C722E8B2C590086992F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		D9E20C742E8B2C590086992F /* FetchInstallerPkg.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FetchInstallerPkg.entitlements; sourceTree = "<group>"; };
+		D9E20C6B2E8B2C570086992F /* DownloadFullInstallerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadFullInstallerApp.swift; sourceTree = "<group>"; };
+		D9E20C742E8B2C590086992F /* DownloadFullInstaller.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DownloadFullInstaller.entitlements; sourceTree = "<group>"; };
 		D9E20C7A2E8B2CE80086992F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9E20C7F2E8B2D1C0086992F /* Caffeine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Caffeine.swift; sourceTree = "<group>"; };
 		D9E20C802E8B2D1C0086992F /* DownloadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
@@ -131,6 +129,13 @@
 			path = Sleep;
 			sourceTree = "<group>";
 		};
+		D9738FDF2F2BE2F800368E7D /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		D98E372B2F2921D700518D60 /* Backup */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,7 +147,7 @@
 		D9E20C5F2E8B2C570086992F = {
 			isa = PBXGroup;
 			children = (
-				D9E20C6A2E8B2C570086992F /* FetchInstallerPkg */,
+				D9E20C6A2E8B2C570086992F /* DownloadFullInstaller */,
 				D9E20C692E8B2C570086992F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -155,30 +160,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D9E20C6A2E8B2C570086992F /* FetchInstallerPkg */ = {
+		D9E20C6A2E8B2C570086992F /* DownloadFullInstaller */ = {
 			isa = PBXGroup;
 			children = (
 				D9E20C832E8B2D1C0086992F /* AppDelegate.swift */,
 				D9E20C7A2E8B2CE80086992F /* Assets.xcassets */,
 				D95D3BFA2EDDFF95002AF7DA /* Downloads */,
-				D9E20C742E8B2C590086992F /* FetchInstallerPkg.entitlements */,
-				D9E20C6B2E8B2C570086992F /* FetchInstallerPkgApp.swift */,
+				D9E20C742E8B2C590086992F /* DownloadFullInstaller.entitlements */,
+				D9E20C6B2E8B2C570086992F /* DownloadFullInstallerApp.swift */,
 				D9E20C7C2E8B2CF20086992F /* Languages */,
 				D9E20C7D2E8B2CFF0086992F /* Model */,
 				D9E20C822E8B2D1C0086992F /* Prefs.swift */,
-				D9E20C712E8B2C590086992F /* Preview Content */,
 				D95D3BFB2EDDFFAE002AF7DA /* Sleep */,
 				D9E20C7E2E8B2D060086992F /* Views */,
+				D9738FDF2F2BE2F800368E7D /* Preview Content */,
 			);
-			path = FetchInstallerPkg;
-			sourceTree = "<group>";
-		};
-		D9E20C712E8B2C590086992F /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				D9E20C722E8B2C590086992F /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
+			path = DownloadFullInstaller;
 			sourceTree = "<group>";
 		};
 		D9E20C7C2E8B2CF20086992F /* Languages */ = {
@@ -301,7 +298,6 @@
 				D9E20C9D2E8B2D3B0086992F /* SeedCatalogs.plist in Resources */,
 				D9E20CB12E8B2D840086992F /* Localizable.strings in Resources */,
 				D9E20C7B2E8B2CE80086992F /* Assets.xcassets in Resources */,
-				D9E20C732E8B2C590086992F /* Preview Assets.xcassets in Resources */,
 				D9E20CB62E8B2DB20086992F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,7 +333,7 @@
 				D9E20C9E2E8B2D3B0086992F /* SUCatalog.swift in Sources */,
 				D9E20C952E8B2D3B0086992F /* OSNames.swift in Sources */,
 				D9E20CAD2E8B2D5E0086992F /* LocalizationHelper.swift in Sources */,
-				D9E20C6C2E8B2C570086992F /* FetchInstallerPkgApp.swift in Sources */,
+				D9E20C6C2E8B2C570086992F /* DownloadFullInstallerApp.swift in Sources */,
 				ECEDC58D9422D0D6822812AD /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -517,14 +513,14 @@
 				ARCHS = x86_64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = FetchInstallerPkg/FetchInstallerPkg.entitlements;
+				CODE_SIGN_ENTITLEMENTS = DownloadFullInstaller/DownloadFullInstaller.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 188;
+				CURRENT_PROJECT_VERSION = 191;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"DownloadFullInstaller/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_FILE_ACCESS_DOWNLOADS_FOLDER = readwrite;
@@ -563,14 +559,14 @@
 				ARCHS = x86_64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = FetchInstallerPkg/FetchInstallerPkg.entitlements;
+				CODE_SIGN_ENTITLEMENTS = DownloadFullInstaller/DownloadFullInstaller.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 188;
+				CURRENT_PROJECT_VERSION = 191;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"FetchInstallerPkg/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"DownloadFullInstaller/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_FILE_ACCESS_DOWNLOADS_FOLDER = readwrite;
