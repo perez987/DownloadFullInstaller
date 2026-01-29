@@ -11,6 +11,7 @@
 		C0000002A000000100000001 /* Alert+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000002A000000200000001 /* Alert+Extensions.swift */; };
 		C03916EE2EDBB6DC00187185 /* DockProgress in Frameworks */ = {isa = PBXBuildFile; productRef = C03916ED2EDBB6DC00187185 /* DockProgress */; };
 		D91B7DCB2EFC3D24008914AF /* DockProgress in Frameworks */ = {isa = PBXBuildFile; productRef = D91B7DCA2EFC3D24008914AF /* DockProgress */; };
+		D9AA273A2F2C296D00E1BD82 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9AA27392F2C296D00E1BD82 /* Preview Assets.xcassets */; };
 		D9E20C6C2E8B2C570086992F /* DownloadFullInstallerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E20C6B2E8B2C570086992F /* DownloadFullInstallerApp.swift */; };
 		D9E20C7B2E8B2CE80086992F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9E20C7A2E8B2CE80086992F /* Assets.xcassets */; };
 		D9E20C842E8B2D1C0086992F /* Caffeine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E20C7F2E8B2D1C0086992F /* Caffeine.swift */; };
@@ -57,6 +58,7 @@
 		D9296C702EAEBAEF00E9BE5A /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9811C172F1700A600EB2ACF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D9811C182F1700A600EB2ACF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D9AA27392F2C296D00E1BD82 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D9B13C8A2EB0E91E00342DC8 /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "fr-CA.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		D9B13C8B2EB0E91E00342DC8 /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "fr-CA.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D9B18AC12F255D5F0026A5E0 /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 		D9738FDF2F2BE2F800368E7D /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				D9AA27392F2C296D00E1BD82 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 			files = (
 				D9E20C9D2E8B2D3B0086992F /* SeedCatalogs.plist in Resources */,
 				D9E20CB12E8B2D840086992F /* Localizable.strings in Resources */,
+				D9AA273A2F2C296D00E1BD82 /* Preview Assets.xcassets in Resources */,
 				D9E20C7B2E8B2CE80086992F /* Assets.xcassets in Resources */,
 				D9E20CB62E8B2DB20086992F /* InfoPlist.strings in Resources */,
 			);
