@@ -36,7 +36,7 @@ Download Full Installer runs on macOS 13 Ventura through macOS 26 Tahoe.
 - Clean up incomplete downloads on app quit
 - Add legacy macOS installer support (10.7-10.12). Read [this](DOCS/Legacy-macos.md).
 
-#### Create Installer App Feature
+### Create Installer App Feature
 
 After downloading an InstallAssistant.pkg file, you can create the macOS installer application (e.g., "Install macOS Sequoia.app") directly from within Download Full Installer:
 
@@ -46,15 +46,21 @@ After downloading an InstallAssistant.pkg file, you can create the macOS install
 4. Follow the on-screen instructions to complete the installation
 5. The macOS installer app will be created in the `/Applications` folder
 
-#### Settings to select downloads folder
+### Settings to select downloads folder
 
 The About This Hack -> Settings menu (⌘ ,) opens a window where you can select a different folder to download installers. Default is ~/Downloads. Visual indicators (green marks) of downloaded installers are updated to match those in the selected folder.
 
-#### Language selector window
+### Language selector window
 
 The language selector can be opened from the menubar (`Languages` > `Select Language`) or by keyboard shortcut (`⌘ + L`).
 
 ![Languages list](Images/EN/Languages.png)
+
+### Clean up incomplete downloads on app quit
+
+Incomplete downloads may accumulate in the sandboxed temp directory<br>
+`~/Library/Containers/perez987.DownloadFullInstaller/Data/tmp`<br>
+consuming disk space indefinitely. The cleanup safely removes regular files (not directories) from `NSTemporaryDirectory()`, which resolves to the sandboxed temp path. Individual file deletion failures don't halt the overall cleanup process.
 
 ### App is damaged and can't be opened
 
