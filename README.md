@@ -33,6 +33,8 @@ Download Full Installer runs on macOS 13 Ventura through macOS 26 Tahoe.
 - Added progress bar overlaying to the application's dock tile icon during PKG downloads
 - Added support for up to 3 simultaneous downloads
 - Added customizable download folder selection
+- Clean up incomplete downloads on app quit
+- Add legacy macOS installer support (10.7-10.12)
 
 #### Create Installer App Feature
 
@@ -58,27 +60,9 @@ The language selector can be opened from the menubar (`Languages` > `Select Lang
 
 If you see `App is damaged and can't be opened` when you open Download Full Installer for the first time, read this [document](DOCS/App-damaged.md).
 
-<!-- Obsolete
-> **Note**: In August 2025, this has been superseded by Swift code integrated into the app.
+### Legacy macOS installer support
 
-#### Skip sleep while downloading the installer
-
-Download Full Installer does not prevent the system from going to sleep while an installer is being downloaded. You can prevent this with the `caffeinate` command:
-
-- open Terminal
-- type `top | grep "Download"`
-- stop `top` with Ctrl + C
-- the output shows at the beginning of each line the PID of Download Full Installer
-- type `caffeinate -w PID`(where PID is a number)
-- sleep is blocked until Download Full Installer is closed.
-
-``` bash
-/Users/yo > top | grep "Download"
-2233  Download Full In (more text...)
-#stop with Ctrl + C
-/Users/yo > caffeinate -w 2233
-```
--->
+Read this [document](DOCS/Legacy-macos.md).
 
 # Original repository README
 (by scriptingosx)
