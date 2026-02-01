@@ -34,7 +34,7 @@ Download Full Installer runs on macOS 13 Ventura through macOS 26 Tahoe.
 - Added support for up to 3 simultaneous downloads
 - Added customizable download folder selection
 - Clean up incomplete downloads on app quit
-- Add legacy macOS installer support (10.7-10.12). Read [this](DOCS/Legacy-macos.md).
+- Add legacy macOS installer support (10.7-10.12); read [this](DOCS/Legacy-macos.md)
 
 ### Create Installer App Feature
 
