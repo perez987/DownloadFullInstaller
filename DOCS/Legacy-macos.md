@@ -37,4 +37,6 @@ I'll try to find a way to add them to the app but, for now, the only macOS syste
 
 ### Clean up incomplete downloads on app quit
 
-Incomplete downloads may accumulate in the sandboxed temp directory (`~/Library/Containers/perez987.DownloadFullInstaller/Data/tmp`), consuming disk space indefinitely. The cleanup safely removes regular files (not directories) from `NSTemporaryDirectory()`, which resolves to the sandboxed temp path. Individual file deletion failures don't halt the overall cleanup process.
+Incomplete downloads may accumulate in the sandboxed temp directory
+`~/Library/Containers/perez987.DownloadFullInstaller/Data/tmp`
+consuming disk space indefinitely. The cleanup safely removes regular files (not directories) from `NSTemporaryDirectory()`, which resolves to the sandboxed temp path. Individual file deletion failures don't halt the overall cleanup process.
