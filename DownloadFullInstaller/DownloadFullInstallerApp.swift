@@ -15,6 +15,13 @@ struct FetchInstallerPkgApp: App {
     @StateObject var languageManager = LanguageManager()
     @State private var showLanguageSelection = false
     @State private var showSettings = false
+    
+    init() {
+        // Diagnostic logging for sandbox initialization
+//        print("=== FetchInstallerPkgApp init() started ===")
+//        print("App initialization complete - no I/O operations performed")
+//        print("=== FetchInstallerPkgApp init() completed ===")
+    }
 
     var body: some Scene {
         WindowGroup {
@@ -69,8 +76,5 @@ struct FetchInstallerPkgApp: App {
             }
         }
 
-//        Settings {
-//            PreferencesView().environmentObject(sucatalog).navigationTitle("Program")
-//        }
     }
 }

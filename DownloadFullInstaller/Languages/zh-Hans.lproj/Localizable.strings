@@ -138,3 +138,12 @@
 
 /* Download folder selection */
 "Choose where to save downloaded installers" = "选择保存下载的安装程序的位置";
+
+/* Legacy macOS installers */
+"Legacy macOS Installers" = "旧版 macOS 安装程序";
+
+/* Legacy macOS installers */
+"Download legacy macOS installers (10.7 - 10.12)" = "下载旧版 macOS 安装程序 (10.7 - 10.12)";
+
+/* Legacy macOS installers */
+"Download macOS %@ %@" = "下载 macOS %@ %@";

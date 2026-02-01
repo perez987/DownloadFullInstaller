@@ -138,3 +138,12 @@
 
 /* Download folder selection */
 "Choose where to save downloaded installers" = "Choose where to save the downloaded installers";
+
+/* Legacy macOS installers */
+"Legacy macOS Installers" = "Legacy macOS Installers";
+
+/* Legacy macOS installers */
+"Download legacy macOS installers (10.7 - 10.12)" = "Download legacy macOS installers (10.7 - 10.12)";
+
+/* Legacy macOS installers */
+"Download macOS %@ %@" = "Download macOS %@ %@";

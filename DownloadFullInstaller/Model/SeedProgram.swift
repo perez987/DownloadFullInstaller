@@ -50,6 +50,7 @@ enum OsNameID: String, CaseIterable, Identifiable {
     case osVentura = "Ventura"
     case osMonterey = "Monterey"
     case osBigSur = "Big Sur"
+    case osLegacy = "Legacy"
 
     var id: String { rawValue }
 }

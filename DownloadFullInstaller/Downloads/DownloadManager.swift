@@ -20,7 +20,7 @@ import Foundation
     @Published var installerURLFiles: [URL]?
     @Published var errorMessage: String?
 
-    lazy var urlSession = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: nil)
+    lazy var urlSession = URLSession(configuration: URLSessionConfiguration.ephemeral, delegate: self, delegateQueue: nil)
     var downloadTask: URLSessionDownloadTask?
     var byteFormatter = ByteCountFormatter()
 
@@ -70,12 +70,10 @@ import Foundation
         if filename != nil {
             let file = destination.appendingPathComponent(filename!)
             
-            // Start accessing security-scoped resource for file check
-            let accessStarted = destination.startAccessingSecurityScopedResource()
+            // Start accessing security-scoped resource for file check (only if needed)
+            let accessStarted = Prefs.startAccessingDownloadURL()
             defer {
-                if accessStarted {
-                    destination.stopAccessingSecurityScopedResource()
-                }
+                Prefs.stopAccessingDownloadURL(accessStarted)
             }
             
             return FileManager.default.fileExists(atPath: file.path)
@@ -90,11 +88,11 @@ import Foundation
         isComplete = false
         byteFormatter.countStyle = .file
         
-        // Get destination URL and start accessing security-scoped resource for the entire download lifecycle
+        // Get destination URL and start accessing security-scoped resource for the entire download lifecycle (only if needed)
         let destination = Prefs.downloadURL
         destinationURL = destination
         if !isAccessingSecurityScope {
-            isAccessingSecurityScope = destination.startAccessingSecurityScopedResource()
+            isAccessingSecurityScope = Prefs.startAccessingDownloadURL()
         }
 
         if replacing {
@@ -178,6 +176,12 @@ import Foundation
     }
     
     private func cleanupTempDirectory() {
+        DownloadManager.cleanupAppTempDirectory()
+    }
+    
+    /// Removes all files from the app's sandboxed temporary directory
+    /// For sandboxed apps, this is ~/Library/Containers/perez987.DownloadFullInstaller/Data/tmp
+    static func cleanupAppTempDirectory() {
         let tempDir = URL(fileURLWithPath: NSTemporaryDirectory())
         do {
             let tempFiles = try FileManager.default.contentsOfDirectory(at: tempDir, includingPropertiesForKeys: [.isRegularFileKey, .fileSizeKey])
@@ -212,8 +216,8 @@ import Foundation
     }
     
     private func stopAccessingSecurityScope() {
-        if isAccessingSecurityScope, let destination = destinationURL {
-            destination.stopAccessingSecurityScopedResource()
+        if isAccessingSecurityScope {
+            Prefs.stopAccessingDownloadURL(isAccessingSecurityScope)
             isAccessingSecurityScope = false
         }
     }

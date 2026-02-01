@@ -138,3 +138,12 @@
 
 /* Download folder selection */
 "Choose where to save downloaded installers" = "Выберите, где сохранить загруженные установщики";
+
+/* Legacy macOS installers */
+"Legacy macOS Installers" = "Устаревшие установщики macOS";
+
+/* Legacy macOS installers */
+"Download legacy macOS installers (10.7 - 10.12)" = "Загрузить устаревшие версии macOS (10.7 - 10.12)";
+
+/* Legacy macOS installers */
+"Download macOS %@ %@" = "Загрузить macOS %@ %@";

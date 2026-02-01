@@ -15,9 +15,13 @@ enum DefaultsKeys: String {
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_: Notification) {
+//        print("=== AppDelegate applicationDidFinishLaunching started ===")
         // Disable sleep mode while app is running
+        print("Calling disableSystemSleep()...")
         disableSystemSleep()
+        print("Calling Prefs.registerDefaults()...")
         Prefs.registerDefaults()
+//        print("=== AppDelegate applicationDidFinishLaunching completed ===")
     }
 
 //    func viewDidLoad() {
@@ -31,5 +35,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(_: Notification) {
         // Enable sleep mode when app exits
         enableSystemSleep()
+        // Clean up temporary directory to remove incomplete downloads
+        DownloadManager.cleanupAppTempDirectory()
     }
 }

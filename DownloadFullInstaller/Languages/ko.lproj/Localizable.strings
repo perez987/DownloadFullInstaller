@@ -138,3 +138,12 @@
 
 /* Download folder selection */
 "Choose where to save downloaded installers" = "다운로드한 설치 프로그램을 저장할 위치 선택";
+
+/* Legacy macOS installers */
+"Legacy macOS Installers" = "레거시 macOS 설치 프로그램";
+
+/* Legacy macOS installers */
+"Download legacy macOS installers (10.7 - 10.12)" = "레거시 macOS 버전 다운로드 (10.7 - 10.12)";
+
+/* Legacy macOS installers */
+"Download macOS %@ %@" = "macOS %@ %@ 다운로드";

@@ -9,7 +9,26 @@ import SwiftUI
 struct SettingsView: View {
     @AppStorage(Prefs.key(.downloadPath)) var downloadPath: String = ""
     @State private var showingDownloadPathPicker = false
+    @State private var displayPath: String = ""
     @Environment(\.dismiss) var dismiss
+    
+    // Update the display path for UI
+    // This checks the file system and should only be called after sandbox is initialized
+    private func updateDisplayPath() {
+        var path = downloadPath
+        // If path is empty, show the default Downloads folder
+        if path.isEmpty {
+            if let defaultPath = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first?.path {
+                path = defaultPath
+            }
+        }
+        // Replace home directory with tilde if applicable
+        if path.hasPrefix(NSHomeDirectory()) {
+            displayPath = path.replacingOccurrences(of: NSHomeDirectory(), with: "~")
+        } else {
+            displayPath = path
+        }
+    }
     
     var body: some View {
         VStack(spacing: 10) {
@@ -41,21 +60,6 @@ struct SettingsView: View {
                 }
                 
                 // Show current download path
-                let displayPath = {
-                    var path = downloadPath
-                    // If path is empty, show the default Downloads folder
-                    if path.isEmpty {
-                        if let defaultPath = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first?.path {
-                            path = defaultPath
-                        }
-                    }
-                    // Replace home directory with tilde if applicable
-                    if path.hasPrefix(NSHomeDirectory()) {
-                        return path.replacingOccurrences(of: NSHomeDirectory(), with: "~")
-                    }
-                    return path
-                }()
-                
                 Text(displayPath)
                     .font(.caption)
                     .foregroundColor(.secondary)
@@ -84,6 +88,14 @@ struct SettingsView: View {
             .padding(.bottom)
         }
         .frame(width: 400, height: 220)
+        .onAppear {
+            // Update display path after view appears, ensuring sandbox is fully initialized
+            updateDisplayPath()
+        }
+        .onChange(of: downloadPath) { _ in
+            // Update display path when download path changes
+            updateDisplayPath()
+        }
         .fileImporter(
             isPresented: $showingDownloadPathPicker,
             allowedContentTypes: [.folder],

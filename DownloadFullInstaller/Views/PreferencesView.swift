@@ -10,6 +10,8 @@ struct PreferencesView: View {
     @AppStorage(Prefs.key(.seedProgram)) var seedProgram: String = SeedProgram.noSeed.rawValue
     @AppStorage(Prefs.key(.osNameID)) var osNameID: String = OsNameID.osAll.rawValue
     @EnvironmentObject var sucatalog: SUCatalog
+    @State private var showLegacyWindow = false
+    @State private var previousOsNameID: String = OsNameID.osAll.rawValue
 
     let labelWidth = 100.0
     var body: some View {
@@ -45,7 +47,8 @@ struct PreferencesView: View {
                             }
                             .onChange(of: seedProgram) { sucatalog.load()
                             }
-                            .onChange(of: osNameID) { sucatalog.load()
+                            .onChange(of: osNameID) {
+                                handleOsNameIDChange()
                             }
                         } else {
                             Picker(selection: $seedProgram, label: EmptyView()) {
@@ -60,7 +63,7 @@ struct PreferencesView: View {
                                 sucatalog.load()
                             }
                             .onChange(of: osNameID) { _ in
-                                sucatalog.load()
+                                handleOsNameIDChange()
                             }
                         }
                     }
@@ -74,6 +77,23 @@ struct PreferencesView: View {
             )
             // Hide label texts in the Pickers
             .labelsHidden()
+        }
+        .sheet(isPresented: $showLegacyWindow) {
+            LegacyDownloadView()
+        }
+    }
+    
+    private func handleOsNameIDChange() {
+        if osNameID == OsNameID.osLegacy.rawValue {
+            // Open the legacy window
+            showLegacyWindow = true
+            // Revert the picker to the previous selection
+            osNameID = previousOsNameID
+        } else {
+            // Save the current selection for future reference
+            previousOsNameID = osNameID
+            // Load the catalog for non-legacy selections
+            sucatalog.load()
         }
     }
 }

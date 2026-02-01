@@ -19,7 +19,12 @@ class SUCatalog: ObservableObject {
     @Published var hasLoaded = false
 
     init() {
-        load()
+        // Diagnostic logging for sandbox initialization
+//        print("=== SUCatalog init() started ===")
+        // Don't load() here - it will be called from onAppear in the UI
+        // Loading during init happens too early, before sandbox is fully initialized
+//        print("SUCatalog initialized without loading data")
+//        print("=== SUCatalog init() completed ===")
     }
 
     func load() {
@@ -77,9 +82,6 @@ class SUCatalog: ObservableObject {
                     }
                 }
             }
-
-//            print("\(self.thisComponent) : \(products.count) products found")
-//            print("\(self.thisComponent) : \(self.installers.count) installer pkgs found")
 
             installers.sort { $0.postDate > $1.postDate }
         }

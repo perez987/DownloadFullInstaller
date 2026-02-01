@@ -34,7 +34,7 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
     private var destinationURL: URL?
     private var isAccessingSecurityScope = false
 
-    lazy var urlSession = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: nil)
+    lazy var urlSession = URLSession(configuration: URLSessionConfiguration.ephemeral, delegate: self, delegateQueue: nil)
     var downloadTask: URLSessionDownloadTask?
     var byteFormatter = ByteCountFormatter()
 
@@ -46,12 +46,10 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
         if filename != nil {
             let file = destination.appendingPathComponent(filename!)
             
-            // Start accessing security-scoped resource for file check
-            let accessStarted = destination.startAccessingSecurityScopedResource()
+            // Start accessing security-scoped resource for file check (only if needed)
+            let accessStarted = Prefs.startAccessingDownloadURL()
             defer {
-                if accessStarted {
-                    destination.stopAccessingSecurityScopedResource()
-                }
+                Prefs.stopAccessingDownloadURL(accessStarted)
             }
             
             return FileManager.default.fileExists(atPath: file.path)
@@ -65,11 +63,11 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
         isComplete = false
         byteFormatter.countStyle = .file
         
-        // Get destination URL and start accessing security-scoped resource for the entire download lifecycle
+        // Get destination URL and start accessing security-scoped resource for the entire download lifecycle (only if needed)
         let destination = Prefs.downloadURL
         destinationURL = destination
         if !isAccessingSecurityScope {
-            isAccessingSecurityScope = destination.startAccessingSecurityScopedResource()
+            isAccessingSecurityScope = Prefs.startAccessingDownloadURL()
         }
 
         if replacing {
@@ -167,8 +165,8 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
     }
     
     private func stopAccessingSecurityScope() {
-        if isAccessingSecurityScope, let destination = destinationURL {
-            destination.stopAccessingSecurityScopedResource()
+        if isAccessingSecurityScope {
+            Prefs.stopAccessingDownloadURL(isAccessingSecurityScope)
             isAccessingSecurityScope = false
         }
     }

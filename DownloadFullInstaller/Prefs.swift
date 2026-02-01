@@ -15,6 +15,10 @@ enum Prefs {
         case downloadPathBookmark = "DownloadPathBookmark"
         case languageSelectionShown = "LanguageSelectionShown"
     }
+    
+    // Track whether we've already logged the stale bookmark message to avoid console spam
+    private static let staleBookmarkLock = NSLock()
+    private static var hasLoggedStaleBookmark = false
 
     static func key(_ key: Key) -> String {
         return key.rawValue
@@ -27,9 +31,8 @@ enum Prefs {
         prefs[Prefs.key(.osNameID)] = OsNameID.osAll.rawValue
         prefs[Prefs.key(.languageSelectionShown)] = false
 
-        guard let downloadURL = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first else { return }
-        prefs[Prefs.key(.downloadPath)] = downloadURL.path
-//        print("Download path: \(downloadURL.path)")
+        // Don't access file system during early initialization to avoid sandbox crash
+        // The downloadPath property getter (lines 60-69) will lazily get the Downloads directory when needed
 
         UserDefaults.standard.register(defaults: prefs)
     }
@@ -77,7 +80,13 @@ enum Prefs {
                 let url = try URL(resolvingBookmarkData: bookmarkData, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &isStale)
                 
                 if isStale {
-                    print("Bookmark is stale, will recreate on next folder selection")
+                    staleBookmarkLock.lock()
+                    defer { staleBookmarkLock.unlock() }
+                    
+                    if !hasLoggedStaleBookmark {
+                        print("Bookmark is stale, will recreate on next folder selection")
+                        hasLoggedStaleBookmark = true
+                    }
                 }
                 
                 // Return the URL without starting to access the security-scoped resource
@@ -91,6 +100,32 @@ enum Prefs {
         // Fallback to path-based URL
         let downloadURL = URL(fileURLWithPath: downloadPath)
         return downloadURL
+    }
+    
+    /// Returns true if the download URL requires security-scoped resource access
+    /// (i.e., it was created from a user-selected bookmark)
+    static var downloadURLRequiresSecurityScope: Bool {
+        return UserDefaults.standard.data(forKey: Prefs.key(.downloadPathBookmark)) != nil
+    }
+    
+    /// Safely starts accessing the security-scoped resource for the download URL
+    /// Returns true if access was started, false otherwise
+    /// Only call this if the URL requires security-scoped access
+    @discardableResult
+    static func startAccessingDownloadURL() -> Bool {
+        guard downloadURLRequiresSecurityScope else {
+            // Default Downloads folder doesn't need security-scoped access
+            return false
+        }
+        return downloadURL.startAccessingSecurityScopedResource()
+    }
+    
+    /// Safely stops accessing the security-scoped resource for the download URL
+    /// Only call this if startAccessingDownloadURL() returned true
+    static func stopAccessingDownloadURL(_ started: Bool) {
+        if started {
+            downloadURL.stopAccessingSecurityScopedResource()
+        }
     }
     
     static func saveDownloadURL(_ url: URL) {

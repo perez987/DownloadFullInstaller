@@ -147,3 +147,12 @@
 
 /* Settings window */
 "Choose where to save downloaded installers" = "Elige dónde descargar los paquetes instaladores";
+
+/* Legacy macOS installers */
+"Legacy macOS Installers" = "Instaladores pre-Big Sur";
+
+/* Legacy macOS installers */
+"Download legacy macOS installers (10.7 - 10.12)" = "Descargar macOS anteriores a Big Sur (10.7 - 10.12)";
+
+/* Legacy macOS installers */
+"Download macOS %@ %@" = "Descargar macOS %@ %@";

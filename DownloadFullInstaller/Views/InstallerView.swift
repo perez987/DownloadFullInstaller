@@ -19,35 +19,35 @@ struct InstallerView: View {
     @State var installerURLFiles: [String] = []
     @State var isCreatingInstaller = false
     @State private var activeAlert: AppAlertType?
+    @State private var isDownloaded = false
     
     // Computed property for the installer filename
     var installerFilename: String {
         return "InstallAssistant-\(product.productVersion ?? "V")-\(product.buildVersion ?? "B").pkg"
     }
     
-    // Computed property to check if the installer has been downloaded
-    // This checks the file system and is re-evaluated when the view updates
-    var isDownloaded: Bool {
+    // Check if the installer has been downloaded
+    // This checks the file system and should only be called after sandbox is initialized
+    private func checkIfDownloaded() {
         let destination = Prefs.downloadURL
         let file = destination.appendingPathComponent(installerFilename)
         
-        // Start accessing security-scoped resource for file check
-        let accessStarted = destination.startAccessingSecurityScopedResource()
+        // Start accessing security-scoped resource for file check (only if needed)
+        let accessStarted = Prefs.startAccessingDownloadURL()
         defer {
-            if accessStarted {
-                destination.stopAccessingSecurityScopedResource()
-            }
+            Prefs.stopAccessingDownloadURL(accessStarted)
         }
         
         // Check if file exists on disk (primary check)
         if FileManager.default.fileExists(atPath: file.path) {
-            return true
+            isDownloaded = true
+            return
         }
         
         // Also check if this file is in the completed downloads list
         // This ensures the view updates immediately when a download completes
         // (before the user dismisses the completion notification)
-        return multiDownloadManager.completedDownloads.contains { $0.filename == installerFilename }
+        isDownloaded = multiDownloadManager.completedDownloads.contains { $0.filename == installerFilename }
     }
 
     var body: some View {
@@ -104,12 +104,10 @@ struct InstallerView: View {
                         let destination = Prefs.downloadURL
                         let file = destination.appendingPathComponent(filename)
                         
-                        // Start accessing security-scoped resource for file check
-                        let accessStarted = destination.startAccessingSecurityScopedResource()
+                        // Start accessing security-scoped resource for file check (only if needed)
+                        let accessStarted = Prefs.startAccessingDownloadURL()
                         defer {
-                            if accessStarted {
-                                destination.stopAccessingSecurityScopedResource()
-                            }
+                            Prefs.stopAccessingDownloadURL(accessStarted)
                         }
                         let fileExists = FileManager.default.fileExists(atPath: file.path)
 
@@ -130,7 +128,7 @@ struct InstallerView: View {
                     .disabled(multiDownloadManager.isDownloading(filename: installerFilename))
                     .buttonStyle(.borderless)
                     .controlSize(.mini)
-                    
+
                     Button(action: {
                         createInstallerApp()
                     }) {
@@ -177,6 +175,14 @@ struct InstallerView: View {
                         break
                     }
                 }
+                .onAppear {
+                    // Check if downloaded after view appears, ensuring sandbox is fully initialized
+                    checkIfDownloaded()
+                }
+                .onChange(of: multiDownloadManager.completedDownloads) { _ in
+                    // Update download status when downloads complete
+                    checkIfDownloaded()
+                }
             }
         }
     }
@@ -187,15 +193,13 @@ struct InstallerView: View {
         let destination = Prefs.downloadURL
         let pkgPath = destination.appendingPathComponent(filename).path
         
-        // Start accessing security-scoped resource for file operations
-        let accessStarted = destination.startAccessingSecurityScopedResource()
+        // Start accessing security-scoped resource for file operations (only if needed)
+        let accessStarted = Prefs.startAccessingDownloadURL()
 
         // Check if the PKG file exists
         guard FileManager.default.fileExists(atPath: pkgPath) else {
             // Stop accessing if we're returning early
-            if accessStarted {
-                destination.stopAccessingSecurityScopedResource()
-            }
+            Prefs.stopAccessingDownloadURL(accessStarted)
             let folderName = destination.lastPathComponent
             activeAlert = .installerCreation(
                 title: NSLocalizedString("Error Creating Installer", comment: ""),
@@ -211,9 +215,7 @@ struct InstallerView: View {
         let pkgURL = URL(fileURLWithPath: pkgPath)
         NSWorkspace.shared.open(pkgURL, configuration: NSWorkspace.OpenConfiguration()) { _, error in
             // Stop accessing security-scoped resource after the operation completes
-            if accessStarted {
-                destination.stopAccessingSecurityScopedResource()
-            }
+            Prefs.stopAccessingDownloadURL(accessStarted)
             
             DispatchQueue.main.async {
                 self.isCreatingInstaller = false

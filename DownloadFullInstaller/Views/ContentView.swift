@@ -77,6 +77,18 @@ struct ContentView: View {
             print("Download path changed notification, refreshing view")
             refreshID = UUID()
         }
+        .onAppear {
+            // Diagnostic logging for sandbox initialization
+//            print("=== ContentView onAppear started ===")
+            // Load catalog after view appears, ensuring sandbox is fully initialized
+            if !sucatalog.hasLoaded && !sucatalog.isLoading {
+//                print("Loading SUCatalog...")
+                sucatalog.load()
+            } else {
+                print("SUCatalog already loaded or loading")
+            }
+//            print("=== ContentView onAppear completed ===")
+        }
 
         HStack(alignment: .center) {}
         

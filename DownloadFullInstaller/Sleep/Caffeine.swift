@@ -16,7 +16,7 @@ func disableSystemSleep(reason: String = "DownloadFullInstaller prevents sleep")
             options: [.idleSystemSleepDisabled, .suddenTerminationDisabled],
             reason: reason
         )
-        let text = "DownloadFullInstaller prevents sleep"
+        let text = "Sleep prevented by DownloadFullInstaller"
         print(text)
     }
 }
@@ -25,7 +25,7 @@ func enableSystemSleep() {
     if let token = activityToken {
         ProcessInfo.processInfo.endActivity(token)
         activityToken = nil
-        let text = "DownloadFullInstaller allows sleep"
+        let text = "Sleep allowed by DownloadFullInstaller"
         print(text)
     }
 }

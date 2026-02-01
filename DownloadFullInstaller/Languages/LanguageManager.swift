@@ -20,8 +20,26 @@ class LanguageManager: ObservableObject {
 
     private let userDefaults = UserDefaults.standard
     private let languageKey = "SelectedLanguage"
+    private var hasLoadedLanguages = false
 
     init() {
+        // Diagnostic logging for sandbox initialization
+//        print("=== LanguageManager init() started ===")
+        // Don't access file system here - will be loaded lazily when first accessed
+        // File system access during init happens too early, before sandbox is fully initialized
+//        print("LanguageManager initialized without loading languages")
+//        print("=== LanguageManager init() completed ===")
+    }
+    
+    // Load languages - call this from UI when ready (e.g., in .onAppear)
+    func loadLanguagesIfNeeded() {
+        ensureLanguagesLoaded()
+    }
+    
+    // Load languages lazily on first access
+    private func ensureLanguagesLoaded() {
+        guard !hasLoadedLanguages else { return }
+        hasLoadedLanguages = true
         loadAvailableLanguages()
         loadCurrentLanguage()
     }
@@ -99,6 +117,7 @@ class LanguageManager: ObservableObject {
     }
 
     func setLanguage(_ languageCode: String) {
+        ensureLanguagesLoaded()
         currentLanguage = languageCode
         userDefaults.set(languageCode, forKey: languageKey)
 
@@ -140,6 +159,7 @@ class LanguageManager: ObservableObject {
     }
 
     func getCurrentLanguageDisplayName() -> String {
+        ensureLanguagesLoaded()
         guard let language = availableLanguages.first(where: { $0.code == currentLanguage }) else {
             return "English"
         }
