@@ -34,7 +34,7 @@ Download Full Installer runs on macOS 13 Ventura through macOS 26 Tahoe.
 - Added support for up to 3 simultaneous downloads
 - Added customizable download folder selection
 - Clean up incomplete downloads on app quit
-- Add legacy macOS installer support (10.7-10.12)
+- Add legacy macOS installer support (10.7-10.12). Read [this](DOCS/Legacy-macos.md).
 
 #### Create Installer App Feature
 
@@ -59,10 +59,6 @@ The language selector can be opened from the menubar (`Languages` > `Select Lang
 ### App is damaged and can't be opened
 
 If you see `App is damaged and can't be opened` when you open Download Full Installer for the first time, read this [document](DOCS/App-damaged.md).
-
-### Legacy macOS installer support
-
-Read this [document](DOCS/Legacy-macos.md).
 
 # Original repository README
 (by scriptingosx)
