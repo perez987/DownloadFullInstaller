@@ -33,4 +33,4 @@ Legacy downloads are managed similarly to modern downloads:
 
 So far, I haven't found any direct links on Apple's servers to these macOS versions prior to Big Sur: Catalina 10.15, Mojave 10.14, High Sierra 10.13, and Mavericks 10.9.
 
-I'll try to find a way to add them to the app but, for now, the only macOS systems you can get are: macOS Sierra 10.12, OS X El Capitan 10.11, OS X Yosemite 10.10, OS X Mountain Lion 10.8, and Mac OS X Lion.
+I'll try to find a way to add them to the app but, for now, the only macOS systems you can get are: macOS Sierra 10.12, OS X El Capitan 10.11, OS X Yosemite 10.10, OS X Mountain Lion 10.8, and Mac OS X Lion 10.7. 
