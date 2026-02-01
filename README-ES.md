@@ -58,3 +58,43 @@ La ventana de idiomas puede ser abierta desde la barra de menús (`Idiomas` > `S
 ### La aplicación está dañada y no se puede abrir.
 
 Si ves el mensaje `La aplicación está dañada y no se puede abrir` al abrir Download Full Installer por primera vez, lee este [documento](DOCS/App-damaged-es.md).
+
+# README del repositorio original
+(por scriptingosx)
+
+### Introducción
+
+Esta es una implementación en Swift UI del script [fetch-installer-pkg](https://github.com/scriptingosx/fetch-installer-pkg) de *scriptingosx*. Listará todos los paquetes de instalación de macOS Big Sur (y versiones posteriores) disponibles en los catálogos de actualizaciones de software de Apple. Después, puedes descargar uno de ellos.
+
+### Motivación
+
+Es posible que prefieras descargar el paquete de instalación en lugar de la aplicación de instalación directamente, ya que deseas volver a implementar la aplicación de instalación con un sistema de gestión, como Jamf.
+
+Dado que la aplicación de instalación de macOS Big Sur contiene un solo archivo de más de 8 GB, las herramientas de empaquetado habituales fallarán. He descrito el problema y algunas soluciones en detalle en [esta entrada del blog](https://scriptingosx.com/2020/11/deploying-the-big-sur-installer-application/).
+
+### Extras
+
+- Copiar la URL de descarga de un paquete de instalación desde el menú contextual.
+- Cambiar el catálogo y la versión de macOS en el menú desplegable de Preferencias.
+- Crear la aplicación de instalación directamente desde el paquete descargado sin salir de la aplicación.
+
+### Preguntas
+
+#### ¿Se pueden descargar versiones anteriores de la aplicación de instalación de macOS?
+
+No. Apple solo proporciona paquetes de instalación para Big Sur y versiones posteriores. Las versiones anteriores del instalador de Big Sur se eliminan periódicamente.
+
+#### ¿Se actualizará para que se puedan descargar versiones anteriores?
+
+No.
+
+#### ¿En qué se diferencia de otras herramientas de comandos?
+
+Por lo que sé, descarga el mismo paquete que `softwareupdate --fetch-full-installer` e `installinstallmacOS.py`.
+
+La diferencia radica en que las otras herramientas realizan la instalación inmediatamente, de modo que la aplicación de instalación se encuentra en la carpeta `/Aplicaciones`. Esta herramienta simplemente descarga el paquete, para que puedas usarlo en tu sistema de administración, archivar el paquete de instalación o ejecutar la instalación manualmente.
+
+### Créditos
+
+- Tanto `fetch-installer-pkg` como esta aplicación se basan en el script `installinstallmacos.py` de Greg Neagle.
+- Gracias a [matxpa](https://github.com/matxpa) por correcciones y mejoras en la versión 2.0.

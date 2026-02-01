@@ -58,6 +58,28 @@ The language selector can be opened from the menubar (`Languages` > `Select Lang
 
 If you see `App is damaged and can't be opened` when you open Download Full Installer for the first time, read this [document](DOCS/App-damaged.md).
 
+<!-- Obsolete
+> **Note**: In August 2025, this has been superseded by Swift code integrated into the app.
+
+#### Skip sleep while downloading the installer
+
+Download Full Installer does not prevent the system from going to sleep while an installer is being downloaded. You can prevent this with the `caffeinate` command:
+
+- open Terminal
+- type `top | grep "Download"`
+- stop `top` with Ctrl + C
+- the output shows at the beginning of each line the PID of Download Full Installer
+- type `caffeinate -w PID`(where PID is a number)
+- sleep is blocked until Download Full Installer is closed.
+
+``` bash
+/Users/yo > top | grep "Download"
+2233  Download Full In (more text...)
+#stop with Ctrl + C
+/Users/yo > caffeinate -w 2233
+```
+-->
+
 # Original repository README
 (by scriptingosx)
 
@@ -92,28 +114,6 @@ No.
 As far as I can tell, this downloads the same pkg as `softwareupdate --fetch-full-installer` and `installinstallmacOS.py`.
 
 The difference is that the other tools then immediately perform the installation so that you get the installer application in the `/Applications` folder. This tool just downloads the pkg, so you can use it in your management system, archive the installer pkg, or manually run the installation.
-
-<!-- Commented as obsolete
-#### Skip sleep while downloading the installer
-
-> **Note**: In August 2025, this has been superseded by Swift code integrated into the app.
-
-Download Full Installer does not prevent the system from going to sleep while an installer is being downloaded. You can prevent this with the `caffeinate` command:
-
-- open Terminal
-- type `top | grep "Download"`
-- stop `top` with Ctrl + C
-- the output shows at the beginning of each line the PID of Download Full Installer
-- type `caffeinate -w PID`(where PID is a number)
-- sleep is blocked until Download Full Installer is closed.
-
-``` bash
-/Users/yo > top | grep "Download"
-2233  Download Full In (more text...)
-#stop with Ctrl + C
-/Users/yo > caffeinate -w 2233
-```
--->
 
 ### Credits
 
