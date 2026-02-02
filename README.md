@@ -2,7 +2,7 @@
 
 ![Swift](https://img.shields.io/badge/Swift-5+-lavender.svg)
 ![Platform](https://img.shields.io/badge/macOS-13+-orange.svg)
-![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?label=Downloads)
+![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?label=Downloads&color=9494ff)
 
 <a href="README-ES.md">
     <img src="https://img.shields.io/badge/Spanish-README-blue" alt=“Spanish README Docs”><br><br>
