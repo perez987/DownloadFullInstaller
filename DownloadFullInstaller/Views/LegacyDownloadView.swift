@@ -134,15 +134,9 @@ struct LegacyVersionRow: View {
             Image(version.name)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-//                .frame(width: 50.0, height: 50.0, alignment: .center)
             
-//            VStack(alignment: .leading, spacing: 4) {
                 Text("macOS \(version.name) \(version.version)")
                     .font(.headline)
-//                Text(version.version)
-//                    .font(.caption)
-//                    .foregroundColor(.secondary)
-//            }
             
             Spacer()
             
@@ -157,7 +151,7 @@ struct LegacyVersionRow: View {
             .buttonStyle(.borderless)
         }
         .frame(width: 320.0, height: 32.0)
-        .padding()
+        .padding(12)
         .background(Color(NSColor.controlBackgroundColor))
         .cornerRadius(8)
     }
