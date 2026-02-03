@@ -11,7 +11,6 @@
 		C0000002A000000100000001 /* Alert+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000002A000000200000001 /* Alert+Extensions.swift */; };
 		C03916EE2EDBB6DC00187185 /* DockProgress in Frameworks */ = {isa = PBXBuildFile; productRef = C03916ED2EDBB6DC00187185 /* DockProgress */; };
 		D91B7DCB2EFC3D24008914AF /* DockProgress in Frameworks */ = {isa = PBXBuildFile; productRef = D91B7DCA2EFC3D24008914AF /* DockProgress */; };
-		D93DC4A22F2C17DC00A7C8B4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D93DC4A12F2C17DC00A7C8B4 /* Info.plist */; };
 		D982F68E2F2C29240016CC88 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D982F68D2F2C29240016CC88 /* Preview Assets.xcassets */; };
 		D9AAA0002E8B2D3B0086992F /* LegacyMacOSVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA0001E8B2D3B0086992F /* LegacyMacOSVersion.swift */; };
 		D9AAA0004E8B2D490086992F /* LegacyDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA0003E8B2D490086992F /* LegacyDownloadView.swift */; };
@@ -321,7 +320,6 @@
 				D9E20C9D2E8B2D3B0086992F /* SeedCatalogs.plist in Resources */,
 				D9E20CB12E8B2D840086992F /* Localizable.strings in Resources */,
 				D9E20C7B2E8B2CE80086992F /* Assets.xcassets in Resources */,
-				D93DC4A22F2C17DC00A7C8B4 /* Info.plist in Resources */,
 				D982F68E2F2C29240016CC88 /* Preview Assets.xcassets in Resources */,
 				D9E20CB62E8B2DB20086992F /* InfoPlist.strings in Resources */,
 			);
