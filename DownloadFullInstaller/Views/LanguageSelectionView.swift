@@ -107,6 +107,8 @@ struct LanguageSelectionView: View {
         .onAppear {
             // Load languages when view appears, ensuring sandbox is fully initialized
             languageManager.loadLanguagesIfNeeded()
+            // Update selected language to match current language after loading
+            selectedLanguage = languageManager.currentLanguage
         }
         .appAlert(item: $activeAlert) { alertType in
             switch alertType {

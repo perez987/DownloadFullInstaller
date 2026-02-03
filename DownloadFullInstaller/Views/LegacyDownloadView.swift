@@ -156,7 +156,7 @@ struct LegacyVersionRow: View {
             .disabled(downloadManager.isDownloading)
             .buttonStyle(.borderless)
         }
-        .frame(width: 320.0, height: 40.0)
+        .frame(width: 320.0, height: 32.0)
         .padding()
         .background(Color(NSColor.controlBackgroundColor))
         .cornerRadius(8)
