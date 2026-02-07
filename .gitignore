@@ -8,3 +8,11 @@
 .VolumeIcon.icns
 Temporary Items
 Thumbs.db
+
+xcuserdata/
+.build/
+
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
