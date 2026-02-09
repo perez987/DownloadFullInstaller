@@ -9,7 +9,7 @@
 Temporary Items
 Thumbs.db
 
-xcuserdata/
+*.xcuserstate
 .build/
 
 *.hmap
