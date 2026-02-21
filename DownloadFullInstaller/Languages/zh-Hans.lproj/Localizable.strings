@@ -147,3 +147,6 @@
 
 /* Legacy macOS installers */
 "Download macOS %@ %@" = "下载 macOS %@ %@";
+
+/* Sparkle updater */
+"Check for Updates..." = "检查更新...";

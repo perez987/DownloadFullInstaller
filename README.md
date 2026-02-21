@@ -35,6 +35,7 @@ Download Full Installer runs on macOS 13 Ventura through macOS 26 Tahoe.
 - Added customizable download folder selection
 - Clean up incomplete downloads on app quit
 - Add legacy macOS installer support (10.7-10.12); read [this](DOCS/Legacy-macos.md)
+- Add Sparkle 2.8.1 integration for in-app update checking
 
 ### Create Installer App Feature
 
@@ -61,6 +62,12 @@ The language selector can be opened from the menubar (`Languages` > `Select Lang
 Incomplete downloads may accumulate in the sandboxed temp directory<br>
 `~/Library/Containers/perez987.DownloadFullInstaller/Data/tmp`<br>
 consuming disk space indefinitely. The cleanup safely removes regular files (not directories) from `NSTemporaryDirectory()`, which resolves to the sandboxed temp path. Individual file deletion failures don't halt the overall cleanup process.
+
+### Sparkle updater system
+
+The Sparkle package has been added to provide the option to check for app updates from the repository. A new menu, "Check for Updates" (⌘ + U), opens the update dialog (Up-to-date, update available, update error).
+
+![](Images/EN/Update-available.png)
 
 ### App is damaged and can't be opened
 

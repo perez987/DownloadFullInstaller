@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Sparkle
 
 @main
 
@@ -13,6 +14,7 @@ struct FetchInstallerPkgApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject var sucatalog = SUCatalog()
     @StateObject var languageManager = LanguageManager()
+    @StateObject private var updaterController = UpdaterController()
     @State private var showLanguageSelection = false
     @State private var showSettings = false
     
@@ -57,10 +59,23 @@ struct FetchInstallerPkgApp: App {
 
         // set width of 580 pixels to the main window in macOS 13 Ventura or newer
 //            .defaultSize(width: 580, height: 640)
-
         // window resizability derived from the window’s content in macOS 13 Ventura or newer
         .windowResizability(.contentSize)
+        
         .commands {
+            CommandGroup(after: .appInfo) {
+                Button(
+                    NSLocalizedString(
+                        "Check for Updates...",
+                        comment: "Menu item to check for app updates"
+                    ),
+                    systemImage: "square.and.arrow.down.badge.checkmark"
+                ) {
+                    updaterController.checkForUpdates()
+                }
+                .keyboardShortcut("u", modifiers: [.command])
+                .disabled(!updaterController.canCheckForUpdates)
+            }
             CommandGroup(replacing: .appSettings) {
                 Button(NSLocalizedString("Settings", comment: "Menu item to show settings window")) {
                     showSettings = true

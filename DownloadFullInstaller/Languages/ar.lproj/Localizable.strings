@@ -192,10 +192,17 @@
 "اختر مكان حفظ ملفات التثبيت التي تم تنزيلها";
 
 /* Legacy macOS installers */
-"Legacy macOS Installers" = "مثبتات macOS القديمة";
+"Legacy macOS Installers" =
+"مثبتات macOS القديمة";
 
 /* Legacy macOS installers */
-"Download legacy macOS installers (10.7 - 10.12)" = "تنزيل إصدارات macOS القديمة (10.7 - 10.12)";
+"Download legacy macOS installers (10.7 - 10.12)" =
+"تنزيل إصدارات macOS القديمة (10.7 - 10.12)";
 
 /* Legacy macOS installers */
-"Download macOS %@ %@" = "تنزيل macOS %@ %@";
+"Download macOS %@ %@" =
+"تنزيل macOS %@ %@";
+
+/* Sparkle updater */
+"Check for Updates..." =
+"تحقق من وجود تحديثات...";
