@@ -27,7 +27,6 @@ Download Full Installer funciona desde macOS 13 Ventura hasta macOS 26 Tahoe.
 - Se ha añadido lógica para prevenir la suspensión del sistema mientras se ejecuta la aplicación
 - Se ha añadido un sistema de selección de idioma
 - Traducciones actualizadas
-- ~~Compatibilidad inicial con Liquid Glass~~
 - Se ha añadido la función de reanudación de descarga que gestiona automáticamente las interrupciones de red
 - Se ha añadido una barra de progreso superpuesta al icono del mosaico del dock de la aplicación durante las descargas de PKG
 - Se ha añadido compatibilidad con hasta 3 descargas simultáneas

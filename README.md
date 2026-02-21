@@ -28,7 +28,6 @@ Download Full Installer runs on macOS 13 Ventura through macOS 26 Tahoe.
 - Added sleep prevention logic to avoid sleeping while the application is running
 - Added language selection system
 - Updated translations
-- ~~Initial support for Liquid Glass~~
 - Added download resume functionality that automatically handles network interruptions
 - Added progress bar overlaying to the application's dock tile icon during PKG downloads
 - Added support for up to 3 simultaneous downloads
