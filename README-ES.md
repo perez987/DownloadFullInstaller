@@ -8,7 +8,7 @@
     <img src="https://img.shields.io/badge/Inglés-README-blue" alt=“English README">
 </a><br><br>
 
-A partir de junio de 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) de <em>scriptingosx</em> fue archivado por el desarrollador. Durante más de tres años, mi repositorio DownloadFullInstaller fue una bifurcación del original. Sin embargo, tras archivarlo, creé un nuevo repositorio que es una versión independiente (no bifurcada). Mantendré este proyecto activo y actualizado mientras sea útil para otros usuarios.
+A partir de junio de 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) de <em>scriptingosx</em> detuvo su desarrollo. Durante más de tres años, mi repositorio DownloadFullInstaller fue una bifurcación del original. Sin embargo, después de que el original fue archivado, creé un nuevo repositorio que es una versión independiente (no bifurcada). Mantendré este proyecto activo y actualizado mientras sea útil para otros usuarios.
 
 <img src="Images/ES/Main-window.png" width="700px">
 

@@ -7,7 +7,7 @@
 <a href="README-ES.md">
     <img src="https://img.shields.io/badge/Spanish-README-blue" alt=“Spanish README Docs”><br><br>
 
-As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) by <em>scriptingosx</em> has been archived by the developer. For over three years, my DownloadFullInstaller repo was a fork of the source. However, after it was archived, I created a new repo. This new repo is a standalone (<em>not forked</em>) version. I'll keep this project active and up to date as long as it is useful to other users.
+As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) by <em>scriptingosx</em> stopped its development. For over three years, my repository, DownloadFullInstaller, was a fork of the original. However, after the original was archived, I created a new repo. This new repo is a standalone (<em>not forked</em>) version. I'll keep this project active and up to date as long as it is useful to other users.
 
 <img src="Images/EN/Main-window1a.png" width="700px">
 
