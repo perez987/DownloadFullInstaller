@@ -179,8 +179,8 @@ import Foundation
         DownloadManager.cleanupAppTempDirectory()
     }
     
-    /// Removes all files from the app's sandboxed temporary directory
-    /// For sandboxed apps, this is ~/Library/Containers/perez987.DownloadFullInstaller/Data/tmp
+    // Removes all files from the app's sandboxed temporary directory
+    // For sandboxed apps, this is ~/Library/Containers/perez987.DownloadFullInstaller/Data/tmp
     static func cleanupAppTempDirectory() {
         let tempDir = URL(fileURLWithPath: NSTemporaryDirectory())
         do {

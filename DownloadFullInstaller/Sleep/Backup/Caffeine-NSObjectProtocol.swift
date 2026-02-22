@@ -10,13 +10,13 @@ import SwiftUI
 
 var activityToken: NSObjectProtocol?
 
-func disableSystemSleep(reason: String = "DownloadFullInstaller prevents sleep") {
+func disableSystemSleep(reason: String = "Download Full Installer prevents sleep") {
     if activityToken == nil {
         activityToken = ProcessInfo.processInfo.beginActivity(
             options: [.idleSystemSleepDisabled, .suddenTerminationDisabled],
             reason: reason
         )
-        let text = "DownloadFullInstaller prevents sleep"
+        let text = "Download Full Installer prevents sleep"
         print(text)
     }
 }
@@ -25,7 +25,7 @@ func enableSystemSleep() {
     if let token = activityToken {
         ProcessInfo.processInfo.endActivity(token)
         activityToken = nil
-        let text = "DownloadFullInstaller allows sleep"
+        let text = "Download Full Installer allows sleep"
         print(text)
     }
 }

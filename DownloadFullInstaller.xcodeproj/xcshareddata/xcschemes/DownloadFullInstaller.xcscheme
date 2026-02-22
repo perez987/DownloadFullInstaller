@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D9E20C672E8B2C570086992F"
-               BuildableName = "DownloadFullInstaller.app"
-               BlueprintName = "DownloadFullInstaller"
+               BuildableName = "Download Full Installer.app"
+               BlueprintName = "Download Full Installer"
                ReferencedContainer = "container:DownloadFullInstaller.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,8 +44,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D9E20C672E8B2C570086992F"
-            BuildableName = "DownloadFullInstaller.app"
-            BlueprintName = "DownloadFullInstaller"
+            BuildableName = "Download Full Installer.app"
+            BlueprintName = "Download Full Installer"
             ReferencedContainer = "container:DownloadFullInstaller.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -73,8 +73,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D9E20C672E8B2C570086992F"
-            BuildableName = "DownloadFullInstaller.app"
-            BlueprintName = "DownloadFullInstaller"
+            BuildableName = "Download Full Installer.app"
+            BlueprintName = "Download Full Installer"
             ReferencedContainer = "container:DownloadFullInstaller.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
