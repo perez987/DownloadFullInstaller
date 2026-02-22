@@ -2,11 +2,11 @@
 //  MultiDownloadManager.swift
 //
 // Created by Emilio P Egido on 2025-12-01
-//  Manages multiple simultaneous downloads (up to 3)
+// Manages multiple simultaneous downloads (up to 3)
 //
 
 import AppKit
-import DockProgress
+//import DockProgress
 import Foundation
 
 // MARK: - DownloadItem

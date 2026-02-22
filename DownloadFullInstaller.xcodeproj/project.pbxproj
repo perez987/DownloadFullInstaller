@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		C0000001A000000100000001 /* MultiDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000001A000000200000001 /* MultiDownloadManager.swift */; };
 		C0000002A000000100000001 /* Alert+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000002A000000200000001 /* Alert+Extensions.swift */; };
-		C03916EE2EDBB6DC00187185 /* DockProgress in Frameworks */ = {isa = PBXBuildFile; productRef = C03916ED2EDBB6DC00187185 /* DockProgress */; };
-		D91368922F48E55B00150515 /* DockProgress in Frameworks */ = {isa = PBXBuildFile; productRef = D91368912F48E55B00150515 /* DockProgress */; };
 		D91368952F48E56500150515 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = D91368942F48E56500150515 /* Sparkle */; };
 		D982F68E2F2C29240016CC88 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D982F68D2F2C29240016CC88 /* Preview Assets.xcassets */; };
+		D99F8BD62F4BA2D300F9FB92 /* DockProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99F8BD42F4BA2D300F9FB92 /* DockProgress.swift */; };
+		D99F8BD72F4BA2D300F9FB92 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99F8BD52F4BA2D300F9FB92 /* Utilities.swift */; };
 		D9AAA0002E8B2D3B0086992F /* LegacyMacOSVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA0001E8B2D3B0086992F /* LegacyMacOSVersion.swift */; };
 		D9AAA0004E8B2D490086992F /* LegacyDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA0003E8B2D490086992F /* LegacyDownloadView.swift */; };
 		D9E20C6C2E8B2C570086992F /* DownloadFullInstallerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E20C6B2E8B2C570086992F /* DownloadFullInstallerApp.swift */; };
@@ -66,6 +66,8 @@
 		D9811C172F1700A600EB2ACF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D9811C182F1700A600EB2ACF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D982F68D2F2C29240016CC88 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D99F8BD42F4BA2D300F9FB92 /* DockProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockProgress.swift; sourceTree = "<group>"; };
+		D99F8BD52F4BA2D300F9FB92 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		D9AAA0001E8B2D3B0086992F /* LegacyMacOSVersion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegacyMacOSVersion.swift; sourceTree = "<group>"; };
 		D9AAA0003E8B2D490086992F /* LegacyDownloadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegacyDownloadView.swift; sourceTree = "<group>"; };
 		D9B13C8A2EB0E91E00342DC8 /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "fr-CA.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -115,8 +117,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D91368952F48E56500150515 /* Sparkle in Frameworks */,
-				D91368922F48E55B00150515 /* DockProgress in Frameworks */,
-				C03916EE2EDBB6DC00187185 /* DockProgress in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +166,15 @@
 			path = Sleep;
 			sourceTree = "<group>";
 		};
+		D99F8BD82F4BA2D700F9FB92 /* DockProgress */ = {
+			isa = PBXGroup;
+			children = (
+				D99F8BD42F4BA2D300F9FB92 /* DockProgress.swift */,
+				D99F8BD52F4BA2D300F9FB92 /* Utilities.swift */,
+			);
+			path = DockProgress;
+			sourceTree = "<group>";
+		};
 		D9E20C5F2E8B2C570086992F = {
 			isa = PBXGroup;
 			children = (
@@ -187,18 +196,19 @@
 			children = (
 				D9E20C832E8B2D1C0086992F /* AppDelegate.swift */,
 				D9E20C7A2E8B2CE80086992F /* Assets.xcassets */,
+				D99F8BD82F4BA2D700F9FB92 /* DockProgress */,
 				D9E20C742E8B2C590086992F /* DownloadFullInstaller.entitlements */,
 				D9E20C6B2E8B2C570086992F /* DownloadFullInstallerApp.swift */,
-				FA0000040000000000000004 /* UpdaterController.swift */,
 				D95D3BFA2EDDFF95002AF7DA /* Downloads */,
 				D93DC4A12F2C17DC00A7C8B4 /* Info.plist */,
 				D9E20C7C2E8B2CF20086992F /* Languages */,
 				D9E20C7D2E8B2CFF0086992F /* Model */,
 				D9E20C822E8B2D1C0086992F /* Prefs.swift */,
 				D9168EAC2F2C1CBB0054D5AF /* Preview Content */,
-				D95D3BFB2EDDFFAE002AF7DA /* Sleep */,
-				D9E20C7E2E8B2D060086992F /* Views */,
 				D950B6952F2C26FC0056EB3B /* Preview Content */,
+				D95D3BFB2EDDFFAE002AF7DA /* Sleep */,
+				FA0000040000000000000004 /* UpdaterController.swift */,
+				D9E20C7E2E8B2D060086992F /* Views */,
 			);
 			path = DownloadFullInstaller;
 			sourceTree = "<group>";
@@ -265,7 +275,6 @@
 			);
 			name = "Download Full Installer";
 			packageProductDependencies = (
-				D91368912F48E55B00150515 /* DockProgress */,
 				D91368942F48E56500150515 /* Sparkle */,
 			);
 			productName = FetchInstallerPkg;
@@ -307,7 +316,6 @@
 			);
 			mainGroup = D9E20C5F2E8B2C570086992F;
 			packageReferences = (
-				D91368902F48E55B00150515 /* XCRemoteSwiftPackageReference "DockProgress" */,
 				D91368932F48E56500150515 /* XCRemoteSwiftPackageReference "Sparkle" */,
 			);
 			productRefGroup = D9E20C692E8B2C570086992F /* Products */;
@@ -358,6 +366,8 @@
 				D9E20CAE2E8B2D5E0086992F /* LanguageManager.swift in Sources */,
 				D9E20CA72E8B2D490086992F /* InstallerView.swift in Sources */,
 				D9AAA0004E8B2D490086992F /* LegacyDownloadView.swift in Sources */,
+				D99F8BD62F4BA2D300F9FB92 /* DockProgress.swift in Sources */,
+				D99F8BD72F4BA2D300F9FB92 /* Utilities.swift in Sources */,
 				D9E20C992E8B2D3B0086992F /* BuildManifest.swift in Sources */,
 				D9E20C9B2E8B2D3B0086992F /* Package.swift in Sources */,
 				D9E20C9E2E8B2D3B0086992F /* SUCatalog.swift in Sources */,
@@ -542,7 +552,7 @@
 		D9E20C782E8B2C590086992F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = x86_64;
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DownloadFullInstaller/DownloadFullInstaller.entitlements;
@@ -578,7 +588,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 4.5.0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = perez987.DownloadFullInstaller;
 				PRODUCT_NAME = "Download Full Installer";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -589,7 +599,7 @@
 		D9E20C792E8B2C590086992F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = x86_64;
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DownloadFullInstaller/DownloadFullInstaller.entitlements;
@@ -625,7 +635,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 4.5.0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = perez987.DownloadFullInstaller;
 				PRODUCT_NAME = "Download Full Installer";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -657,22 +667,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C03916EC2EDBB6DC00187185 /* XCRemoteSwiftPackageReference "DockProgress" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sindresorhus/DockProgress";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.3.1;
-			};
-		};
-		D91368902F48E55B00150515 /* XCRemoteSwiftPackageReference "DockProgress" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sindresorhus/DockProgress";
-			requirement = {
-				kind = exactVersion;
-				version = 4.3.1;
-			};
-		};
 		D91368932F48E56500150515 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sparkle-project/Sparkle";
@@ -684,16 +678,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C03916ED2EDBB6DC00187185 /* DockProgress */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C03916EC2EDBB6DC00187185 /* XCRemoteSwiftPackageReference "DockProgress" */;
-			productName = DockProgress;
-		};
-		D91368912F48E55B00150515 /* DockProgress */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D91368902F48E55B00150515 /* XCRemoteSwiftPackageReference "DockProgress" */;
-			productName = DockProgress;
-		};
 		D91368942F48E56500150515 /* Sparkle */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D91368932F48E56500150515 /* XCRemoteSwiftPackageReference "Sparkle" */;

@@ -6,7 +6,7 @@
 //
 
 import AppKit
-import DockProgress
+//import DockProgress
 import Foundation
 
 @objc class DownloadManager: NSObject, ObservableObject {
