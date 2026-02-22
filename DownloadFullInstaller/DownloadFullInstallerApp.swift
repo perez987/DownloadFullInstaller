@@ -69,7 +69,8 @@ struct FetchInstallerPkgApp: App {
                         "Check for Updates...",
                         comment: "Menu item to check for app updates"
                     ),
-                    systemImage: "square.and.arrow.down.badge.checkmark"
+//                    systemImage: "square.and.arrow.down.badge.checkmark"
+                    systemImage: "arrow.triangle.2.circlepath"
                 ) {
                     updaterController.checkForUpdates()
                 }
