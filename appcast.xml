@@ -13,8 +13,8 @@
                 url="https://github.com/perez987/DownloadFullInstaller/releases/download/v4.5.0/DownloadFullInstaller.zip"
                 sparkle:version="222"
                 sparkle:shortVersionString="4.5.0"
-                length="6361048"
-                sparkle:edSignature="kXVaZdYQkYzuSXlIA4goSilLlMeh9pPjM8d2gIk4H+vNwK0y1ZRipsAeAl50kGAvZ6g9WwwnQuBrPRvrhuRYDg=="
+                length="6305457"
+                sparkle:edSignature="qoYio42c2eAp368Ltr8JJ/ppAT2MXeCKEPkYsFeckADpEalAp8r6L1xhdDjS8Mo7LVWJUuz+N1Up7fEPycsqAA=="
                 type="application/octet-stream"
             />
             <sparkle:minimumSystemVersion>13.7</sparkle:minimumSystemVersion>
