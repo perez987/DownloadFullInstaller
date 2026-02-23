@@ -30,12 +30,12 @@ class LanguageManager: ObservableObject {
 //        print("LanguageManager initialized without loading languages")
 //        print("=== LanguageManager init() completed ===")
     }
-    
+
     // Load languages - call this from UI when ready (e.g., in .onAppear)
     func loadLanguagesIfNeeded() {
         ensureLanguagesLoaded()
     }
-    
+
     // Load languages lazily on first access
     private func ensureLanguagesLoaded() {
         guard !hasLoadedLanguages else { return }
@@ -48,11 +48,11 @@ class LanguageManager: ObservableObject {
         // English should always be first
         if lhs.code == "en" { return true }
         if rhs.code == "en" { return false }
-        
+
         // Spanish should be second (after English)
         if lhs.code == "es" && rhs.code != "en" { return true }
         if rhs.code == "es" && lhs.code != "en" { return false }
-        
+
         // All other languages sorted alphabetically by code
         return lhs.code < rhs.code
     }
@@ -151,7 +151,7 @@ class LanguageManager: ObservableObject {
             print("Language changed to: Russian (\(languageCode))")
         case "ar":
             print("Language changed to: Arabic (\(languageCode))")
-		case "sl-SI", "sl":
+        case "sl-SI", "sl":
             print("Language changed to: Slovenian (\(languageCode))")
         default:
             print("Language changed to default: English (\(languageCode))")

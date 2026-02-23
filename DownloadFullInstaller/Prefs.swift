@@ -15,7 +15,7 @@ enum Prefs {
         case downloadPathBookmark = "DownloadPathBookmark"
         case languageSelectionShown = "LanguageSelectionShown"
     }
-    
+
     // Track whether we've already logged the stale bookmark message to avoid console spam
     private static let staleBookmarkLock = NSLock()
     private static var hasLoggedStaleBookmark = false
@@ -78,17 +78,17 @@ enum Prefs {
             do {
                 var isStale = false
                 let url = try URL(resolvingBookmarkData: bookmarkData, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &isStale)
-                
+
                 if isStale {
                     staleBookmarkLock.lock()
                     defer { staleBookmarkLock.unlock() }
-                    
+
                     if !hasLoggedStaleBookmark {
                         print("Bookmark is stale, will recreate on next folder selection")
                         hasLoggedStaleBookmark = true
                     }
                 }
-                
+
                 // Return the URL without starting to access the security-scoped resource
                 // Callers must explicitly call startAccessingSecurityScopedResource() when needed
                 return url
@@ -96,18 +96,18 @@ enum Prefs {
                 print("Error resolving bookmark: \(error.localizedDescription)")
             }
         }
-        
+
         // Fallback to path-based URL
         let downloadURL = URL(fileURLWithPath: downloadPath)
         return downloadURL
     }
-    
+
     /// Returns true if the download URL requires security-scoped resource access
     /// (i.e., it was created from a user-selected bookmark)
     static var downloadURLRequiresSecurityScope: Bool {
         return UserDefaults.standard.data(forKey: Prefs.key(.downloadPathBookmark)) != nil
     }
-    
+
     /// Safely starts accessing the security-scoped resource for the download URL
     /// Returns true if access was started, false otherwise
     /// Only call this if the URL requires security-scoped access
@@ -119,7 +119,7 @@ enum Prefs {
         }
         return downloadURL.startAccessingSecurityScopedResource()
     }
-    
+
     /// Safely stops accessing the security-scoped resource for the download URL
     /// Only call this if startAccessingDownloadURL() returned true
     static func stopAccessingDownloadURL(_ started: Bool) {
@@ -127,11 +127,11 @@ enum Prefs {
             downloadURL.stopAccessingSecurityScopedResource()
         }
     }
-    
+
     static func saveDownloadURL(_ url: URL) {
         // Save the path
         UserDefaults.standard.set(url.path, forKey: Prefs.key(.downloadPath))
-        
+
         // Create and save security-scoped bookmark for custom folders
         do {
             let bookmarkData = try url.bookmarkData(options: .withSecurityScope, includingResourceValuesForKeys: nil, relativeTo: nil)
@@ -140,7 +140,7 @@ enum Prefs {
         } catch {
             print("Error creating bookmark: \(error.localizedDescription)")
         }
-        
+
         // Post notification for UI refresh
         NotificationCenter.default.post(name: .downloadPathChanged, object: nil)
     }

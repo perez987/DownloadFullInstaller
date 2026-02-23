@@ -14,7 +14,7 @@ struct LegacyMacOSVersion: Identifiable {
     let name: String
     let version: String
     let url: String
-    
+
     static let allVersions: [LegacyMacOSVersion] = [
         LegacyMacOSVersion(
             name: "Sierra",
@@ -40,6 +40,6 @@ struct LegacyMacOSVersion: Identifiable {
             name: "Lion",
             version: "10.7",
             url: "https://updates.cdn-apple.com/2021/macos/041-7683-20210614-E610947E-C7CE-46EB-8860-D26D71F0D3EA/InstallMacOSX.dmg"
-        )
+        ),
     ]
 }

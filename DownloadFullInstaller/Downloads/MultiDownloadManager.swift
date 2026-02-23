@@ -6,7 +6,8 @@
 //
 
 import AppKit
-//import DockProgress
+
+// import DockProgress
 import Foundation
 
 // MARK: - DownloadItem
@@ -29,7 +30,7 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
     private var retryCount = 0
     private var maxRetries = 100
     private var retryTimer: Timer?
-    
+
     // Security-scoped resource tracking
     private var destinationURL: URL?
     private var isAccessingSecurityScope = false
@@ -45,13 +46,13 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
         let destination = Prefs.downloadURL
         if filename != nil {
             let file = destination.appendingPathComponent(filename!)
-            
+
             // Start accessing security-scoped resource for file check (only if needed)
             let accessStarted = Prefs.startAccessingDownloadURL()
             defer {
                 Prefs.stopAccessingDownloadURL(accessStarted)
             }
-            
+
             return FileManager.default.fileExists(atPath: file.path)
         } else {
             return false
@@ -62,7 +63,7 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
         downloadURL = url
         isComplete = false
         byteFormatter.countStyle = .file
-        
+
         // Get destination URL and start accessing security-scoped resource for the entire download lifecycle (only if needed)
         let destination = Prefs.downloadURL
         destinationURL = destination
@@ -73,7 +74,7 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
         if replacing {
             let suggestedFilename = filename ?? "InstallerAssistant.pkg"
             let file = destination.appendingPathComponent(suggestedFilename)
-            
+
             try FileManager.default.removeItem(at: file)
             resumeData = nil
         }
@@ -129,23 +130,23 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
         }
         print("Cancelled download of \(filename ?? "InstallerAssistant.pkg")")
     }
-    
+
     private func cleanupTempDirectory() {
         let tempDir = URL(fileURLWithPath: NSTemporaryDirectory())
         do {
             let tempFiles = try FileManager.default.contentsOfDirectory(at: tempDir, includingPropertiesForKeys: [.isRegularFileKey, .fileSizeKey])
             var deletedCount = 0
             var totalSize: Int64 = 0
-            
+
             for file in tempFiles {
                 do {
                     // Only delete regular files (not directories)
                     let resourceValues = try file.resourceValues(forKeys: [.isRegularFileKey, .fileSizeKey])
                     guard resourceValues.isRegularFile == true else { continue }
-                    
+
                     // Get file size before deletion
                     let fileSize = resourceValues.fileSize ?? 0
-                    
+
                     try FileManager.default.removeItem(at: file)
                     deletedCount += 1
                     totalSize += Int64(fileSize)
@@ -154,7 +155,7 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
                     print("Failed to delete temp file \(file.lastPathComponent): \(error.localizedDescription)")
                 }
             }
-            
+
             if deletedCount > 0 {
                 let sizeString = ByteCountFormatter.string(fromByteCount: totalSize, countStyle: .file)
                 print("Cleaned up temporary directory: deleted \(deletedCount) file(s), freed \(sizeString)")
@@ -163,7 +164,7 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
             print("Failed to access temporary directory for cleanup: \(error.localizedDescription)")
         }
     }
-    
+
     private func stopAccessingSecurityScope() {
         if isAccessingSecurityScope {
             Prefs.stopAccessingDownloadURL(isAccessingSecurityScope)
@@ -219,30 +220,30 @@ extension DownloadItem: URLSessionDownloadDelegate {
             stopAccessingSecurityScope()
             return
         }
-        
+
         let suggestedFilename = filename ?? downloadTask.response?.suggestedFilename ?? UUID().uuidString
 
         do {
             let file = destination.appendingPathComponent(suggestedFilename)
             let fileExists = FileManager.default.fileExists(atPath: file.path)
-            
+
             let newURL: URL?
             if fileExists {
                 // Remove existing file first
                 try FileManager.default.removeItem(at: file)
             }
-            
+
             // Move the file from temp location to destination
             // Using moveItem to avoid requiring double disk space
             // moveItem handles cross-volume moves internally
             try FileManager.default.moveItem(at: location, to: file)
             newURL = file
-            
+
             print("Finished download of \(filename ?? "InstallerAssistant.pkg")")
-            
+
             // Stop accessing security-scoped resource after successful save
             stopAccessingSecurityScope()
-            
+
             DispatchQueue.main.async {
                 self.isDownloading = false
                 self.isRetrying = false
@@ -257,14 +258,14 @@ extension DownloadItem: URLSessionDownloadDelegate {
             }
         } catch {
             print("Error saving file: \(error.localizedDescription)")
-            
+
             // Stop accessing security-scoped resource on failure
             stopAccessingSecurityScope()
-            
+
             // Extract folder name from destination path for error message
             let folderName = destination.lastPathComponent
             let errorMsg = String(format: NSLocalizedString("The file '%@' could not be saved to the '%@' folder. Error: %@", comment: "Download save error"), suggestedFilename, folderName, error.localizedDescription)
-            
+
             DispatchQueue.main.async {
                 self.isDownloading = false
                 self.isRetrying = false

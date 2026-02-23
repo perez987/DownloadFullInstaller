@@ -91,7 +91,6 @@ struct ContentView: View {
         }
 
         HStack(alignment: .center) {}
-        
     }
 
     struct ContentView_Previews: PreviewProvider {

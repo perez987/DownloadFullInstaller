@@ -1,12 +1,12 @@
 //
-//  FetchInstallerPkgApp.swift
+//  DownloadFullInstallerApp.swift
 //
 //  Created by Armin Briegel on 2021-06-09
 //  Modified by Emilio P Egido on 2025-08-25
 //
 
-import SwiftUI
 import Sparkle
+import SwiftUI
 
 @main
 
@@ -17,7 +17,7 @@ struct FetchInstallerPkgApp: App {
     @StateObject private var updaterController = UpdaterController()
     @State private var showLanguageSelection = false
     @State private var showSettings = false
-    
+
     init() {
         // Diagnostic logging for sandbox initialization
 //        print("=== FetchInstallerPkgApp init() started ===")
@@ -61,7 +61,6 @@ struct FetchInstallerPkgApp: App {
 //            .defaultSize(width: 580, height: 640)
         // window resizability derived from the window’s content in macOS 13 Ventura or newer
         .windowResizability(.contentSize)
-        
         .commands {
             CommandGroup(after: .appInfo) {
                 Button(
@@ -82,15 +81,14 @@ struct FetchInstallerPkgApp: App {
                     showSettings = true
                 }
                 .keyboardShortcut(",", modifiers: [.command])
-                
+
                 Divider()
-                
+
                 Button(NSLocalizedString("Select Language", comment: "Menu item to show language selection")) {
                     showLanguageSelection = true
                 }
                 .keyboardShortcut("l", modifiers: [.command])
             }
         }
-
     }
 }

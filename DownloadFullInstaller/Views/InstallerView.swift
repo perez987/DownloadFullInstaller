@@ -20,30 +20,30 @@ struct InstallerView: View {
     @State var isCreatingInstaller = false
     @State private var activeAlert: AppAlertType?
     @State private var isDownloaded = false
-    
+
     // Computed property for the installer filename
     var installerFilename: String {
         return "InstallAssistant-\(product.productVersion ?? "V")-\(product.buildVersion ?? "B").pkg"
     }
-    
+
     // Check if the installer has been downloaded
     // This checks the file system and should only be called after sandbox is initialized
     private func checkIfDownloaded() {
         let destination = Prefs.downloadURL
         let file = destination.appendingPathComponent(installerFilename)
-        
+
         // Start accessing security-scoped resource for file check (only if needed)
         let accessStarted = Prefs.startAccessingDownloadURL()
         defer {
             Prefs.stopAccessingDownloadURL(accessStarted)
         }
-        
+
         // Check if file exists on disk (primary check)
         if FileManager.default.fileExists(atPath: file.path) {
             isDownloaded = true
             return
         }
-        
+
         // Also check if this file is in the completed downloads list
         // This ensures the view updates immediately when a download completes
         // (before the user dismisses the completion notification)
@@ -76,7 +76,7 @@ struct InstallerView: View {
                                 .font(.footnote)
                         }
                     }
-                    
+
                     // Visual indicator for downloaded installers
                     if isDownloaded {
                         Image(systemName: "checkmark.circle.fill")
@@ -103,7 +103,7 @@ struct InstallerView: View {
                         // Check if file exists on disk
                         let destination = Prefs.downloadURL
                         let file = destination.appendingPathComponent(filename)
-                        
+
                         // Start accessing security-scoped resource for file check (only if needed)
                         let accessStarted = Prefs.startAccessingDownloadURL()
                         defer {
@@ -147,7 +147,7 @@ struct InstallerView: View {
 
                     // Context menu: copy to clipboard the URL of the specified InstallAssistant.pkg
                 }
-                    .contextMenu {
+                .contextMenu {
                     Button(action: {
                         if let text = product.installAssistantURL?.absoluteString {
 //                            print("\(text)")
@@ -192,7 +192,7 @@ struct InstallerView: View {
         filename = installerFilename
         let destination = Prefs.downloadURL
         let pkgPath = destination.appendingPathComponent(filename).path
-        
+
         // Start accessing security-scoped resource for file operations (only if needed)
         let accessStarted = Prefs.startAccessingDownloadURL()
 
@@ -216,7 +216,7 @@ struct InstallerView: View {
         NSWorkspace.shared.open(pkgURL, configuration: NSWorkspace.OpenConfiguration()) { _, error in
             // Stop accessing security-scoped resource after the operation completes
             Prefs.stopAccessingDownloadURL(accessStarted)
-            
+
             DispatchQueue.main.async {
                 self.isCreatingInstaller = false
 
