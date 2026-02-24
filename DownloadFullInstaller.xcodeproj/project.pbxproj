@@ -343,6 +343,25 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		FA0000060000000000000006 /* Re-sign Sparkle */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(CODESIGNING_FOLDER_PATH)/Contents/Frameworks/Sparkle.framework",
+			);
+			name = "Re-sign Sparkle";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/sparkle-resigned.stamp",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n# Re-sign Sparkle.framework and all nested bundles with the app signing identity.\n# Required when using ad-hoc signing (CODE_SIGN_IDENTITY = \"-\"), because Xcode does\n# not automatically re-sign SPM binary frameworks that are already signed with a\n# different Team ID. Without this step the Sparkle framework retains the sparkle-project\n# Team ID, causing a Team ID mismatch that prevents the app from launching and prevents\n# Sparkle's installer helper from running (update error: \"An error occurred while\n# launching the installer\").\nSPARKLE_FRAMEWORK=\"${CODESIGNING_FOLDER_PATH}/Contents/Frameworks/Sparkle.framework\"\nif [ -d \"${SPARKLE_FRAMEWORK}\" ]; then\n    /usr/bin/codesign --force --deep --sign \"${CODE_SIGN_IDENTITY}\" \"${SPARKLE_FRAMEWORK}\"\nfi\ntouch \"${DERIVED_FILE_DIR}/sparkle-resigned.stamp\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D9E20C642E8B2C570086992F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -382,25 +401,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		FA0000060000000000000006 /* Re-sign Sparkle */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(CODESIGNING_FOLDER_PATH)/Contents/Frameworks/Sparkle.framework",
-			);
-			name = "Re-sign Sparkle";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/sparkle-resigned.stamp",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "set -e\n# Re-sign Sparkle.framework and all nested bundles with the app signing identity.\n# Required when using ad-hoc signing (CODE_SIGN_IDENTITY = \"-\"), because Xcode does\n# not automatically re-sign SPM binary frameworks that are already signed with a\n# different Team ID. Without this step the Sparkle framework retains the sparkle-project\n# Team ID, causing a Team ID mismatch that prevents the app from launching and prevents\n# Sparkle's installer helper from running (update error: \"An error occurred while\n# launching the installer\").\nSPARKLE_FRAMEWORK=\"${CODESIGNING_FOLDER_PATH}/Contents/Frameworks/Sparkle.framework\"\nif [ -d \"${SPARKLE_FRAMEWORK}\" ]; then\n    /usr/bin/codesign --force --deep --sign \"${CODE_SIGN_IDENTITY}\" \"${SPARKLE_FRAMEWORK}\"\nfi\ntouch \"${DERIVED_FILE_DIR}/sparkle-resigned.stamp\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXVariantGroup section */
 		D9E20CB32E8B2D840086992F /* Localizable.strings */ = {
@@ -580,7 +580,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 222;
+				CURRENT_PROJECT_VERSION = 225;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"DownloadFullInstaller/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
@@ -598,8 +598,8 @@
 				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
 				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
 				ENABLE_RESOURCE_ACCESS_USB = NO;
-				ENABLE_USER_SELECTED_FILES = readwrite;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = DownloadFullInstaller/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -608,7 +608,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 4.5.0;
+				MARKETING_VERSION = 4.5.2;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = perez987.DownloadFullInstaller;
 				PRODUCT_NAME = "Download Full Installer";
@@ -628,7 +628,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 222;
+				CURRENT_PROJECT_VERSION = 225;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"DownloadFullInstaller/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
@@ -646,8 +646,8 @@
 				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
 				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
 				ENABLE_RESOURCE_ACCESS_USB = NO;
-				ENABLE_USER_SELECTED_FILES = readwrite;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = DownloadFullInstaller/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -656,7 +656,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 4.5.0;
+				MARKETING_VERSION = 4.5.2;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = perez987.DownloadFullInstaller;
 				PRODUCT_NAME = "Download Full Installer";
