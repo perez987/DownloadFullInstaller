@@ -147,6 +147,3 @@
 
 /* Legacy macOS installers */
 "Download macOS %@ %@" = "Prenesi macOS %@ %@";
-
-/* Sparkle updater */
-"Check for Updates..." = "Preveri Posodobitve...";
