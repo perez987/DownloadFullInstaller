@@ -350,7 +350,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n# Re-sign Sparkle.framework components with the app signing identity.\n# Required when using ad-hoc signing (CODE_SIGN_IDENTITY = \"-\"), because Xcode does\n# not automatically re-sign SPM binary frameworks already signed with a different Team ID.\n# Sign each component individually from innermost to outermost; do NOT use --deep (strips\n# entitlements from nested bundles) and do NOT use --preserve-metadata=entitlements (reads\n# from the existing code signature which may already have been stripped by Xcode's own\n# embedding step). Instead, codesign automatically reads entitlements embedded in each\n# binary's __TEXT,__entitlements section — these are part of the compiled binary and are\n# never affected by re-signing, so they are always present and correct.\nSPARKLE_FRAMEWORK=\"${CODESIGNING_FOLDER_PATH}/Contents/Frameworks/Sparkle.framework\"\nif [ -d \"${SPARKLE_FRAMEWORK}\" ]; then\n    VERSIONS_B=\"${SPARKLE_FRAMEWORK}/Versions/B\"\n    for XPC_SERVICE in \"${VERSIONS_B}/XPCServices/\"*.xpc; do\n        if [ -d \"${XPC_SERVICE}\" ]; then\n            /usr/bin/codesign --force --sign \"${CODE_SIGN_IDENTITY}\" \"${XPC_SERVICE}\"\n        fi\n    done\n    AUTOUPDATE=\"${VERSIONS_B}/Autoupdate.app\"\n    if [ -d \"${AUTOUPDATE}\" ]; then\n        /usr/bin/codesign --force --sign \"${CODE_SIGN_IDENTITY}\" \"${AUTOUPDATE}\"\n    fi\n    /usr/bin/codesign --force --sign \"${CODE_SIGN_IDENTITY}\" \"${SPARKLE_FRAMEWORK}\"\nfi\ntouch \"${DERIVED_FILE_DIR}/sparkle-resigned.stamp\"\n";
+			shellScript = "set -e\n# Re-sign Sparkle.framework components with the app signing identity.\n# Required when using ad-hoc signing (CODE_SIGN_IDENTITY = \"-\"), because Xcode does\n# not automatically re-sign SPM binary frameworks already signed with a different Team ID.\n# Sign each component individually from innermost to outermost; do NOT use --deep (strips\n# entitlements from nested bundles). Use --preserve-metadata=entitlements to retain the\n# original sandbox/inherit/network entitlements that Sparkle's XPC services require in\n# order to communicate with the sandboxed host app. Without these entitlements the XPC\n# connection fails and Sparkle cannot launch the installer helper.\nSPARKLE_FRAMEWORK=\"${CODESIGNING_FOLDER_PATH}/Contents/Frameworks/Sparkle.framework\"\nif [ -d \"${SPARKLE_FRAMEWORK}\" ]; then\n    VERSIONS_B=\"${SPARKLE_FRAMEWORK}/Versions/B\"\n    for XPC_SERVICE in \"${VERSIONS_B}/XPCServices/\"*.xpc; do\n        if [ -d \"${XPC_SERVICE}\" ]; then\n            /usr/bin/codesign --force --sign \"${CODE_SIGN_IDENTITY}\" --preserve-metadata=entitlements \"${XPC_SERVICE}\"\n        fi\n    done\n    AUTOUPDATE=\"${VERSIONS_B}/Autoupdate.app\"\n    if [ -d \"${AUTOUPDATE}\" ]; then\n        /usr/bin/codesign --force --sign \"${CODE_SIGN_IDENTITY}\" --preserve-metadata=entitlements \"${AUTOUPDATE}\"\n    fi\n    /usr/bin/codesign --force --sign \"${CODE_SIGN_IDENTITY}\" \"${SPARKLE_FRAMEWORK}\"\nfi\ntouch \"${DERIVED_FILE_DIR}/sparkle-resigned.stamp\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -572,7 +572,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 225;
+				CURRENT_PROJECT_VERSION = 226;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"DownloadFullInstaller/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
@@ -601,7 +601,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 4.5.2;
+				MARKETING_VERSION = 4.5.3;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = perez987.DownloadFullInstaller;
 				PRODUCT_NAME = "Download Full Installer";
@@ -621,7 +621,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 225;
+				CURRENT_PROJECT_VERSION = 226;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"DownloadFullInstaller/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
@@ -650,7 +650,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 4.5.2;
+				MARKETING_VERSION = 4.5.3;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = perez987.DownloadFullInstaller;
 				PRODUCT_NAME = "Download Full Installer";
