@@ -62,9 +62,15 @@ By clicking `Open Anyway`, macOS will ask again if you want to open the file and
 > (no output)
 ```
 
+## Xattr-remove
+
+SwiftUI application for macOS that removes `com.apple.quarantine` extended attribute from files downloaded from the Internet. Works by accepting files via drag and drop onto the app window. It has its own repo: [Xattr-remove](https://github.com/perez987/Xattr-remove).
+
+This app is a simpler and lighter version of Xattr Editor. Instead of displaying and editing (removing, modifying, adding) extended attributes, it performs a single task: removing com.apple.quarantine in a quick way from files downloaded from the Internet so that they can be opened in macOS without Gatekeeper warnings.
+
 ## Xattr Editor
 
-Xattr Editor is a simple GUI application to view/edit extended file attributes on macOS, it has their own [**repository**](https://github.com/perez987/Xattr-Editor).
+Xattr Editor is a simple GUI application to view/edit extended file attributes on macOS. This project is an expansion of Xattr-remove. It has their own [**repository**](https://github.com/perez987/Xattr-Editor).
 
 ## Result
 

@@ -62,9 +62,15 @@ Al hacer clic en "Abrir de todas formas", macOS volverá a preguntar si desea ab
 > (sin salida)
 ```
 
-## Editor Xattr
+## Xattr-remove
 
-El Editor Xattr es una sencilla aplicación GUI para ver/editar atributos extendidos de archivos en macOS. Cuenta con su propio [**repositorio**](https://github.com/perez987/Xattr-Editor).
+Aplicación SwiftUI para macOS que elimina el atributo extendido `com.apple.quarantine` de los archivos descargados de Internet. Funciona arrastrando y soltando archivos en la ventana de la aplicación. Tiene su propio repositorio: [Xattr-remove](https://github.com/perez987/Xattr-remove).
+
+Esta aplicación es una versión más sencilla y ligera de Xattr Editor. En lugar de mostrar y editar (eliminar, modificar y añadir) atributos extendidos, realiza una única tarea: eliminar `com.apple.quarantine` rápidamente de los archivos descargados de internet para que puedan abrirse en macOS sin las advertencias de Gatekeeper.
+
+## Xattr Editor
+
+El Editor Xattr es una sencilla aplicación GUI para ver/editar atributos extendidos de archivos en macOS. Este proyecto es una ampliación de Xattr-remove. Cuenta con su propio [**repositorio**](https://github.com/perez987/Xattr-Editor).
 
 ## Resultado
 
