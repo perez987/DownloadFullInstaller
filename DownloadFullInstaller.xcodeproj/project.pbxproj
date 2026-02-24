@@ -123,13 +123,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D9168EAC2F2C1CBB0054D5AF /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
 		D9168EB02F2C1E390054D5AF /* Backup */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,7 +197,6 @@
 				D9E20C7C2E8B2CF20086992F /* Languages */,
 				D9E20C7D2E8B2CFF0086992F /* Model */,
 				D9E20C822E8B2D1C0086992F /* Prefs.swift */,
-				D9168EAC2F2C1CBB0054D5AF /* Preview Content */,
 				D950B6952F2C26FC0056EB3B /* Preview Content */,
 				D95D3BFB2EDDFFAE002AF7DA /* Sleep */,
 				FA0000040000000000000004 /* UpdaterController.swift */,

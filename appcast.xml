@@ -10,11 +10,11 @@
             <description></description>
             <pubDate>Fri, 01 Jan 2025 00:00:00 +0000</pubDate>
             <enclosure
-                url="https://github.com/perez987/DownloadFullInstaller/releases/download/4.5.0/Download.Full.Installer.zip"
+                url="https://github.com/perez987/DownloadFullInstaller/releases/download/4.5.2/Download.Full.Installer.zip"
                 sparkle:version="225"
                 sparkle:shortVersionString="4.5.2"
                 length="6359275"
-                sparkle:edSignature="+HTnUDxCTVegQY1tiyTH3S963MK2Q0o1xHZpNr+pN0lmwfF9ylbNr8LQvmrxxaHcjazraB7517ZklZrWlaFqBw=="
+                sparkle:edSignature="FCCldEIi1thSqlx1Y5sSE4iPcW26JnqSWJe04FkcWIT2Etik56lX9ufAGL1okvGh3jZ+gzKt8cnj4P5D3Q0FBA=="
                 type="application/octet-stream"
             />
             <sparkle:minimumSystemVersion>13.7</sparkle:minimumSystemVersion>
