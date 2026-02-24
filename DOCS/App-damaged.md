@@ -74,4 +74,4 @@ Xattr Editor is a simple GUI application to view/edit extended file attributes o
 
 ## Result
 
-Either way, System Settings, Xattr Editor or `xattr`, from this point on, the downloaded app will run without security prompts because the `com.apple.quarantine` attribute has been removed.
+Either way, System Settings, Xattr-remove, Xattr Editor or `xattr`, from this point on, the downloaded app will run without security prompts because the `com.apple.quarantine` attribute has been removed.

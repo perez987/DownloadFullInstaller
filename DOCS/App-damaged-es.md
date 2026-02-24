@@ -74,4 +74,4 @@ El Editor Xattr es una sencilla aplicación GUI para ver/editar atributos extend
 
 ## Resultado
 
-En cualquier caso, ya sea por Ajustes del Sistema, Editor Xattr o `xattr`, a partir de este momento la aplicación descargada se ejecutará sin avisos de seguridad, ya que se ha eliminado el atributo `com.apple.quarantine`.
+En cualquier caso, ya sea por Ajustes del Sistema, Xattr-remove, Editor Xattr o `xattr`, a partir de este momento la aplicación descargada se ejecutará sin avisos de seguridad, ya que se ha eliminado el atributo `com.apple.quarantine`.
