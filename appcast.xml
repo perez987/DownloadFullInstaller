@@ -10,7 +10,7 @@
             <description></description>
             <pubDate>Fri, 01 Jan 2025 00:00:00 +0000</pubDate>
             <enclosure
-                url="https://github.com/perez987/DownloadFullInstaller/releases/download/4.5.0-222/Download.Full.Installer.zip"
+                url="https://github.com/perez987/DownloadFullInstaller/releases/download/4.5.0/Download.Full.Installer.zip"
                 sparkle:version="222"
                 sparkle:shortVersionString="4.5.0"
                 length="6359417"

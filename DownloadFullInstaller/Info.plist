@@ -16,10 +16,6 @@
 	<string>4.5.0</string>
 	<key>CFBundleVersion</key>
 	<string>222</string>
-	<key>SUFeedURL</key>
-	<string>https://raw.githubusercontent.com/perez987/DownloadFullInstaller/main/appcast.xml</string>
-	<key>SUPublicEDKey</key>
-	<string>TYAEerTXwSU8wHwYzot2VEzwcPNeKLNQaTVSHkXV3vI=</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>
@@ -40,5 +36,9 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>SUFeedURL</key>
+	<string>https://raw.githubusercontent.com/perez987/DownloadFullInstaller/main/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>TYAEerTXwSU8wHwYzot2VEzwcPNeKLNQaTVSHkXV3vI=</string>
 </dict>
 </plist>
