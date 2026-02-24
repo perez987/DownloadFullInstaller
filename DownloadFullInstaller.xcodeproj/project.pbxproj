@@ -10,10 +10,9 @@
 		C0000001A000000100000001 /* MultiDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000001A000000200000001 /* MultiDownloadManager.swift */; };
 		C0000002A000000100000001 /* Alert+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000002A000000200000001 /* Alert+Extensions.swift */; };
 		D982F68E2F2C29240016CC88 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D982F68D2F2C29240016CC88 /* Preview Assets.xcassets */; };
-		D99F8BD62F4BA2D300F9FB92 /* DockProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99F8BD42F4BA2D300F9FB92 /* DockProgress.swift */; };
-		D99F8BD72F4BA2D300F9FB92 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99F8BD52F4BA2D300F9FB92 /* Utilities.swift */; };
 		D9AAA0002E8B2D3B0086992F /* LegacyMacOSVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA0001E8B2D3B0086992F /* LegacyMacOSVersion.swift */; };
 		D9AAA0004E8B2D490086992F /* LegacyDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA0003E8B2D490086992F /* LegacyDownloadView.swift */; };
+		D9B324F32F4E5C4E003AC10A /* DockProgress in Frameworks */ = {isa = PBXBuildFile; productRef = D9B324F22F4E5C4E003AC10A /* DockProgress */; };
 		D9E20C6C2E8B2C570086992F /* DownloadFullInstallerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E20C6B2E8B2C570086992F /* DownloadFullInstallerApp.swift */; };
 		D9E20C7B2E8B2CE80086992F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9E20C7A2E8B2CE80086992F /* Assets.xcassets */; };
 		D9E20C842E8B2D1C0086992F /* Caffeine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E20C7F2E8B2D1C0086992F /* Caffeine.swift */; };
@@ -64,8 +63,6 @@
 		D9811C172F1700A600EB2ACF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D9811C182F1700A600EB2ACF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D982F68D2F2C29240016CC88 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		D99F8BD42F4BA2D300F9FB92 /* DockProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockProgress.swift; sourceTree = "<group>"; };
-		D99F8BD52F4BA2D300F9FB92 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		D9AAA0001E8B2D3B0086992F /* LegacyMacOSVersion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegacyMacOSVersion.swift; sourceTree = "<group>"; };
 		D9AAA0003E8B2D490086992F /* LegacyDownloadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegacyDownloadView.swift; sourceTree = "<group>"; };
 		D9B13C8A2EB0E91E00342DC8 /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "fr-CA.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -113,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9B324F32F4E5C4E003AC10A /* DockProgress in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,15 +153,6 @@
 			path = Sleep;
 			sourceTree = "<group>";
 		};
-		D99F8BD82F4BA2D700F9FB92 /* DockProgress */ = {
-			isa = PBXGroup;
-			children = (
-				D99F8BD42F4BA2D300F9FB92 /* DockProgress.swift */,
-				D99F8BD52F4BA2D300F9FB92 /* Utilities.swift */,
-			);
-			path = DockProgress;
-			sourceTree = "<group>";
-		};
 		D9E20C5F2E8B2C570086992F = {
 			isa = PBXGroup;
 			children = (
@@ -185,7 +174,6 @@
 			children = (
 				D9E20C832E8B2D1C0086992F /* AppDelegate.swift */,
 				D9E20C7A2E8B2CE80086992F /* Assets.xcassets */,
-				D99F8BD82F4BA2D700F9FB92 /* DockProgress */,
 				D9E20C742E8B2C590086992F /* DownloadFullInstaller.entitlements */,
 				D9E20C6B2E8B2C570086992F /* DownloadFullInstallerApp.swift */,
 				D95D3BFA2EDDFF95002AF7DA /* Downloads */,
@@ -262,6 +250,7 @@
 			);
 			name = "Download Full Installer";
 			packageProductDependencies = (
+				D9B324F22F4E5C4E003AC10A /* DockProgress */,
 			);
 			productName = FetchInstallerPkg;
 			productReference = D9E20C682E8B2C570086992F /* Download Full Installer.app */;
@@ -302,6 +291,7 @@
 			);
 			mainGroup = D9E20C5F2E8B2C570086992F;
 			packageReferences = (
+				D9B324F12F4E5C4E003AC10A /* XCRemoteSwiftPackageReference "DockProgress" */,
 			);
 			productRefGroup = D9E20C692E8B2C570086992F /* Products */;
 			projectDirPath = "";
@@ -351,8 +341,6 @@
 				D9E20CAE2E8B2D5E0086992F /* LanguageManager.swift in Sources */,
 				D9E20CA72E8B2D490086992F /* InstallerView.swift in Sources */,
 				D9AAA0004E8B2D490086992F /* LegacyDownloadView.swift in Sources */,
-				D99F8BD62F4BA2D300F9FB92 /* DockProgress.swift in Sources */,
-				D99F8BD72F4BA2D300F9FB92 /* Utilities.swift in Sources */,
 				D9E20C992E8B2D3B0086992F /* BuildManifest.swift in Sources */,
 				D9E20C9B2E8B2D3B0086992F /* Package.swift in Sources */,
 				D9E20C9E2E8B2D3B0086992F /* SUCatalog.swift in Sources */,
@@ -536,7 +524,7 @@
 		D9E20C782E8B2C590086992F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = x86_64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DownloadFullInstaller/DownloadFullInstaller.entitlements;
@@ -544,7 +532,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 226;
+				CURRENT_PROJECT_VERSION = 220;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"DownloadFullInstaller/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
@@ -573,7 +561,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 4.5.3;
+				MARKETING_VERSION = 4.5.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = perez987.DownloadFullInstaller;
 				PRODUCT_NAME = "Download Full Installer";
@@ -585,7 +573,7 @@
 		D9E20C792E8B2C590086992F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = x86_64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DownloadFullInstaller/DownloadFullInstaller.entitlements;
@@ -593,7 +581,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 226;
+				CURRENT_PROJECT_VERSION = 220;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"DownloadFullInstaller/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
@@ -622,7 +610,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 4.5.3;
+				MARKETING_VERSION = 4.5.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = perez987.DownloadFullInstaller;
 				PRODUCT_NAME = "Download Full Installer";
@@ -654,6 +642,24 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		D9B324F12F4E5C4E003AC10A /* XCRemoteSwiftPackageReference "DockProgress" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/DockProgress";
+			requirement = {
+				kind = exactVersion;
+				version = 4.3.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D9B324F22F4E5C4E003AC10A /* DockProgress */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D9B324F12F4E5C4E003AC10A /* XCRemoteSwiftPackageReference "DockProgress" */;
+			productName = DockProgress;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D9E20C602E8B2C570086992F /* Project object */;
 }

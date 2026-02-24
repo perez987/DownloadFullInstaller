@@ -6,6 +6,7 @@
 //
 
 import AppKit
+import DockProgress
 
 // import DockProgress
 import Foundation
