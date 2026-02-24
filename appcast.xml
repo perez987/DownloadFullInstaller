@@ -6,15 +6,15 @@
         <description>Most recent changes with links to updates</description>
         <language>en</language>
         <item>
-            <title>Version 4.5.2</title>
+            <title>Version 4.5.3</title>
             <description></description>
             <pubDate>Fri, 01 Jan 2025 00:00:00 +0000</pubDate>
             <enclosure
-                url="https://github.com/perez987/DownloadFullInstaller/releases/download/4.5.2/Download.Full.Installer.zip"
-                sparkle:version="225"
-                sparkle:shortVersionString="4.5.2"
-                length="5640164"
-                sparkle:edSignature="ogBTM88lDPA/ryIp2yWdb9JtXtWQG+3bId5TvqBl9gjuBWQP9oEdb8K5RCO/alxsmLaX1LTDmTBn1LpWoud0Dw=="
+                url="https://github.com/perez987/DownloadFullInstaller/releases/download/4.5.3/Download.Full.Installer.zip"
+                sparkle:version="226"
+                sparkle:shortVersionString="4.5.3"
+                length="5639862"
+                sparkle:edSignature="kSH4qroEmSILSid/hPJu/IQaRIaVcmxgASEMI/Hgi6NW19/sr0RWNYa6y5sAwxxtozvoHbYV9hQPJY90SE5aCA=="
                 type="application/octet-stream"
             />
             <sparkle:minimumSystemVersion>13.7</sparkle:minimumSystemVersion>
