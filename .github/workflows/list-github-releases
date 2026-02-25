@@ -1,1 +1,10 @@
-
+- name: list-github-releases
+  steps:
+  - uses: yakubique/github-releases@v1.2
+    id: get_releases
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    with:
+      repository: perez987/DownloadFullInstaller
+  - run: |
+      echo "${{ steps.get_releases.outputs.releases }}"
