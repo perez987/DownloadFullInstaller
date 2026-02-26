@@ -168,7 +168,7 @@ Package of changes and improvements:
 - Bump marketing and build versions to 4.0 (202)
 - Legacy macOS icons, thanks to [chris1111](https://github.com/chris1111)
 
-![Legacy macOS](Images/EN/Legacy-2.png)
+![Legacy macOS](Images/EN/Legacy-2-peq.png)
 
 
 ## 4.0.1 -  February 3, 2026
