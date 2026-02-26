@@ -39,6 +39,8 @@ Package of changes and improvements:
 
 - New app icon more Tahoe style, thanks to [Anto65](https://github.com/antuneddu)
 
+![AppIcon](Images/Icons/Anto-dark.png)
+
 ## 2.2.0 -  September 23, 2025
 
 **Support for resuming downloads**
@@ -62,7 +64,9 @@ Package of changes and improvements:
 
 **Dock icon progress bar**
 
-- The package [DockProgress](DOCS/DockProgess.md) adds a progress bar or badge overlay to the application's dock tile icon during PKG downloads
+- The package [DockProgress](DOCS/DockProgess.md) adds progress bar or badge overlay to the application's dock tile icon during PKG downloads
+
+![Bar](Images/Dock-bar.png)
 
 ## 2.7.0 -  November 30, 2025
 
@@ -70,11 +74,15 @@ Package of changes and improvements:
 
 - Displays active download count in the badge style of DockProgress
 
+![Badge](Images/Dock-badge.png)
+
 ## 3.0.0 -  December 1, 2025
 
 **3 Simultaneous downloads**
 
 - Enables multiple concurrent downloads (max 3) with individual progress tracking and cancellation
+
+![Multidownload](Images/EN/Main-window1a-peq.png)
 
 ## 3.0.1 -  December 2, 2025
 
@@ -86,8 +94,7 @@ Package of changes and improvements:
 
 **Centralize alert handling**
 
-- Centralize alert handling adding `Alert+Extensions.swift` to define all alert types, titles, messages, and button configurations in one place
-- [More info](DOCS/Alert-extension.md)
+- Centralize alert handling adding `Alert+Extensions.swift` to define all alert types, titles, messages, and button configurations in one place: [more info](DOCS/Alert-extension.md)
 
 ## 3.0.3 -  December 8, 2025
 
@@ -107,7 +114,7 @@ Package of changes and improvements:
 
 **Add Korean language**
 
-- Added Korean language support, thanks @VenusGirl
+- Added Korean language support, thanks to [VenusGirl](https://github.com/VenusGirl)
 - Bump version to 3.2.0
 
 ## 3.5.0 -  January 18, 2026
@@ -131,7 +138,7 @@ Package of changes and improvements:
 
 **Add Slovenian language**
 
-- Added Slovenian language, thanks to @anderlli0053
+- Added Slovenian language, thanks to [anderlli0053](https://github.com/anderlli0053)
 
 ## 3.8.0 -  January 26, 2026
 
@@ -155,11 +162,14 @@ Package of changes and improvements:
 
 **Legacy macOS downloads**
 
-- Add legacy macOS installer assets and views (`LegacyMacOSVersion.swift` and `LegacyDownloadView.swift`)
-- Add sandbox fixes
+- Added legacy macOS installer support (10.7-10.12); [more info](DOCS/Legacy-macos.md)
+- Fix sandbox issues
 - Add an explicit Info.plist with ATS exceptions
 - Bump marketing and build versions to 4.0 (202)
-- Legacy macOS icons, thanks to @chris1111
+- Legacy macOS icons, thanks to [chris1111](https://github.com/chris1111)
+
+![Legacy macOS](Images/EN/Legacy-2.png)
+
 
 ## 4.0.1 -  February 3, 2026
 
@@ -176,31 +186,28 @@ Package of changes and improvements:
 - Universal architecture (Intel + Silicon)
 - Embed DockProgress package 4.3.1, the last release with Xcode 15 / macOS Sonoma support
 
----
-
 # `old`branch
 
 ## 2.0.0 – September 14, 2025
 
-- App runs on macOS 11+
 - Refactor Preferences logic
 - Remove localization (English default)
 - Simplified localization system
 
 ## 2.0.1 – September 22, 2025
 
-- App runs on macOS 11+
 - Asset icons as badges Tahoe style, thanks to [chris1111](https://github.com/chris1111)
 - Add languages: Ukrainian (thanks _Vladislav Strekalin_) and Simplified Chinese
 
 ## 2.1.0 – November 2, 2025
 
-- App runs on macOS 11+
 - Create the macOS installer application (e.g., "Install macOS Big Sur.app") directly from within Download Full Installer
 
 ## 2.4.0 – February 26, 2026
 
-- `old` branch has been updated to include features of the `main` branch except for language selection
+- `old` branch has been updated to include the functionalities of the `main` branch with these differences:
+   - The same languages ​​are supported, but without a language selector
+   - No temporary directory cleanup on app quit
 - For users requiring to run the app on macOS 11 -12
 
 
