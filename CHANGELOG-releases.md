@@ -131,7 +131,8 @@ Package of changes and improvements:
 **Temporary directory cleanup**
 
 - Added Arabic (ar) localization support, including InfoPlist.strings and Localizable.strings
-- Implemented temporary directory cleanup after download cancellation in both DownloadManager and MultiDownloadManager (to prevent large files from incomplete downloads from being stored indefinitely)
+- Implemented temporary directory cleanup after download cancellation (to prevent large files from incomplete downloads from being stored indefinitely)
+   - For sandboxed apps, the temporary directory is `~/Library/Containers/perez987.DownloadFullInstaller/Data/tmp`
 - Converted the language list to a vertical ScrollView
 
 ## 3.7.0 -  January 24, 2026
