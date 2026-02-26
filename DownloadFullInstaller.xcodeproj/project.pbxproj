@@ -510,7 +510,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.5;
-				MARKETING_VERSION = 2.5;
+				MARKETING_VERSION = 2.5.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = perez987.DownloadFullInstaller;
 				PRODUCT_NAME = "Download Full Installer";
@@ -557,7 +557,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.5;
-				MARKETING_VERSION = 2.5;
+				MARKETING_VERSION = 2.5.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = perez987.DownloadFullInstaller;
 				PRODUCT_NAME = "Download Full Installer";
