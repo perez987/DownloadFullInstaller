@@ -1,0 +1,245 @@
+# Changelog
+
+All GitHub releases listed from first to latest. Releases from the [`old`](https://github.com/perez987/DownloadFullInstaller/tree/old) branch (macOS 11+) are labelled **`old` branch**; all others belong to the `main` branch (macOS 13+).
+
+---
+
+## [2.0.0] – September 14, 2025 · **`old` branch**
+
+**App for macOS 11+**
+
+- App runs on macOS 11+
+- Refactor Preferences logic
+- Remove localization (English default)
+- Simplified localization system
+
+---
+
+## [2.1.0] – September 15, 2025
+
+**App for macOS 13+**
+
+- Option to delete preferences plist file, simulating a first run
+- Revise language flow
+- Update localization strings for all supported languages
+- Clean up debug print statements
+- Bump to 2.1.0 version
+- Add language selection system
+- Add restart alert to language selection view
+- Add option to clear app's saved settings
+- Update translations with new strings
+- Add flag icons to language selection view
+
+---
+
+## [2.2.1] – September 19, 2025
+
+**New app icon**
+
+- New app icon more Tahoe style, thanks to [Anto65](https://github.com/antuneddu)
+
+---
+
+## [2.0.1] – September 22, 2025 · **`old` branch**
+
+**App for macOS 11+**
+
+- App runs on macOS 11+
+- Asset icons as badges Tahoe style, thanks to [chris1111](https://github.com/chris1111)
+- Add languages: Ukrainian (thanks _Vladislav Strekalin_) and Simplified Chinese
+
+---
+
+## [2.2.0] – September 23, 2025
+
+**Support for resuming downloads**
+
+- Add download resume functionality that automatically handles network interruptions
+
+---
+
+## [2.2.2] – September 29, 2025 _(build 175)_
+
+**Add Russian localization**
+
+- Add Russian localization (thanks _Vladislav Strekalin_)
+- Changed language selector size
+
+---
+
+## [2.5.0] – October 28, 2025
+
+**Create macOS Installer app**
+
+- Create the macOS installer application (e.g., "Install macOS Sequoia.app") directly from within Download Full Installer
+
+---
+
+## [1.9.9] – November 2, 2025 · **`old` branch**
+
+**Create macOS installer app**
+
+- App runs on macOS 11+
+- Create the macOS installer application (e.g., "Install macOS Big Sur.app") directly from within Download Full Installer
+
+---
+
+## [2.6.0] – November 28, 2025
+
+**Dock icon progress bar**
+
+- The package [DockProgress](DOCS/DockProgess.md) adds a progress bar overlay to the application's dock tile icon during PKG downloads
+
+---
+
+## [2.7.0] – November 30, 2025
+
+**Active download count**
+
+- Displays active download count in the badge style of DockProgress
+
+---
+
+## [3.0.3] – December 1, 2025
+
+**3 Simultaneous downloads**
+
+- Enables multiple concurrent downloads (max 3) with individual progress tracking and cancellation
+
+---
+
+## [3.0.4] – December 2, 2025
+
+**Fix alerts issue**
+
+- Unify alert handling in InstallerView: refactored InstallerView
+
+---
+
+## [3.0.2] – December 3, 2025
+
+**Centralize alert handling**
+
+- Centralize alert handling adding `Alert+Extensions.swift` to define all alert types, titles, messages, and button configurations in one place
+- [More info](DOCS/Alert-extension.md)
+
+---
+
+## [3.0.0] – December 8, 2025
+
+**Refactor SUCatalog loading**
+
+- `Swiftformat`: refactor and clean up codebase
+- Refactor SUCatalog loading
+
+---
+
+## [3.0.1] – December 24, 2025
+
+**Add visual indicator**
+
+- Add visual indicator for downloaded installers
+- Downgrade DockProgress to 4.3.1 for Xcode 15.4 compatibility
+
+---
+
+## [3.2.0] – January 13, 2026
+
+**Add Korean language**
+
+- Added Korean language support, thanks @VenusGirl
+- Bump version to 3.2
+
+---
+
+## [3.5.0] – January 18, 2026
+
+**Custom download folder**
+
+- Introduces a new SettingsView for download folder selection
+- DownloadManager and MultiDownloadManager now use security-scoped bookmarks for custom download folders, improving sandbox compatibility
+- Updated localizable strings and translations
+- Project version bumped to 3.5
+
+---
+
+## [3.6.0] – January 20, 2026
+
+**Temporary directory cleanup**
+
+- Added Arabic (ar) localization support, including InfoPlist.strings and Localizable.strings
+- Implemented temporary directory cleanup after download cancellation in both DownloadManager and MultiDownloadManager (to prevent large files from incomplete downloads from being stored indefinitely)
+- Converted the language list to a vertical ScrollView
+
+---
+
+## [3.7.0] – January 24, 2026
+
+**Add Slovenian language**
+
+- Added Slovenian language, thanks to @anderlli0053
+
+---
+
+## [3.8.0] – January 26, 2026
+
+**Reorder languages list**
+
+- Prioritize English and Spanish in language list order
+- Revert Liquid Glass support (working on a better implementation)
+
+---
+
+## [3.9.0] – January 26, 2026
+
+**Language selector rows**
+
+- Make entire language selector row clickable
+
+---
+
+## [3.9.1] – January 28, 2026
+
+**Round corners installers list**
+
+- Add corner radius to installers list in `ContentView.swift`
+
+---
+
+## [4.0.0] – February 2, 2026
+
+**Legacy macOS downloads**
+
+- Add legacy macOS installer assets and views (`LegacyMacOSVersion.swift` and `LegacyDownloadView.swift`)
+- Add sandbox fixes
+- Add an explicit Info.plist with ATS exceptions
+- Bump marketing and build versions to 4.0 (202)
+- Legacy macOS icons, thanks to @chris1111
+
+---
+
+## [4.0.1] – February 3, 2026
+
+**Minor UI fixes**
+
+- Ensure `LanguageSelectionView` syncs the `selectedLanguage` at first startup
+- Reduce `LegacyVersionRow` height for a tighter row layout
+- Remove Info.plist from Resources build phase
+
+---
+
+## [2.4.0] – February 26, 2026 · **`old` branch**
+
+**App for macOS 11+**
+
+- App runs on macOS 11+
+- `old` branch has been updated to include features of the `main` branch except for language selection
+
+---
+
+## [4.1.0] – February 26, 2026
+
+**Universal architecture**
+
+- Universal architecture (Intel + Silicon)
+- Embed DockProgress package 4.3.1, the last release with Xcode 15 / macOS Sonoma support
