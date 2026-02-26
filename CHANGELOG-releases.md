@@ -201,7 +201,7 @@ Package of changes and improvements:
 ## 2.4.0 – February 26, 2026
 
 - `old` branch has been updated to include features of the `main` branch except for language selection
-- For users requiring to run the app on macOS 11 -14
+- For users requiring to run the app on macOS 11 -12
 
 
 
