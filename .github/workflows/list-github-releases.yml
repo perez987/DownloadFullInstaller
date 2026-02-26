@@ -1,0 +1,21 @@
+name: list-github-releases
+
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+jobs:
+  list-releases:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: yakubique/github-releases@v1.2
+        id: get_releases
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          repository: perez987/DownloadFullInstaller
+      - run: |
+          echo "${{ steps.get_releases.outputs.releases }}"
