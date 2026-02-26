@@ -11,11 +11,14 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: yakubique/github-releases@v1.2
-        id: get_releases
+      - name: List releases sorted by version (newest first)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          repository: perez987/DownloadFullInstaller
-      - run: |
-          echo "${{ steps.get_releases.outputs.releases }}"
+        run: |
+          gh api repos/perez987/DownloadFullInstaller/releases --paginate \
+            | jq -r '
+                sort_by([.tag_name | split("-")[0] | split(".") | map(tonumber? // 0)])
+                | reverse
+                | .[]
+                | "[\(.tag_name)] \(.name)\n  Published : \(.published_at)\n  URL       : \(.html_url)\n"
+              '
