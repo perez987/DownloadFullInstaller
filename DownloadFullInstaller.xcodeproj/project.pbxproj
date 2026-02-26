@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		C0000001A000000100000001 /* MultiDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000001A000000200000001 /* MultiDownloadManager.swift */; };
 		C0000002A000000100000001 /* Alert+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000002A000000200000001 /* Alert+Extensions.swift */; };
-		C03916EE2EDBB6DC00187185 /* DockProgress in Frameworks */ = {isa = PBXBuildFile; productRef = C03916ED2EDBB6DC00187185 /* DockProgress */; };
-		D91B7DCB2EFC3D24008914AF /* DockProgress in Frameworks */ = {isa = PBXBuildFile; productRef = D91B7DCA2EFC3D24008914AF /* DockProgress */; };
+		D9BDCE8A2F50D56500238AA2 /* DockProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BDCE872F50D56500238AA2 /* DockProgress.swift */; };
+		D9BDCE8B2F50D56500238AA2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BDCE882F50D56500238AA2 /* Utilities.swift */; };
 		D9E20C6C2E8B2C570086992F /* FetchInstallerPkgApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E20C6B2E8B2C570086992F /* FetchInstallerPkgApp.swift */; };
 		D9E20C732E8B2C590086992F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9E20C722E8B2C590086992F /* Preview Assets.xcassets */; };
 		D9E20C7B2E8B2CE80086992F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9E20C7A2E8B2CE80086992F /* Assets.xcassets */; };
@@ -55,6 +55,8 @@
 		D9B13C8B2EB0E91E00342DC8 /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "fr-CA.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D9BDA0142EB01D4000096F47 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		D9BDA0152EB01D4000096F47 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		D9BDCE872F50D56500238AA2 /* DockProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DockProgress.swift; sourceTree = "<group>"; };
+		D9BDCE882F50D56500238AA2 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		D9E20C682E8B2C570086992F /* Download Full Installer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Download Full Installer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9E20C6B2E8B2C570086992F /* FetchInstallerPkgApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchInstallerPkgApp.swift; sourceTree = "<group>"; };
 		D9E20C722E8B2C590086992F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -91,8 +93,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D91B7DCB2EFC3D24008914AF /* DockProgress in Frameworks */,
-				C03916EE2EDBB6DC00187185 /* DockProgress in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +117,15 @@
 			path = Sleep;
 			sourceTree = "<group>";
 		};
+		D9BDCE892F50D56500238AA2 /* DockProgress-4.3.1 */ = {
+			isa = PBXGroup;
+			children = (
+				D9BDCE872F50D56500238AA2 /* DockProgress.swift */,
+				D9BDCE882F50D56500238AA2 /* Utilities.swift */,
+			);
+			path = "DockProgress-4.3.1";
+			sourceTree = "<group>";
+		};
 		D9E20C5F2E8B2C570086992F = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +147,7 @@
 			children = (
 				D9E20C832E8B2D1C0086992F /* AppDelegate.swift */,
 				D9E20C7A2E8B2CE80086992F /* Assets.xcassets */,
+				D9BDCE892F50D56500238AA2 /* DockProgress-4.3.1 */,
 				D95D3BFA2EDDFF95002AF7DA /* Downloads */,
 				D9E20C742E8B2C590086992F /* FetchInstallerPkg.entitlements */,
 				D9E20C6B2E8B2C570086992F /* FetchInstallerPkgApp.swift */,
@@ -215,7 +225,6 @@
 			);
 			name = DownloadFullInstaller;
 			packageProductDependencies = (
-				D91B7DCA2EFC3D24008914AF /* DockProgress */,
 			);
 			productName = FetchInstallerPkg;
 			productReference = D9E20C682E8B2C570086992F /* Download Full Installer.app */;
@@ -253,7 +262,6 @@
 			);
 			mainGroup = D9E20C5F2E8B2C570086992F;
 			packageReferences = (
-				D91B7DC92EFC3D24008914AF /* XCRemoteSwiftPackageReference "DockProgress" */,
 			);
 			productRefGroup = D9E20C692E8B2C570086992F /* Products */;
 			projectDirPath = "";
@@ -290,6 +298,7 @@
 				D9E20C942E8B2D3B0086992F /* SeedProgram.swift in Sources */,
 				D9E20CA52E8B2D490086992F /* PreferencesView.swift in Sources */,
 				D9E20C9C2E8B2D3B0086992F /* Product.swift in Sources */,
+				D9BDCE8B2F50D56500238AA2 /* Utilities.swift in Sources */,
 				D9E20C882E8B2D1C0086992F /* AppDelegate.swift in Sources */,
 				D9E20CAA2E8B2D490086992F /* DownloadView.swift in Sources */,
 				D9E20C842E8B2D1C0086992F /* Caffeine.swift in Sources */,
@@ -304,6 +313,7 @@
 				D9E20C992E8B2D3B0086992F /* BuildManifest.swift in Sources */,
 				D9E20C9B2E8B2D3B0086992F /* Package.swift in Sources */,
 				D9E20C9E2E8B2D3B0086992F /* SUCatalog.swift in Sources */,
+				D9BDCE8A2F50D56500238AA2 /* DockProgress.swift in Sources */,
 				D9E20C952E8B2D3B0086992F /* OSNames.swift in Sources */,
 				D9E20C6C2E8B2C570086992F /* FetchInstallerPkgApp.swift in Sources */,
 			);
@@ -588,38 +598,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		C03916EC2EDBB6DC00187185 /* XCRemoteSwiftPackageReference "DockProgress" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sindresorhus/DockProgress";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.3.1;
-			};
-		};
-		D91B7DC92EFC3D24008914AF /* XCRemoteSwiftPackageReference "DockProgress" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sindresorhus/DockProgress";
-			requirement = {
-				kind = exactVersion;
-				version = 4.3.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		C03916ED2EDBB6DC00187185 /* DockProgress */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C03916EC2EDBB6DC00187185 /* XCRemoteSwiftPackageReference "DockProgress" */;
-			productName = DockProgress;
-		};
-		D91B7DCA2EFC3D24008914AF /* DockProgress */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D91B7DC92EFC3D24008914AF /* XCRemoteSwiftPackageReference "DockProgress" */;
-			productName = DockProgress;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D9E20C602E8B2C570086992F /* Project object */;
 }
