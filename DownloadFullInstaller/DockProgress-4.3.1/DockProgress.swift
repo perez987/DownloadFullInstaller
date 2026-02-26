@@ -1,4 +1,5 @@
 import Cocoa
+import AppKit
 
 /**
 Show progress in your app's Dock icon.
