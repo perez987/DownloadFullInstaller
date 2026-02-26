@@ -41,7 +41,7 @@ struct SettingsView: View {
             // Download folder selection
             VStack(alignment: .leading, spacing: 12) {
                 Text(NSLocalizedString("Download Location", comment: "Download location label"))
-                    .font(.subheadline)
+                    .font(.callout)
                     .foregroundColor(.secondary)
 
                 HStack(spacing: 12) {
@@ -61,7 +61,7 @@ struct SettingsView: View {
 
                 // Show current download path
                 Text(displayPath)
-                    .font(.caption)
+                    .font(.callout)
                     .foregroundColor(.secondary)
                     .lineLimit(2)
                     .truncationMode(.middle)
