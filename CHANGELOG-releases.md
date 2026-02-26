@@ -203,12 +203,15 @@ Package of changes and improvements:
 
 - Create the macOS installer application (e.g., "Install macOS Big Sur.app") directly from within Download Full Installer
 
-## 2.4.0 – February 26, 2026
+## 2.4.0 – February 25, 2026
 
 - `old` branch has been updated to include the functionalities of the `main` branch with these differences:
    - The same languages ​​are supported, but without a language selector
    - No temporary directory cleanup on app quit
 - For users requiring to run the app on macOS 11 -12
 
+## 2.4.1 – February 26, 2026
 
+- Added temporary directory cleanup on app quit
+- For sandboxed apps, this is `~/Library/Containers/perez987.DownloadFullInstaller/Data/tmp`
 
