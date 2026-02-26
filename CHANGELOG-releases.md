@@ -70,13 +70,13 @@ Package of changes and improvements:
 
 - Displays active download count in the badge style of DockProgress
 
-## 3.0.3 -  December 1, 2025
+## 3.0.0 -  December 1, 2025
 
 **3 Simultaneous downloads**
 
 - Enables multiple concurrent downloads (max 3) with individual progress tracking and cancellation
 
-## 3.0.4 -  December 2, 2025
+## 3.0.1 -  December 2, 2025
 
 **Fix alerts issue**
 
@@ -89,14 +89,14 @@ Package of changes and improvements:
 - Centralize alert handling adding `Alert+Extensions.swift` to define all alert types, titles, messages, and button configurations in one place
 - [More info](DOCS/Alert-extension.md)
 
-## 3.0.0 -  December 8, 2025
+## 3.0.3 -  December 8, 2025
 
 **Refactor SUCatalog loading**
 
 - `Swiftformat`: refactor and clean up codebase
 - Refactor SUCatalog loading
 
-## 3.0.1 -  December 24, 2025
+## 3.0.4 -  December 24, 2025
 
 **Add visual indicator**
 
@@ -193,7 +193,7 @@ Package of changes and improvements:
 - Asset icons as badges Tahoe style, thanks to [chris1111](https://github.com/chris1111)
 - Add languages: Ukrainian (thanks _Vladislav Strekalin_) and Simplified Chinese
 
-## 1.9.9 – November 2, 2025
+## 2.1.0 – November 2, 2025
 
 - App runs on macOS 11+
 - Create the macOS installer application (e.g., "Install macOS Big Sur.app") directly from within Download Full Installer
