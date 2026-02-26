@@ -1,13 +1,10 @@
 # Download Full Installer
 
-![Swift](https://img.shields.io/badge/Swift-5+-lavender.svg)
+<a href="CHANGELOG-releases.md">
+    <img src="https://img.shields.io/badge/Releases-CHANGELOG-green" alt=“CHANGELOG releases”></a><br>
+    ![Swift](https://img.shields.io/badge/Swift-5+-lavender.svg)
 ![Platform](https://img.shields.io/badge/macOS-13+-orange.svg)
-<!-- ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?label=Downloads&color=9494ff) -->
-
-📋 [Changelog](CHANGELOG.md)
-
-<a href="README-ES.md">
-    <img src="https://img.shields.io/badge/Spanish-README-blue" alt=“Spanish README Docs”><br><br>
+<!-- ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?label=Downloads&color=9494ff) -->    
 
 As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) by <em>scriptingosx</em> stopped its development. For over three years, my repository, DownloadFullInstaller, was a fork of the original. However, after the original was archived, I created a new repo as standalone (<em>not forked</em>) version. I'll keep this project active and up to date as long as it is useful to other users.
 
