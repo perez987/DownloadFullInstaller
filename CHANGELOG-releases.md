@@ -126,6 +126,8 @@ Package of changes and improvements:
 - Updated localizable strings and translations
 - Project version bumped to 3.5.0
 
+![Multidownload](Images/EN/Custom-folder.png)
+
 ## 3.6.0 -  January 20, 2026
 
 **Temporary directory cleanup**
