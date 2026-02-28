@@ -147,3 +147,15 @@
 
 /* Legacy macOS installers */
 "Download macOS %@ %@" = "下载 macOS %@ %@";
+
+/* Update Check */
+"Check for Updates…" = "检查更新…";
+"UpdateAvailable" = "有可用更新";
+"UpdateAvailableInfo" = "Download Full Installer %@ 现已可用。是否下载？";
+"DownloadUpdate" = "下载更新";
+"UpdateLater" = "稍后";
+"UpToDate" = "您已是最新版本！";
+"UpToDateInfo" = "Download Full Installer %@ 是当前最新版本。";
+"UpdateCheckError" = "检查更新失败";
+"UpdateCheckFailed" = "无法获取更新信息。";
+"UpdateCheckNetworkError" = "无法连接到更新服务器。请检查您的网络连接。";

@@ -60,17 +60,26 @@ struct FetchInstallerPkgApp: App {
         .windowResizability(.contentSize)
         .commands {
             CommandGroup(replacing: .appSettings) {
+                // Settings to select downloads folder
                 Button(NSLocalizedString("Settings", comment: "Menu item to show settings window")) {
                     showSettings = true
                 }
                 .keyboardShortcut(",", modifiers: [.command])
 
                 Divider()
-
+                // Settings to select language selector
                 Button(NSLocalizedString("Select Language", comment: "Menu item to show language selection")) {
                     showLanguageSelection = true
                 }
                 .keyboardShortcut("l", modifiers: [.command])
+            }
+            CommandGroup(after: .appInfo) {
+                // Settings to check for updates
+                Button(NSLocalizedString("Check for Updates…", comment: "Menu item to check for app updates"),
+                       systemImage: "arrow.triangle.2.circlepath") {
+                    GitHubUpdateChecker.shared.checkForUpdates(userInitiated: true)
+                }
+                    .keyboardShortcut("u", modifiers: [.command])
             }
         }
     }

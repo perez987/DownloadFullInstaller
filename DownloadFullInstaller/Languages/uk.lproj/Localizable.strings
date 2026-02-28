@@ -147,3 +147,15 @@
 
 /* Legacy macOS installers */
 "Download macOS %@ %@" = "Завантажити macOS %@ %@";
+
+/* Update Check */
+"Check for Updates…" = "Перевірити оновлення…";
+"UpdateAvailable" = "Доступне оновлення";
+"UpdateAvailableInfo" = "Download Full Installer %@ доступний. Бажаєте завантажити його?";
+"DownloadUpdate" = "Завантажити оновлення";
+"UpdateLater" = "Пізніше";
+"UpToDate" = "У вас актуальна версія!";
+"UpToDateInfo" = "Download Full Installer %@ — це остання версія.";
+"UpdateCheckError" = "Помилка перевірки оновлень";
+"UpdateCheckFailed" = "Не вдалося отримати інформацію про оновлення.";
+"UpdateCheckNetworkError" = "Не вдалося підключитися до сервера оновлень. Перевірте з'єднання з інтернетом.";

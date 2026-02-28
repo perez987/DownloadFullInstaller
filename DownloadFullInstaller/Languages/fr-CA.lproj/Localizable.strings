@@ -147,3 +147,15 @@
 
 /* Legacy macOS installers */
 "Download macOS %@ %@" = "Télécharger macOS %@ %@";
+
+/* Update Check */
+"Check for Updates…" = "Rechercher des mises à jour…";
+"UpdateAvailable" = "Mise à jour disponible";
+"UpdateAvailableInfo" = "Download Full Installer %@ est maintenant disponible. Voulez-vous le télécharger ?";
+"DownloadUpdate" = "Télécharger la mise à jour";
+"UpdateLater" = "Plus tard";
+"UpToDate" = "Vous êtes à jour !";
+"UpToDateInfo" = "Download Full Installer %@ est la version la plus récente.";
+"UpdateCheckError" = "Échec de la vérification des mises à jour";
+"UpdateCheckFailed" = "Impossible de récupérer les informations de mise à jour.";
+"UpdateCheckNetworkError" = "Impossible de se connecter au serveur de mises à jour. Veuillez vérifier votre connexion Internet.";

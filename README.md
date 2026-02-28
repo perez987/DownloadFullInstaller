@@ -34,6 +34,7 @@ Download Full Installer runs on macOS 13 Ventura through macOS 26 Tahoe.
 - Added customizable download folder selection
 - Clean up incomplete downloads on app quit
 - Added legacy macOS installer support (10.7-10.12); read [this](DOCS/Legacy-macos.md)
+- Added built-in update checker that uses the GitHub Releases API (no Sparkle dependency); more info in [Updater-system.md](DOCS/Updater-system.md)
 
 ### Create Installer App Feature
 

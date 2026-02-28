@@ -202,3 +202,25 @@
 /* Legacy macOS installers */
 "Download macOS %@ %@" =
 "تنزيل macOS %@ %@";
+
+/* Update Check */
+"Check for Updates…" =
+"البحث عن تحديثات…";
+"UpdateAvailable" =
+"يتوفر تحديث";
+"UpdateAvailableInfo" =
+"Download Full Installer %@ متاح الآن. هل تريد تنزيله؟";
+"DownloadUpdate" =
+"تنزيل التحديث";
+"UpdateLater" =
+"لاحقًا";
+"UpToDate" =
+"أنت تستخدم أحدث إصدار!";
+"UpToDateInfo" =
+"Download Full Installer %@ هو الإصدار الأحدث حاليًا.";
+"UpdateCheckError" =
+"فشل التحقق من التحديثات";
+"UpdateCheckFailed" =
+"تعذّر الحصول على معلومات التحديث.";
+"UpdateCheckNetworkError" =
+"تعذّر الاتصال بخادم التحديثات. يرجى التحقق من اتصالك بالإنترنت.";

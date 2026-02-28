@@ -147,3 +147,15 @@
 
 /* Legacy macOS installers */
 "Download macOS %@ %@" = "Prenesi macOS %@ %@";
+
+/* Update Check */
+"Check for Updates…" = "Preveri posodobitve…";
+"UpdateAvailable" = "Na voljo je posodobitev";
+"UpdateAvailableInfo" = "Download Full Installer %@ je na voljo. Ga želite prenesti?";
+"DownloadUpdate" = "Prenesi posodobitev";
+"UpdateLater" = "Kasneje";
+"UpToDate" = "Imate najnovejšo različico!";
+"UpToDateInfo" = "Download Full Installer %@ je trenutno najnovejša različica.";
+"UpdateCheckError" = "Preverjanje posodobitev ni uspelo";
+"UpdateCheckFailed" = "Informacij o posodobitvi ni bilo mogoče pridobiti.";
+"UpdateCheckNetworkError" = "Ni mogoče vzpostaviti povezave s strežnikom za posodobitve. Preverite internetno povezavo.";

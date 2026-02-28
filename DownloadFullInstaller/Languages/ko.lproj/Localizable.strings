@@ -147,3 +147,15 @@
 
 /* Legacy macOS installers */
 "Download macOS %@ %@" = "macOS %@ %@ 다운로드";
+
+/* Update Check */
+"Check for Updates…" = "업데이트 확인…";
+"UpdateAvailable" = "업데이트 가능";
+"UpdateAvailableInfo" = "Download Full Installer %@이(가) 출시되었습니다. 다운로드하시겠습니까?";
+"DownloadUpdate" = "업데이트 다운로드";
+"UpdateLater" = "나중에";
+"UpToDate" = "최신 버전입니다!";
+"UpToDateInfo" = "Download Full Installer %@은(는) 현재 최신 버전입니다.";
+"UpdateCheckError" = "업데이트 확인 실패";
+"UpdateCheckFailed" = "업데이트 정보를 가져올 수 없습니다.";
+"UpdateCheckNetworkError" = "업데이트 서버에 연결할 수 없습니다. 인터넷 연결을 확인하세요.";

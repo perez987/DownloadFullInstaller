@@ -12,6 +12,7 @@
 		D9690FB42F4ECEED00265627 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9690FB22F4ECEED00265627 /* Utilities.swift */; };
 		D9690FB52F4ECEED00265627 /* DockProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9690FB12F4ECEED00265627 /* DockProgress.swift */; };
 		D982F68E2F2C29240016CC88 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D982F68D2F2C29240016CC88 /* Preview Assets.xcassets */; };
+		D9A1B2C32F5000000000CAFE /* GitHubUpdateChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A1B2C22F5000000000CAFE /* GitHubUpdateChecker.swift */; };
 		D9AAA0002E8B2D3B0086992F /* LegacyMacOSVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA0001E8B2D3B0086992F /* LegacyMacOSVersion.swift */; };
 		D9AAA0004E8B2D490086992F /* LegacyDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA0003E8B2D490086992F /* LegacyDownloadView.swift */; };
 		D9E20C6C2E8B2C570086992F /* DownloadFullInstallerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E20C6B2E8B2C570086992F /* DownloadFullInstallerApp.swift */; };
@@ -66,6 +67,7 @@
 		D9811C172F1700A600EB2ACF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D9811C182F1700A600EB2ACF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D982F68D2F2C29240016CC88 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D9A1B2C22F5000000000CAFE /* GitHubUpdateChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUpdateChecker.swift; sourceTree = "<group>"; };
 		D9AAA0001E8B2D3B0086992F /* LegacyMacOSVersion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegacyMacOSVersion.swift; sourceTree = "<group>"; };
 		D9AAA0003E8B2D490086992F /* LegacyDownloadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegacyDownloadView.swift; sourceTree = "<group>"; };
 		D9B13C8A2EB0E91E00342DC8 /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "fr-CA.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -119,6 +121,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C08D6ACE2F52644000801B13 /* Updater */ = {
+			isa = PBXGroup;
+			children = (
+				D9A1B2C22F5000000000CAFE /* GitHubUpdateChecker.swift */,
+			);
+			path = Updater;
+			sourceTree = "<group>";
+		};
 		D9168EB02F2C1E390054D5AF /* Backup */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +205,7 @@
 				D9E20C822E8B2D1C0086992F /* Prefs.swift */,
 				D950B6952F2C26FC0056EB3B /* Preview Content */,
 				D95D3BFB2EDDFFAE002AF7DA /* Sleep */,
+				C08D6ACE2F52644000801B13 /* Updater */,
 				D9E20C7E2E8B2D060086992F /* Views */,
 			);
 			path = DownloadFullInstaller;
@@ -361,6 +372,7 @@
 				D9E20CAD2E8B2D5E0086992F /* LocalizationHelper.swift in Sources */,
 				D9E20C6C2E8B2C570086992F /* DownloadFullInstallerApp.swift in Sources */,
 				ECEDC58D9422D0D6822812AD /* SettingsView.swift in Sources */,
+				D9A1B2C32F5000000000CAFE /* GitHubUpdateChecker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,7 +556,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 220;
+				CURRENT_PROJECT_VERSION = 225;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"DownloadFullInstaller/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
@@ -573,7 +585,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 4.1.0;
+				MARKETING_VERSION = 4.2.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = perez987.DownloadFullInstaller;
 				PRODUCT_NAME = "Download Full Installer";
@@ -593,7 +605,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 220;
+				CURRENT_PROJECT_VERSION = 225;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"DownloadFullInstaller/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
@@ -622,7 +634,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 4.1.0;
+				MARKETING_VERSION = 4.2.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = perez987.DownloadFullInstaller;
 				PRODUCT_NAME = "Download Full Installer";
