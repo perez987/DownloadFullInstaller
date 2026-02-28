@@ -44,7 +44,7 @@
 "Cancel %@ download" = "Скасувати завантаження %@";
 
 /* No comment provided by engineer. */
-"Show the installer in the Downloads folder" = "Показати установник у папці Завантаження";
+"Show the installer in the Downloads folder" = "Показати установник у папці завантаження";
 
 /* No comment provided by engineer. */
 "Language Selection" = "Вибір мови";
@@ -89,7 +89,7 @@
 "Error Creating Installer" = "Помилка створення установника macOS";
 
 /* No comment provided by engineer. */
-"The installer package %@ does not exist in the Downloads folder. Please download it first." = "Пакет встановлення %@ не існує в папці Завантаження. Спочатку завантажте його.";
+"The installer package %@ does not exist in the %@ folder. Please download it first." = "Інсталяційний пакет %@ відсутній у папці %@. Будь ласка, спочатку завантажте його.";
 
 /* No comment provided by engineer. */
 "Success" = "Успіх";
@@ -101,7 +101,7 @@
 "The installer package has been opened. Follow the on-screen instructions to complete the installation" = "Пакет встановлення відкрито. Дотримуйтесь інструкцій на екрані для завершення встановлення";
 
 /* No comment provided by engineer. */
-"Failed to open the installer package. Please try opening it manually from the Downloads folder" = "Не вдалося відкрити пакет встановлення. Спробуйте відкрити його вручну з папки Завантаження";
+"Failed to open the installer package. Please try opening it manually from the Downloads folder" = "Не вдалося відкрити пакет встановлення. Спробуйте відкрити його вручну з папки завантаження";
 
 /* No comment provided by engineer. */
 "Failed to create installer app. Error: %@" = "Не вдалося створити додаток встановлення macOS. Помилка: %@";
@@ -123,3 +123,39 @@
 
 /* Visual indicator*/
 "This installer has been downloaded" = "Цей установник завантажено";
+
+/* Settings window */
+"Settings" = "Налаштування";
+
+/* Settings window */
+"Close" = "Закрити";
+
+/* Settings window */
+"Download Location" = "Загрузить Папку";
+
+/* Download folder selection */
+"Select Download Folder" = "Виберіть Папку Завантажень";
+
+/* Download folder selection */
+"Choose where to save downloaded installers" = "Виберіть де зберегти завантажені установники";
+
+/* Legacy macOS installers */
+"Legacy macOS Installers" = "Застарілі інсталятори macOS";
+
+/* Legacy macOS installers */
+"Download legacy macOS installers (10.7 - 10.12)" = "Завантажити застарілі версії macOS (10.7 - 10.12)";
+
+/* Legacy macOS installers */
+"Download macOS %@ %@" = "Завантажити macOS %@ %@";
+
+/* Update Check */
+"Check for Updates…" = "Перевірити оновлення…";
+"UpdateAvailable" = "Доступне оновлення";
+"UpdateAvailableInfo" = "Download Full Installer %@ доступний. Бажаєте завантажити його?";
+"DownloadUpdate" = "Завантажити оновлення";
+"UpdateLater" = "Пізніше";
+"UpToDate" = "У вас актуальна версія!";
+"UpToDateInfo" = "Download Full Installer %@ — це остання версія.";
+"UpdateCheckError" = "Помилка перевірки оновлень";
+"UpdateCheckFailed" = "Не вдалося отримати інформацію про оновлення.";
+"UpdateCheckNetworkError" = "Не вдалося підключитися до сервера оновлень. Перевірте з'єднання з інтернетом.";

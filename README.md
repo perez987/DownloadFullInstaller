@@ -28,6 +28,7 @@ This `old` branch of Download Full Installer runs on macOS 11 Big Sur up to macO
 - Added badge overlaying to the application's dock tile icon during PKG downloads
 - Added support for up to 3 simultaneous downloads.
 - Added temporary directory cleanup on app quit.
+- - Added built-in update checker that uses the GitHub Releases API (no Sparkle dependency); more info in [Updater-system.md](DOCS/Updater-system.md).
 
 ## Original repository README
 

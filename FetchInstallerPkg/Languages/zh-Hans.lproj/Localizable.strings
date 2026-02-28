@@ -89,7 +89,7 @@
 "Error Creating Installer" = "创建 macOS 安装程序时出错";
 
 /* No comment provided by engineer. */
-"The installer package %@ does not exist in the Downloads folder. Please download it first." = "下载文件夹中不存在安装包%@。请先下载.";
+"The installer package %@ does not exist in the %@ folder. Please download it first." = "安装包 %@ 不存在于 %@ 文件夹中。请先下载它。";
 
 /* No comment provided by engineer. */
 "Success" = "成功";
@@ -123,3 +123,39 @@
 
 /* Visual indicator*/
 "This installer has been downloaded" = "此安装程序已下载";
+
+/* Settings window */
+"Settings" = "设置";
+
+/* Settings window */
+"Close" = "关闭";
+
+/* Settings window */
+"Download Location" = "选择文件夹";
+
+/* Download folder selection */
+"Select Download Folder" = "选择下载文件夹";
+
+/* Download folder selection */
+"Choose where to save downloaded installers" = "选择保存下载的安装程序的位置";
+
+/* Legacy macOS installers */
+"Legacy macOS Installers" = "旧版 macOS 安装程序";
+
+/* Legacy macOS installers */
+"Download legacy macOS installers (10.7 - 10.12)" = "下载旧版 macOS 安装程序 (10.7 - 10.12)";
+
+/* Legacy macOS installers */
+"Download macOS %@ %@" = "下载 macOS %@ %@";
+
+/* Update Check */
+"Check for Updates…" = "检查更新…";
+"UpdateAvailable" = "有可用更新";
+"UpdateAvailableInfo" = "Download Full Installer %@ 现已可用。是否下载？";
+"DownloadUpdate" = "下载更新";
+"UpdateLater" = "稍后";
+"UpToDate" = "您已是最新版本！";
+"UpToDateInfo" = "Download Full Installer %@ 是当前最新版本。";
+"UpdateCheckError" = "检查更新失败";
+"UpdateCheckFailed" = "无法获取更新信息。";
+"UpdateCheckNetworkError" = "无法连接到更新服务器。请检查您的网络连接。";

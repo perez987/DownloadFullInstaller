@@ -44,7 +44,7 @@
 "Cancel %@ download" = "Cancel %@ download";
 
 /* No comment provided by engineer. */
-"Show the installer in the Downloads folder" = "Show the installer in the Downloads folder";
+"Show the installer in the Downloads folder" = "Show the installer in the download folder";
 
 /* No comment provided by engineer. */
 "Language Selection" = "Language Selection";
@@ -89,7 +89,7 @@
 "Error Creating Installer" = "Error Creating macOS Installer";
 
 /* No comment provided by engineer. */
-"The installer package %@ does not exist in the Downloads folder. Please download it first." = "The installer package %@ does not exist in the Downloads folder. Please download it first.";
+"The installer package %@ does not exist in the %@ folder. Please download it first." = "The installer package %@ does not exist in the %@ folder. Please download it first.";
 
 /* No comment provided by engineer. */
 "Success" = "Success";
@@ -101,7 +101,7 @@
 "The installer package has been opened. Follow the on-screen instructions to complete the installation" = "The installer package has been opened. Follow the on-screen instructions to complete the installation";
 
 /* No comment provided by engineer. */
-"Failed to open the installer package. Please try opening it manually from the Downloads folder" = "Failed to open the installer package. Please try opening it manually from the Downloads folder";
+"Failed to open the installer package. Please try opening it manually from the Downloads folder" = "Failed to open the installer package. Please try opening it manually from the download folder";
 
 /* No comment provided by engineer. */
 "Failed to create installer app. Error: %@" = "Failed to create macOS Install app. Error: %@";
@@ -123,3 +123,39 @@
 
 /* Visual indicator*/
 "This installer has been downloaded" = "This installer has been downloaded";
+
+/* Settings window */
+"Settings" = "Settings";
+
+/* Settings window */
+"Close" = "Close";
+
+/* Settings window */
+"Download Location" = "Downloads Folder";
+
+/* Download folder selection */
+"Select Download Folder" = "Select Downloads Folder";
+
+/* Download folder selection */
+"Choose where to save downloaded installers" = "Choose where to save the downloaded installers";
+
+/* Legacy macOS installers */
+"Legacy macOS Installers" = "Legacy macOS Installers";
+
+/* Legacy macOS installers */
+"Download legacy macOS installers (10.7 - 10.12)" = "Download legacy macOS installers (10.7 - 10.12)";
+
+/* Legacy macOS installers */
+"Download macOS %@ %@" = "Download macOS %@ %@";
+
+/* Update Check */
+"Check for Updates…" = "Check for Updates…";
+"UpdateAvailable" = "Update Available";
+"UpdateAvailableInfo" = "Download Full Installer %@ is now available. Would you like to download it?";
+"DownloadUpdate" = "Download Update";
+"UpdateLater" = "Later";
+"UpToDate" = "You're up to date!";
+"UpToDateInfo" = "Download Full Installer %@ is currently the latest version.";
+"UpdateCheckError" = "Update Check Failed";
+"UpdateCheckFailed" = "Failed to retrieve update information.";
+"UpdateCheckNetworkError" = "Unable to connect to the update server. Please check your internet connection.";

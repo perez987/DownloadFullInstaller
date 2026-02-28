@@ -31,5 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(_: Notification) {
         // Enable sleep mode when app exits
         enableSystemSleep()
+        // Clean up temporary directory to remove incomplete downloads
+        DownloadManager.cleanupAppTempDirectory()
     }
 }

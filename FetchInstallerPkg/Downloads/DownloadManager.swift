@@ -37,9 +37,9 @@ import Foundation
     private static var activeDownloadCount: Int = 0
     private static let downloadCountLock = NSLock()
 
-    /// Returns the current number of active downloads
-    /// This function can be used with DockProgress badge style:
-    /// DockProgress.style = .badge(color: .blue, badgeValue: { getDownloadCount() })
+    // Returns the current number of active downloads
+    // This function can be used with DockProgress badge style:
+    // DockProgress.style = .badge(color: .blue, badgeValue: { getDownloadCount() })
     static func getDownloadCount() -> Int {
         downloadCountLock.lock()
         defer { downloadCountLock.unlock() }
@@ -148,8 +148,50 @@ import Foundation
             retryTimer = nil
             // Decrement active download count when cancelled
             DownloadManager.decrementDownloadCount()
+            // Clean up temporary files
+            cleanupTempDirectory()
         }
         print("Cancelled download of \(filename ?? "InstallerAssistant.pkg")")
+    }
+
+    private func cleanupTempDirectory() {
+        DownloadManager.cleanupAppTempDirectory()
+    }
+
+    // Removes all files from the app's sandboxed temporary directory
+    // For sandboxed apps, this is ~/Library/Containers/perez987.FetchInstallerPkg/Data/tmp
+    static func cleanupAppTempDirectory() {
+        let tempDir = URL(fileURLWithPath: NSTemporaryDirectory())
+        do {
+            let tempFiles = try FileManager.default.contentsOfDirectory(at: tempDir, includingPropertiesForKeys: [.isRegularFileKey, .fileSizeKey])
+            var deletedCount = 0
+            var totalSize: Int64 = 0
+
+            for file in tempFiles {
+                do {
+                    // Only delete regular files (not directories)
+                    let resourceValues = try file.resourceValues(forKeys: [.isRegularFileKey, .fileSizeKey])
+                    guard resourceValues.isRegularFile == true else { continue }
+
+                    // Get file size before deletion
+                    let fileSize = resourceValues.fileSize ?? 0
+
+                    try FileManager.default.removeItem(at: file)
+                    deletedCount += 1
+                    totalSize += Int64(fileSize)
+                } catch {
+                    // Continue with other files if one fails
+                    print("Failed to delete temp file \(file.lastPathComponent): \(error.localizedDescription)")
+                }
+            }
+
+            if deletedCount > 0 {
+                let sizeString = ByteCountFormatter.string(fromByteCount: totalSize, countStyle: .file)
+                print("Cleaned up temporary directory: deleted \(deletedCount) file(s), freed \(sizeString)")
+            }
+        } catch {
+            print("Failed to access temporary directory for cleanup: \(error.localizedDescription)")
+        }
     }
 
     private func retryDownload() {
@@ -248,7 +290,7 @@ extension DownloadManager: URLSessionTaskDelegate {
         guard let error = error else { return }
 
         print("Download error: \(error.localizedDescription)")
-        //		print("Download error occurred: the Internet connection has been lost")
+        //        print("Download error occurred: the Internet connection has been lost")
 
         // Check if this is a network error that we can recover from
         let nsError = error as NSError
