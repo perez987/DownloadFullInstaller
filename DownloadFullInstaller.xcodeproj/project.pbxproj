@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C0000001A000000100000001 /* MultiDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000001A000000200000001 /* MultiDownloadManager.swift */; };
 		C0000002A000000100000001 /* Alert+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000002A000000200000001 /* Alert+Extensions.swift */; };
+		D947B0E52F5308AE003AB091 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D947B0E42F5308AE003AB091 /* Info.plist */; };
 		D9AFCB4A2F52FD7000528AE3 /* GitHubUpdateChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AFCB482F52FD7000528AE3 /* GitHubUpdateChecker.swift */; };
 		D9BDCE8A2F50D56500238AA2 /* DockProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BDCE872F50D56500238AA2 /* DockProgress.swift */; };
 		D9BDCE8B2F50D56500238AA2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BDCE882F50D56500238AA2 /* Utilities.swift */; };
@@ -52,6 +53,7 @@
 		D9296C6E2EAEBAE900E9BE5A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9296C6F2EAEBAEF00E9BE5A /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D9296C702EAEBAEF00E9BE5A /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D947B0E42F5308AE003AB091 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9AFCB482F52FD7000528AE3 /* GitHubUpdateChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubUpdateChecker.swift; sourceTree = "<group>"; };
 		D9B13C8A2EB0E91E00342DC8 /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "fr-CA.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		D9B13C8B2EB0E91E00342DC8 /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "fr-CA.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				D95D3BFA2EDDFF95002AF7DA /* Downloads */,
 				D9E20C742E8B2C590086992F /* FetchInstallerPkg.entitlements */,
 				D9E20C6B2E8B2C570086992F /* FetchInstallerPkgApp.swift */,
+				D947B0E42F5308AE003AB091 /* Info.plist */,
 				D9E20C7C2E8B2CF20086992F /* Languages */,
 				D9E20C7D2E8B2CFF0086992F /* Model */,
 				D9E20C822E8B2D1C0086992F /* Prefs.swift */,
@@ -290,6 +293,7 @@
 			files = (
 				D9E20C9D2E8B2D3B0086992F /* SeedCatalogs.plist in Resources */,
 				D9E20CB12E8B2D840086992F /* Localizable.strings in Resources */,
+				D947B0E52F5308AE003AB091 /* Info.plist in Resources */,
 				D9E20C7B2E8B2CE80086992F /* Assets.xcassets in Resources */,
 				D9E20C732E8B2C590086992F /* Preview Assets.xcassets in Resources */,
 				D9E20CB62E8B2DB20086992F /* InfoPlist.strings in Resources */,
