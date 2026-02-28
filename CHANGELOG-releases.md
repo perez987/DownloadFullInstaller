@@ -189,6 +189,15 @@ Package of changes and improvements:
 - Universal architecture (Intel + Silicon)
 - Embed DockProgress package 4.3.1, the last release with Xcode 15 / macOS Sonoma support
 
+## 4.2.0 -  February 28, 2026
+
+**Updater system (no-Sparkle)**
+
+- Introduce a lightweight GitHub Releases-based updater; it has no third-party dependencies (no Sparkle or similar framework required)
+- Integrate a Check for Updates menu item (⌘U)
+- Add localization strings for update prompts
+- Add documentation about the updater: [Updater-system.md](https://github.com/perez987/DownloadFullInstaller/blob/main/DOCS/Updater-system.md)
+
 # `old`branch
 
 ## 2.0.0 – September 14, 2025
@@ -215,6 +224,12 @@ Package of changes and improvements:
 
 ## 2.5.1 – February 26, 2026
 
-- Added temporary directory cleanup on app quit
+- Add temporary directory cleanup on app quit
 - For sandboxed apps, this is `~/Library/Containers/perez987.DownloadFullInstaller/Data/tmp`
 
+## 2.5.2 – February 28, 2026
+
+- Add a GitHub-based update checker and integrate it into the app and project
+- Add "Check for Updates…" command (⌘U) that calls the updater task
+- Add [Updater-system.md](https://github.com/perez987/DownloadFullInstaller/blob/main/DOCS/Updater-system.md) describing updater functionality
+- Update Localizable.strings across languages
