@@ -32,8 +32,8 @@ final class GitHubUpdateChecker {
         "https://api.github.com/repos/\(owner)/\(repo)/releases/latest"
     }
 
-    private var releasesPageURL: String {
-        "https://github.com/\(owner)/\(repo)/releases"
+    private func releasePageURL(tag: String) -> String {
+        "https://github.com/\(owner)/\(repo)/releases/tag/\(tag)"
     }
 
     // MARK: - Public API
@@ -63,7 +63,7 @@ final class GitHubUpdateChecker {
                 return
             }
             let latestVersion = self.normalizedVersion(tag)
-            self.compareAndNotify(latestVersion: latestVersion, currentVersion: currentVersion, userInitiated: userInitiated)
+            self.compareAndNotify(latestVersion: latestVersion, releaseTag: tag, currentVersion: currentVersion, userInitiated: userInitiated)
         }
     }
 
@@ -79,6 +79,7 @@ final class GitHubUpdateChecker {
             }
             // Find the newest non-prerelease tag that starts with the required major prefix
             var bestVersion: String? = nil
+            var bestTag: String? = nil
             for release in releases {
                 guard let tag = release["tag_name"] as? String else { continue }
                 let ver = self.normalizedVersion(tag)
@@ -88,14 +89,15 @@ final class GitHubUpdateChecker {
                 guard !isDraft && !isPrerelease else { continue }
                 if bestVersion == nil || self.isVersion(ver, newerThan: bestVersion!) {
                     bestVersion = ver
+                    bestTag = tag
                 }
             }
-            guard let latestVersion = bestVersion else {
+            guard let latestVersion = bestVersion, let latestTag = bestTag else {
                 // No matching release found – silently ignore for automatic checks
                 if userInitiated { self.showErrorAlert(NSLocalizedString("UpdateCheckFailed", comment: "")) }
                 return
             }
-            self.compareAndNotify(latestVersion: latestVersion, currentVersion: currentVersion, userInitiated: userInitiated)
+            self.compareAndNotify(latestVersion: latestVersion, releaseTag: latestTag, currentVersion: currentVersion, userInitiated: userInitiated)
         }
     }
 
@@ -171,15 +173,15 @@ final class GitHubUpdateChecker {
 
     // MARK: - Alert helpers
 
-    private func compareAndNotify(latestVersion: String, currentVersion: String, userInitiated: Bool) {
+    private func compareAndNotify(latestVersion: String, releaseTag: String, currentVersion: String, userInitiated: Bool) {
         if isVersion(latestVersion, newerThan: currentVersion) {
-            showUpdateAvailableAlert(latestVersion: latestVersion)
+            showUpdateAvailableAlert(latestVersion: latestVersion, releaseTag: releaseTag)
         } else if userInitiated {
             showUpToDateAlert(currentVersion: currentVersion)
         }
     }
 
-    private func showUpdateAvailableAlert(latestVersion: String) {
+    private func showUpdateAvailableAlert(latestVersion: String, releaseTag: String) {
         let alert = NSAlert()
         alert.messageText = NSLocalizedString("UpdateAvailable", comment: "")
         alert.informativeText = String(
@@ -189,7 +191,7 @@ final class GitHubUpdateChecker {
         alert.addButton(withTitle: NSLocalizedString("DownloadUpdate", comment: ""))
         alert.addButton(withTitle: NSLocalizedString("UpdateLater", comment: ""))
         if alert.runModal() == .alertFirstButtonReturn {
-            if let url = URL(string: releasesPageURL) {
+            if let url = URL(string: releasePageURL(tag: releaseTag)) {
                 NSWorkspace.shared.open(url)
             }
         }
