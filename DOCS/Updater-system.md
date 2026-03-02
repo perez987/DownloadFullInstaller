@@ -4,6 +4,10 @@
 
 Download Full Installer includes a built-in, lightweight update checker that queries the GitHub Releases API to detect newer versions of the application. It has no third-party dependencies (no Sparkle or similar framework required).
 
+| Up-to-date | Update available |
+| --- | --- |
+| ![](../Images/Up-to-date.png) | ![](../Images/Update-available.png) |
+
 ## How to Check for Updates
 
 Open the **About This Hack** menu and click **Check for Updates…** (or press `⌘ U`). The app contacts GitHub and, depending on the result, shows one of the alerts described below.
