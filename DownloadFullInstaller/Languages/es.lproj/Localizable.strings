@@ -160,7 +160,7 @@
 /* Update Check */
 "Check for Updates…" = "Buscar actualizaciones…";
 "UpdateAvailable" = "Actualización disponible";
-"UpdateAvailableInfo" = "Download Full Installer %@ ya está disponible. ¿Desea descargarlo?";
+"UpdateAvailableInfo" = "Download Full Installer %@ ya está disponible. ¿Deseas descargarla?";
 "DownloadUpdate" = "Descargar actualización";
 "UpdateLater" = "Más tarde";
 "UpToDate" = "¡Estás al día!";
