@@ -1,8 +1,8 @@
 # Download Full Installer
 
-![Swift](https://img.shields.io/badge/Swift-5+-lavender.svg)
 ![Platform](https://img.shields.io/badge/macOS-13+-orange.svg)
-![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?label=Descargas&color=9494ff)  
+![Swift](https://img.shields.io/badge/swift-5+-lavender.svg)
+![GitHub All Releases](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total.svg)
 
 A partir de junio de 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) de <em>scriptingosx</em> detuvo su desarrollo. Durante más de tres años, mi repositorio DownloadFullInstaller fue una bifurcación del original. Sin embargo, después de que el original fue archivado, creé un nuevo repositorio que es una versión independiente (no bifurcada). Mantendré este proyecto activo y actualizado mientras sea útil para otros usuarios.
 

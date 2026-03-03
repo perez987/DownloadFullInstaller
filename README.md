@@ -1,8 +1,8 @@
 # Download Full Installer
 
-![Swift](https://img.shields.io/badge/Swift-5+-lavender.svg)
 ![Platform](https://img.shields.io/badge/macOS-13+-orange.svg)
-<!-- ![Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?label=Descargas&color=9494ff) -->
+![Swift](https://img.shields.io/badge/swift-5+-lavender.svg)
+![GitHub All Releases](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total.svg)
 
 <a href="CHANGELOG-releases.md">
     <img src="https://img.shields.io/badge/Releases-CHANGELOG-blue" alt=“CHANGELOG releases”></a><br><br>
