@@ -1,226 +1,90 @@
-/* No comment provided by engineer. */
+/* General */
 "" = "";
-
-/* No comment provided by engineer. */
 "\n\n" = "\n\n";
+" in catalog" = " في الكتالوج";
+"Download Full Installer" = "Download Full Installer";
+"Could not load catalog" = "تعذر تحميل الكتالوج";
 
-/* No comment provided by engineer. */
-" in catalog" =
-" في الكتالوج";
-
-/* No comment provided by engineer. */
+/* File Replace */
 "%@ already exists. Do you want to replace it?" = "%@ 
 موجود بالفعل. هل تريد استبداله؟";
+"A file with the same name already exists in that location. Replacing it will overwrite its current contents." = "يوجد ملف بالاسم نفسه في هذا الموقع. استبداله سيؤدي إلى الكتابة فوق محتواه الحالي.";
+"Cancel" = "إلغاء";
+"Replace" = "استبدال";
 
-/* No comment provided by engineer. */
-"A file with the same name already exists in that location. Replacing it will overwrite its current contents." =
-"يوجد ملف بالاسم نفسه في هذا الموقع. استبداله سيؤدي إلى الكتابة فوق محتواه الحالي.";
+/* Installer list */
+"Copy %@ %@ (%@) %@ URL" = "نسخ رابط %@ %@ (%@) %@";
+"Create application %@ %@ (%@)" = "إنشاء التطبيق %@ %@ (%@)";
+"Download %@ %@ (%@) Installer" = "تنزيل مثبت %@ %@ (%@)";
 
-/* No comment provided by engineer. */
-"Cancel" =
-"إلغاء";
+/* Download */
+"Downloaded %@" = "تم تنزيل %@";
+"Downloading %@" = "جارٍ تنزيل %@";
+"Retrying download of InstallAssistant.pkg..." = "إعادة محاولة تنزيل InstallAssistant.pkg...";
+"Show in Finder" = "إظهار في Finder";
+"Cancel %@ download" = "إلغاء تنزيل %@";
+"Show the installer in the Downloads folder" = "إظهار المثبت في مجلد التنزيلات";
 
-/* No comment provided by engineer. */
-"Copy %@ %@ (%@) %@ URL" =
-"نسخ رابط %@ %@ (%@) %@";
+/* Language Selection */
+"Language Selection" = "اختيار اللغة";
+"Choose a language" = "اختر لغة";
+"Select Language" = "تحديد اللغة";
+"Continue" = "متابعة";
 
-/* No comment provided by engineer. */
-"Create application %@ %@ (%@)" =
-"إنشاء التطبيق %@ %@ (%@)";
+/* Restart Required */
+"Restart Required" = "إعادة التشغيل مطلوبة";
+"The app must be restarted for changes to take effect." = "يجب إعادة تشغيل التطبيق حتى تسري التغييرات.";
+"OK" = "موافق";
 
-/* No comment provided by engineer. */
-"Download %@ %@ (%@) Installer" =
- "تنزيل مثبت %@ %@ (%@)";
+/* App Settings */
+"Yes" = "نعم";
+"Clear app settings?" = "هل تريد مسح إعدادات التطبيق؟";
+"(App preferences will be cleared)" = "(سيتم مسح تفضيلات التطبيق)";
+"You will lose user settings and saved language." = "ستفقد إعدادات المستخدم واللغة المحفوظة.";
+"Warning" = "تحذير";
 
-/* No comment provided by engineer. */
-"Download Full Installer" = "Download Full Installer";
-
-/* No comment provided by engineer. */
-"Downloaded %@" =
-"تم تنزيل %@";
-
-/* No comment provided by engineer. */
-"Downloading %@" =
-"جارٍ تنزيل %@";
-
-/* No comment provided by engineer. */
-"Retrying download of InstallAssistant.pkg..." =
-"إعادة محاولة تنزيل InstallAssistant.pkg...";
-
-/* No comment provided by engineer. */
-"Replace" =
-"استبدال";
-
-/* No comment provided by engineer. */
-"Show in Finder" =
-"إظهار في Finder";
-
-/* No comment provided by engineer. */
-"Cancel %@ download" =
-"إلغاء تنزيل %@";
-
-/* No comment provided by engineer. */
-"Show the installer in the Downloads folder" =
-"إظهار المثبت في مجلد التنزيلات";
-
-/* No comment provided by engineer. */
-"Could not load catalog" =
-"تعذر تحميل الكتالوج";
-
-/* No comment provided by engineer. */
-"Language Selection" =
-"اختيار اللغة";
-
-/* No comment provided by engineer. */
-"Choose a language" =
-"اختر لغة";
-
-/* No comment provided by engineer. */
-"Select Language" =
- "تحديد اللغة";
-
-/* No comment provided by engineer. */
-"Continue" =
- "متابعة";
-
-/* No comment provided by engineer. */
-"Restart Required" =
- "إعادة التشغيل مطلوبة";
-
-/* No comment provided by engineer. */
-"The app must be restarted for changes to take effect." =
-"يجب إعادة تشغيل التطبيق حتى تسري التغييرات.";
-
-/* No comment provided by engineer. */
-"OK" =
-"موافق";
-
-/* No comment provided by engineer. */
-"Yes" =
-"نعم";
-
-/* No comment provided by engineer. */
-"Clear app settings?" =
-"هل تريد مسح إعدادات التطبيق؟";
-
-/* No comment provided by engineer. */
-"(App preferences will be cleared)" =
-"(سيتم مسح تفضيلات التطبيق)";
-
-/* No comment provided by engineer. */
-"You will lose user settings and saved language." =
-"ستفقد إعدادات المستخدم واللغة المحفوظة.";
-
-/* No comment provided by engineer. */
-"Warning" =
- "تحذير";
-
-/* No comment provided by engineer. */
-"Create Installer App from %@ %@ (%@)" =
-"إنشاء تطبيق التثبيت من %@ %@ (%@)";
-
-/* No comment provided by engineer. */
-"Error Creating Installer" =
- "خطأ في إنشاء تطبيق التثبيت";
-
-/* No comment provided by engineer. */
-"The installer package %@ does not exist in the %@ folder. Please download it first." =
-"حزمة التثبيت %@ غير موجودة في مجلد %@. يرجى تنزيلها أولاً.";
-
-/* No comment provided by engineer. */
-"Success" =
-"نجاح";
-
-/* No comment provided by engineer. */
-"The installer app has been created successfully in /Applications" =
-"تم إنشاء تطبيق التثبيت بنجاح في /Applications";
-
-/* No comment provided by engineer. */
-"The installer package has been opened. Follow the on-screen instructions to complete the installation" =
-"تم فتح حزمة التثبيت. اتبع التعليمات التي تظهر على الشاشة لإكمال التثبيت.";
-
-/* No comment provided by engineer. */
-"Failed to open the installer package. Please try opening it manually from the Downloads folder" =
-"فشل فتح حزمة التثبيت. يرجى محاولة فتحها يدويًا من مجلد التنزيلات.";
-
-/* No comment provided by engineer. */
-"Failed to create installer app. Error: %@" =
-"فشل إنشاء تطبيق التثبيت. الخطأ: %@";
-
-/* No comment provided by engineer. */
-"No write permission to /Applications folder" =
-"لا توجد أذونات كتابة إلى مجلد /Applications";
-
-/* No comment provided by engineer. */
-"Failed to create AppleScript" =
-"فشل إنشاء AppleScript";
+/* Installer Creation */
+"Create Installer App from %@ %@ (%@)" = "إنشاء تطبيق التثبيت من %@ %@ (%@)";
+"Error Creating Installer" = "خطأ في إنشاء تطبيق التثبيت";
+"The installer package %@ does not exist in the %@ folder. Please download it first." = "حزمة التثبيت %@ غير موجودة في مجلد %@. يرجى تنزيلها أولاً.";
+"Success" = "نجاح";
+"The installer app has been created successfully in /Applications" = "تم إنشاء تطبيق التثبيت بنجاح في /Applications";
+"The installer package has been opened. Follow the on-screen instructions to complete the installation" = "تم فتح حزمة التثبيت. اتبع التعليمات التي تظهر على الشاشة لإكمال التثبيت.";
+"Failed to open the installer package. Please try opening it manually from the Downloads folder" = "فشل فتح حزمة التثبيت. يرجى محاولة فتحها يدويًا من مجلد التنزيلات.";
+"Failed to create installer app. Error: %@" = "فشل إنشاء تطبيق التثبيت. الخطأ: %@";
+"No write permission to /Applications folder" = "لا توجد أذونات كتابة إلى مجلد /Applications";
+"Failed to create AppleScript" = "فشل إنشاء AppleScript";
 
 /* Multi-download support */
-"Maximum Downloads Reached" =
- "تم الوصول إلى الحد الأقصى للتنزيلات";
-
-/* Multi-download support */
-"You can only download up to 3 installers at the same time. Please wait for a download to complete before starting a new one." =
-"يمكنك تنزيل ما يصل إلى 3 مثبتات فقط في نفس الوقت. يرجى الانتظار حتى يكتمل أحد التنزيلات قبل بدء تنزيل جديد.";
-
-/* Multi-download support */
-"Dismiss" =
-"تجاهل";
+"Maximum Downloads Reached" = "تم الوصول إلى الحد الأقصى للتنزيلات";
+"You can only download up to 3 installers at the same time. Please wait for a download to complete before starting a new one." = "يمكنك تنزيل ما يصل إلى 3 مثبتات فقط في نفس الوقت. يرجى الانتظار حتى يكتمل أحد التنزيلات قبل بدء تنزيل جديد.";
+"Dismiss" = "تجاهل";
 
 /* Visual indicator*/
-"This installer has been downloaded" =
-"تم تنزيل هذا المثبت مسبقًا";
+"This installer has been downloaded" = "تم تنزيل هذا المثبت مسبقًا";
 
 /* Settings window */
-"Settings" =
-"إعدادات";
-
-/* Settings window */
-"Close" =
-"يغلق";
-
-/* Settings window */
-"Download Location" =
-"مجلد التنزيلات";
+"Settings" = "إعدادات";
+"Close" = "يغلق";
+"Download Location" = "مجلد التنزيلات";
 
 /* Download folder selection */
-"Select Download Folder" =
-"حدد مجلد التنزيلات";
-
-/* Download folder selection */
-"Choose where to save downloaded installers" =
-"اختر مكان حفظ ملفات التثبيت التي تم تنزيلها";
+"Select Download Folder" = "حدد مجلد التنزيلات";
+"Choose where to save downloaded installers" = "اختر مكان حفظ ملفات التثبيت التي تم تنزيلها";
 
 /* Legacy macOS installers */
-"Legacy macOS Installers" =
-"مثبتات macOS القديمة";
-
-/* Legacy macOS installers */
-"Download legacy macOS installers (10.7 - 10.12)" =
-"تنزيل إصدارات macOS القديمة (10.7 - 10.12)";
-
-/* Legacy macOS installers */
-"Download macOS %@ %@" =
-"تنزيل macOS %@ %@";
+"Legacy macOS Installers" = "مثبتات macOS القديمة";
+"Download legacy macOS installers (10.7 - 10.12)" = "تنزيل إصدارات macOS القديمة (10.7 - 10.12)";
+"Download macOS %@ %@" = "تنزيل macOS %@ %@";
 
 /* Update Check */
-"Check for Updates…" =
-"البحث عن تحديثات…";
-"UpdateAvailable" =
-"يتوفر تحديث";
-"UpdateAvailableInfo" =
-"Download Full Installer %@ متاح الآن. هل تريد تنزيله؟";
-"DownloadUpdate" =
-"تنزيل التحديث";
-"UpdateLater" =
-"لاحقًا";
-"UpToDate" =
-"أنت تستخدم أحدث إصدار!";
-"UpToDateInfo" =
-"Download Full Installer %@ هو الإصدار الأحدث حاليًا.";
-"UpdateCheckError" =
-"فشل التحقق من التحديثات";
-"UpdateCheckFailed" =
-"تعذّر الحصول على معلومات التحديث.";
-"UpdateCheckNetworkError" =
-"تعذّر الاتصال بخادم التحديثات. يرجى التحقق من اتصالك بالإنترنت.";
+"Check for Updates…" = "البحث عن تحديثات…";
+"UpdateAvailable" = "يتوفر تحديث";
+"UpdateAvailableInfo" = "Download Full Installer %@ متاح الآن. هل تريد تنزيله؟";
+"DownloadUpdate" = "تنزيل التحديث";
+"UpdateLater" = "لاحقًا";
+"UpToDate" = "أنت تستخدم أحدث إصدار!";
+"UpToDateInfo" = "Download Full Installer %@ هو الإصدار الأحدث حاليًا.";
+"UpdateCheckError" = "فشل التحقق من التحديثات";
+"UpdateCheckFailed" = "تعذّر الحصول على معلومات التحديث.";
+"UpdateCheckNetworkError" = "تعذّر الاتصال بخادم التحديثات. يرجى التحقق من اتصالك بالإنترنت.";
