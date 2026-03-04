@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 
-struct FetchInstallerPkgApp: App {
+struct DownloadFullInstallerApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject var sucatalog = SUCatalog()
 
