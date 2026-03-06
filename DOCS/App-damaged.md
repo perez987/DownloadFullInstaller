@@ -6,7 +6,7 @@ When a file is downloaded from the Internet, an extended attribute named `com.ap
 
 In pre-Sequoia versions, the Gatekeeper warning for files downloaded from the Internet had a simple solution: accepting the warning when opening the file or right-clicking on the file >> Open.
 
-But in Sequoia and Tahoe, the warning is more serious and might upset the user. It may display this message:
+But in Sequoia and Tahoe, the warning is more shocking and might upset the user. It may display this message:
 <br>`The application is damaged and cannot be opened.`<br>
 Or this one:
 <br>`Could not verify that Download Full Installer does not contain malicious software.`<br>
