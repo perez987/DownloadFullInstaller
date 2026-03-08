@@ -204,6 +204,14 @@ Package of changes and improvements:
 
 - Reorganize `Localizable.strings` files under meaningful section headers
 
+## 4.3.0
+
+**Sparkle updater system**
+
+- Add Sparkle updater system (Swift Package Manager)
+- Replace the custom GitHub Releases-based updater with the Sparkle framework
+- Update entitlements with Sparkle sandbox exceptions
+
 # `old`branch
 
 ## 2.0.0 – September 14, 2025
