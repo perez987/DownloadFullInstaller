@@ -198,6 +198,12 @@ Package of changes and improvements:
 - Add localization strings for update prompts
 - Add documentation about the updater: [Updater-system.md](https://github.com/perez987/DownloadFullInstaller/blob/main/DOCS/Updater-system.md)
 
+## 4.2.1
+
+**Reorganize language files**
+
+- Reorganize `Localizable.strings` files under meaningful section headers
+
 # `old`branch
 
 ## 2.0.0 – September 14, 2025
@@ -233,3 +239,7 @@ Package of changes and improvements:
 - Add "Check for Updates…" command (⌘U) that calls the updater task
 - Add [Updater-system.md](https://github.com/perez987/DownloadFullInstaller/blob/main/DOCS/Updater-system.md) describing updater functionality
 - Update Localizable.strings across languages
+
+## 2.5.3
+
+- Reorganize `Localizable.strings` files under meaningful section headers
