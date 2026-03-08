@@ -2,11 +2,9 @@
 
 ## Overview
 
-Download Full Installer includes a built-in, lightweight update checker that queries the GitHub Releases API to detect newer versions of the application. It has no third-party dependencies (no Sparkle or similar framework required).
+Download Full Installer prior to 4.2.1 includes a built-in, lightweight update checker that queries the GitHub Releases API to detect newer versions of the application. It has no third-party dependencies (no Sparkle or similar framework required).
 
-| Up-to-date | Update available |
-| --- | --- |
-| ![](../Images/Up-to-date.png) | ![](../Images/Update-available.png) |
+**Note**: Version 4.2.1 and newer implement the Sparkle framework as updater system.
 
 ## How to Check for Updates
 
