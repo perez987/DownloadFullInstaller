@@ -6,7 +6,7 @@
 ![GitHub Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?style=flat&label=downloads&color=blue)
 
 <a href="CHANGELOG-releases.md">
-    <img src="https://img.shields.io/badge/Releases-CHANGELOG-lightgrey" alt=“CHANGELOG releases”></a><br>
+    <img src="https://img.shields.io/badge/Releases-CHANGELOG-lightgrey" alt=“CHANGELOG releases”></a><br><br>
 
 A partir de junio de 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) de <em>scriptingosx</em> detuvo su desarrollo. Durante más de tres años, mi repositorio DownloadFullInstaller fue una bifurcación del original. Sin embargo, después de que el original fue archivado, creé un nuevo repositorio que es una versión independiente (no bifurcada). Mantendré este proyecto activo y actualizado mientras sea útil para otros usuarios.
 
