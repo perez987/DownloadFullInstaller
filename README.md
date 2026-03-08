@@ -1,5 +1,6 @@
 # Download Full Installer
 
+
 ![Platform](https://img.shields.io/badge/macOS-13+-orange.svg)
 ![Swift](https://img.shields.io/badge/swift-5+-lavender.svg)
 ![Xcode](https://img.shields.io/badge/xcode-15+-green.svg)
@@ -18,7 +19,7 @@ As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/Downloa
 
 Download Full Installer runs on macOS 13 Ventura through macOS 26 Tahoe.
 
-**Note**: For Download Full Installer running on macOS 11+, you can get the [version 2.5.3](https://github.com/perez987/DownloadFullInstaller/releases/tag/2.5.3) or the Xcode project from the [`old`](https://github.com/perez987/DownloadFullInstaller/tree/old) branch and build the app from source.
+**Note**: For Download Full Installer running on macOS 11+, you can get the [version 2.5.2](https://github.com/perez987/DownloadFullInstaller/releases/tag/2.5.2) or the Xcode project from the [`old`](https://github.com/perez987/DownloadFullInstaller/tree/old) branch and build the app from source.
 
 ### Features
 
@@ -35,7 +36,7 @@ Download Full Installer runs on macOS 13 Ventura through macOS 26 Tahoe.
 - Added customizable download folder selection
 - Clean up incomplete downloads on app quit
 - Added legacy macOS installer support (10.7-10.12); read [this](DOCS/Legacy-macos.md)
-- Added built-in update checker that uses the GitHub Releases API (no Sparkle dependency); more info in [Updater-system.md](DOCS/Updater-system.md)
+- Added Sparkle updater system to check for new releases
 
 ### Create Installer App Feature
 

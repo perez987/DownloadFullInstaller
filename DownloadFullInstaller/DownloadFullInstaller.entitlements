@@ -2,7 +2,32 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>com.apple.security.app-sandbox</key>
-	<true/>
+    <!-- Sandbox: required for Mac App Store and recommended for distribution -->
+    <key>com.apple.security.app-sandbox</key>
+    <true/>
+
+    <!-- Allow outgoing network connections (needed to download updates and check appcast) -->
+    <key>com.apple.security.network.client</key>
+    <true/>
+
+    <!-- User files: read-only access to user-selected files -->
+    <key>com.apple.security.files.user-selected.read-only</key>
+    <true/>
+
+    <!-- Sparkle sandbox exceptions:
+         -spks  Sparkle Status service (monitors update check state)
+         -spki  Sparkle Installer Launcher service (installs downloaded updates)
+         Both XPC services are bundled inside Sparkle.framework. -->
+    <key>com.apple.security.temporary-exception.mach-lookup.global-name</key>
+    <array>
+        <string>$(PRODUCT_BUNDLE_IDENTIFIER)-spks</string>
+        <string>$(PRODUCT_BUNDLE_IDENTIFIER)-spki</string>
+    </array>
+
+    <!-- Sparkle needs to persist update-check preferences in shared user defaults -->
+    <key>com.apple.security.temporary-exception.shared-preference.read-write</key>
+    <array>
+        <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+    </array>
 </dict>
 </plist>

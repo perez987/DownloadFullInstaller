@@ -77,13 +77,4 @@
 "Download macOS %@ %@" = "Descargar macOS %@ %@";
 
 /* Update Check */
-"Check for Updates…" = "Buscar actualizaciones…";
-"UpdateAvailable" = "Actualización disponible";
-"UpdateAvailableInfo" = "Download Full Installer %@ ya está disponible. ¿Deseas descargarla?";
-"DownloadUpdate" = "Descargar actualización";
-"UpdateLater" = "Más tarde";
-"UpToDate" = "¡Estás al día!";
-"UpToDateInfo" = "Download Full Installer %@ es actualmente la versión más reciente.";
-"UpdateCheckError" = "Error al comprobar actualizaciones";
-"UpdateCheckFailed" = "No se pudo obtener la información de actualización.";
-"UpdateCheckNetworkError" = "No se puede conectar al servidor de actualizaciones. Por favor, comprueba tu conexión a internet.";
+"Check for Updates..." = "Buscar actualizaciones...";
