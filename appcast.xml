@@ -4,6 +4,18 @@
     <title>Download Full Installer</title>
     <item>
       <title>Version 4.3.0</title>
+	   <description><![CDATA[
+			<ul>
+				<li>App for macOS 13+</li>
+				<li>Sparkle updater system replaces the lightweight GitHub Releases-based updater</li>
+				<ul>
+					<li>Add Sparkle Swift package</li>
+					<li>Replace the custom GitHubUpdateChecker</li>
+					<li>Update entitlements and Info.plist with Sparkle sandbox exceptions</li>
+				</ul>
+				<li>Reorganize Localizable.strings files under section headers</li>
+		</ul>
+		]]></description>
       <sparkle:version>234</sparkle:version>
       <sparkle:shortVersionString>4.3.0</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
