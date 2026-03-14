@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import Sparkle
 
 @main
 
 struct DownloadFullInstallerApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject var sucatalog = SUCatalog()
+    @StateObject private var updaterController = UpdaterController()
 
     var body: some Scene {
         WindowGroup {
@@ -34,14 +36,20 @@ struct DownloadFullInstallerApp: App {
         // macOS 13 Ventura or newer
 //        .windowResizability(.contentSize)
         .commands {
+            // Add "Check for Updates…" to the application menu
             CommandGroup(after: .appInfo) {
-                // Settings to check for updates
-                 Button(NSLocalizedString("Check for Updates…", comment: "Menu item to check for app updates"),
-                        systemImage: "arrow.triangle.2.circlepath") {
-                     GitHubUpdateChecker.shared.checkForUpdates(userInitiated: true)
-                 }
-                     .keyboardShortcut("u", modifiers: [.command])
-             }
+                Button(
+                    NSLocalizedString(
+                        "Check for Updates...",
+                        comment: "Menu item to check for app updates"
+                    ),
+                    systemImage: "arrow.triangle.2.circlepath"
+                ) {
+                    updaterController.checkForUpdates()
+                }
+                        .keyboardShortcut("u", modifiers: [.command])
+                        .disabled(!updaterController.canCheckForUpdates)
+                }
         }
     }
 }
