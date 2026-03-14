@@ -243,9 +243,8 @@ Package of changes and improvements:
 
 ## 2.5.2 – February 28, 2026
 
-- Add a GitHub-based update checker and integrate it into the app and project
+- Add Sparkle update checker and integrate it into the app and project
 - Add "Check for Updates…" command (⌘U) that calls the updater task
-- Add [Updater-system.md](https://github.com/perez987/DownloadFullInstaller/blob/main/DOCS/Updater-system.md) describing updater functionality
 - Update Localizable.strings across languages
 
 ## 2.5.3
