@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+  <channel>
+    <title>Download Full Installer</title>
+    <item>
+      <title>Version 2.5.3</title>
+      <sparkle:version>183</sparkle:version>
+      <sparkle:shortVersionString>2.5.3</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+      <pubDate>Sat, 14 Mar 2026 12:45:43 +0000</pubDate>
+      <enclosure
+        url="https://github.com/perez987/DownloadFullInstaller/releases/download/2.5.3/Download.Full.Installer-2.5.3.zip"
+        sparkle:edSignature="3rEvBLziNusNWmC/YNfdeKywieQiePeP+fvgLCtdO7H+zQhWWRqOYfO7KlR98fOaPmc0bszqizK8kjKdMlkEDA=="
+        length="4693823"
+        type="application/octet-stream"
+      />
+    </item>
+  </channel>
+</rss>
