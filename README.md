@@ -25,20 +25,20 @@ Download Full Installer runs on macOS 13 Ventura through macOS 26 Tahoe.
 
 ### Features
 
-- Updated up to macOS 26 Tahoe
+- Update up to macOS 26 Tahoe
 - Xcode project requires macOS 13 Ventura or newer
 - Preferences for choosing catalog are no longer a separate dialog but are now at the top of the main window
 - A single macOS version or all versions can be displayed at once
-- Added sleep prevention logic to avoid sleeping while the application is running
-- Added language selection system
-- Updated translations
-- Added download resume functionality that automatically handles network interruptions
-- Added progress bar overlaying to the application's dock tile icon during PKG downloads
-- Added support for up to 3 simultaneous downloads
-- Added customizable download folder selection
+- Add sleep prevention logic to avoid sleeping while the application is running
+- Add language selection system
+- Update translations
+- Add download resume functionality that automatically handles network interruptions
+- Add progress bar overlaying to the application's dock tile icon during PKG downloads
+- Add support for up to 3 simultaneous downloads
+- Add customizable download folder selection
 - Clean up incomplete downloads on app quit
-- Added legacy macOS installer support (10.7-10.12); read [this](DOCS/Legacy-macos.md)
-- Added Sparkle updater system to check for new releases
+- Add legacy macOS installer support (10.7-10.12); read [this](DOCS/Legacy-macos.md)
+- Add Sparkle updater system to check for new releases
 
 ### Create Installer App Feature
 
