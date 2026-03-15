@@ -33,7 +33,7 @@ Package of changes and improvements:
 - Update translations with new strings
 - Add flag icons to language selection view
 
-## 2.2.1 -  September 19, 2025
+## 2.1.5 -  September 19, 2025
 
 **New app icon**
 
