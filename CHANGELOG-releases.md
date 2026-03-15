@@ -16,7 +16,7 @@ Initial contributors:
 - [Anto65](https://github.com/antuneddu): Add Italian language 
 - [ClassicUA](https://github.com/ClassicUA): Add Ukrainian language.
 
-## 2.1.0 -  September 15, 2025
+## 2.1.1 -  September 15, 2025
 
 **App for macOS 13+**
 
@@ -54,7 +54,7 @@ Package of changes and improvements:
 - Add Russian localization (thanks _Vladislav Strekalin_)
 - Changed language selector size
 
-## 2.5.0 -  October 28, 2025
+## 2.5.5 -  October 28, 2025
 
 **Create macOS Installer app**
 
