@@ -173,7 +173,6 @@ Package of changes and improvements:
 
 ![Legacy macOS](Images/EN/Legacy-2-peq.png)
 
-
 ## 4.0.1 -  February 3, 2026
 
 **Minor UI fixes**
@@ -232,8 +231,9 @@ Package of changes and improvements:
 ## 2.5.0 – February 25, 2026
 
 - `old` branch has been updated to include the functionalities of the `main` branch with these differences:
-   - The same languages ​​are supported, but without a language selector
+   - No language selector
    - No temporary directory cleanup on app quit
+   - No legacy macOS download
 - For users requiring to run the app on macOS 11 -12
 
 ## 2.5.1 – February 26, 2026
