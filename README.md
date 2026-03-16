@@ -17,11 +17,7 @@ As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/Downloa
 
 <img src="Images/EN/Main-window1b.png" width="700px">
 
-### Download Full Installer from macOS 13 up to 26 
-
-Download Full Installer runs on macOS 13 Ventura through macOS 26 Tahoe.
-
-**Note**: For Download Full Installer running on macOS 11+, you can get the [version 2.5.3](https://github.com/perez987/DownloadFullInstaller/releases/tag/2.5.3) or the Xcode project from the [`old`](https://github.com/perez987/DownloadFullInstaller/tree/old) branch and build the app from source.
+"Download Full Installer" is a macOS application written in SwiftUI that downloads installer pkgs for the "Install macOS Big Sur" application and newer. Runs on macOS 13 Ventura through macOS 26 Tahoe.
 
 ### Features
 
@@ -70,8 +66,20 @@ consuming disk space indefinitely. The cleanup safely removes regular files (not
 
 If you see `App is damaged and can't be opened` when you open Download Full Installer for the first time, read this [document](DOCS/App-damaged.md).
 
+### Download Full Installer 11 
+
+There is a "Download Full Installer 11" app and project that run on macOS 11 Big Sur or newer:
+
+- Latest app version is 2.5.3 (183).
+- Platform:
+	- "Download Full Installer 11.app" runs on macOS 11+.
+	- Xcode project requires macOS 13 or newer.
+- "Download Full Installer 11" has all the functionalities of "Download Full Installer" except these two:
+   - No language selector.
+   - No legacy macOS download.
+
 # Original repository README
-(by scriptingosx)
+(by *scriptingosx*)
 
 ### Preface
 

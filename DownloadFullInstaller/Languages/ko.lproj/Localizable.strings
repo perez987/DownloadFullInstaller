@@ -2,7 +2,7 @@
 "" = "";
 "\n\n" = "\n\n";
 " in catalog" = " 카탈로그:";
-"Download Full Installer" = "Download Full Installer";
+"Download Full Installer" = "Download Full Installer 11";
 
 /* File Replace */
 "%@ already exists. Do you want to replace it?" = "%@이 이미 존재합니다. 바꾸시겠습니까?";
