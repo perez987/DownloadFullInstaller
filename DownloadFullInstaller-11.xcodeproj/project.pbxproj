@@ -696,7 +696,8 @@
 				INFOPLIST_FILE = "DownloadFullInstaller-11/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Download Full Installer 11";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "@2023-2027 Perez987";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2023-2026 Perez987";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -745,7 +746,8 @@
 				INFOPLIST_FILE = "DownloadFullInstaller-11/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Download Full Installer 11";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "@2023-2027 Perez987";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2023-2026 Perez987";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
