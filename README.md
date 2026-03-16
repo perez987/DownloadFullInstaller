@@ -39,7 +39,7 @@ As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/Downloa
 
 ### Create Installer App Feature
 
-After downloading an InstallAssistant.pkg file, you can create the macOS installer application (e.g., "Install macOS Sequoia.app") directly from within Download Full Installer:
+After downloading an `InstallAssistant.pkg` file, you can create the macOS installer application (e.g., "Install macOS Sequoia.app") directly from within Download Full Installer:
 
 1. Download the PKG using the download button (↓)
 2. Click the "Create Installer App" button next to the download button
@@ -49,11 +49,11 @@ After downloading an InstallAssistant.pkg file, you can create the macOS install
 
 ### Settings to select downloads folder
 
-The About This Hack -> Settings menu (⌘ ,) opens a window where you can select a different folder to download installers. Default is ~/Downloads. Visual indicators (green marks) of downloaded installers are updated to match those in the selected folder.
+Download Full Installer -> Settings menu (⌘ ,) opens a window where you can select a different folder to download installers. Default is ~/Downloads. Visual indicators (green marks) of downloaded installers are updated to match those in the selected folder.
 
 ### Language selector window
 
-The language selector can be opened from the menubar (`Languages` > `Select Language`) or by keyboard shortcut (`⌘ + L`).
+Language selector can be opened from the menubar (`Languages` > `Select Language`) or by keyboard shortcut (`⌘ + L`).
 
 ![Languages list](Images/EN/Languages.png)
 
