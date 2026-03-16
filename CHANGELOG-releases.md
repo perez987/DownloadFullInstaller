@@ -1,8 +1,4 @@
-# Changelog
-
-All GitHub releases listed from first to latest. Releases from the [`old`](https://github.com/perez987/DownloadFullInstaller/tree/old) branch (macOS 11+) are under title `old` branch; all others belong to the `main` branch (macOS 13+).
-
-# `main` branch
+# App for macOS 13+
 
 ## 2.0.3 -  August 31, 2025
 
@@ -211,7 +207,7 @@ Package of changes and improvements:
 - Replace the custom GitHub Releases-based updater with the Sparkle framework
 - Update entitlements with Sparkle sandbox exceptions
 
-# `old`branch
+# App for macOS 11+
 
 ## 2.0.0 – September 14, 2025
 
