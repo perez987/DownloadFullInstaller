@@ -11,14 +11,21 @@
     <!-- <a href="README-ES.md">
     <img src="https://img.shields.io/badge/Spanish-README-pink" alt=“Spanish version”></a> -->
 <br><br>
-    
-As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) by <em>scriptingosx</em> stopped its development. For over three years, my repository, DownloadFullInstaller, was a fork of the original. However, after the original was archived, I created a new repo as standalone (<em>not forked</em>) version. I'll keep this project active and up to date as long as it is useful to other users.
+
+"Download Full Installer" is a macOS application written in SwiftUI that downloads installer pkgs for the "Install macOS Big Sur" application and newer. Runs on macOS 13 Ventura through macOS 26 Tahoe.
 
 <img src="Images/EN/Main-window1a.png" width="700px">
 
 <img src="Images/EN/Main-window1b.png" width="700px">
 
-"Download Full Installer" is a macOS application written in SwiftUI that downloads installer pkgs for the "Install macOS Big Sur" application and newer. Runs on macOS 13 Ventura through macOS 26 Tahoe.
+### Preface
+
+As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) stopped its development.<br>
+For over three years, my repository was a fork of the original.<br>
+However, after the original was archived, I created a new repo as standalone (<em>not forked</em>) version.<br>
+This repo exists to keep "Download Full Installer" alive and growing. Picking up where the original left off, merging community PRs and adding new features.<br>
+I'll keep this project active and up to date as long as it is useful to other users.<br>
+Full credit for the original idea and architecture goes to <em>scriptingosx</em>.
 
 ### Features
 
