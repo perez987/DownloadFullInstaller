@@ -6,7 +6,7 @@
 ![Xcode](https://img.shields.io/badge/Xcode-15+-green.svg)
 
 <a href="CHANGELOG-releases.md">
-    <img src="https://img.shields.io/badge/Releases-changelog-blue" alt=“Releases changelog”></a>
+    <img src="https://img.shields.io/badge/Releases-changelog-blue" alt=“Releases changelog”></a><br><br>
     
 <!-- ![GitHub Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?style=flat&label=Downloads&color=blue) -->
 <!-- <a href="README-ES.md">
