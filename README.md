@@ -4,11 +4,11 @@
 ![Platform](https://img.shields.io/badge/macOS-13+-orange.svg)
 ![Swift](https://img.shields.io/badge/Swift-5+-lavender.svg)
 ![Xcode](https://img.shields.io/badge/Xcode-15+-green.svg)
+![GitHub Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?style=flat&label=Downloads&color=blue)
 
 <a href="CHANGELOG-releases.md">
     <img src="https://img.shields.io/badge/Releases-changelog-blue" alt=“Releases changelog”></a><br><br>
     
-<!-- ![GitHub Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?style=flat&label=Downloads&color=blue) -->
 <!-- <a href="README-ES.md">
 <img src="https://img.shields.io/badge/Spanish-README-pink" alt=“Spanish version”></a> -->
 
