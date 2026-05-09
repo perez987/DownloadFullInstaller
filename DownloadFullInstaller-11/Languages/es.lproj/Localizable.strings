@@ -3,7 +3,6 @@
 "\n\n" = "\n\n";
 " in catalog" = " en catálogo";
 "Download Full Installer" = "Download Full Installer 11";
-"Could not load catalog" = "No se puede descargar el catálogo";
 
 /* File Replace */
 "%@ already exists. Do you want to replace it?" = "%@ ya existe. ¿Quieres reemplazarlo?";

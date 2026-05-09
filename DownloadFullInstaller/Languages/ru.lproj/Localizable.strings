@@ -2,7 +2,7 @@
 "" = "";
 "\n\n" = "\n\n";
 " in catalog" = " в каталоге";
-"Download Full Installer" = "Download Full Installer 11";
+"Download Full Installer" = "Download Full Installer";
 
 /* File Replace */
 "%@ already exists. Do you want to replace it?" = "%@ уже существует. Хотите заменить его?";
