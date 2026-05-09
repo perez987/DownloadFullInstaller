@@ -52,7 +52,6 @@
 		D94655442F5793EE000B48BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94655132F5793EE000B48BA /* AppDelegate.swift */; };
 		D94655452F5793EE000B48BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D94655142F5793EE000B48BA /* Assets.xcassets */; };
 		D94655462F5793EE000B48BA /* DownloadFullInstallerApp-11.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94655162F5793EE000B48BA /* DownloadFullInstallerApp-11.swift */; };
-		D94655472F5793EE000B48BA /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D94655172F5793EE000B48BA /* Info.plist */; };
 		D94655482F5793EE000B48BA /* Prefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94655182F5793EE000B48BA /* Prefs.swift */; };
 		D9B012722F65C2ED0088926B /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = D9B012712F65C2ED0088926B /* Sparkle */; };
 /* End PBXBuildFile section */
@@ -121,6 +120,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D94091982FAFE8DD00E4FB3E /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				D94654D62F5793EE000B48BA /* InfoPlist.strings */,
+				D94654D82F5793EE000B48BA /* InfoPlist.strings */,
+				D94654DA2F5793EE000B48BA /* InfoPlist.strings */,
+				D94654DC2F5793EE000B48BA /* InfoPlist.strings */,
+				D94654DE2F5793EE000B48BA /* InfoPlist.strings */,
+				D94654E02F5793EE000B48BA /* InfoPlist.strings */,
+				D94654E22F5793EE000B48BA /* InfoPlist.strings */,
+				D94654E42F5793EE000B48BA /* InfoPlist.strings */,
+				D94654E62F5793EE000B48BA /* InfoPlist.strings */,
+			);
+			path = Info;
+			sourceTree = "<group>";
+		};
+		D94091992FAFE8E700E4FB3E /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				D94654E82F5793EE000B48BA /* Localizable.strings */,
+				D94654EA2F5793EE000B48BA /* Localizable.strings */,
+				D94654EC2F5793EE000B48BA /* Localizable.strings */,
+				D94654EE2F5793EE000B48BA /* Localizable.strings */,
+				D94654F02F5793EE000B48BA /* Localizable.strings */,
+				D94654F22F5793EE000B48BA /* Localizable.strings */,
+				D94654F42F5793EE000B48BA /* Localizable.strings */,
+				D94654F62F5793EE000B48BA /* Localizable.strings */,
+				D94654F82F5793EE000B48BA /* Localizable.strings */,
+			);
+			path = Localizable;
+			sourceTree = "<group>";
+		};
 		D94654D12F5793EE000B48BA /* DockProgress-4.3.1 */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,24 +173,8 @@
 		D94654F92F5793EE000B48BA /* Languages */ = {
 			isa = PBXGroup;
 			children = (
-				D94654D62F5793EE000B48BA /* InfoPlist.strings */,
-				D94654D82F5793EE000B48BA /* InfoPlist.strings */,
-				D94654DA2F5793EE000B48BA /* InfoPlist.strings */,
-				D94654DC2F5793EE000B48BA /* InfoPlist.strings */,
-				D94654DE2F5793EE000B48BA /* InfoPlist.strings */,
-				D94654E02F5793EE000B48BA /* InfoPlist.strings */,
-				D94654E22F5793EE000B48BA /* InfoPlist.strings */,
-				D94654E42F5793EE000B48BA /* InfoPlist.strings */,
-				D94654E62F5793EE000B48BA /* InfoPlist.strings */,
-				D94654E82F5793EE000B48BA /* Localizable.strings */,
-				D94654EA2F5793EE000B48BA /* Localizable.strings */,
-				D94654EC2F5793EE000B48BA /* Localizable.strings */,
-				D94654EE2F5793EE000B48BA /* Localizable.strings */,
-				D94654F02F5793EE000B48BA /* Localizable.strings */,
-				D94654F22F5793EE000B48BA /* Localizable.strings */,
-				D94654F42F5793EE000B48BA /* Localizable.strings */,
-				D94654F62F5793EE000B48BA /* Localizable.strings */,
-				D94654F82F5793EE000B48BA /* Localizable.strings */,
+				D94091982FAFE8DD00E4FB3E /* Info */,
+				D94091992FAFE8E700E4FB3E /* Localizable */,
 			);
 			path = Languages;
 			sourceTree = "<group>";
@@ -342,7 +357,6 @@
 				D94655372F5793EE000B48BA /* SeedCatalogs.plist in Resources */,
 				D946552D2F5793EE000B48BA /* Localizable.strings in Resources */,
 				D94655202F5793EE000B48BA /* InfoPlist.strings in Resources */,
-				D94655472F5793EE000B48BA /* Info.plist in Resources */,
 				D94655292F5793EE000B48BA /* Localizable.strings in Resources */,
 				D94655272F5793EE000B48BA /* Localizable.strings in Resources */,
 				D946552A2F5793EE000B48BA /* Localizable.strings in Resources */,
