@@ -1,6 +1,18 @@
 # App for macOS 13+
 
-## 4.3.0
+## 4.3.2 - May 14, 2026
+
+**Update Sparkle**
+
+- Update the local Sparkle framework integrated into the project
+
+## 4.3.1 - May 9, 2026
+
+**Embed Sparkle.xcframework**
+
+- Replace the Swift Package Sparkle dependency with a bundled Sparkle.xcframework and embed it in the app
+
+## 4.3.0 - March 8, 2026
 
 **Sparkle updater system**
 
@@ -8,7 +20,7 @@
 - Replace the custom GitHub Releases-based updater with the Sparkle framework
 - Update entitlements with Sparkle sandbox exceptions
 
-## 4.2.1
+## 4.2.1 - March 3, 2026
 
 **Reorganize language files**
 
@@ -209,7 +221,7 @@ Initial contributors:
 
 # App for macOS 11+
 
-## 2.5.3
+## 2.5.3 - March 16, 2026
 
 - Reorganize `Localizable.strings` files under meaningful section headers
 
