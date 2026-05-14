@@ -2,15 +2,15 @@
 
 ## 4.3.2 - May 14, 2026
 
-**Update Sparkle**
+**Update Sparkle.xcframework**
 
 - Update the local Sparkle framework integrated into the project
 
 ## 4.3.1 - May 9, 2026
 
-**Embed Sparkle.xcframework**
+**Integrate Sparkle.xcframework**
 
-- Replace the Swift Package Sparkle dependency with a bundled Sparkle.xcframework and embed it in the app
+- Replace the Swift Package Sparkle dependency with a bundled Sparkle.xcframework embedded into the app
 
 ## 4.3.0 - March 8, 2026
 
