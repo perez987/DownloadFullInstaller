@@ -10,11 +10,11 @@
 		C0000001A000000100000001 /* MultiDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000001A000000200000001 /* MultiDownloadManager.swift */; };
 		C0000002A000000100000001 /* Alert+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000002A000000200000001 /* Alert+Extensions.swift */; };
 		D92256202F5DA5790006F86A /* UpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D922561F2F5DA5790006F86A /* UpdateController.swift */; };
-		D9497D262FAF5B0E00424645 /* Sparkle.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9497D242FAF5B0500424645 /* Sparkle.xcframework */; };
-		D9497D272FAF5B0E00424645 /* Sparkle.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D9497D242FAF5B0500424645 /* Sparkle.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D9690FB42F4ECEED00265627 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9690FB22F4ECEED00265627 /* Utilities.swift */; };
 		D9690FB52F4ECEED00265627 /* DockProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9690FB12F4ECEED00265627 /* DockProgress.swift */; };
 		D982F68E2F2C29240016CC88 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D982F68D2F2C29240016CC88 /* Preview Assets.xcassets */; };
+		D99493DA2FB65E03000BFBA4 /* Sparkle.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D99493D82FB65DBE000BFBA4 /* Sparkle.xcframework */; };
+		D99493DB2FB65E03000BFBA4 /* Sparkle.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D99493D82FB65DBE000BFBA4 /* Sparkle.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D9AAA0002E8B2D3B0086992F /* LegacyMacOSVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA0001E8B2D3B0086992F /* LegacyMacOSVersion.swift */; };
 		D9AAA0004E8B2D490086992F /* LegacyDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA0003E8B2D490086992F /* LegacyDownloadView.swift */; };
 		D9E20C6C2E8B2C570086992F /* DownloadFullInstallerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E20C6B2E8B2C570086992F /* DownloadFullInstallerApp.swift */; };
@@ -53,7 +53,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D9497D272FAF5B0E00424645 /* Sparkle.xcframework in Embed Frameworks */,
+				D99493DB2FB65E03000BFBA4 /* Sparkle.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,12 +79,12 @@
 		D9296C6F2EAEBAEF00E9BE5A /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D9296C702EAEBAEF00E9BE5A /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D93DC4A12F2C17DC00A7C8B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D9497D242FAF5B0500424645 /* Sparkle.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Sparkle.xcframework; sourceTree = "<group>"; };
 		D9690FB12F4ECEED00265627 /* DockProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockProgress.swift; sourceTree = "<group>"; };
 		D9690FB22F4ECEED00265627 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		D9811C172F1700A600EB2ACF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D9811C182F1700A600EB2ACF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D982F68D2F2C29240016CC88 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D99493D82FB65DBE000BFBA4 /* Sparkle.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Sparkle.xcframework; sourceTree = "<group>"; };
 		D9AAA0001E8B2D3B0086992F /* LegacyMacOSVersion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegacyMacOSVersion.swift; sourceTree = "<group>"; };
 		D9AAA0003E8B2D490086992F /* LegacyDownloadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegacyDownloadView.swift; sourceTree = "<group>"; };
 		D9B13C8A2EB0E91E00342DC8 /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "fr-CA.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9497D262FAF5B0E00424645 /* Sparkle.xcframework in Frameworks */,
+				D99493DA2FB65E03000BFBA4 /* Sparkle.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,7 +223,7 @@
 				D9E20C822E8B2D1C0086992F /* Prefs.swift */,
 				D950B6952F2C26FC0056EB3B /* Preview Content */,
 				D95D3BFB2EDDFFAE002AF7DA /* Sleep */,
-				D9497D242FAF5B0500424645 /* Sparkle.xcframework */,
+				D99493D82FB65DBE000BFBA4 /* Sparkle.xcframework */,
 				C08D6ACE2F52644000801B13 /* Updater */,
 				D9E20C7E2E8B2D060086992F /* Views */,
 			);
@@ -576,7 +576,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 235;
+				CURRENT_PROJECT_VERSION = 236;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"DownloadFullInstaller/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
@@ -605,7 +605,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 4.3.1;
+				MARKETING_VERSION = 4.3.2;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = perez987.DownloadFullInstaller;
 				PRODUCT_NAME = "Download Full Installer";
@@ -625,7 +625,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 235;
+				CURRENT_PROJECT_VERSION = 236;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"DownloadFullInstaller/Preview Content\"";
 				DEVELOPMENT_TEAM = ER43ZD2S4U;
@@ -654,7 +654,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 4.3.1;
+				MARKETING_VERSION = 4.3.2;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = perez987.DownloadFullInstaller;
 				PRODUCT_NAME = "Download Full Installer";
