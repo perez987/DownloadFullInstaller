@@ -5,6 +5,7 @@
 **Update Sparkle.xcframework**
 
 - Update the local Sparkle framework integrated into the project
+- Codesign Sparkle and app bundle to avoid Sparkle errors
 
 ## 4.3.1 - May 9, 2026
 
