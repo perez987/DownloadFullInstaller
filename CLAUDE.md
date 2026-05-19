@@ -8,12 +8,10 @@ This file is automatically read by GitHub Copilot coding agents (and Claude) whe
 
 There are **two application targets** in this repository:
 
-| Target | Folder | Minimum macOS | Notes |
-|---|---|---|---|
-| `DownloadFullInstaller` | `DownloadFullInstaller/` | macOS 13 Ventura | Main target; includes language selector and legacy macOS download |
-| `DownloadFullInstaller-11` | `DownloadFullInstaller-11/` | macOS 11 Big Sur | Same features except language selector and legacy macOS download |
+- `DownloadFullInstaller` → target macOS 13 Ventura 
+- `DownloadFullInstaller-11` → target macOS 11 Big Sur.
 
-Both targets share the same architecture and patterns. Changes that apply to one target almost always need to be mirrored in the other unless the feature is explicitly excluded (see table above).
+Both targets share the same architecture and patterns. Changes that apply to one target almost always need to be mirrored in the other unless the feature is explicitly excluded.
 
 ## Tech Stack
 
