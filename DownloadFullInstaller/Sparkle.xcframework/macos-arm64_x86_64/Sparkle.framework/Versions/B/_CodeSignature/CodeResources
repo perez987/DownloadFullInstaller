@@ -10,7 +10,7 @@
 		</data>
 		<key>Resources/Info.plist</key>
 		<data>
-		UIPIaeqqQ9BKwM5uJOGoiul9Dls=
+		zW2Gvalkny0o0ZiHRX3+iuETQ5w=
 		</data>
 		<key>Resources/ReleaseNotesColorStyle.css</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>Resources/SUUpdatePermissionPrompt.nib/keyedobjects-110000.nib</key>
 		<data>
-		ptN9ITzjGGRuTnvCcXV340TAK+s=
+		TspPhQ+a6jyGCbEkKZSn1bWoQRY=
 		</data>
 		<key>Resources/ar.lproj/Sparkle.strings</key>
 		<dict>
@@ -90,7 +90,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ef4AhiofGM8i4Xw9spzilaX1x7c=
+			Nnb6dDhdmgEp7oZmzfQVONu81bE=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -354,10 +354,10 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			2zJjXNZ9I9FSNQYbd266P9Zg4PU=
+			I0pMujvgIG/3T1rzxMYDhmXzRi4=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"db32635cd67d23d15235061b776eba3fd660e0f5" or cdhash H"329935da7d5603e98999f590a40ceccd8d53a032"</string>
+			<string>cdhash H"234a4cba3be0206ff74f5af3c4c6038665f3462e" or cdhash H"6cbb6b4b2da3b5c28d7614142cecdbe0a7154b4a"</string>
 		</dict>
 		<key>Headers/SPUAppcastSigningValidationStatus.h</key>
 		<dict>
@@ -594,7 +594,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			pc/HSfueIc50rTvfKmdASfNXMjzI/xaNUb3k2+6DNw8=
+			72xcDWk0aKvjzDwXMbeXahpkhewb2pufNgaHZrERLzk=
 			</data>
 		</dict>
 		<key>Resources/ReleaseNotesColorStyle.css</key>
@@ -629,7 +629,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			W1t+OrqfBGIK1y8HeIjd/eWsx26IvDcIye8BN9+km/c=
+			rQZctoiDHfpH6825UoQ9bSbcYtk6K5eZtRtQXE+yujw=
 			</data>
 		</dict>
 		<key>Resources/ar.lproj/Sparkle.strings</key>
@@ -690,7 +690,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			/oRs2hGriecDdzfJmJxUP90J1N0nh0Tg1c5SY5kkVk4=
+			jgDFtcC6T+ZeVz5GRXZM7lESJahNROjbIeCndB/1wfI=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -951,28 +951,28 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			6IBqOBMbVfV+vO973W9be1dMSTA=
+			9woGyHWzgUWHvcp4AD+VOCHJBf8=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"e8806a38131b55f57ebcef7bdd6f5b7b574c4930" or cdhash H"d8519ea444f6506404381458882bdfceb687db16"</string>
+			<string>cdhash H"f70a06c875b3814587bdca78003f953821c905ff" or cdhash H"0b232712794e3423cbad9241ef639d61cba12645"</string>
 		</dict>
 		<key>XPCServices/Downloader.xpc</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			JinIYWPnJ3zMVobtDT0IpZVtp2o=
+			oT5Rl+WT4OgC190bOB1T9St/ddU=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"2629c86163e7277ccc5686ed0d3d08a5956da76a" or cdhash H"7e5822ac82a107fadf5d7f83619f9780be0cbb0b"</string>
+			<string>cdhash H"a13e5197e593e0e802d7dd1b381d53f52b7f75d5" or cdhash H"952398c02fe981665e3d5b68eb51fd2536125428"</string>
 		</dict>
 		<key>XPCServices/Installer.xpc</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			yzly4aHGM550t7q5S1AJMpqWx2o=
+			htkMiy/u39eM1uVQ7TC5h28c+dw=
 			</data>
 			<key>requirement</key>
-			<string>cdhash H"cb3972e1a1c6339e74b7bab94b5009329a96c76a" or cdhash H"6775e890fd383c44029e96b692d059bf6b00fc22"</string>
+			<string>cdhash H"86d90c8b2feedfd78cd6e550ed30b9876f1cf9dc" or cdhash H"312ab1b8ca8042b8ba3d4c36a6d46e2350c61dbc"</string>
 		</dict>
 	</dict>
 	<key>rules</key>
