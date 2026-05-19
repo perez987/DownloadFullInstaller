@@ -1,10 +1,17 @@
 # App for macOS 13+
 
+## 4.3.3 - May 19,2026
+
+**Update Sparkle to 2.9.2**
+
+- Update the integrated Sparkle framework to version 2.9.2
+- Codesign Sparkle and app bundle to avoid Sparkle errors
+
 ## 4.3.2 - May 14, 2026
 
 **Update Sparkle.xcframework**
 
-- Update the local Sparkle framework integrated into the project
+- Update the integrated Sparkle framework into the project
 - Codesign Sparkle and app bundle to avoid Sparkle errors
 
 ## 4.3.1 - May 9, 2026
