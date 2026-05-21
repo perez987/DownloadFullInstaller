@@ -11,8 +11,3 @@ Thumbs.db
 
 *.xcuserstate
 .build/
-
-*.hmap
-*.ipa
-*.dSYM.zip
-*.dSYM
