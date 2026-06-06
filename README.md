@@ -14,7 +14,7 @@
 
 "Download Full Installer" is a macOS application written in SwiftUI that downloads installer pkgs for the "Install macOS Big Sur" application and newer. Runs on macOS 13 Ventura through macOS 26 Tahoe.
 
-<img src="Images/EN/Main-window1a.png" width="700px">
+<img src="Images/EN/Main-window1a.png" width="650px">
 
 <!-- <img src="Images/EN/Main-window1b.png" width="700px"> -->
 
@@ -44,6 +44,14 @@ Full credit for the original idea and architecture goes to <em>scriptingosx</em>
 - Add legacy macOS installer support (10.7-10.12); read [this](DOCS/Legacy-macos.md)
 - Add Sparkle updater system to check for new releases
 
+### Legacy macOS installer download
+
+A new item called Legacy has been added to the macOS systems dropdown list. Legacy opens a new window listing the five available legacy macOS versions, each with its own direct download link. You can download any of these legacy macOS versions from this window.
+
+|    |    |
+|:---:|:---:|
+| ![Legacy item](Images/EN/Legacy-1.png) | ![Legacy download](Images/EN/Legacy-2.png) 
+
 ### Create Installer App Feature
 
 After downloading an `InstallAssistant.pkg` file, you can create the macOS installer application (e.g., "Install macOS Sequoia.app") directly from within Download Full Installer:
@@ -62,7 +70,7 @@ Download Full Installer -> Settings menu (⌘ ,) opens a window where you can se
 
 Language selector can be opened from the menubar (`Languages` > `Select Language`) or by keyboard shortcut (`⌘ + L`).
 
-![Languages list](Images/EN/Languages.png)
+<img src="Images/EN/Languages.png" width="540px">
 
 ### Clean up incomplete downloads on app quit
 
