@@ -16,7 +16,7 @@
 
 <img src="Images/EN/Main-window1a.png" width="700px">
 
-<img src="Images/EN/Main-window1b.png" width="700px">
+<!-- <img src="Images/EN/Main-window1b.png" width="700px"> -->
 
 ### Preface
 
