@@ -11,8 +11,7 @@
 
 **Update Sparkle.xcframework**
 
-- Update the integrated Sparkle framework into the project
-- Codesign Sparkle and app bundle to avoid Sparkle errors
+- Add `Download.Full.Installer-4.3.2-nosparkle.zip` for users experiencing Sparkle error
 
 ## 4.3.1 - May 9, 2026
 
