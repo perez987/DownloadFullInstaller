@@ -6,7 +6,7 @@
 
 - Add Firmwares tab to download IPSW files, used to restore Silicon Macs
 - Remove Sparkle updater system, generates code signing errors for quite a few users
-- Added a ligthweight GitHub updater system based in the GitHub releases API
+- Added a lightweight GitHub updater system based in the GitHub releases API
 - With the version requiring at least macOS Big Sur removed, macOS 13 Ventura is now the minimum requirement
 
 ## 4.3.3 - May 19,2026
