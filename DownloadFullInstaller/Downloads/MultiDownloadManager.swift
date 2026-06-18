@@ -6,7 +6,8 @@
 //
 
 import AppKit
-//import DockProgress
+
+// import DockProgress
 import Foundation
 
 // MARK: - DownloadItem
@@ -38,7 +39,7 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
     var downloadTask: URLSessionDownloadTask?
     var byteFormatter = ByteCountFormatter()
 
-    // Reference to parent manager for notifications
+    /// Reference to parent manager for notifications
     weak var manager: MultiDownloadManager?
 
     var fileExists: Bool {

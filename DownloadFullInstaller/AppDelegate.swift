@@ -27,13 +27,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //    func viewDidLoad() {
 //    }
 
-    // Close app from red button (thanks Chris1111)
+    /// Close app from red button (thanks Chris1111)
     func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {
         return true
     }
 
     func applicationWillTerminate(_: Notification) {
         // Enable sleep mode when app exits
+        print("Calling enableSystemSleep()...")
         enableSystemSleep()
         // Clean up temporary directory to remove incomplete downloads
         DownloadManager.cleanupAppTempDirectory()

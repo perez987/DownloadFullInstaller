@@ -7,7 +7,9 @@
 
 import Foundation
 
-var thisComponent: String { return String(describing: "Download_Full_Installer.SeedProgram") }
+var thisComponent: String {
+    return String(describing: "Download_Full_Installer.SeedProgram")
+}
 
 // Note: this can change in future macOS
 
@@ -39,7 +41,9 @@ enum SeedProgram: String, CaseIterable, Identifiable {
     case developerSeed = "DeveloperSeed"
     case publicSeed = "PublicSeed"
 
-    var id: String { rawValue }
+    var id: String {
+        rawValue
+    }
 }
 
 enum OsNameID: String, CaseIterable, Identifiable {
@@ -52,7 +56,9 @@ enum OsNameID: String, CaseIterable, Identifiable {
     case osBigSur = "Big Sur"
     case osLegacy = "Legacy"
 
-    var id: String { rawValue }
+    var id: String {
+        rawValue
+    }
 }
 
 func catalogURL(for selectedseed: SeedProgram, for selectedosname: OsNameID) -> [URL] {

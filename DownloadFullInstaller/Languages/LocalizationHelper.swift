@@ -18,12 +18,12 @@ extension String {
     }
 }
 
-// Helper function for localized text in SwiftUI
+/// Helper function for localized text in SwiftUI
 func LocalizedText(_ key: String, comment: String = "") -> Text {
     return Text(NSLocalizedString(key, comment: comment))
 }
 
-// Clear the UserDefaults data that have been set
+/// Clear the UserDefaults data that have been set
 extension UserDefaults {
     static func resetDefaults() {
         if let bundleID = Bundle.main.bundleIdentifier {

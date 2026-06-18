@@ -76,3 +76,25 @@
 
 /* Update Check */
 "Check for Updates..." = "Перевірити оновлення...";
+"UpdateAvailable" = "Доступне оновлення";
+"UpdateAvailableInfo" = "Тепер доступний застосунок %@. Бажаєте завантажити його?";
+"DownloadUpdate" = "Завантажити оновлення";
+"UpdateLater" = "Пізніше";
+"UpToDate" = "У вас найновіша версія!";
+"UpToDateInfo" = "Застосунок %@ наразі має найновішу версію.";
+"UpdateCheckError" = "Не вдалося перевірити оновлення";
+"UpdateCheckFailed" = "Не вдалося отримати інформацію про оновлення.";
+"UpdateCheckNetworkError" = "Не вдалося підключитися до сервера оновлень. Перевірте підключення до інтернету.";
+
+/* Firmware tab */
+"Installers" = "Інсталятори";
+"Firmwares" = "Прошивки";
+"Download %@ %@ (%@) Firmware" = "Завантажити прошивку %@ %@ (%@)";
+"This firmware has been downloaded" = "Цю прошивку вже завантажено";
+
+/* Firmware empty state */
+"The Firmwares list can't be loaded, please try again shortly." = "Не вдалося завантажити список прошивок, спробуйте ще раз пізніше..";
+
+/* Apple Configurator Restore */
+"Restore with Apple Configurator" = "Відновити за допомогою Apple Configurator";
+"Restore with Apple Configurator: How to" = "Відновити за допомогою Apple Configurator:\nПрошивки macOS — це файли IPSW, які можна використовувати для відновлення Mac із Silicon за допомогою Apple Configurator.\nДля цього вам потрібен інший Mac і кабель USB C, що може передавати живлення та дані.\nВідновлення Mac із Silicon стирає все на диску, і користувач втрачає всі дані, які не були заздалегідь збережені в резервній копії.";

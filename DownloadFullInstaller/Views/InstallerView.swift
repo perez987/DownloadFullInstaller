@@ -21,13 +21,13 @@ struct InstallerView: View {
     @State private var activeAlert: AppAlertType?
     @State private var isDownloaded = false
 
-    // Computed property for the installer filename
+    /// Computed property for the installer filename
     var installerFilename: String {
         return "InstallAssistant-\(product.productVersion ?? "V")-\(product.buildVersion ?? "B").pkg"
     }
 
-    // Check if the installer has been downloaded
-    // This checks the file system and should only be called after sandbox is initialized
+    /// Check if the installer has been downloaded
+    /// This checks the file system and should only be called after sandbox is initialized
     private func checkIfDownloaded() {
         let destination = Prefs.downloadURL
         let file = destination.appendingPathComponent(installerFilename)
@@ -140,7 +140,7 @@ struct InstallerView: View {
                             Image(systemName: "square.and.arrow.down.on.square").font(.title)
                         }
                     }
-                    .help(String(format: NSLocalizedString("Create Installer App from %@ %@ (%@)", comment: ""), product.osName ?? "", product.productVersion ?? "", product.buildVersion ?? ""))
+                    .help(String(format: NSLocalizedString("Create Installer App from %@ %@ (%@)", comment: ""), product.osName ?? "<no os>", product.productVersion ?? "<no version>", product.buildVersion ?? "<no build>"))
                     .disabled(multiDownloadManager.isDownloading(filename: installerFilename) || isCreatingInstaller)
                     .buttonStyle(.borderless)
                     .controlSize(.mini)
@@ -188,17 +188,13 @@ struct InstallerView: View {
     }
 
     func createInstallerApp() {
-        // Build the filename
         filename = installerFilename
         let destination = Prefs.downloadURL
         let pkgPath = destination.appendingPathComponent(filename).path
 
-        // Start accessing security-scoped resource for file operations (only if needed)
         let accessStarted = Prefs.startAccessingDownloadURL()
 
-        // Check if the PKG file exists
         guard FileManager.default.fileExists(atPath: pkgPath) else {
-            // Stop accessing if we're returning early
             Prefs.stopAccessingDownloadURL(accessStarted)
             let folderName = destination.lastPathComponent
             activeAlert = .installerCreation(
@@ -210,33 +206,182 @@ struct InstallerView: View {
 
         isCreatingInstaller = true
 
-        // Open the PKG file with the default installer application
-        // This works within sandbox constraints and shows the standard macOS installer UI
         let pkgURL = URL(fileURLWithPath: pkgPath)
         NSWorkspace.shared.open(pkgURL, configuration: NSWorkspace.OpenConfiguration()) { _, error in
-            // Stop accessing security-scoped resource after the operation completes
             Prefs.stopAccessingDownloadURL(accessStarted)
 
             DispatchQueue.main.async {
                 self.isCreatingInstaller = false
 
-                if error == nil {
-                    print("Installer package opened successfully")
-                    // Show success alert
-//                    self.activeAlert = .installerCreation(
-//                        title: NSLocalizedString("Success", comment: ""),
-//                        message: NSLocalizedString("The installer package has been opened. Follow the on-screen instructions to complete the installation", comment: "")
-//                    )
-                } else {
-                    print("Failed to open installer package: \(error?.localizedDescription ?? "Unknown error")")
-                    let folderName = destination.lastPathComponent
+                if let error {
                     self.activeAlert = .installerCreation(
                         title: NSLocalizedString("Error Creating Installer", comment: ""),
-                        message: String(format: NSLocalizedString("Failed to open the installer package. Please try opening it manually from the %@ folder.", comment: ""), folderName)
+                        message: String(format: NSLocalizedString("Failed to create installer app. Error: %@", comment: ""), error.localizedDescription)
                     )
                 }
             }
         }
+    }
+}
+
+struct FirmwareView: View {
+    let firmware: FirmwareProduct
+    @StateObject var multiDownloadManager = MultiDownloadManager.shared
+    @State private var activeAlert: AppAlertType?
+    @State private var failed = false
+
+    private var isDownloaded: Bool {
+        let destination = Prefs.downloadURL
+        let file = destination.appendingPathComponent(firmware.filename)
+
+        if FileManager.default.fileExists(atPath: file.path) {
+            return true
+        }
+
+        return multiDownloadManager.completedDownloads.contains { $0.filename == firmware.filename }
+    }
+
+    var body: some View {
+        HStack {
+            FirmwareIconView(firmware: firmware)
+
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("macOS \(firmware.osName)")
+                        .font(.headline)
+                    Spacer()
+                    Text(firmware.productVersion)
+                        .frame(alignment: .trailing)
+                }
+                HStack {
+                    Text(firmware.postDate, style: .date)
+                        .font(.footnote)
+                    Text(Prefs.byteFormatter.string(fromByteCount: Int64(firmware.size)))
+                        .font(.footnote)
+                    Spacer()
+                    Text(firmware.buildVersion)
+                        .frame(alignment: .trailing)
+                        .font(.footnote)
+                }
+            }
+
+            if isDownloaded {
+                Image(systemName: "checkmark.circle.fill")
+                    .font(.title2)
+                    .foregroundColor(.green)
+                    .help(NSLocalizedString("This firmware has been downloaded", comment: ""))
+            }
+
+            Button(action: {
+                if !multiDownloadManager.canStartNewDownload {
+                    activeAlert = .maxDownloads
+                    return
+                }
+
+                if multiDownloadManager.isDownloading(filename: firmware.filename) {
+                    return
+                }
+
+                let destination = Prefs.downloadURL
+                let file = destination.appendingPathComponent(firmware.filename)
+                let fileExists = FileManager.default.fileExists(atPath: file.path)
+
+                if fileExists {
+                    activeAlert = .replaceFile(filename: firmware.filename)
+                } else {
+                    do {
+                        _ = try multiDownloadManager.startDownload(url: firmware.url, filename: firmware.filename)
+                    } catch {
+                        failed = true
+                    }
+                }
+            }) {
+                Image(systemName: "arrow.down.circle").font(.title)
+            }
+            .help(String(format: NSLocalizedString("Download %@ %@ (%@) Firmware", comment: ""), firmware.osName, firmware.productVersion, firmware.buildVersion))
+            .disabled(multiDownloadManager.isDownloading(filename: firmware.filename))
+            .buttonStyle(.borderless)
+            .controlSize(.mini)
+
+            Button(action: {
+                if let url = URL(string: "https://support.apple.com/en-us/108900") {
+                    NSWorkspace.shared.open(url)
+                }
+            }) {
+                Image(systemName: "questionmark.circle").font(.title)
+            }
+            .help(NSLocalizedString("Restore with Apple Configurator: How to", comment: ""))
+            .buttonStyle(.borderless)
+            .controlSize(.mini)
+        }
+        .contextMenu {
+            Button(action: {
+                let pb = NSPasteboard.general
+                pb.clearContents()
+                pb.setString(firmware.url.absoluteString, forType: .string)
+            }) {
+                Image(systemName: "doc.on.clipboard")
+                Text(String(format: NSLocalizedString("Copy %@ %@ (%@) %@ URL", comment: ""), firmware.osName, firmware.productVersion, firmware.buildVersion, firmware.filename))
+            }
+        }
+        .appAlert(item: $activeAlert) { alertType in
+            switch alertType {
+            case .replaceFile:
+                do {
+                    _ = try multiDownloadManager.startDownload(url: firmware.url, filename: firmware.filename, replacing: true)
+                } catch {
+                    failed = true
+                }
+            default:
+                break
+            }
+        }
+    }
+}
+
+struct FirmwareIconView: View {
+    let firmware: FirmwareProduct
+
+    private var iconName: String {
+        let majorVersion = Int(firmware.productVersion.components(separatedBy: ".").first ?? "") ?? 0
+        switch majorVersion {
+        case 26:
+            return "Tahoe"
+        case 15:
+            return "Sequoia"
+        case 14:
+            return "Sonoma"
+        case 13:
+            return "Ventura"
+        case 12:
+            return "Monterey"
+        case 11:
+            return "Big Sur"
+        default:
+            return "macOS"
+        }
+    }
+
+    private var isBetaBuild: Bool {
+        firmware.buildVersion.range(of: "[a-z]$", options: .regularExpression) != nil
+    }
+
+    var body: some View {
+        ZStack(alignment: .center) {
+            Image(iconName)
+                .resizable(resizingMode: .stretch)
+                .aspectRatio(contentMode: .fit)
+                .foregroundColor(Color.blue)
+
+            if isBetaBuild {
+                Text(" beta ")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .background(Color.blue.opacity(0.8))
+                    .rotationEffect(.degrees(-45))
+            }
+        }
+        .frame(width: 50.0, height: 50.0, alignment: .center)
     }
 }
 

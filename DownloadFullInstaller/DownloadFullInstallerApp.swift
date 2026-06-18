@@ -4,8 +4,9 @@
 //  Created by Armin Briegel on 2021-06-09
 //
 
+import AppKit
+import Foundation
 import SwiftUI
-import Sparkle
 
 @main
 
@@ -13,7 +14,6 @@ struct FetchInstallerPkgApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject var sucatalog = SUCatalog()
     @StateObject var languageManager = LanguageManager()
-    @StateObject private var updaterController = UpdaterController()
     @State private var showLanguageSelection = false
     @State private var showSettings = false
 
@@ -75,20 +75,19 @@ struct FetchInstallerPkgApp: App {
                 }
                 .keyboardShortcut("l", modifiers: [.command])
             }
-                  // Add "Check for Updates…" to the application menu
-                  CommandGroup(after: .appInfo) {
-                      Button(
-                          NSLocalizedString(
-                              "Check for Updates...",
-                              comment: "Menu item to check for app updates"
-                          ),
-                          systemImage: "arrow.triangle.2.circlepath"
-                      ) {
-                          updaterController.checkForUpdates()
-                      }
-                              .keyboardShortcut("u", modifiers: [.command])
-                              .disabled(!updaterController.canCheckForUpdates)
-                      }
+
+            CommandGroup(after: .appInfo) {
+                Button(
+                    NSLocalizedString(
+                        "Check for Updates...",
+                        comment: "Menu item to check for app updates"
+                    ),
+                    systemImage: "arrow.triangle.2.circlepath"
+                ) {
+                    GitHubUpdateChecker.shared.checkForUpdates(userInitiated: true)
+                }
+                .keyboardShortcut("u", modifiers: [.command])
             }
+        }
     }
 }

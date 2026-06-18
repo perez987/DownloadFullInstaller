@@ -1,5 +1,14 @@
 # App for macOS 13+
 
+## 4.5.0 - Jun 17, 2026
+
+**Add Firmwares tab**
+
+- Add Firmwares tab to download IPSW files, used to restore Silicon Macs
+- Remove Sparkle updater system, generates code signing errors for quite a few users
+- Added a ligthweight GitHub updater system based in the GitHub releases API
+- With the version requiring at least macOS Big Sur removed, macOS 13 Ventura is now the minimum requirement
+
 ## 4.3.3 - May 19,2026
 
 **Update Sparkle to 2.9.2**
@@ -225,43 +234,3 @@ Initial contributors:
 - [chris1111](https://github.com/chris1111): Quit the application by closing the window from the red button / Add French and Canadian French languages
 - [Anto65](https://github.com/antuneddu): Add Italian language 
 - [ClassicUA](https://github.com/ClassicUA): Add Ukrainian language.
-
-# App for macOS 11+
-
-## 2.5.3 - March 16, 2026
-
-- Reorganize `Localizable.strings` files under meaningful section headers
-
-## 2.5.2 – February 28, 2026
-
-- Add Sparkle update checker and integrate it into the app and project
-- Add "Check for Updates…" command (⌘U) that calls the updater task
-- Update Localizable.strings across languages
-
-## 2.5.1 – February 26, 2026
-
-- Add temporary directory cleanup on app quit
-- For sandboxed apps, this is `~/Library/Containers/perez987.DownloadFullInstaller/Data/tmp`
-
-## 2.5.0 – February 25, 2026
-
-- `old` branch has been updated to include the functionalities of the `main` branch with these differences:
-   - No language selector
-   - No temporary directory cleanup on app quit
-   - No legacy macOS download
-- For users requiring to run the app on macOS 11 -12
-
-## 2.1.0 – November 2, 2025
-
-- Create the macOS installer application (e.g., "Install macOS Big Sur.app") directly from within Download Full Installer
-
-## 2.0.1 – September 22, 2025
-
-- Asset icons as badges Tahoe style, thanks to [chris1111](https://github.com/chris1111)
-- Add languages: Ukrainian (thanks _Vladislav Strekalin_) and Simplified Chinese
-
-## 2.0.0 – September 14, 2025
-
-- Refactor Preferences logic
-- Remove localization (English default)
-- Simplified localization system

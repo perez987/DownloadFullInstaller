@@ -12,8 +12,8 @@ struct SettingsView: View {
     @State private var displayPath: String = ""
     @Environment(\.dismiss) var dismiss
 
-    // Update the display path for UI
-    // This checks the file system and should only be called after sandbox is initialized
+    /// Update the display path for UI
+    /// This checks the file system and should only be called after sandbox is initialized
     private func updateDisplayPath() {
         var path = downloadPath
         // If path is empty, show the default Downloads folder

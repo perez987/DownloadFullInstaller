@@ -7,7 +7,9 @@
 import Foundation
 
 class Product: Codable, Identifiable, ObservableObject {
-    var thisComponent: String { return String(describing: self) }
+    var thisComponent: String {
+        return String(describing: self)
+    }
 
     let serverMetadataURL: String?
     let packages: [Package]

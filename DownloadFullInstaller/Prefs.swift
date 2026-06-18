@@ -24,7 +24,7 @@ enum Prefs {
         return key.rawValue
     }
 
-    // Save user preferences (AppleLanguages, LanguageSelectionShown and downloadURL)
+    /// Save user preferences (AppleLanguages, LanguageSelectionShown and downloadURL)
     static func registerDefaults() {
         var prefs = [String: Any]()
         prefs[Prefs.key(.seedProgram)] = SeedProgram.noSeed.rawValue
@@ -37,7 +37,7 @@ enum Prefs {
         UserDefaults.standard.register(defaults: prefs)
     }
 
-    // Delete preferences plist file, the app will run as if it were the first time
+    /// Delete preferences plist file, the app will run as if it were the first time
     static func delPlist() {
         let fileManager = FileManager.default
         let directory = URL.libraryDirectory.appending(path: "Preferences").path()
@@ -98,8 +98,7 @@ enum Prefs {
         }
 
         // Fallback to path-based URL
-        let downloadURL = URL(fileURLWithPath: downloadPath)
-        return downloadURL
+        return URL(fileURLWithPath: downloadPath)
     }
 
     /// Returns true if the download URL requires security-scoped resource access
@@ -149,7 +148,7 @@ enum Prefs {
         return UserDefaults.standard.bool(forKey: Prefs.key(.languageSelectionShown))
     }
 
-    // Save user preferences (LanguageSelectionShown)
+    /// Save user preferences (LanguageSelectionShown)
     static func setLanguageSelectionShown() {
         UserDefaults.standard.set(true, forKey: Prefs.key(.languageSelectionShown))
     }

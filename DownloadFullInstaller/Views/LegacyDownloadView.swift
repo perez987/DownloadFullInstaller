@@ -192,7 +192,7 @@ struct LegacyVersionRow: View {
     }
 }
 
-// Legacy Download Manager
+/// Legacy Download Manager
 class LegacyDownloadManager: NSObject, ObservableObject {
     @Published var isDownloading = false
     @Published var isComplete = false
@@ -201,7 +201,7 @@ class LegacyDownloadManager: NSObject, ObservableObject {
     @Published var filename: String?
     @Published var errorMessage: String?
 
-    // User-Agent to match Safari's behavior for CDN compatibility
+    /// User-Agent to match Safari's behavior for CDN compatibility
     private static let userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15"
 
     private var downloadTask: URLSessionDownloadTask?

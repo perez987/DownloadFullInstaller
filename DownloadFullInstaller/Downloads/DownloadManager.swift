@@ -6,7 +6,8 @@
 //
 
 import AppKit
-//import DockProgress
+
+// import DockProgress
 import Foundation
 
 @objc class DownloadManager: NSObject, ObservableObject {
@@ -179,8 +180,8 @@ import Foundation
         DownloadManager.cleanupAppTempDirectory()
     }
 
-    // Removes all files from the app's sandboxed temporary directory
-    // For sandboxed apps, this is ~/Library/Containers/perez987.DownloadFullInstaller/Data/tmp
+    /// Removes all files from the app's sandboxed temporary directory
+    /// For sandboxed apps, this is ~/Library/Containers/perez987.DownloadFullInstaller/Data/tmp
     static func cleanupAppTempDirectory() {
         let tempDir = URL(fileURLWithPath: NSTemporaryDirectory())
         do {
@@ -347,7 +348,7 @@ extension DownloadManager: URLSessionDownloadDelegate {
         }
     }
 
-    // Handle download resumption
+    /// Handle download resumption
     func urlSession(_: URLSession, downloadTask _: URLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
         print("Download resumed at offset: \(fileOffset) bytes")
         DispatchQueue.main.async {

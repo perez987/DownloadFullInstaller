@@ -6,9 +6,9 @@
 
 import Foundation
 
-// Official Apple download URLs for legacy macOS installers
-// These URLs are from Apple's Content Delivery Network (CDN)
-// and are the official distribution method for these legacy versions
+/// Official Apple download URLs for legacy macOS installers
+/// These URLs are from Apple's Content Delivery Network (CDN)
+/// and are the official distribution method for these legacy versions
 struct LegacyMacOSVersion: Identifiable {
     let id = UUID()
     let name: String

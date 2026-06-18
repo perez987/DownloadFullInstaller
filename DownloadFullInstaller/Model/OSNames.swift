@@ -6,8 +6,8 @@
 
 import Foundation
 
-// From Short Darwin (2 first chars) -to-> OS Name
-// From OS Name -to-> Short Version (2, 4 or 5 first chars)
+/// From Short Darwin (2 first chars) -to-> OS Name
+/// From OS Name -to-> Short Version (2, 4 or 5 first chars)
 var nameOS: [String: String] = [
     "11": "Lion",
     "12": "Mountain Lion",

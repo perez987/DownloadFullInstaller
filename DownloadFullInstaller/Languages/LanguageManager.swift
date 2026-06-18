@@ -31,12 +31,12 @@ class LanguageManager: ObservableObject {
 //        print("=== LanguageManager init() completed ===")
     }
 
-    // Load languages - call this from UI when ready (e.g., in .onAppear)
+    /// Load languages - call this from UI when ready (e.g., in .onAppear)
     func loadLanguagesIfNeeded() {
         ensureLanguagesLoaded()
     }
 
-    // Load languages lazily on first access
+    /// Load languages lazily on first access
     private func ensureLanguagesLoaded() {
         guard !hasLoadedLanguages else { return }
         hasLoadedLanguages = true
