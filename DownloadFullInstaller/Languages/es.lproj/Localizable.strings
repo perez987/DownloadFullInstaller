@@ -77,3 +77,25 @@
 
 /* Update Check */
 "Check for Updates..." = "Buscar actualizaciones...";
+"UpdateAvailable" = "Actualización disponible";
+"UpdateAvailableInfo" = "La aplicación %@ ya está disponible. ¿Quieres descargarla?";
+"DownloadUpdate" = "Descargar actualización";
+"UpdateLater" = "Más tarde";
+"UpToDate" = "¡Estás al día!";
+"UpToDateInfo" = "La aplicación %@ es actualmente la versión más reciente.";
+"UpdateCheckError" = "Error al buscar actualizaciones";
+"UpdateCheckFailed" = "No se pudo obtener la información de actualización.";
+"UpdateCheckNetworkError" = "No se puede conectar con el servidor de actualizaciones. Comprueba tu conexión a internet.";
+
+/* Firmware tab */
+"Installers" = "Instaladores";
+"Firmwares" = "Firmwares";
+"Download %@ %@ (%@) Firmware" = "Descargar firmware %@ %@ (%@)";
+"This firmware has been downloaded" = "Este firmware ya se ha descargado";
+
+/* Firmware empty state */
+"The Firmwares list can't be loaded, please try again shortly." = "No es posible cargar la lista de Firmwares, inténtalo de nuevo en breve.";
+
+/* Apple Configurator Restore */
+"Restore with Apple Configurator" = "Restaurar con Apple Configurator";
+"Restore with Apple Configurator: How to" = "Restaurar con Apple Configurator:\nLos firmwares de macOS son archivos IPSW que pueden usarse para restaurar un Mac Silicon usando Apple Configurator.\nPara esta tarea, necesitas otro Mac y un cable USB C que pueda transmitir energía y datos.\nRestaurar un Mac Silicon borra todo el contenido del disco y el usuario pierde cualquier dato que no se haya respaldado previamente.";

@@ -4,23 +4,24 @@ This file is automatically read by GitHub Copilot coding agents (and Claude) whe
 
 ## Project Overview
 
-**Download Full Installer** is a macOS application written in SwiftUI that downloads full macOS installer packages (`.pkg`) from Apple's software update catalogs.
+**Download Full Installer** is a macOS application written in SwiftUI that downloads:
 
-There are **two application targets** in this repository:
+- macOS Intel installer packages (`.pkg`) from Apple's software update catalogs
+- Firmware files (`.ipsw`) to restore Apple Silicon Macs.
 
-- `DownloadFullInstaller` → target macOS 13 Ventura 
-- `DownloadFullInstaller-11` → target macOS 11 Big Sur.
+There is **one application target** in this repository:
 
-Both targets share the same architecture and patterns. Changes that apply to one target almost always need to be mirrored in the other unless the feature is explicitly excluded.
+- `DownloadFullInstaller` → requires macOS 13 Ventura or later.
 
 ## Tech Stack
 
 - **Language**: Swift 5+
 - **UI framework**: SwiftUI (macOS only)
+- **Minimum macOS**: 13 Ventura
 - **Build tool**: Xcode 15+ (no command-line build system such as SPM, Make, or Tuist)
-- **Auto-updater**: [Sparkle](https://sparkle-project.org/) — integrated as a local framework copy inside each target folder (`Updater/UpdateController.swift`)
+- **Auto-updater**: Lightweight `GitHubUpdateChecker` (`Updater/UpdateController.swift`) — queries the GitHub Releases API; no Sparkle dependency
 - **Dock progress**: `DockProgress-4.3.1/` (local copy, not a package dependency)
-- **Sandbox**: both targets run in the macOS App Sandbox (see `.entitlements` files)
+- **Sandbox**: the target runs in the macOS App Sandbox (see `.entitlements` file)
 
 ## Project Structure
 
@@ -32,25 +33,21 @@ DownloadFullInstaller/          # Main target source
 │   Downloads/
 │       DownloadManager.swift
 │       MultiDownloadManager.swift
-│   Model/                           # Catalog parsing, product model
+│   Model/                           # Catalog parsing, product model (installers & firmwares)
 │   Views/                           # All SwiftUI views
 │   Languages/                       # LanguageManager + .lproj string tables
 │   Sleep/                           # Sleep prevention logic
-│   Updater/                         # Sparkle wrapper
+│   Updater/                         # GitHubUpdateChecker (lightweight, no Sparkle)
 │   DockProgress-4.3.1/              # Dock tile progress overlay
 │
-DownloadFullInstaller-11/       # macOS 11 target — mirrors main target
-│   (same structure, suffix "-11" on entry point file)
-│
-DownloadFullInstaller.xcodeproj/     # Xcode project for main target
-DownloadFullInstaller-11.xcodeproj/  # Xcode project for macOS 11 target
+DownloadFullInstaller.xcodeproj/     # Xcode project
 ```
 
 ## Building
 
 This project **must be built with Xcode**. There is no supported command-line build path.
 
-1. Open `DownloadFullInstaller.xcodeproj` (main) or `DownloadFullInstaller-11.xcodeproj` (macOS 11 variant) in Xcode 15 or later.
+1. Open `DownloadFullInstaller.xcodeproj` in Xcode 15 or later.
 2. Select the scheme matching the project name.
 3. Build with **⌘B** or **Product → Build**.
 4. Run with **⌘R**.
@@ -64,7 +61,6 @@ There is currently no automated test target (XCTest or otherwise). Validation is
 When making changes:
 - Ensure the project **compiles without errors or warnings** in Xcode.
 - Verify the relevant user-facing flow works at runtime on macOS 13+.
-- If the change touches the `DownloadFullInstaller-11` target's scope, verify it also compiles for that target.
 
 ## Localization
 
@@ -89,7 +85,7 @@ Rules:
 
 ## Sandbox Considerations
 
-Both targets run inside the macOS App Sandbox. Any file system access outside the sandbox-allowed paths requires an appropriate entitlement. Do not add entitlements without understanding the App Review implications.
+The target runs inside the macOS App Sandbox. Any file system access outside the sandbox-allowed paths requires an appropriate entitlement. Do not add entitlements without understanding the App Review implications.
 
 The sandboxed temporary directory used for in-progress downloads is:
 ```
@@ -101,7 +97,7 @@ Incomplete downloads are cleaned up on app quit (see `AppDelegate.swift`).
 
 | Dependency | Location | Purpose |
 |---|---|---|
-| Sparkle | `Updater/` + Xcode framework reference | In-app update checks |
+| GitHubUpdateChecker | `Updater/UpdateController.swift` | Lightweight in-app update checks via GitHub Releases API |
 | DockProgress | `DockProgress-4.3.1/` | Progress ring on Dock icon during downloads |
 
 These dependencies are bundled as source or framework copies inside the repository. Do not attempt to resolve them via SPM or CocoaPods.

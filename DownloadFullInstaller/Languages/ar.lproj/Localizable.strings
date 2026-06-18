@@ -129,5 +129,26 @@
 "تنزيل macOS %@ %@";
 
 /* Update Check */
-"Check for Updates..." =
-"البحث عن تحديثات...";
+"Check for Updates..." = "تحقق من التحديثات...";
+"UpdateAvailable" = "يتوفر تحديث";
+"UpdateAvailableInfo" = "الإصدار %@ من التطبيق متاح الآن. هل ترغب في تنزيله؟";
+"DownloadUpdate" = "تنزيل التحديث";
+"UpdateLater" = "لاحقًا";
+"UpToDate" = "أنت على أحدث إصدار!";
+"UpToDateInfo" = "التطبيق %@ هو حاليًا أحدث إصدار.";
+"UpdateCheckError" = "فشل التحقق من التحديث";
+"UpdateCheckFailed" = "فشل في استرجاع معلومات التحديث.";
+"UpdateCheckNetworkError" = "تعذر الاتصال بخادم التحديث. يرجى التحقق من اتصالك بالإنترنت.";
+
+/* Firmware tab */
+"Installers" = "المثبّتات";
+"Firmwares" = "البرامج الثابتة";
+"Download %@ %@ (%@) Firmware" = "تنزيل البرنامج الثابت %@ %@ (%@)";
+"This firmware has been downloaded" = "تم تنزيل هذا البرنامج الثابت";
+
+/* Firmware empty state */
+"The Firmwares list can't be loaded, please try again shortly." = "لا يمكن تحميل قائمة البرامج الثابتة، يرجى المحاولة مرة أخرى بعد قليل";
+
+/* Apple Configurator Restore */
+"Restore with Apple Configurator" = "الاستعادة باستخدام Apple Configurator";
+"Restore with Apple Configurator: How to" = "الاستعادة باستخدام Apple Configurator:\nبرامج macOS الثابتة هي ملفات IPSW يمكن استخدامها لاستعادة أجهزة Mac المزودة بـ Silicon باستخدام Apple Configurator.\nلهذه المهمة، تحتاج إلى جهاز Mac آخر وكابل USB C يمكنه نقل الطاقة والبيانات.\nاستعادة جهاز Mac المزود بـ Silicon تمسح كل شيء على القرص ويفقد المستخدم جميع البيانات التي لم يتم نسخها احتياطيًا مسبقًا.";

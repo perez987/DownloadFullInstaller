@@ -10,6 +10,7 @@ struct PreferencesView: View {
     @AppStorage(Prefs.key(.seedProgram)) var seedProgram: String = SeedProgram.noSeed.rawValue
     @AppStorage(Prefs.key(.osNameID)) var osNameID: String = OsNameID.osAll.rawValue
     @EnvironmentObject var sucatalog: SUCatalog
+    @Binding var selectedTab: Int
     @State private var showLegacyWindow = false
     @State private var previousOsNameID: String = OsNameID.osAll.rawValue
 
@@ -27,43 +28,45 @@ struct PreferencesView: View {
                         // - .labelsHidden() as View property: Picker("osNameID", selection: $osNameID) {
 
                         Picker("osNameID", selection: $osNameID) {
-                            ForEach(OsNameID.allCases) { osName in
+                            ForEach(OsNameID.allCases.filter { $0 != .osLegacy || selectedTab != 1 }) { osName in
                                 Text(osName.rawValue).font(.body)
                             }
                         }
 
-                        HStack(alignment: .center) {
-                            Text(NSLocalizedString(" in catalog", comment: "")).font(.body)
-                        }
+                        if selectedTab == 0 {
+                            HStack(alignment: .center) {
+                                Text(NSLocalizedString(" in catalog", comment: "")).font(.body)
+                            }
 
-                        if #available(macOS 14.0, *) {
-                            Picker(selection: $seedProgram, label: EmptyView()) {
-                                ForEach(SeedProgram.allCases) { program in
-                                    HStack {
-                                        Spacer()
-                                        Text(program.rawValue).font(.body)
+                            if #available(macOS 14.0, *) {
+                                Picker(selection: $seedProgram, label: EmptyView()) {
+                                    ForEach(SeedProgram.allCases) { program in
+                                        HStack {
+                                            Spacer()
+                                            Text(program.rawValue).font(.body)
+                                        }
                                     }
                                 }
-                            }
-                            .onChange(of: seedProgram) { sucatalog.load()
-                            }
-                            .onChange(of: osNameID) {
-                                handleOsNameIDChange()
-                            }
-                        } else {
-                            Picker(selection: $seedProgram, label: EmptyView()) {
-                                ForEach(SeedProgram.allCases) { program in
-                                    HStack {
-                                        Spacer()
-                                        Text(program.rawValue).font(.body)
+                                .onChange(of: seedProgram) { sucatalog.load()
+                                }
+                                .onChange(of: osNameID) {
+                                    handleOsNameIDChange()
+                                }
+                            } else {
+                                Picker(selection: $seedProgram, label: EmptyView()) {
+                                    ForEach(SeedProgram.allCases) { program in
+                                        HStack {
+                                            Spacer()
+                                            Text(program.rawValue).font(.body)
+                                        }
                                     }
                                 }
-                            }
-                            .onChange(of: seedProgram) { _ in
-                                sucatalog.load()
-                            }
-                            .onChange(of: osNameID) { _ in
-                                handleOsNameIDChange()
+                                .onChange(of: seedProgram) { _ in
+                                    sucatalog.load()
+                                }
+                                .onChange(of: osNameID) { _ in
+                                    handleOsNameIDChange()
+                                }
                             }
                         }
                     }
@@ -100,6 +103,6 @@ struct PreferencesView: View {
 
 struct PreferencesView_Previews: PreviewProvider {
     static var previews: some View {
-        PreferencesView()
+        PreferencesView(selectedTab: .constant(0))
     }
 }

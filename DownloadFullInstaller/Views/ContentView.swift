@@ -12,19 +12,66 @@ struct ContentView: View {
     @EnvironmentObject var languageManager: LanguageManager
     @AppStorage(Prefs.key(.seedProgram)) var seedProgram: String = ""
     @AppStorage(Prefs.key(.osNameID)) var osNameID: String = ""
+    @StateObject private var firmwareCatalog = FirmwareCatalog()
     @State private var refreshID = UUID()
+    @State private var selectedTab = 0
     var countersText: String = ""
 
     var body: some View {
-        PreferencesView().environmentObject(sucatalog).navigationTitle(NSLocalizedString("Download Full Installer", comment: "Main window title"))
         VStack(alignment: .center, spacing: 4) {
-            HStack(alignment: .center) {
-                Text("")
-                Spacer()
-            }
+            PreferencesView(selectedTab: $selectedTab)
+                .environmentObject(sucatalog)
+                .navigationTitle(NSLocalizedString("Download Full Installer", comment: "Main window title"))
 
+            TabView(selection: $selectedTab) {
+                installersTab
+                    .tag(0)
+                    .tabItem {
+                        Label(
+                            NSLocalizedString("Installers", comment: "Installers tab title"),
+                            systemImage: "cpu"
+                        )
+                    }
+
+                firmwareTab
+                    .tag(1)
+                    .tabItem {
+                        Label(
+                            NSLocalizedString("Firmwares", comment: "Firmwares tab title"),
+                            systemImage: "memorychip"
+                        )
+                    }
+            }
+        }
+        .id(refreshID)
+        .frame(
+            minWidth: 490.0,
+            idealWidth: 490.0,
+            maxWidth: 490.0,
+            minHeight: 562.0,
+            alignment: .center
+        )
+        .padding(.bottom, 12)
+        .padding(.horizontal, 28)
+        .onReceive(NotificationCenter.default.publisher(for: .languageChanged)) { _ in
+            refreshID = UUID()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .downloadPathChanged)) { _ in
+            refreshID = UUID()
+        }
+        .onAppear {
+            if !sucatalog.hasLoaded && !sucatalog.isLoading {
+                sucatalog.load()
+            }
+            if !firmwareCatalog.hasLoaded && !firmwareCatalog.isLoading {
+                firmwareCatalog.load()
+            }
+        }
+    }
+
+    private var installersTab: some View {
+        VStack(alignment: .center, spacing: 4) {
             if #available(macOS 15.0, *) {
-                // macOS 15 Sequoia and later - no overlay
                 List(sucatalog.installers, id: \.id) { installer in
                     InstallerView(product: installer)
                 }
@@ -32,7 +79,6 @@ struct ContentView: View {
                 .padding(4)
                 .contentMargins(.leading, 1, for: .scrollContent)
             } else if #available(macOS 14.0, *) {
-                // macOS 14 Sonoma - with overlay
                 List(sucatalog.installers, id: \.id) { installer in
                     InstallerView(product: installer)
                 }
@@ -45,7 +91,6 @@ struct ContentView: View {
                 )
                 .contentMargins(.leading, 1, for: .scrollContent)
             } else {
-                // macOS 13 Ventura - with overlay
                 List(sucatalog.installers, id: \.id) { installer in
                     InstallerView(product: installer)
                 }
@@ -60,37 +105,55 @@ struct ContentView: View {
 
             DownloadView()
         }
-        .id(refreshID) // Force view refresh when language or download path changes
-        .frame(
-            minWidth: 490.0,
-            idealWidth: 490.0,
-            maxWidth: 490.0,
-            minHeight: 562.0,
-            alignment: .center
-        )
-        .padding(.bottom, 12)
-        .padding(.horizontal, 28)
-        .onReceive(NotificationCenter.default.publisher(for: .languageChanged)) { _ in
-            refreshID = UUID()
-        }
-        .onReceive(NotificationCenter.default.publisher(for: .downloadPathChanged)) { _ in
-            print("Download path changed notification, refreshing view")
-            refreshID = UUID()
-        }
-        .onAppear {
-            // Diagnostic logging for sandbox initialization
-//            print("=== ContentView onAppear started ===")
-            // Load catalog after view appears, ensuring sandbox is fully initialized
-            if !sucatalog.hasLoaded && !sucatalog.isLoading {
-//                print("Loading SUCatalog...")
-                sucatalog.load()
-            } else {
-                print("SUCatalog already loaded or loading")
-            }
-//            print("=== ContentView onAppear completed ===")
-        }
+    }
 
-        HStack(alignment: .center) {}
+    private var firmwareTab: some View {
+        VStack(alignment: .center, spacing: 4) {
+            ZStack {
+                if #available(macOS 15.0, *) {
+                    List(firmwareCatalog.filteredFirmwares(for: osNameID), id: \.id) { firmware in
+                        FirmwareView(firmware: firmware)
+                    }
+                    .cornerRadius(8)
+                    .padding(4)
+                    .contentMargins(.leading, 1, for: .scrollContent)
+                } else if #available(macOS 14.0, *) {
+                    List(firmwareCatalog.filteredFirmwares(for: osNameID), id: \.id) { firmware in
+                        FirmwareView(firmware: firmware)
+                    }
+                    .cornerRadius(8)
+                    .padding(4)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 6)
+                            .stroke(.tertiary, lineWidth: 1)
+                            .padding(5)
+                    )
+                    .contentMargins(.leading, 1, for: .scrollContent)
+                } else {
+                    List(firmwareCatalog.filteredFirmwares(for: osNameID), id: \.id) { firmware in
+                        FirmwareView(firmware: firmware)
+                    }
+                    .cornerRadius(8)
+                    .padding(4)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 6)
+                            .stroke(.tertiary, lineWidth: 1)
+                            .padding(5)
+                    )
+                }
+
+//                if firmwareCatalog.hasLoaded && firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty && osNameID != "Legacy" {
+                if firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty && osNameID != "Legacy" {
+                    Text(NSLocalizedString("The Firmwares list can't be loaded, please try again shortly.", comment: "Message shown when the firmware list is empty after loading"))
+                        .foregroundColor(.secondary)
+                        .font(.system(size: 18))
+                        .multilineTextAlignment(.center)
+                        .padding()
+                }
+            }
+
+            DownloadView()
+        }
     }
 
     struct ContentView_Previews: PreviewProvider {

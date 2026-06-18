@@ -76,3 +76,25 @@
 
 /* Update Check */
 "Check for Updates..." = "检查更新...";
+"UpdateAvailable" = "有可用更新";
+"UpdateAvailableInfo" = "现已提供 %@。您想下载吗？";
+"DownloadUpdate" = "下载更新";
+"UpdateLater" = "稍后";
+"UpToDate" = "您已是最新版本！";
+"UpToDateInfo" = "%@ 当前已是最新版本。";
+"UpdateCheckError" = "检查更新失败";
+"UpdateCheckFailed" = "无法获取更新信息。";
+"UpdateCheckNetworkError" = "无法连接到更新服务器。请检查您的互联网连接。";
+
+/* Firmware tab */
+"Installers" = "安装程序";
+"Firmwares" = "固件";
+"Download %@ %@ (%@) Firmware" = "下载 %@ %@ (%@) 固件";
+"This firmware has been downloaded" = "此固件已下载";
+
+/* Firmware empty state */
+"The Firmwares list can't be loaded, please try again shortly." = "固件列表无法加载，请稍后再试。";
+
+/* Apple Configurator Restore */
+"Restore with Apple Configurator" = "使用 Apple Configurator 恢复。";
+"Restore with Apple Configurator: How to" = "使用 Apple Configurator 恢复：操作方法\nmacOS 固件是 IPSW 文件，可通过 Apple Configurator 用于恢复 Apple 芯片 Mac。\n执行此操作需要另一台 Mac 以及一根可同时传输电力和数据的 USB-C 线缆。\n恢复 Apple 芯片 Mac 会抹掉磁盘上的所有内容，用户将丢失所有此前未备份的数据。";

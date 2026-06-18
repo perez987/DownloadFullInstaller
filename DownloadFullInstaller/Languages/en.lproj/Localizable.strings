@@ -76,3 +76,25 @@
 
 /* Update Check */
 "Check for Updates..." = "Check for Updates...";
+"UpdateAvailable" = "Update Available";
+"UpdateAvailableInfo" = "Application %@ is now available. Would you like to download it?";
+"DownloadUpdate" = "Download Update";
+"UpdateLater" = "Later";
+"UpToDate" = "You're up to date!";
+"UpToDateInfo" = "Download Full Installer %@ is currently the latest version.";
+"UpdateCheckError" = "Update Check Failed";
+"UpdateCheckFailed" = "Failed to retrieve update information.";
+"UpdateCheckNetworkError" = "Unable to connect to the update server. Please check your internet connection.";
+
+/* Firmware tab */
+"Installers" = "Installers";
+"Firmwares" = "Firmwares";
+"Download %@ %@ (%@) Firmware" = "Download %@ %@ (%@) Firmware";
+"This firmware has been downloaded" = "This firmware has been downloaded";
+
+/* Firmware empty state */
+"The Firmwares list can't be loaded, please try again shortly." = "The Firmwares list can't be loaded, please try again shortly.";
+
+/* Apple Configurator Restore */
+"Restore with Apple Configurator" = "Restore with Apple Configurator.";
+"Restore with Apple Configurator: How to" = "Restore with Apple Configurator:\nmacOS firmwares are IPSW files that can be used to restore Silicon Macs using Apple Configurator.\nFor this task, you need another Mac and a USB C cable that can transmit power as well as data.\nRestoring a Silicon Mac erases everything on the drive and the user loses all data that has not been previously backed up.";

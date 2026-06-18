@@ -2,13 +2,11 @@
 
 ## Overview
 
-Download Full Installer prior to 4.2.1 includes a built-in, lightweight update checker that queries the GitHub Releases API to detect newer versions of the application. It has no third-party dependencies (no Sparkle or similar framework required).
-
-**Note**: Version 4.2.1 and newer implement the Sparkle framework as updater system.
+Download Full Installer includes a built-in, lightweight update checker that queries the GitHub Releases API to detect newer versions of the application. It has no third-party dependencies (no Sparkle or similar framework required).
 
 ## How to Check for Updates
 
-Open the **About This Hack** menu and click **Check for Updates…** (or press `⌘ U`). The app contacts GitHub and, depending on the result, shows one of the alerts described below.
+Open the **About Download Full Installer** menu and click **Check for Updates…** (or press `⌘ U`). The app contacts GitHub and, depending on the result, shows one of the alerts described below.
 
 The same check is available programmatically for automatic background checks on launch.
 
@@ -23,28 +21,13 @@ The same check is available programmatically for automatic background checks on 
 
 When an update is available, clicking **Download Update** opens the [releases page](https://github.com/perez987/DownloadFullInstaller/releases) in the default browser. Clicking **Later** dismisses the alert without any action.
 
-## Version Routing Logic
-
-The checker adapts its GitHub API call based on the major version number of the running app.
-
-Running version starts with:
-
-- **2** 
-   - API endpoint used `/repos/.../releases` (all releases)
-   - Finds the newest `2.x.x` release among all releases, ignoring drafts and pre-releases. 
-- **3** (or later)
-   - API endpoint used `/repos/.../releases/latest`
-   - Uses the standard *latest release* endpoint. 
-
-This routing ensures that users running the `2.x.x` series receive updates for that series only, while users on `3.x.x` (or later) always track the global latest release.
-
 ## Version Comparison
 
 Versions are compared component-by-component after stripping a leading `v` from the tag name (e.g., `v3.0.2` → `3.0.2`). Missing components are treated as `0`, so `3.1` is equal to `3.1.0`.
 
 ## Technical Details
 
-The updater is implemented as a singleton in `GitHubUpdateChecker.swift`:
+The updater is implemented as a singleton in `UpdateChecker.swift`:
 
 ```swift
 GitHubUpdateChecker.shared.checkForUpdates(userInitiated: true)
@@ -59,8 +42,6 @@ GET https://api.github.com/repos/perez987/DownloadFullInstaller/releases/latest
 Accept: application/vnd.github+json
 X-GitHub-Api-Version: 2022-11-28
 ```
-
-For the `2.x` routing path the `/releases` endpoint (array response) is used instead.
 
 ### No Persistent State
 

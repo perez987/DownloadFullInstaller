@@ -76,4 +76,25 @@
 
 /* Update Check */
 "Check for Updates..." = "Preveri posodobitve...";
+"UpdateAvailable" = "Posodobitev je na voljo";
+"UpdateAvailableInfo" = "Aplikacija %@ je zdaj na voljo. Ali jo želite prenesti?";
+"DownloadUpdate" = "Prenesi posodobitev";
+"UpdateLater" = "Pozneje";
+"UpToDate" = "Imate najnovejšo različico!";
+"UpToDateInfo" = "Aplikacija %@ je trenutno najnovejša različica.";
+"UpdateCheckError" = "Preverjanje posodobitev ni uspelo";
+"UpdateCheckFailed" = "Pridobivanje informacij o posodobitvi ni uspelo.";
+"UpdateCheckNetworkError" = "Povezava s strežnikom za posodobitve ni uspela. Preverite svojo internetno povezavo.";
 
+/* Firmware tab */
+"Installers" = "Namestitveni programi";
+"Firmwares" = "Vdelana programska oprema";
+"Download %@ %@ (%@) Firmware" = "Prenesi vdelano programsko opremo %@ %@ (%@)";
+"This firmware has been downloaded" = "Ta vdelana programska oprema je že prenesena";
+
+/* Firmware empty state */
+"The Firmwares list can't be loaded, please try again shortly." = "Seznama vdelane programske opreme ni mogoče naložiti, poskusite znova kmalu.";
+
+/* Apple Configurator Restore */
+"Restore with Apple Configurator" = "Obnovi z Apple Configurator";
+"Restore with Apple Configurator: How to" = "Obnovi z Apple Configurator:\nProgramska oprema macOS je v datotekah IPSW, ki jih lahko uporabite za obnovitev Macov s Silicon s pomočjo Apple Configuratorja.\nZa to opravilo potrebujete drug Mac in kabel USB C, ki lahko prenaša napajanje ter podatke.\nObnovitev Maca s Silicon izbriše vse na disku, uporabnik pa izgubi vse podatke, ki prej niso bili varnostno kopirani.";

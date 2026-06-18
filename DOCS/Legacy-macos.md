@@ -22,7 +22,7 @@ A new item called Legacy has been added to the macOS systems dropdown list. Lega
 
 | Drop-down list | Legacy download |
 |:---:|:---:|
-| ![Legacy item](../Images/EN/Legacy-1.png) | ![Legacy download](../Images/EN/Legacy-2.png) 
+| ![Legacy item](../Images/Legacy-1.png) | ![Legacy download](../Images/Legacy-2.png) 
 
 Legacy downloads are managed similarly to modern downloads:
 

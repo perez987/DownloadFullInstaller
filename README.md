@@ -4,6 +4,7 @@
 ![Platform](https://img.shields.io/badge/macOS-13+-orange.svg)
 ![Swift](https://img.shields.io/badge/Swift-5+-lavender.svg)
 ![Xcode](https://img.shields.io/badge/Xcode-15+-green.svg)
+<!-- ![Downloads](https://img.shields.io/badge/Downloads-2.7k-blue.svg) -->
 ![GitHub Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?style=flat&label=Downloads&color=blue)
 
 <a href="CHANGELOG-releases.md">
@@ -12,11 +13,11 @@
 <!-- <a href="README-ES.md">
 <img src="https://img.shields.io/badge/Spanish-README-pink" alt=“Spanish version”></a> -->
 
-"Download Full Installer" is a macOS application written in SwiftUI that downloads installer pkgs for the "Install macOS Big Sur" application and newer. Runs on macOS 13 Ventura through macOS 26 Tahoe.
+**Download Full Installer** is a macOS application written in SwiftUI that downloads PKG installers or IPSW firmwares for the I**nstall macOS Big Sur** application and newer. Runs on macOS 13 Ventura through macOS 26 Tahoe.
 
-<img src="Images/EN/Main-window1a.png" width="650px">
+<img src="Images/Main-window1a.png" width="650px">
 
-<!-- <img src="Images/EN/Main-window1b.png" width="700px"> -->
+<img src="Images/Main-window1b.png" width="650px">
 
 ### Preface
 
@@ -29,20 +30,30 @@ Full credit for the original idea and architecture goes to <em>scriptingosx</em>
 
 ### Features
 
-- Update up to macOS 26 Tahoe
-- Xcode project requires macOS 13 Ventura or newer
-- Preferences for choosing catalog are no longer a separate dialog but are now at the top of the main window
-- A single macOS version or all versions can be displayed at once
-- Add sleep prevention logic to avoid sleeping while the application is running
-- Add language selection system
-- Update translations
-- Add download resume functionality that automatically handles network interruptions
-- Add progress bar overlaying to the application's dock tile icon during PKG downloads
-- Add support for up to 3 simultaneous downloads
-- Add customizable download folder selection
-- Clean up incomplete downloads on app quit
-- Add legacy macOS installer support (10.7-10.12); read [this](DOCS/Legacy-macos.md)
-- Add Sparkle updater system to check for new releases
+- Target and requirements
+   - Minimum macoS Ventura 13
+   - Update up to macOS 26 Tahoe
+   - Xcode 15 requires macOS 13 Ventura or newer
+- Main UI
+   - Add Silicon firmwares tab to download IPSW files to restore T2 or Silicon Macs
+- Preferences
+   - Preferences for choosing catalog are no longer a separate dialog but are now at the top of the main window
+   - A single macOS version or all versions can be displayed at once
+- System sleep
+   - Add sleep prevention logic to avoid sleeping while the application is running
+- Downloads
+   - Add download resume functionality that automatically handles network interruptions
+   - Add progress bar overlaying to the application's dock tile icon during PKG downloads
+   - Add support for up to 3 simultaneous downloads
+   - Add customizable download folder selection
+  - Clean up incomplete downloads on app quit
+- Languages
+  - Add language selection system
+  - Update translations
+- Legacy macOS
+  - Add legacy macOS installer support (10.7-10.12); read [this](DOCS/Legacy-macos.md)
+- Updater
+  - Add lightweight GitHub updater system to check for new releases
 
 ### Legacy macOS installer download
 
@@ -50,7 +61,7 @@ A new item called Legacy has been added to the macOS systems dropdown list. Lega
 
 |    |    |
 |:---:|:---:|
-| ![Legacy item](Images/EN/Legacy-1.png) | ![Legacy download](Images/EN/Legacy-2.png) 
+| ![Legacy item](Images/Legacy-1.png) | ![Legacy download](Images/Legacy-2.png) 
 
 ### Create Installer App Feature
 
@@ -70,7 +81,7 @@ Download Full Installer -> Settings menu (⌘ ,) opens a window where you can se
 
 Language selector can be opened from the menubar (`Languages` > `Select Language`) or by keyboard shortcut (`⌘ + L`).
 
-<img src="Images/EN/Languages.png" width="540px">
+<img src="Images/Languages.png" width="540px">
 
 ### Clean up incomplete downloads on app quit
 
@@ -81,18 +92,6 @@ consuming disk space indefinitely. The cleanup safely removes regular files (not
 ### App is damaged and can't be opened
 
 If you see `App is damaged and can't be opened` when you open Download Full Installer for the first time, read this [document](DOCS/App-damaged.md).
-
-## Download Full Installer 11 
-
-There is a "Download Full Installer 11" app and project that run on macOS 11 Big Sur or newer:
-
-- Latest app version is 2.5.3 (183).
-- Platform:
-	- "Download Full Installer 11.app" runs on macOS 11+.
-	- Xcode project requires macOS 13 or newer.
-- "Download Full Installer 11" has all the functionalities of "Download Full Installer" except these two:
-   - No language selector.
-   - No legacy macOS download.
 
 # Original repository README
 (by *scriptingosx*)
