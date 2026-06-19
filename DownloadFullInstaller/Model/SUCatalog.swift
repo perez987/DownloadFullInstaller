@@ -229,6 +229,8 @@ final class FirmwareCatalog: ObservableObject {
 
     private func osName(for majorVersion: Int) -> String {
         switch majorVersion {
+        case 27:
+            return "Golden Gate"
         case 26:
             return "Tahoe"
         case 15:

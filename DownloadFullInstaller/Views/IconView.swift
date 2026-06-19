@@ -25,6 +25,7 @@ struct IconView: View {
         "23": "Sonoma",
         "24": "Sequoia",
         "25": "Tahoe",
+        "26": "Golden Gate",
         "99": "macOS",
     ]
 

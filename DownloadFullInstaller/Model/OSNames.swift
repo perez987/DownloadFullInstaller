@@ -24,6 +24,7 @@ var nameOS: [String: String] = [
     "23": "Sonoma",
     "24": "Sequoia",
     "25": "Tahoe",
+    "26": "Golden Gate",
     "99": "macOS",
     "Lion": "10.7",
     "Mountain Lion": "10.8",
@@ -40,6 +41,7 @@ var nameOS: [String: String] = [
     "Sonoma": "14",
     "Sequoia": "15",
     "Tahoe": "26",
+    "Golden Gate": "27",
     "macOS": "99",
     "All OS": "99",
 ]

@@ -345,6 +345,8 @@ struct FirmwareIconView: View {
     private var iconName: String {
         let majorVersion = Int(firmware.productVersion.components(separatedBy: ".").first ?? "") ?? 0
         switch majorVersion {
+        case 27:
+            return "Golden Gate"
         case 26:
             return "Tahoe"
         case 15:

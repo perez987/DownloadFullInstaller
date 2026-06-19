@@ -13,12 +13,13 @@ var thisComponent: String {
 
 // Note: this can change in future macOS
 
-let regularCatalog = "https://swscan.apple.com/content/catalogs/others/index-26-15-14-13-12-10.16-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog"
+let regularCatalog = "https://swscan.apple.com/content/catalogs/others/index-27-26-15-14-13-12-10.16-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog"
 
 let part1Catalog = "https://swscan.apple.com/content/catalogs/others/index-"
 let part3Catalog = "-10.15-10.14-10.13-10.12-10.11-10.10-10.9-mountainlion-lion-snowleopard-leopard.merged-1.sucatalog"
 
 let allSeedCatalogs: [String: String] = [
+    "27": "27?-27-26-15-14-13-12-10.16",
     "26": "26?-26-15-14-13-12-10.16",
     "15": "15?-15-14-13-12-10.16",
     "14": "14?-14-13-12-10.16",
@@ -48,6 +49,7 @@ enum SeedProgram: String, CaseIterable, Identifiable {
 
 enum OsNameID: String, CaseIterable, Identifiable {
     case osAll = "All OS"
+    case osGoldenGate = "Golden Gate"
     case osTahoe = "Tahoe"
     case osSequoia = "Sequoia"
     case osSonoma = "Sonoma"

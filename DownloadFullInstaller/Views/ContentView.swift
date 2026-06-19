@@ -144,9 +144,9 @@ struct ContentView: View {
 
 //                if firmwareCatalog.hasLoaded && firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty && osNameID != "Legacy" {
                 if firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty && osNameID != "Legacy" {
-                    Text(NSLocalizedString("The Firmwares list can't be loaded, please try again shortly.", comment: "Message shown when the firmware list is empty after loading"))
+                    Text(NSLocalizedString("The firmware list cannot be loaded or there are no firmwares available for this version of macOS.", comment: "Message shown when the firmware list is empty after loading"))
                         .foregroundColor(.secondary)
-                        .font(.system(size: 12))
+                        .font(.system(size: 18))
                         .multilineTextAlignment(.center)
                         .padding()
                 }
