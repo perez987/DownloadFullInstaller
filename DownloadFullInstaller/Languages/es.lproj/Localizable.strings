@@ -94,7 +94,7 @@
 "This firmware has been downloaded" = "Este firmware ya se ha descargado";
 
 /* Firmware empty state */
-"The Firmwares list can't be loaded, please try again shortly." = "No es posible cargar la lista de Firmwares, inténtalo de nuevo en breve.";
+"The firmware list cannot be loaded or there are no firmwares available for this version of macOS." = "No es posible cargar la lista de Firmwares, inténtalo de nuevo en breve.";
 
 /* Apple Configurator Restore */
 "Restore with Apple Configurator" = "Restaurar con Apple Configurator";
