@@ -28,7 +28,7 @@ let allSeedCatalogs: [String: String] = [
     "11": "10.16?-10.16",
 ]
 
-let defaultPart2Catalog = "26-15-14-13-12-10.16"
+let defaultPart2Catalog = "27-26-15-14-13-12-10.16"
 
 let seedCatalogID: [String: String] = [
     "CustomerSeed": "customerseed",

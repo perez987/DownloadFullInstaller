@@ -93,7 +93,7 @@
 "This firmware has been downloaded" = "Ta vdelana programska oprema je že prenesena";
 
 /* Firmware empty state */
-"The firmware list cannot be loaded or there are no firmwares available for this version of macOS." = "Seznama vdelane programske opreme ni mogoče naložiti, poskusite znova kmalu.";
+"The firmware list cannot be loaded or there are no firmwares available for this version of macOS." = "Zoznam firmvéru sa nedá načítať alebo pre túto verziu systému macOS nie sú k dispozícii žiadne firmvéry.";
 
 /* Apple Configurator Restore */
 "Restore with Apple Configurator" = "Obnovi z Apple Configurator";

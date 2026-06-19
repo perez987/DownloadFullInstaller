@@ -93,7 +93,7 @@
 "This firmware has been downloaded" = "Эта прошивка уже загружена";
 
 /* Firmware empty state */
-"The firmware list cannot be loaded or there are no firmwares available for this version of macOS." = "Список прошивок не может быть загружен, пожалуйста, попробуйте позже..";
+"The firmware list cannot be loaded or there are no firmwares available for this version of macOS." = "Не удаётся загрузить список прошивок или для этой версии macOS отсутствуют доступные прошивки.";
 
 /* Apple Configurator Restore */
 "Restore with Apple Configurator" = "Восстановить с помощью Apple Configurator";

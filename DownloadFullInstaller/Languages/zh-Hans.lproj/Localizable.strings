@@ -93,7 +93,7 @@
 "This firmware has been downloaded" = "此固件已下载";
 
 /* Firmware empty state */
-"The firmware list cannot be loaded or there are no firmwares available for this version of macOS." = "固件列表无法加载，请稍后再试。";
+"The firmware list cannot be loaded or there are no firmwares available for this version of macOS." = "固件列表无法加载，或者此 macOS 版本没有可用的固件。";
 
 /* Apple Configurator Restore */
 "Restore with Apple Configurator" = "使用 Apple Configurator 恢复。";
