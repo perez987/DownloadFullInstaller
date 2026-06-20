@@ -78,7 +78,9 @@ Download Full Installer -> Settings menu (⌘ ,) opens a window where you can se
 
 Language selector can be opened from the menubar (`Languages` > `Select Language`) or by keyboard shortcut (`⌘ + L`).
 
-<img src="Images/Languages.png" width="540px">
+|     |
+| --- |
+| ![Languages](Images/Languages.png) |
 
 ### Clean up incomplete downloads on app quit
 
