@@ -128,7 +128,7 @@ DispatchQueue.main.async {
 
 ## Available Styles
 
-While this project uses `.bar`, DockProgress supports these built-in styles:
+While this project uses `.bar` with download count, DockProgress supports these built-in styles:
 
 - `.bar` - Horizontal progress bar (used in this project)
 
@@ -142,8 +142,11 @@ While this project uses `.bar`, DockProgress supports these built-in styles:
 
 ![](../Images/DockProgress/Pie.png)
 
--  `.squircle` - Fits around macOS app icons
-- `.badge` - Badge-style progress showing a number
+- `.badge` - Badge-style progress
+
+![](../Images/DockProgress/Badge.png)
+
+-  `.squircle` - Fits around macOS app icons.
 
 ### Badge Style with Download Count
 
@@ -154,18 +157,20 @@ DockProgress.style = .badge(color: .blue, badgeValue: { DownloadManager.getDownl
 ```
 
 The download count is:
+
 - Incremented when a new download starts
 - Decremented when a download completes successfully, is cancelled, or fails
 
 This implementation is thread-safe and designed for future multi-download support.
 
-![](../Images/DockProgress/Badge.png)
+![](../Images/DockProgress/Badge-count.png)
 
 ## Troubleshooting
 
 ### Swift Concurrency Errors
 
 If you see errors like:
+
 ```
 Main actor-isolated static property 'progress' can not be mutated from a nonisolated context
 ```
