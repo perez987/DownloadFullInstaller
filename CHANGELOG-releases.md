@@ -2,9 +2,10 @@
 
 ## 4.5.0 - Jun 17, 2026
 
-**Add Firmwares tab**
+**Add Firmwares tab and update to macOS 27 Golden Gate**
 
 - Add Firmwares tab to download IPSW files, used to restore Silicon Macs
+- Update to macOS 27 Golden Gate
 - Remove Sparkle updater system, generates code signing errors for quite a few users
 - Added a lightweight GitHub updater system based in the GitHub releases API
 - With the version requiring at least macOS Big Sur removed, macOS 13 Ventura is now the minimum requirement

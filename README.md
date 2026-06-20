@@ -9,11 +9,12 @@
 <a href="CHANGELOG-releases.md">
     <img src="https://img.shields.io/badge/Releases-changelog-blue" alt=“Releases changelog”></a><br><br>
 
-**Download Full Installer** is a macOS application written in SwiftUI that downloads PKG installers or IPSW firmwares for the I**nstall macOS Big Sur** application and newer. Runs on macOS 13 Ventura through macOS 26 Tahoe.
+**Download Full Installer** is a macOS application written in SwiftUI that downloads PKG installers or IPSW firmwares for the I**nstall macOS Big Sur** application and newer. Runs on macOS 13 Ventura through macOS 27 Golden Gate.
 
-<img src="Images/Main-window1a.png" width="650px">
-
-<img src="Images/Main-window1b.png" width="650px">
+|     |
+| --- |
+| ![Installers](Images/Window1-light.png) |
+| ![Firmwares](Images/Window2-light.png) |
 
 ### Preface
 
@@ -28,7 +29,7 @@ Full credit for the original idea and architecture goes to <em>scriptingosx</em>
 
 - Target and requirements
    - Minimum macoS Ventura 13
-   - Update up to macOS 26 Tahoe
+   - Update to macOS 27 Golden Gate
    - Xcode 15 requires macOS 13 Ventura or newer
 - Main UI
    - Add Silicon firmwares tab to download IPSW files to restore T2 or Silicon Macs
