@@ -132,15 +132,15 @@ While this project uses `.bar`, DockProgress supports these built-in styles:
 
 - `.bar` - Horizontal progress bar (used in this project)
 
-![](../Images/DockProgress/Dock-bar.png)
+![](../Images/DockProgress/Bar.png)
 
 - `.circle` - Circular progress indicator
 
-![](../Images/DockProgress/Dock-circle.png)
+![](../Images/DockProgress/Circle.png)
 
 - `.pie` - Circular progress like a slice of pie
 
-![](../Images/DockProgress/Dock-pie.png)
+![](../Images/DockProgress/Pie.png)
 
 -  `.squircle` - Fits around macOS app icons
 - `.badge` - Badge-style progress showing a number
@@ -159,7 +159,7 @@ The download count is:
 
 This implementation is thread-safe and designed for future multi-download support.
 
-![](../Images/DockProgress/Dock-badge.png)
+![](../Images/DockProgress/Badge.png)
 
 ## Troubleshooting
 
