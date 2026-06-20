@@ -77,7 +77,7 @@
 /* Update Check */
 "Check for Updates..." = "Check for Updates...";
 "UpdateAvailable" = "Update Available";
-"UpdateAvailableInfo" = "Application %@ is now available. Would you like to download it?";
+"UpdateAvailableInfo" = "Download Full Installer %@ is now available. Would you like to download it?";
 "DownloadUpdate" = "Download Update";
 "UpdateLater" = "Later";
 "UpToDate" = "You're up to date!";

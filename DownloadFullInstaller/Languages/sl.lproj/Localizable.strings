@@ -77,11 +77,11 @@
 /* Update Check */
 "Check for Updates..." = "Preveri posodobitve...";
 "UpdateAvailable" = "Posodobitev je na voljo";
-"UpdateAvailableInfo" = "Aplikacija %@ je zdaj na voljo. Ali jo želite prenesti?";
+"UpdateAvailableInfo" = "Download Full Installer %@ je zdaj na voljo. Ali jo želite prenesti?";
 "DownloadUpdate" = "Prenesi posodobitev";
 "UpdateLater" = "Pozneje";
 "UpToDate" = "Imate najnovejšo različico!";
-"UpToDateInfo" = "Aplikacija %@ je trenutno najnovejša različica.";
+"UpToDateInfo" = "Download Full Installer %@ je trenutno najnovejša različica.";
 "UpdateCheckError" = "Preverjanje posodobitev ni uspelo";
 "UpdateCheckFailed" = "Pridobivanje informacij o posodobitvi ni uspelo.";
 "UpdateCheckNetworkError" = "Povezava s strežnikom za posodobitve ni uspela. Preverite svojo internetno povezavo.";

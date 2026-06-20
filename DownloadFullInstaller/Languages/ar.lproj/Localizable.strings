@@ -131,11 +131,12 @@
 /* Update Check */
 "Check for Updates..." = "تحقق من التحديثات...";
 "UpdateAvailable" = "يتوفر تحديث";
-"UpdateAvailableInfo" = "الإصدار %@ من التطبيق متاح الآن. هل ترغب في تنزيله؟";
+"UpdateAvailableInfo" = "الإصدار %@ من Download Full Installer متاح الآن. هل ترغب في تنزيله؟";
+"UpToDateInfo" = "الإصدار %@ من Download Full Installer هو الأحدث حالياً.";
 "DownloadUpdate" = "تنزيل التحديث";
 "UpdateLater" = "لاحقًا";
 "UpToDate" = "أنت على أحدث إصدار!";
-"UpToDateInfo" = "التطبيق %@ هو حاليًا أحدث إصدار.";
+"UpToDateInfo" = "الإصدار %@ من Download Full Installer هو الأحدث حالياً.";
 "UpdateCheckError" = "فشل التحقق من التحديث";
 "UpdateCheckFailed" = "فشل في استرجاع معلومات التحديث.";
 "UpdateCheckNetworkError" = "تعذر الاتصال بخادم التحديث. يرجى التحقق من اتصالك بالإنترنت.";

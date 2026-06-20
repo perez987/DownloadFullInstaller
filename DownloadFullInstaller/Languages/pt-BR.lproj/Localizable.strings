@@ -77,11 +77,11 @@
 /* Update Check */
 "Check for Updates..." = "Verificar atualizações...";
 "UpdateAvailable" = "Atualização disponível";
-"UpdateAvailableInfo" = "O aplicativo %@ está disponível agora. Deseja baixá-lo?";
+"UpdateAvailableInfo" = "Download Full Installer %@ está disponível agora. Deseja baixá-lo?";
 "DownloadUpdate" = "Baixar atualização";
 "UpdateLater" = "Depois";
 "UpToDate" = "Você está atualizado!";
-"UpToDateInfo" = "O aplicativo %@ está atualmente na versão mais recente.";
+"UpToDateInfo" = "Download Full Installer %@ está atualmente na versão mais recente.";
 "UpdateCheckError" = "Falha na verificação de atualização";
 "UpdateCheckFailed" = "Falha ao obter informações de atualização.";
 "UpdateCheckNetworkError" = "Não foi possível conectar ao servidor de atualização. Verifique sua conexão com a internet.";

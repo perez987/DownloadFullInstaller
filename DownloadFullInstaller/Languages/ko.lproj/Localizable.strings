@@ -77,11 +77,11 @@
 /* Update Check */
 "Check for Updates..." = "업데이트 확인...";
 "UpdateAvailable" = "업데이트 사용 가능";
-"UpdateAvailableInfo" = "%@ 앱의 새 버전을 사용할 수 있습니다. 다운로드하시겠습니까?";
+"UpdateAvailableInfo" = "Download Full Installer %@를 이제 사용할 수 있습니다. 다운로드하시겠습니까?";
 "DownloadUpdate" = "업데이트 다운로드";
 "UpdateLater" = "나중에";
 "UpToDate" = "최신 버전입니다!";
-"UpToDateInfo" = "%@ 앱은 현재 최신 버전입니다.";
+"UpToDateInfo" = "Download Full Installer %@는 현재 최신 버전입니다.";
 "UpdateCheckError" = "업데이트 확인 실패";
 "UpdateCheckFailed" = "업데이트 정보를 가져오지 못했습니다.";
 "UpdateCheckNetworkError" = "업데이트 서버에 연결할 수 없습니다. 인터넷 연결을 확인해 주세요.";
