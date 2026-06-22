@@ -4,7 +4,7 @@
 ![Platform](https://img.shields.io/badge/macOS-13+-orange.svg)
 ![Swift](https://img.shields.io/badge/Swift-5+-lavender.svg)
 ![Xcode](https://img.shields.io/badge/Xcode-15+-green.svg)
-![Downloads](https://img.shields.io/badge/Downloads-2.9k-blue.svg)
+![Downloads](https://img.shields.io/badge/Downloads-3.0k-blue.svg)
 
 <a href="CHANGELOG-releases.md">
     <img src="https://img.shields.io/badge/Releases-changelog-blue" alt=“Releases changelog”></a><br><br>
