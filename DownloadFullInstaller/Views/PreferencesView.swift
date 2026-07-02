@@ -19,7 +19,7 @@ struct PreferencesView: View {
         VStack(spacing: 0) {
             Form {
                 VStack(alignment: .trailing) {
-                    //				HStack(alignment: .center) { Text("\n\n") }
+//                HStack(alignment: .center) { Text("\n\n") }
 
                     HStack(alignment: .center) {
                         // Three ways to hide label text in a Picker:
@@ -27,11 +27,14 @@ struct PreferencesView: View {
                         // - label: EmptyView() as second parametePicker(selection: $osNameID, label: EmptyView()) {
                         // - .labelsHidden() as View property: Picker("osNameID", selection: $osNameID) {
 
+                        if selectedTab != 0 { Spacer() }
+
                         Picker("osNameID", selection: $osNameID) {
                             ForEach(OsNameID.allCases.filter { $0 != .osLegacy || selectedTab != 1 }) { osName in
                                 Text(osName.rawValue).font(.body)
                             }
                         }
+                        .fixedSize(horizontal: selectedTab != 0, vertical: false)
 
                         if selectedTab == 0 {
                             HStack(alignment: .center) {
@@ -68,6 +71,8 @@ struct PreferencesView: View {
                                     handleOsNameIDChange()
                                 }
                             }
+                        } else {
+                            Spacer()
                         }
                     }
                 }
