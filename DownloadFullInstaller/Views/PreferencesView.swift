@@ -19,7 +19,7 @@ struct PreferencesView: View {
         VStack(spacing: 0) {
             Form {
                 VStack(alignment: .trailing) {
-                    //				HStack(alignment: .center) { Text("\n\n") }
+//				HStack(alignment: .center) { Text("\n\n") }
 
                     HStack(alignment: .center) {
                         // Three ways to hide label text in a Picker:
