@@ -24,7 +24,7 @@ struct ContentView: View {
                 .navigationTitle(NSLocalizedString("Download Full Installer", comment: "Main window title"))
 
             Spacer()
-            
+
             TabView(selection: $selectedTab) {
                 installersTab
                     .tag(0)
