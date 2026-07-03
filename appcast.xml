@@ -3,16 +3,16 @@
   <channel>
     <title>Download Full Installer</title>
     <item>
-      <title>Version 4.5.1</title>
+      <title>Version 4.5.3</title>
 	   <description></description>
-      <sparkle:version>252</sparkle:version>
-      <sparkle:shortVersionString>4.5.1</sparkle:shortVersionString>
+      <sparkle:version>253</sparkle:version>
+      <sparkle:shortVersionString>4.5.3</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
       <pubDate>Sat, 14 Mar 2026 18:25:00 +0000</pubDate>
       <enclosure
-        url="https://github.com/perez987/DownloadFullInstaller/releases/download/4.5.1/Download.Full.Installer-4.5.1-sparkle.zip"
-        sparkle:edSignature="HjH+xdZjeC/Qy1YpV5Rf7bwRENNMtVCQknDt6tpcyuwHdLTLX3LeXgnZBapezWicsItzvWM5X60ZTitN9SsUAw=="
-        length="6608065"
+        url="https://github.com/perez987/DownloadFullInstaller/releases/download/4.5.3/Download.Full.Installer-4.5.3-sparkle.zip"
+        sparkle:edSignature="s0qEIm0WcfvEi2+OcMqv/7lr0B+MPWC4uPRgpn8n9J9+y+scNcq2+APMab+mqeX+kdGDUhBAafG1F78jb4HmCA=="
+        length="6689081"
         type="application/octet-stream"
       />
     </item>
