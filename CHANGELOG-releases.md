@@ -1,5 +1,14 @@
 # App for macOS 13+
 
+## 4.5.3 - Jul 5, 2026
+
+**Migrate updater to Sparkle**
+
+- Replaces the custom GitHub releases checker with a Sparkle-based system
+- Fixes a bug where changing osNameID on the Firmwares tab did not reload the installer catalog
+- Adds a temp-directory path log in download temp cleanup to make runtime cleanup behaviour easier to inspect
+- The versions (one with Sparkle and one with the GitHub updater) have been unified into a single version that uses Sparkle as its version updater. The version without Sparkle no longer exists.
+
 ## 4.5.1 - Jun 24, 2026
 
 **Remove code sign identity**
