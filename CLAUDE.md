@@ -21,7 +21,7 @@ There is **one application target** in this repository:
 - **Build tool**: Xcode 15+
 - **Auto-updater**: [Sparkle](https://sparkle-project.org/) via Swift Package Manager (`Updater/UpdateController.swift`)
 - **Dock progress**: `DockProgress-4.3.1` (local copy, not a package dependency)
-- **Sandbox**: the target runs in the macOS App Sandbox (see `.entitlements` file)
+- **Sandbox**: the target doesn't run in the macOS App Sandbox (see `.entitlements` file)
 
 ## Project Structure
 
@@ -70,6 +70,7 @@ The app is localized. Supported languages live in `Languages/*.lproj/Localizable
 **Supported locales**: `ar`, `en`, `es`, `fr`, `fr-CA`, `it`, `ko`, `pt-BR`, `ru`, `sl`, `uk`, `zh-Hans`.
 
 Rules:
+
 - All user-visible strings **must** use `NSLocalizedString("Key", comment: "Description")`.
 - When adding a new string, add the key/value pair to **every** `.lproj/Localizable.strings` file. Use the English text as the placeholder value for languages you cannot translate.
 - Do not hard-code user-visible text in Swift source files.
@@ -84,14 +85,8 @@ Rules:
 - Follow the existing file and type naming style (PascalCase types, camelCase properties/methods).
 - Keep commented-out debug `print()` statements only if they are clearly marked and non-intrusive; prefer removing them entirely.
 
-## Sandbox Considerations
+## Incomplete downloads
 
-The target runs inside the macOS App Sandbox. Any file system access outside the sandbox-allowed paths requires an appropriate entitlement. Do not add entitlements without understanding the App Review implications.
-
-The sandboxed temporary directory used for in-progress downloads is:
-```
-~/Library/Containers/perez987.DownloadFullInstaller/Data/tmp
-```
 Incomplete downloads are cleaned up on app quit (see `AppDelegate.swift`).
 
 ## Dependencies

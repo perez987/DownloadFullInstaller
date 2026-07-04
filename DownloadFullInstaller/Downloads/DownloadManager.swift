@@ -184,6 +184,11 @@ import Foundation
     /// For sandboxed apps, this is ~/Library/Containers/perez987.DownloadFullInstaller/Data/tmp
     static func cleanupAppTempDirectory() {
         let tempDir = URL(fileURLWithPath: NSTemporaryDirectory())
+        
+        /// Info about temporary directory
+        let strTempDir = tempDir.absoluteString
+        print("Temporary directory: \(strTempDir.dropFirst(7))")
+        
         do {
             let tempFiles = try FileManager.default.contentsOfDirectory(at: tempDir, includingPropertiesForKeys: [.isRegularFileKey, .fileSizeKey])
             var deletedCount = 0
