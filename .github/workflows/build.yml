@@ -1,4 +1,4 @@
-name: DownloadFullInstaller-2
+name: DownloadFullInstaller
 
 on:
   push:
