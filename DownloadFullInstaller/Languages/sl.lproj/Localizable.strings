@@ -76,15 +76,6 @@
 
 /* Update Check */
 "Check for Updates..." = "Preveri posodobitve...";
-"UpdateAvailable" = "Posodobitev je na voljo";
-"UpdateAvailableInfo" = "Download Full Installer %@ je zdaj na voljo. Ali jo želite prenesti?";
-"DownloadUpdate" = "Prenesi posodobitev";
-"UpdateLater" = "Pozneje";
-"UpToDate" = "Imate najnovejšo različico!";
-"UpToDateInfo" = "Download Full Installer %@ je trenutno najnovejša različica.";
-"UpdateCheckError" = "Preverjanje posodobitev ni uspelo";
-"UpdateCheckFailed" = "Pridobivanje informacij o posodobitvi ni uspelo.";
-"UpdateCheckNetworkError" = "Povezava s strežnikom za posodobitve ni uspela. Preverite svojo internetno povezavo.";
 
 /* Firmware tab */
 "Installers" = "Namestitveni programi";

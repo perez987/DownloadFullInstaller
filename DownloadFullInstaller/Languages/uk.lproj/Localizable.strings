@@ -76,15 +76,6 @@
 
 /* Update Check */
 "Check for Updates..." = "Перевірити оновлення...";
-"UpdateAvailable" = "Доступне оновлення";
-"UpdateAvailableInfo" = "Тепер доступний Download Full Installer %@. Бажаєте завантажити його?";
-"DownloadUpdate" = "Завантажити оновлення";
-"UpdateLater" = "Пізніше";
-"UpToDate" = "У вас найновіша версія!";
-"UpToDateInfo" = "Download Full Installer %@ наразі є останньою версією.";
-"UpdateCheckError" = "Не вдалося перевірити оновлення";
-"UpdateCheckFailed" = "Не вдалося отримати інформацію про оновлення.";
-"UpdateCheckNetworkError" = "Не вдалося підключитися до сервера оновлень. Перевірте підключення до інтернету.";
 
 /* Firmware tab */
 "Installers" = "Інсталятори";

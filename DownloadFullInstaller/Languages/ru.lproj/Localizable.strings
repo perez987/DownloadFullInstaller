@@ -76,15 +76,6 @@
 
 /* Update Check */
 "Check for Updates..." = "Проверить обновления...";
-"UpdateAvailable" = "Доступно обновление";
-"UpdateAvailableInfo" = "Download Full Installer %@ теперь доступно. Хотите загрузить его?";
-"DownloadUpdate" = "Загрузить обновление";
-"UpdateLater" = "Позже";
-"UpToDate" = "У вас актуальная версия!";
-"UpToDateInfo" = "Download Full Installer %@ сейчас имеет последнюю версию.";
-"UpdateCheckError" = "Не удалось проверить обновления";
-"UpdateCheckFailed" = "Не удалось получить информацию об обновлении.";
-"UpdateCheckNetworkError" = "Не удалось подключиться к серверу обновлений. Проверьте подключение к интернету.";
 
 /* Firmware tab */
 "Installers" = "Установщики";

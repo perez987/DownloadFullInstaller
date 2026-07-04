@@ -1,4 +1,4 @@
-# Download Full Installer
+# Download Full Installer with Sparkle updater
 
 
 ![Platform](https://img.shields.io/badge/macOS-13+-blue.svg)
@@ -6,9 +6,8 @@
 ![Xcode](https://img.shields.io/badge/Xcode-15+-green.svg)
 ![GitHub Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?style=flat&label=Downloads&color=orange)
 <!-- ![Downloads](https://img.shields.io/badge/Downloads-3.2k-blue.svg) -->
-
 <a href="CHANGELOG-releases.md">
-    <img src="https://img.shields.io/badge/Releases-changelog-blue" alt=“Releases changelog”></a><br><br>
+    <img src="https://img.shields.io/badge/-Changelog-blue" alt=“Releases changelog”></a><br><br>
 
 **Download Full Installer** is a macOS application written in SwiftUI that downloads PKG installers or IPSW firmwares for the I**nstall macOS Big Sur** application and newer. Runs on macOS 13 Ventura through macOS 27 Golden Gate.
 
@@ -51,7 +50,7 @@ Full credit for the original idea and architecture goes to <em>scriptingosx</em>
 - Legacy macOS
   - Add legacy macOS installer support (10.7-10.12); read [this](DOCS/Legacy-macos.md)
 - Updater
-  - Add lightweight GitHub updater system to check for new releases
+  - Add Sparkle updater system (Swift Package Manager) to check for new releases
 
 ### Legacy macOS installer download
 

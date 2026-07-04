@@ -23,8 +23,6 @@ struct ContentView: View {
                 .environmentObject(sucatalog)
                 .navigationTitle(NSLocalizedString("Download Full Installer", comment: "Main window title"))
 
-            Spacer()
-
             TabView(selection: $selectedTab) {
                 installersTab
                     .tag(0)
@@ -148,7 +146,7 @@ struct ContentView: View {
                 if firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty && osNameID != "Legacy" {
                     Text(NSLocalizedString("The firmware list cannot be loaded or there are no firmwares available for this version of macOS.", comment: "Message shown when the firmware list is empty after loading"))
                         .foregroundColor(.secondary)
-                        .font(.system(size: 18))
+                        .font(.system(size: 16))
                         .multilineTextAlignment(.center)
                         .padding()
                 }

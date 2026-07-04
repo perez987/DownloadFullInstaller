@@ -76,15 +76,6 @@
 
 /* Update Check */
 "Check for Updates..." = "Verifica aggiornamenti...";
-"UpdateAvailable" = "Aggiornamento disponibile";
-"UpdateAvailableInfo" = "Download Full Installer %@ è ora disponibile. Vuoi scaricarla?";
-"DownloadUpdate" = "Scarica aggiornamento";
-"UpdateLater" = "Più tardi";
-"UpToDate" = "Sei aggiornato!";
-"UpToDateInfo" = "Download Full Installer %@ è attualmente alla versione più recente.";
-"UpdateCheckError" = "Controllo aggiornamenti non riuscito";
-"UpdateCheckFailed" = "Impossibile recuperare le informazioni di aggiornamento.";
-"UpdateCheckNetworkError" = "Impossibile connettersi al server degli aggiornamenti. Controlla la tua connessione a internet.";
 
 /* Firmware tab */
 "Installers" = "Installatori";

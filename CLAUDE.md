@@ -19,8 +19,8 @@ There is **one application target** in this repository:
 - **UI framework**: SwiftUI (macOS only)
 - **Minimum macOS**: 13 Ventura
 - **Build tool**: Xcode 15+
-- **Auto-updater**: Lightweight `GitHubUpdateChecker` (`Updater/UpdateController.swift`) — queries the GitHub Releases API; no Sparkle dependency
-- **Dock progress**: `DockProgress-4.3.1/` (local copy, not a package dependency)
+- **Auto-updater**: [Sparkle](https://sparkle-project.org/) via Swift Package Manager (`Updater/UpdateController.swift`)
+- **Dock progress**: `DockProgress-4.3.1` (local copy, not a package dependency)
 - **Sandbox**: the target runs in the macOS App Sandbox (see `.entitlements` file)
 
 ## Project Structure
@@ -37,7 +37,7 @@ DownloadFullInstaller/          # Main target source
 │   Views/                           # All SwiftUI views
 │   Languages/                       # LanguageManager + .lproj string tables
 │   Sleep/                           # Sleep prevention logic
-│   Updater/                         # GitHubUpdateChecker (lightweight, no Sparkle)
+│   Updater/                         # Sparkle updater controller
 │   DockProgress-4.3.1/              # Dock tile progress overlay
 │
 DownloadFullInstaller.xcodeproj/     # Xcode project
@@ -45,7 +45,7 @@ DownloadFullInstaller.xcodeproj/     # Xcode project
 
 ## Building
 
-This project **must be built with Xcode**. There is no supported command-line build path.
+This project **must be built with Xcode**.
 
 1. Open `DownloadFullInstaller.xcodeproj` in Xcode 15 or later.
 2. Select the scheme matching the project name.
@@ -59,6 +59,7 @@ This project **must be built with Xcode**. There is no supported command-line bu
 There is currently no automated test target (XCTest or otherwise). Validation is done by building and running the app manually on macOS.
 
 When making changes:
+
 - Ensure the project **compiles without errors or warnings** in Xcode.
 - Verify the relevant user-facing flow works at runtime on macOS 13+.
 
@@ -93,14 +94,14 @@ The sandboxed temporary directory used for in-progress downloads is:
 ```
 Incomplete downloads are cleaned up on app quit (see `AppDelegate.swift`).
 
-## Dependencies (local copies — not Swift Package Manager)
+## Dependencies
 
 | Dependency | Location | Purpose |
 |---|---|---|
-| GitHubUpdateChecker | `Updater/UpdateController.swift` | Lightweight in-app update checks via GitHub Releases API |
+| Sparkle | Swift Package Manager via wrapper in `Updater/UpdateController.swift` | In-app update checks |
 | DockProgress | `DockProgress-4.3.1/` | Progress ring on Dock icon during downloads |
 
-These dependencies are bundled as source or framework copies inside the repository. Do not attempt to resolve them via SPM or CocoaPods.
+Sparkle is resolved through Swift Package Manager. DockProgress remains bundled in the repository; do not attempt to resolve it via CocoaPods.
 
 ## Versioning & Changelog
 

@@ -76,15 +76,6 @@
 
 /* Update Check */
 "Check for Updates..." = "업데이트 확인...";
-"UpdateAvailable" = "업데이트 사용 가능";
-"UpdateAvailableInfo" = "Download Full Installer %@를 이제 사용할 수 있습니다. 다운로드하시겠습니까?";
-"DownloadUpdate" = "업데이트 다운로드";
-"UpdateLater" = "나중에";
-"UpToDate" = "최신 버전입니다!";
-"UpToDateInfo" = "Download Full Installer %@는 현재 최신 버전입니다.";
-"UpdateCheckError" = "업데이트 확인 실패";
-"UpdateCheckFailed" = "업데이트 정보를 가져오지 못했습니다.";
-"UpdateCheckNetworkError" = "업데이트 서버에 연결할 수 없습니다. 인터넷 연결을 확인해 주세요.";
 
 /* Firmware tab */
 "Installers" = "설치 프로그램";
@@ -93,7 +84,7 @@
 "This firmware has been downloaded" = "이 펌웨어는 이미 다운로드되었습니다";
 
 /* Firmware empty state */
-"The Firmwares list can't be loaded, please try again shortly." = "펌웨어 목록을 불러올 수 없습니다. 잠시 후 다시 시도해 주세요..";
+"The firmware list cannot be loaded or there are no firmwares available for this version of macOS." = "펌웨어 목록을 불러올 수 없거나 이 macOS 버전에 사용할 수 있는 펌웨어가 없습니다.";
 
 /* Apple Configurator Restore */
 "Restore with Apple Configurator" = "Apple Configurator로 복원";

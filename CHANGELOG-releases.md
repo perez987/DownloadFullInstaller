@@ -1,18 +1,10 @@
 # App for macOS 13+
 
-## 4.5.3 - Jul 3, 2026
-
-**Fix bug in changing macOS version**
-
-- Fixes a bug where changing osNameID on the Firmwares tab did not reload the Installers catalog
-- Added macOS 14.0 availability check to handle different onChange methods
-
 ## 4.5.1 - Jun 24, 2026
 
 **Remove code sign identity**
 
 - Remove placeholder `CODE_SIGN_IDENTITY` entries in Xcode project to reduce Sparkle errors at app launch
-- Disable App Sandbox in project settings
 
 ## 4.5.0 - Jun 17, 2026
 

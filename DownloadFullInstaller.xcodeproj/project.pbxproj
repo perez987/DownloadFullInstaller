@@ -11,6 +11,7 @@
 		C0000002A000000100000001 /* Alert+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000002A000000200000001 /* Alert+Extensions.swift */; };
 		D9690FB42F4ECEED00265627 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9690FB22F4ECEED00265627 /* Utilities.swift */; };
 		D9690FB52F4ECEED00265627 /* DockProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9690FB12F4ECEED00265627 /* DockProgress.swift */; };
+		D971B3C52FF9AB0D00F96A4F /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = D971B3C42FF9AB0D00F96A4F /* Sparkle */; };
 		D982F68E2F2C29240016CC88 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D982F68D2F2C29240016CC88 /* Preview Assets.xcassets */; };
 		D9AAA0002E8B2D3B0086992F /* LegacyMacOSVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA0001E8B2D3B0086992F /* LegacyMacOSVersion.swift */; };
 		D9AAA0004E8B2D490086992F /* LegacyDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAA0003E8B2D490086992F /* LegacyDownloadView.swift */; };
@@ -128,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D971B3C52FF9AB0D00F96A4F /* Sparkle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +289,7 @@
 			);
 			name = "Download Full Installer";
 			packageProductDependencies = (
+				D971B3C42FF9AB0D00F96A4F /* Sparkle */,
 			);
 			productName = FetchInstallerPkg;
 			productReference = D9E20C682E8B2C570086992F /* Download Full Installer.app */;
@@ -327,6 +330,7 @@
 			);
 			mainGroup = D9E20C5F2E8B2C570086992F;
 			packageReferences = (
+				D971B3C32FF9AB0D00F96A4F /* XCRemoteSwiftPackageReference "Sparkle" */,
 			);
 			productRefGroup = D9E20C692E8B2C570086992F /* Products */;
 			projectDirPath = "";
@@ -566,7 +570,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DownloadFullInstaller/DownloadFullInstaller.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 253;
@@ -602,7 +605,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DownloadFullInstaller/DownloadFullInstaller.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 253;
@@ -653,6 +655,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D971B3C32FF9AB0D00F96A4F /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D971B3C42FF9AB0D00F96A4F /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D971B3C32FF9AB0D00F96A4F /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D9E20C602E8B2C570086992F /* Project object */;
 }
