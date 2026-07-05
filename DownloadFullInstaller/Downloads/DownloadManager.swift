@@ -185,9 +185,9 @@ import Foundation
     static func cleanupAppTempDirectory() {
         let tempDir = URL(fileURLWithPath: NSTemporaryDirectory())
         
-        /// Info about temporary directory
-        let strTempDir = tempDir.absoluteString
-        print("Temporary directory: \(strTempDir.dropFirst(7))")
+        /// Print temporary directory path
+//        let strTempDir = tempDir.absoluteString
+//        print("Temporary directory: \(strTempDir.dropFirst(7))")
         
         do {
             let tempFiles = try FileManager.default.contentsOfDirectory(at: tempDir, includingPropertiesForKeys: [.isRegularFileKey, .fileSizeKey])
