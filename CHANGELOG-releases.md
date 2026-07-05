@@ -11,10 +11,9 @@
 
 ## 4.5.1 - Jun 24, 2026
 
-**Remove code sign identity**
+**Disable App Sandbox**
 
 - Disable App Sandbox in project settings
-- Remove placeholder `CODE_SIGN_IDENTITY` entries in Xcode project to reduce Sparkle errors at app launch
 
 ## 4.5.0 - Jun 17, 2026
 
