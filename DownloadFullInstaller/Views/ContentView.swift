@@ -22,7 +22,9 @@ struct ContentView: View {
             PreferencesView(selectedTab: $selectedTab)
                 .environmentObject(sucatalog)
                 .navigationTitle(NSLocalizedString("Download Full Installer", comment: "Main window title"))
-
+            
+            Spacer()
+            
             TabView(selection: $selectedTab) {
                 installersTab
                     .tag(0)

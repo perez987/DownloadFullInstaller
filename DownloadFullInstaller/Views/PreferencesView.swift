@@ -19,7 +19,7 @@ struct PreferencesView: View {
         VStack(spacing: 0) {
             Form {
                 VStack(alignment: .trailing) {
-                    //				HStack(alignment: .center) { Text("\n\n") }
+//                HStack(alignment: .center) { Text("\n\n") }
 
                     HStack(alignment: .center) {
                         // Three ways to hide label text in a Picker:
@@ -27,9 +27,29 @@ struct PreferencesView: View {
                         // - label: EmptyView() as second parametePicker(selection: $osNameID, label: EmptyView()) {
                         // - .labelsHidden() as View property: Picker("osNameID", selection: $osNameID) {
 
-                        Picker("osNameID", selection: $osNameID) {
-                            ForEach(OsNameID.allCases.filter { $0 != .osLegacy || selectedTab != 1 }) { osName in
-                                Text(osName.rawValue).font(.body)
+                        if selectedTab != 0 { Spacer() }
+
+                        // onChange is attached here (outside any tab conditional) so that
+                        // osNameID changes on the Firmwares tab also reload the installer catalog.
+                        if #available(macOS 14.0, *) {
+                            Picker("osNameID", selection: $osNameID) {
+                                ForEach(OsNameID.allCases.filter { $0 != .osLegacy || selectedTab != 1 }) { osName in
+                                    Text(osName.rawValue).font(.body)
+                                }
+                            }
+                            .fixedSize(horizontal: selectedTab != 0, vertical: false)
+                            .onChange(of: osNameID) {
+                                handleOsNameIDChange()
+                            }
+                        } else {
+                            Picker("osNameID", selection: $osNameID) {
+                                ForEach(OsNameID.allCases.filter { $0 != .osLegacy || selectedTab != 1 }) { osName in
+                                    Text(osName.rawValue).font(.body)
+                                }
+                            }
+                            .fixedSize(horizontal: selectedTab != 0, vertical: false)
+                            .onChange(of: osNameID) { _ in
+                                handleOsNameIDChange()
                             }
                         }
 
@@ -49,9 +69,6 @@ struct PreferencesView: View {
                                 }
                                 .onChange(of: seedProgram) { sucatalog.load()
                                 }
-                                .onChange(of: osNameID) {
-                                    handleOsNameIDChange()
-                                }
                             } else {
                                 Picker(selection: $seedProgram, label: EmptyView()) {
                                     ForEach(SeedProgram.allCases) { program in
@@ -64,10 +81,9 @@ struct PreferencesView: View {
                                 .onChange(of: seedProgram) { _ in
                                     sucatalog.load()
                                 }
-                                .onChange(of: osNameID) { _ in
-                                    handleOsNameIDChange()
-                                }
                             }
+                        } else {
+                            Spacer()
                         }
                     }
                 }
