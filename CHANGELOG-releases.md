@@ -6,7 +6,7 @@
 
 - Replace the custom GitHub releases checker with a Sparkle-based system
 - Fix a bug where changing osNameID on the Firmwares tab did not reload the installers catalog list in the same macOS version
-- Add a temp-directory path log in download temp cleanup to make runtime cleanup behaviour easier to inspect
+- UI fixes for macOS 13 and 14
 - Versions (one with Sparkle and one with the GitHub updater) have been unified into a single version that uses Sparkle as its version updater. The version without Sparkle no longer exists.
 
 ## 4.5.1 - Jun 24, 2026
