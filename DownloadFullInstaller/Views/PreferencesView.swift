@@ -17,85 +17,72 @@ struct PreferencesView: View {
     let labelWidth = 100.0
     var body: some View {
         VStack(spacing: 0) {
-            Form {
-                VStack(alignment: .trailing) {
-//                HStack(alignment: .center) { Text("\n\n") }
+            HStack(alignment: .center) {
+                if selectedTab != 0 { Spacer() }
 
-                    HStack(alignment: .center) {
-                        // Three ways to hide label text in a Picker:
-                        // - empty string as first parameter: Picker("", selection: $osNameID) {
-                        // - label: EmptyView() as second parametePicker(selection: $osNameID, label: EmptyView()) {
-                        // - .labelsHidden() as View property: Picker("osNameID", selection: $osNameID) {
-
-                        if selectedTab != 0 { Spacer() }
-
-                        // onChange is attached here (outside any tab conditional) so that
-                        // osNameID changes on the Firmwares tab also reload the installer catalog.
-                        if #available(macOS 14.0, *) {
-                            Picker("osNameID", selection: $osNameID) {
-                                ForEach(OsNameID.allCases.filter { $0 != .osLegacy || selectedTab != 1 }) { osName in
-                                    Text(osName.rawValue).font(.body)
-                                }
-                            }
-                            .fixedSize(horizontal: selectedTab != 0, vertical: false)
-                            .onChange(of: osNameID) {
-                                handleOsNameIDChange()
-                            }
-                        } else {
-                            Picker("osNameID", selection: $osNameID) {
-                                ForEach(OsNameID.allCases.filter { $0 != .osLegacy || selectedTab != 1 }) { osName in
-                                    Text(osName.rawValue).font(.body)
-                                }
-                            }
-                            .fixedSize(horizontal: selectedTab != 0, vertical: false)
-                            .onChange(of: osNameID) { _ in
-                                handleOsNameIDChange()
-                            }
-                        }
-
-                        if selectedTab == 0 {
-                            HStack(alignment: .center) {
-                                Text(NSLocalizedString(" in catalog", comment: "")).font(.body)
-                            }
-
-                            if #available(macOS 14.0, *) {
-                                Picker(selection: $seedProgram, label: EmptyView()) {
-                                    ForEach(SeedProgram.allCases) { program in
-                                        HStack {
-                                            Spacer()
-                                            Text(program.rawValue).font(.body)
-                                        }
-                                    }
-                                }
-                                .onChange(of: seedProgram) { sucatalog.load()
-                                }
-                            } else {
-                                Picker(selection: $seedProgram, label: EmptyView()) {
-                                    ForEach(SeedProgram.allCases) { program in
-                                        HStack {
-                                            Spacer()
-                                            Text(program.rawValue).font(.body)
-                                        }
-                                    }
-                                }
-                                .onChange(of: seedProgram) { _ in
-                                    sucatalog.load()
-                                }
-                            }
-                        } else {
-                            Spacer()
+                // onChange is attached here (outside any tab conditional) so that
+                // osNameID changes on the Firmwares tab also reload the installer catalog.
+                if #available(macOS 14.0, *) {
+                    Picker("osNameID", selection: $osNameID) {
+                        ForEach(OsNameID.allCases.filter { $0 != .osLegacy || selectedTab != 1 }) { osName in
+                            Text(osName.rawValue).font(.body)
                         }
                     }
+                    .fixedSize(horizontal: selectedTab != 0, vertical: false)
+                    .onChange(of: osNameID) {
+                        handleOsNameIDChange()
+                    }
+                } else {
+                    Picker("osNameID", selection: $osNameID) {
+                        ForEach(OsNameID.allCases.filter { $0 != .osLegacy || selectedTab != 1 }) { osName in
+                            Text(osName.rawValue).font(.body)
+                        }
+                    }
+                    .fixedSize(horizontal: selectedTab != 0, vertical: false)
+                    .onChange(of: osNameID) { _ in
+                        handleOsNameIDChange()
+                    }
+                }
+
+                if selectedTab == 0 {
+                    HStack(alignment: .center) {
+                        Text(NSLocalizedString(" in catalog", comment: "")).font(.body)
+                    }
+
+                    if #available(macOS 14.0, *) {
+                        Picker(selection: $seedProgram, label: EmptyView()) {
+                            ForEach(SeedProgram.allCases) { program in
+                                HStack {
+                                    Spacer()
+                                    Text(program.rawValue).font(.body)
+                                }
+                            }
+                        }
+                        .onChange(of: seedProgram) { sucatalog.load()
+                        }
+                    } else {
+                        Picker(selection: $seedProgram, label: EmptyView()) {
+                            ForEach(SeedProgram.allCases) { program in
+                                HStack {
+                                    Spacer()
+                                    Text(program.rawValue).font(.body)
+                                }
+                            }
+                        }
+                        .onChange(of: seedProgram) { _ in
+                            sucatalog.load()
+                        }
+                    }
+                } else {
+                    Spacer()
                 }
             }
-//            .liquidGlass(intensity: .subtle)
+            .labelsHidden()
             .frame(
                 width: 400.0,
-                height: 38.0,
-                alignment: .centerFirstTextBaseline
+                height: 28.0,
+                alignment: .center
             )
-            // Hide label texts in the Pickers
-            .labelsHidden()
         }
         .sheet(isPresented: $showLegacyWindow) {
             LegacyDownloadView()
