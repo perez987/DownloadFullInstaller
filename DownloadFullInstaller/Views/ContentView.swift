@@ -19,31 +19,29 @@ struct ContentView: View {
 
     var body: some View {
         VStack(alignment: .center, spacing: 4) {
+            Picker("", selection: $selectedTab) {
+                Text(NSLocalizedString("Installers", comment: "Installers tab title"))
+                    .tag(0)
+                Text(NSLocalizedString("Firmwares", comment: "Firmwares tab title"))
+                    .tag(1)
+            }
+            .pickerStyle(.segmented)
+            .labelsHidden()
+            .frame(maxWidth: 260)
+
             PreferencesView(selectedTab: $selectedTab)
                 .environmentObject(sucatalog)
                 .navigationTitle(NSLocalizedString("Download Full Installer", comment: "Main window title"))
             
             Spacer()
             Divider()
-            
-            TabView(selection: $selectedTab) {
-                installersTab
-                    .tag(0)
-                    .tabItem {
-                        Label(
-                            NSLocalizedString("Installers", comment: "Installers tab title"),
-                            systemImage: "cpu"
-                        )
-                    }
 
-                firmwareTab
-                    .tag(1)
-                    .tabItem {
-                        Label(
-                            NSLocalizedString("Firmwares", comment: "Firmwares tab title"),
-                            systemImage: "memorychip"
-                        )
-                    }
+            Group {
+                if selectedTab == 0 {
+                    installersTab
+                } else {
+                    firmwareTab
+                }
             }
         }
         .id(refreshID)
@@ -54,6 +52,7 @@ struct ContentView: View {
             minHeight: 562.0,
             alignment: .center
         )
+        .padding(.top, 10)
         .padding(.bottom, 12)
         .padding(.horizontal, 28)
         .onReceive(NotificationCenter.default.publisher(for: .languageChanged)) { _ in
