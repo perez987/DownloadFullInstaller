@@ -1,5 +1,11 @@
 # App for macOS 13+
 
+## 4.5.4 - Jul 6, 2026
+
+**Adjust window spacing**
+
+- Tweaks UI layout for better visual balance.
+
 ## 4.5.3 - Jul 5, 2026
 
 **Migrate updater to Sparkle**

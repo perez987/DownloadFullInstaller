@@ -80,7 +80,7 @@ struct PreferencesView: View {
             .labelsHidden()
             .frame(
                 width: 400.0,
-                height: 28.0,
+                height: 42.0,
                 alignment: .center
             )
         }

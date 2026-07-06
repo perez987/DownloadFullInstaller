@@ -33,7 +33,8 @@ struct ContentView: View {
                 .environmentObject(sucatalog)
                 .navigationTitle(NSLocalizedString("Download Full Installer", comment: "Main window title"))
             
-            Spacer()
+//            Spacer()
+//            .padding(.bottom, 12)
             Divider()
 
             Group {
@@ -52,7 +53,7 @@ struct ContentView: View {
             minHeight: 562.0,
             alignment: .center
         )
-        .padding(.top, 10)
+        .padding(.top, 16)
         .padding(.bottom, 12)
         .padding(.horizontal, 28)
         .onReceive(NotificationCenter.default.publisher(for: .languageChanged)) { _ in
