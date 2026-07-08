@@ -21,7 +21,7 @@ There is **one application target** in this repository:
 - **Build tool**: Xcode 15+
 - **Auto-updater**: [Sparkle](https://sparkle-project.org/) via Swift Package Manager (`Updater/UpdateController.swift`)
 - **Dock progress**: `DockProgress-4.3.1` (local copy, not a package dependency)
-- **Sandbox**: the target doesn't run in the macOS App Sandbox (see `.entitlements` file)
+- **Sandbox**: the target runs in the macOS App Sandbox (see `.entitlements` file)
 
 ## Project Structure
 

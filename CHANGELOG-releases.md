@@ -2,8 +2,12 @@
 
 ## 4.5.4 - Jul 6, 2026
 
-**Adjust window spacing**
+**Re-enable app sandbox**
 
+- Enable macOS App Sandbox for improved security. Configure entitlements to allow only necessary capabilities:
+   - File access to Downloads folder (read-write) for saving installers
+   - Outgoing network connections for downloading from Apple
+- Add code signing identity and provisioning profile settings
 - Tweaks UI layout for better visual balance.
 
 ## 4.5.3 - Jul 5, 2026
