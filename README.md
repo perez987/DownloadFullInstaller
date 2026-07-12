@@ -1,10 +1,10 @@
-# Download Full Installer with Sparkle updater
+# Download Full Installer
 
 
-![Platform](https://img.shields.io/badge/macOS-13+-blue.svg)
+![Platform](https://img.shields.io/badge/macOS-13+-orange.svg)
 ![Swift](https://img.shields.io/badge/Swift-5+-lavender.svg)
 ![Xcode](https://img.shields.io/badge/Xcode-15+-green.svg)
-![GitHub Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?style=flat&label=Downloads&color=orange)
+![GitHub Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?style=flat&label=Downloads&color=navy)
 <!-- ![Downloads](https://img.shields.io/badge/Downloads-3.2k-blue.svg) -->
 <a href="CHANGELOG-releases.md">
     <img src="https://img.shields.io/badge/-Changelog-blue" alt=“Releases changelog”></a><br><br>
@@ -51,6 +51,9 @@ Full credit for the original idea and architecture goes to <em>scriptingosx</em>
   - Add legacy macOS installer support (10.7-10.12); read [this](DOCS/Legacy-macos.md)
 - Updater
   - Add Sparkle updater system (Swift Package Manager) to check for new releases
+- Security
+   - App is sandboxed
+   - App is notarized by Apple.
 
 ### Legacy macOS installer download
 
@@ -68,7 +71,7 @@ After downloading an `InstallAssistant.pkg` file, you can create the macOS insta
 2. Click the "Create Installer App" button next to the download button
 3. The PKG file will open with the standard macOS installer
 4. Follow the on-screen instructions to complete the installation
-5. The macOS installer app will be created in the `/Applications` folder
+5. The macOS installer app will be created in the `/Applications` folder.
 
 ### Settings to select downloads folder
 
