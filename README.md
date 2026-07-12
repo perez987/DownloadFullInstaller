@@ -4,10 +4,7 @@
 ![Platform](https://img.shields.io/badge/macOS-13+-orange.svg)
 ![Swift](https://img.shields.io/badge/Swift-5+-lavender.svg)
 ![Xcode](https://img.shields.io/badge/Xcode-15+-green.svg)
-![GitHub Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?style=flat&label=Downloads&color=navy)
-<!-- ![Downloads](https://img.shields.io/badge/Downloads-3.2k-blue.svg) -->
-<a href="CHANGELOG-releases.md">
-    <img src="https://img.shields.io/badge/-Changelog-blue" alt=“Releases changelog”></a><br><br>
+![GitHub Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?style=flat&label=Downloads&color=blue)
 
 **Download Full Installer** is a macOS application written in SwiftUI that downloads PKG installers or IPSW firmwares for the I**nstall macOS Big Sur** application and newer. Runs on macOS 13 Ventura through macOS 27 Golden Gate.
 
