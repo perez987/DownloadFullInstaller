@@ -1,5 +1,12 @@
 # App for macOS 13+
 
+## 4.6.0 - Jul 12, 2026
+
+**Notarized app**
+
+- App is now notarized by Apple (no more Gatekeeper impediments)
+- Updated app icon, thanks to [chris1111](https://github.com/chris1111)
+
 ## 4.5.4 - Jul 6, 2026
 
 **Re-enable app sandbox**
