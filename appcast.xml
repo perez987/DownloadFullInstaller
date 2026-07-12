@@ -10,9 +10,9 @@
       <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
       <pubDate>Sat, 14 Mar 2026 18:25:00 +0000</pubDate>
       <enclosure
-        url="https://github.com/perez987/DownloadFullInstaller/releases/download/4.6.0/Download.Full.Installer-4.6.0.zip"
-        sparkle:edSignature="JoGdsTrB7C04QHx0opSS6lJaXNllkbvlmyzJd//mNLaghMyPMJips6C4PAsHjGJQWEYwqZs8GfdPGuXOG0DVCQ=="
-        length="4872130"
+        url="https://github.com/perez987/DownloadFullInstaller/releases/download/4.6.0/Download.Full.Installer.4.6.0.dmg"
+        sparkle:edSignature="nqfY+o1Unr1NrcybilxUXOOwTA306QJ44hW6DqSCO4n4X+2B0ZBfJWxM5bzp87i9l4tnl2Ehsh85Hxz7uMoICA=="
+        length="5147265"
         type="application/octet-stream"
       />
     </item>
