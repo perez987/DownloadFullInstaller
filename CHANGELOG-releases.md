@@ -4,7 +4,7 @@
 
 **Notarized app**
 
-- App is now notarized by Apple (no more Gatekeeper impediments)
+- App is now notarized by Apple (no more Gatekeeper issues)
 - Updated app icon, thanks to [chris1111](https://github.com/chris1111)
 
 ## 4.5.4 - Jul 6, 2026
