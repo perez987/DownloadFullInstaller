@@ -90,7 +90,11 @@ consuming disk space indefinitely. The cleanup safely removes regular files (not
 
 ### App is damaged and can't be opened
 
-If you see `App is damaged and can't be opened` when you open Download Full Installer for the first time, read this [document](DOCS/App-damaged.md).
+If you see this message when you open Download Full Installer for the first time:
+<br>`The application is damaged and cannot be opened.`<br>
+Or this one:
+<br>`Could not verify that Download Full Installer does not contain malicious software.`<br>
+With the recommendation in both cases to move the file to the Trash, read this [document](DOCS/App-damaged.md).
 
 # Original repository README
 (by *scriptingosx*)
