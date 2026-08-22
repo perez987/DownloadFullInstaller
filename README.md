@@ -88,13 +88,13 @@ Incomplete downloads may accumulate in the sandboxed temp directory<br>
 `~/Library/Containers/perez987.DownloadFullInstaller/Data/tmp`<br>
 consuming disk space indefinitely. The cleanup safely removes regular files (not directories) from `NSTemporaryDirectory()`, which resolves to the sandboxed temp path. Individual file deletion failures don't halt the overall cleanup process.
 
-### App is damaged and can't be opened
+<!--### App is damaged and can't be opened
 
 If you see this message when you open Download Full Installer for the first time:
 <br>`The application is damaged and cannot be opened.`<br>
 Or this one:
 <br>`Could not verify that Download Full Installer does not contain malicious software.`<br>
-With the recommendation in both cases to move the file to the Trash, read this [document](DOCS/App-damaged.md).
+With the recommendation in both cases to move the file to the Trash, read this [document](DOCS/App-damaged.md). -->
 
 # Original repository README
 (by *scriptingosx*)
