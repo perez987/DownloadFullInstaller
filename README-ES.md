@@ -31,18 +31,18 @@ Todo el mérito por la idea original y la arquitectura es de <em>scriptingosx</e
    - Las preferencias para elegir el catálogo ya no son un diálogo separado, sino que se encuentran en la parte superior de la ventana principal
    - Se puede mostrar una única versión de macOS o todas a la vez
 - Suspensión del sistema
-   - Se añade lógica de prevención de suspensión para evitar que el sistema se duerma mientras la aplicación está en ejecución
+   - Se añade lógica para evitar que el ordenador se duerma mientras la aplicación está en ejecución
 - Descargas
    - Funcionalidad de reanudación de descargas que gestiona automáticamente las interrupciones de red
    - Barra de progreso superpuesta al icono del Dock durante las descargas de PKG
    - Soporte para hasta 3 descargas simultáneas
    - Carpeta de descarga personalizable
-  - Limpieza de descargas incompletas al cerrar la aplicación
+   - Limpieza de descargas incompletas al cerrar la aplicación
 - Idiomas
   - Sistema de selección de idioma
   - Traducciones actualizadas
-- macOS heredado
-  - Soporte para instaladores de macOS heredados (10.7-10.12); consulta [este documento](DOCS/Legacy-macos.md)
+- macOS obsoletos
+  - Soporte para instaladores de macOS obsoletos (10.7-10.12)
 - Actualizaciones
   - Sistema de actualización Sparkle (Swift Package Manager) para comprobar nuevas versiones
 - Seguridad
@@ -57,19 +57,23 @@ Se ha añadido un nuevo elemento llamado «Legacy» a la lista desplegable de si
 |:---:|:---:|
 | ![Elemento Legacy](Images/Legacy-es.png) |
 
-### Función «Crear aplicación instaladora»
+### Función «Crear aplicación de instalación»
 
-Tras descargar un archivo `InstallAssistant.pkg`, puedes crear la aplicación instaladora de macOS (p. ej., "Install macOS Sequoia.app") directamente desde Download Full Installer:
+Tras descargar un archivo `InstallAssistant.pkg`, puedes crear la aplicación de instalación de macOS (p. ej., "Install macOS Sequoia.app") directamente desde Download Full Installer:
 
 1. Descarga el PKG con el botón de descarga (↓)
-2. Haz clic en el botón «Crear aplicación instaladora» junto al botón de descarga
+2. Haz clic en el botón «Crear aplicación de instalación» junto al botón de descarga
 3. El archivo PKG se abrirá con el instalador estándar de macOS
 4. Sigue las instrucciones en pantalla para completar la instalación
-5. La aplicación instaladora de macOS se creará en la carpeta `/Aplicaciones`.
+5. La aplicación de instalación de macOS se creará en la carpeta `/Aplicaciones`.
 
 ### Configuración para seleccionar la carpeta de descargas
 
 Download Full Installer → menú Ajustes (⌘ ,) abre una ventana donde puedes seleccionar una carpeta diferente para descargar los instaladores. El valor predeterminado es ~/Descargas. Los indicadores visuales (marcas verdes) de los instaladores descargados se actualizan para reflejar los que ya están descargados en la carpeta seleccionada.
+
+|     |
+| --- |
+| ![Descargas](Images/Custom-folder-es.png) |
 
 ### Ventana de selección de idioma
 
@@ -94,19 +98,19 @@ Esta es una implementación en Swift UI del script [fetch-installer-pkg](https:/
 
 ### Motivación
 
-Es posible que prefieras descargar el PKG del instalador en lugar de la aplicación instaladora directamente, porque quieres redistribuir la aplicación instaladora con un sistema de gestión, como Jamf.
+Es posible que prefieras descargar el PKG del instalador en lugar de la aplicación de instalación directamente, porque quieres redistribuir la aplicación de instalación con un sistema de gestión, como Jamf.
 
-Dado que la aplicación instaladora de macOS Big Sur contiene un único archivo de más de 8 GB, las herramientas habituales de empaquetado fallarán. He descrito el problema y algunas soluciones en detalle en [esta entrada del blog](https://scriptingosx.com/2020/11/deploying-the-big-sur-installer-application/).
+Dado que la aplicación de instalación de macOS Big Sur contiene un único archivo de más de 8 GB, las herramientas habituales de empaquetado fallarán. He descrito el problema y algunas soluciones en detalle en [esta entrada del blog](https://scriptingosx.com/2020/11/deploying-the-big-sur-installer-application/).
 
 ### Extras
 
 - Copia la URL de descarga de un PKG instalador determinado desde el menú contextual.
 - Cambia el catálogo en el menú desplegable.
-- Crea la aplicación instaladora directamente desde el PKG descargado sin salir de la aplicación.
+- Crea la aplicación de instalación directamente desde el PKG descargado sin salir de la aplicación.
 
 ### Preguntas
 
-#### ¿Puede descargar versiones anteriores de la aplicación instaladora de macOS?
+#### ¿Puede descargar versiones anteriores de la aplicación de instalación de macOS?
 
 No. Apple solo proporciona PKG de instalador para Big Sur y versiones posteriores. Las versiones anteriores del instalador de Big Sur se eliminan periódicamente.
 
@@ -118,7 +122,7 @@ No.
 
 Hasta donde sé, descarga el mismo PKG que `softwareupdate --fetch-full-installer` e `installinstallmacOS.py`.
 
-La diferencia es que las otras herramientas realizan la instalación inmediatamente a continuación, de modo que obtienes la aplicación instaladora en la carpeta `/Applications`. Esta herramienta solo descarga el PKG, para que puedas usarlo en tu sistema de gestión, archivar el PKG del instalador o ejecutar la instalación manualmente.
+La diferencia es que las otras herramientas realizan la instalación inmediatamente a continuación, de modo que obtienes la aplicación de instalación en la carpeta `/Applications`. Esta herramienta solo descarga el PKG, para que puedas usarlo en tu sistema de gestión, archivar el PKG del instalador o ejecutar la instalación manualmente.
 
 ### Créditos
 
