@@ -23,7 +23,7 @@ struct InstallerView: View {
 
     /// Computed property for the installer filename
     var installerFilename: String {
-        return "InstallAssistant-\(product.productVersion ?? "V")-\(product.buildVersion ?? "B").pkg"
+        "InstallAssistant-\(product.productVersion ?? "V")-\(product.buildVersion ?? "B").pkg"
     }
 
     /// Check if the installer has been downloaded
@@ -212,10 +212,10 @@ struct InstallerView: View {
             Prefs.stopAccessingDownloadURL(accessStarted)
 
             Task { @MainActor in
-                self.isCreatingInstaller = false
+                isCreatingInstaller = false
 
                 if let error {
-                    self.activeAlert = .installerCreation(
+                    activeAlert = .installerCreation(
                         title: NSLocalizedString("Error Creating Installer", comment: ""),
                         message: String(format: NSLocalizedString("Failed to create installer app. Error: %@", comment: ""), error.localizedDescription)
                     )
@@ -231,11 +231,11 @@ struct FirmwareView: View {
     @State private var activeAlert: AppAlertType?
     @State private var failed = false
     @State private var isDownloaded = false
-    
+
     private func checkIfDownloaded() {
         let destination = Prefs.downloadURL
         let file = destination.appendingPathComponent(firmware.filename)
-        
+
         let accessStarted = Prefs.startAccessingDownloadURL()
         defer {
             Prefs.stopAccessingDownloadURL(accessStarted)

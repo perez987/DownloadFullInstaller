@@ -22,7 +22,7 @@ struct ContentView: View {
             PreferencesView(selectedTab: $selectedTab)
                 .environmentObject(sucatalog)
                 .navigationTitle(NSLocalizedString("Download Full Installer", comment: "Main window title"))
-            
+
             Spacer()
 //            Divider()
 //            Spacer()
@@ -64,10 +64,10 @@ struct ContentView: View {
             refreshID = UUID()
         }
         .onAppear {
-            if !sucatalog.hasLoaded && !sucatalog.isLoading {
+            if !sucatalog.hasLoaded, !sucatalog.isLoading {
                 sucatalog.load()
             }
-            if !firmwareCatalog.hasLoaded && !firmwareCatalog.isLoading {
+            if !firmwareCatalog.hasLoaded, !firmwareCatalog.isLoading {
                 firmwareCatalog.load()
             }
         }
@@ -115,7 +115,7 @@ struct ContentView: View {
                 )
 
 //                if firmwareCatalog.hasLoaded && firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty && osNameID != "Legacy" {
-                if firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty && osNameID != "Legacy" {
+                if firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty, osNameID != "Legacy" {
                     Text(NSLocalizedString("The firmware list cannot be loaded or there are no firmwares available for this version of macOS.", comment: "Message shown when the firmware list is empty after loading"))
                         .foregroundColor(.secondary)
                         .font(.system(size: 16))

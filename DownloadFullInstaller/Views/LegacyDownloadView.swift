@@ -265,7 +265,7 @@ class LegacyDownloadManager: NSObject, ObservableObject, @unchecked Sendable {
     }
 
     func revealInFinder() {
-        if isComplete, let localURL = localURL {
+        if isComplete, let localURL {
             let destination = Prefs.downloadURL
 
             // Start accessing security-scoped resource for Finder reveal (only if needed)
@@ -296,7 +296,7 @@ extension LegacyDownloadManager: URLSessionDownloadDelegate {
             return
         }
 
-        guard let filename = filename else { return }
+        guard let filename else { return }
 
         do {
             let file = destination.appendingPathComponent(filename)
@@ -346,7 +346,7 @@ extension LegacyDownloadManager: URLSessionDownloadDelegate {
 
 extension LegacyDownloadManager: URLSessionTaskDelegate {
     func urlSession(_: URLSession, task _: URLSessionTask, didCompleteWithError error: Error?) {
-        guard let error = error else { return }
+        guard let error else { return }
 
         print("Legacy download error: \(error.localizedDescription)")
 

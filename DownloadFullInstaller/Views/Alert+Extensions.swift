@@ -25,17 +25,17 @@ enum AppAlertType: Identifiable {
     var id: String {
         switch self {
         case let .replaceFile(filename):
-            return "replaceFile_\(filename)"
+            "replaceFile_\(filename)"
         case .maxDownloads:
-            return "maxDownloads"
+            "maxDownloads"
         case .installerCreation:
-            return "installerCreation"
+            "installerCreation"
         case .downloadError:
-            return "downloadError"
+            "downloadError"
         case .restartRequired:
-            return "restartRequired"
+            "restartRequired"
         case .warningSettings:
-            return "warningSettings"
+            "warningSettings"
         }
     }
 
@@ -43,17 +43,17 @@ enum AppAlertType: Identifiable {
     var title: String {
         switch self {
         case let .replaceFile(filename):
-            return String(format: NSLocalizedString("%@ already exists. Do you want to replace it?", comment: ""), filename)
+            String(format: NSLocalizedString("%@ already exists. Do you want to replace it?", comment: ""), filename)
         case .maxDownloads:
-            return NSLocalizedString("Maximum Downloads Reached", comment: "")
+            NSLocalizedString("Maximum Downloads Reached", comment: "")
         case let .installerCreation(title, _):
-            return title
+            title
         case .downloadError:
-            return NSLocalizedString("Download Error", comment: "")
+            NSLocalizedString("Download Error", comment: "")
         case .restartRequired:
-            return NSLocalizedString("Restart Required", comment: "")
+            NSLocalizedString("Restart Required", comment: "")
         case .warningSettings:
-            return NSLocalizedString("Warning", comment: "")
+            NSLocalizedString("Warning", comment: "")
         }
     }
 
@@ -61,17 +61,17 @@ enum AppAlertType: Identifiable {
     var message: String {
         switch self {
         case .replaceFile:
-            return NSLocalizedString("A file with the same name already exists in that location. Replacing it will overwrite its current contents.", comment: "")
+            NSLocalizedString("A file with the same name already exists in that location. Replacing it will overwrite its current contents.", comment: "")
         case .maxDownloads:
-            return NSLocalizedString("You can only download up to 3 installers at the same time. Please wait for a download to complete before starting a new one.", comment: "")
+            NSLocalizedString("You can only download up to 3 installers at the same time. Please wait for a download to complete before starting a new one.", comment: "")
         case let .installerCreation(_, message):
-            return message
+            message
         case let .downloadError(message):
-            return message
+            message
         case .restartRequired:
-            return NSLocalizedString("The app must be restarted for changes to take effect.", comment: "")
+            NSLocalizedString("The app must be restarted for changes to take effect.", comment: "")
         case .warningSettings:
-            return NSLocalizedString("You will lose user settings and saved language.", comment: "")
+            NSLocalizedString("You will lose user settings and saved language.", comment: "")
         }
     }
 
@@ -79,9 +79,9 @@ enum AppAlertType: Identifiable {
     var hasPrimaryAction: Bool {
         switch self {
         case .replaceFile, .restartRequired, .warningSettings:
-            return true
+            true
         case .maxDownloads, .installerCreation, .downloadError:
-            return false
+            false
         }
     }
 
@@ -89,11 +89,11 @@ enum AppAlertType: Identifiable {
     var primaryButtonText: String {
         switch self {
         case .replaceFile:
-            return NSLocalizedString("Replace", comment: "")
+            NSLocalizedString("Replace", comment: "")
         case .restartRequired, .warningSettings:
-            return NSLocalizedString("OK", comment: "")
+            NSLocalizedString("OK", comment: "")
         default:
-            return NSLocalizedString("OK", comment: "")
+            NSLocalizedString("OK", comment: "")
         }
     }
 
@@ -101,9 +101,9 @@ enum AppAlertType: Identifiable {
     var isPrimaryDestructive: Bool {
         switch self {
         case .replaceFile:
-            return true
+            true
         default:
-            return false
+            false
         }
     }
 
@@ -111,9 +111,9 @@ enum AppAlertType: Identifiable {
     var dismissButtonText: String {
         switch self {
         case .replaceFile, .restartRequired, .warningSettings:
-            return NSLocalizedString("Cancel", comment: "")
+            NSLocalizedString("Cancel", comment: "")
         case .maxDownloads, .installerCreation, .downloadError:
-            return NSLocalizedString("OK", comment: "")
+            NSLocalizedString("OK", comment: "")
         }
     }
 
@@ -123,7 +123,7 @@ enum AppAlertType: Identifiable {
     func createAlert(primaryAction: (() -> Void)? = nil) -> Alert {
         if hasPrimaryAction {
             if isPrimaryDestructive {
-                return Alert(
+                Alert(
                     title: Text(title),
                     message: Text(message),
                     primaryButton: .cancel(Text(dismissButtonText)),
@@ -133,7 +133,7 @@ enum AppAlertType: Identifiable {
                     )
                 )
             } else {
-                return Alert(
+                Alert(
                     title: Text(title),
                     message: Text(message),
                     primaryButton: .default(
@@ -144,7 +144,7 @@ enum AppAlertType: Identifiable {
                 )
             }
         } else {
-            return Alert(
+            Alert(
                 title: Text(title),
                 message: Text(message),
                 dismissButton: .default(Text(dismissButtonText))

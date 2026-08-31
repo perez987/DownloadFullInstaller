@@ -9,12 +9,12 @@ import Foundation
 @MainActor
 class SUCatalog: ObservableObject {
     var thisComponent: String {
-        return String(describing: self)
+        String(describing: self)
     }
 
     @Published var catalog: Catalog?
     var products: [String: Product]? {
-        return catalog?.products
+        catalog?.products
     }
 
     @Published var installers = [Product]()
@@ -72,7 +72,7 @@ class SUCatalog: ObservableObject {
         let decoder = PropertyListDecoder()
         catalog = try! decoder.decode(Catalog.self, from: data)
 
-        if let products = products {
+        if let products {
             for (productKey, product) in products {
                 product.key = productKey
                 if let metainfo = product.extendedMetaInfo {
@@ -217,33 +217,33 @@ final class FirmwareCatalog: ObservableObject {
                 return $0.postDate > $1.postDate
             }
 
-            self.firmwares = sortedFirmwares
-            self.isLoading = false
-            self.hasLoaded = true
+            firmwares = sortedFirmwares
+            isLoading = false
+            hasLoaded = true
         } catch {
             print("FirmwareCatalog decode : \(error.localizedDescription)")
-            self.isLoading = false
+            isLoading = false
         }
     }
 
     private func osName(for majorVersion: Int) -> String {
         switch majorVersion {
         case 27:
-            return "Golden Gate"
+            "Golden Gate"
         case 26:
-            return "Tahoe"
+            "Tahoe"
         case 15:
-            return "Sequoia"
+            "Sequoia"
         case 14:
-            return "Sonoma"
+            "Sonoma"
         case 13:
-            return "Ventura"
+            "Ventura"
         case 12:
-            return "Monterey"
+            "Monterey"
         case 11:
-            return "Big Sur"
+            "Big Sur"
         default:
-            return "macOS \(majorVersion)"
+            "macOS \(majorVersion)"
         }
     }
 }

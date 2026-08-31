@@ -30,7 +30,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     /// Close app from red button (thanks Chris1111)
     func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {
-        return true
+        true
     }
 
     func applicationWillTerminate(_: Notification) {

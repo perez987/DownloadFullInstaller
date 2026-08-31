@@ -41,7 +41,7 @@ import Foundation
 
     // Active download count tracking
     // Thread-safe counter for active downloads, designed for future multi-download support
-    nonisolated(unsafe) private static var activeDownloadCount: Int = 0
+    private nonisolated(unsafe) static var activeDownloadCount: Int = 0
     private static let downloadCountLock = NSLock()
 
     /// Returns the current number of active downloads
@@ -127,7 +127,7 @@ import Foundation
         }
 
         // Try to resume from previous download if resume data exists
-        if let resumeData = resumeData {
+        if let resumeData {
             downloadTask = urlSession.downloadTask(withResumeData: resumeData)
             print("Resuming download of \(filename ?? "InstallerAssistant.pkg")")
         } else {
@@ -179,11 +179,11 @@ import Foundation
     /// For sandboxed apps, this is ~/Library/Containers/perez987.DownloadFullInstaller/Data/tmp
     static func cleanupAppTempDirectory() {
         let tempDir = URL(fileURLWithPath: NSTemporaryDirectory())
-        
-        /// Print temporary directory path
+
+        // Print temporary directory path
 //        let strTempDir = tempDir.absoluteString
 //        print("Temporary directory: \(strTempDir.dropFirst(7))")
-        
+
         do {
             let tempFiles = try FileManager.default.contentsOfDirectory(at: tempDir, includingPropertiesForKeys: [.isRegularFileKey, .fileSizeKey])
             var deletedCount = 0
@@ -369,11 +369,11 @@ extension DownloadManager: URLSessionDownloadDelegate {
 
 extension DownloadManager: URLSessionTaskDelegate {
     func urlSession(_: URLSession, task _: URLSessionTask, didCompleteWithError error: Error?) {
-        guard let error = error else { return }
+        guard let error else { return }
 
         // Ignore cancellation errors — these are expected when the user cancels a download
         let nsError = error as NSError
-        if nsError.domain == NSURLErrorDomain && nsError.code == NSURLErrorCancelled {
+        if nsError.domain == NSURLErrorDomain, nsError.code == NSURLErrorCancelled {
             return
         }
 

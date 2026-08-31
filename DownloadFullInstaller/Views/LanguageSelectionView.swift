@@ -155,31 +155,31 @@ struct LanguageRow: View {
     private func flagEmoji(for languageCode: String) -> String {
         switch languageCode {
         case "ar":
-            return "🇸🇦"
+            "🇸🇦"
         case "en-US", "en":
-            return "🇺🇸"
+            "🇺🇸"
         case "es-ES", "es":
-            return "🇪🇸"
+            "🇪🇸"
         case "fr-CA":
-            return "🇨🇦"
+            "🇨🇦"
         case "fr-FR", "fr":
-            return "🇫🇷"
+            "🇫🇷"
         case "it-IT", "it":
-            return "🇮🇹"
+            "🇮🇹"
         case "ko-KR", "ko":
-            return "🇰🇷"
+            "🇰🇷"
         case "pt-BR":
-            return "🇧🇷"
+            "🇧🇷"
         case "ru-RU", "ru":
-            return "🇷🇺"
+            "🇷🇺"
         case "sl-SI", "sl":
-            return "🇸🇮"
+            "🇸🇮"
         case "uk-UA", "uk":
-            return "🇺🇦"
+            "🇺🇦"
         case "zh-Hans", "zh":
-            return "🇨🇳"
+            "🇨🇳"
         default:
-            return "🇺🇸"
+            "🇺🇸"
         }
     }
 

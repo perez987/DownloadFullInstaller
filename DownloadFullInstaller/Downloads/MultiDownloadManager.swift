@@ -96,7 +96,7 @@ class DownloadItem: NSObject, ObservableObject, Identifiable, @unchecked Sendabl
         // Update dock progress directly (already on main actor)
         manager?.updateDockProgress()
 
-        if let resumeData = resumeData {
+        if let resumeData {
             downloadTask = urlSession.downloadTask(withResumeData: resumeData)
             print("Resuming download of \(filename ?? "InstallerAssistant.pkg")")
         } else {
@@ -183,11 +183,11 @@ class DownloadItem: NSObject, ObservableObject, Identifiable, @unchecked Sendabl
             print("Max retry attempts reached. Download failed.")
             Task { @MainActor [weak self] in
                 guard let self else { return }
-                self.isDownloading = false
-                self.isRetrying = false
-                self.resumeData = nil
-                self.stopAccessingSecurityScope()
-                self.manager?.downloadFailed(self)
+                isDownloading = false
+                isRetrying = false
+                resumeData = nil
+                stopAccessingSecurityScope()
+                manager?.downloadFailed(self)
             }
             return
         }
@@ -252,16 +252,16 @@ extension DownloadItem: URLSessionDownloadDelegate {
 
             Task { @MainActor [weak self] in
                 guard let self else { return }
-                self.isDownloading = false
-                self.isRetrying = false
-                self.localURL = newURL
-                self.isComplete = true
-                self.resumeData = nil
-                self.retryCount = 0
-                self.retryTimer?.invalidate()
-                self.retryTimer = nil
-                self.errorMessage = nil
-                self.manager?.downloadCompleted(self)
+                isDownloading = false
+                isRetrying = false
+                localURL = newURL
+                isComplete = true
+                resumeData = nil
+                retryCount = 0
+                retryTimer?.invalidate()
+                retryTimer = nil
+                errorMessage = nil
+                manager?.downloadCompleted(self)
             }
         } catch {
             print("Error saving file: \(error.localizedDescription)")
@@ -275,15 +275,15 @@ extension DownloadItem: URLSessionDownloadDelegate {
 
             Task { @MainActor [weak self] in
                 guard let self else { return }
-                self.isDownloading = false
-                self.isRetrying = false
-                self.isComplete = false
-                self.errorMessage = errorMsg
-                self.resumeData = nil
-                self.retryCount = 0
-                self.retryTimer?.invalidate()
-                self.retryTimer = nil
-                self.manager?.downloadFailed(self)
+                isDownloading = false
+                isRetrying = false
+                isComplete = false
+                errorMessage = errorMsg
+                resumeData = nil
+                retryCount = 0
+                retryTimer?.invalidate()
+                retryTimer = nil
+                manager?.downloadFailed(self)
             }
         }
     }
@@ -318,11 +318,11 @@ extension DownloadItem: URLSessionDownloadDelegate {
 
 extension DownloadItem: URLSessionTaskDelegate {
     func urlSession(_: URLSession, task _: URLSessionTask, didCompleteWithError error: Error?) {
-        guard let error = error else { return }
+        guard let error else { return }
 
         // Ignore cancellation errors — these are expected when the user cancels a download
         let nsError = error as NSError
-        if nsError.domain == NSURLErrorDomain && nsError.code == NSURLErrorCancelled {
+        if nsError.domain == NSURLErrorDomain, nsError.code == NSURLErrorCancelled {
             return
         }
 
@@ -346,14 +346,14 @@ extension DownloadItem: URLSessionTaskDelegate {
             print("Non-recoverable error: \(error.localizedDescription)")
             Task { @MainActor [weak self] in
                 guard let self else { return }
-                self.isDownloading = false
-                self.isRetrying = false
-                self.resumeData = nil
-                self.retryCount = 0
-                self.retryTimer?.invalidate()
-                self.retryTimer = nil
-                self.stopAccessingSecurityScope()
-                self.manager?.downloadFailed(self)
+                isDownloading = false
+                isRetrying = false
+                resumeData = nil
+                retryCount = 0
+                retryTimer?.invalidate()
+                retryTimer = nil
+                stopAccessingSecurityScope()
+                manager?.downloadFailed(self)
             }
         }
     }
@@ -371,16 +371,16 @@ class MultiDownloadManager: ObservableObject {
     @Published var completedDownloads: [DownloadItem] = []
 
     var canStartNewDownload: Bool {
-        return activeDownloads.count < MultiDownloadManager.maxConcurrentDownloads
+        activeDownloads.count < MultiDownloadManager.maxConcurrentDownloads
     }
 
     var activeDownloadCount: Int {
-        return activeDownloads.count
+        activeDownloads.count
     }
 
     /// Check if a file is already being downloaded
     func isDownloading(filename: String) -> Bool {
-        return activeDownloads.contains { $0.filename == filename }
+        activeDownloads.contains { $0.filename == filename }
     }
 
     /// Start a new download if slots are available

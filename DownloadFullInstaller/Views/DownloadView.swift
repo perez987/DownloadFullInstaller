@@ -111,7 +111,7 @@ struct DownloadView: View {
 
             // Backward compatibility: Show old single download manager if it's downloading
             // This handles any downloads that were started before the multi-download manager was used
-            if downloadManager.isDownloading && multiDownloadManager.activeDownloads.isEmpty {
+            if downloadManager.isDownloading, multiDownloadManager.activeDownloads.isEmpty {
                 VStack(alignment: .leading) {
                     HStack {
                         Text(" ")
@@ -146,7 +146,7 @@ struct DownloadView: View {
             }
 
             // Backward compatibility: Show old single download manager completion
-            if downloadManager.isComplete && multiDownloadManager.completedDownloads.isEmpty {
+            if downloadManager.isComplete, multiDownloadManager.completedDownloads.isEmpty {
                 HStack {
                     Text(String(format: NSLocalizedString("Downloaded %@", comment: ""), downloadManager.filename ?? "InstallAssistant.pkg"))
                         .padding(.vertical, 6)
