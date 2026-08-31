@@ -13,7 +13,6 @@ public enum DockProgress {
     private static var elapsedTimeSinceLastRefresh = 0.0
     private static var isResetting = false
 
-    // TODO: Use `CADisplayLink` on macOS 14.
     private static var displayLinkObserver: DisplayLinkObserver = DisplayLinkObserver { observer, refreshPeriod in
         let speed = 1.0
 
