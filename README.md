@@ -10,8 +10,7 @@
 
 |     |
 | --- |
-| ![Installers](Images/Window1-light.png) |
-| ![Firmwares](Images/Window2-light.png) |
+| ![Installers](Images/Window1.png) |
 
 ### Preface
 
@@ -56,10 +55,6 @@ Full credit for the original idea and architecture goes to <em>scriptingosx</em>
 
 A new item called Legacy has been added to the macOS systems dropdown list. Legacy opens a new window listing the five available legacy macOS versions, each with its own direct download link. You can download any of these legacy macOS versions from this window.
 
-|    |    |
-|:---:|:---:|
-| ![Legacy item](Images/Legacy-1.png) | ![Legacy download](Images/Legacy-2.png) 
-
 ### Create Installer App Feature
 
 After downloading an `InstallAssistant.pkg` file, you can create the macOS installer application (e.g., "Install macOS Sequoia.app") directly from within Download Full Installer:
@@ -73,6 +68,10 @@ After downloading an `InstallAssistant.pkg` file, you can create the macOS insta
 ### Settings to select downloads folder
 
 Download Full Installer -> Settings menu (⌘ ,) opens a window where you can select a different folder to download installers. Default is ~/Downloads. Visual indicators (green marks) of downloaded installers are updated to match those in the selected folder.
+
+|     |
+| --- |
+| ![Languages](Images/Settings.png) |
 
 ### Language selector window
 
