@@ -11,14 +11,14 @@ This file is automatically read by GitHub Copilot coding agents (and Claude) whe
 
 There is **one application target** in this repository:
 
-- `DownloadFullInstaller` → requires macOS 13 Ventura or later.
+- `DownloadFullInstaller` → requires macOS 26 Tahoe or later.
 
 ## Tech Stack
 
-- **Language**: Swift 5+
+- **Language**: Swift 6
 - **UI framework**: SwiftUI (macOS only)
-- **Minimum macOS**: 13 Ventura
-- **Build tool**: Xcode 15+
+- **Minimum macOS**: 26 Tahoe
+- **Build tool**: Xcode 16+
 - **Auto-updater**: [Sparkle](https://sparkle-project.org/) via Swift Package Manager (`Updater/UpdateController.swift`)
 - **Dock progress**: `DockProgress-4.3.1` (local copy, not a package dependency)
 - **Sandbox**: the target runs in the macOS App Sandbox (see `.entitlements` file)
@@ -47,7 +47,7 @@ DownloadFullInstaller.xcodeproj/     # Xcode project
 
 This project **must be built with Xcode**.
 
-1. Open `DownloadFullInstaller.xcodeproj` in Xcode 15 or later.
+1. Open `DownloadFullInstaller.xcodeproj` in Xcode 16 or later.
 2. Select the scheme matching the project name.
 3. Build with **⌘B** or **Product → Build**.
 4. Run with **⌘R**.
@@ -61,7 +61,7 @@ There is currently no automated test target (XCTest or otherwise). Validation is
 When making changes:
 
 - Ensure the project **compiles without errors or warnings** in Xcode.
-- Verify the relevant user-facing flow works at runtime on macOS 13+.
+- Verify the relevant user-facing flow works at runtime on macOS 26+.
 
 ## Localization
 
