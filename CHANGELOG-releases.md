@@ -1,5 +1,17 @@
 # App for macOS 13+
 
+## 5.0.0 - Aug 31, 2026
+
+**Migrate to Swift 6**
+
+- `swift6` branch
+- App for macOS 26 and macOS 27
+- Xcode 26 is required to build the project.
+- The project has been migrated from Swift 5 to Swift 6, implementing improvements:
+   - in code stability
+   - in the user interface
+
+
 ## 4.6.0 - Jul 12, 2026
 
 **Notarized app**
