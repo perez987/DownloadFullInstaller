@@ -3,16 +3,16 @@
   <channel>
     <title>Download Full Installer</title>
     <item>
-      <title>Version 4.6.0</title>
+      <title>Version 5.0.0</title>
 	   <description></description>
-      <sparkle:version>260</sparkle:version>
-      <sparkle:shortVersionString>4.6.0</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+      <sparkle:version>0500</sparkle:version>
+      <sparkle:shortVersionString>5.0.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
       <pubDate>Sat, 14 Mar 2026 18:25:00 +0000</pubDate>
       <enclosure
-        url="https://github.com/perez987/DownloadFullInstaller/releases/download/4.6.0/Download.Full.Installer.4.6.0.dmg"
-        sparkle:edSignature="nqfY+o1Unr1NrcybilxUXOOwTA306QJ44hW6DqSCO4n4X+2B0ZBfJWxM5bzp87i9l4tnl2Ehsh85Hxz7uMoICA=="
-        length="5147265"
+        url="https://github.com/perez987/DownloadFullInstaller/releases/download/5.0.0/Download.Full.Installer.5.0.0.dmg"
+        sparkle:edSignature="s1/RAvgqUq0d3e1cNT1T8CbnnkV3JiNXtkwGcXO8B9b4rWLOY9iMBDoKiAc6Q0MJZt/zE6ROdMjg2Okke841Cw=="
+        length="5184196"
         type="application/octet-stream"
       />
     </item>
