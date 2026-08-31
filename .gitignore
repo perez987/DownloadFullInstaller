@@ -9,5 +9,5 @@
 Temporary Items
 Thumbs.db
 
-*.xcuserstate
+**xcuserdata
 .build/

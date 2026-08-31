@@ -35,7 +35,7 @@
 
 /* App Settings */
 "Yes" = "Da";
-"Clear app settings?" = "Želite počistiti nastavitve aplikacije?";
+"Clear app settings?" = "Želite počistiti nastavitve?";
 "(App preferences will be cleared)" = "(Nastavitve aplikacije bodo izbrisane)";
 "You will lose user settings and saved language." = "Izgubili boste uporabniške nastavitve in shranjeni jezik.";
 "Warning" = "Opozorilo";

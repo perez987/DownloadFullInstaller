@@ -14,6 +14,7 @@ struct SupportedLanguage {
     let nativeName: String
 }
 
+@MainActor
 class LanguageManager: ObservableObject {
     @Published var currentLanguage: String = "en"
     @Published var availableLanguages: [SupportedLanguage] = []

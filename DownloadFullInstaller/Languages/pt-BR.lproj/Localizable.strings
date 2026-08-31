@@ -35,7 +35,7 @@
 
 /* App Settings */
 "Yes" = "Sim";
-"Clear app settings?" = "Limpar configurações do aplicativo?";
+"Clear app settings?" = "Limpar configurações?";
 "(App preferences will be cleared)" = "(As preferências do aplicativo serão apagadas)";
 "You will lose user settings and saved language." = "Você perderá as configurações do usuário e o idioma salvo.";
 "Warning" = "Aviso";

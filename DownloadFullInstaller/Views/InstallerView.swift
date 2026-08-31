@@ -162,6 +162,7 @@ struct InstallerView: View {
                         Text(String(format: NSLocalizedString("Copy %@ %@ (%@) %@ URL", comment: ""), product.osName ?? "", product.productVersion ?? "", product.buildVersion ?? "", package))
                     }
                 }
+                .glassRow()
                 // Handle multiple different alerts in a single view using appAlert extension
                 .appAlert(item: $activeAlert) { alertType in
                     switch alertType {
@@ -179,7 +180,7 @@ struct InstallerView: View {
                     // Check if downloaded after view appears, ensuring sandbox is fully initialized
                     checkIfDownloaded()
                 }
-                .onChange(of: multiDownloadManager.completedDownloads) { _ in
+                .onChange(of: multiDownloadManager.completedDownloads) {
                     // Update download status when downloads complete
                     checkIfDownloaded()
                 }
@@ -210,7 +211,7 @@ struct InstallerView: View {
         NSWorkspace.shared.open(pkgURL, configuration: NSWorkspace.OpenConfiguration()) { _, error in
             Prefs.stopAccessingDownloadURL(accessStarted)
 
-            DispatchQueue.main.async {
+            Task { @MainActor in
                 self.isCreatingInstaller = false
 
                 if let error {
@@ -229,16 +230,23 @@ struct FirmwareView: View {
     @StateObject var multiDownloadManager = MultiDownloadManager.shared
     @State private var activeAlert: AppAlertType?
     @State private var failed = false
-
-    private var isDownloaded: Bool {
+    @State private var isDownloaded = false
+    
+    private func checkIfDownloaded() {
         let destination = Prefs.downloadURL
         let file = destination.appendingPathComponent(firmware.filename)
-
-        if FileManager.default.fileExists(atPath: file.path) {
-            return true
+        
+        let accessStarted = Prefs.startAccessingDownloadURL()
+        defer {
+            Prefs.stopAccessingDownloadURL(accessStarted)
         }
 
-        return multiDownloadManager.completedDownloads.contains { $0.filename == firmware.filename }
+        if FileManager.default.fileExists(atPath: file.path) {
+            isDownloaded = true
+            return
+        }
+
+        isDownloaded = multiDownloadManager.completedDownloads.contains { $0.filename == firmware.filename }
     }
 
     var body: some View {
@@ -324,6 +332,7 @@ struct FirmwareView: View {
                 Text(String(format: NSLocalizedString("Copy %@ %@ (%@) %@ URL", comment: ""), firmware.osName, firmware.productVersion, firmware.buildVersion, firmware.filename))
             }
         }
+        .glassRow()
         .appAlert(item: $activeAlert) { alertType in
             switch alertType {
             case .replaceFile:
@@ -335,6 +344,15 @@ struct FirmwareView: View {
             default:
                 break
             }
+        }
+        .onAppear {
+            checkIfDownloaded()
+        }
+        .onChange(of: multiDownloadManager.completedDownloads) {
+            checkIfDownloaded()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .downloadPathChanged)) { _ in
+            checkIfDownloaded()
         }
     }
 }

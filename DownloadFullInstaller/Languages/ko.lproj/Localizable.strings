@@ -35,7 +35,7 @@
 
 /* App Settings */
 "Yes" = "예";
-"Clear app settings?" = "앱 설정을 지우시겠습니까?";
+"Clear app settings?" = "설정을 삭제하시겠습니까?";
 "(App preferences will be cleared)" = "(앱 환경설정이 지워집니다)";
 "You will lose user settings and saved language." = "사용자 설정과 저장된 언어를 잃게 될 것입니다.";
 "Warning" = "경고";

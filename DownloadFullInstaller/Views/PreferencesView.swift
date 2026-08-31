@@ -88,7 +88,6 @@ struct PreferencesView: View {
                     }
                 }
             }
-//            .liquidGlass(intensity: .subtle)
             .frame(
                 width: 400.0,
                 height: 24.0,

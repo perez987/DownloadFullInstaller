@@ -20,90 +20,112 @@ struct LanguageSelectionView: View {
     }
 
     var body: some View {
-        VStack(spacing: 20) {
-            // Header
-            VStack(spacing: 8) {
-//                Image(systemName: "globe")
-//                    .font(.system(size: 32))
-//                    .foregroundColor(.blue)
+        ZStack {
+            // Frosted glass background
+            Rectangle()
+                .fill(.ultraThinMaterial)
+                .ignoresSafeArea()
 
-                Text(NSLocalizedString("Language Selection", comment: ""))
-                    .font(.title3)
-                    .fontWeight(.bold)
-            }
-            .padding(.top, 20)
-//            .frame(
-//                minWidth: 400,
-//                idealWidth: 400,
-//                maxWidth: 400
-//            )
+            VStack(spacing: 0) {
+                // Header with globe icon
+                VStack(spacing: 10) {
+                    ZStack {
+                        Circle()
+                            .fill(.blue.opacity(0.12))
+                            .frame(width: 54, height: 54)
+                        Image(systemName: "globe")
+                            .font(.system(size: 26, weight: .medium))
+                            .foregroundStyle(.blue)
+                    }
 
-            // Language list
-            ScrollView(.vertical, showsIndicators: true) {
-                VStack(spacing: 0) {
-                    ForEach(languageManager.availableLanguages, id: \.code) { language in
-                        LanguageRow(
-                            language: language,
-                            isSelected: selectedLanguage == language.code,
-                            action: {
-                                selectedLanguage = language.code
-                            }
-                        )
+                    Text(NSLocalizedString("Language Selection", comment: ""))
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                }
+                .padding(.top, 28)
+                .padding(.bottom, 20)
+
+                // Language list
+                ScrollView(.vertical, showsIndicators: true) {
+                    VStack(spacing: 0) {
+                        ForEach(languageManager.availableLanguages, id: \.code) { language in
+                            LanguageRow(
+                                language: language,
+                                isSelected: selectedLanguage == language.code,
+                                action: {
+                                    selectedLanguage = language.code
+                                }
+                            )
+                        }
                     }
                 }
-            }
-            .frame(height: 350)
-            .background(Color(NSColor.controlBackgroundColor))
-            .cornerRadius(6)
-            .overlay(
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color.gray.opacity(0.3), lineWidth: 1)
-            )
+                .frame(height: 300)
+                .background(.ultraThinMaterial)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.primary.opacity(0.1), lineWidth: 1)
+                )
+                .shadow(color: .black.opacity(0.08), radius: 4, x: 0, y: 2)
+                .padding(.horizontal, 24)
 
-            // Buttons and alert
-            HStack(spacing: 12) {
-                Button(NSLocalizedString("Cancel", comment: "")) {
-                    isPresented = false
+                // Action buttons row
+                HStack(spacing: 12) {
+                    Button(NSLocalizedString("Cancel", comment: "")) {
+                        isPresented = false
+                    }
+                    .keyboardShortcut(.escape)
+
+                    Spacer()
+
+                    Button(NSLocalizedString("Continue", comment: "")) {
+                        activeAlert = .restartRequired
+                    }
+                    .keyboardShortcut(.return)
+                    .buttonStyle(.borderedProminent)
+                    .disabled(selectedLanguage == languageManager.currentLanguage)
                 }
-                .keyboardShortcut(.escape)
+                .padding(.horizontal, 24)
+                .padding(.top, 20)
 
-                Spacer()
+                // Divider with clear app settings section
+                VStack(spacing: 12) {
+                    Divider()
+                        .padding(.horizontal, 24)
 
-                Button(NSLocalizedString("Continue", comment: "")) {
-                    activeAlert = .restartRequired
+                    HStack(spacing: 10) {
+                        Image(systemName: "exclamationmark.triangle.fill")
+                            .font(.system(size: 18))
+                            .foregroundStyle(.orange)
+
+                        Text(NSLocalizedString("Clear app settings?", comment: ""))
+                            .font(.body)
+                            .foregroundStyle(.primary)
+
+                        Spacer()
+
+                        Button(NSLocalizedString("Yes", comment: "")) {
+                            activeAlert = .warningSettings
+                        }
+                        .buttonStyle(.bordered)
+                        .controlSize(.small)
+                    }
+                    .padding(.horizontal, 24)
+                    .padding(.vertical, 10)
+                    .background(.regularMaterial)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.orange.opacity(0.25), lineWidth: 1)
+                    )
+                    .padding(.horizontal, 24)
                 }
-                .keyboardShortcut(.return)
-                .buttonStyle(.bordered)
-                .disabled(selectedLanguage == languageManager.currentLanguage)
+                .padding(.top, 12)
+                .padding(.bottom, 24)
             }
-
-            Divider()
-
-//            .padding(.bottom, 20)
-            HStack(spacing: 12) {
-                Image(systemName: "exclamationmark.triangle")
-                    .font(.system(size: 16))
-                    .foregroundColor(.blue)
-
-                Text(NSLocalizedString("Clear app settings?", comment: ""))
-                    .font(.body)
-
-                Button(NSLocalizedString("Yes", comment: "")) {
-                    activeAlert = .warningSettings
-                }
-                .buttonStyle(.bordered)
-            }
-
-//            HStack(spacing: 10) {
-//                Text(NSLocalizedString("(App preferences will be cleared)", comment: ""))
-//                    .foregroundColor(.secondary)
-//                    .multilineTextAlignment(.center)
-//            }
-            .padding(.bottom, 20)
         }
-        .padding(.horizontal, 30)
-        .frame(width: 416, height: 560)
-        .background(Color(NSColor.windowBackgroundColor))
+        .frame(width: 370, height: 560)
+        .clipShape(RoundedRectangle(cornerRadius: 14))
         .onAppear {
             // Load languages when view appears, ensuring sandbox is fully initialized
             languageManager.loadLanguagesIfNeeded()
@@ -162,43 +184,51 @@ struct LanguageRow: View {
     }
 
     var body: some View {
-        HStack {
+        HStack(spacing: 12) {
             Text(flagEmoji(for: language.code))
-                .font(.title2)
-                .frame(width: 24, height: 24)
+                .font(.system(size: 22))
+                .frame(width: 30, alignment: .center)
 
-            Text(language.nativeName)
-                .font(.body)
-                .fontWeight(.medium)
-                .foregroundColor(.primary)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(language.nativeName)
+                    .font(.body)
+                    .fontWeight(.medium)
+                    .foregroundStyle(.primary)
 
-            if language.nativeName != language.localizedName {
-                Text(language.localizedName)
-                    .font(.caption)
-                    .foregroundColor(.secondary)
+                if language.nativeName != language.localizedName {
+                    Text(language.localizedName)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
             }
 
             Spacer()
-//                    .liquidGlass(intensity: .subtle)
 
             if isSelected {
                 Image(systemName: "checkmark.circle.fill")
-                    .foregroundColor(.blue)
-                    .font(.title3)
+                    .foregroundStyle(.blue)
+                    .font(.system(size: 18))
+                    .transition(.scale.combined(with: .opacity))
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 16)
-        .padding(.vertical, 12)
-        .background(isSelected ? Color.blue.opacity(0.1) : Color.clear)
+        .padding(.vertical, 10)
+        .background(
+            isSelected
+                ? Color.blue.opacity(0.12)
+                : Color.clear
+        )
         .contentShape(Rectangle())
         .onTapGesture {
-            action()
+            withAnimation(.easeInOut(duration: 0.15)) {
+                action()
+            }
         }
         .overlay(
             Rectangle()
-                .frame(height: 1)
-                .foregroundColor(Color.gray.opacity(0.2)),
+                .frame(height: 0.5)
+                .foregroundStyle(Color.primary.opacity(0.1)),
             alignment: .bottom
         )
     }

@@ -35,7 +35,7 @@
 
 /* App Settings */
 "Yes" = "Да";
-"Clear app settings?" = "Очистить настройки приложения?";
+"Clear app settings?" = "Очистить настройки?";
 "(App preferences will be cleared)" = "(Настройки приложения будут очищены)";
 "You will lose user settings and saved language." = "Вы потеряете пользовательские настройки и сохраненный язык.";
 "Warning" = "Предупреждение";

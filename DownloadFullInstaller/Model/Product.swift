@@ -6,6 +6,7 @@
 
 import Foundation
 
+@MainActor
 class Product: Codable, Identifiable, ObservableObject {
     var thisComponent: String {
         return String(describing: self)
@@ -23,9 +24,8 @@ class Product: Codable, Identifiable, ObservableObject {
     @Published var osName: String?
     @Published var title: String?
     @Published var buildVersion: String?
-    var id: String {
-        return key ?? "<no id yet>"
-    }
+    private let _id = UUID().uuidString
+    nonisolated var id: String { _id }
 
     @Published var productVersion: String?
     @Published var installerVersion: String?
@@ -96,20 +96,16 @@ class Product: Codable, Identifiable, ObservableObject {
         let sessionConfig = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
 
-        let task = session.dataTask(with: url) { data, response, error in
+        let task = session.dataTask(with: url) { [weak self] data, response, error in
             if error != nil {
-//                print("\(self.thisComponent) : \(error!.localizedDescription)")
                 return
             }
 
             let httpResponse = response as! HTTPURLResponse
-            if httpResponse.statusCode != 200 {
-//                print("\(self.thisComponent) : \(httpResponse.statusCode)")
-            } else {
-                if data != nil {
-//                    print("\(self.thisComponent) : \(String(decoding: data!, as: UTF8.self))")
-                    DispatchQueue.main.async {
-                        self.decodeBuildManifest(data: data!)
+            if httpResponse.statusCode == 200 {
+                if let data {
+                    Task { @MainActor [weak self] in
+                        self?.decodeBuildManifest(data: data)
                     }
                 }
             }
@@ -144,20 +140,16 @@ class Product: Codable, Identifiable, ObservableObject {
         let sessionConfig = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
 
-        let task = session.dataTask(with: url) { data, response, error in
+        let task = session.dataTask(with: url) { [weak self] data, response, error in
             if error != nil {
-//                print("\(self.thisComponent) : \(error!.localizedDescription)")
                 return
             }
 
             let httpResponse = response as! HTTPURLResponse
-            if httpResponse.statusCode != 200 {
-//                print("\(self.thisComponent) : \(httpResponse.statusCode)")
-            } else {
-                if data != nil {
-//                    print("\(self.thisComponent) : \(String(decoding: data!, as: UTF8.self))")
-                    DispatchQueue.main.async {
-                        self.parseDistXML(data: data!)
+            if httpResponse.statusCode == 200 {
+                if let data {
+                    Task { @MainActor [weak self] in
+                        self?.parseDistXML(data: data)
                     }
                 }
             }

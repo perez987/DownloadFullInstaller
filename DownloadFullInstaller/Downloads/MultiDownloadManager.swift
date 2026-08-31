@@ -13,7 +13,7 @@ import Foundation
 // MARK: - DownloadItem
 
 /// Represents a single download instance with its own progress tracking
-class DownloadItem: NSObject, ObservableObject, Identifiable {
+class DownloadItem: NSObject, ObservableObject, Identifiable, @unchecked Sendable {
     let id = UUID()
 
     @Published var downloadURL: URL?
@@ -30,6 +30,7 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
     private var retryCount = 0
     private var maxRetries = 100
     private var retryTimer: Timer?
+    private var lastProgressUpdate: Date = .distantPast
 
     // Security-scoped resource tracking
     private var destinationURL: URL?
@@ -79,9 +80,10 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
             resumeData = nil
         }
 
-        startDownload()
+        Task { @MainActor [weak self] in self?.startDownload() }
     }
 
+    @MainActor
     private func startDownload() {
         guard let url = downloadURL else { return }
 
@@ -91,7 +93,7 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
         }
         isRetrying = false
 
-        // Update dock progress
+        // Update dock progress directly (already on main actor)
         manager?.updateDockProgress()
 
         if let resumeData = resumeData {
@@ -107,10 +109,11 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
         downloadTask?.resume()
     }
 
+    @MainActor
     func cancel() {
         if isDownloading, downloadTask != nil {
             downloadTask?.cancel { [weak self] _ in
-                DispatchQueue.main.async {
+                Task { @MainActor [weak self] in
                     self?.resumeData = nil
                 }
             }
@@ -124,8 +127,11 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
             retryTimer = nil
             // Stop accessing security-scoped resource
             stopAccessingSecurityScope()
-            // Clean up temporary files
-            cleanupTempDirectory()
+            // Clean up temporary files off the main thread to avoid UI stalls
+            DispatchQueue.global(qos: .utility).async { [weak self] in
+                self?.cleanupTempDirectory()
+            }
+            // Remove from active downloads immediately on the main actor (no Task wrapper needed)
             manager?.downloadCancelled(self)
         }
         print("Cancelled download of \(filename ?? "InstallerAssistant.pkg")")
@@ -175,11 +181,11 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
     private func retryDownload() {
         guard retryCount < maxRetries else {
             print("Max retry attempts reached. Download failed.")
-            DispatchQueue.main.async {
+            Task { @MainActor [weak self] in
+                guard let self else { return }
                 self.isDownloading = false
                 self.isRetrying = false
                 self.resumeData = nil
-                // Stop accessing security-scoped resource on max retries
                 self.stopAccessingSecurityScope()
                 self.manager?.downloadFailed(self)
             }
@@ -191,12 +197,12 @@ class DownloadItem: NSObject, ObservableObject, Identifiable {
 
         print("Connection lost. Retrying download in \(Int(retryDelay))\"... (Attempt \(retryCount)/\(maxRetries))")
 
-        DispatchQueue.main.async {
-            self.isRetrying = true
+        Task { @MainActor [weak self] in
+            self?.isRetrying = true
         }
 
         retryTimer = Timer.scheduledTimer(withTimeInterval: retryDelay, repeats: false) { [weak self] _ in
-            DispatchQueue.main.async {
+            Task { @MainActor [weak self] in
                 self?.startDownload()
             }
         }
@@ -244,7 +250,8 @@ extension DownloadItem: URLSessionDownloadDelegate {
             // Stop accessing security-scoped resource after successful save
             stopAccessingSecurityScope()
 
-            DispatchQueue.main.async {
+            Task { @MainActor [weak self] in
+                guard let self else { return }
                 self.isDownloading = false
                 self.isRetrying = false
                 self.localURL = newURL
@@ -266,7 +273,8 @@ extension DownloadItem: URLSessionDownloadDelegate {
             let folderName = destination.lastPathComponent
             let errorMsg = String(format: NSLocalizedString("The file '%@' could not be saved to the '%@' folder. Error: %@", comment: "Download save error"), suggestedFilename, folderName, error.localizedDescription)
 
-            DispatchQueue.main.async {
+            Task { @MainActor [weak self] in
+                guard let self else { return }
                 self.isDownloading = false
                 self.isRetrying = false
                 self.isComplete = false
@@ -281,19 +289,27 @@ extension DownloadItem: URLSessionDownloadDelegate {
     }
 
     func urlSession(_: URLSession, downloadTask _: URLSessionDownloadTask, didWriteData _: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
-        DispatchQueue.main.async {
-            self.progress = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
-            self.progressString = "\(self.byteFormatter.string(fromByteCount: totalBytesWritten))/\(self.byteFormatter.string(fromByteCount: totalBytesExpectedToWrite))"
-            self.manager?.updateDockProgress()
+        // Throttle UI updates to at most 20 per second to avoid flooding the main actor queue
+        let now = Date()
+        guard now.timeIntervalSince(lastProgressUpdate) >= 0.05 else { return }
+        lastProgressUpdate = now
+        let prog = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
+        let str = "\(byteFormatter.string(fromByteCount: totalBytesWritten))/\(byteFormatter.string(fromByteCount: totalBytesExpectedToWrite))"
+        DispatchQueue.main.async { [weak self] in
+            self?.progress = prog
+            self?.progressString = str
+            self?.manager?.updateDockProgress()
         }
     }
 
     func urlSession(_: URLSession, downloadTask _: URLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
         print("Download resumed at offset: \(fileOffset) bytes")
-        DispatchQueue.main.async {
-            self.progress = Double(fileOffset) / Double(expectedTotalBytes)
-            self.progressString = "\(self.byteFormatter.string(fromByteCount: fileOffset))/\(self.byteFormatter.string(fromByteCount: expectedTotalBytes))"
-            self.manager?.updateDockProgress()
+        let prog = Double(fileOffset) / Double(expectedTotalBytes)
+        let str = "\(byteFormatter.string(fromByteCount: fileOffset))/\(byteFormatter.string(fromByteCount: expectedTotalBytes))"
+        DispatchQueue.main.async { [weak self] in
+            self?.progress = prog
+            self?.progressString = str
+            self?.manager?.updateDockProgress()
         }
     }
 }
@@ -304,9 +320,13 @@ extension DownloadItem: URLSessionTaskDelegate {
     func urlSession(_: URLSession, task _: URLSessionTask, didCompleteWithError error: Error?) {
         guard let error = error else { return }
 
-        print("Download error: \(error.localizedDescription)")
-
+        // Ignore cancellation errors — these are expected when the user cancels a download
         let nsError = error as NSError
+        if nsError.domain == NSURLErrorDomain && nsError.code == NSURLErrorCancelled {
+            return
+        }
+
+        print("Download error: \(error.localizedDescription)")
         let isNetworkError = nsError.domain == NSURLErrorDomain &&
             (nsError.code == NSURLErrorNotConnectedToInternet ||
                 nsError.code == NSURLErrorNetworkConnectionLost ||
@@ -319,19 +339,19 @@ extension DownloadItem: URLSessionTaskDelegate {
                 print("Resume data saved for future retry")
             }
 
-            DispatchQueue.main.async {
-                self.retryDownload()
+            Task { @MainActor [weak self] in
+                self?.retryDownload()
             }
         } else {
             print("Non-recoverable error: \(error.localizedDescription)")
-            DispatchQueue.main.async {
+            Task { @MainActor [weak self] in
+                guard let self else { return }
                 self.isDownloading = false
                 self.isRetrying = false
                 self.resumeData = nil
                 self.retryCount = 0
                 self.retryTimer?.invalidate()
                 self.retryTimer = nil
-                // Stop accessing security-scoped resource on non-recoverable error
                 self.stopAccessingSecurityScope()
                 self.manager?.downloadFailed(self)
             }
@@ -342,6 +362,7 @@ extension DownloadItem: URLSessionTaskDelegate {
 // MARK: - MultiDownloadManager
 
 /// Manages multiple simultaneous downloads (up to 3)
+@MainActor
 class MultiDownloadManager: ObservableObject {
     static let shared = MultiDownloadManager()
     static let maxConcurrentDownloads = 3
@@ -378,10 +399,8 @@ class MultiDownloadManager: ObservableObject {
         downloadItem.filename = filename
         downloadItem.manager = self
 
-        DispatchQueue.main.async {
-            self.activeDownloads.append(downloadItem)
-            self.updateDockProgressStyle()
-        }
+        activeDownloads.append(downloadItem)
+        updateDockProgressStyle()
 
         try downloadItem.download(url: url, replacing: replacing)
 
@@ -390,69 +409,54 @@ class MultiDownloadManager: ObservableObject {
 
     /// Called when a download completes successfully
     func downloadCompleted(_ item: DownloadItem) {
-        DispatchQueue.main.async {
-            if let index = self.activeDownloads.firstIndex(where: { $0.id == item.id }) {
-                self.activeDownloads.remove(at: index)
-            }
-            self.completedDownloads.append(item)
-            self.updateDockProgress()
+        if let index = activeDownloads.firstIndex(where: { $0.id == item.id }) {
+            activeDownloads.remove(at: index)
         }
+        completedDownloads.append(item)
+        updateDockProgress()
     }
 
     /// Called when a download is cancelled
     func downloadCancelled(_ item: DownloadItem) {
-        DispatchQueue.main.async {
-            if let index = self.activeDownloads.firstIndex(where: { $0.id == item.id }) {
-                self.activeDownloads.remove(at: index)
-            }
-            self.updateDockProgress()
+        if let index = activeDownloads.firstIndex(where: { $0.id == item.id }) {
+            activeDownloads.remove(at: index)
         }
+        updateDockProgress()
     }
 
     /// Called when a download fails
     func downloadFailed(_ item: DownloadItem) {
-        DispatchQueue.main.async {
-            if let index = self.activeDownloads.firstIndex(where: { $0.id == item.id }) {
-                self.activeDownloads.remove(at: index)
-            }
-            self.updateDockProgress()
+        if let index = activeDownloads.firstIndex(where: { $0.id == item.id }) {
+            activeDownloads.remove(at: index)
         }
+        updateDockProgress()
     }
 
     /// Clear a completed download from the list
     func clearCompleted(_ item: DownloadItem) {
-        DispatchQueue.main.async {
-            if let index = self.completedDownloads.firstIndex(where: { $0.id == item.id }) {
-                self.completedDownloads.remove(at: index)
-            }
+        if let index = completedDownloads.firstIndex(where: { $0.id == item.id }) {
+            completedDownloads.remove(at: index)
         }
     }
 
     /// Clear all completed downloads
     func clearAllCompleted() {
-        DispatchQueue.main.async {
-            self.completedDownloads.removeAll()
-        }
+        completedDownloads.removeAll()
     }
 
     /// Update dock progress based on all active downloads
     func updateDockProgress() {
-        DispatchQueue.main.async {
-            if self.activeDownloads.isEmpty {
-                DockProgress.progress = 0.0
-            } else {
-                // Calculate average progress of all active downloads
-                let totalProgress = self.activeDownloads.reduce(0.0) { $0 + $1.progress }
-                let averageProgress = totalProgress / Double(self.activeDownloads.count)
-                DockProgress.progress = averageProgress
-            }
+        if activeDownloads.isEmpty {
+            DockProgress.progress = 0.0
+        } else {
+            let totalProgress = activeDownloads.reduce(0.0) { $0 + $1.progress }
+            let averageProgress = totalProgress / Double(activeDownloads.count)
+            DockProgress.progress = averageProgress
         }
     }
 
     /// Update dock progress style to show download count
     private func updateDockProgressStyle() {
-        DispatchQueue.main.async {
-            DockProgress.style = .badge(color: .blue, badgeValue: { self.activeDownloads.count })
-        }
+        DockProgress.style = .badge(color: .blue, badgeValue: { self.activeDownloads.count })
     }
 }

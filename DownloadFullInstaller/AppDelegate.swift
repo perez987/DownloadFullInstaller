@@ -13,6 +13,7 @@ enum DefaultsKeys: String {
     case osNameID = "OsNameID"
 }
 
+@MainActor
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_: Notification) {
 //        print("=== AppDelegate applicationDidFinishLaunching started ===")

@@ -8,8 +8,9 @@
 import Foundation
 import SwiftUI
 
-var activityToken: NSObjectProtocol?
+@MainActor var activityToken: NSObjectProtocol?
 
+@MainActor
 func disableSystemSleep(reason: String = "Download Full Installer prevents sleep") {
     if activityToken == nil {
         activityToken = ProcessInfo.processInfo.beginActivity(
@@ -21,6 +22,7 @@ func disableSystemSleep(reason: String = "Download Full Installer prevents sleep
     }
 }
 
+@MainActor
 func enableSystemSleep() {
     if let token = activityToken {
         ProcessInfo.processInfo.endActivity(token)

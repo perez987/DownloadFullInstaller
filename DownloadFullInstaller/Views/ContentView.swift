@@ -52,7 +52,7 @@ struct ContentView: View {
             minWidth: 490.0,
             idealWidth: 490.0,
             maxWidth: 490.0,
-            minHeight: 562.0,
+            minHeight: 590.0,
             alignment: .center
         )
         .padding(.bottom, 12)
@@ -75,37 +75,21 @@ struct ContentView: View {
 
     private var installersTab: some View {
         VStack(alignment: .center, spacing: 4) {
-            if #available(macOS 15.0, *) {
-                List(sucatalog.installers, id: \.id) { installer in
-                    InstallerView(product: installer)
-                }
-                .cornerRadius(8)
-                .padding(4)
-                .contentMargins(.leading, 1, for: .scrollContent)
-            } else if #available(macOS 14.0, *) {
-                List(sucatalog.installers, id: \.id) { installer in
-                    InstallerView(product: installer)
-                }
-                .cornerRadius(8)
-                .padding(4)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 6)
-                        .stroke(.tertiary, lineWidth: 1)
-                        .padding(5)
-                )
-                .contentMargins(.leading, 1, for: .scrollContent)
-            } else {
-                List(sucatalog.installers, id: \.id) { installer in
-                    InstallerView(product: installer)
-                }
-                .cornerRadius(8)
-                .padding(4)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 6)
-                        .stroke(.tertiary, lineWidth: 1)
-                        .padding(5)
-                )
+            List(sucatalog.installers, id: \.id) { installer in
+                InstallerView(product: installer)
+                    .listRowSeparator(.hidden)
             }
+            .cornerRadius(8)
+            .padding(4)
+            .overlay(
+                Group {
+                    if #unavailable(macOS 15.0) {
+                        RoundedRectangle(cornerRadius: 6)
+                            .stroke(.tertiary, lineWidth: 1)
+                            .padding(5)
+                    }
+                }
+            )
 
             DownloadView()
         }
@@ -114,37 +98,21 @@ struct ContentView: View {
     private var firmwareTab: some View {
         VStack(alignment: .center, spacing: 4) {
             ZStack {
-                if #available(macOS 15.0, *) {
-                    List(firmwareCatalog.filteredFirmwares(for: osNameID), id: \.id) { firmware in
-                        FirmwareView(firmware: firmware)
-                    }
-                    .cornerRadius(8)
-                    .padding(4)
-                    .contentMargins(.leading, 1, for: .scrollContent)
-                } else if #available(macOS 14.0, *) {
-                    List(firmwareCatalog.filteredFirmwares(for: osNameID), id: \.id) { firmware in
-                        FirmwareView(firmware: firmware)
-                    }
-                    .cornerRadius(8)
-                    .padding(4)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 6)
-                            .stroke(.tertiary, lineWidth: 1)
-                            .padding(5)
-                    )
-                    .contentMargins(.leading, 1, for: .scrollContent)
-                } else {
-                    List(firmwareCatalog.filteredFirmwares(for: osNameID), id: \.id) { firmware in
-                        FirmwareView(firmware: firmware)
-                    }
-                    .cornerRadius(8)
-                    .padding(4)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 6)
-                            .stroke(.tertiary, lineWidth: 1)
-                            .padding(5)
-                    )
+                List(firmwareCatalog.filteredFirmwares(for: osNameID), id: \.id) { firmware in
+                    FirmwareView(firmware: firmware)
+                        .listRowSeparator(.hidden)
                 }
+                .cornerRadius(8)
+                .padding(4)
+                .overlay(
+                    Group {
+                        if #unavailable(macOS 15.0) {
+                            RoundedRectangle(cornerRadius: 6)
+                                .stroke(.tertiary, lineWidth: 1)
+                                .padding(5)
+                        }
+                    }
+                )
 
 //                if firmwareCatalog.hasLoaded && firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty && osNameID != "Legacy" {
                 if firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty && osNameID != "Legacy" {

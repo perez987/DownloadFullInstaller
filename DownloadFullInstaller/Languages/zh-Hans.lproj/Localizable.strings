@@ -35,7 +35,7 @@
 
 /* App Settings */
 "Yes" = "是";
-"Clear app settings?" = "清除应用程序设置？";
+"Clear app settings?" = "删除设置？";
 "(App preferences will be cleared)" = "（应用程序偏好设置将被清除）";
 "You will lose user settings and saved language." = "您将丢失用户设置和已保存的语言。";
 "Warning" = "警告";

@@ -148,7 +148,7 @@ extension NSColor {
 }
 
 extension NSFont {
-    static let helveticaNeueBold = NSFont(name: "HelveticaNeue-Bold", size: 0)
+    nonisolated(unsafe) static let helveticaNeueBold = NSFont(name: "HelveticaNeue-Bold", size: 0)
 }
 
 extension CGRect {
@@ -335,17 +335,38 @@ enum Easing {
 
  This is useful for creating smooth animations that synchronize with the screen's refresh rate.
  */
-final class DisplayLinkObserver {
-    private var displayLink: CVDisplayLink?
+final class DisplayLinkObserver: @unchecked Sendable {
     fileprivate let callback: (DisplayLinkObserver, Double) -> Void
+
+    @available(macOS 14.0, *)
+    private final class CADisplayLinkTarget: NSObject {
+        weak var observer: DisplayLinkObserver?
+
+        @objc func displayLinkFired(_ link: CADisplayLink) {
+            guard let observer else {
+                return
+            }
+            let duration = link.duration
+            let refreshPeriod = duration > 0 ? duration : 1.0 / 60.0
+            observer.callback(observer, refreshPeriod)
+        }
+    }
+
+    private var caDisplayLink: CADisplayLink?
+    private var caDisplayLinkTarget: AnyObject?
+    private var cvDisplayLink: CVDisplayLink?
 
     init(_ callback: @escaping (DisplayLinkObserver, Double) -> Void) {
         self.callback = callback
 
-        guard CVDisplayLinkCreateWithActiveCGDisplays(&displayLink) == kCVReturnSuccess else {
-            assertionFailure("Failed to create CVDisplayLink")
-            print("Failed to create CVDisplayLink")
-            return
+        if #available(macOS 14.0, *) {
+            // caDisplayLink is set up in start()
+        } else {
+            guard CVDisplayLinkCreateWithActiveCGDisplays(&cvDisplayLink) == kCVReturnSuccess else {
+                assertionFailure("Failed to create CVDisplayLink")
+                print("Failed to create CVDisplayLink")
+                return
+            }
         }
     }
 
@@ -354,29 +375,42 @@ final class DisplayLinkObserver {
     }
 
     func start() {
-        guard let displayLink else {
-            return
+        if #available(macOS 14.0, *) {
+            let target = CADisplayLinkTarget()
+            target.observer = self
+            caDisplayLinkTarget = target
+            let link = NSScreen.main?.displayLink(target: target, selector: #selector(CADisplayLinkTarget.displayLinkFired(_:)))
+            link?.add(to: .main, forMode: .common)
+            caDisplayLink = link
+        } else {
+            guard let displayLink = cvDisplayLink else {
+                return
+            }
+            let result = CVDisplayLinkSetOutputCallback(
+                displayLink,
+                displayLinkOutputCallback,
+                UnsafeMutableRawPointer(Unmanaged.passUnretained(self).toOpaque())
+            )
+            assert(result == kCVReturnSuccess, "Failed to set CVDisplayLink output callback")
+            CVDisplayLinkStart(displayLink)
         }
-
-        let result = CVDisplayLinkSetOutputCallback(
-            displayLink,
-            displayLinkOutputCallback,
-            UnsafeMutableRawPointer(Unmanaged.passUnretained(self).toOpaque())
-        )
-        assert(result == kCVReturnSuccess, "Failed to set CVDisplayLink output callback")
-
-        CVDisplayLinkStart(displayLink)
     }
 
     func stop() {
-        guard let displayLink else {
-            return
+        if #available(macOS 14.0, *) {
+            caDisplayLink?.invalidate()
+            caDisplayLink = nil
+            caDisplayLinkTarget = nil
+        } else {
+            guard let displayLink = cvDisplayLink else {
+                return
+            }
+            CVDisplayLinkStop(displayLink)
         }
-
-        CVDisplayLinkStop(displayLink)
     }
 }
 
+@available(macOS, deprecated: 15.0)
 private func displayLinkOutputCallback(
     displayLink: CVDisplayLink,
     inNow _: UnsafePointer<CVTimeStamp>,
@@ -387,13 +421,19 @@ private func displayLinkOutputCallback(
 ) -> CVReturn {
     let observer = unsafeBitCast(displayLinkContext, to: DisplayLinkObserver.self)
 
-    var refreshPeriod = CVDisplayLinkGetActualOutputVideoRefreshPeriod(displayLink)
-    if refreshPeriod == 0 {
-        print("Warning: CVDisplayLinkGetActualOutputVideoRefreshPeriod failed. Assuming 60 Hz...")
-        refreshPeriod = 1.0 / 60.0
-    }
+    let refreshPeriod = cvDisplayLinkRefreshPeriod(displayLink)
 
     observer.callback(observer, refreshPeriod)
 
     return kCVReturnSuccess
+}
+
+@available(macOS, deprecated: 15.0)
+private func cvDisplayLinkRefreshPeriod(_ displayLink: CVDisplayLink) -> Double {
+    let period = CVDisplayLinkGetActualOutputVideoRefreshPeriod(displayLink)
+    if period == 0 {
+        print("Warning: CVDisplayLinkGetActualOutputVideoRefreshPeriod failed. Assuming 60 Hz...")
+        return 1.0 / 60.0
+    }
+    return period
 }

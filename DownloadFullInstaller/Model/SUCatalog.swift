@@ -6,6 +6,7 @@
 
 import Foundation
 
+@MainActor
 class SUCatalog: ObservableObject {
     var thisComponent: String {
         return String(describing: self)
@@ -39,20 +40,19 @@ class SUCatalog: ObservableObject {
             let sessionConfig = URLSessionConfiguration.ephemeral
             let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
 
-            let task = session.dataTask(with: item) { data, response, error in
+            let task = session.dataTask(with: item) { [weak self] data, response, error in
                 if error != nil {
-                    print("\(self.thisComponent) : \(error!.localizedDescription)")
+                    print("SUCatalog : \(error!.localizedDescription)")
                     return
                 }
 
                 let httpResponse = response as! HTTPURLResponse
                 if httpResponse.statusCode != 200 {
-//                    print("\(self.thisComponent) : \(httpResponse.statusCode)")
+//                    print("SUCatalog : \(httpResponse.statusCode)")
                 } else {
                     if data != nil {
-//                        print("\(self.thisComponent) : \(String(decoding: data!, as: UTF8.self))")
-                        DispatchQueue.main.async {
-                            self.decode(data: data!)
+                        Task { @MainActor [weak self] in
+                            self?.decode(data: data!)
                         }
                     }
                 }
@@ -116,6 +116,7 @@ final class FirmwareProduct: Identifiable {
     }
 }
 
+@MainActor
 final class FirmwareCatalog: ObservableObject {
     private static let firmwaresURL = "https://api.ipsw.me/v2.1/firmwares.json/condensed"
     ///    private static let firmwaresURL = "https://api.ipsw.me/v3/firmwares.json/condensed" // --> to test the message when firmares list is empty
@@ -131,23 +132,25 @@ final class FirmwareCatalog: ObservableObject {
         isLoading = true
         hasLoaded = false
 
-        session.dataTask(with: url) { data, _, error in
+        session.dataTask(with: url) { [weak self] data, _, error in
             if let error {
                 print("FirmwareCatalog : \(error.localizedDescription)")
-                DispatchQueue.main.async {
-                    self.isLoading = false
+                Task { @MainActor [weak self] in
+                    self?.isLoading = false
                 }
                 return
             }
 
             guard let data else {
-                DispatchQueue.main.async {
-                    self.isLoading = false
+                Task { @MainActor [weak self] in
+                    self?.isLoading = false
                 }
                 return
             }
 
-            self.decode(data: data)
+            Task { @MainActor [weak self] in
+                self?.decode(data: data)
+            }
         }.resume()
     }
 
@@ -214,16 +217,12 @@ final class FirmwareCatalog: ObservableObject {
                 return $0.postDate > $1.postDate
             }
 
-            DispatchQueue.main.async {
-                self.firmwares = sortedFirmwares
-                self.isLoading = false
-                self.hasLoaded = true
-            }
+            self.firmwares = sortedFirmwares
+            self.isLoading = false
+            self.hasLoaded = true
         } catch {
             print("FirmwareCatalog decode : \(error.localizedDescription)")
-            DispatchQueue.main.async {
-                self.isLoading = false
-            }
+            self.isLoading = false
         }
     }
 

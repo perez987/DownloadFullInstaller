@@ -18,7 +18,7 @@ enum Prefs {
 
     // Track whether we've already logged the stale bookmark message to avoid console spam
     private static let staleBookmarkLock = NSLock()
-    private static var hasLoggedStaleBookmark = false
+    nonisolated(unsafe) private static var hasLoggedStaleBookmark = false
 
     static func key(_ key: Key) -> String {
         return key.rawValue
@@ -157,7 +157,7 @@ enum Prefs {
         UserDefaults.standard.set(false, forKey: Prefs.key(.languageSelectionShown))
     }
 
-    static let byteFormatter = ByteCountFormatter()
+    nonisolated(unsafe) static let byteFormatter = ByteCountFormatter()
 }
 
 extension Notification.Name {
