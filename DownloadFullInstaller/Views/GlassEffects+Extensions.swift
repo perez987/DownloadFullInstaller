@@ -46,6 +46,7 @@ extension View {
     func coloredRow(_ color: Color = .blue, opacity: Double = 0.08, cornerRadius: CGFloat = 8) -> some View {
         if #available(macOS 26.0, *) {
             self
+                .padding(4)
                 .listRowBackground(Color.clear)
                 .glassEffect(.regular.tint(color.opacity(opacity)), in: RoundedRectangle(cornerRadius: cornerRadius))
         } else {

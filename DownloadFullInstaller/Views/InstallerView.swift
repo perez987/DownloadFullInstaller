@@ -128,7 +128,7 @@ struct InstallerView: View {
                     .disabled(multiDownloadManager.isDownloading(filename: installerFilename))
                     .buttonStyle(.borderless)
                     .controlSize(.mini)
-                    .foregroundColor(.blue)
+                    .foregroundColor(.green.opacity(0.6))
                     .opacity(multiDownloadManager.isDownloading(filename: installerFilename) ? 0.4 : 1.0)
 
                     Button(action: {
@@ -146,7 +146,7 @@ struct InstallerView: View {
                     .disabled(multiDownloadManager.isDownloading(filename: installerFilename) || isCreatingInstaller)
                     .buttonStyle(.borderless)
                     .controlSize(.mini)
-                    .foregroundColor(.blue)
+                    .foregroundColor(.green.opacity(0.6))
                     .opacity(multiDownloadManager.isDownloading(filename: installerFilename) || isCreatingInstaller ? 0.4 : 1.0)
 
                     // Context menu: copy to clipboard the URL of the specified InstallAssistant.pkg
