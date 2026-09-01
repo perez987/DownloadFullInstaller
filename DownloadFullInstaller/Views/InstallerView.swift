@@ -128,6 +128,8 @@ struct InstallerView: View {
                     .disabled(multiDownloadManager.isDownloading(filename: installerFilename))
                     .buttonStyle(.borderless)
                     .controlSize(.mini)
+                    .foregroundColor(.blue)
+                    .opacity(multiDownloadManager.isDownloading(filename: installerFilename) ? 0.4 : 1.0)
 
                     Button(action: {
                         createInstallerApp()
@@ -144,6 +146,8 @@ struct InstallerView: View {
                     .disabled(multiDownloadManager.isDownloading(filename: installerFilename) || isCreatingInstaller)
                     .buttonStyle(.borderless)
                     .controlSize(.mini)
+                    .foregroundColor(.blue)
+                    .opacity(multiDownloadManager.isDownloading(filename: installerFilename) || isCreatingInstaller ? 0.4 : 1.0)
 
                     // Context menu: copy to clipboard the URL of the specified InstallAssistant.pkg
                 }
@@ -162,7 +166,7 @@ struct InstallerView: View {
                         Text(String(format: NSLocalizedString("Copy %@ %@ (%@) %@ URL", comment: ""), product.osName ?? "", product.productVersion ?? "", product.buildVersion ?? "", package))
                     }
                 }
-                .glassRow()
+                .coloredRow()
                 // Handle multiple different alerts in a single view using appAlert extension
                 .appAlert(item: $activeAlert) { alertType in
                     switch alertType {
@@ -310,6 +314,8 @@ struct FirmwareView: View {
             .disabled(multiDownloadManager.isDownloading(filename: firmware.filename))
             .buttonStyle(.borderless)
             .controlSize(.mini)
+            .foregroundColor(.blue)
+            .opacity(multiDownloadManager.isDownloading(filename: firmware.filename) ? 0.4 : 1.0)
 
             Button(action: {
                 if let url = URL(string: "https://support.apple.com/en-us/108900") {
@@ -332,7 +338,7 @@ struct FirmwareView: View {
                 Text(String(format: NSLocalizedString("Copy %@ %@ (%@) %@ URL", comment: ""), firmware.osName, firmware.productVersion, firmware.buildVersion, firmware.filename))
             }
         }
-        .glassRow()
+        .coloredRow()
         .appAlert(item: $activeAlert) { alertType in
             switch alertType {
             case .replaceFile:

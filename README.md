@@ -1,12 +1,12 @@
 # Download Full Installer
 
 
-![Platform](https://img.shields.io/badge/macOS-26+-orange.svg)
+![Platform](https://img.shields.io/badge/macOS-15+-orange.svg)
 ![Swift](https://img.shields.io/badge/Swift-6-lavender.svg)
 ![Xcode](https://img.shields.io/badge/Xcode-16+-green.svg)
 ![GitHub Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?style=flat&label=Downloads&color=blue)
 
-**Download Full Installer** is a macOS application written in SwiftUI that downloads PKG installers or IPSW firmwares for the **Install macOS Big Sur** application and newer. Runs on macOS 26 Tahoe and later.
+**Download Full Installer** is a macOS application written in SwiftUI that downloads PKG installers or IPSW firmwares for the **Install macOS Big Sur** application and newer. Runs on macOS 15 Sequoia and later.
 
 |     |
 | --- |
@@ -14,15 +14,16 @@
 
 ### Preface
 
-As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) stopped its development. For over three years, my repository was a fork of the original. However, after the original was archived, I created a new repo as standalone (<em>not forked</em>) version.<br>
+As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) stopped its development. For over three years, my repository was a fork of the original. However, after the original was archived, I created a new repo as standalone (<em>not forked</em>) version.
+
 This repo exists to keep "Download Full Installer" alive and growing. Picking up where the original left off, merging community PRs and adding new features. I'll keep this project active and up to date as long as it is useful to other users. Full credit for the original idea and architecture goes to <em>scriptingosx</em>.
 
 ### Features
 
 - Target and requirements
-   - Minimum macOS 26 Tahoe (runs on macOS 27 Golden Gate)
+   - Minimum macOS 15 Sequoia (runs on macOS 26 Tahoe and later)
    - Swift 6
-   - Xcode 16 requires macOS 26 Tahoe or newer
+   - Xcode 16+
 - Main UI
    - Add Silicon firmwares tab to download IPSW files to restore T2 or Silicon Macs
 - Preferences
