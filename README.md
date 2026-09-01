@@ -3,7 +3,7 @@
 
 ![Platform](https://img.shields.io/badge/macOS-15+-orange.svg)
 ![Swift](https://img.shields.io/badge/Swift-6-lavender.svg)
-![Xcode](https://img.shields.io/badge/Xcode-16+-green.svg)
+![Xcode](https://img.shields.io/badge/Xcode-26-green.svg)
 ![GitHub Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?style=flat&label=Downloads&color=blue)
 
 **Download Full Installer** is a macOS application written in SwiftUI that downloads PKG installers or IPSW firmwares for the **Install macOS Big Sur** application and newer. Runs on macOS 15 Sequoia and later.
@@ -21,9 +21,9 @@ This repo exists to keep "Download Full Installer" alive and growing. Picking up
 ### Features
 
 - Target and requirements
-   - Minimum macOS 15 Sequoia (runs on macOS 26 Tahoe and later)
+   - Minimum macOS 15 Sequoia (up to macOS Golden Gate)
    - Swift 6
-   - Xcode 16+
+   - Xcode 26
 - Main UI
    - Add Silicon firmwares tab to download IPSW files to restore T2 or Silicon Macs
 - Preferences
