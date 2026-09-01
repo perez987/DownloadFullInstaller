@@ -75,31 +75,9 @@ struct ContentView: View {
 
     private var installersTab: some View {
         VStack(alignment: .center, spacing: 4) {
-            List(sucatalog.installers, id: \.id) { installer in
-                InstallerView(product: installer)
-                    .listRowSeparator(.hidden)
-            }
-            .cornerRadius(8)
-            .padding(4)
-            .overlay(
-                Group {
-                    if #unavailable(macOS 15.0) {
-                        RoundedRectangle(cornerRadius: 6)
-                            .stroke(.tertiary, lineWidth: 1)
-                            .padding(5)
-                    }
-                }
-            )
-
-            DownloadView()
-        }
-    }
-
-    private var firmwareTab: some View {
-        VStack(alignment: .center, spacing: 4) {
-            ZStack {
-                List(firmwareCatalog.filteredFirmwares(for: osNameID), id: \.id) { firmware in
-                    FirmwareView(firmware: firmware)
+            ScrollViewReader { proxy in
+                List(filteredInstallers, id: \.id) { installer in
+                    InstallerView(product: installer)
                         .listRowSeparator(.hidden)
                 }
                 .cornerRadius(8)
@@ -113,6 +91,75 @@ struct ContentView: View {
                         }
                     }
                 )
+                .onChange(of: osNameID) {
+                    resetInstallersListPosition(with: proxy)
+                }
+                .onChange(of: seedProgram) {
+                    resetInstallersListPosition(with: proxy)
+                }
+                .onChange(of: installerIDs) {
+                    resetInstallersListPosition(with: proxy)
+                }
+                .onAppear {
+                    resetInstallersListPosition(with: proxy)
+                }
+            }
+
+            DownloadView()
+        }
+    }
+
+    private var installerIDs: [String] {
+        filteredInstallers.map(\.id)
+    }
+
+    private var filteredInstallers: [Product] {
+        sucatalog.installers.filter { installer in
+            guard installer.hasLoaded else {
+                return false
+            }
+
+            if Prefs.osNameID.rawValue == OsNameID.osAll.rawValue {
+                return true
+            }
+
+            return installer.osName == Prefs.osNameID.rawValue
+        }
+    }
+
+    private func resetInstallersListPosition(with proxy: ScrollViewProxy) {
+        DispatchQueue.main.async {
+            if let firstID = filteredInstallers.first?.id {
+                proxy.scrollTo(firstID, anchor: .top)
+            }
+        }
+    }
+
+    private var firmwareTab: some View {
+        VStack(alignment: .center, spacing: 4) {
+            ZStack {
+                ScrollViewReader { proxy in
+                    List(firmwareCatalog.filteredFirmwares(for: osNameID), id: \.id) { firmware in
+                        FirmwareView(firmware: firmware)
+                            .listRowSeparator(.hidden)
+                    }
+                    .cornerRadius(8)
+                    .padding(4)
+                    .overlay(
+                        Group {
+                            if #unavailable(macOS 15.0) {
+                                RoundedRectangle(cornerRadius: 6)
+                                    .stroke(.tertiary, lineWidth: 1)
+                                    .padding(5)
+                            }
+                        }
+                    )
+                    .onChange(of: osNameID) {
+                        if let firstFirmware = firmwareCatalog.filteredFirmwares(for: osNameID).first {
+                            proxy.scrollTo(firstFirmware.id, anchor: .top)
+                        }
+                    }
+                }
 
 //                if firmwareCatalog.hasLoaded && firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty && osNameID != "Legacy" {
                 if firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty, osNameID != "Legacy" {

@@ -5,6 +5,7 @@
 //
 
 import Foundation
+import Combine
 
 @MainActor
 class SUCatalog: ObservableObject {
@@ -19,6 +20,7 @@ class SUCatalog: ObservableObject {
 
     @Published var installers = [Product]()
     var uniqueInstallersList: [String] = []
+    private var productSubscriptions = Set<AnyCancellable>()
 
     @Published var isLoading = false
     @Published var hasLoaded = false
@@ -34,6 +36,7 @@ class SUCatalog: ObservableObject {
 
     func load() {
         uniqueInstallersList = []
+        productSubscriptions.removeAll()
         let catalogURLArray: [URL] = catalogURL(for: Prefs.seedProgram, for: Prefs.osNameID)
 
         for item in catalogURLArray {
@@ -81,6 +84,7 @@ class SUCatalog: ObservableObject {
                             // this is an installer, add to list
                             uniqueInstallersList.append(productKey)
                             installers.append(product)
+                            observeProductChanges(product)
                             product.loadDistribution()
                         }
                     }
@@ -89,6 +93,14 @@ class SUCatalog: ObservableObject {
 
             installers.sort { $0.postDate > $1.postDate }
         }
+    }
+
+    private func observeProductChanges(_ product: Product) {
+        product.objectWillChange
+            .sink { [weak self] _ in
+                self?.objectWillChange.send()
+            }
+            .store(in: &productSubscriptions)
     }
 }
 
