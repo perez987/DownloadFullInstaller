@@ -18,9 +18,9 @@ There is **one application target** in this repository:
 - **Language**: Swift 6
 - **UI framework**: SwiftUI (macOS only)
 - **Minimum macOS**: 15 Sequoia
-- **Build tool**: Xcode 16+
+- **Build tool**: Xcode 26+
 - **Auto-updater**: [Sparkle](https://sparkle-project.org/) via Swift Package Manager (`Updater/UpdateController.swift`)
-- **Dock progress**: `DockProgress-4.3.1` (local copy, not a package dependency)
+- **Dock progress**: `DockProgress-5.1.0` (local copy, not a package dependency)
 - **Sandbox**: the target runs in the macOS App Sandbox (see `.entitlements` file)
 
 ## Project Structure
@@ -94,9 +94,9 @@ Incomplete downloads are cleaned up on app quit (see `AppDelegate.swift`).
 | Dependency | Location | Purpose |
 |---|---|---|
 | Sparkle | Swift Package Manager via wrapper in `Updater/UpdateController.swift` | In-app update checks |
-| DockProgress | `DockProgress-4.3.1/` | Progress ring on Dock icon during downloads |
+| DockProgress | `DockProgress-5.1.0/` | Progress ring on Dock icon during downloads |
 
-Sparkle is resolved through Swift Package Manager. DockProgress remains bundled in the repository; do not attempt to resolve it via CocoaPods.
+Sparkle is resolved through Swift Package Manager. DockProgress remains bundled in the repository.
 
 ## Versioning & Changelog
 
