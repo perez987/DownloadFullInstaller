@@ -85,6 +85,7 @@
 
 /* Firmware empty state */
 "The firmware list cannot be loaded or there are no firmwares available for this version of macOS." = "Zoznam firmvéru sa nedá načítať alebo pre túto verziu systému macOS nie sú k dispozícii žiadne firmvéry.";
+"The installers list cannot be loaded or there are no installers available for this version of macOS." = "Seznama namestitvenih programov ni mogoče naložiti ali pa za to različico sistema macOS ni na voljo nobenih namestitvenih programov.";
 
 /* Apple Configurator Restore */
 "Restore with Apple Configurator" = "Obnovi z Apple Configurator";

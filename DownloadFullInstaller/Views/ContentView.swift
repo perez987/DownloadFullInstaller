@@ -75,33 +75,43 @@ struct ContentView: View {
 
     private var installersTab: some View {
         VStack(alignment: .center, spacing: 4) {
-            ScrollViewReader { proxy in
-                List(filteredInstallers, id: \.id) { installer in
-                    InstallerView(product: installer)
-                        .listRowSeparator(.hidden)
-                }
-                .cornerRadius(8)
-                .padding(4)
-                .overlay(
-                    Group {
-                        if #unavailable(macOS 15.0) {
-                            RoundedRectangle(cornerRadius: 6)
-                                .stroke(.tertiary, lineWidth: 1)
-                                .padding(5)
-                        }
+            ZStack {
+                ScrollViewReader { proxy in
+                    List(filteredInstallers, id: \.id) { installer in
+                        InstallerView(product: installer)
+                            .listRowSeparator(.hidden)
                     }
-                )
-                .onChange(of: osNameID) {
-                    resetInstallersListPosition(with: proxy)
+                    .cornerRadius(8)
+                    .padding(4)
+                    .overlay(
+                        Group {
+                            if #unavailable(macOS 15.0) {
+                                RoundedRectangle(cornerRadius: 6)
+                                    .stroke(.tertiary, lineWidth: 1)
+                                    .padding(5)
+                            }
+                        }
+                    )
+                    .onChange(of: osNameID) {
+                        resetInstallersListPosition(with: proxy)
+                    }
+                    .onChange(of: seedProgram) {
+                        resetInstallersListPosition(with: proxy)
+                    }
+                    .onChange(of: installerIDs) {
+                        resetInstallersListPosition(with: proxy)
+                    }
+                    .onAppear {
+                        resetInstallersListPosition(with: proxy)
+                    }
                 }
-                .onChange(of: seedProgram) {
-                    resetInstallersListPosition(with: proxy)
-                }
-                .onChange(of: installerIDs) {
-                    resetInstallersListPosition(with: proxy)
-                }
-                .onAppear {
-                    resetInstallersListPosition(with: proxy)
+
+                if filteredInstallers.isEmpty {
+                    Text(NSLocalizedString("The installers list cannot be loaded or there are no installers available for this version of macOS.", comment: "Message shown when the installers list is empty after loading"))
+                        .foregroundColor(.secondary)
+                        .font(.system(size: 16))
+                        .multilineTextAlignment(.center)
+                        .padding()
                 }
             }
 

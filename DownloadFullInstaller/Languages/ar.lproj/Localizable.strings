@@ -139,6 +139,7 @@
 
 /* Firmware empty state */
 "The firmware list cannot be loaded or there are no firmwares available for this version of macOS." = "لا يمكن تحميل قائمة البرامج الثابتة، يرجى المحاولة مرة أخرى بعد قليل";
+"The installers list cannot be loaded or there are no installers available for this version of macOS." = "لا يمكن تحميل قائمة المثبّتات أو لا توجد مثبّتات متاحة لهذا الإصدار من macOS.";
 
 /* Apple Configurator Restore */
 "Restore with Apple Configurator" = "الاستعادة باستخدام Apple Configurator";

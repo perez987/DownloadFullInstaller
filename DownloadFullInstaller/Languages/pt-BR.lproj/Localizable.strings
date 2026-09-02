@@ -85,8 +85,8 @@
 
 /* Firmware empty state */
 "The firmware list cannot be loaded or there are no firmwares available for this version of macOS." = "Não foi possível carregar a lista de firmwares ou não há firmwares disponíveis para esta versão do macOS.";
+"The installers list cannot be loaded or there are no installers available for this version of macOS." = "Não foi possível carregar a lista de instaladores ou não há instaladores disponíveis para esta versão do macOS.";
 
 /* Apple Configurator Restore */
 "Restore with Apple Configurator" = "Restaurar com Apple Configurator";
 "Restore with Apple Configurator: How to" = "Restaurar com Apple Configurator:\nFirmwares do macOS são arquivos IPSW que podem ser usados para restaurar Macs Silicon usando o Apple Configurator.\nPara esta tarefa, você precisa de outro Mac e de um cabo USB C que possa transmitir energia e dados.\nRestaurar um Mac Silicon apaga todo o conteúdo da unidade e o usuário perde todos os dados que não foram previamente salvos em backup.";
-
