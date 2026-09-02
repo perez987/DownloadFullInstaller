@@ -15,6 +15,7 @@ struct ContentView: View {
     @StateObject private var firmwareCatalog = FirmwareCatalog()
     @State private var refreshID = UUID()
     @State private var selectedTab = 0
+    @State private var canShowEmptyListMessage = false
     var countersText: String = ""
 
     var body: some View {
@@ -64,6 +65,10 @@ struct ContentView: View {
             refreshID = UUID()
         }
         .onAppear {
+            canShowEmptyListMessage = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                canShowEmptyListMessage = true
+            }
             if !sucatalog.hasLoaded, !sucatalog.isLoading {
                 sucatalog.load()
             }
@@ -106,7 +111,7 @@ struct ContentView: View {
                     }
                 }
 
-                if filteredInstallers.isEmpty {
+                if canShowEmptyListMessage && filteredInstallers.isEmpty {
                     Text(NSLocalizedString("The installers list cannot be loaded or there are no installers available for this version of macOS.", comment: "Message shown when the installers list is empty after loading"))
                         .foregroundColor(.secondary)
                         .font(.system(size: 16))
@@ -172,7 +177,7 @@ struct ContentView: View {
                 }
 
 //                if firmwareCatalog.hasLoaded && firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty && osNameID != "Legacy" {
-                if firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty, osNameID != "Legacy" {
+                if canShowEmptyListMessage && firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty && osNameID != "Legacy" {
                     Text(NSLocalizedString("The firmware list cannot be loaded or there are no firmwares available for this version of macOS.", comment: "Message shown when the firmware list is empty after loading"))
                         .foregroundColor(.secondary)
                         .font(.system(size: 16))
