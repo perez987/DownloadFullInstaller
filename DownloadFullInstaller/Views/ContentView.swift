@@ -16,6 +16,7 @@ struct ContentView: View {
     @State private var refreshID = UUID()
     @State private var selectedTab = 0
     @State private var canShowEmptyListMessage = false
+    @State private var emptyListMessageTask: Task<Void, Never>?
     var countersText: String = ""
 
     var body: some View {
@@ -65,15 +66,32 @@ struct ContentView: View {
             refreshID = UUID()
         }
         .onAppear {
-            canShowEmptyListMessage = false
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                canShowEmptyListMessage = true
-            }
+            startEmptyListMessageDelay()
             if !sucatalog.hasLoaded, !sucatalog.isLoading {
                 sucatalog.load()
             }
             if !firmwareCatalog.hasLoaded, !firmwareCatalog.isLoading {
                 firmwareCatalog.load()
+            }
+        }
+        .onDisappear {
+            emptyListMessageTask?.cancel()
+            emptyListMessageTask = nil
+        }
+        .onChange(of: osNameID) {
+            startEmptyListMessageDelay()
+        }
+        .onChange(of: seedProgram) {
+            startEmptyListMessageDelay()
+        }
+        .onChange(of: sucatalog.isLoading) {
+            if sucatalog.isLoading {
+                startEmptyListMessageDelay()
+            }
+        }
+        .onChange(of: firmwareCatalog.isLoading) {
+            if firmwareCatalog.isLoading {
+                startEmptyListMessageDelay()
             }
         }
     }
@@ -146,6 +164,18 @@ struct ContentView: View {
         DispatchQueue.main.async {
             if let firstID = filteredInstallers.first?.id {
                 proxy.scrollTo(firstID, anchor: .top)
+            }
+        }
+    }
+
+    private func startEmptyListMessageDelay() {
+        emptyListMessageTask?.cancel()
+        canShowEmptyListMessage = false
+        emptyListMessageTask = Task {
+            try? await Task.sleep(for: .seconds(3))
+            guard !Task.isCancelled else { return }
+            await MainActor.run {
+                canShowEmptyListMessage = true
             }
         }
     }
