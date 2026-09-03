@@ -135,6 +135,12 @@ struct ContentView: View {
                         .font(.system(size: 16))
                         .multilineTextAlignment(.center)
                         .padding()
+                } else if !canShowEmptyListMessage && filteredInstallers.isEmpty {
+                    Text(NSLocalizedString("Loading...", comment: "Temporary message shown while waiting to display the empty installers list message"))
+                        .foregroundColor(.secondary)
+                        .font(.system(size: 16))
+                        .multilineTextAlignment(.center)
+                        .padding()
                 }
             }
 
@@ -172,7 +178,7 @@ struct ContentView: View {
         emptyListMessageTask?.cancel()
         canShowEmptyListMessage = false
         emptyListMessageTask = Task {
-            try? await Task.sleep(for: .seconds(3))
+            try? await Task.sleep(for: .seconds(4))
             guard !Task.isCancelled else { return }
             await MainActor.run {
                 canShowEmptyListMessage = true
@@ -209,6 +215,12 @@ struct ContentView: View {
 //                if firmwareCatalog.hasLoaded && firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty && osNameID != "Legacy" {
                 if canShowEmptyListMessage && firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty && osNameID != "Legacy" {
                     Text(NSLocalizedString("The firmware list cannot be loaded or there are no firmwares available for this version of macOS.", comment: "Message shown when the firmware list is empty after loading"))
+                        .foregroundColor(.secondary)
+                        .font(.system(size: 16))
+                        .multilineTextAlignment(.center)
+                        .padding()
+                } else if !canShowEmptyListMessage && firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty && osNameID != "Legacy" {
+                    Text(NSLocalizedString("Loading...", comment: "Temporary message shown while waiting to display the empty firmware list message"))
                         .foregroundColor(.secondary)
                         .font(.system(size: 16))
                         .multilineTextAlignment(.center)

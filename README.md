@@ -12,7 +12,7 @@
 
 |     |
 | --- |
-| ![Installers](Images/Installers-firmwares.png) |
+| ![Installers](Images/Installers.png) |
 
 ### Preface
 
