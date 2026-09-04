@@ -36,7 +36,7 @@
 
 /* App Settings */
 "Yes" = "Sí";
-"Clear app settings?" = "¿Eliminar ajustes de la app?";
+"Clear app settings?" = "¿Eliminar los ajustes?";
 "(App preferences will be cleared)" = "(Las preferencias de la aplicación se borrarán)";
 "You will lose user settings and saved language." = "Perderás los ajustes de usuario y el idioma guardado.";
 "Warning" = "Aviso";
@@ -85,7 +85,9 @@
 "This firmware has been downloaded" = "Este firmware ya se ha descargado";
 
 /* Firmware empty state */
-"The firmware list cannot be loaded or there are no firmwares available for this version of macOS." = "No es posible cargar la lista de Firmwares o no hay firmwares disponibles para esta versión de macOS.";
+"The firmware list cannot be loaded or there are no firmwares available for this version of macOS." = "No es posible cargar la lista de firmwares o no hay firmwares disponibles para esta versión de macOS.";
+"The installers list cannot be loaded or there are no installers available for this version of macOS." = "No es posible cargar la lista de instaladores o no hay instaladores disponibles para esta versión de macOS.";
+"Loading..." = "Cargando...";
 
 /* Apple Configurator Restore */
 "Restore with Apple Configurator" = "Restaurar con Apple Configurator";

@@ -35,7 +35,7 @@
 
 /* App Settings */
 "Yes" = "Da";
-"Clear app settings?" = "Želite počistiti nastavitve aplikacije?";
+"Clear app settings?" = "Želite počistiti nastavitve?";
 "(App preferences will be cleared)" = "(Nastavitve aplikacije bodo izbrisane)";
 "You will lose user settings and saved language." = "Izgubili boste uporabniške nastavitve in shranjeni jezik.";
 "Warning" = "Opozorilo";
@@ -85,6 +85,8 @@
 
 /* Firmware empty state */
 "The firmware list cannot be loaded or there are no firmwares available for this version of macOS." = "Zoznam firmvéru sa nedá načítať alebo pre túto verziu systému macOS nie sú k dispozícii žiadne firmvéry.";
+"The installers list cannot be loaded or there are no installers available for this version of macOS." = "Seznama namestitvenih programov ni mogoče naložiti ali pa za to različico sistema macOS ni na voljo nobenih namestitvenih programov.";
+"Loading..." = "Nalaganje...";
 
 /* Apple Configurator Restore */
 "Restore with Apple Configurator" = "Obnovi z Apple Configurator";

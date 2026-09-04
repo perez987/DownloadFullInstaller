@@ -18,10 +18,10 @@ enum Prefs {
 
     // Track whether we've already logged the stale bookmark message to avoid console spam
     private static let staleBookmarkLock = NSLock()
-    private static var hasLoggedStaleBookmark = false
+    private nonisolated(unsafe) static var hasLoggedStaleBookmark = false
 
     static func key(_ key: Key) -> String {
-        return key.rawValue
+        key.rawValue
     }
 
     /// Save user preferences (AppleLanguages, LanguageSelectionShown and downloadURL)
@@ -104,7 +104,7 @@ enum Prefs {
     /// Returns true if the download URL requires security-scoped resource access
     /// (i.e., it was created from a user-selected bookmark)
     static var downloadURLRequiresSecurityScope: Bool {
-        return UserDefaults.standard.data(forKey: Prefs.key(.downloadPathBookmark)) != nil
+        UserDefaults.standard.data(forKey: Prefs.key(.downloadPathBookmark)) != nil
     }
 
     /// Safely starts accessing the security-scoped resource for the download URL
@@ -145,7 +145,7 @@ enum Prefs {
     }
 
     static var languageSelectionShown: Bool {
-        return UserDefaults.standard.bool(forKey: Prefs.key(.languageSelectionShown))
+        UserDefaults.standard.bool(forKey: Prefs.key(.languageSelectionShown))
     }
 
     /// Save user preferences (LanguageSelectionShown)
@@ -157,7 +157,7 @@ enum Prefs {
         UserDefaults.standard.set(false, forKey: Prefs.key(.languageSelectionShown))
     }
 
-    static let byteFormatter = ByteCountFormatter()
+    nonisolated(unsafe) static let byteFormatter = ByteCountFormatter()
 }
 
 extension Notification.Name {

@@ -15,6 +15,8 @@ struct ContentView: View {
     @StateObject private var firmwareCatalog = FirmwareCatalog()
     @State private var refreshID = UUID()
     @State private var selectedTab = 0
+    @State private var canShowEmptyListMessage = false
+    @State private var emptyListMessageTask: Task<Void, Never>?
     var countersText: String = ""
 
     var body: some View {
@@ -22,7 +24,7 @@ struct ContentView: View {
             PreferencesView(selectedTab: $selectedTab)
                 .environmentObject(sucatalog)
                 .navigationTitle(NSLocalizedString("Download Full Installer", comment: "Main window title"))
-            
+
             Spacer()
 //            Divider()
 //            Spacer()
@@ -52,7 +54,7 @@ struct ContentView: View {
             minWidth: 490.0,
             idealWidth: 490.0,
             maxWidth: 490.0,
-            minHeight: 562.0,
+            minHeight: 590.0,
             alignment: .center
         )
         .padding(.bottom, 12)
@@ -64,92 +66,162 @@ struct ContentView: View {
             refreshID = UUID()
         }
         .onAppear {
-            if !sucatalog.hasLoaded && !sucatalog.isLoading {
+            startEmptyListMessageDelay()
+            if !sucatalog.hasLoaded, !sucatalog.isLoading {
                 sucatalog.load()
             }
-            if !firmwareCatalog.hasLoaded && !firmwareCatalog.isLoading {
+            if !firmwareCatalog.hasLoaded, !firmwareCatalog.isLoading {
                 firmwareCatalog.load()
+            }
+        }
+        .onDisappear {
+            emptyListMessageTask?.cancel()
+            emptyListMessageTask = nil
+        }
+        .onChange(of: osNameID) {
+            startEmptyListMessageDelay()
+        }
+        .onChange(of: seedProgram) {
+            startEmptyListMessageDelay()
+        }
+        .onChange(of: sucatalog.isLoading) {
+            if sucatalog.isLoading {
+                startEmptyListMessageDelay()
+            }
+        }
+        .onChange(of: firmwareCatalog.isLoading) {
+            if firmwareCatalog.isLoading {
+                startEmptyListMessageDelay()
             }
         }
     }
 
     private var installersTab: some View {
         VStack(alignment: .center, spacing: 4) {
-            if #available(macOS 15.0, *) {
-                List(sucatalog.installers, id: \.id) { installer in
-                    InstallerView(product: installer)
+            ZStack {
+                ScrollViewReader { proxy in
+                    List(filteredInstallers, id: \.id) { installer in
+                        InstallerView(product: installer)
+                            .listRowSeparator(.hidden)
+                    }
+                    .cornerRadius(8)
+                    .padding(4)
+                    .overlay(
+                        Group {
+                            if #unavailable(macOS 15.0) {
+                                RoundedRectangle(cornerRadius: 6)
+                                    .stroke(.tertiary, lineWidth: 1)
+                                    .padding(5)
+                            }
+                        }
+                    )
+                    .onChange(of: osNameID) {
+                        resetInstallersListPosition(with: proxy)
+                    }
+                    .onChange(of: seedProgram) {
+                        resetInstallersListPosition(with: proxy)
+                    }
+                    .onChange(of: installerIDs) {
+                        resetInstallersListPosition(with: proxy)
+                    }
+                    .onAppear {
+                        resetInstallersListPosition(with: proxy)
+                    }
                 }
-                .cornerRadius(8)
-                .padding(4)
-                .contentMargins(.leading, 1, for: .scrollContent)
-            } else if #available(macOS 14.0, *) {
-                List(sucatalog.installers, id: \.id) { installer in
-                    InstallerView(product: installer)
+
+                if canShowEmptyListMessage && filteredInstallers.isEmpty {
+                    Text(NSLocalizedString("The installers list cannot be loaded or there are no installers available for this version of macOS.", comment: "Message shown when the installers list is empty after loading"))
+                        .foregroundColor(.primary)
+                        .font(.system(size: 16))
+                        .multilineTextAlignment(.center)
+                        .padding()
+                } else if !canShowEmptyListMessage && filteredInstallers.isEmpty {
+                    Text(NSLocalizedString("Loading...", comment: "Temporary message shown while waiting to display the empty installers list message"))
+                        .foregroundColor(.primary)
+                        .font(.system(size: 16))
+                        .multilineTextAlignment(.center)
+                        .padding()
                 }
-                .cornerRadius(8)
-                .padding(4)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 6)
-                        .stroke(.tertiary, lineWidth: 1)
-                        .padding(5)
-                )
-                .contentMargins(.leading, 1, for: .scrollContent)
-            } else {
-                List(sucatalog.installers, id: \.id) { installer in
-                    InstallerView(product: installer)
-                }
-                .cornerRadius(8)
-                .padding(4)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 6)
-                        .stroke(.tertiary, lineWidth: 1)
-                        .padding(5)
-                )
             }
 
             DownloadView()
         }
     }
 
+    private var installerIDs: [String] {
+        filteredInstallers.map(\.id)
+    }
+
+    private var filteredInstallers: [Product] {
+        sucatalog.installers.filter { installer in
+            guard installer.hasLoaded else {
+                return false
+            }
+
+            if Prefs.osNameID.rawValue == OsNameID.osAll.rawValue {
+                return true
+            }
+
+            return installer.osName == Prefs.osNameID.rawValue
+        }
+    }
+
+    private func resetInstallersListPosition(with proxy: ScrollViewProxy) {
+        DispatchQueue.main.async {
+            if let firstID = filteredInstallers.first?.id {
+                proxy.scrollTo(firstID, anchor: .top)
+            }
+        }
+    }
+
+    private func startEmptyListMessageDelay() {
+        emptyListMessageTask?.cancel()
+        canShowEmptyListMessage = false
+        emptyListMessageTask = Task {
+            try? await Task.sleep(for: .seconds(5))
+            guard !Task.isCancelled else { return }
+            await MainActor.run {
+                canShowEmptyListMessage = true
+            }
+        }
+    }
+
     private var firmwareTab: some View {
         VStack(alignment: .center, spacing: 4) {
             ZStack {
-                if #available(macOS 15.0, *) {
+                ScrollViewReader { proxy in
                     List(firmwareCatalog.filteredFirmwares(for: osNameID), id: \.id) { firmware in
                         FirmwareView(firmware: firmware)
-                    }
-                    .cornerRadius(8)
-                    .padding(4)
-                    .contentMargins(.leading, 1, for: .scrollContent)
-                } else if #available(macOS 14.0, *) {
-                    List(firmwareCatalog.filteredFirmwares(for: osNameID), id: \.id) { firmware in
-                        FirmwareView(firmware: firmware)
+                            .listRowSeparator(.hidden)
                     }
                     .cornerRadius(8)
                     .padding(4)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 6)
-                            .stroke(.tertiary, lineWidth: 1)
-                            .padding(5)
+                        Group {
+                            if #unavailable(macOS 15.0) {
+                                RoundedRectangle(cornerRadius: 6)
+                                    .stroke(.tertiary, lineWidth: 1)
+                                    .padding(5)
+                            }
+                        }
                     )
-                    .contentMargins(.leading, 1, for: .scrollContent)
-                } else {
-                    List(firmwareCatalog.filteredFirmwares(for: osNameID), id: \.id) { firmware in
-                        FirmwareView(firmware: firmware)
+                    .onChange(of: osNameID) {
+                        if let firstFirmware = firmwareCatalog.filteredFirmwares(for: osNameID).first {
+                            proxy.scrollTo(firstFirmware.id, anchor: .top)
+                        }
                     }
-                    .cornerRadius(8)
-                    .padding(4)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 6)
-                            .stroke(.tertiary, lineWidth: 1)
-                            .padding(5)
-                    )
                 }
 
 //                if firmwareCatalog.hasLoaded && firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty && osNameID != "Legacy" {
-                if firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty && osNameID != "Legacy" {
+                if canShowEmptyListMessage && firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty && osNameID != "Legacy" {
                     Text(NSLocalizedString("The firmware list cannot be loaded or there are no firmwares available for this version of macOS.", comment: "Message shown when the firmware list is empty after loading"))
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.primary)
+                        .font(.system(size: 16))
+                        .multilineTextAlignment(.center)
+                        .padding()
+                } else if !canShowEmptyListMessage && firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty && osNameID != "Legacy" {
+                    Text(NSLocalizedString("Loading...", comment: "Temporary message shown while waiting to display the empty firmware list message"))
+                        .foregroundColor(.primary)
                         .font(.system(size: 16))
                         .multilineTextAlignment(.center)
                         .padding()

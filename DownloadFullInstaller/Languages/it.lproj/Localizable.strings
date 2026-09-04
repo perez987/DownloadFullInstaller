@@ -35,7 +35,7 @@
 
 /* App Settings */
 "Yes" = "Si";
-"Clear app settings?" = "Cancella le impostazioni dell'app?";
+"Clear app settings?" = "Cancella le impostazioni?";
 "(App preferences will be cleared)" = "(Le preferenze dell'app verranno cancellate)";
 "You will lose user settings and saved language." = "Perderai le impostazioni utente e la lingua salvata.";
 "Warning" = "Avvertimento";
@@ -85,6 +85,8 @@
 
 /* Firmware empty state */
 "The firmware list cannot be loaded or there are no firmwares available for this version of macOS." = "Impossibile caricare l'elenco dei firmware oppure non sono disponibili firmware per questa versione di macOS.";
+"The installers list cannot be loaded or there are no installers available for this version of macOS." = "Impossibile caricare l'elenco degli installatori oppure non sono disponibili installatori per questa versione di macOS.";
+"Loading..." = "Caricamento...";
 
 /* Apple Configurator Restore */
 "Restore with Apple Configurator" = "Ripristina con Apple Configurator";

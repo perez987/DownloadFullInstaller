@@ -35,7 +35,7 @@
 
 /* App Settings */
 "Yes" = "是";
-"Clear app settings?" = "清除应用程序设置？";
+"Clear app settings?" = "删除设置？";
 "(App preferences will be cleared)" = "（应用程序偏好设置将被清除）";
 "You will lose user settings and saved language." = "您将丢失用户设置和已保存的语言。";
 "Warning" = "警告";
@@ -85,6 +85,8 @@
 
 /* Firmware empty state */
 "The firmware list cannot be loaded or there are no firmwares available for this version of macOS." = "固件列表无法加载，或者此 macOS 版本没有可用的固件。";
+"The installers list cannot be loaded or there are no installers available for this version of macOS." = "安装程序列表无法加载，或者此 macOS 版本没有可用的安装程序。";
+"Loading..." = "加载中...";
 
 /* Apple Configurator Restore */
 "Restore with Apple Configurator" = "使用 Apple Configurator 恢复。";

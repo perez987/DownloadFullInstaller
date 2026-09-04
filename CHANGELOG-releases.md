@@ -1,5 +1,29 @@
 # App for macOS 13+
 
+## 5.0.2 - Sep 4, 2026
+
+**Unify help buttons**
+
+- Move firmware restore help button to Preferences
+
+## 5.0.1 - Sep 3, 2026
+
+**Localization fixes**
+
+- Minor UI localization fixes
+
+## 5.0.0 - Aug 31, 2026
+
+**Migrate to Swift 6**
+
+- `swift6` branch
+- App for macOS 26 and macOS 27
+- Xcode 26 is required to build the project.
+- The project has been migrated from Swift 5 to Swift 6, implementing improvements:
+   - in code stability
+   - in the user interface
+
+
 ## 4.6.0 - Jul 12, 2026
 
 **Notarized app**

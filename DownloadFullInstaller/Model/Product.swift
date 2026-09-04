@@ -6,9 +6,10 @@
 
 import Foundation
 
+@MainActor
 class Product: Codable, Identifiable, ObservableObject {
     var thisComponent: String {
-        return String(describing: self)
+        String(describing: self)
     }
 
     let serverMetadataURL: String?
@@ -23,8 +24,9 @@ class Product: Codable, Identifiable, ObservableObject {
     @Published var osName: String?
     @Published var title: String?
     @Published var buildVersion: String?
-    var id: String {
-        return key ?? "<no id yet>"
+    private let _id = UUID().uuidString
+    nonisolated var id: String {
+        _id
     }
 
     @Published var productVersion: String?
@@ -44,9 +46,9 @@ class Product: Codable, Identifiable, ObservableObject {
 
     var darwinVersion: String {
         if buildVersion != nil {
-            return String(buildVersion!.prefix(2))
+            String(buildVersion!.prefix(2))
         } else {
-            return "unknown"
+            "unknown"
         }
     }
 
@@ -56,35 +58,35 @@ class Product: Codable, Identifiable, ObservableObject {
     }
 
     var installerASSPackage: Package? {
-        return packages.first { $0.url.hasSuffix("InstallAssistant.pkg") }
+        packages.first { $0.url.hasSuffix("InstallAssistant.pkg") }
     }
 
     var installerESDPackage: Package? {
-        return packages.first { $0.url.hasSuffix("InstallESDDmg.pkg") }
+        packages.first { $0.url.hasSuffix("InstallESDDmg.pkg") }
     }
 
     var installAssistantURL: URL? {
         if let installAssistant = installerASSPackage {
 //            print("\(thisComponent) : \(installAssistant)")
-            return URL(string: installAssistant.url)
+            URL(string: installAssistant.url)
         } else {
             if let installAssistant = installerESDPackage {
 //                print("\(thisComponent) : \(installAssistant)")
-                return URL(string: installAssistant.url)
+                URL(string: installAssistant.url)
             } else {
-                return nil
+                nil
             }
         }
     }
 
     var installAssistantSize: Int {
         if installerASSPackage != nil {
-            return installerASSPackage?.size ?? 0
+            installerASSPackage?.size ?? 0
         } else {
             if installerESDPackage != nil {
-                return installerESDPackage?.size ?? 0
+                installerESDPackage?.size ?? 0
             } else {
-                return 0
+                0
             }
         }
     }
@@ -96,20 +98,16 @@ class Product: Codable, Identifiable, ObservableObject {
         let sessionConfig = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
 
-        let task = session.dataTask(with: url) { data, response, error in
+        let task = session.dataTask(with: url) { [weak self] data, response, error in
             if error != nil {
-//                print("\(self.thisComponent) : \(error!.localizedDescription)")
                 return
             }
 
             let httpResponse = response as! HTTPURLResponse
-            if httpResponse.statusCode != 200 {
-//                print("\(self.thisComponent) : \(httpResponse.statusCode)")
-            } else {
-                if data != nil {
-//                    print("\(self.thisComponent) : \(String(decoding: data!, as: UTF8.self))")
-                    DispatchQueue.main.async {
-                        self.decodeBuildManifest(data: data!)
+            if httpResponse.statusCode == 200 {
+                if let data {
+                    Task { @MainActor [weak self] in
+                        self?.decodeBuildManifest(data: data)
                     }
                 }
             }
@@ -144,20 +142,16 @@ class Product: Codable, Identifiable, ObservableObject {
         let sessionConfig = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
 
-        let task = session.dataTask(with: url) { data, response, error in
+        let task = session.dataTask(with: url) { [weak self] data, response, error in
             if error != nil {
-//                print("\(self.thisComponent) : \(error!.localizedDescription)")
                 return
             }
 
             let httpResponse = response as! HTTPURLResponse
-            if httpResponse.statusCode != 200 {
-//                print("\(self.thisComponent) : \(httpResponse.statusCode)")
-            } else {
-                if data != nil {
-//                    print("\(self.thisComponent) : \(String(decoding: data!, as: UTF8.self))")
-                    DispatchQueue.main.async {
-                        self.parseDistXML(data: data!)
+            if httpResponse.statusCode == 200 {
+                if let data {
+                    Task { @MainActor [weak self] in
+                        self?.parseDistXML(data: data)
                     }
                 }
             }

@@ -35,7 +35,7 @@
 
 /* App Settings */
 "Yes" = "Да";
-"Clear app settings?" = "Очистить настройки приложения?";
+"Clear app settings?" = "Очистить настройки?";
 "(App preferences will be cleared)" = "(Настройки приложения будут очищены)";
 "You will lose user settings and saved language." = "Вы потеряете пользовательские настройки и сохраненный язык.";
 "Warning" = "Предупреждение";
@@ -85,6 +85,8 @@
 
 /* Firmware empty state */
 "The firmware list cannot be loaded or there are no firmwares available for this version of macOS." = "Не удаётся загрузить список прошивок или для этой версии macOS отсутствуют доступные прошивки.";
+"The installers list cannot be loaded or there are no installers available for this version of macOS." = "Не удается загрузить список установщиков или для этой версии macOS нет доступных установщиков.";
+"Loading..." = "Загрузка...";
 
 /* Apple Configurator Restore */
 "Restore with Apple Configurator" = "Восстановить с помощью Apple Configurator";

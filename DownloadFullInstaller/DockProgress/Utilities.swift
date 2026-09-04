@@ -1,5 +1,4 @@
 import Cocoa
-import CoreVideo
 import simd
 
 /**
@@ -14,7 +13,10 @@ import simd
  ```
  */
 @discardableResult
-func with<T>(_ item: T, update: (inout T) throws -> Void) rethrows -> T {
+func with<T, E>(
+    _ item: T,
+    update: (inout T) throws(E) -> Void
+) throws(E) -> T {
     var this = item
     try update(&this)
     return this
@@ -148,6 +150,7 @@ extension NSColor {
 }
 
 extension NSFont {
+    @MainActor
     static let helveticaNeueBold = NSFont(name: "HelveticaNeue-Bold", size: 0)
 }
 
@@ -335,65 +338,46 @@ enum Easing {
 
  This is useful for creating smooth animations that synchronize with the screen's refresh rate.
  */
+@MainActor
 final class DisplayLinkObserver {
-    private var displayLink: CVDisplayLink?
-    fileprivate let callback: (DisplayLinkObserver, Double) -> Void
+    private var timer: Timer?
+    fileprivate let callback: @MainActor (DisplayLinkObserver, Double) -> Void
 
-    init(_ callback: @escaping (DisplayLinkObserver, Double) -> Void) {
+    init(_ callback: @escaping @MainActor (DisplayLinkObserver, Double) -> Void) {
         self.callback = callback
-
-        guard CVDisplayLinkCreateWithActiveCGDisplays(&displayLink) == kCVReturnSuccess else {
-            assertionFailure("Failed to create CVDisplayLink")
-            print("Failed to create CVDisplayLink")
-            return
-        }
     }
 
     deinit {
-        stop()
+        MainActor.assumeIsolated {
+            timer?.invalidate()
+            timer = nil
+        }
     }
 
     func start() {
-        guard let displayLink else {
+        guard timer == nil else {
             return
         }
 
-        let result = CVDisplayLinkSetOutputCallback(
-            displayLink,
-            displayLinkOutputCallback,
-            UnsafeMutableRawPointer(Unmanaged.passUnretained(self).toOpaque())
-        )
-        assert(result == kCVReturnSuccess, "Failed to set CVDisplayLink output callback")
+        let refreshRate = NSScreen.main?.maximumFramesPerSecond ?? 60
+        let refreshPeriod = 1.0 / Double(refreshRate)
 
-        CVDisplayLinkStart(displayLink)
+        let timer = Timer(timeInterval: refreshPeriod, repeats: true) { [weak self] _ in
+            guard let self else {
+                return
+            }
+            self.callback(self, refreshPeriod)
+        }
+        RunLoop.main.add(timer, forMode: .common)
+        self.timer = timer
     }
 
     func stop() {
-        guard let displayLink else {
+        guard let timer else {
             return
         }
 
-        CVDisplayLinkStop(displayLink)
+        timer.invalidate()
+        self.timer = nil
     }
-}
-
-private func displayLinkOutputCallback(
-    displayLink: CVDisplayLink,
-    inNow _: UnsafePointer<CVTimeStamp>,
-    inOutputTime _: UnsafePointer<CVTimeStamp>,
-    flagsIn _: CVOptionFlags,
-    flagsOut _: UnsafeMutablePointer<CVOptionFlags>,
-    displayLinkContext: UnsafeMutableRawPointer?
-) -> CVReturn {
-    let observer = unsafeBitCast(displayLinkContext, to: DisplayLinkObserver.self)
-
-    var refreshPeriod = CVDisplayLinkGetActualOutputVideoRefreshPeriod(displayLink)
-    if refreshPeriod == 0 {
-        print("Warning: CVDisplayLinkGetActualOutputVideoRefreshPeriod failed. Assuming 60 Hz...")
-        refreshPeriod = 1.0 / 60.0
-    }
-
-    observer.callback(observer, refreshPeriod)
-
-    return kCVReturnSuccess
 }

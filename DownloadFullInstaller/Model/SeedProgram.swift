@@ -8,7 +8,7 @@
 import Foundation
 
 var thisComponent: String {
-    return String(describing: "Download_Full_Installer.SeedProgram")
+    String(describing: "Download_Full_Installer.SeedProgram")
 }
 
 // Note: this can change in future macOS

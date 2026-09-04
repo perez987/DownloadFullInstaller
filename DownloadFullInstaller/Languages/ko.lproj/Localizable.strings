@@ -35,7 +35,7 @@
 
 /* App Settings */
 "Yes" = "예";
-"Clear app settings?" = "앱 설정을 지우시겠습니까?";
+"Clear app settings?" = "설정을 삭제하시겠습니까?";
 "(App preferences will be cleared)" = "(앱 환경설정이 지워집니다)";
 "You will lose user settings and saved language." = "사용자 설정과 저장된 언어를 잃게 될 것입니다.";
 "Warning" = "경고";
@@ -85,6 +85,8 @@
 
 /* Firmware empty state */
 "The firmware list cannot be loaded or there are no firmwares available for this version of macOS." = "펌웨어 목록을 불러올 수 없거나 이 macOS 버전에 사용할 수 있는 펌웨어가 없습니다.";
+"The installers list cannot be loaded or there are no installers available for this version of macOS." = "설치 프로그램 목록을 불러올 수 없거나 이 macOS 버전에 사용할 수 있는 설치 프로그램이 없습니다.";
+"Loading..." = "불러오는 중...";
 
 /* Apple Configurator Restore */
 "Restore with Apple Configurator" = "Apple Configurator로 복원";
