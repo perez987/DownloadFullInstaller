@@ -39,7 +39,7 @@ struct IconView: View {
 
             // Beta text placed over the icon if the installer is beta
             let isBeta = "beta"
-            if product.title != nil, product.title!.lowercased().contains(isBeta) {
+            if product.title != nil && product.title!.lowercased().contains(isBeta) {
                 Text(" " + isBeta + " ")
                     .font(.headline)
                     .foregroundColor(.white)

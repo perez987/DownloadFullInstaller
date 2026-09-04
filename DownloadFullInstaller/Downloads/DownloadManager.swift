@@ -10,7 +10,7 @@ import AppKit
 // import DockProgress
 import Foundation
 
-@objc class DownloadManager: NSObject, ObservableObject, @unchecked Sendable {
+@objc class DownloadManager: NSObject, ObservableObject {
     @Published var downloadURL: URL?
     @Published var localURL: URL?
     @Published var isDownloading = false
@@ -31,7 +31,6 @@ import Foundation
     private var maxRetries = 100
     private var retryTimer: Timer?
     @Published var isRetrying = false
-    private var lastProgressUpdate: Date = .distantPast
 
     // Security-scoped resource tracking
     private var destinationURL: URL?
@@ -41,7 +40,7 @@ import Foundation
 
     // Active download count tracking
     // Thread-safe counter for active downloads, designed for future multi-download support
-    private nonisolated(unsafe) static var activeDownloadCount: Int = 0
+    private static var activeDownloadCount: Int = 0
     private static let downloadCountLock = NSLock()
 
     /// Returns the current number of active downloads
@@ -121,19 +120,24 @@ import Foundation
         }
         isRetrying = false
 
-        // Set dock progress style
-        Task { @MainActor in
+        // Set dock progress style to bar
+        DispatchQueue.main.async {
+            // Classic white progress bar
+//            DockProgress.style = .bar
+            // Small circle in the lower right corner, download progresses like a slice of pie
+//            DockProgress.style = .pie(color: .blue)
+            // Badge with the number of active downloads
             DockProgress.style = .badge(color: .blue, badgeValue: { DownloadManager.getDownloadCount() })
         }
 
         // Try to resume from previous download if resume data exists
-        if let resumeData {
+        if let resumeData = resumeData {
             downloadTask = urlSession.downloadTask(withResumeData: resumeData)
             print("Resuming download of \(filename ?? "InstallerAssistant.pkg")")
         } else {
             downloadTask = urlSession.downloadTask(with: url)
             progress = 0.0
-            Task { @MainActor in
+            DispatchQueue.main.async {
                 DockProgress.progress = 0.0
             }
             localURL = nil
@@ -146,7 +150,8 @@ import Foundation
     func cancel() {
         if isDownloading, downloadTask != nil {
             downloadTask?.cancel { [weak self] _ in
-                Task { @MainActor [weak self] in
+                DispatchQueue.main.async {
+                    // Don't preserve resume data for manual cancellation
                     self?.resumeData = nil
                 }
             }
@@ -155,7 +160,9 @@ import Foundation
             localURL = nil
             downloadURL = nil
             progress = 0.0
-            Task { @MainActor in DockProgress.progress = 0.0 }
+            DispatchQueue.main.async {
+                DockProgress.progress = 0.0
+            }
             retryCount = 0
             retryTimer?.invalidate()
             retryTimer = nil
@@ -163,10 +170,8 @@ import Foundation
             DownloadManager.decrementDownloadCount()
             // Stop accessing security-scoped resource
             stopAccessingSecurityScope()
-            // Clean up temporary files off the main thread to avoid UI stalls
-            DispatchQueue.global(qos: .utility).async { [weak self] in
-                self?.cleanupTempDirectory()
-            }
+            // Clean up temporary files
+            cleanupTempDirectory()
         }
         print("Cancelled download of \(filename ?? "InstallerAssistant.pkg")")
     }
@@ -179,11 +184,11 @@ import Foundation
     /// For sandboxed apps, this is ~/Library/Containers/perez987.DownloadFullInstaller/Data/tmp
     static func cleanupAppTempDirectory() {
         let tempDir = URL(fileURLWithPath: NSTemporaryDirectory())
-
-        // Print temporary directory path
+        
+        /// Print temporary directory path
 //        let strTempDir = tempDir.absoluteString
 //        print("Temporary directory: \(strTempDir.dropFirst(7))")
-
+        
         do {
             let tempFiles = try FileManager.default.contentsOfDirectory(at: tempDir, includingPropertiesForKeys: [.isRegularFileKey, .fileSizeKey])
             var deletedCount = 0
@@ -226,10 +231,10 @@ import Foundation
     private func retryDownload() {
         guard retryCount < maxRetries else {
             print("Max retry attempts reached. Download failed.")
-            Task { @MainActor [weak self] in
-                self?.isDownloading = false
-                self?.isRetrying = false
-                self?.resumeData = nil
+            DispatchQueue.main.async {
+                self.isDownloading = false
+                self.isRetrying = false
+                self.resumeData = nil
                 DockProgress.progress = 0.0
             }
             // Decrement active download count when max retries reached
@@ -239,18 +244,20 @@ import Foundation
             return
         }
 
-        retryCount += 1
+        retryCount += 1 // Number of resume attempts made
 
-        let retryDelay: Double = 5
+        //    let retryDelay = pow(2.0, Double(retryCount)) // Exponential backoff: 2, 4, 8... seconds
+        let retryDelay: Double = 5 // Retry interval 5 seconds
 
         print("Connection lost. Retrying download in \(Int(retryDelay))\"... (Attempt \(retryCount)/\(maxRetries))")
+        //    print("Trying to resume download of \(filename ?? "InstallerAssistant.pkg")")
 
-        Task { @MainActor [weak self] in
-            self?.isRetrying = true
+        DispatchQueue.main.async {
+            self.isRetrying = true
         }
 
         retryTimer = Timer.scheduledTimer(withTimeInterval: retryDelay, repeats: false) { [weak self] _ in
-            Task { @MainActor [weak self] in
+            DispatchQueue.main.async {
                 self?.startDownload()
             }
         }
@@ -300,16 +307,16 @@ extension DownloadManager: URLSessionDownloadDelegate {
             // Stop accessing security-scoped resource after successful save
             stopAccessingSecurityScope()
 
-            Task { @MainActor [weak self] in
-                self?.isDownloading = false
-                self?.isRetrying = false
-                self?.localURL = newURL
-                self?.isComplete = true
-                self?.resumeData = nil
-                self?.retryCount = 0
-                self?.retryTimer?.invalidate()
-                self?.retryTimer = nil
-                self?.errorMessage = nil
+            DispatchQueue.main.async {
+                self.isDownloading = false
+                self.isRetrying = false
+                self.localURL = newURL
+                self.isComplete = true
+                self.resumeData = nil // Clear resume data on successful completion
+                self.retryCount = 0
+                self.retryTimer?.invalidate()
+                self.retryTimer = nil
+                self.errorMessage = nil
                 DockProgress.progress = 0.0
             }
         } catch {
@@ -324,43 +331,35 @@ extension DownloadManager: URLSessionDownloadDelegate {
             let folderName = destination.lastPathComponent
             let errorMsg = String(format: NSLocalizedString("The file '%@' could not be saved to the '%@' folder. Error: %@", comment: "Download save error"), suggestedFilename, folderName, error.localizedDescription)
 
-            Task { @MainActor [weak self] in
-                self?.isDownloading = false
-                self?.isRetrying = false
-                self?.isComplete = false
-                self?.errorMessage = errorMsg
-                self?.resumeData = nil
-                self?.retryCount = 0
-                self?.retryTimer?.invalidate()
-                self?.retryTimer = nil
+            DispatchQueue.main.async {
+                self.isDownloading = false
+                self.isRetrying = false
+                self.isComplete = false
+                self.errorMessage = errorMsg
+                self.resumeData = nil
+                self.retryCount = 0
+                self.retryTimer?.invalidate()
+                self.retryTimer = nil
                 DockProgress.progress = 0.0
             }
         }
     }
 
     func urlSession(_: URLSession, downloadTask _: URLSessionDownloadTask, didWriteData _: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
-        // Throttle UI updates to at most 20 per second to avoid flooding the main actor queue
-        let now = Date()
-        guard now.timeIntervalSince(lastProgressUpdate) >= 0.05 else { return }
-        lastProgressUpdate = now
-        let prog = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
-        let str = "\(byteFormatter.string(fromByteCount: totalBytesWritten))/\(byteFormatter.string(fromByteCount: totalBytesExpectedToWrite))"
-        DispatchQueue.main.async { [weak self] in
-            self?.progress = prog
-            self?.progressString = str
-            DockProgress.progress = prog
+        DispatchQueue.main.async {
+            self.progress = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
+            self.progressString = "\(self.byteFormatter.string(fromByteCount: totalBytesWritten))/\(self.byteFormatter.string(fromByteCount: totalBytesExpectedToWrite))"
+            DockProgress.progress = self.progress
         }
     }
 
     /// Handle download resumption
     func urlSession(_: URLSession, downloadTask _: URLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
         print("Download resumed at offset: \(fileOffset) bytes")
-        let prog = Double(fileOffset) / Double(expectedTotalBytes)
-        let str = "\(byteFormatter.string(fromByteCount: fileOffset))/\(byteFormatter.string(fromByteCount: expectedTotalBytes))"
-        DispatchQueue.main.async { [weak self] in
-            self?.progress = prog
-            self?.progressString = str
-            DockProgress.progress = prog
+        DispatchQueue.main.async {
+            self.progress = Double(fileOffset) / Double(expectedTotalBytes)
+            self.progressString = "\(self.byteFormatter.string(fromByteCount: fileOffset))/\(self.byteFormatter.string(fromByteCount: expectedTotalBytes))"
+            DockProgress.progress = self.progress
         }
     }
 }
@@ -369,18 +368,13 @@ extension DownloadManager: URLSessionDownloadDelegate {
 
 extension DownloadManager: URLSessionTaskDelegate {
     func urlSession(_: URLSession, task _: URLSessionTask, didCompleteWithError error: Error?) {
-        guard let error else { return }
-
-        // Ignore cancellation errors — these are expected when the user cancels a download
-        let nsError = error as NSError
-        if nsError.domain == NSURLErrorDomain, nsError.code == NSURLErrorCancelled {
-            return
-        }
+        guard let error = error else { return }
 
         print("Download error: \(error.localizedDescription)")
         //        print("Download error occurred: the Internet connection has been lost")
 
         // Check if this is a network error that we can recover from
+        let nsError = error as NSError
         let isNetworkError = nsError.domain == NSURLErrorDomain &&
             (nsError.code == NSURLErrorNotConnectedToInternet ||
                 nsError.code == NSURLErrorNetworkConnectionLost ||
@@ -395,8 +389,8 @@ extension DownloadManager: URLSessionTaskDelegate {
             }
 
             // Attempt to retry the download
-            Task { @MainActor [weak self] in
-                self?.retryDownload()
+            DispatchQueue.main.async {
+                self.retryDownload()
             }
         } else {
             // Non-recoverable error
@@ -405,13 +399,13 @@ extension DownloadManager: URLSessionTaskDelegate {
             DownloadManager.decrementDownloadCount()
             // Stop accessing security-scoped resource on non-recoverable error
             stopAccessingSecurityScope()
-            Task { @MainActor [weak self] in
-                self?.isDownloading = false
-                self?.isRetrying = false
-                self?.resumeData = nil
-                self?.retryCount = 0
-                self?.retryTimer?.invalidate()
-                self?.retryTimer = nil
+            DispatchQueue.main.async {
+                self.isDownloading = false
+                self.isRetrying = false
+                self.resumeData = nil
+                self.retryCount = 0
+                self.retryTimer?.invalidate()
+                self.retryTimer = nil
                 DockProgress.progress = 0.0
             }
         }

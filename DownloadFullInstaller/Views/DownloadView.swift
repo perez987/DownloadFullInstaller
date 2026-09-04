@@ -92,18 +92,15 @@ struct DownloadView: View {
             // Show completed downloads first (they appear at the top)
             ForEach(multiDownloadManager.completedDownloads) { item in
                 CompletedDownloadItemView(downloadItem: item, manager: multiDownloadManager)
-                    .glassCard()
-                    .padding(.vertical, 2)
             }
 
             // Show active downloads (growing upward means new ones appear at the bottom)
             ForEach(multiDownloadManager.activeDownloads) { item in
                 DownloadItemView(downloadItem: item)
-                    .glassSubtle()
-                    .padding(.vertical, 2)
+//                    .liquidGlass(intensity: .medium)
                     .multilineTextAlignment(.leading)
-                    .onChange(of: item.errorMessage) { _, errorMessage in
-                        if let errorMessage {
+                    .onChange(of: item.errorMessage) { errorMessage in
+                        if let errorMessage = errorMessage {
                             activeAlert = .downloadError(message: errorMessage)
                         }
                     }
@@ -111,7 +108,7 @@ struct DownloadView: View {
 
             // Backward compatibility: Show old single download manager if it's downloading
             // This handles any downloads that were started before the multi-download manager was used
-            if downloadManager.isDownloading, multiDownloadManager.activeDownloads.isEmpty {
+            if downloadManager.isDownloading && multiDownloadManager.activeDownloads.isEmpty {
                 VStack(alignment: .leading) {
                     HStack {
                         Text(" ")
@@ -138,15 +135,15 @@ struct DownloadView: View {
                     }
                 }
                 .multilineTextAlignment(.leading)
-                .onChange(of: downloadManager.errorMessage) { _, errorMessage in
-                    if let errorMessage {
+                .onChange(of: downloadManager.errorMessage) { errorMessage in
+                    if let errorMessage = errorMessage {
                         activeAlert = .downloadError(message: errorMessage)
                     }
                 }
             }
 
             // Backward compatibility: Show old single download manager completion
-            if downloadManager.isComplete, multiDownloadManager.completedDownloads.isEmpty {
+            if downloadManager.isComplete && multiDownloadManager.completedDownloads.isEmpty {
                 HStack {
                     Text(String(format: NSLocalizedString("Downloaded %@", comment: ""), downloadManager.filename ?? "InstallAssistant.pkg"))
                         .padding(.vertical, 6)

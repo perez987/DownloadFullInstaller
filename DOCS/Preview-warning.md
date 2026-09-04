@@ -1,12 +1,10 @@
 # Preview warning
 
-> **Note**: This document describes a workaround that was applied when the project targeted macOS 13. Since the project now targets macOS 26 (Swift 6), the `#Preview` macro with `@Previewable` is fully supported and this workaround is no longer needed.
-
 Replace #Preview macro with PreviewProvider for macOS 13 compatibility.
 
 ## Overview
 
-In `LanguageSelectionView.swift` file, line 223, Xcode warns that `@State` inline in `#Preview `requires `@Previewable`, which is macOS 14+ only. This was relevant when the project targeted macOS 13.7.
+In `LanguageSelectionView.swift` file, line 223, Xcode warns that `@State` inline in `#Preview `requires `@Previewable`, which is macOS 14+ only. Project targets macOS 13.7.
 
 ```swift
 // Before: #Preview macro with inline @State (warning)

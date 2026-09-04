@@ -14,7 +14,6 @@ struct SupportedLanguage {
     let nativeName: String
 }
 
-@MainActor
 class LanguageManager: ObservableObject {
     @Published var currentLanguage: String = "en"
     @Published var availableLanguages: [SupportedLanguage] = []
@@ -51,8 +50,8 @@ class LanguageManager: ObservableObject {
         if rhs.code == "en" { return false }
 
         // Spanish should be second (after English)
-        if lhs.code == "es", rhs.code != "en" { return true }
-        if rhs.code == "es", lhs.code != "en" { return false }
+        if lhs.code == "es" && rhs.code != "en" { return true }
+        if rhs.code == "es" && lhs.code != "en" { return false }
 
         // All other languages sorted alphabetically by code
         return lhs.code < rhs.code

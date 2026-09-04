@@ -1,31 +1,34 @@
 # Download Full Installer
 
 
-![Platform](https://img.shields.io/badge/macOS-15+-orange.svg)
-![Swift](https://img.shields.io/badge/Swift-6-lavender.svg)
-![Xcode](https://img.shields.io/badge/Xcode-26-green.svg)
+![Platform](https://img.shields.io/badge/macOS-13+-orange.svg)
+![Swift](https://img.shields.io/badge/Swift-5+-lavender.svg)
+![Xcode](https://img.shields.io/badge/Xcode-15+-green.svg)
 ![GitHub Downloads](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?style=flat&label=Downloads&color=blue)
 
-**Download Full Installer** is a macOS application written in SwiftUI that downloads PKG installers or IPSW firmwares for the **Install macOS Big Sur** application and newer. Runs on macOS 15 Sequoia and later.
+**Download Full Installer** is a macOS application written in SwiftUI that downloads PKG installers or IPSW firmwares for the **Install macOS Big Sur** application and newer. Runs on macOS 13 Ventura through macOS 27 Golden Gate.
 
-**Note**: If you prefer the version built with Swift 5, that runs on macOS 13 or later, get the project code from the `main` branch of the repository or the version 4.x.x from the [releases](https://github.com/perez987/DownloadFullInstaller/releases) page.
+**Note**: If you prefer the version built with Swift 6, that runs on macOS 15 or later, get the project code from the `swift6` branch of the repository or the version 5.x.x from the [releases](https://github.com/perez987/DownloadFullInstaller/releases) page.
 
 |     |
 | --- |
-| ![Installers](Images/Installers.png) |
+| ![Installers](Images/Window1.png) |
 
 ### Preface
 
-As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) stopped its development. For over three years, my repository was a fork of the original. However, after the original was archived, I created a new repo as standalone (<em>not forked</em>) version.
-
-This repo exists to keep "Download Full Installer" alive and growing. Picking up where the original left off, merging community PRs and adding new features. I'll keep this project active and up to date as long as it is useful to other users. Full credit for the original idea and architecture goes to <em>scriptingosx</em>.
+As of June 2025, [DownloadFullInstaller](https://github.com/scriptingosx/DownloadFullInstaller) stopped its development.<br>
+For over three years, my repository was a fork of the original.<br>
+However, after the original was archived, I created a new repo as standalone (<em>not forked</em>) version.<br>
+This repo exists to keep "Download Full Installer" alive and growing. Picking up where the original left off, merging community PRs and adding new features.<br>
+I'll keep this project active and up to date as long as it is useful to other users.<br>
+Full credit for the original idea and architecture goes to <em>scriptingosx</em>.
 
 ### Features
 
 - Target and requirements
-   - Minimum macOS 15 Sequoia (up to macOS Golden Gate)
-   - Swift 6
-   - Xcode 26
+   - Minimum macoS Ventura 13
+   - Update to macOS 27 Golden Gate
+   - Xcode 15 requires macOS 13 Ventura or newer
 - Main UI
    - Add Silicon firmwares tab to download IPSW files to restore T2 or Silicon Macs
 - Preferences
@@ -54,10 +57,6 @@ This repo exists to keep "Download Full Installer" alive and growing. Picking up
 
 A new item called Legacy has been added to the macOS systems dropdown list. Legacy opens a new window listing the five available legacy macOS versions, each with its own direct download link. You can download any of these legacy macOS versions from this window.
 
-|     |
-| --- |
-| ![Legacy](Images/Legacy.png) |
-
 ### Create Installer App Feature
 
 After downloading an `InstallAssistant.pkg` file, you can create the macOS installer application (e.g., "Install macOS Sequoia.app") directly from within Download Full Installer:
@@ -74,7 +73,7 @@ Download Full Installer -> Settings menu (⌘ ,) opens a window where you can se
 
 |     |
 | --- |
-| ![Settings](Images/Settings.png) |
+| ![Languages](Images/Settings.png) |
 
 ### Language selector window
 

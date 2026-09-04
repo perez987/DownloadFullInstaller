@@ -152,7 +152,8 @@ struct LegacyVersionRow: View {
         }
         .frame(width: 320.0, height: 32.0)
         .padding(12)
-        .glassCard(cornerRadius: 8)
+        .background(Color(NSColor.controlBackgroundColor))
+        .cornerRadius(8)
     }
 
     func downloadLegacyVersion() {
@@ -192,7 +193,7 @@ struct LegacyVersionRow: View {
 }
 
 /// Legacy Download Manager
-class LegacyDownloadManager: NSObject, ObservableObject, @unchecked Sendable {
+class LegacyDownloadManager: NSObject, ObservableObject {
     @Published var isDownloading = false
     @Published var isComplete = false
     @Published var progress: Double = 0.0
@@ -265,7 +266,7 @@ class LegacyDownloadManager: NSObject, ObservableObject, @unchecked Sendable {
     }
 
     func revealInFinder() {
-        if isComplete, let localURL {
+        if isComplete, let localURL = localURL {
             let destination = Prefs.downloadURL
 
             // Start accessing security-scoped resource for Finder reveal (only if needed)
@@ -296,7 +297,7 @@ extension LegacyDownloadManager: URLSessionDownloadDelegate {
             return
         }
 
-        guard let filename else { return }
+        guard let filename = filename else { return }
 
         do {
             let file = destination.appendingPathComponent(filename)
@@ -312,32 +313,31 @@ extension LegacyDownloadManager: URLSessionDownloadDelegate {
             print("Finished download of \(filename)")
             stopAccessingSecurityScope()
 
-            Task { @MainActor [weak self] in
-                self?.isDownloading = false
-                self?.isComplete = true
-                self?.localURL = file
+            DispatchQueue.main.async {
+                self.isDownloading = false
+                self.isComplete = true
+                self.localURL = file
             }
         } catch {
             print("Error saving file: \(error.localizedDescription)")
             stopAccessingSecurityScope()
 
+            // Extract folder name from destination path for error message
             let folderName = destination.lastPathComponent
             let errorMsg = String(format: NSLocalizedString("The file '%@' could not be saved to the '%@' folder. Error: %@", comment: "Download save error"), filename, folderName, error.localizedDescription)
 
-            Task { @MainActor [weak self] in
-                self?.isDownloading = false
-                self?.isComplete = false
-                self?.errorMessage = errorMsg
+            DispatchQueue.main.async {
+                self.isDownloading = false
+                self.isComplete = false
+                self.errorMessage = errorMsg
             }
         }
     }
 
     func urlSession(_: URLSession, downloadTask _: URLSessionDownloadTask, didWriteData _: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
-        let prog = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
-        let str = "\(byteFormatter.string(fromByteCount: totalBytesWritten))/\(byteFormatter.string(fromByteCount: totalBytesExpectedToWrite))"
-        Task { @MainActor [weak self] in
-            self?.progress = prog
-            self?.progressString = str
+        DispatchQueue.main.async {
+            self.progress = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
+            self.progressString = "\(self.byteFormatter.string(fromByteCount: totalBytesWritten))/\(self.byteFormatter.string(fromByteCount: totalBytesExpectedToWrite))"
         }
     }
 }
@@ -346,10 +346,11 @@ extension LegacyDownloadManager: URLSessionDownloadDelegate {
 
 extension LegacyDownloadManager: URLSessionTaskDelegate {
     func urlSession(_: URLSession, task _: URLSessionTask, didCompleteWithError error: Error?) {
-        guard let error else { return }
+        guard let error = error else { return }
 
         print("Legacy download error: \(error.localizedDescription)")
 
+        // Check if this is a network error
         let nsError = error as NSError
         let isNetworkError = nsError.domain == NSURLErrorDomain &&
             (nsError.code == NSURLErrorNotConnectedToInternet ||
@@ -363,14 +364,15 @@ extension LegacyDownloadManager: URLSessionTaskDelegate {
             userFriendlyMessage = NSLocalizedString("Network error: Please check your internet connection and try again.", comment: "")
         }
 
+        // Stop accessing security-scoped resource on error
         stopAccessingSecurityScope()
 
-        Task { @MainActor [weak self] in
-            self?.isDownloading = false
-            self?.isComplete = false
-            self?.progress = 0.0
-            self?.progressString = ""
-            self?.errorMessage = userFriendlyMessage
+        DispatchQueue.main.async {
+            self.isDownloading = false
+            self.isComplete = false
+            self.progress = 0.0
+            self.progressString = ""
+            self.errorMessage = userFriendlyMessage
         }
     }
 }

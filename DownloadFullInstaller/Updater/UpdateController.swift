@@ -5,7 +5,6 @@
 import Combine
 import Sparkle
 
-@MainActor
 final class UpdaterController: ObservableObject {
     private let updaterController: SPUStandardUpdaterController
 

@@ -11,16 +11,16 @@ This file is automatically read by GitHub Copilot coding agents (and Claude) whe
 
 There is **one application target** in this repository:
 
-- `DownloadFullInstaller` → requires macOS 15 Sequoia or later.
+- `DownloadFullInstaller` → requires macOS 13 Ventura or later.
 
 ## Tech Stack
 
-- **Language**: Swift 6
+- **Language**: Swift 5+
 - **UI framework**: SwiftUI (macOS only)
-- **Minimum macOS**: 15 Sequoia
-- **Build tool**: Xcode 26+
+- **Minimum macOS**: 13 Ventura
+- **Build tool**: Xcode 15+
 - **Auto-updater**: [Sparkle](https://sparkle-project.org/) via Swift Package Manager (`Updater/UpdateController.swift`)
-- **Dock progress**: `DockProgress-5.1.0` (local copy, not a package dependency)
+- **Dock progress**: `DockProgress-4.3.1` (local copy, not a package dependency)
 - **Sandbox**: the target runs in the macOS App Sandbox (see `.entitlements` file)
 
 ## Project Structure
@@ -47,7 +47,7 @@ DownloadFullInstaller.xcodeproj/     # Xcode project
 
 This project **must be built with Xcode**.
 
-1. Open `DownloadFullInstaller.xcodeproj` in Xcode 16 or later.
+1. Open `DownloadFullInstaller.xcodeproj` in Xcode 15 or later.
 2. Select the scheme matching the project name.
 3. Build with **⌘B** or **Product → Build**.
 4. Run with **⌘R**.
@@ -61,7 +61,7 @@ There is currently no automated test target (XCTest or otherwise). Validation is
 When making changes:
 
 - Ensure the project **compiles without errors or warnings** in Xcode.
-- Verify the relevant user-facing flow works at runtime on macOS 15+.
+- Verify the relevant user-facing flow works at runtime on macOS 13+.
 
 ## Localization
 
@@ -94,9 +94,9 @@ Incomplete downloads are cleaned up on app quit (see `AppDelegate.swift`).
 | Dependency | Location | Purpose |
 |---|---|---|
 | Sparkle | Swift Package Manager via wrapper in `Updater/UpdateController.swift` | In-app update checks |
-| DockProgress | `DockProgress-5.1.0/` | Progress ring on Dock icon during downloads |
+| DockProgress | `DockProgress-4.3.1/` | Progress ring on Dock icon during downloads |
 
-Sparkle is resolved through Swift Package Manager. DockProgress remains bundled in the repository.
+Sparkle is resolved through Swift Package Manager. DockProgress remains bundled in the repository; do not attempt to resolve it via CocoaPods.
 
 ## Versioning & Changelog
 

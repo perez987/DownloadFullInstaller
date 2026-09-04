@@ -23,7 +23,7 @@ struct InstallerView: View {
 
     /// Computed property for the installer filename
     var installerFilename: String {
-        "InstallAssistant-\(product.productVersion ?? "V")-\(product.buildVersion ?? "B").pkg"
+        return "InstallAssistant-\(product.productVersion ?? "V")-\(product.buildVersion ?? "B").pkg"
     }
 
     /// Check if the installer has been downloaded
@@ -51,139 +51,139 @@ struct InstallerView: View {
     }
 
     var body: some View {
-        HStack {
-            IconView(product: product)
-
-            VStack(alignment: .leading) {
+        if product.hasLoaded {
+            // Filter data on osName if needed
+            if (Prefs.osNameID.rawValue == OsNameID.osAll.rawValue) || (Prefs.osNameID.rawValue != OsNameID.osAll.rawValue && product.osName == Prefs.osNameID.rawValue) {
                 HStack {
-                    Text(product.title ?? "<no title>")
-                        .font(.headline)
-                    Spacer()
-                    Text(product.productVersion ?? "<no version>")
-                        .frame(alignment: .trailing)
+                    IconView(product: product)
+
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text(product.title ?? "<no title>")
+                                .font(.headline)
+                            Spacer()
+                            Text(product.productVersion ?? "<no version>")
+                                .frame(alignment: .trailing)
+                        }
+                        HStack {
+                            Text(product.postDate, style: .date)
+                                .font(.footnote)
+                            Text(Prefs.byteFormatter.string(fromByteCount: Int64(product.installAssistantSize)))
+                                .font(.footnote)
+                            Spacer()
+                            Text(product.buildVersion ?? "<no build>")
+                                .frame(alignment: .trailing)
+                                .font(.footnote)
+                        }
+                    }
+
+                    // Visual indicator for downloaded installers
+                    if isDownloaded {
+                        Image(systemName: "checkmark.circle.fill")
+                            .font(.title2)
+                            .foregroundColor(.green)
+                            .help(NSLocalizedString("This installer has been downloaded", comment: ""))
+                    }
+
+                    Button(action: {
+                        filename = installerFilename
+
+                        // Check if max downloads reached
+                        if !multiDownloadManager.canStartNewDownload {
+                            activeAlert = .maxDownloads
+                            print("Maximum concurrent downloads reached (3). Please wait for a download to complete")
+                            return
+                        }
+
+                        // Check if this file is already being downloaded
+                        if multiDownloadManager.isDownloading(filename: filename) {
+                            return
+                        }
+
+                        // Check if file exists on disk
+                        let destination = Prefs.downloadURL
+                        let file = destination.appendingPathComponent(filename)
+
+                        // Start accessing security-scoped resource for file check (only if needed)
+                        let accessStarted = Prefs.startAccessingDownloadURL()
+                        defer {
+                            Prefs.stopAccessingDownloadURL(accessStarted)
+                        }
+                        let fileExists = FileManager.default.fileExists(atPath: file.path)
+
+                        if fileExists {
+                            activeAlert = .replaceFile(filename: filename)
+                        } else {
+                            do {
+                                _ = try multiDownloadManager.startDownload(url: product.installAssistantURL, filename: filename)
+                            } catch {
+                                failed = true
+                            }
+                        }
+
+                    }) {
+                        Image(systemName: "arrow.down.circle").font(.title)
+                    }
+                    .help(String(format: NSLocalizedString("Download %@ %@ (%@) Installer", comment: ""), product.osName ?? "", product.productVersion ?? "", product.buildVersion ?? ""))
+                    .disabled(multiDownloadManager.isDownloading(filename: installerFilename))
+                    .buttonStyle(.borderless)
+                    .controlSize(.mini)
+
+                    Button(action: {
+                        createInstallerApp()
+                    }) {
+                        if isCreatingInstaller {
+                            ProgressView()
+                                .scaleEffect(0.7)
+                                .frame(width: 20, height: 20)
+                        } else {
+                            Image(systemName: "square.and.arrow.down.on.square").font(.title)
+                        }
+                    }
+                    .help(String(format: NSLocalizedString("Create Installer App from %@ %@ (%@)", comment: ""), product.osName ?? "<no os>", product.productVersion ?? "<no version>", product.buildVersion ?? "<no build>"))
+                    .disabled(multiDownloadManager.isDownloading(filename: installerFilename) || isCreatingInstaller)
+                    .buttonStyle(.borderless)
+                    .controlSize(.mini)
+
+                    // Context menu: copy to clipboard the URL of the specified InstallAssistant.pkg
                 }
-                HStack {
-                    Text(product.postDate, style: .date)
-                        .font(.footnote)
-                    Text(Prefs.byteFormatter.string(fromByteCount: Int64(product.installAssistantSize)))
-                        .font(.footnote)
-                    Spacer()
-                    Text(product.buildVersion ?? "<no build>")
-                        .frame(alignment: .trailing)
-                        .font(.footnote)
-                }
-            }
-
-            // Visual indicator for downloaded installers
-            if isDownloaded {
-                Image(systemName: "checkmark.circle.fill")
-                    .font(.title2)
-                    .foregroundColor(.green)
-                    .help(NSLocalizedString("This installer has been downloaded", comment: ""))
-            }
-
-            Button(action: {
-                filename = installerFilename
-
-                // Check if max downloads reached
-                if !multiDownloadManager.canStartNewDownload {
-                    activeAlert = .maxDownloads
-                    print("Maximum concurrent downloads reached (3). Please wait for a download to complete")
-                    return
-                }
-
-                // Check if this file is already being downloaded
-                if multiDownloadManager.isDownloading(filename: filename) {
-                    return
-                }
-
-                // Check if file exists on disk
-                let destination = Prefs.downloadURL
-                let file = destination.appendingPathComponent(filename)
-
-                // Start accessing security-scoped resource for file check (only if needed)
-                let accessStarted = Prefs.startAccessingDownloadURL()
-                defer {
-                    Prefs.stopAccessingDownloadURL(accessStarted)
-                }
-                let fileExists = FileManager.default.fileExists(atPath: file.path)
-
-                if fileExists {
-                    activeAlert = .replaceFile(filename: filename)
-                } else {
-                    do {
-                        _ = try multiDownloadManager.startDownload(url: product.installAssistantURL, filename: filename)
-                    } catch {
-                        failed = true
+                .contextMenu {
+                    Button(action: {
+                        if let text = product.installAssistantURL?.absoluteString {
+//                            print("\(text)")
+                            print("InstallAssistant URL copied to clipboard")
+                            let pb = NSPasteboard.general
+                            pb.clearContents()
+                            pb.setString(text, forType: .string)
+                        }
+                    }) {
+                        Image(systemName: "doc.on.clipboard")
+                        let package = (product.installAssistantURL?.absoluteString.components(separatedBy: "/").last ?? "")
+                        Text(String(format: NSLocalizedString("Copy %@ %@ (%@) %@ URL", comment: ""), product.osName ?? "", product.productVersion ?? "", product.buildVersion ?? "", package))
                     }
                 }
-
-            }) {
-                Image(systemName: "arrow.down.circle").font(.title)
-            }
-            .help(String(format: NSLocalizedString("Download %@ %@ (%@) Installer", comment: ""), product.osName ?? "", product.productVersion ?? "", product.buildVersion ?? ""))
-            .disabled(multiDownloadManager.isDownloading(filename: installerFilename))
-            .buttonStyle(.borderless)
-            .controlSize(.mini)
-            .foregroundColor(.blue)//.opacity(0.6))
-            .opacity(multiDownloadManager.isDownloading(filename: installerFilename) ? 0.4 : 1.0)
-
-            Button(action: {
-                createInstallerApp()
-            }) {
-                if isCreatingInstaller {
-                    ProgressView()
-                        .scaleEffect(0.7)
-                        .frame(width: 20, height: 20)
-                } else {
-                    Image(systemName: "square.and.arrow.down.on.square").font(.title)
+                // Handle multiple different alerts in a single view using appAlert extension
+                .appAlert(item: $activeAlert) { alertType in
+                    switch alertType {
+                    case .replaceFile:
+                        do {
+                            _ = try multiDownloadManager.startDownload(url: product.installAssistantURL, filename: filename, replacing: true)
+                        } catch {
+                            failed = true
+                        }
+                    default:
+                        break
+                    }
+                }
+                .onAppear {
+                    // Check if downloaded after view appears, ensuring sandbox is fully initialized
+                    checkIfDownloaded()
+                }
+                .onChange(of: multiDownloadManager.completedDownloads) { _ in
+                    // Update download status when downloads complete
+                    checkIfDownloaded()
                 }
             }
-            .help(String(format: NSLocalizedString("Create Installer App from %@ %@ (%@)", comment: ""), product.osName ?? "<no os>", product.productVersion ?? "<no version>", product.buildVersion ?? "<no build>"))
-            .disabled(multiDownloadManager.isDownloading(filename: installerFilename) || isCreatingInstaller)
-            .buttonStyle(.borderless)
-            .controlSize(.mini)
-            .foregroundColor(.blue)//.opacity(0.6))
-            .opacity(multiDownloadManager.isDownloading(filename: installerFilename) || isCreatingInstaller ? 0.4 : 1.0)
-
-            // Context menu: copy to clipboard the URL of the specified InstallAssistant.pkg
-        }
-        .contextMenu {
-            Button(action: {
-                if let text = product.installAssistantURL?.absoluteString {
-//                            print("\(text)")
-                    print("InstallAssistant URL copied to clipboard")
-                    let pb = NSPasteboard.general
-                    pb.clearContents()
-                    pb.setString(text, forType: .string)
-                }
-            }) {
-                Image(systemName: "doc.on.clipboard")
-                let package = (product.installAssistantURL?.absoluteString.components(separatedBy: "/").last ?? "")
-                Text(String(format: NSLocalizedString("Copy %@ %@ (%@) %@ URL", comment: ""), product.osName ?? "", product.productVersion ?? "", product.buildVersion ?? "", package))
-            }
-        }
-        .coloredRow()
-        // Handle multiple different alerts in a single view using appAlert extension
-        .appAlert(item: $activeAlert) { alertType in
-            switch alertType {
-            case .replaceFile:
-                do {
-                    _ = try multiDownloadManager.startDownload(url: product.installAssistantURL, filename: filename, replacing: true)
-                } catch {
-                    failed = true
-                }
-            default:
-                break
-            }
-        }
-        .onAppear {
-            // Check if downloaded after view appears, ensuring sandbox is fully initialized
-            checkIfDownloaded()
-        }
-        .onChange(of: multiDownloadManager.completedDownloads) {
-            // Update download status when downloads complete
-            checkIfDownloaded()
         }
     }
 
@@ -210,11 +210,11 @@ struct InstallerView: View {
         NSWorkspace.shared.open(pkgURL, configuration: NSWorkspace.OpenConfiguration()) { _, error in
             Prefs.stopAccessingDownloadURL(accessStarted)
 
-            Task { @MainActor in
-                isCreatingInstaller = false
+            DispatchQueue.main.async {
+                self.isCreatingInstaller = false
 
                 if let error {
-                    activeAlert = .installerCreation(
+                    self.activeAlert = .installerCreation(
                         title: NSLocalizedString("Error Creating Installer", comment: ""),
                         message: String(format: NSLocalizedString("Failed to create installer app. Error: %@", comment: ""), error.localizedDescription)
                     )
@@ -229,23 +229,16 @@ struct FirmwareView: View {
     @StateObject var multiDownloadManager = MultiDownloadManager.shared
     @State private var activeAlert: AppAlertType?
     @State private var failed = false
-    @State private var isDownloaded = false
 
-    private func checkIfDownloaded() {
+    private var isDownloaded: Bool {
         let destination = Prefs.downloadURL
         let file = destination.appendingPathComponent(firmware.filename)
 
-        let accessStarted = Prefs.startAccessingDownloadURL()
-        defer {
-            Prefs.stopAccessingDownloadURL(accessStarted)
-        }
-
         if FileManager.default.fileExists(atPath: file.path) {
-            isDownloaded = true
-            return
+            return true
         }
 
-        isDownloaded = multiDownloadManager.completedDownloads.contains { $0.filename == firmware.filename }
+        return multiDownloadManager.completedDownloads.contains { $0.filename == firmware.filename }
     }
 
     var body: some View {
@@ -309,9 +302,17 @@ struct FirmwareView: View {
             .disabled(multiDownloadManager.isDownloading(filename: firmware.filename))
             .buttonStyle(.borderless)
             .controlSize(.mini)
-            .foregroundColor(.blue)//.opacity(0.6))
-            .opacity(multiDownloadManager.isDownloading(filename: firmware.filename) ? 0.4 : 1.0)
 
+            Button(action: {
+                if let url = URL(string: "https://support.apple.com/en-us/108900") {
+                    NSWorkspace.shared.open(url)
+                }
+            }) {
+                Image(systemName: "questionmark.circle").font(.title)
+            }
+            .help(NSLocalizedString("Restore with Apple Configurator: How to", comment: ""))
+            .buttonStyle(.borderless)
+            .controlSize(.mini)
         }
         .contextMenu {
             Button(action: {
@@ -323,7 +324,6 @@ struct FirmwareView: View {
                 Text(String(format: NSLocalizedString("Copy %@ %@ (%@) %@ URL", comment: ""), firmware.osName, firmware.productVersion, firmware.buildVersion, firmware.filename))
             }
         }
-        .coloredRow()
         .appAlert(item: $activeAlert) { alertType in
             switch alertType {
             case .replaceFile:
@@ -335,15 +335,6 @@ struct FirmwareView: View {
             default:
                 break
             }
-        }
-        .onAppear {
-            checkIfDownloaded()
-        }
-        .onChange(of: multiDownloadManager.completedDownloads) {
-            checkIfDownloaded()
-        }
-        .onReceive(NotificationCenter.default.publisher(for: .downloadPathChanged)) { _ in
-            checkIfDownloaded()
         }
     }
 }

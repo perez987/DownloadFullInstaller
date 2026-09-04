@@ -138,9 +138,7 @@
 "This firmware has been downloaded" = "تم تنزيل هذا البرنامج الثابت";
 
 /* Firmware empty state */
-"The firmware list cannot be loaded or there are no firmwares available for this version of macOS." = "لا يمكن تحميل قائمة البرامج الثابتة أو لا توجد برامج ثابتة متاحة لهذا الإصدار من نظام macOS.";
-"The installers list cannot be loaded or there are no installers available for this version of macOS." = "لا يمكن تحميل قائمة المثبتات أو لا توجد مثبتات متاحة لهذا الإصدار من نظام macOS.";
-"Loading..." = "جارٍ التحميل...";
+"The firmware list cannot be loaded or there are no firmwares available for this version of macOS." = "لا يمكن تحميل قائمة البرامج الثابتة، يرجى المحاولة مرة أخرى بعد قليل";
 
 /* Apple Configurator Restore */
 "Restore with Apple Configurator" = "الاستعادة باستخدام Apple Configurator";

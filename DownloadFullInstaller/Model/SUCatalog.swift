@@ -5,22 +5,19 @@
 //
 
 import Foundation
-import Combine
 
-@MainActor
 class SUCatalog: ObservableObject {
     var thisComponent: String {
-        String(describing: self)
+        return String(describing: self)
     }
 
     @Published var catalog: Catalog?
     var products: [String: Product]? {
-        catalog?.products
+        return catalog?.products
     }
 
     @Published var installers = [Product]()
     var uniqueInstallersList: [String] = []
-    private var productSubscriptions = Set<AnyCancellable>()
 
     @Published var isLoading = false
     @Published var hasLoaded = false
@@ -36,26 +33,26 @@ class SUCatalog: ObservableObject {
 
     func load() {
         uniqueInstallersList = []
-        productSubscriptions.removeAll()
         let catalogURLArray: [URL] = catalogURL(for: Prefs.seedProgram, for: Prefs.osNameID)
 
         for item in catalogURLArray {
             let sessionConfig = URLSessionConfiguration.ephemeral
             let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
 
-            let task = session.dataTask(with: item) { [weak self] data, response, error in
+            let task = session.dataTask(with: item) { data, response, error in
                 if error != nil {
-                    print("SUCatalog : \(error!.localizedDescription)")
+                    print("\(self.thisComponent) : \(error!.localizedDescription)")
                     return
                 }
 
                 let httpResponse = response as! HTTPURLResponse
                 if httpResponse.statusCode != 200 {
-//                    print("SUCatalog : \(httpResponse.statusCode)")
+//                    print("\(self.thisComponent) : \(httpResponse.statusCode)")
                 } else {
                     if data != nil {
-                        Task { @MainActor [weak self] in
-                            self?.decode(data: data!)
+//                        print("\(self.thisComponent) : \(String(decoding: data!, as: UTF8.self))")
+                        DispatchQueue.main.async {
+                            self.decode(data: data!)
                         }
                     }
                 }
@@ -75,7 +72,7 @@ class SUCatalog: ObservableObject {
         let decoder = PropertyListDecoder()
         catalog = try! decoder.decode(Catalog.self, from: data)
 
-        if let products {
+        if let products = products {
             for (productKey, product) in products {
                 product.key = productKey
                 if let metainfo = product.extendedMetaInfo {
@@ -84,7 +81,6 @@ class SUCatalog: ObservableObject {
                             // this is an installer, add to list
                             uniqueInstallersList.append(productKey)
                             installers.append(product)
-                            observeProductChanges(product)
                             product.loadDistribution()
                         }
                     }
@@ -93,14 +89,6 @@ class SUCatalog: ObservableObject {
 
             installers.sort { $0.postDate > $1.postDate }
         }
-    }
-
-    private func observeProductChanges(_ product: Product) {
-        product.objectWillChange
-            .sink { [weak self] _ in
-                self?.objectWillChange.send()
-            }
-            .store(in: &productSubscriptions)
     }
 }
 
@@ -128,7 +116,6 @@ final class FirmwareProduct: Identifiable {
     }
 }
 
-@MainActor
 final class FirmwareCatalog: ObservableObject {
     private static let firmwaresURL = "https://api.ipsw.me/v2.1/firmwares.json/condensed"
     ///    private static let firmwaresURL = "https://api.ipsw.me/v3/firmwares.json/condensed" // --> to test the message when firmares list is empty
@@ -144,25 +131,23 @@ final class FirmwareCatalog: ObservableObject {
         isLoading = true
         hasLoaded = false
 
-        session.dataTask(with: url) { [weak self] data, _, error in
+        session.dataTask(with: url) { data, _, error in
             if let error {
                 print("FirmwareCatalog : \(error.localizedDescription)")
-                Task { @MainActor [weak self] in
-                    self?.isLoading = false
+                DispatchQueue.main.async {
+                    self.isLoading = false
                 }
                 return
             }
 
             guard let data else {
-                Task { @MainActor [weak self] in
-                    self?.isLoading = false
+                DispatchQueue.main.async {
+                    self.isLoading = false
                 }
                 return
             }
 
-            Task { @MainActor [weak self] in
-                self?.decode(data: data)
-            }
+            self.decode(data: data)
         }.resume()
     }
 
@@ -229,33 +214,37 @@ final class FirmwareCatalog: ObservableObject {
                 return $0.postDate > $1.postDate
             }
 
-            firmwares = sortedFirmwares
-            isLoading = false
-            hasLoaded = true
+            DispatchQueue.main.async {
+                self.firmwares = sortedFirmwares
+                self.isLoading = false
+                self.hasLoaded = true
+            }
         } catch {
             print("FirmwareCatalog decode : \(error.localizedDescription)")
-            isLoading = false
+            DispatchQueue.main.async {
+                self.isLoading = false
+            }
         }
     }
 
     private func osName(for majorVersion: Int) -> String {
         switch majorVersion {
         case 27:
-            "Golden Gate"
+            return "Golden Gate"
         case 26:
-            "Tahoe"
+            return "Tahoe"
         case 15:
-            "Sequoia"
+            return "Sequoia"
         case 14:
-            "Sonoma"
+            return "Sonoma"
         case 13:
-            "Ventura"
+            return "Ventura"
         case 12:
-            "Monterey"
+            return "Monterey"
         case 11:
-            "Big Sur"
+            return "Big Sur"
         default:
-            "macOS \(majorVersion)"
+            return "macOS \(majorVersion)"
         }
     }
 }

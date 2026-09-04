@@ -10,17 +10,17 @@ import SwiftUI
 
 extension String {
     func localized() -> String {
-        NSLocalizedString(self, comment: "")
+        return NSLocalizedString(self, comment: "")
     }
 
     func localized(comment: String) -> String {
-        NSLocalizedString(self, comment: comment)
+        return NSLocalizedString(self, comment: comment)
     }
 }
 
 /// Helper function for localized text in SwiftUI
 func LocalizedText(_ key: String, comment: String = "") -> Text {
-    Text(NSLocalizedString(key, comment: comment))
+    return Text(NSLocalizedString(key, comment: comment))
 }
 
 /// Clear the UserDefaults data that have been set

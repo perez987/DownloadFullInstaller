@@ -10,27 +10,27 @@ struct MetaInfo: Codable {
     let installAssistantPackageIdentifiers: [String: String]?
 
     var installInfo: String? {
-        installAssistantPackageIdentifiers?["InstallInfo"]
+        return installAssistantPackageIdentifiers?["InstallInfo"]
     }
 
     var osInstall: String? {
-        installAssistantPackageIdentifiers?["OSInstall"]
+        return installAssistantPackageIdentifiers?["OSInstall"]
     }
 
     var sharedSupport: String? {
-        installAssistantPackageIdentifiers?["SharedSupport"]
+        return installAssistantPackageIdentifiers?["SharedSupport"]
     }
 
     var info: String? {
-        installAssistantPackageIdentifiers?["Info"]
+        return installAssistantPackageIdentifiers?["Info"]
     }
 
     var updateBrain: String? {
-        installAssistantPackageIdentifiers?["UpdateBrain"]
+        return installAssistantPackageIdentifiers?["UpdateBrain"]
     }
 
     var buildManifest: String? {
-        installAssistantPackageIdentifiers?["BuildManifest"]
+        return installAssistantPackageIdentifiers?["BuildManifest"]
     }
 
     enum CodingKeys: String, CodingKey {
