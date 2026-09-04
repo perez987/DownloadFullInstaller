@@ -178,7 +178,7 @@ struct ContentView: View {
         emptyListMessageTask?.cancel()
         canShowEmptyListMessage = false
         emptyListMessageTask = Task {
-            try? await Task.sleep(for: .seconds(4))
+            try? await Task.sleep(for: .seconds(5))
             guard !Task.isCancelled else { return }
             await MainActor.run {
                 canShowEmptyListMessage = true
