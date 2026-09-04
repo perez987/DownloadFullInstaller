@@ -86,6 +86,7 @@
 /* Firmware empty state */
 "The firmware list cannot be loaded or there are no firmwares available for this version of macOS." = "Список прошивок неможливо завантажити, або для цієї версії macOS немає доступних прошивок.";
 "The installers list cannot be loaded or there are no installers available for this version of macOS." = "Не вдається завантажити список інсталяторів або для цієї версії macOS немає доступних інсталяторів.";
+"Loading..." = "Завантаження...";
 
 /* Apple Configurator Restore */
 "Restore with Apple Configurator" = "Відновити за допомогою Apple Configurator";

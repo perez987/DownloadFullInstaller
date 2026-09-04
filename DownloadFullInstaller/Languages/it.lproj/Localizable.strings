@@ -86,6 +86,7 @@
 /* Firmware empty state */
 "The firmware list cannot be loaded or there are no firmwares available for this version of macOS." = "Impossibile caricare l'elenco dei firmware oppure non sono disponibili firmware per questa versione di macOS.";
 "The installers list cannot be loaded or there are no installers available for this version of macOS." = "Impossibile caricare l'elenco degli installatori oppure non sono disponibili installatori per questa versione di macOS.";
+"Loading..." = "Caricamento...";
 
 /* Apple Configurator Restore */
 "Restore with Apple Configurator" = "Ripristina con Apple Configurator";

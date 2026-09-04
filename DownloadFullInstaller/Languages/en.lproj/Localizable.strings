@@ -84,8 +84,9 @@
 "This firmware has been downloaded" = "This firmware has been downloaded";
 
 /* Firmware empty state */
-"The firmware list cannot be loaded or there are no firmwares available for this version of macOS." = "The firmware list cannot be loaded or there are no firmwares available for this version of macOS.";
+"The firmware list cannot be loaded or there are no firmwares available for this version of macOS." = "لا يمكن تحميل قائمة البرامج الثابتة أو لا توجد برامج ثابتة متاحة لهذا الإصدار من نظام macOS.";
 "The installers list cannot be loaded or there are no installers available for this version of macOS." = "The installers list cannot be loaded or there are no installers available for this version of macOS.";
+"Loading..." = "Loading...";
 
 /* Apple Configurator Restore */
 "Restore with Apple Configurator" = "Restore with Apple Configurator.";
