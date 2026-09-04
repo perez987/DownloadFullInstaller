@@ -46,6 +46,10 @@ struct PreferencesView: View {
                         .font(.body)
                     seedProgramPicker
                 } else {
+                    if selectedTab == 1 {
+                        firmwareRestoreHelpButton
+                            .padding(.leading, 14)
+                    }
                     Spacer()
                 }
             }
@@ -100,6 +104,21 @@ struct PreferencesView: View {
                 sucatalog.load()
             }
         }
+    }
+
+    private var firmwareRestoreHelpButton: some View {
+        Button(action: {
+            if let url = URL(string: "https://support.apple.com/en-us/108900") {
+                NSWorkspace.shared.open(url)
+            }
+        }) {
+            Image(systemName: "questionmark.circle")
+                .font(.title)
+        }
+        .help(NSLocalizedString("Restore with Apple Configurator: How to", comment: ""))
+        .buttonStyle(.borderless)
+        .controlSize(.mini)
+        .foregroundColor(.blue)
     }
 
     private func handleOsNameIDChange() {

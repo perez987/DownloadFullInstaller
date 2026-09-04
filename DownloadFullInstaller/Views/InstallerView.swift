@@ -312,17 +312,6 @@ struct FirmwareView: View {
             .foregroundColor(.blue)//.opacity(0.6))
             .opacity(multiDownloadManager.isDownloading(filename: firmware.filename) ? 0.4 : 1.0)
 
-            Button(action: {
-                if let url = URL(string: "https://support.apple.com/en-us/108900") {
-                    NSWorkspace.shared.open(url)
-                }
-            }) {
-                Image(systemName: "questionmark.circle").font(.title)
-            }
-            .help(NSLocalizedString("Restore with Apple Configurator: How to", comment: ""))
-            .buttonStyle(.borderless)
-            .controlSize(.mini)
-            .foregroundColor(.blue)//.opacity(0.6))
         }
         .contextMenu {
             Button(action: {

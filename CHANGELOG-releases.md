@@ -1,5 +1,17 @@
 # App for macOS 13+
 
+## 5.0.2 - Sep 4, 2026
+
+**Unify help buttons**
+
+- Move firmware restore help button to Preferences
+
+## 5.0.1 - Sep 3, 2026
+
+**Localization fixes**
+
+- Minor UI localization fixes
+
 ## 5.0.0 - Aug 31, 2026
 
 **Migrate to Swift 6**
