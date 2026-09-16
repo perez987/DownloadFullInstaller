@@ -1,12 +1,12 @@
 # Descargar el instalador completo
 
 
-![Plataforma](https://img.shields.io/badge/macOS-15+-orange.svg)
-![Swift](https://img.shields.io/badge/Swift-6-lavender.svg)
-![Xcode](https://img.shields.io/badge/Xcode-26-green.svg)
+![Plataforma](https://img.shields.io/badge/macOS-13+-orange.svg)
+![Swift](https://img.shields.io/badge/Swift-5-lavender.svg)
+![Xcode](https://img.shields.io/badge/Xcode-16-green.svg)
 ![Descargas de GitHub](https://img.shields.io/github/downloads/perez987/DownloadFullInstaller/total?style=flat&label=Descargas&color=blue)
 
-**Download Full Installer** es una aplicación para macOS escrita en SwiftUI 6 que descarga instaladores PKG o firmwares IPSW para la aplicación **Instalar macOS Big Sur** y versiones posteriores. Funciona en macOS 15 Sequoia y versiones posteriores.
+**Download Full Installer** es una aplicación para macOS escrita en SwiftUI 5 que descarga instaladores PKG o firmwares IPSW para la aplicación **Instalar macOS Big Sur** y versiones posteriores. Funciona en macOS 14 Sonoma y versiones posteriores.
 
 **Versiones**:
 
@@ -27,9 +27,9 @@ Este repositorio existe para mantener viva y en evolución «Download Full Insta
 ### Características
 
 - Objetivo y requisitos
-   - macOS 15 Sequoia como mínimo (hasta macOS Golden Gate)
-   - Swift 6
-   - Xcode 26
+   - macOS 14 Sonoma como mínimo (hasta macOS Golden Gate)
+   - Swift 5
+   - Xcode 16
 - Interfaz principal
    - Añade una pestaña de firmwares para Apple Silicon para descargar archivos IPSW y restaurar Mac con T2 o Apple Silicon
    - Se ha actualizado la interfaz mediante efecto glass, colores suaves y gradientes
@@ -59,10 +59,6 @@ Este repositorio existe para mantener viva y en evolución «Download Full Insta
 
 Se ha añadido un nuevo elemento llamado Legacy a la lista desplegable de sistemas macOS. Legacy abre una nueva ventana que muestra las cinco versiones disponibles de macOS obsoletos de los que existe un enlace directo para descargarlos. Puedes descargar cualquiera de estas versiones de macOS desde esa ventana.
 
-|     |
-| --- |
-| ![Legacy](Images/Legacy.png) |
-
 ### Función para crear la aplicación del instalador
 
 Después de descargar un archivo `InstallAssistant.pkg`, puedes crear la aplicación del instalador de macOS (por ejemplo, «Instalar macOS Sequoia.app») directamente desde Download Full Installer:
@@ -77,17 +73,9 @@ Después de descargar un archivo `InstallAssistant.pkg`, puedes crear la aplicac
 
 El menú Download Full Installer -> Ajustes (⌘ ,) abre una ventana en la que puedes seleccionar una carpeta diferente para descargar los instaladores. La predeterminada es ~/Descargas. Los indicadores visuales (marcas verdes) de los instaladores descargados se actualizan para coincidir con los de la carpeta seleccionada.
 
-|     |
-| --- |
-| ![Ajustes](Images/Settings.png) |
-
-### Ventana del selector de idioma
+### Selector de idioma
 
 El selector de idioma puede abrirse desde la barra de menús (`Languages` > `Select Language`) o mediante el atajo de teclado (`⌘ + L`).
-
-|     |
-| --- |
-| ![Idiomas](Images/Languages.png) |
 
 ### Limpiar descargas incompletas al salir de la aplicación
 
