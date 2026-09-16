@@ -83,7 +83,7 @@ El menú Download Full Installer -> Ajustes (⌘ ,) abre una ventana en la que p
 
 ### Ventana del selector de idioma
 
-El selector de idioma puede abrirse desde la barra de menús (`Languages` > `Select Language`) o mediante el atajo de teclado (`⌘ + L`).
+El selector de idioma puede abrirse desde la barra de menús (`Idiomas` > `Elegir idioma`) o mediante el atajo de teclado (`⌘ + L`).
 
 |     |
 | --- |
