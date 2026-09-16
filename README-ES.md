@@ -15,7 +15,8 @@
 
 |     |
 | --- |
-| ![Installers](Images/Installers.png) |
+| ![Installers](Images/Installers-es.png) |
+| ![Firmwares](Images/Firmwares-es.png) |
 
 ### Prefacio
 
