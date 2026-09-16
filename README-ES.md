@@ -8,7 +8,10 @@
 
 **Download Full Installer** es una aplicación para macOS escrita en SwiftUI 6 que descarga instaladores PKG o firmwares IPSW para la aplicación **Instalar macOS Big Sur** y versiones posteriores. Funciona en macOS 15 Sequoia y versiones posteriores.
 
-**Nota**: Si prefieres la versión desarrollada con Swift 5, que funciona en macOS 13 o versiones posteriores, obtén el código del proyecto desde la rama `swift5` del repositorio o la versión 4.x.x en la página de [versiones](https://github.com/perez987/DownloadFullInstaller/releases).
+**Versiones**:
+
+- Si prefieres la versión desarrollada con Swift 5, que funciona en macOS 13 o versiones posteriores, obtén el código del proyecto desde la rama `swift5` o la versión 4.x.x en la página de [versiones](https://github.com/perez987/DownloadFullInstaller/releases)
+- Hay una versión 2.5.3, desarrollada con Swift 5, que funciona en macOS Big Sur o posterior, obtén el código fuente o la app notarizada en la página de [versiones](https://github.com/perez987/DownloadFullInstaller/releases/tag/2.5.3)
 
 |     |
 | --- |
