@@ -10,7 +10,7 @@
 
 **Versions**:
 
-- If you prefer the version built with Swift 5, that runs on macOS 13 or later, get the source code from the `swift5` branch or the version 4.x.x from the [releases page](https://github.com/perez987/DownloadFullInstaller/releases)
+- If you prefer the version built with Swift 5, that runs on macOS 13 or later, get the source code from the `swift5` branch or the version 4.x.x from the [releases page](https://github.com/perez987/DownloadFullInstaller/releases/tag/4.6.0)
 - There is a version 2.5.3, built with Swift 5, that runs on macOS Big Sur or later, you can get the source code or the notarized app from the [releases page](https://github.com/perez987/DownloadFullInstaller/releases/tag/2.5.3).
 
 |     |
