@@ -14,11 +14,10 @@ extension View {
         if #available(macOS 26.0, *) {
             glassEffect(.regular, in: RoundedRectangle(cornerRadius: cornerRadius))
         } else {
-            self
-                .background(
-                    RoundedRectangle(cornerRadius: cornerRadius)
-                        .fill(.thinMaterial)
-                )
+            background(
+                RoundedRectangle(cornerRadius: cornerRadius)
+                    .fill(.thinMaterial)
+            )
         }
     }
 
@@ -27,8 +26,7 @@ extension View {
     @ViewBuilder
     func glassRow(cornerRadius: CGFloat = 8) -> some View {
         if #available(macOS 26.0, *) {
-            self
-                .listRowBackground(Color.clear)
+            listRowBackground(Color.clear)
                 .glassEffect(.regular, in: RoundedRectangle(cornerRadius: cornerRadius))
         } else {
             padding(8)
@@ -45,8 +43,7 @@ extension View {
     @ViewBuilder
     func coloredRow(_ color: Color = .blue, opacity: Double = 0.08, cornerRadius: CGFloat = 8) -> some View {
         if #available(macOS 26.0, *) {
-            self
-                .padding(4)
+            padding(4)
                 .listRowBackground(Color.clear)
                 .glassEffect(.regular.tint(color.opacity(opacity)), in: RoundedRectangle(cornerRadius: cornerRadius))
         } else {
@@ -70,11 +67,10 @@ extension View {
         if #available(macOS 26.0, *) {
             glassEffect(.regular, in: RoundedRectangle(cornerRadius: cornerRadius))
         } else {
-            self
-                .background(
-                    RoundedRectangle(cornerRadius: cornerRadius)
-                        .fill(.thinMaterial)
-                )
+            background(
+                RoundedRectangle(cornerRadius: cornerRadius)
+                    .fill(.thinMaterial)
+            )
         }
     }
 }

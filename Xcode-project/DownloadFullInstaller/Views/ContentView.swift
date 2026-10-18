@@ -129,13 +129,13 @@ struct ContentView: View {
                     }
                 }
 
-                if canShowEmptyListMessage && filteredInstallers.isEmpty {
+                if canShowEmptyListMessage, filteredInstallers.isEmpty {
                     Text(NSLocalizedString("The installers list cannot be loaded or there are no installers available for this version of macOS.", comment: "Message shown when the installers list is empty after loading"))
                         .foregroundColor(.primary)
                         .font(.system(size: 16))
                         .multilineTextAlignment(.center)
                         .padding()
-                } else if !canShowEmptyListMessage && filteredInstallers.isEmpty {
+                } else if !canShowEmptyListMessage, filteredInstallers.isEmpty {
                     Text(NSLocalizedString("Loading...", comment: "Temporary message shown while waiting to display the empty installers list message"))
                         .foregroundColor(.primary)
                         .font(.system(size: 16))
@@ -213,13 +213,13 @@ struct ContentView: View {
                 }
 
 //                if firmwareCatalog.hasLoaded && firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty && osNameID != "Legacy" {
-                if canShowEmptyListMessage && firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty && osNameID != "Legacy" {
+                if canShowEmptyListMessage, firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty, osNameID != "Legacy" {
                     Text(NSLocalizedString("The firmware list cannot be loaded or there are no firmwares available for this version of macOS.", comment: "Message shown when the firmware list is empty after loading"))
                         .foregroundColor(.primary)
                         .font(.system(size: 16))
                         .multilineTextAlignment(.center)
                         .padding()
-                } else if !canShowEmptyListMessage && firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty && osNameID != "Legacy" {
+                } else if !canShowEmptyListMessage, firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty, osNameID != "Legacy" {
                     Text(NSLocalizedString("Loading...", comment: "Temporary message shown while waiting to display the empty firmware list message"))
                         .foregroundColor(.primary)
                         .font(.system(size: 16))

@@ -18,14 +18,14 @@ struct PreferencesView: View {
     var body: some View {
         VStack(spacing: 0) {
             Form { formContent }
-            .frame(
-                width: 400.0,
-                height: 24.0,
-                alignment: .centerFirstTextBaseline
-            )
-            .padding(.bottom, 10)
-            // Hide label texts in the Pickers
-            .labelsHidden()
+                .frame(
+                    width: 400.0,
+                    height: 24.0,
+                    alignment: .centerFirstTextBaseline
+                )
+                .padding(.bottom, 10)
+                // Hide label texts in the Pickers
+                .labelsHidden()
         }
         .sheet(isPresented: $showLegacyWindow) {
             LegacyDownloadView()
@@ -68,7 +68,7 @@ struct PreferencesView: View {
     }
 
     @ViewBuilder
-    private func osNamePickerWithChangeHandler<Content: View>(_ picker: Content) -> some View {
+    private func osNamePickerWithChangeHandler(_ picker: some View) -> some View {
         if #available(macOS 14.0, *) {
             picker.onChange(of: osNameID) {
                 handleOsNameIDChange()
@@ -94,7 +94,7 @@ struct PreferencesView: View {
     }
 
     @ViewBuilder
-    private func seedProgramPickerWithChangeHandler<Content: View>(_ picker: Content) -> some View {
+    private func seedProgramPickerWithChangeHandler(_ picker: some View) -> some View {
         if #available(macOS 14.0, *) {
             picker.onChange(of: seedProgram) {
                 sucatalog.load()

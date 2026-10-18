@@ -125,7 +125,7 @@ struct InstallerView: View {
             .disabled(multiDownloadManager.isDownloading(filename: installerFilename))
             .buttonStyle(.borderless)
             .controlSize(.mini)
-            .foregroundColor(.blue)//.opacity(0.6))
+            .foregroundColor(.blue) // .opacity(0.6))
             .opacity(multiDownloadManager.isDownloading(filename: installerFilename) ? 0.4 : 1.0)
 
             Button(action: {
@@ -143,7 +143,7 @@ struct InstallerView: View {
             .disabled(multiDownloadManager.isDownloading(filename: installerFilename) || isCreatingInstaller)
             .buttonStyle(.borderless)
             .controlSize(.mini)
-            .foregroundColor(.blue)//.opacity(0.6))
+            .foregroundColor(.blue) // .opacity(0.6))
             .opacity(multiDownloadManager.isDownloading(filename: installerFilename) || isCreatingInstaller ? 0.4 : 1.0)
 
             // Context menu: copy to clipboard the URL of the specified InstallAssistant.pkg
@@ -309,9 +309,8 @@ struct FirmwareView: View {
             .disabled(multiDownloadManager.isDownloading(filename: firmware.filename))
             .buttonStyle(.borderless)
             .controlSize(.mini)
-            .foregroundColor(.blue)//.opacity(0.6))
+            .foregroundColor(.blue) // .opacity(0.6))
             .opacity(multiDownloadManager.isDownloading(filename: firmware.filename) ? 0.4 : 1.0)
-
         }
         .contextMenu {
             Button(action: {

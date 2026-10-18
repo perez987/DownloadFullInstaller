@@ -341,7 +341,7 @@ enum Easing {
 @MainActor
 final class DisplayLinkObserver {
     private var timer: Timer?
-    fileprivate let callback: @MainActor (DisplayLinkObserver, Double) -> Void
+    private let callback: @MainActor (DisplayLinkObserver, Double) -> Void
 
     init(_ callback: @escaping @MainActor (DisplayLinkObserver, Double) -> Void) {
         self.callback = callback
@@ -366,7 +366,7 @@ final class DisplayLinkObserver {
             guard let self else {
                 return
             }
-            self.callback(self, refreshPeriod)
+            callback(self, refreshPeriod)
         }
         RunLoop.main.add(timer, forMode: .common)
         self.timer = timer

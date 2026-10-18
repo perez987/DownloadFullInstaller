@@ -4,8 +4,8 @@
 //  Created by Armin Briegel on 2021-06-09
 //
 
-import Foundation
 import Combine
+import Foundation
 
 @MainActor
 class SUCatalog: ObservableObject {
