@@ -10,8 +10,8 @@
 
 **Versiones**:
 
-- Si prefieres la versión desarrollada con Swift 6, que funciona en macOS 15 o versiones posteriores, obtén el código del proyecto desde la rama `main` o la versión 5.x.x en la página de [versiones](https://github.com/perez987/DownloadFullInstaller/releases)
-- Hay una versión 2.5.3, desarrollada con Swift 5, que funciona en macOS Big Sur o posterior, obtén el código fuente o la app notarizada en la página de [versiones](https://github.com/perez987/DownloadFullInstaller/releases/tag/2.5.3)
+- Si prefieres la versión desarrollada con Swift 6, que funciona en macOS 15 o versiones posteriores, obtén el código del proyecto desde la rama `main` o la versión 5.x.x en la página de [versiones](https://github.com/perez987/DownloadFullInstaller/releases/latest)
+- Hay una versión 2.5.5, desarrollada con Swift 5, que funciona en macOS Big Sur o posterior, obtén el código fuente o la app notarizada en la página de [versiones](https://github.com/perez987/DownloadFullInstaller/releases/tag/2.5.5)
 
 |     |
 | --- |
