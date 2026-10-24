@@ -1,240 +1,252 @@
 //
 //  ContentView.swift
 //
-//  Created by Armin Briegel on 2021-06-09
-//  Modified by Emilio P Egido on 2025-08-25
-//
 
 import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var sucatalog: SUCatalog
-    @EnvironmentObject var languageManager: LanguageManager
-    @AppStorage(Prefs.key(.seedProgram)) var seedProgram: String = ""
-    @AppStorage(Prefs.key(.osNameID)) var osNameID: String = ""
+    @AppStorage(Prefs.key(.seedProgram)) private var seedProgram = SeedProgram.noSeed.rawValue
     @StateObject private var firmwareCatalog = FirmwareCatalog()
-    @State private var refreshID = UUID()
     @State private var selectedTab = 0
-    @State private var canShowEmptyListMessage = false
-    @State private var emptyListMessageTask: Task<Void, Never>?
-    var countersText: String = ""
+    @State private var selectedRelease: String?
+    @State private var localizationID = UUID()
+
+    private var isInstaller: Bool { selectedTab == 0 }
+
+    private var releases: [String] {
+        let names = isInstaller
+            ? sucatalog.installers.filter(\.hasLoaded).compactMap(\.osName)
+            : firmwareCatalog.firmwares.map(\.osName)
+        return Set(names).sorted {
+            (nameOS[$0] ?? $0).compare(nameOS[$1] ?? $1, options: .numeric) == .orderedDescending
+        }
+    }
+
+    private var selectedLegacy: LegacyMacOSVersion? {
+        guard isInstaller else { return nil }
+        return LegacyMacOSVersion.allVersions.first { selectedRelease == "legacy:\($0.name)" }
+    }
+
+    private var isLoading: Bool {
+        isInstaller ? sucatalog.isLoading : firmwareCatalog.isLoading
+    }
+
+    private var catalogError: String? {
+        isInstaller ? sucatalog.errorMessage : firmwareCatalog.errorMessage
+    }
 
     var body: some View {
-        VStack(alignment: .center, spacing: 4) {
-            PreferencesView(selectedTab: $selectedTab)
-                .environmentObject(sucatalog)
-                .navigationTitle(NSLocalizedString("Download Full Installer", comment: "Main window title"))
+        HStack(spacing: 0) {
+            navigationPane
+                .frame(width: 290)
+                .background(.thinMaterial)
 
-            Spacer()
-//            Divider()
-//            Spacer()
+            Divider()
 
-            TabView(selection: $selectedTab) {
-                installersTab
-                    .tag(0)
-                    .tabItem {
-                        Label(
-                            NSLocalizedString("Installers", comment: "Installers tab title"),
-                            systemImage: "cpu"
-                        )
-                    }
-
-                firmwareTab
-                    .tag(1)
-                    .tabItem {
-                        Label(
-                            NSLocalizedString("Firmwares", comment: "Firmwares tab title"),
-                            systemImage: "memorychip"
-                        )
-                    }
+            VStack(spacing: 0) {
+                detailPane
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                Divider()
+                DownloadView()
+                    .padding(16)
+                    .background(.thinMaterial)
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .id(refreshID)
-        .frame(
-            minWidth: 490.0,
-            idealWidth: 490.0,
-            maxWidth: 490.0,
-            minHeight: 590.0,
-            alignment: .center
-        )
-        .padding(.bottom, 12)
-        .padding(.horizontal, 28)
-        .onReceive(NotificationCenter.default.publisher(for: .languageChanged)) { _ in
-            refreshID = UUID()
-        }
-        .onReceive(NotificationCenter.default.publisher(for: .downloadPathChanged)) { _ in
-            refreshID = UUID()
-        }
+        .id(localizationID)
+        .background { GlassBackground() }
+        .frame(minWidth: 990, idealWidth: 990, maxWidth: 990, minHeight: 724, idealHeight: 724, maxHeight: 724)
+        .navigationTitle(NSLocalizedString("Download Full Installer", comment: "Main window title"))
         .onAppear {
-            startEmptyListMessageDelay()
-            if !sucatalog.hasLoaded, !sucatalog.isLoading {
-                sucatalog.load()
-            }
-            if !firmwareCatalog.hasLoaded, !firmwareCatalog.isLoading {
-                firmwareCatalog.load()
-            }
+            if !sucatalog.hasLoaded, !sucatalog.isLoading { sucatalog.load() }
+            if !firmwareCatalog.hasLoaded, !firmwareCatalog.isLoading { firmwareCatalog.load() }
         }
-        .onDisappear {
-            emptyListMessageTask?.cancel()
-            emptyListMessageTask = nil
-        }
-        .onChange(of: osNameID) {
-            startEmptyListMessageDelay()
-        }
-        .onChange(of: seedProgram) {
-            startEmptyListMessageDelay()
-        }
-        .onChange(of: sucatalog.isLoading) {
-            if sucatalog.isLoading {
-                startEmptyListMessageDelay()
-            }
-        }
-        .onChange(of: firmwareCatalog.isLoading) {
-            if firmwareCatalog.isLoading {
-                startEmptyListMessageDelay()
-            }
+        .onChange(of: selectedTab) { selectedRelease = nil }
+        .onChange(of: seedProgram) { selectedRelease = nil }
+        .onReceive(NotificationCenter.default.publisher(for: .languageChanged)) { _ in
+            localizationID = UUID()
         }
     }
 
-    private var installersTab: some View {
-        VStack(alignment: .center, spacing: 4) {
-            ZStack {
-                ScrollViewReader { proxy in
-                    List(filteredInstallers, id: \.id) { installer in
-                        InstallerView(product: installer)
-                            .listRowSeparator(.hidden)
+    private var navigationPane: some View {
+        VStack(alignment: .leading, spacing: 18) {
+            VStack(alignment: .leading, spacing: 6) {
+                Text(NSLocalizedString("macOS Library", comment: "Release browser heading"))
+                    .font(.title2.bold())
+                Text(NSLocalizedString("Choose a release to explore.", comment: "Release browser subtitle"))
+                    .font(.body)
+                    .foregroundStyle(.secondary)
+            }
+            .padding(.horizontal, 20)
+            .padding(.top, 24)
+
+            PreferencesView(selectedTab: $selectedTab)
+                .padding(.horizontal, 20)
+
+            List(selection: $selectedRelease) {
+                Section {
+                    ForEach(releases, id: \.self) { name in
+                        releaseLabel(name: name, version: nameOS[name] ?? "", legacy: false)
+                            .tag(name)
                     }
-                    .cornerRadius(8)
-                    .padding(4)
-                    .overlay(
-                        Group {
-                            if #unavailable(macOS 15.0) {
-                                RoundedRectangle(cornerRadius: 6)
-                                    .stroke(.tertiary, lineWidth: 1)
-                                    .padding(5)
+                } header: {
+                    Text(NSLocalizedString("Available Releases", comment: "Catalog releases section"))
+                        .font(.body.weight(.semibold))
+                }
+
+                if isInstaller {
+                    Section {
+                        ForEach(LegacyMacOSVersion.allVersions) { version in
+                            releaseLabel(name: version.name, version: version.version, legacy: true)
+                                .tag("legacy:\(version.name)")
+                        }
+                    } header: {
+                        Text(NSLocalizedString("Legacy macOS Installers", comment: "Legacy releases section"))
+                            .font(.body.weight(.semibold))
+                    }
+                }
+            }
+            .listStyle(.sidebar)
+            .scrollContentBackground(.hidden)
+
+            VStack(alignment: .leading, spacing: 10) {
+                if isLoading {
+                    HStack(spacing: 8) {
+                        ProgressView().controlSize(.small)
+                        Text(NSLocalizedString("Loading...", comment: "Catalog loading"))
+                    }
+                } else if let catalogError {
+                    Text(catalogError)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                } else if releases.isEmpty {
+                    Text(emptyCatalogMessage)
+                        .font(.caption)
+                }
+                HStack {
+                    Button(action: reloadCatalog) {
+                        Label(NSLocalizedString("Refresh", comment: "Reload catalog"), systemImage: "arrow.clockwise")
+                    }
+                    .foregroundStyle(.primary)
+                    .disabled(isLoading)
+                    Spacer()
+                    if !isInstaller {
+                        Link(destination: URL(string: "https://support.apple.com/en-us/108900")!) {
+                            Image(systemName: "questionmark.circle")
+                                .font(.system(size: 24))
+                        }
+                        .foregroundStyle(.primary)
+                        .help(NSLocalizedString("Restore with Apple Configurator: How to", comment: ""))
+                        .accessibilityLabel(NSLocalizedString("Restore with Apple Configurator: How to", comment: ""))
+                    }
+                }
+                .buttonStyle(.borderless)
+            }
+            .padding(.horizontal, 20)
+            .padding(.bottom, 18)
+        }
+    }
+
+    private func releaseLabel(name: String, version: String, legacy: Bool) -> some View {
+        HStack(spacing: 12) {
+            Image(nameOS[name] == nil && !legacy ? "macOS" : name)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 44, height: 44)
+                .accessibilityHidden(true)
+            Text("macOS \(version) \(name)")
+                .font(.system(.body, design: .rounded, weight: .medium))
+                .lineLimit(2)
+        }
+        .padding(.vertical, 6)
+    }
+
+    @ViewBuilder
+    private var detailPane: some View {
+        if let selectedRelease {
+            VStack(alignment: .leading, spacing: 0) {
+                detailHeader
+                ScrollView {
+                    LazyVStack(spacing: 12) {
+                        if let legacy = selectedLegacy {
+                            LegacyVersionRow(version: legacy)
+                            Text(NSLocalizedString("Legacy installers are disk images. Open the downloaded image in Finder, then run the package inside to create the installer app.", comment: "Legacy installer instructions"))
+                                .font(.callout)
+                                .foregroundStyle(.secondary)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(8)
+                        } else if isInstaller {
+                            ForEach(sucatalog.installers.filter { $0.hasLoaded && $0.osName == selectedRelease }) { product in
+                                InstallerView(product: product)
+                            }
+                        } else {
+                            ForEach(firmwareCatalog.firmwares.filter { $0.osName == selectedRelease }) { firmware in
+                                FirmwareView(firmware: firmware)
                             }
                         }
-                    )
-                    .onChange(of: osNameID) {
-                        resetInstallersListPosition(with: proxy)
                     }
-                    .onChange(of: seedProgram) {
-                        resetInstallersListPosition(with: proxy)
-                    }
-                    .onChange(of: installerIDs) {
-                        resetInstallersListPosition(with: proxy)
-                    }
-                    .onAppear {
-                        resetInstallersListPosition(with: proxy)
-                    }
+                    .padding(24)
                 }
-
-                if canShowEmptyListMessage, filteredInstallers.isEmpty {
-                    Text(NSLocalizedString("The installers list cannot be loaded or there are no installers available for this version of macOS.", comment: "Message shown when the installers list is empty after loading"))
-                        .foregroundColor(.primary)
-                        .font(.system(size: 16))
-                        .multilineTextAlignment(.center)
-                        .padding()
-                } else if !canShowEmptyListMessage, filteredInstallers.isEmpty {
-                    Text(NSLocalizedString("Loading...", comment: "Temporary message shown while waiting to display the empty installers list message"))
-                        .foregroundColor(.primary)
-                        .font(.system(size: 16))
-                        .multilineTextAlignment(.center)
-                        .padding()
-                }
+                .id(selectedRelease)
             }
-
-            DownloadView()
+        } else {
+            VStack(spacing: 16) {
+                Image(systemName: isInstaller ? "square.stack.3d.up" : "memorychip")
+                    .font(.system(size: 48, weight: .light))
+                    .foregroundStyle(.blue.gradient)
+                    .padding(24)
+                    .glassCard(cornerRadius: 24)
+                Text(NSLocalizedString("Select a macOS release", comment: "Empty detail heading"))
+                    .font(.title2.bold())
+                Text(NSLocalizedString("Available versions and download options will appear here.", comment: "Empty detail explanation"))
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+            }
+            .padding(40)
         }
     }
 
-    private var installerIDs: [String] {
-        filteredInstallers.map(\.id)
-    }
-
-    private var filteredInstallers: [Product] {
-        sucatalog.installers.filter { installer in
-            guard installer.hasLoaded else {
-                return false
+    private var detailHeader: some View {
+        let name = selectedLegacy?.name ?? selectedRelease ?? ""
+        let version = selectedLegacy?.version ?? nameOS[name] ?? ""
+        return HStack(spacing: 16) {
+            Image(nameOS[name] == nil ? "macOS" : name)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 72, height: 72)
+                .accessibilityHidden(true)
+            VStack(alignment: .leading, spacing: 6) {
+                Text("macOS \(version) \(name)")
+                    .font(.system(.largeTitle, design: .rounded, weight: .bold))
+                Text(selectedLegacy != nil
+                     ? NSLocalizedString("Legacy macOS Installers", comment: "")
+                     : isInstaller
+                     ? NSLocalizedString("Installers", comment: "")
+                     : NSLocalizedString("Firmwares", comment: ""))
+                    .foregroundStyle(.secondary)
             }
-
-            if Prefs.osNameID.rawValue == OsNameID.osAll.rawValue {
-                return true
-            }
-
-            return installer.osName == Prefs.osNameID.rawValue
-        }
-    }
-
-    private func resetInstallersListPosition(with proxy: ScrollViewProxy) {
-        DispatchQueue.main.async {
-            if let firstID = filteredInstallers.first?.id {
-                proxy.scrollTo(firstID, anchor: .top)
-            }
-        }
-    }
-
-    private func startEmptyListMessageDelay() {
-        emptyListMessageTask?.cancel()
-        canShowEmptyListMessage = false
-        emptyListMessageTask = Task {
-            try? await Task.sleep(for: .seconds(8))
-            guard !Task.isCancelled else { return }
-            await MainActor.run {
-                canShowEmptyListMessage = true
+            Spacer()
+            if isInstaller, selectedLegacy == nil {
+                Text(seedProgram)
+                    .font(.body.weight(.medium))
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 7)
+                    .glassSubtle()
             }
         }
+        .padding(24)
+        .background(.ultraThinMaterial)
     }
 
-    private var firmwareTab: some View {
-        VStack(alignment: .center, spacing: 4) {
-            ZStack {
-                ScrollViewReader { proxy in
-                    List(firmwareCatalog.filteredFirmwares(for: osNameID), id: \.id) { firmware in
-                        FirmwareView(firmware: firmware)
-                            .listRowSeparator(.hidden)
-                    }
-                    .cornerRadius(8)
-                    .padding(4)
-                    .overlay(
-                        Group {
-                            if #unavailable(macOS 15.0) {
-                                RoundedRectangle(cornerRadius: 6)
-                                    .stroke(.tertiary, lineWidth: 1)
-                                    .padding(5)
-                            }
-                        }
-                    )
-                    .onChange(of: osNameID) {
-                        if let firstFirmware = firmwareCatalog.filteredFirmwares(for: osNameID).first {
-                            proxy.scrollTo(firstFirmware.id, anchor: .top)
-                        }
-                    }
-                }
-
-//                if firmwareCatalog.hasLoaded && firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty && osNameID != "Legacy" {
-                if canShowEmptyListMessage, firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty, osNameID != "Legacy" {
-                    Text(NSLocalizedString("The firmware list cannot be loaded or there are no firmwares available for this version of macOS.", comment: "Message shown when the firmware list is empty after loading"))
-                        .foregroundColor(.primary)
-                        .font(.system(size: 16))
-                        .multilineTextAlignment(.center)
-                        .padding()
-                } else if !canShowEmptyListMessage, firmwareCatalog.filteredFirmwares(for: osNameID).isEmpty, osNameID != "Legacy" {
-                    Text(NSLocalizedString("Loading...", comment: "Temporary message shown while waiting to display the empty firmware list message"))
-                        .foregroundColor(.primary)
-                        .font(.system(size: 16))
-                        .multilineTextAlignment(.center)
-                        .padding()
-                }
-            }
-
-            DownloadView()
-        }
+    private var emptyCatalogMessage: String {
+        isInstaller
+            ? NSLocalizedString("The installers list cannot be loaded or there are no installers available for this version of macOS.", comment: "")
+            : NSLocalizedString("The firmware list cannot be loaded or there are no firmwares available for this version of macOS.", comment: "")
     }
 
-    struct ContentView_Previews: PreviewProvider {
-        static var previews: some View {
-            ContentView()
-        }
+    private func reloadCatalog() {
+        selectedRelease = nil
+        if isInstaller { sucatalog.load() } else { firmwareCatalog.load() }
     }
 }

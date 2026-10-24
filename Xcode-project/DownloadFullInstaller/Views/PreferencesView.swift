@@ -1,143 +1,33 @@
 //
 //  PreferencesView.swift
 //
-//  Created by Armin Briegel on 2021-06-15
-//  Modified by Emilio P Egido on 2025-08-25
 
 import SwiftUI
 
 struct PreferencesView: View {
-    @AppStorage(Prefs.key(.seedProgram)) var seedProgram: String = SeedProgram.noSeed.rawValue
-    @AppStorage(Prefs.key(.osNameID)) var osNameID: String = OsNameID.osAll.rawValue
+    @AppStorage(Prefs.key(.seedProgram)) private var seedProgram = SeedProgram.noSeed.rawValue
     @EnvironmentObject var sucatalog: SUCatalog
     @Binding var selectedTab: Int
-    @State private var showLegacyWindow = false
-    @State private var previousOsNameID: String = OsNameID.osAll.rawValue
 
-    let labelWidth = 100.0
     var body: some View {
-        VStack(spacing: 0) {
-            Form { formContent }
-                .frame(
-                    width: 400.0,
-                    height: 24.0,
-                    alignment: .centerFirstTextBaseline
-                )
-                .padding(.bottom, 10)
-                // Hide label texts in the Pickers
-                .labelsHidden()
-        }
-        .sheet(isPresented: $showLegacyWindow) {
-            LegacyDownloadView()
-        }
-    }
+        VStack(alignment: .leading, spacing: 12) {
+            Picker(NSLocalizedString("Content", comment: "Download type picker"), selection: $selectedTab) {
+                Text(NSLocalizedString("Installers", comment: "")).tag(0)
+                Text(NSLocalizedString("Firmwares", comment: "")).tag(1)
+            }
+            .pickerStyle(.segmented)
+            .labelsHidden()
 
-    private var formContent: some View {
-        VStack(alignment: .trailing) {
-            HStack(alignment: .center) {
-                if selectedTab != 0 {
-                    Spacer()
-                }
-
-                osNamePicker
-
-                if selectedTab == 0 {
-                    Text(NSLocalizedString(" in catalog", comment: ""))
-                        .font(.body)
-                    seedProgramPicker
-                } else {
-                    if selectedTab == 1 {
-                        firmwareRestoreHelpButton
-                            .padding(.leading, 14)
-                    }
-                    Spacer()
+            Picker(NSLocalizedString("Catalog", comment: "Software update catalog picker"), selection: $seedProgram) {
+                ForEach(SeedProgram.allCases) { program in
+                    Text(program.rawValue).tag(program.rawValue)
                 }
             }
+            .disabled(selectedTab != 0)
+            .help(selectedTab == 0
+                  ? NSLocalizedString("Catalog", comment: "")
+                  : NSLocalizedString("Firmware downloads do not use software update catalogs.", comment: "Firmware catalog explanation"))
         }
-    }
-
-    private var osNamePicker: some View {
-        let picker = Picker("osNameID", selection: $osNameID) {
-            ForEach(OsNameID.allCases.filter { $0 != .osLegacy || selectedTab != 1 }) { osName in
-                Text(osName.rawValue).font(.body)
-            }
-        }
-        .fixedSize(horizontal: selectedTab != 0, vertical: false)
-
-        return osNamePickerWithChangeHandler(picker)
-    }
-
-    @ViewBuilder
-    private func osNamePickerWithChangeHandler(_ picker: some View) -> some View {
-        if #available(macOS 14.0, *) {
-            picker.onChange(of: osNameID) {
-                handleOsNameIDChange()
-            }
-        } else {
-            picker.onChange(of: osNameID) { _ in
-                handleOsNameIDChange()
-            }
-        }
-    }
-
-    private var seedProgramPicker: some View {
-        let picker = Picker(selection: $seedProgram, label: EmptyView()) {
-            ForEach(SeedProgram.allCases) { program in
-                HStack {
-                    Spacer()
-                    Text(program.rawValue).font(.body)
-                }
-            }
-        }
-
-        return seedProgramPickerWithChangeHandler(picker)
-    }
-
-    @ViewBuilder
-    private func seedProgramPickerWithChangeHandler(_ picker: some View) -> some View {
-        if #available(macOS 14.0, *) {
-            picker.onChange(of: seedProgram) {
-                sucatalog.load()
-            }
-        } else {
-            picker.onChange(of: seedProgram) { _ in
-                sucatalog.load()
-            }
-        }
-    }
-
-    private var firmwareRestoreHelpButton: some View {
-        Button(action: {
-            if let url = URL(string: "https://support.apple.com/en-us/108900") {
-                NSWorkspace.shared.open(url)
-            }
-        }) {
-            Image(systemName: "questionmark.circle")
-                .font(.title)
-        }
-        .help(NSLocalizedString("Restore with Apple Configurator: How to", comment: ""))
-        .buttonStyle(.borderless)
-        .controlSize(.mini)
-        .foregroundColor(.blue)
-    }
-
-    private func handleOsNameIDChange() {
-        if osNameID == OsNameID.osLegacy.rawValue {
-            // Open the legacy window
-            showLegacyWindow = true
-            // Revert the picker to the previous selection
-            osNameID = previousOsNameID
-        } else {
-            // Save the current selection for future reference
-            previousOsNameID = osNameID
-            // Load the catalog for non-legacy selections
-            sucatalog.load()
-        }
-    }
-}
-
-struct PreferencesView_Previews: PreviewProvider {
-    static var previews: some View {
-        PreferencesView(selectedTab: .constant(0))
+        .onChange(of: seedProgram) { sucatalog.load() }
     }
 }

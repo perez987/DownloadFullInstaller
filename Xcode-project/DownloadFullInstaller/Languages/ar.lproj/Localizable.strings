@@ -143,5 +143,27 @@
 "Loading..." = "جارٍ التحميل...";
 
 /* Apple Configurator Restore */
+/* Version 6 release browser */
+"Download Error" = "خطأ في التنزيل";
+"The file '%@' could not be saved to the '%@' folder. Error: %@" = "تعذر حفظ الملف '%@' في المجلد '%@'. الخطأ: %@";
+"macOS Library" = "مكتبة macOS";
+"Choose a release to explore." = "اختر إصدارًا لاستكشافه.";
+"Available Releases" = "الإصدارات المتاحة";
+"Refresh" = "تحديث";
+"Select a macOS release" = "اختر إصدار macOS";
+"Available versions and download options will appear here." = "ستظهر هنا الإصدارات المتاحة وخيارات التنزيل.";
+"Content" = "المحتوى";
+"Catalog" = "الكتالوج";
+"Firmware downloads do not use software update catalogs." = "لا تستخدم تنزيلات البرامج الثابتة كتالوجات تحديث البرامج.";
+"Legacy installers are disk images. Open the downloaded image in Finder, then run the package inside to create the installer app." = "أدوات التثبيت القديمة هي صور أقراص. افتح الصورة التي تم تنزيلها في Finder، ثم شغّل الحزمة بداخلها لإنشاء تطبيق التثبيت.";
+"Download" = "تنزيل";
+"Copy Download URL" = "نسخ رابط التنزيل";
+"Create Installer App" = "إنشاء تطبيق التثبيت";
+"Retrying download..." = "إعادة محاولة التنزيل...";
+"Downloads" = "التنزيلات";
+"Active downloads" = "التنزيلات النشطة";
+"No active downloads" = "لا توجد تنزيلات نشطة";
+"You can only run up to 3 downloads at the same time. Please wait for a download to complete before starting a new one." = "يمكنك تشغيل ما يصل إلى 3 تنزيلات في الوقت نفسه. انتظر حتى يكتمل أحد التنزيلات قبل بدء تنزيل جديد.";
+
 "Restore with Apple Configurator" = "الاستعادة باستخدام Apple Configurator";
 "Restore with Apple Configurator: How to" = "الاستعادة باستخدام Apple Configurator:\nبرامج macOS الثابتة هي ملفات IPSW يمكن استخدامها لاستعادة أجهزة Mac المزودة بـ Silicon باستخدام Apple Configurator.\nلهذه المهمة، تحتاج إلى جهاز Mac آخر وكابل USB C يمكنه نقل الطاقة والبيانات.\nاستعادة جهاز Mac المزود بـ Silicon تمسح كل شيء على القرص ويفقد المستخدم جميع البيانات التي لم يتم نسخها احتياطيًا مسبقًا.";

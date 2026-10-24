@@ -24,4 +24,4 @@ final class UpdaterController: ObservableObject {
     func checkForUpdates() {
         updaterController.updater.checkForUpdates()
     }
-}
+} 

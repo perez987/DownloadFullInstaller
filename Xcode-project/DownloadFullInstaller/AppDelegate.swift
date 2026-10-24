@@ -18,7 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_: Notification) {
 //        print("=== AppDelegate applicationDidFinishLaunching started ===")
         // Disable sleep mode while app is running
-        print("Calling disableSystemSleep()...")
+//        print("Calling disableSystemSleep()...")
         disableSystemSleep()
         print("Calling Prefs.registerDefaults()...")
         Prefs.registerDefaults()
@@ -35,7 +35,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationWillTerminate(_: Notification) {
         // Enable sleep mode when app exits
-        print("Calling enableSystemSleep()...")
+//        print("Calling enableSystemSleep()...")
         enableSystemSleep()
         // Clean up temporary directory to remove incomplete downloads
         DownloadManager.cleanupAppTempDirectory()

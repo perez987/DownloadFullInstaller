@@ -31,11 +31,8 @@ struct SettingsView: View {
     }
 
     var body: some View {
-        ZStack {
-            // Frosted glass background
-            Rectangle()
-                .fill(.ultraThinMaterial)
-                .ignoresSafeArea()
+        ZStack { 
+            GlassBackground()
 
             VStack(spacing: 0) {
                 // Header
@@ -86,12 +83,7 @@ struct SettingsView: View {
                     }
                     .padding(.horizontal, 12)
                     .padding(.vertical, 10)
-                    .background(.regularMaterial)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.primary.opacity(0.1), lineWidth: 1)
-                    )
+                    .glassCard(cornerRadius: 12)
 
                     Button(action: {
                         showingDownloadPathPicker = true
@@ -125,7 +117,7 @@ struct SettingsView: View {
                 .padding(.vertical, 14)
             }
         }
-        .frame(width: 400, height: 340)
+        .frame(width: 460, height: 360)
         .clipShape(RoundedRectangle(cornerRadius: 14))
         .onAppear {
             // Update display path after view appears, ensuring sandbox is fully initialized

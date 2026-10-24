@@ -14,20 +14,20 @@ There is a support article by Apple on "[How to download and install macOS](http
 
 These legacy systems use a different method than Big Sur and later systems. While the latter download a PKG installer, differentiate between versions, that can easily be converted into the Install macOS app, the legacy systems have a single link to the latest available version of each system and download a DMG disk image containing the PKG installer.
 
-Therefore, they cannot be downloaded in the same way as the rest of the macOS available in the drop-down list in Download Full Installer, since this application is designed for Big Sur and later versions.
+The disk images can use the same download queue as modern installers, but creating an installer app requires opening the downloaded image in Finder and running the package inside it.
 
 ### Implementation
 
-A new item called Legacy has been added to the macOS systems dropdown list. Legacy opens a new window listing the five legacy macOS versions mentioned above, each with its own direct download link. You can download any of these legacy macOS versions from this window.
-
-| Drop-down list | Legacy download |
-|:---:|:---:|
-| ![Legacy item](../Images/Legacy-1.png) | ![Legacy download](../Images/Legacy-2.png) 
+Starting with version 6.0.0, the five legacy macOS versions appear at the end of the main window's left-hand installer list. Select a release to display its download card and disk-image instructions in the right-hand pane. A separate legacy window is no longer needed.
 
 Legacy downloads are managed similarly to modern downloads:
 
 - They can be canceled before completion
-- The download destination folder is the one configured in the app settings.
+- They share the same queue and three-download limit as installers and firmware
+- Progress remains visible when switching releases or content types
+- Completed images can be revealed in Finder
+- The download destination folder is the one configured in the app settings
+- The selected software update catalog does not affect these fixed Apple download links.
 
 ### Only 5 versions?
 

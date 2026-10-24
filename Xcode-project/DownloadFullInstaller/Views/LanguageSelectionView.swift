@@ -21,10 +21,7 @@ struct LanguageSelectionView: View {
 
     var body: some View {
         ZStack {
-            // Frosted glass background
-            Rectangle()
-                .fill(.ultraThinMaterial)
-                .ignoresSafeArea()
+            GlassBackground()
 
             VStack(spacing: 0) {
                 // Header with globe icon
@@ -60,12 +57,7 @@ struct LanguageSelectionView: View {
                     }
                 }
                 .frame(height: 300)
-                .background(.ultraThinMaterial)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.primary.opacity(0.1), lineWidth: 1)
-                )
+                .glassCard(cornerRadius: 14)
                 .shadow(color: .black.opacity(0.08), radius: 4, x: 0, y: 2)
                 .padding(.horizontal, 24)
 
@@ -124,7 +116,7 @@ struct LanguageSelectionView: View {
                 .padding(.bottom, 24)
             }
         }
-        .frame(width: 370, height: 560)
+        .frame(width: 420, height: 590)
         .clipShape(RoundedRectangle(cornerRadius: 14))
         .onAppear {
             // Load languages when view appears, ensuring sandbox is fully initialized

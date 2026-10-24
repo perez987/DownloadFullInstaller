@@ -6,6 +6,21 @@
 
 import SwiftUI
 
+struct GlassBackground: View {
+    var body: some View {
+        Rectangle()
+            .fill(.ultraThinMaterial)
+            .overlay {
+                LinearGradient(
+                    colors: [.blue.opacity(0.12), .purple.opacity(0.06), .mint.opacity(0.10)],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+            }
+            .ignoresSafeArea()
+    }
+}
+
 extension View {
     /// Applies the macOS 26+ glass card effect with a rounded rectangle shape.
     /// Falls back to a subtle material background on earlier systems.

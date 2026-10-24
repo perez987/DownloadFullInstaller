@@ -89,5 +89,27 @@
 "Loading..." = "Загрузка...";
 
 /* Apple Configurator Restore */
+/* Version 6 release browser */
+"Download Error" = "Ошибка загрузки";
+"The file '%@' could not be saved to the '%@' folder. Error: %@" = "Не удалось сохранить файл '%@' в папку '%@'. Ошибка: %@";
+"macOS Library" = "Библиотека macOS";
+"Choose a release to explore." = "Выберите версию для просмотра.";
+"Available Releases" = "Доступные версии";
+"Refresh" = "Обновить";
+"Select a macOS release" = "Выберите версию macOS";
+"Available versions and download options will appear here." = "Здесь появятся доступные версии и варианты загрузки.";
+"Content" = "Содержимое";
+"Catalog" = "Каталог";
+"Firmware downloads do not use software update catalogs." = "Загрузка прошивок не использует каталоги обновления ПО.";
+"Legacy installers are disk images. Open the downloaded image in Finder, then run the package inside to create the installer app." = "Старые установщики представляют собой образы дисков. Откройте загруженный образ в Finder и запустите пакет внутри него, чтобы создать приложение установщика.";
+"Download" = "Загрузить";
+"Copy Download URL" = "Скопировать URL загрузки";
+"Create Installer App" = "Создать установщик";
+"Retrying download..." = "Повторная попытка загрузки...";
+"Downloads" = "Загрузки";
+"Active downloads" = "Активные загрузки";
+"No active downloads" = "Нет активных загрузок";
+"You can only run up to 3 downloads at the same time. Please wait for a download to complete before starting a new one." = "Можно выполнять не более 3 загрузок одновременно. Дождитесь завершения одной из загрузок, прежде чем начать новую.";
+
 "Restore with Apple Configurator" = "Восстановить с помощью Apple Configurator";
 "Restore with Apple Configurator: How to" = "Восстановить с помощью Apple Configurator:\nПрошивки macOS — это файлы IPSW, которые можно использовать для восстановления Mac с Silicon через Apple Configurator.\nДля этой задачи вам нужен другой Mac и кабель USB C, который передает питание и данные.\nВосстановление Mac с Silicon стирает все данные на диске, и пользователь теряет все данные, которые не были заранее сохранены в резервной копии.";

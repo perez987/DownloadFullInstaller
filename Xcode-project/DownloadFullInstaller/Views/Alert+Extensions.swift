@@ -63,7 +63,7 @@ enum AppAlertType: Identifiable {
         case .replaceFile:
             NSLocalizedString("A file with the same name already exists in that location. Replacing it will overwrite its current contents.", comment: "")
         case .maxDownloads:
-            NSLocalizedString("You can only download up to 3 installers at the same time. Please wait for a download to complete before starting a new one.", comment: "")
+            NSLocalizedString("You can only run up to 3 downloads at the same time. Please wait for a download to complete before starting a new one.", comment: "")
         case let .installerCreation(_, message):
             message
         case let .downloadError(message):

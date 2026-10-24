@@ -89,5 +89,27 @@
 "Loading..." = "Caricamento...";
 
 /* Apple Configurator Restore */
+/* Version 6 release browser */
+"Download Error" = "Errore di download";
+"The file '%@' could not be saved to the '%@' folder. Error: %@" = "Impossibile salvare il file '%@' nella cartella '%@'. Errore: %@";
+"macOS Library" = "Libreria macOS";
+"Choose a release to explore." = "Scegli una versione da esplorare.";
+"Available Releases" = "Versioni disponibili";
+"Refresh" = "Aggiorna";
+"Select a macOS release" = "Seleziona una versione di macOS";
+"Available versions and download options will appear here." = "Qui appariranno le versioni disponibili e le opzioni di download.";
+"Content" = "Contenuto";
+"Catalog" = "Catalogo";
+"Firmware downloads do not use software update catalogs." = "I download del firmware non utilizzano i cataloghi di aggiornamento software.";
+"Legacy installers are disk images. Open the downloaded image in Finder, then run the package inside to create the installer app." = "Gli installer meno recenti sono immagini disco. Apri l'immagine scaricata nel Finder, poi esegui il pacchetto al suo interno per creare l'app di installazione.";
+"Download" = "Scarica";
+"Copy Download URL" = "Copia URL di download";
+"Create Installer App" = "Crea app di installazione";
+"Retrying download..." = "Nuovo tentativo di download...";
+"Downloads" = "Download";
+"Active downloads" = "Download attivi";
+"No active downloads" = "Nessun download attivo";
+"You can only run up to 3 downloads at the same time. Please wait for a download to complete before starting a new one." = "Puoi eseguire fino a 3 download contemporaneamente. Attendi il completamento di un download prima di avviarne un altro.";
+
 "Restore with Apple Configurator" = "Ripristina con Apple Configurator";
 "Restore with Apple Configurator: How to" = "Ripristina con Apple Configurator:\nI firmware macOS sono file IPSW che possono essere usati per ripristinare i Mac Silicon usando Apple Configurator.\nPer questa operazione, hai bisogno di un altro Mac e di un cavo USB C che possa trasmettere alimentazione e dati.\nIl ripristino di un Mac Silicon cancella tutto il contenuto del disco e l'utente perde tutti i dati che non sono stati precedentemente sottoposti a backup.";

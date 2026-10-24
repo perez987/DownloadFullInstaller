@@ -89,5 +89,27 @@
 "Loading..." = "Завантаження...";
 
 /* Apple Configurator Restore */
+/* Version 6 release browser */
+"Download Error" = "Помилка завантаження";
+"The file '%@' could not be saved to the '%@' folder. Error: %@" = "Не вдалося зберегти файл '%@' у папку '%@'. Помилка: %@";
+"macOS Library" = "Бібліотека macOS";
+"Choose a release to explore." = "Виберіть версію для перегляду.";
+"Available Releases" = "Доступні версії";
+"Refresh" = "Оновити";
+"Select a macOS release" = "Виберіть версію macOS";
+"Available versions and download options will appear here." = "Тут з'являться доступні версії та варіанти завантаження.";
+"Content" = "Вміст";
+"Catalog" = "Каталог";
+"Firmware downloads do not use software update catalogs." = "Завантаження прошивок не використовує каталоги оновлення ПЗ.";
+"Legacy installers are disk images. Open the downloaded image in Finder, then run the package inside to create the installer app." = "Старі інсталятори є образами дисків. Відкрийте завантажений образ у Finder і запустіть пакет усередині, щоб створити програму інсталятора.";
+"Download" = "Завантажити";
+"Copy Download URL" = "Скопіювати URL завантаження";
+"Create Installer App" = "Створити інсталятор";
+"Retrying download..." = "Повторна спроба завантаження...";
+"Downloads" = "Завантаження";
+"Active downloads" = "Активні завантаження";
+"No active downloads" = "Немає активних завантажень";
+"You can only run up to 3 downloads at the same time. Please wait for a download to complete before starting a new one." = "Можна виконувати не більше 3 завантажень одночасно. Дочекайтеся завершення одного із завантажень, перш ніж почати нове.";
+
 "Restore with Apple Configurator" = "Відновити за допомогою Apple Configurator";
 "Restore with Apple Configurator: How to" = "Відновити за допомогою Apple Configurator:\nПрошивки macOS — це файли IPSW, які можна використовувати для відновлення Mac із Silicon за допомогою Apple Configurator.\nДля цього вам потрібен інший Mac і кабель USB C, що може передавати живлення та дані.\nВідновлення Mac із Silicon стирає все на диску, і користувач втрачає всі дані, які не були заздалегідь збережені в резервній копії.";

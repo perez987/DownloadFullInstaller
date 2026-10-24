@@ -10,10 +10,16 @@ import Foundation
 /// These URLs are from Apple's Content Delivery Network (CDN)
 /// and are the official distribution method for these legacy versions
 struct LegacyMacOSVersion: Identifiable {
-    let id = UUID()
+    var id: String { name }
     let name: String
     let version: String
     let url: String
+
+    var filename: String {
+        let original = URL(string: url)?.lastPathComponent ?? "InstallMacOSX.dmg"
+        let suffix = name.replacingOccurrences(of: " ", with: "_") + "_" + version
+        return original.replacingOccurrences(of: ".dmg", with: "_\(suffix).dmg")
+    }
 
     static let allVersions: [LegacyMacOSVersion] = [
         LegacyMacOSVersion(

@@ -36,7 +36,14 @@ class DownloadItem: NSObject, ObservableObject, Identifiable, @unchecked Sendabl
     private var destinationURL: URL?
     private var isAccessingSecurityScope = false
 
-    lazy var urlSession = URLSession(configuration: URLSessionConfiguration.ephemeral, delegate: self, delegateQueue: nil)
+    lazy var urlSession: URLSession = {
+        let configuration = URLSessionConfiguration.ephemeral
+        // Apple's legacy disk-image CDN requires a browser-compatible User-Agent.
+        configuration.httpAdditionalHeaders = [
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15"
+        ]
+        return URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
+    }()
     var downloadTask: URLSessionDownloadTask?
     var byteFormatter = ByteCountFormatter()
 
@@ -61,6 +68,7 @@ class DownloadItem: NSObject, ObservableObject, Identifiable, @unchecked Sendabl
     }
 
     func download(url: URL?, replacing: Bool = false) throws {
+        guard let url else { throw URLError(.badURL) }
         downloadURL = url
         isComplete = false
         byteFormatter.countStyle = .file
@@ -69,17 +77,26 @@ class DownloadItem: NSObject, ObservableObject, Identifiable, @unchecked Sendabl
         let destination = Prefs.downloadURL
         destinationURL = destination
         if !isAccessingSecurityScope {
-            isAccessingSecurityScope = Prefs.startAccessingDownloadURL()
+            isAccessingSecurityScope = Prefs.downloadURLRequiresSecurityScope
+                && destination.startAccessingSecurityScopedResource()
         }
 
         if replacing {
             let suggestedFilename = filename ?? "InstallerAssistant.pkg"
             let file = destination.appendingPathComponent(suggestedFilename)
 
-            try FileManager.default.removeItem(at: file)
+            do {
+                if FileManager.default.fileExists(atPath: file.path) {
+                    try FileManager.default.removeItem(at: file)
+                }
+            } catch {
+                stopAccessingSecurityScope()
+                throw error
+            }
             resumeData = nil
         }
 
+        isDownloading = true
         Task { @MainActor [weak self] in self?.startDownload() }
     }
 
@@ -111,7 +128,7 @@ class DownloadItem: NSObject, ObservableObject, Identifiable, @unchecked Sendabl
 
     @MainActor
     func cancel() {
-        if isDownloading, downloadTask != nil {
+        if isDownloading {
             downloadTask?.cancel { [weak self] _ in
                 Task { @MainActor [weak self] in
                     self?.resumeData = nil
@@ -127,53 +144,16 @@ class DownloadItem: NSObject, ObservableObject, Identifiable, @unchecked Sendabl
             retryTimer = nil
             // Stop accessing security-scoped resource
             stopAccessingSecurityScope()
-            // Clean up temporary files off the main thread to avoid UI stalls
-            DispatchQueue.global(qos: .utility).async { [weak self] in
-                self?.cleanupTempDirectory()
-            }
+            // URLSession removes this task's temporary file; leave other transfers intact.
             // Remove from active downloads immediately on the main actor (no Task wrapper needed)
             manager?.downloadCancelled(self)
         }
         print("Cancelled download of \(filename ?? "InstallerAssistant.pkg")")
     }
 
-    private func cleanupTempDirectory() {
-        let tempDir = URL(fileURLWithPath: NSTemporaryDirectory())
-        do {
-            let tempFiles = try FileManager.default.contentsOfDirectory(at: tempDir, includingPropertiesForKeys: [.isRegularFileKey, .fileSizeKey])
-            var deletedCount = 0
-            var totalSize: Int64 = 0
-
-            for file in tempFiles {
-                do {
-                    // Only delete regular files (not directories)
-                    let resourceValues = try file.resourceValues(forKeys: [.isRegularFileKey, .fileSizeKey])
-                    guard resourceValues.isRegularFile == true else { continue }
-
-                    // Get file size before deletion
-                    let fileSize = resourceValues.fileSize ?? 0
-
-                    try FileManager.default.removeItem(at: file)
-                    deletedCount += 1
-                    totalSize += Int64(fileSize)
-                } catch {
-                    // Continue with other files if one fails
-                    print("Failed to delete temp file \(file.lastPathComponent): \(error.localizedDescription)")
-                }
-            }
-
-            if deletedCount > 0 {
-                let sizeString = ByteCountFormatter.string(fromByteCount: totalSize, countStyle: .file)
-                print("Cleaned up temporary directory: deleted \(deletedCount) file(s), freed \(sizeString)")
-            }
-        } catch {
-            print("Failed to access temporary directory for cleanup: \(error.localizedDescription)")
-        }
-    }
-
     private func stopAccessingSecurityScope() {
         if isAccessingSecurityScope {
-            Prefs.stopAccessingDownloadURL(isAccessingSecurityScope)
+            destinationURL?.stopAccessingSecurityScopedResource()
             isAccessingSecurityScope = false
         }
     }
@@ -186,6 +166,7 @@ class DownloadItem: NSObject, ObservableObject, Identifiable, @unchecked Sendabl
                 isDownloading = false
                 isRetrying = false
                 resumeData = nil
+                errorMessage = URLError(.networkConnectionLost).localizedDescription
                 stopAccessingSecurityScope()
                 manager?.downloadFailed(self)
             }
@@ -209,9 +190,12 @@ class DownloadItem: NSObject, ObservableObject, Identifiable, @unchecked Sendabl
     }
 
     func revealInFinder() {
-        if isComplete {
-            let destination = Prefs.downloadURL.path
-            NSWorkspace.shared.selectFile(localURL?.path, inFileViewerRootedAtPath: destination)
+        if isComplete, let localURL {
+            let accessStarted = destinationURL?.startAccessingSecurityScopedResource() ?? false
+            defer {
+                if accessStarted { destinationURL?.stopAccessingSecurityScopedResource() }
+            }
+            NSWorkspace.shared.activateFileViewerSelecting([localURL])
         }
     }
 }
@@ -230,6 +214,10 @@ extension DownloadItem: URLSessionDownloadDelegate {
         let suggestedFilename = filename ?? downloadTask.response?.suggestedFilename ?? UUID().uuidString
 
         do {
+            guard let response = downloadTask.response as? HTTPURLResponse,
+                  (200...299).contains(response.statusCode) else {
+                throw URLError(.badServerResponse)
+            }
             let file = destination.appendingPathComponent(suggestedFilename)
             let fileExists = FileManager.default.fileExists(atPath: file.path)
 
@@ -293,7 +281,7 @@ extension DownloadItem: URLSessionDownloadDelegate {
         let now = Date()
         guard now.timeIntervalSince(lastProgressUpdate) >= 0.05 else { return }
         lastProgressUpdate = now
-        let prog = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
+        let prog = totalBytesExpectedToWrite > 0 ? Double(totalBytesWritten) / Double(totalBytesExpectedToWrite) : 0
         let str = "\(byteFormatter.string(fromByteCount: totalBytesWritten))/\(byteFormatter.string(fromByteCount: totalBytesExpectedToWrite))"
         DispatchQueue.main.async { [weak self] in
             self?.progress = prog
@@ -304,7 +292,7 @@ extension DownloadItem: URLSessionDownloadDelegate {
 
     func urlSession(_: URLSession, downloadTask _: URLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
         print("Download resumed at offset: \(fileOffset) bytes")
-        let prog = Double(fileOffset) / Double(expectedTotalBytes)
+        let prog = expectedTotalBytes > 0 ? Double(fileOffset) / Double(expectedTotalBytes) : 0
         let str = "\(byteFormatter.string(fromByteCount: fileOffset))/\(byteFormatter.string(fromByteCount: expectedTotalBytes))"
         DispatchQueue.main.async { [weak self] in
             self?.progress = prog
@@ -352,6 +340,7 @@ extension DownloadItem: URLSessionTaskDelegate {
                 retryCount = 0
                 retryTimer?.invalidate()
                 retryTimer = nil
+                errorMessage = error.localizedDescription
                 stopAccessingSecurityScope()
                 manager?.downloadFailed(self)
             }
@@ -369,6 +358,7 @@ class MultiDownloadManager: ObservableObject {
 
     @Published var activeDownloads: [DownloadItem] = []
     @Published var completedDownloads: [DownloadItem] = []
+    @Published var errorMessage: String?
 
     var canStartNewDownload: Bool {
         activeDownloads.count < MultiDownloadManager.maxConcurrentDownloads
@@ -386,7 +376,11 @@ class MultiDownloadManager: ObservableObject {
     /// Start a new download if slots are available
     func startDownload(url: URL?, filename: String, replacing: Bool = false) throws -> DownloadItem? {
         guard canStartNewDownload else {
-            return nil
+            throw NSError(
+                domain: "DownloadFullInstaller",
+                code: 1,
+                userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("You can only run up to 3 downloads at the same time. Please wait for a download to complete before starting a new one.", comment: "")]
+            )
         }
 
         // Check if this file is already being downloaded
@@ -399,11 +393,10 @@ class MultiDownloadManager: ObservableObject {
         downloadItem.filename = filename
         downloadItem.manager = self
 
-        activeDownloads.append(downloadItem)
-        updateDockProgressStyle()
-
         try downloadItem.download(url: url, replacing: replacing)
 
+        activeDownloads.append(downloadItem)
+        updateDockProgressStyle()
         return downloadItem
     }
 
@@ -426,6 +419,7 @@ class MultiDownloadManager: ObservableObject {
 
     /// Called when a download fails
     func downloadFailed(_ item: DownloadItem) {
+        errorMessage = item.errorMessage ?? URLError(.unknown).localizedDescription
         if let index = activeDownloads.firstIndex(where: { $0.id == item.id }) {
             activeDownloads.remove(at: index)
         }

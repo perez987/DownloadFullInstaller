@@ -89,5 +89,27 @@
 "Loading..." = "Chargement...";
 
 /* Apple Configurator Restore */
+/* Version 6 release browser */
+"Download Error" = "Erreur de téléchargement";
+"The file '%@' could not be saved to the '%@' folder. Error: %@" = "Le fichier '%@' n'a pas pu être enregistré dans le dossier '%@'. Erreur : %@";
+"macOS Library" = "Bibliothèque macOS";
+"Choose a release to explore." = "Choisissez une version à explorer.";
+"Available Releases" = "Versions disponibles";
+"Refresh" = "Actualiser";
+"Select a macOS release" = "Sélectionnez une version de macOS";
+"Available versions and download options will appear here." = "Les versions disponibles et les options de téléchargement apparaîtront ici.";
+"Content" = "Contenu";
+"Catalog" = "Catalogue";
+"Firmware downloads do not use software update catalogs." = "Les téléchargements de micrologiciels n'utilisent pas les catalogues de mise à jour logicielle.";
+"Legacy installers are disk images. Open the downloaded image in Finder, then run the package inside to create the installer app." = "Les anciens programmes d'installation sont des images disque. Ouvrez l'image téléchargée dans le Finder, puis exécutez le paquet qu'elle contient pour créer l'application d'installation.";
+"Download" = "Télécharger";
+"Copy Download URL" = "Copier l'URL de téléchargement";
+"Create Installer App" = "Créer l'app d'installation";
+"Retrying download..." = "Nouvelle tentative de téléchargement...";
+"Downloads" = "Téléchargements";
+"Active downloads" = "Téléchargements actifs";
+"No active downloads" = "Aucun téléchargement actif";
+"You can only run up to 3 downloads at the same time. Please wait for a download to complete before starting a new one." = "Vous pouvez effectuer jusqu'à 3 téléchargements simultanés. Attendez la fin d'un téléchargement avant d'en lancer un autre.";
+
 "Restore with Apple Configurator" = "Restaurer avec Apple Configurator";
 "Restore with Apple Configurator: How to" = "Restaurer avec Apple Configurator :\nLes firmwares macOS sont des fichiers IPSW qui peuvent être utilisés pour restaurer les Mac Silicon à l’aide d’Apple Configurator.\nPour cette tâche, vous avez besoin d’un autre Mac et d’un câble USB C capable de transmettre l’alimentation ainsi que les données.\nLa restauration d’un Mac Silicon efface tout le contenu du disque et l’utilisateur perd toutes les données qui n’ont pas été sauvegardées auparavant.";

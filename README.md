@@ -13,9 +13,15 @@
 - If you prefer the version built with Swift 5, that runs on macOS 13 or later, get the source code from the `swift5` branch or the version 4.x.x from the [releases page](https://github.com/perez987/DownloadFullInstaller/releases/tag/4.6.0)
 - There is a version 2.5.5, built with Swift 5, that runs on macOS Big Sur or later, you can get the source code or the notarized app from the [releases page](https://github.com/perez987/DownloadFullInstaller/releases/tag/2.5.5).
 
+### New in version 6.0.0
+
+The main window is now a wide, two-pane library with soft gradients and translucent surfaces. Choose Installers or Firmwares and a software update catalog on the left, then select a macOS release to see its available versions, build numbers, dates, sizes, and download actions on the right. The detail pane starts empty until you select a release.
+
+Legacy installers appear at the end of the installer list. All downloads share the queue at the bottom right, with up to three simultaneous transfers, individual Cancel buttons, and Show in Finder actions. Changing the selected release or content type does not hide or interrupt downloads. Firmware comes from a separate feed, so the catalog picker is disabled in firmware mode.
+
 |     |
-| --- |
-| ![Installers](Images/Installers.png) |
+|:---:|
+| ![Main window](Images/Main-window.png) |
 
 ### Preface
 
@@ -30,10 +36,11 @@ This repo exists to keep "Download Full Installer" alive and growing. Picking up
    - Swift 6
    - Xcode 26
 - Main UI
-   - Add Silicon firmwares tab to download IPSW files to restore T2 or Silicon Macs
+   - Persistent release list and detail pane for installers and Apple Silicon IPSW firmware
+   - Soft gradients, translucent cards, and matching Settings and Language sheets
 - Preferences
    - Preferences for choosing catalog are no longer a separate dialog but are now at the top of the main window
-   - A single macOS version or all versions can be displayed at once
+   - All available releases are listed; select a release to view all its available downloads
 - System sleep
    - Add sleep prevention logic to avoid sleeping while the application is running
 - Downloads
@@ -55,11 +62,7 @@ This repo exists to keep "Download Full Installer" alive and growing. Picking up
 
 ### Legacy macOS installer download
 
-A new item called Legacy has been added to the macOS systems dropdown list. Legacy opens a new window listing the five available legacy macOS versions, each with its own direct download link. You can download any of these legacy macOS versions from this window.
-
-|     |
-| --- |
-| ![Legacy](Images/Legacy.png) |
+The five available legacy macOS releases appear below the current releases in the left-hand installer list. Select one to download its disk image using the shared download queue. Open the downloaded DMG in Finder and run its package to create the installer app. Legacy downloads are independent of the selected software update catalog.
 
 ### Create Installer App Feature
 
@@ -75,17 +78,9 @@ After downloading an `InstallAssistant.pkg` file, you can create the macOS insta
 
 Download Full Installer -> Settings menu (⌘ ,) opens a window where you can select a different folder to download installers. Default is ~/Downloads. Visual indicators (green marks) of downloaded installers are updated to match those in the selected folder.
 
-|     |
-| --- |
-| ![Settings](Images/Settings.png) |
-
 ### Language selector window
 
 Language selector can be opened from the menubar (`Languages` > `Select Language`) or by keyboard shortcut (`⌘ + L`).
-
-|     |
-| --- |
-| ![Languages](Images/Languages.png) |
 
 ### Clean up incomplete downloads on app quit
 

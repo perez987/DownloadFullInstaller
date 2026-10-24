@@ -34,6 +34,7 @@ class Product: Codable, Identifiable, ObservableObject {
 
     @Published var isLoading = false
     @Published var hasLoaded = false
+    @Published var errorMessage: String?
 
     var distributionURL: String? {
         if distributions.keys.contains("English") {
@@ -136,29 +137,35 @@ class Product: Codable, Identifiable, ObservableObject {
     }
 
     func loadDistribution() {
-        guard let urlString = distributionURL else { return }
-        guard let url = URL(string: urlString) else { return }
+        guard let urlString = distributionURL, let url = URL(string: urlString) else {
+            errorMessage = URLError(.badURL).localizedDescription
+            print("Product distribution: \(errorMessage ?? "")")
+            return
+        }
 
         let sessionConfig = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
 
         let task = session.dataTask(with: url) { [weak self] data, response, error in
-            if error != nil {
-                return
-            }
-
-            let httpResponse = response as! HTTPURLResponse
-            if httpResponse.statusCode == 200 {
-                if let data {
-                    Task { @MainActor [weak self] in
-                        self?.parseDistXML(data: data)
-                    }
+            Task { @MainActor [weak self] in
+                guard let self else { return }
+                if let error {
+                    errorMessage = error.localizedDescription
+                    isLoading = false
+                } else if let response = response as? HTTPURLResponse,
+                          response.statusCode == 200, let data {
+                    parseDistXML(data: data)
+                } else {
+                    errorMessage = URLError(.badServerResponse).localizedDescription
+                    isLoading = false
                 }
+                if let errorMessage { print("Product distribution: \(errorMessage)") }
             }
         }
 
         isLoading = true
         hasLoaded = false
+        errorMessage = nil
 
         osName = nil
         title = nil
@@ -172,7 +179,11 @@ class Product: Codable, Identifiable, ObservableObject {
         let parser = XMLParser(data: data)
         let delegate = DistParserDelegate()
         parser.delegate = delegate
-        parser.parse()
+        guard parser.parse() else {
+            errorMessage = parser.parserError?.localizedDescription ?? URLError(.cannotParseResponse).localizedDescription
+            isLoading = false
+            return
+        }
 
         osName = delegate.osName
         title = delegate.title

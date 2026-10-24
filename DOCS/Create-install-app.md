@@ -13,7 +13,6 @@ This feature adds a new button to the Download Full Installer application that a
 - **Tooltip**: "Create Installer App"
 - **Visual States**:
   - Normal: Shows the icon
-  - Processing: Shows a spinning progress indicator
   - Disabled: When downloading or creating an installer
 
 ## Functionality
@@ -29,6 +28,7 @@ When the user clicks the "Create Installer App" button:
    - A system authentication dialog appears asking for the admin password
 
 3. **Installation**: Runs the command:
+
    ```bash
    installer -pkg '<path-to-pkg>' -target /
    ```
@@ -44,14 +44,17 @@ When the user clicks the "Create Installer App" button:
 #### Error Scenarios
 
 1. **PKG Not Found**
+   
    - Title: "Error Creating Installer"
    - Message: "The installer package 'InstallAssistant-X.X.X-XXXXX.pkg' does not exist in the Downloads folder. Please download it first."
 
 2. **AppleScript Error**
+   
    - Title: "Error Creating Installer"
    - Message: "Failed to create AppleScript"
 
 3. **Installation Error**
+   
    - Title: "Error Creating Installer"
    - Message: "Failed to create installer app. Error: [error details]"
 

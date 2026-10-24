@@ -89,5 +89,27 @@
 "Loading..." = "Loading...";
 
 /* Apple Configurator Restore */
+/* Version 6 release browser */
+"Download Error" = "Download Error";
+"The file '%@' could not be saved to the '%@' folder. Error: %@" = "The file '%@' could not be saved to the '%@' folder. Error: %@";
+"macOS Library" = "macOS Library";
+"Choose a release to explore." = "Choose a release to explore.";
+"Available Releases" = "Available Releases";
+"Refresh" = "Refresh";
+"Select a macOS release" = "Select a macOS release";
+"Available versions and download options will appear here." = "Available versions and download options will appear here.";
+"Content" = "Content";
+"Catalog" = "Catalog";
+"Firmware downloads do not use software update catalogs." = "Firmware downloads do not use software update catalogs.";
+"Legacy installers are disk images. Open the downloaded image in Finder, then run the package inside to create the installer app." = "Legacy installers are disk images. Open the downloaded image in Finder, then run the package inside to create the installer app.";
+"Download" = "Download";
+"Copy Download URL" = "Copy Download URL";
+"Create Installer App" = "Create Installer App";
+"Retrying download..." = "Retrying download...";
+"Downloads" = "Downloads";
+"Active downloads" = "Active downloads";
+"No active downloads" = "No active downloads";
+"You can only run up to 3 downloads at the same time. Please wait for a download to complete before starting a new one." = "You can only run up to 3 downloads at the same time. Please wait for a download to complete before starting a new one.";
+
 "Restore with Apple Configurator" = "Restore with Apple Configurator.";
 "Restore with Apple Configurator: How to" = "Restore with Apple Configurator:\nmacOS firmwares are IPSW files that can be used to restore Silicon Macs using Apple Configurator.\nFor this task, you need another Mac and a USB C cable that can transmit power as well as data.\nRestoring a Silicon Mac erases everything on the drive and the user loses all data that has not been previously backed up.";

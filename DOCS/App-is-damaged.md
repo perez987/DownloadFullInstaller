@@ -1,5 +1,7 @@
 # App is damaged and can't be opened
 
+**Note**: this article can be skipped if the downlaoded app is notarized by Apple.
+
 The conditions Apple imposes to maintain user security and privacy are becoming increasingly strict. This, of course, benefits users but it has drawbacks.
 
 When a file is downloaded from the Internet, an extended attribute named `com.apple.quarantine` is added to it so that Gatekeeper requests confirmation before executing them.

@@ -24,6 +24,9 @@ class SUCatalog: ObservableObject {
 
     @Published var isLoading = false
     @Published var hasLoaded = false
+    @Published var errorMessage: String?
+    private var loadID = UUID()
+    private var pendingCatalogs = 0
 
     init() {
         // Diagnostic logging for sandbox initialization
@@ -35,45 +38,50 @@ class SUCatalog: ObservableObject {
     }
 
     func load() {
+        let requestID = UUID()
+        loadID = requestID
         uniqueInstallersList = []
         productSubscriptions.removeAll()
-        let catalogURLArray: [URL] = catalogURL(for: Prefs.seedProgram, for: Prefs.osNameID)
+        // The browser always needs every release, independent of the selected detail.
+        let catalogURLArray = catalogURL(for: Prefs.seedProgram, for: .osAll)
+        pendingCatalogs = catalogURLArray.count
+        isLoading = true
+        hasLoaded = false
+        errorMessage = nil
+        catalog = nil
+        installers = []
 
         for item in catalogURLArray {
             let sessionConfig = URLSessionConfiguration.ephemeral
             let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
 
             let task = session.dataTask(with: item) { [weak self] data, response, error in
-                if error != nil {
-                    print("SUCatalog : \(error!.localizedDescription)")
-                    return
-                }
-
-                let httpResponse = response as! HTTPURLResponse
-                if httpResponse.statusCode != 200 {
-//                    print("SUCatalog : \(httpResponse.statusCode)")
-                } else {
-                    if data != nil {
-                        Task { @MainActor [weak self] in
-                            self?.decode(data: data!)
+                Task { @MainActor [weak self] in
+                    guard let self, loadID == requestID else { return }
+                    defer {
+                        pendingCatalogs -= 1
+                        updateLoadingState()
+                    }
+                    do {
+                        if let error { throw error }
+                        guard let httpResponse = response as? HTTPURLResponse,
+                              httpResponse.statusCode == 200, let data else {
+                            throw URLError(.badServerResponse)
                         }
+                        try decode(data: data)
+                    } catch {
+                        print("SUCatalog: \(error.localizedDescription)")
+                        errorMessage = error.localizedDescription
                     }
                 }
             }
-            isLoading = true
-            hasLoaded = false
-            catalog = nil
-            installers = [Product]()
             task.resume()
         }
     }
 
-    private func decode(data: Data) {
-        isLoading = false
-        hasLoaded = true
-
+    private func decode(data: Data) throws {
         let decoder = PropertyListDecoder()
-        catalog = try! decoder.decode(Catalog.self, from: data)
+        catalog = try decoder.decode(Catalog.self, from: data)
 
         if let products {
             for (productKey, product) in products {
@@ -98,9 +106,22 @@ class SUCatalog: ObservableObject {
     private func observeProductChanges(_ product: Product) {
         product.objectWillChange
             .sink { [weak self] _ in
-                self?.objectWillChange.send()
+                // Published changes arrive before the product's new values are stored.
+                Task { @MainActor [weak self] in
+                    guard let self else { return }
+                    updateLoadingState()
+                    objectWillChange.send()
+                }
             }
             .store(in: &productSubscriptions)
+    }
+
+    private func updateLoadingState() {
+        isLoading = pendingCatalogs > 0 || installers.contains { $0.isLoading }
+        hasLoaded = !isLoading
+        if let productError = installers.compactMap(\.errorMessage).first {
+            errorMessage = productError
+        }
     }
 }
 
@@ -137,25 +158,31 @@ final class FirmwareCatalog: ObservableObject {
     @Published var firmwares = [FirmwareProduct]()
     @Published var isLoading = false
     @Published var hasLoaded = false
+    @Published var errorMessage: String?
 
     func load() {
+        guard !isLoading else { return }
         guard let url = URL(string: Self.firmwaresURL) else { return }
         let session = URLSession(configuration: .ephemeral)
         isLoading = true
         hasLoaded = false
+        errorMessage = nil
 
-        session.dataTask(with: url) { [weak self] data, _, error in
+        session.dataTask(with: url) { [weak self] data, response, error in
             if let error {
                 print("FirmwareCatalog : \(error.localizedDescription)")
                 Task { @MainActor [weak self] in
                     self?.isLoading = false
+                    self?.errorMessage = error.localizedDescription
                 }
                 return
             }
 
-            guard let data else {
+            guard let response = response as? HTTPURLResponse,
+                  response.statusCode == 200, let data else {
                 Task { @MainActor [weak self] in
                     self?.isLoading = false
+                    self?.errorMessage = URLError(.badServerResponse).localizedDescription
                 }
                 return
             }
@@ -235,6 +262,7 @@ final class FirmwareCatalog: ObservableObject {
         } catch {
             print("FirmwareCatalog decode : \(error.localizedDescription)")
             isLoading = false
+            errorMessage = error.localizedDescription
         }
     }
 
