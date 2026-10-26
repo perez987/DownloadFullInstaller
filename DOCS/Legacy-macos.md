@@ -18,7 +18,7 @@ The disk images can use the same download queue as modern installers, but creati
 
 ### Implementation
 
-Starting with version 6.0.0, the five legacy macOS versions appear at the end of the main window's left-hand installer list. Select a release to display its download card and disk-image instructions in the right-hand pane. A separate legacy window is no longer needed.
+Starting with version 6.0.0, the five legacy macOS versions are in a section at the end of the main window's left-hand installer list. The section is collapsed by default; use the chevron in its header to expand or collapse it. Select a release to display its download card and disk-image instructions in the right-hand pane. A separate legacy window is no longer needed.
 
 Legacy downloads are managed similarly to modern downloads:
 
