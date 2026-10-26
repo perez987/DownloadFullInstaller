@@ -10,7 +10,6 @@
 		C0000001A000000100000001 /* MultiDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000001A000000200000001 /* MultiDownloadManager.swift */; };
 		C0000002A000000100000001 /* Alert+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000002A000000200000001 /* Alert+Extensions.swift */; };
 		C0000002B000000100000001 /* GlassEffects+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000002B000000200000001 /* GlassEffects+Extensions.swift */; };
-		D971B3C52FF9AB0D00F96A4F /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = D971B3C42FF9AB0D00F96A4F /* Sparkle */; };
 		D97B03EE3045A1960048F9A5 /* DockProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97B03EC3045A1960048F9A5 /* DockProgress.swift */; };
 		D97B03EF3045A1960048F9A5 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97B03ED3045A1960048F9A5 /* Utilities.swift */; };
 		D982F68E2F2C29240016CC88 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D982F68D2F2C29240016CC88 /* Preview Assets.xcassets */; };
@@ -43,6 +42,8 @@
 		D9E20CAD2E8B2D5E0086992F /* LocalizationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E20CAB2E8B2D5E0086992F /* LocalizationHelper.swift */; };
 		D9E20CAE2E8B2D5E0086992F /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E20CAC2E8B2D5E0086992F /* LanguageManager.swift */; };
 		D9E20CB12E8B2D840086992F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9E20CB32E8B2D840086992F /* Localizable.strings */; };
+		D9EFA4D1308FA6AB000E5C94 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EFA4CF308FA6A2000E5C94 /* Sparkle.framework */; };
+		D9EFA4D2308FA6AB000E5C94 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D9EFA4CF308FA6A2000E5C94 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ECEDC58D9422D0D6822812AD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C3B4E13958C3E2E27EE685 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				D9EFA4D2308FA6AB000E5C94 /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -111,6 +113,7 @@
 		D9E20CAB2E8B2D5E0086992F /* LocalizationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationHelper.swift; sourceTree = "<group>"; };
 		D9E20CAC2E8B2D5E0086992F /* LanguageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		D9E20CB22E8B2D840086992F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D9EFA4CF308FA6A2000E5C94 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		D9F3B59C2E8B2FB800D43611 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9F598CE2F1FE21800EB2A27 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,7 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D971B3C52FF9AB0D00F96A4F /* Sparkle in Frameworks */,
+				D9EFA4D1308FA6AB000E5C94 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +216,7 @@
 				D95D3BFB2EDDFFAE002AF7DA /* Sleep */,
 				D92A40D72FE32AED00AA2975 /* Updater */,
 				D9E20C7E2E8B2D060086992F /* Views */,
+				D9EFA4CF308FA6A2000E5C94 /* Sparkle.framework */,
 			);
 			path = DownloadFullInstaller;
 			sourceTree = "<group>";
@@ -281,7 +285,6 @@
 			);
 			name = "Download Full Installer";
 			packageProductDependencies = (
-				D971B3C42FF9AB0D00F96A4F /* Sparkle */,
 			);
 			productName = FetchInstallerPkg;
 			productReference = D9E20C682E8B2C570086992F /* Download Full Installer.app */;
@@ -322,7 +325,6 @@
 			);
 			mainGroup = D9E20C5F2E8B2C570086992F;
 			packageReferences = (
-				D971B3C32FF9AB0D00F96A4F /* XCRemoteSwiftPackageReference "Sparkle" */,
 			);
 			productRefGroup = D9E20C692E8B2C570086992F /* Products */;
 			projectDirPath = "";
@@ -568,6 +570,10 @@
 				ENABLE_RESOURCE_ACCESS_USB = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				ENABLE_USER_SELECTED_FILES = readonly;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DownloadFullInstaller",
+				);
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = DownloadFullInstaller/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Download Full Installer";
@@ -619,6 +625,10 @@
 				ENABLE_RESOURCE_ACCESS_USB = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				ENABLE_USER_SELECTED_FILES = readonly;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DownloadFullInstaller",
+				);
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = DownloadFullInstaller/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Download Full Installer";
@@ -661,25 +671,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		D971B3C32FF9AB0D00F96A4F /* XCRemoteSwiftPackageReference "Sparkle" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sparkle-project/Sparkle";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.9.4;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		D971B3C42FF9AB0D00F96A4F /* Sparkle */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D971B3C32FF9AB0D00F96A4F /* XCRemoteSwiftPackageReference "Sparkle" */;
-			productName = Sparkle;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D9E20C602E8B2C570086992F /* Project object */;
 }
