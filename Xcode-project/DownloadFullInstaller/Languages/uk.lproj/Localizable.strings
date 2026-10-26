@@ -70,7 +70,7 @@
 "Choose where to save downloaded installers" = "Виберіть де зберегти завантажені установники";
 
 /* Legacy macOS installers */
-"Legacy macOS Installers" = "Застарілі інсталятори macOS";
+"Legacy macOS Installers" = "↓ Застарілі інсталятори macOS";
 "Download legacy macOS installers (10.7 - 10.12)" = "Завантажити застарілі версії macOS (10.7 - 10.12)";
 "Download macOS %@ %@" = "Завантажити macOS %@ %@";
 
@@ -88,13 +88,12 @@
 "The installers list cannot be loaded or there are no installers available for this version of macOS." = "Не вдається завантажити список інсталяторів або для цієї версії macOS немає доступних інсталяторів.";
 "Loading..." = "Завантаження...";
 
-/* Apple Configurator Restore */
 /* Version 6 release browser */
 "Download Error" = "Помилка завантаження";
 "The file '%@' could not be saved to the '%@' folder. Error: %@" = "Не вдалося зберегти файл '%@' у папку '%@'. Помилка: %@";
 "macOS Library" = "Бібліотека macOS";
 "Choose a release to explore." = "Виберіть версію для перегляду.";
-"Available Releases" = "Доступні версії";
+"Available Releases" = "↓ Доступні версії";
 "Refresh" = "Оновити";
 "Select a macOS release" = "Виберіть версію macOS";
 "Available versions and download options will appear here." = "Тут з'являться доступні версії та варіанти завантаження.";
@@ -111,5 +110,6 @@
 "No active downloads" = "Немає активних завантажень";
 "You can only run up to 3 downloads at the same time. Please wait for a download to complete before starting a new one." = "Можна виконувати не більше 3 завантажень одночасно. Дочекайтеся завершення одного із завантажень, перш ніж почати нове.";
 
+/* Apple Configurator Restore */
 "Restore with Apple Configurator" = "Відновити за допомогою Apple Configurator";
 "Restore with Apple Configurator: How to" = "Відновити за допомогою Apple Configurator:\nПрошивки macOS — це файли IPSW, які можна використовувати для відновлення Mac із Silicon за допомогою Apple Configurator.\nДля цього вам потрібен інший Mac і кабель USB C, що може передавати живлення та дані.\nВідновлення Mac із Silicon стирає все на диску, і користувач втрачає всі дані, які не були заздалегідь збережені в резервній копії.";

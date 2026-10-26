@@ -70,7 +70,7 @@
 "Choose where to save downloaded installers" = "다운로드한 설치 프로그램을 저장할 위치 선택";
 
 /* Legacy macOS installers */
-"Legacy macOS Installers" = "레거시 macOS 설치 프로그램";
+"Legacy macOS Installers" = "↓ 레거시 macOS 설치 프로그램";
 "Download legacy macOS installers (10.7 - 10.12)" = "레거시 macOS 버전 다운로드 (10.7 - 10.12)";
 "Download macOS %@ %@" = "macOS %@ %@ 다운로드";
 
@@ -88,13 +88,12 @@
 "The installers list cannot be loaded or there are no installers available for this version of macOS." = "설치 프로그램 목록을 불러올 수 없거나 이 macOS 버전에 사용할 수 있는 설치 프로그램이 없습니다.";
 "Loading..." = "불러오는 중...";
 
-/* Apple Configurator Restore */
 /* Version 6 release browser */
 "Download Error" = "다운로드 오류";
 "The file '%@' could not be saved to the '%@' folder. Error: %@" = "'%@' 파일을 '%@' 폴더에 저장할 수 없습니다. 오류: %@";
 "macOS Library" = "macOS 라이브러리";
 "Choose a release to explore." = "살펴볼 버전을 선택하세요.";
-"Available Releases" = "사용 가능한 버전";
+"Available Releases" = "↓ 사용 가능한 버전";
 "Refresh" = "새로 고침";
 "Select a macOS release" = "macOS 버전 선택";
 "Available versions and download options will appear here." = "사용 가능한 버전과 다운로드 옵션이 여기에 표시됩니다.";
@@ -111,5 +110,6 @@
 "No active downloads" = "진행 중인 다운로드 없음";
 "You can only run up to 3 downloads at the same time. Please wait for a download to complete before starting a new one." = "동시에 최대 3개까지 다운로드할 수 있습니다. 다운로드가 완료될 때까지 기다린 후 새 다운로드를 시작하세요.";
 
+/* Apple Configurator Restore */
 "Restore with Apple Configurator" = "Apple Configurator로 복원";
 "Restore with Apple Configurator: How to" = "Apple Configurator로 복원:\nmacOS 펌웨어는 IPSW 파일이며 Apple Configurator를 사용해 Silicon Mac을 복원하는 데 사용할 수 있습니다.\n이 작업을 위해서는 다른 Mac과 전원 및 데이터 전송이 가능한 USB C 케이블이 필요합니다.\nSilicon Mac을 복원하면 드라이브의 모든 내용이 지워지며, 미리 백업하지 않은 모든 데이터를 잃게 됩니다.";

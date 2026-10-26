@@ -122,7 +122,7 @@
 
 /* Legacy macOS installers */
 "Legacy macOS Installers" =
-"مثبتات macOS القديمة";
+"مثبتات macOS القديمة↓ ";
 "Download legacy macOS installers (10.7 - 10.12)" =
 "تنزيل إصدارات macOS القديمة (10.7 - 10.12)";
 "Download macOS %@ %@" =
@@ -142,13 +142,12 @@
 "The installers list cannot be loaded or there are no installers available for this version of macOS." = "لا يمكن تحميل قائمة المثبتات أو لا توجد مثبتات متاحة لهذا الإصدار من نظام macOS.";
 "Loading..." = "جارٍ التحميل...";
 
-/* Apple Configurator Restore */
 /* Version 6 release browser */
 "Download Error" = "خطأ في التنزيل";
 "The file '%@' could not be saved to the '%@' folder. Error: %@" = "تعذر حفظ الملف '%@' في المجلد '%@'. الخطأ: %@";
 "macOS Library" = "مكتبة macOS";
 "Choose a release to explore." = "اختر إصدارًا لاستكشافه.";
-"Available Releases" = "الإصدارات المتاحة";
+"Available Releases" = "الإصدارات المتاحة↓ ";
 "Refresh" = "تحديث";
 "Select a macOS release" = "اختر إصدار macOS";
 "Available versions and download options will appear here." = "ستظهر هنا الإصدارات المتاحة وخيارات التنزيل.";
@@ -165,5 +164,6 @@
 "No active downloads" = "لا توجد تنزيلات نشطة";
 "You can only run up to 3 downloads at the same time. Please wait for a download to complete before starting a new one." = "يمكنك تشغيل ما يصل إلى 3 تنزيلات في الوقت نفسه. انتظر حتى يكتمل أحد التنزيلات قبل بدء تنزيل جديد.";
 
+/* Apple Configurator Restore */
 "Restore with Apple Configurator" = "الاستعادة باستخدام Apple Configurator";
 "Restore with Apple Configurator: How to" = "الاستعادة باستخدام Apple Configurator:\nبرامج macOS الثابتة هي ملفات IPSW يمكن استخدامها لاستعادة أجهزة Mac المزودة بـ Silicon باستخدام Apple Configurator.\nلهذه المهمة، تحتاج إلى جهاز Mac آخر وكابل USB C يمكنه نقل الطاقة والبيانات.\nاستعادة جهاز Mac المزود بـ Silicon تمسح كل شيء على القرص ويفقد المستخدم جميع البيانات التي لم يتم نسخها احتياطيًا مسبقًا.";

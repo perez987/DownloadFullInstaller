@@ -71,7 +71,7 @@
 "Choose where to save downloaded installers" = "Elige dónde descargar los paquetes instaladores";
 
 /* Legacy macOS installers */
-"Legacy macOS Installers" = "Instaladores pre-Big Sur";
+"Legacy macOS Installers" = "↓ Instaladores pre-Big Sur";
 "Download legacy macOS installers (10.7 - 10.12)" = "Descargar macOS anteriores a Big Sur (10.7 - 10.12)";
 "Download macOS %@ %@" = "Descargar macOS %@ %@";
 
@@ -89,13 +89,12 @@
 "The installers list cannot be loaded or there are no installers available for this version of macOS." = "No es posible cargar la lista de instaladores o no hay instaladores disponibles para esta versión de macOS.";
 "Loading..." = "Cargando...";
 
-/* Apple Configurator Restore */
 /* Version 6 release browser */
 "Download Error" = "Error de descarga";
 "The file '%@' could not be saved to the '%@' folder. Error: %@" = "No se pudo guardar el archivo '%@' en la carpeta '%@'. Error: %@";
 "macOS Library" = "Biblioteca de macOS";
 "Choose a release to explore." = "Selecciona una versión para explorar.";
-"Available Releases" = "Versiones disponibles";
+"Available Releases" = "↓ Versiones disponibles";
 "Refresh" = "Actualizar";
 "Select a macOS release" = "Selecciona una versión de macOS";
 "Available versions and download options will appear here." = "Aquí aparecerán las versiones disponibles y las opciones de descarga.";
@@ -112,5 +111,6 @@
 "No active downloads" = "No hay descargas activas";
 "You can only run up to 3 downloads at the same time. Please wait for a download to complete before starting a new one." = "Solo puedes realizar hasta 3 descargas simultáneas. Espera a que termine una descarga antes de iniciar otra.";
 
+/* Apple Configurator Restore */
 "Restore with Apple Configurator" = "Restaurar con Apple Configurator";
 "Restore with Apple Configurator: How to" = "Restaurar con Apple Configurator:\nLos firmwares de macOS son archivos IPSW que pueden usarse para restaurar un Mac Silicon usando Apple Configurator.\nPara esta tarea, necesitas otro Mac y un cable USB C que pueda transmitir energía y datos.\nRestaurar un Mac Silicon borra todo el contenido del disco y el usuario pierde cualquier dato que no se haya respaldado previamente.";

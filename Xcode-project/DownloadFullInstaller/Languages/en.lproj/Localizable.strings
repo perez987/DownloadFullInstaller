@@ -70,7 +70,7 @@
 "Choose where to save downloaded installers" = "Choose where to save the downloaded installers";
 
 /* Legacy macOS installers */
-"Legacy macOS Installers" = "Legacy macOS Installers";
+"Legacy macOS Installers" = "↓ Legacy macOS Installers";
 "Download legacy macOS installers (10.7 - 10.12)" = "Download legacy macOS installers (10.7 - 10.12)";
 "Download macOS %@ %@" = "Download macOS %@ %@";
 
@@ -88,13 +88,12 @@
 "The installers list cannot be loaded or there are no installers available for this version of macOS." = "The installers list cannot be loaded or there are no installers available for this version of macOS.";
 "Loading..." = "Loading...";
 
-/* Apple Configurator Restore */
 /* Version 6 release browser */
 "Download Error" = "Download Error";
 "The file '%@' could not be saved to the '%@' folder. Error: %@" = "The file '%@' could not be saved to the '%@' folder. Error: %@";
 "macOS Library" = "macOS Library";
 "Choose a release to explore." = "Choose a release to explore.";
-"Available Releases" = "Available Releases";
+"Available Releases" = "↓ Available Releases";
 "Refresh" = "Refresh";
 "Select a macOS release" = "Select a macOS release";
 "Available versions and download options will appear here." = "Available versions and download options will appear here.";
@@ -111,5 +110,6 @@
 "No active downloads" = "No active downloads";
 "You can only run up to 3 downloads at the same time. Please wait for a download to complete before starting a new one." = "You can only run up to 3 downloads at the same time. Please wait for a download to complete before starting a new one.";
 
+/* Apple Configurator Restore */
 "Restore with Apple Configurator" = "Restore with Apple Configurator.";
 "Restore with Apple Configurator: How to" = "Restore with Apple Configurator:\nmacOS firmwares are IPSW files that can be used to restore Silicon Macs using Apple Configurator.\nFor this task, you need another Mac and a USB C cable that can transmit power as well as data.\nRestoring a Silicon Mac erases everything on the drive and the user loses all data that has not been previously backed up.";

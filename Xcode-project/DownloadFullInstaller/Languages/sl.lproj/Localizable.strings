@@ -70,7 +70,7 @@
 "Choose where to save downloaded installers" = "Izberite, kam želite shraniti prenesene namestitvene datoteke";
 
 /* Legacy macOS installers */
-"Legacy macOS Installers" = "Starejše različice";
+"Legacy macOS Installers" = "↓ Starejše različice";
 "Download legacy macOS installers (10.7 - 10.12)" = "Prenesi starejše različice macOS (10.7 - 10.12)";
 "Download macOS %@ %@" = "Prenesi macOS %@ %@";
 
@@ -88,13 +88,12 @@
 "The installers list cannot be loaded or there are no installers available for this version of macOS." = "Seznama namestitvenih programov ni mogoče naložiti ali pa za to različico sistema macOS ni na voljo nobenih namestitvenih programov.";
 "Loading..." = "Nalaganje...";
 
-/* Apple Configurator Restore */
 /* Version 6 release browser */
 "Download Error" = "Napaka pri prenosu";
 "The file '%@' could not be saved to the '%@' folder. Error: %@" = "Datoteke '%@' ni bilo mogoče shraniti v mapo '%@'. Napaka: %@";
 "macOS Library" = "Knjižnica macOS";
 "Choose a release to explore." = "Izberite različico za ogled.";
-"Available Releases" = "Razpoložljive različice";
+"Available Releases" = "↓ Razpoložljive različice";
 "Refresh" = "Osveži";
 "Select a macOS release" = "Izberite različico macOS";
 "Available versions and download options will appear here." = "Tukaj bodo prikazane razpoložljive različice in možnosti prenosa.";
@@ -111,5 +110,6 @@
 "No active downloads" = "Ni aktivnih prenosov";
 "You can only run up to 3 downloads at the same time. Please wait for a download to complete before starting a new one." = "Hkrati lahko izvajate največ 3 prenose. Pred začetkom novega počakajte, da se eden od prenosov konča.";
 
+/* Apple Configurator Restore */
 "Restore with Apple Configurator" = "Obnovi z Apple Configurator";
 "Restore with Apple Configurator: How to" = "Obnovi z Apple Configurator:\nProgramska oprema macOS je v datotekah IPSW, ki jih lahko uporabite za obnovitev Macov s Silicon s pomočjo Apple Configuratorja.\nZa to opravilo potrebujete drug Mac in kabel USB C, ki lahko prenaša napajanje ter podatke.\nObnovitev Maca s Silicon izbriše vse na disku, uporabnik pa izgubi vse podatke, ki prej niso bili varnostno kopirani.";
