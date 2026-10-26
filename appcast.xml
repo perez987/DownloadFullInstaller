@@ -3,25 +3,16 @@
   <channel>
     <title>Download Full Installer</title>
     <item>
-      <title>Version 6.0.0</title>
-		<description>
-		  <![CDATA[
-			<h2>Important note before updating</h2>
-			<ul>
-			  <li>This is a major UI update</li>
-			  <li>Previous design has been replaced by a two-pane window</li>
-			  <li>App's features have not changed.</li>
-			</ul>
-		  ]]>
-		</description>
-      <sparkle:version>0600</sparkle:version>
-      <sparkle:shortVersionString>6.0.0</sparkle:shortVersionString>
+      <title>Version 6.0.1</title>
+		<description></description>
+      <sparkle:version>0601</sparkle:version>
+      <sparkle:shortVersionString>6.0.1</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>12</sparkle:minimumSystemVersion>
       <pubDate>Sat, 14 Mar 2026 18:25:00 +0000</pubDate>
       <enclosure
-        url="https://github.com/perez987/DownloadFullInstaller/releases/download/6.0.0/Download.Full.Installer.6.0.0.dmg"
-        sparkle:edSignature="OQSO3HBkeOmZ8ZW0LvW8Y+Mtv+3drLl4sENrV4lMNPLscciLjXGdvhdfa/1fr5wL7zrHxecpUayR900XU2C4Dw=="
-        length="5814631"
+        url="https://github.com/perez987/DownloadFullInstaller/releases/download/6.0.1/Download.Full.Installer.6.0.1.dmg"
+        sparkle:edSignature="TTBMYufsvmzauJ6f3RyDEp2Co586FDRTSrmoqQyynsnnVsvBo4NsM2cP0fvZU+rqag/aKt8CvrLakupVJuCOCg=="
+        length="5826224"
         type="application/octet-stream"
       />
     </item>
