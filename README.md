@@ -17,7 +17,7 @@
 
 The main window is now a wide, two-pane library with soft gradients and translucent surfaces. Choose Installers or Firmwares and a software update catalog on the left, then select a macOS release to see its available versions, build numbers, dates, sizes, and download actions on the right. The detail pane starts empty until you select a release.
 
-Legacy installers appear at the end of the installer list. All downloads share the queue at the bottom right, with up to three simultaneous transfers, individual Cancel buttons, and Show in Finder actions. Changing the selected release or content type does not hide or interrupt downloads. Firmware comes from a separate feed, so the catalog picker is disabled in firmware mode.
+Legacy installers are in a section at the end of the installer list, collapsed by default. Use the chevron in its header to expand or collapse it. All downloads share the queue at the bottom right, with up to three simultaneous transfers, individual Cancel buttons, and Show in Finder actions. Changing the selected release or content type does not hide or interrupt downloads. Firmware comes from a separate feed, so the catalog picker is disabled in firmware mode.
 
 |     |
 |:---:|
@@ -62,7 +62,7 @@ This repo exists to keep "Download Full Installer" alive and growing. Picking up
 
 ### Legacy macOS installer download
 
-The five available legacy macOS releases appear below the current releases in the left-hand installer list. Select one to download its disk image using the shared download queue. Open the downloaded DMG in Finder and run its package to create the installer app. Legacy downloads are independent of the selected software update catalog.
+Expand the Legacy macOS Installers section using its header chevron to reveal the five available legacy macOS releases below the current releases in the left-hand installer list. Select one to download its disk image using the shared download queue. Open the downloaded DMG in Finder and run its package to create the installer app. Legacy downloads are independent of the selected software update catalog.
 
 ### Create Installer App Feature
 

@@ -17,7 +17,7 @@
 
 La ventana principal ahora es una ventana amplia de dos paneles, con degradados suaves y superficies translúcidas. Elige Instaladores o Firmwares y un catálogo de actualización de software a la izquierda; después, selecciona una versión de macOS para ver a la derecha las versiones disponibles, números de compilación, fechas, tamaños y opciones de descarga. El panel de detalles permanece vacío hasta que selecciones una versión.
 
-Los instaladores antiguos aparecen al final de la lista de instaladores. Todas las descargas comparten la cola de la parte inferior derecha, con hasta tres transferencias simultáneas, botones Cancelar individuales y opciones para mostrar los archivos en Finder. Cambiar la versión o el tipo de contenido seleccionado no oculta ni interrumpe las descargas. El firmware procede de una fuente independiente, por lo que el selector de catálogos está desactivado en el modo de firmware.
+Los instaladores antiguos están en una sección al final de la lista de instaladores, contraída de forma predeterminada. Usa la flecha de su encabezado para expandirla o contraerla. Todas las descargas comparten la cola de la parte inferior derecha, con hasta tres transferencias simultáneas, botones Cancelar individuales y opciones para mostrar los archivos en Finder. Cambiar la versión o el tipo de contenido seleccionado no oculta ni interrumpe las descargas. El firmware procede de una fuente independiente, por lo que el selector de catálogos está desactivado en el modo de firmware.
 
 |     |
 |:---:|
@@ -62,7 +62,7 @@ Este repositorio existe para mantener vivo y en crecimiento «Download Full Inst
 
 ### Descarga de instaladores antiguos de macOS
 
-Las cinco versiones antiguas de macOS disponibles aparecen debajo de las versiones actuales en la lista de instaladores de la izquierda. Selecciona una para descargar su imagen de disco mediante la cola de descargas compartida. Abre la DMG descargado en Finder y ejecuta su paquete para crear la aplicación instaladora. Las descargas antiguas son independientes del catálogo de actualización de software seleccionado.
+Expande la sección de instaladores antiguos de macOS con la flecha de su encabezado para mostrar las cinco versiones antiguas disponibles debajo de las versiones actuales en la lista de instaladores de la izquierda. Selecciona una para descargar su imagen de disco mediante la cola de descargas compartida. Abre la DMG descargado en Finder y ejecuta su paquete para crear la aplicación instaladora. Las descargas antiguas son independientes del catálogo de actualización de software seleccionado.
 
 ### Función para crear la aplicación instaladora
 
