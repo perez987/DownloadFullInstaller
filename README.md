@@ -19,9 +19,7 @@ The main window is now a wide, two-pane library with soft gradients and transluc
 
 Legacy installers are in a section at the end of the installer list, collapsed by default. Use the chevron in its header to expand or collapse it. All downloads share the queue at the bottom right, with up to three simultaneous transfers, individual Cancel buttons, and Show in Finder actions. Changing the selected release or content type does not hide or interrupt downloads. Firmware comes from a separate feed, so the catalog picker is disabled in firmware mode.
 
-|     |
-|:---:|
-| ![Main window](Images/Main-window.png) |
+![Main window](Images/Main-window.png)
 
 ### Preface
 

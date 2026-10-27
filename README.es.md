@@ -19,9 +19,7 @@ La ventana principal ahora es una ventana amplia de dos paneles, con degradados 
 
 Los instaladores antiguos están en una sección al final de la lista de instaladores, contraída de forma predeterminada. Usa la flecha de su encabezado para expandirla o contraerla. Todas las descargas comparten la cola de la parte inferior derecha, con hasta tres transferencias simultáneas, botones Cancelar individuales y opciones para mostrar los archivos en Finder. Cambiar la versión o el tipo de contenido seleccionado no oculta ni interrumpe las descargas. El firmware procede de una fuente independiente, por lo que el selector de catálogos está desactivado en el modo de firmware.
 
-|     |
-|:---:|
-| ![Ventana principal](Images/Main-window-es.png) |
+![Ventana principal](Images/Main-window-es.png)
 
 ### Prefacio
 
