@@ -363,10 +363,12 @@ final class DisplayLinkObserver {
         let refreshPeriod = 1.0 / Double(refreshRate)
 
         let timer = Timer(timeInterval: refreshPeriod, repeats: true) { [weak self] _ in
-            guard let self else {
-                return
+            MainActor.assumeIsolated {
+                 guard let self else {
+                     return
+                 }
+                 self.callback(self, refreshPeriod)
             }
-            callback(self, refreshPeriod)
         }
         RunLoop.main.add(timer, forMode: .common)
         self.timer = timer

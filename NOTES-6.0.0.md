@@ -12,4 +12,5 @@
 - Updated interface translations in all 12 supported locales.
 - Made catalog loading independent of the selected release, ignored stale catalog responses, and exposed loading failures with a refresh action.
 - Preserved download replacement prompts, custom destination folders, URL copying, automatic network retries, Dock progress, Sparkle updates, and sleep prevention.
-- Prevented cancellation of one download from cleaning up temporary files belonging to other active downloads.
+- Prevented cancellation of one download from cleaning up temporary files belonging to other active downloads
+- Made modern installer and firmware checkmarks reflect files currently in the destination folder when switching releases or catalogs, without monitoring the folder or changing legacy download history.
