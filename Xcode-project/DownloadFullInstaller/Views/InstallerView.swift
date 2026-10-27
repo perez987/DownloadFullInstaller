@@ -37,16 +37,8 @@ struct InstallerView: View {
             Prefs.stopAccessingDownloadURL(accessStarted)
         }
 
-        // Check if file exists on disk (primary check)
-        if FileManager.default.fileExists(atPath: file.path) {
-            isDownloaded = true
-            return
-        }
-
-        // Also check if this file is in the completed downloads list
-        // This ensures the view updates immediately when a download completes
-        // (before the user dismisses the completion notification)
-        isDownloaded = multiDownloadManager.completedDownloads.contains { $0.localURL == file }
+        // Download history can outlive a file deleted outside the app.
+        isDownloaded = FileManager.default.fileExists(atPath: file.path)
     }
 
     var body: some View {
@@ -232,12 +224,8 @@ struct FirmwareView: View {
             Prefs.stopAccessingDownloadURL(accessStarted)
         }
         
-        if FileManager.default.fileExists(atPath: file.path) {
-            isDownloaded = true
-            return
-        }
-        
-        isDownloaded = multiDownloadManager.completedDownloads.contains { $0.localURL == file }
+        // Download history can outlive a file deleted outside the app.
+        isDownloaded = FileManager.default.fileExists(atPath: file.path)
     }
     
     var body: some View {
