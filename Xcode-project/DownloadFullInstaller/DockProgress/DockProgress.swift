@@ -1,11 +1,9 @@
 import Cocoa
 import SwiftUI
 
-/**
- Show progress in your app's Dock icon.
-
- Use either ``progress`` or ``progressInstance``.
- */
+/// Show progress in your app's Dock icon.
+///
+/// Use either ``progress`` or ``progressInstance``.
 @MainActor
 public enum DockProgress {
     private static var progressObserver: NSKeyValueObservation?
@@ -13,25 +11,28 @@ public enum DockProgress {
     private static var elapsedTimeSinceLastRefresh = 0.0
     private static var isResetting = false
 
-    private static var displayLinkObserver: DisplayLinkObserver = DisplayLinkObserver { observer, refreshPeriod in
-        let speed = 1.0
+    private static var displayLinkObserver: DisplayLinkObserver =
+        DisplayLinkObserver { observer, refreshPeriod in
+            let speed = 1.0
 
-        elapsedTimeSinceLastRefresh += speed * refreshPeriod
+            elapsedTimeSinceLastRefresh += speed * refreshPeriod
 
-        if (displayedProgress - progress).magnitude <= 0.01 {
-            displayedProgress = progress
-            elapsedTimeSinceLastRefresh = 0
-            observer.stop()
-        } else {
-            displayedProgress = Easing.linearInterpolation(
-                start: displayedProgress,
-                end: progress,
-                progress: Easing.easeInOut(progress: elapsedTimeSinceLastRefresh)
-            )
+            if (displayedProgress - progress).magnitude <= 0.01 {
+                displayedProgress = progress
+                elapsedTimeSinceLastRefresh = 0
+                observer.stop()
+            } else {
+                displayedProgress = Easing.linearInterpolation(
+                    start: displayedProgress,
+                    end: progress,
+                    progress: Easing.easeInOut(
+                        progress: elapsedTimeSinceLastRefresh
+                    )
+                )
+            }
+
+            updateDockIcon()
         }
-
-        updateDockIcon()
-    }
 
     private static let dockContentView: ContentView = {
         let view = ContentView()
@@ -66,7 +67,9 @@ public enum DockProgress {
             }
 
             // TODO: Use AsyncSequence when targeting macOS 15.
-            progressObserver = progressInstance.observe(\.fractionCompleted) { sender, _ in
+            progressObserver = progressInstance.observe(\.fractionCompleted) {
+                sender,
+                _ in
                 Task { @MainActor in
                     guard
                         !sender.isCancelled,
@@ -79,7 +82,9 @@ public enum DockProgress {
                 }
             }
 
-            finishedObserver = progressInstance.observe(\.isFinished) { sender, _ in
+            finishedObserver = progressInstance.observe(\.isFinished) {
+                sender,
+                _ in
                 Task { @MainActor in
                     guard
                         !sender.isCancelled,
@@ -194,9 +199,9 @@ public enum DockProgress {
         let absNumber = abs(number)
 
         switch absNumber {
-        case 0 ..< 1000:
+        case 0..<1000:
             return "\(number)"
-        case 1000 ..< 10000:
+        case 1000..<10000:
             return "\(number.signum() * (absNumber / 1000))k"
         default:
             return "\(number.signum() * 9)k+"
@@ -219,7 +224,7 @@ public enum DockProgress {
     }
 }
 
-public extension DockProgress {
+extension DockProgress {
     /**
      The available progress styles.
 
@@ -229,7 +234,7 @@ public extension DockProgress {
      - `.badge` ![](https://github.com/sindresorhus/DockProgress/blob/main/screenshot-badge.gif?raw=true)
      - `.pie` ![](https://github.com/sindresorhus/DockProgress/blob/main/screenshot-pie.gif?raw=true)
      */
-    enum Style: Sendable {
+    public enum Style: Sendable {
         /**
          Progress bar style.
 
@@ -272,7 +277,10 @@ public extension DockProgress {
 
          ![](https://github.com/sindresorhus/DockProgress/blob/main/screenshot-badge.gif?raw=true)
          */
-        case badge(color: Color = .accentColor, badgeValue: @MainActor () -> Int)
+        case badge(
+            color: Color = .accentColor,
+            badgeValue: @MainActor () -> Int
+        )
 
         /**
          Pie style.
@@ -302,7 +310,11 @@ public extension DockProgress {
 
          - Note: This provides a SwiftUI-native way to create custom progress indicators with immediate mode drawing.
          */
-        case customCanvas(@MainActor (_ context: GraphicsContext, _ size: CGSize, _ progress: Double) -> Void)
+        case customCanvas(
+            @MainActor (
+                _ context: GraphicsContext, _ size: CGSize, _ progress: Double
+            ) -> Void
+        )
 
         /**
          Custom style using legacy Core Graphics drawing.
@@ -319,19 +331,28 @@ extension DockProgress.Style: Equatable {
         switch (lhs, rhs) {
         case (.bar, .bar):
             true
-        case let (.squircle(lhsInset, lhsColor), .squircle(rhsInset, rhsColor)):
+        case (
+            .squircle(let lhsInset, let lhsColor),
+            .squircle(let rhsInset, let rhsColor)
+        ):
             lhsInset == rhsInset && lhsColor == rhsColor
-        case let (.circle(lhsRadius, lhsColor), .circle(rhsRadius, rhsColor)):
+        case (
+            .circle(let lhsRadius, let lhsColor),
+            .circle(let rhsRadius, let rhsColor)
+        ):
             lhsRadius == rhsRadius && lhsColor == rhsColor
-        case let (.badge(lhsColor, lhsBadgeValue), .badge(rhsColor, rhsBadgeValue)):
+        case (
+            .badge(let lhsColor, let lhsBadgeValue),
+            .badge(let rhsColor, let rhsBadgeValue)
+        ):
             lhsColor == rhsColor && sameIdentity(lhsBadgeValue, rhsBadgeValue)
-        case let (.pie(lhsColor), .pie(rhsColor)):
+        case (.pie(let lhsColor), .pie(let rhsColor)):
             lhsColor == rhsColor
-        case let (.customView(lhsView), .customView(rhsView)):
+        case (.customView(let lhsView), .customView(let rhsView)):
             sameIdentity(lhsView, rhsView)
-        case let (.customCanvas(lhsCanvas), .customCanvas(rhsCanvas)):
+        case (.customCanvas(let lhsCanvas), .customCanvas(let rhsCanvas)):
             sameIdentity(lhsCanvas, rhsCanvas)
-        case let (.custom(lhsHandler), .custom(rhsHandler)):
+        case (.custom(let lhsHandler), .custom(let rhsHandler)):
             sameIdentity(lhsHandler, rhsHandler)
         default:
             false
@@ -373,24 +394,51 @@ extension DockProgress {
 
             switch style {
             case .bar:
-                updateHostingView(with: CanvasBarStyle(progress: displayedProgress))
-            case let .squircle(inset, color):
-                updateHostingView(with: CanvasSquircleStyle(progress: displayedProgress, inset: inset, color: color))
-            case let .circle(radius, color):
-                updateHostingView(with: CanvasCircleStyle(progress: displayedProgress, radius: radius, color: color))
-            case let .badge(color, badgeValue):
-                updateHostingView(with: CanvasBadgeStyle(progress: displayedProgress, color: color, badgeValue: badgeValue()))
-            case let .pie(color):
-                updateHostingView(with: CanvasPieStyle(progress: displayedProgress, color: color))
-            case let .custom(drawingHandler):
+                updateHostingView(
+                    with: CanvasBarStyle(progress: displayedProgress)
+                )
+            case .squircle(let inset, let color):
+                updateHostingView(
+                    with: CanvasSquircleStyle(
+                        progress: displayedProgress,
+                        inset: inset,
+                        color: color
+                    )
+                )
+            case .circle(let radius, let color):
+                updateHostingView(
+                    with: CanvasCircleStyle(
+                        progress: displayedProgress,
+                        radius: radius,
+                        color: color
+                    )
+                )
+            case .badge(let color, let badgeValue):
+                updateHostingView(
+                    with: CanvasBadgeStyle(
+                        progress: displayedProgress,
+                        color: color,
+                        badgeValue: badgeValue()
+                    )
+                )
+            case .pie(let color):
+                updateHostingView(
+                    with: CanvasPieStyle(
+                        progress: displayedProgress,
+                        color: color
+                    )
+                )
+            case .custom(let drawingHandler):
                 resetHostingView()
                 drawingHandler(bounds)
-            case let .customView(viewProvider):
+            case .customView(let viewProvider):
                 updateHostingView(with: viewProvider(displayedProgress))
-            case let .customCanvas(canvasRenderer):
-                updateHostingView(with: Canvas { context, size in
-                    canvasRenderer(context, size, displayedProgress)
-                })
+            case .customCanvas(let canvasRenderer):
+                updateHostingView(
+                    with: Canvas { context, size in
+                        canvasRenderer(context, size, displayedProgress)
+                    }
+                )
             }
         }
 
@@ -430,17 +478,17 @@ extension DockProgress {
     }
 }
 
-private extension DockProgress {
+extension DockProgress {
     /**
      Standard frame dimensions for all Canvas styles.
      */
-    static let canvasFrameWidth: CGFloat = 128
-    static let canvasFrameHeight: CGFloat = 128
+    fileprivate static let canvasFrameWidth: CGFloat = 128
+    fileprivate static let canvasFrameHeight: CGFloat = 128
 
     /**
      Progress multiplier to ensure start and end points meet (accounts for round line caps).
      */
-    static let progressMultiplier: Double = 1.02
+    fileprivate static let progressMultiplier: Double = 1.02
 }
 
 extension Path {
@@ -472,13 +520,29 @@ extension Path {
         return Path { path in
             path.move(to: points.p1)
             path.addLine(to: points.p2)
-            path.addCurve(to: points.p3, control1: corners.topRight, control2: corners.topRight)
+            path.addCurve(
+                to: points.p3,
+                control1: corners.topRight,
+                control2: corners.topRight
+            )
             path.addLine(to: points.p4)
-            path.addCurve(to: points.p5, control1: corners.bottomRight, control2: corners.bottomRight)
+            path.addCurve(
+                to: points.p5,
+                control1: corners.bottomRight,
+                control2: corners.bottomRight
+            )
             path.addLine(to: points.p6)
-            path.addCurve(to: points.p7, control1: corners.bottomLeft, control2: corners.bottomLeft)
+            path.addCurve(
+                to: points.p7,
+                control1: corners.bottomLeft,
+                control2: corners.bottomLeft
+            )
             path.addLine(to: points.p8)
-            path.addCurve(to: points.p1, control1: corners.topLeft, control2: corners.topLeft)
+            path.addCurve(
+                to: points.p1,
+                control1: corners.topLeft,
+                control2: corners.topLeft
+            )
         }
     }
 
@@ -568,13 +632,22 @@ struct CanvasSquircleStyle: View {
     var body: some View {
         Canvas { context, size in
             let totalInset = Self.defaultSquircleInset + (inset ?? 0)
-            let rect = CGRect(origin: .zero, size: size).insetBy(dx: totalInset, dy: totalInset)
+            let rect = CGRect(origin: .zero, size: size).insetBy(
+                dx: totalInset,
+                dy: totalInset
+            )
             let path = Path.squircle(in: rect)
 
             context.stroke(
-                path.trimmedPath(from: 0, to: progress * DockProgress.progressMultiplier),
+                path.trimmedPath(
+                    from: 0,
+                    to: progress * DockProgress.progressMultiplier
+                ),
                 with: .color(color),
-                style: StrokeStyle(lineWidth: Self.squircleStrokeWidth, lineCap: .round)
+                style: StrokeStyle(
+                    lineWidth: Self.squircleStrokeWidth,
+                    lineCap: .round
+                )
             )
         }
     }
@@ -593,9 +666,15 @@ struct CanvasCircleStyle: View {
             let path = Path.progressCircle(center: center, radius: radius)
 
             context.stroke(
-                path.trimmedPath(from: 0, to: progress * DockProgress.progressMultiplier),
+                path.trimmedPath(
+                    from: 0,
+                    to: progress * DockProgress.progressMultiplier
+                ),
                 with: .color(color),
-                style: StrokeStyle(lineWidth: Self.circleStrokeWidth, lineCap: .round)
+                style: StrokeStyle(
+                    lineWidth: Self.circleStrokeWidth,
+                    lineCap: .round
+                )
             )
         }
     }
@@ -615,7 +694,10 @@ struct CanvasBadgeStyle: View {
     var body: some View {
         Canvas { context, size in
             let radius = size.width / Self.radiusDivisor
-            let center = CGPoint(x: size.width - radius - 4, y: size.height - radius - 4)
+            let center = CGPoint(
+                x: size.width - radius - 4,
+                y: size.height - radius - 4
+            )
 
             // Background
             let bgRect = CGRect.circleRect(center: center, radius: radius)
@@ -626,10 +708,16 @@ struct CanvasBadgeStyle: View {
 
             // Progress ring
             let progressRadius = radius - Self.progressInset
-            let progressPath = Path.progressCircle(center: center, radius: progressRadius)
+            let progressPath = Path.progressCircle(
+                center: center,
+                radius: progressRadius
+            )
 
             context.stroke(
-                progressPath.trimmedPath(from: 0, to: progress * DockProgress.progressMultiplier),
+                progressPath.trimmedPath(
+                    from: 0,
+                    to: progress * DockProgress.progressMultiplier
+                ),
                 with: .color(color),
                 style: StrokeStyle(lineWidth: Self.strokeWidth, lineCap: .butt)
             )
@@ -638,7 +726,12 @@ struct CanvasBadgeStyle: View {
             let text = DockProgress.kiloShortStringFromInt(number: badgeValue)
             context.draw(
                 Text(text)
-                    .font(.system(size: DockProgress.scaledBadgeFontSize(text: text), weight: .bold))
+                    .font(
+                        .system(
+                            size: DockProgress.scaledBadgeFontSize(text: text),
+                            weight: .bold
+                        )
+                    )
                     .foregroundColor(Self.textColor),
                 at: center
             )
@@ -655,7 +748,10 @@ struct CanvasPieStyle: View {
     var body: some View {
         Canvas { context, size in
             let radius = size.width / Self.radiusDivisor
-            let center = CGPoint(x: size.width - radius - 4, y: size.height - radius - 4)
+            let center = CGPoint(
+                x: size.width - radius - 4,
+                y: size.height - radius - 4
+            )
 
             // Background
             let bgRect = CGRect.circleRect(center: center, radius: radius)
@@ -683,7 +779,7 @@ struct CanvasPieStyle: View {
     }
 }
 
-public extension View {
+extension View {
     /**
      Sets the dock progress indicator.
 
@@ -708,7 +804,7 @@ public extension View {
      	- style: The style to use for displaying progress. Defaults to `.bar`.
      	- resetsOnDisappear: Whether to reset the progress when the view disappears. Defaults to `true`.
      */
-    func dockProgress(
+    public func dockProgress(
         _ progress: Double?,
         style: DockProgress.Style = .bar,
         resetsOnDisappear: Bool = true
@@ -730,7 +826,9 @@ private struct DockProgressModifier: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .task(id: DockProgressTaskIdentity(progress: progress, style: style)) {
+            .task(
+                id: DockProgressTaskIdentity(progress: progress, style: style)
+            ) {
                 guard let progress else {
                     DockProgress.resetProgress()
                     return

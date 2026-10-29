@@ -12,7 +12,10 @@ struct GlassBackground: View {
             .fill(.ultraThinMaterial)
             .overlay {
                 LinearGradient(
-                    colors: [.blue.opacity(0.12), .purple.opacity(0.06), .mint.opacity(0.10)],
+                    colors: [
+                        .blue.opacity(0.12), .purple.opacity(0.06),
+                        .mint.opacity(0.10),
+                    ],
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 )
@@ -27,7 +30,10 @@ extension View {
     @ViewBuilder
     func glassCard(cornerRadius: CGFloat = 10) -> some View {
         if #available(macOS 26.0, *) {
-            glassEffect(.regular, in: RoundedRectangle(cornerRadius: cornerRadius))
+            glassEffect(
+                .regular,
+                in: RoundedRectangle(cornerRadius: cornerRadius)
+            )
         } else {
             background(
                 RoundedRectangle(cornerRadius: cornerRadius)
@@ -42,7 +48,10 @@ extension View {
     func glassRow(cornerRadius: CGFloat = 8) -> some View {
         if #available(macOS 26.0, *) {
             listRowBackground(Color.clear)
-                .glassEffect(.regular, in: RoundedRectangle(cornerRadius: cornerRadius))
+                .glassEffect(
+                    .regular,
+                    in: RoundedRectangle(cornerRadius: cornerRadius)
+                )
         } else {
             padding(8)
                 .background(
@@ -56,11 +65,18 @@ extension View {
     /// Applies a soft colored background to a List row.
     /// On macOS 26+ uses a glass tint; on earlier systems uses a semi-transparent color fill.
     @ViewBuilder
-    func coloredRow(_ color: Color = .blue, opacity: Double = 0.08, cornerRadius: CGFloat = 8) -> some View {
+    func coloredRow(
+        _ color: Color = .blue,
+        opacity: Double = 0.08,
+        cornerRadius: CGFloat = 8
+    ) -> some View {
         if #available(macOS 26.0, *) {
             padding(4)
                 .listRowBackground(Color.clear)
-                .glassEffect(.regular.tint(color.opacity(opacity)), in: RoundedRectangle(cornerRadius: cornerRadius))
+                .glassEffect(
+                    .regular.tint(color.opacity(opacity)),
+                    in: RoundedRectangle(cornerRadius: cornerRadius)
+                )
         } else {
             padding(8)
                 .background(
@@ -80,7 +96,10 @@ extension View {
     @ViewBuilder
     func glassSubtle(cornerRadius: CGFloat = 8) -> some View {
         if #available(macOS 26.0, *) {
-            glassEffect(.regular, in: RoundedRectangle(cornerRadius: cornerRadius))
+            glassEffect(
+                .regular,
+                in: RoundedRectangle(cornerRadius: cornerRadius)
+            )
         } else {
             background(
                 RoundedRectangle(cornerRadius: cornerRadius)

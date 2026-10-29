@@ -30,11 +30,11 @@ class SUCatalog: ObservableObject {
 
     init() {
         // Diagnostic logging for sandbox initialization
-//        print("=== SUCatalog init() started ===")
+        //        print("=== SUCatalog init() started ===")
         // Don't load() here - it will be called from onAppear in the UI
         // Loading during init happens too early, before sandbox is fully initialized
-//        print("SUCatalog initialized without loading data")
-//        print("=== SUCatalog init() completed ===")
+        //        print("SUCatalog initialized without loading data")
+        //        print("=== SUCatalog init() completed ===")
     }
 
     func load() {
@@ -53,9 +53,14 @@ class SUCatalog: ObservableObject {
 
         for item in catalogURLArray {
             let sessionConfig = URLSessionConfiguration.ephemeral
-            let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
+            let session = URLSession(
+                configuration: sessionConfig,
+                delegate: nil,
+                delegateQueue: nil
+            )
 
-            let task = session.dataTask(with: item) { [weak self] data, response, error in
+            let task = session.dataTask(with: item) {
+                [weak self] data, response, error in
                 Task { @MainActor [weak self] in
                     guard let self, loadID == requestID else { return }
                     defer {
@@ -65,7 +70,8 @@ class SUCatalog: ObservableObject {
                     do {
                         if let error { throw error }
                         guard let httpResponse = response as? HTTPURLResponse,
-                              httpResponse.statusCode == 200, let data else {
+                            httpResponse.statusCode == 200, let data
+                        else {
                             throw URLError(.badServerResponse)
                         }
                         try decode(data: data)
@@ -138,7 +144,14 @@ final class FirmwareProduct: Identifiable {
         url.lastPathComponent
     }
 
-    init(osName: String, productVersion: String, buildVersion: String, size: UInt64, url: URL, postDate: Date) {
+    init(
+        osName: String,
+        productVersion: String,
+        buildVersion: String,
+        size: UInt64,
+        url: URL,
+        postDate: Date
+    ) {
         id = "\(productVersion)-\(buildVersion)-\(url.absoluteString)"
         self.osName = osName
         self.productVersion = productVersion
@@ -151,7 +164,8 @@ final class FirmwareProduct: Identifiable {
 
 @MainActor
 final class FirmwareCatalog: ObservableObject {
-    private static let firmwaresURL = "https://api.ipsw.me/v2.1/firmwares.json/condensed"
+    private static let firmwaresURL =
+        "https://api.ipsw.me/v2.1/firmwares.json/condensed"
     ///    private static let firmwaresURL = "https://api.ipsw.me/v3/firmwares.json/condensed" // --> to test the message when firmares list is empty
     private let releaseDateFormatter = ISO8601DateFormatter()
 
@@ -179,10 +193,12 @@ final class FirmwareCatalog: ObservableObject {
             }
 
             guard let response = response as? HTTPURLResponse,
-                  response.statusCode == 200, let data else {
+                response.statusCode == 200, let data
+            else {
                 Task { @MainActor [weak self] in
                     self?.isLoading = false
-                    self?.errorMessage = URLError(.badServerResponse).localizedDescription
+                    self?.errorMessage =
+                        URLError(.badServerResponse).localizedDescription
                 }
                 return
             }
@@ -199,10 +215,16 @@ final class FirmwareCatalog: ObservableObject {
         }
 
         let selectedVersion = nameOS[selectedOS] ?? "99"
-        let selectedMajorVersion = Int(selectedVersion.components(separatedBy: ".").first ?? "")
+        let selectedMajorVersion = Int(
+            selectedVersion.components(separatedBy: ".").first ?? ""
+        )
 
         return firmwares.filter { firmware in
-            let majorVersion = Int(firmware.productVersion.components(separatedBy: ".").first ?? "") ?? 0
+            let majorVersion =
+                Int(
+                    firmware.productVersion.components(separatedBy: ".").first
+                        ?? ""
+                ) ?? 0
 
             if majorVersion < 11 {
                 return false
@@ -219,21 +241,31 @@ final class FirmwareCatalog: ObservableObject {
     private func decode(data: Data) {
         do {
             let decoder = JSONDecoder()
-            let response = try decoder.decode(IPSWFirmwaresResponse.self, from: data)
+            let response = try decoder.decode(
+                IPSWFirmwaresResponse.self,
+                from: data
+            )
             var uniqueFirmwares = [String: FirmwareProduct]()
 
-            for (identifier, device) in response.devices where identifier.contains("Mac") {
+            for (identifier, device) in response.devices
+            where identifier.contains("Mac") {
                 for firmware in device.firmwares {
                     guard
                         let url = URL(string: firmware.url),
                         firmware.url.lowercased().contains(".ipsw"),
-                        let majorVersion = Int(firmware.version.components(separatedBy: ".").first ?? ""),
+                        let majorVersion = Int(
+                            firmware.version.components(separatedBy: ".").first
+                                ?? ""
+                        ),
                         majorVersion >= 11
                     else {
                         continue
                     }
 
-                    let postDate = releaseDateFormatter.date(from: firmware.releasedate ?? "") ?? Date.distantPast
+                    let postDate =
+                        releaseDateFormatter.date(
+                            from: firmware.releasedate ?? ""
+                        ) ?? Date.distantPast
                     let osName = osName(for: majorVersion)
                     let item = FirmwareProduct(
                         osName: osName,
@@ -244,14 +276,18 @@ final class FirmwareCatalog: ObservableObject {
                         postDate: postDate
                     )
 
-                    let key = "\(firmware.version)-\(firmware.buildid)-\(firmware.url)"
+                    let key =
+                        "\(firmware.version)-\(firmware.buildid)-\(firmware.url)"
                     uniqueFirmwares[key] = item
                 }
             }
 
             let sortedFirmwares = uniqueFirmwares.values.sorted {
                 if $0.postDate == $1.postDate {
-                    return $0.productVersion.compare($1.productVersion, options: .numeric) == .orderedDescending
+                    return $0.productVersion.compare(
+                        $1.productVersion,
+                        options: .numeric
+                    ) == .orderedDescending
                 }
                 return $0.postDate > $1.postDate
             }

@@ -27,12 +27,21 @@ import Foundation
     private var currentString = String()
     private var keysParsed = 0
 
-    func parser(_: XMLParser, didStartElement elementName: String, namespaceURI _: String?, qualifiedName _: String?, attributes attributeDict: [String: String] = [:]) {
+    func parser(
+        _: XMLParser,
+        didStartElement elementName: String,
+        namespaceURI _: String?,
+        qualifiedName _: String?,
+        attributes attributeDict: [String: String] = [:]
+    ) {
         if elementName == Elements.pkgref.rawValue {
-            if attributeDict["id"] == "InstallAssistant" || attributeDict["id"] == "InstallESDDmg" {
+            if attributeDict["id"] == "InstallAssistant"
+                || attributeDict["id"] == "InstallESDDmg"
+            {
                 if let version = attributeDict["version"] {
                     installerVersion = version
-                    osName = nameOS[String(installerVersion.prefix(2))] ?? "macOS"
+                    osName =
+                        nameOS[String(installerVersion.prefix(2))] ?? "macOS"
                 }
             }
             if attributeDict["id"] == "InstallESDDmg" {
@@ -55,7 +64,12 @@ import Foundation
         self.elementName = elementName
     }
 
-    func parser(_: XMLParser, didEndElement elementName: String, namespaceURI _: String?, qualifiedName _: String?) {
+    func parser(
+        _: XMLParser,
+        didEndElement elementName: String,
+        namespaceURI _: String?,
+        qualifiedName _: String?
+    ) {
         if elementName == Elements.auxinfo.rawValue {
             parsingAuxinfo = false
         }
@@ -74,7 +88,9 @@ import Foundation
     }
 
     func parser(_: XMLParser, foundCharacters string: String) {
-        let data = string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        let data = string.trimmingCharacters(
+            in: CharacterSet.whitespacesAndNewlines
+        )
 
         if !data.isEmpty {
             if elementName == Elements.title.rawValue {

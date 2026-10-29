@@ -18,20 +18,26 @@ struct SettingsView: View {
         var path = downloadPath
         // If path is empty, show the default Downloads folder
         if path.isEmpty {
-            if let defaultPath = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first?.path {
+            if let defaultPath = FileManager.default.urls(
+                for: .downloadsDirectory,
+                in: .userDomainMask
+            ).first?.path {
                 path = defaultPath
             }
         }
         // Replace home directory with tilde if applicable
         if path.hasPrefix(NSHomeDirectory()) {
-            displayPath = path.replacingOccurrences(of: NSHomeDirectory(), with: "~")
+            displayPath = path.replacingOccurrences(
+                of: NSHomeDirectory(),
+                with: "~"
+            )
         } else {
             displayPath = path
         }
     }
 
     var body: some View {
-        ZStack { 
+        ZStack {
             GlassBackground()
 
             VStack(spacing: 0) {
@@ -46,9 +52,14 @@ struct SettingsView: View {
                             .foregroundStyle(.blue)
                     }
 
-                    Text(NSLocalizedString("Settings", comment: "Settings window title"))
-                        .font(.title3)
-                        .fontWeight(.semibold)
+                    Text(
+                        NSLocalizedString(
+                            "Settings",
+                            comment: "Settings window title"
+                        )
+                    )
+                    .font(.title3)
+                    .fontWeight(.semibold)
                 }
                 .padding(.top, 6)
                 .padding(.bottom, 20)
@@ -59,10 +70,15 @@ struct SettingsView: View {
                 // Download folder section
                 VStack(alignment: .leading, spacing: 14) {
                     Label {
-                        Text(NSLocalizedString("Download Location", comment: "Download location label"))
-                            .font(.body)
-                            .fontWeight(.medium)
-                            .foregroundStyle(.secondary)
+                        Text(
+                            NSLocalizedString(
+                                "Download Location",
+                                comment: "Download location label"
+                            )
+                        )
+                        .font(.body)
+                        .fontWeight(.medium)
+                        .foregroundStyle(.secondary)
                     } icon: {
                         Image(systemName: "arrow.down.circle")
                             .foregroundStyle(.blue)
@@ -90,17 +106,27 @@ struct SettingsView: View {
                     }) {
                         HStack(spacing: 6) {
                             Image(systemName: "folder.badge.plus")
-                            Text(NSLocalizedString("Select Download Folder", comment: ""))
+                            Text(
+                                NSLocalizedString(
+                                    "Select Download Folder",
+                                    comment: ""
+                                )
+                            )
                         }
                     }
                     .buttonStyle(.borderedProminent)
-                    .help(NSLocalizedString("Choose where to save downloaded installers", comment: ""))
+                    .help(
+                        NSLocalizedString(
+                            "Choose where to save downloaded installers",
+                            comment: ""
+                        )
+                    )
                 }
                 .padding(.horizontal, 24)
                 .padding(.top, 18)
                 .padding(.bottom, 20)
 
-//                Spacer()
+                //                Spacer()
 
                 Divider()
                     .padding(.horizontal, 20)
@@ -108,7 +134,8 @@ struct SettingsView: View {
                 // Close button
                 HStack {
                     Spacer()
-                    Button(NSLocalizedString("Close", comment: "Close button")) {
+                    Button(NSLocalizedString("Close", comment: "Close button"))
+                    {
                         dismiss()
                     }
                     .keyboardShortcut(.defaultAction)
@@ -132,7 +159,7 @@ struct SettingsView: View {
             allowsMultipleSelection: false
         ) { result in
             switch result {
-            case let .success(urls):
+            case .success(let urls):
                 if let selectedURL = urls.first {
                     // Start accessing security-scoped resource
                     _ = selectedURL.startAccessingSecurityScopedResource()
@@ -148,7 +175,7 @@ struct SettingsView: View {
 
                     print("Download path set to: \(selectedURL.path)")
                 }
-            case let .failure(error):
+            case .failure(let error):
                 print("Error selecting folder: \(error.localizedDescription)")
             }
         }

@@ -40,9 +40,10 @@ enum Prefs {
     /// Delete preferences plist file, the app will run as if it were the first time
     static func delPlist() {
         let fileManager = FileManager.default
-        let directory = URL.libraryDirectory.appending(path: "Preferences").path()
+        let directory = URL.libraryDirectory.appending(path: "Preferences")
+            .path()
         let documentURL = directory + "/perez987.DownloadFullInstaller.plist"
-//            print("Preferences plist file: \(documentURL)")
+        //            print("Preferences plist file: \(documentURL)")
         do {
             try fileManager.removeItem(atPath: documentURL)
             print("Preferences plist file deleted successfully")
@@ -52,20 +53,26 @@ enum Prefs {
     }
 
     static var seedProgram: SeedProgram {
-        let seedValue = UserDefaults.standard.string(forKey: Prefs.key(.seedProgram)) ?? ""
+        let seedValue =
+            UserDefaults.standard.string(forKey: Prefs.key(.seedProgram)) ?? ""
         return SeedProgram(rawValue: seedValue) ?? .noSeed
     }
 
     static var osNameID: OsNameID {
-        let osValue = UserDefaults.standard.string(forKey: Prefs.key(.osNameID)) ?? ""
+        let osValue =
+            UserDefaults.standard.string(forKey: Prefs.key(.osNameID)) ?? ""
         return OsNameID(rawValue: osValue) ?? .osAll
     }
 
     static var downloadPath: String {
-        let path = UserDefaults.standard.string(forKey: Prefs.key(.downloadPath)) ?? ""
+        let path =
+            UserDefaults.standard.string(forKey: Prefs.key(.downloadPath)) ?? ""
         if path.isEmpty {
             // Return default Downloads directory if no custom path is set
-            if let downloadURL = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first {
+            if let downloadURL = FileManager.default.urls(
+                for: .downloadsDirectory,
+                in: .userDomainMask
+            ).first {
                 return downloadURL.path
             }
         }
@@ -74,17 +81,26 @@ enum Prefs {
 
     static var downloadURL: URL {
         // Try to resolve from bookmark first (for custom folders with security-scoped access)
-        if let bookmarkData = UserDefaults.standard.data(forKey: Prefs.key(.downloadPathBookmark)) {
+        if let bookmarkData = UserDefaults.standard.data(
+            forKey: Prefs.key(.downloadPathBookmark)
+        ) {
             do {
                 var isStale = false
-                let url = try URL(resolvingBookmarkData: bookmarkData, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &isStale)
+                let url = try URL(
+                    resolvingBookmarkData: bookmarkData,
+                    options: .withSecurityScope,
+                    relativeTo: nil,
+                    bookmarkDataIsStale: &isStale
+                )
 
                 if isStale {
                     staleBookmarkLock.lock()
                     defer { staleBookmarkLock.unlock() }
 
                     if !hasLoggedStaleBookmark {
-                        print("Bookmark is stale, will recreate on next folder selection")
+                        print(
+                            "Bookmark is stale, will recreate on next folder selection"
+                        )
                         hasLoggedStaleBookmark = true
                     }
                 }
@@ -104,7 +120,8 @@ enum Prefs {
     /// Returns true if the download URL requires security-scoped resource access
     /// (i.e., it was created from a user-selected bookmark)
     static var downloadURLRequiresSecurityScope: Bool {
-        UserDefaults.standard.data(forKey: Prefs.key(.downloadPathBookmark)) != nil
+        UserDefaults.standard.data(forKey: Prefs.key(.downloadPathBookmark))
+            != nil
     }
 
     /// Safely starts accessing the security-scoped resource for the download URL
@@ -133,8 +150,15 @@ enum Prefs {
 
         // Create and save security-scoped bookmark for custom folders
         do {
-            let bookmarkData = try url.bookmarkData(options: .withSecurityScope, includingResourceValuesForKeys: nil, relativeTo: nil)
-            UserDefaults.standard.set(bookmarkData, forKey: Prefs.key(.downloadPathBookmark))
+            let bookmarkData = try url.bookmarkData(
+                options: .withSecurityScope,
+                includingResourceValuesForKeys: nil,
+                relativeTo: nil
+            )
+            UserDefaults.standard.set(
+                bookmarkData,
+                forKey: Prefs.key(.downloadPathBookmark)
+            )
             print("Security-scoped bookmark saved for: \(url.path)")
         } catch {
             print("Error creating bookmark: \(error.localizedDescription)")
@@ -150,11 +174,17 @@ enum Prefs {
 
     /// Save user preferences (LanguageSelectionShown)
     static func setLanguageSelectionShown() {
-        UserDefaults.standard.set(true, forKey: Prefs.key(.languageSelectionShown))
+        UserDefaults.standard.set(
+            true,
+            forKey: Prefs.key(.languageSelectionShown)
+        )
     }
 
     static func resetLanguageSelectionShown() {
-        UserDefaults.standard.set(false, forKey: Prefs.key(.languageSelectionShown))
+        UserDefaults.standard.set(
+            false,
+            forKey: Prefs.key(.languageSelectionShown)
+        )
     }
 
     nonisolated(unsafe) static let byteFormatter = ByteCountFormatter()

@@ -24,7 +24,7 @@ enum AppAlertType: Identifiable {
 
     var id: String {
         switch self {
-        case let .replaceFile(filename):
+        case .replaceFile(let filename):
             "replaceFile_\(filename)"
         case .maxDownloads:
             "maxDownloads"
@@ -42,11 +42,17 @@ enum AppAlertType: Identifiable {
     /// Returns the localized title for the alert
     var title: String {
         switch self {
-        case let .replaceFile(filename):
-            String(format: NSLocalizedString("%@ already exists. Do you want to replace it?", comment: ""), filename)
+        case .replaceFile(let filename):
+            String(
+                format: NSLocalizedString(
+                    "%@ already exists. Do you want to replace it?",
+                    comment: ""
+                ),
+                filename
+            )
         case .maxDownloads:
             NSLocalizedString("Maximum Downloads Reached", comment: "")
-        case let .installerCreation(title, _):
+        case .installerCreation(let title, _):
             title
         case .downloadError:
             NSLocalizedString("Download Error", comment: "")
@@ -61,17 +67,29 @@ enum AppAlertType: Identifiable {
     var message: String {
         switch self {
         case .replaceFile:
-            NSLocalizedString("A file with the same name already exists in that location. Replacing it will overwrite its current contents.", comment: "")
+            NSLocalizedString(
+                "A file with the same name already exists in that location. Replacing it will overwrite its current contents.",
+                comment: ""
+            )
         case .maxDownloads:
-            NSLocalizedString("You can only run up to 3 downloads at the same time. Please wait for a download to complete before starting a new one.", comment: "")
-        case let .installerCreation(_, message):
+            NSLocalizedString(
+                "You can only run up to 3 downloads at the same time. Please wait for a download to complete before starting a new one.",
+                comment: ""
+            )
+        case .installerCreation(_, let message):
             message
-        case let .downloadError(message):
+        case .downloadError(let message):
             message
         case .restartRequired:
-            NSLocalizedString("The app must be restarted for changes to take effect.", comment: "")
+            NSLocalizedString(
+                "The app must be restarted for changes to take effect.",
+                comment: ""
+            )
         case .warningSettings:
-            NSLocalizedString("You will lose user settings and saved language.", comment: "")
+            NSLocalizedString(
+                "You will lose user settings and saved language.",
+                comment: ""
+            )
         }
     }
 

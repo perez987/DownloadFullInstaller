@@ -34,6 +34,7 @@ struct MetaInfo: Codable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case installAssistantPackageIdentifiers = "InstallAssistantPackageIdentifiers"
+        case installAssistantPackageIdentifiers =
+            "InstallAssistantPackageIdentifiers"
     }
 }

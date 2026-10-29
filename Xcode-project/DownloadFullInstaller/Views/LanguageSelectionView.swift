@@ -45,7 +45,8 @@ struct LanguageSelectionView: View {
                 // Language list
                 ScrollView(.vertical, showsIndicators: true) {
                     VStack(spacing: 0) {
-                        ForEach(languageManager.availableLanguages, id: \.code) { language in
+                        ForEach(languageManager.availableLanguages, id: \.code)
+                        { language in
                             LanguageRow(
                                 language: language,
                                 isSelected: selectedLanguage == language.code,
@@ -75,7 +76,9 @@ struct LanguageSelectionView: View {
                     }
                     .keyboardShortcut(.return)
                     .buttonStyle(.borderedProminent)
-                    .disabled(selectedLanguage == languageManager.currentLanguage)
+                    .disabled(
+                        selectedLanguage == languageManager.currentLanguage
+                    )
                 }
                 .padding(.horizontal, 24)
                 .padding(.top, 20)
@@ -90,9 +93,14 @@ struct LanguageSelectionView: View {
                             .font(.system(size: 18))
                             .foregroundStyle(.orange)
 
-                        Text(NSLocalizedString("Clear app settings?", comment: ""))
-                            .font(.body)
-                            .foregroundStyle(.primary)
+                        Text(
+                            NSLocalizedString(
+                                "Clear app settings?",
+                                comment: ""
+                            )
+                        )
+                        .font(.body)
+                        .foregroundStyle(.primary)
 
                         Spacer()
 

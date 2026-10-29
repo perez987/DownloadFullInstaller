@@ -6,7 +6,8 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var sucatalog: SUCatalog
-    @AppStorage(Prefs.key(.seedProgram)) private var seedProgram = SeedProgram.noSeed.rawValue
+    @AppStorage(Prefs.key(.seedProgram)) private var seedProgram = SeedProgram
+        .noSeed.rawValue
     @StateObject private var firmwareCatalog = FirmwareCatalog()
     @State private var selectedTab = 0
     @State private var selectedRelease: String?
@@ -16,17 +17,21 @@ struct ContentView: View {
     private var isInstaller: Bool { selectedTab == 0 }
 
     private var releases: [String] {
-        let names = isInstaller
+        let names =
+            isInstaller
             ? sucatalog.installers.filter(\.hasLoaded).compactMap(\.osName)
             : firmwareCatalog.firmwares.map(\.osName)
         return Set(names).sorted {
-            (nameOS[$0] ?? $0).compare(nameOS[$1] ?? $1, options: .numeric) == .orderedDescending
+            (nameOS[$0] ?? $0).compare(nameOS[$1] ?? $1, options: .numeric)
+                == .orderedDescending
         }
     }
 
     private var selectedLegacy: LegacyMacOSVersion? {
         guard isInstaller else { return nil }
-        return LegacyMacOSVersion.allVersions.first { selectedRelease == "legacy:\($0.name)" }
+        return LegacyMacOSVersion.allVersions.first {
+            selectedRelease == "legacy:\($0.name)"
+        }
     }
 
     private var isLoading: Bool {
@@ -57,15 +62,30 @@ struct ContentView: View {
         }
         .id(localizationID)
         .background { GlassBackground() }
-        .frame(minWidth: 990, idealWidth: 990, maxWidth: 990, minHeight: 724, idealHeight: 724, maxHeight: 724)
-        .navigationTitle(NSLocalizedString("Download Full Installer", comment: "Main window title"))
+        .frame(
+            minWidth: 990,
+            idealWidth: 990,
+            maxWidth: 990,
+            minHeight: 724,
+            idealHeight: 724,
+            maxHeight: 724
+        )
+        .navigationTitle(
+            NSLocalizedString(
+                "Download Full Installer",
+                comment: "Main window title"
+            )
+        )
         .onAppear {
             if !sucatalog.hasLoaded, !sucatalog.isLoading { sucatalog.load() }
-            if !firmwareCatalog.hasLoaded, !firmwareCatalog.isLoading { firmwareCatalog.load() }
+            if !firmwareCatalog.hasLoaded, !firmwareCatalog.isLoading {
+                firmwareCatalog.load()
+            }
         }
         .onChange(of: selectedTab) { selectedRelease = nil }
         .onChange(of: seedProgram) { selectedRelease = nil }
-        .onReceive(NotificationCenter.default.publisher(for: .languageChanged)) { _ in
+        .onReceive(NotificationCenter.default.publisher(for: .languageChanged))
+        { _ in
             localizationID = UUID()
         }
     }
@@ -73,11 +93,21 @@ struct ContentView: View {
     private var navigationPane: some View {
         VStack(alignment: .leading, spacing: 18) {
             VStack(alignment: .leading, spacing: 6) {
-                Text(NSLocalizedString("macOS Library", comment: "Release browser heading"))
-                    .font(.title2.bold())
-                Text(NSLocalizedString("Choose a release to explore.", comment: "Release browser subtitle"))
-                    .font(.body)
-                    .foregroundStyle(.secondary)
+                Text(
+                    NSLocalizedString(
+                        "macOS Library",
+                        comment: "Release browser heading"
+                    )
+                )
+                .font(.title2.bold())
+                Text(
+                    NSLocalizedString(
+                        "Choose a release to explore.",
+                        comment: "Release browser subtitle"
+                    )
+                )
+                .font(.body)
+                .foregroundStyle(.secondary)
             }
             .padding(.horizontal, 20)
             .padding(.top, 24)
@@ -88,23 +118,41 @@ struct ContentView: View {
             List(selection: $selectedRelease) {
                 Section {
                     ForEach(releases, id: \.self) { name in
-                        releaseLabel(name: name, version: nameOS[name] ?? "", legacy: false)
-                            .tag(name)
+                        releaseLabel(
+                            name: name,
+                            version: nameOS[name] ?? "",
+                            legacy: false
+                        )
+                        .tag(name)
                     }
                 } header: {
-                    Text(NSLocalizedString("Available Releases", comment: "Catalog releases section"))
-                        .font(.body.weight(.semibold))
+                    Text(
+                        NSLocalizedString(
+                            "Available Releases",
+                            comment: "Catalog releases section"
+                        )
+                    )
+                    .font(.body.weight(.semibold))
                 }
 
                 if isInstaller {
                     Section(isExpanded: $isLegacyExpanded) {
                         ForEach(LegacyMacOSVersion.allVersions) { version in
-                            releaseLabel(name: version.name, version: version.version, legacy: true)
-                                .tag("legacy:\(version.name)")
+                            releaseLabel(
+                                name: version.name,
+                                version: version.version,
+                                legacy: true
+                            )
+                            .tag("legacy:\(version.name)")
                         }
                     } header: {
-                        Text(NSLocalizedString("Legacy macOS Installers", comment: "Legacy releases section"))
-                            .font(.body.weight(.semibold))
+                        Text(
+                            NSLocalizedString(
+                                "Legacy macOS Installers",
+                                comment: "Legacy releases section"
+                            )
+                        )
+                        .font(.body.weight(.semibold))
                     }
                 }
             }
@@ -115,7 +163,12 @@ struct ContentView: View {
                 if isLoading {
                     HStack(spacing: 8) {
                         ProgressView().controlSize(.small)
-                        Text(NSLocalizedString("Loading...", comment: "Catalog loading"))
+                        Text(
+                            NSLocalizedString(
+                                "Loading...",
+                                comment: "Catalog loading"
+                            )
+                        )
                     }
                 } else if let catalogError {
                     Text(catalogError)
@@ -127,19 +180,39 @@ struct ContentView: View {
                 }
                 HStack {
                     Button(action: reloadCatalog) {
-                        Label(NSLocalizedString("Refresh", comment: "Reload catalog"), systemImage: "arrow.clockwise")
+                        Label(
+                            NSLocalizedString(
+                                "Refresh",
+                                comment: "Reload catalog"
+                            ),
+                            systemImage: "arrow.clockwise"
+                        )
                     }
                     .foregroundStyle(.primary)
                     .disabled(isLoading)
                     Spacer()
                     if !isInstaller {
-                        Link(destination: URL(string: "https://support.apple.com/en-us/108900")!) {
+                        Link(
+                            destination: URL(
+                                string: "https://support.apple.com/en-us/108900"
+                            )!
+                        ) {
                             Image(systemName: "questionmark.circle")
                                 .font(.system(size: 24))
                         }
                         .foregroundStyle(.primary)
-                        .help(NSLocalizedString("Restore with Apple Configurator: How to", comment: ""))
-                        .accessibilityLabel(NSLocalizedString("Restore with Apple Configurator: How to", comment: ""))
+                        .help(
+                            NSLocalizedString(
+                                "Restore with Apple Configurator: How to",
+                                comment: ""
+                            )
+                        )
+                        .accessibilityLabel(
+                            NSLocalizedString(
+                                "Restore with Apple Configurator: How to",
+                                comment: ""
+                            )
+                        )
                     }
                 }
                 .buttonStyle(.borderless)
@@ -149,7 +222,9 @@ struct ContentView: View {
         }
     }
 
-    private func releaseLabel(name: String, version: String, legacy: Bool) -> some View {
+    private func releaseLabel(name: String, version: String, legacy: Bool)
+        -> some View
+    {
         HStack(spacing: 12) {
             Image(nameOS[name] == nil && !legacy ? "macOS" : name)
                 .resizable()
@@ -172,17 +247,30 @@ struct ContentView: View {
                     LazyVStack(spacing: 12) {
                         if let legacy = selectedLegacy {
                             LegacyVersionRow(version: legacy)
-                            Text(NSLocalizedString("Legacy installers are disk images. Open the downloaded image in Finder, then run the package inside to create the installer app.", comment: "Legacy installer instructions"))
-                                .font(.callout)
-                                .foregroundStyle(.secondary)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(8)
+                            Text(
+                                NSLocalizedString(
+                                    "Legacy installers are disk images. Open the downloaded image in Finder, then run the package inside to create the installer app.",
+                                    comment: "Legacy installer instructions"
+                                )
+                            )
+                            .font(.callout)
+                            .foregroundStyle(.secondary)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(8)
                         } else if isInstaller {
-                            ForEach(sucatalog.installers.filter { $0.hasLoaded && $0.osName == selectedRelease }) { product in
+                            ForEach(
+                                sucatalog.installers.filter {
+                                    $0.hasLoaded && $0.osName == selectedRelease
+                                }
+                            ) { product in
                                 InstallerView(product: product)
                             }
                         } else {
-                            ForEach(firmwareCatalog.firmwares.filter { $0.osName == selectedRelease }) { firmware in
+                            ForEach(
+                                firmwareCatalog.firmwares.filter {
+                                    $0.osName == selectedRelease
+                                }
+                            ) { firmware in
                                 FirmwareView(firmware: firmware)
                             }
                         }
@@ -193,16 +281,29 @@ struct ContentView: View {
             }
         } else {
             VStack(spacing: 16) {
-                Image(systemName: isInstaller ? "square.stack.3d.up" : "memorychip")
-                    .font(.system(size: 48, weight: .light))
-                    .foregroundStyle(.blue.gradient)
-                    .padding(24)
-                    .glassCard(cornerRadius: 24)
-                Text(NSLocalizedString("Select a macOS release", comment: "Empty detail heading"))
-                    .font(.title2.bold())
-                Text(NSLocalizedString("Available versions and download options will appear here.", comment: "Empty detail explanation"))
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
+                Image(
+                    systemName: isInstaller
+                        ? "square.stack.3d.up" : "memorychip"
+                )
+                .font(.system(size: 48, weight: .light))
+                .foregroundStyle(.blue.gradient)
+                .padding(24)
+                .glassCard(cornerRadius: 24)
+                Text(
+                    NSLocalizedString(
+                        "Select a macOS release",
+                        comment: "Empty detail heading"
+                    )
+                )
+                .font(.title2.bold())
+                Text(
+                    NSLocalizedString(
+                        "Available versions and download options will appear here.",
+                        comment: "Empty detail explanation"
+                    )
+                )
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
             }
             .padding(40)
         }
@@ -220,12 +321,17 @@ struct ContentView: View {
             VStack(alignment: .leading, spacing: 6) {
                 Text("macOS \(version) \(name)")
                     .font(.system(.largeTitle, design: .rounded, weight: .bold))
-                Text(selectedLegacy != nil
-                     ? NSLocalizedString("Legacy macOS Installers", comment: "")
-                     : isInstaller
-                     ? NSLocalizedString("Installers", comment: "")
-                     : NSLocalizedString("Firmwares", comment: ""))
-                    .foregroundStyle(.secondary)
+                Text(
+                    selectedLegacy != nil
+                        ? NSLocalizedString(
+                            "Legacy macOS Installers",
+                            comment: ""
+                        )
+                        : isInstaller
+                            ? NSLocalizedString("Installers", comment: "")
+                            : NSLocalizedString("Firmwares", comment: "")
+                )
+                .foregroundStyle(.secondary)
             }
             Spacer()
             if isInstaller, selectedLegacy == nil {
@@ -242,8 +348,14 @@ struct ContentView: View {
 
     private var emptyCatalogMessage: String {
         isInstaller
-            ? NSLocalizedString("The installers list cannot be loaded or there are no installers available for this version of macOS.", comment: "")
-            : NSLocalizedString("The firmware list cannot be loaded or there are no firmwares available for this version of macOS.", comment: "")
+            ? NSLocalizedString(
+                "The installers list cannot be loaded or there are no installers available for this version of macOS.",
+                comment: ""
+            )
+            : NSLocalizedString(
+                "The firmware list cannot be loaded or there are no firmwares available for this version of macOS.",
+                comment: ""
+            )
     }
 
     private func reloadCatalog() {

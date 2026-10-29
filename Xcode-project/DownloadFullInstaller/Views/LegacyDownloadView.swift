@@ -29,7 +29,10 @@ struct LegacyVersionRow: View {
             }
             Spacer()
             Button(action: downloadLegacyVersion) {
-                Label(NSLocalizedString("Download", comment: "Download button"), systemImage: "arrow.down.circle")
+                Label(
+                    NSLocalizedString("Download", comment: "Download button"),
+                    systemImage: "arrow.down.circle"
+                )
             }
             .buttonStyle(.borderedProminent)
             .disabled(downloadManager.isDownloading(filename: filename))
@@ -37,7 +40,12 @@ struct LegacyVersionRow: View {
         .padding(16)
         .glassCard(cornerRadius: 16)
         .contextMenu {
-            Button(NSLocalizedString("Copy Download URL", comment: "Copy legacy download URL")) {
+            Button(
+                NSLocalizedString(
+                    "Copy Download URL",
+                    comment: "Copy legacy download URL"
+                )
+            ) {
                 NSPasteboard.general.clearContents()
                 NSPasteboard.general.setString(version.url, forType: .string)
             }
@@ -65,7 +73,9 @@ struct LegacyVersionRow: View {
     private func startDownload(replacing: Bool) {
         do {
             _ = try downloadManager.startDownload(
-                url: URL(string: version.url), filename: filename, replacing: replacing
+                url: URL(string: version.url),
+                filename: filename,
+                replacing: replacing
             )
         } catch {
             activeAlert = .downloadError(message: error.localizedDescription)

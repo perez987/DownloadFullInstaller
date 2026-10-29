@@ -54,7 +54,9 @@ class Product: Codable, Identifiable, ObservableObject {
     }
 
     var buildManifestURL: String? {
-        let buildManifest = packages.first { $0.url.hasSuffix("BuildManifest.plist") }
+        let buildManifest = packages.first {
+            $0.url.hasSuffix("BuildManifest.plist")
+        }
         return buildManifest?.url
     }
 
@@ -68,11 +70,11 @@ class Product: Codable, Identifiable, ObservableObject {
 
     var installAssistantURL: URL? {
         if let installAssistant = installerASSPackage {
-//            print("\(thisComponent) : \(installAssistant)")
+            //            print("\(thisComponent) : \(installAssistant)")
             URL(string: installAssistant.url)
         } else {
             if let installAssistant = installerESDPackage {
-//                print("\(thisComponent) : \(installAssistant)")
+                //                print("\(thisComponent) : \(installAssistant)")
                 URL(string: installAssistant.url)
             } else {
                 nil
@@ -97,9 +99,14 @@ class Product: Codable, Identifiable, ObservableObject {
         guard let url = URL(string: urlString) else { return }
 
         let sessionConfig = URLSessionConfiguration.ephemeral
-        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
+        let session = URLSession(
+            configuration: sessionConfig,
+            delegate: nil,
+            delegateQueue: nil
+        )
 
-        let task = session.dataTask(with: url) { [weak self] data, response, error in
+        let task = session.dataTask(with: url) {
+            [weak self] data, response, error in
             if error != nil {
                 return
             }
@@ -129,37 +136,50 @@ class Product: Codable, Identifiable, ObservableObject {
         hasLoaded = true
 
         let decoder = PropertyListDecoder()
-        if let buildManifest = try? decoder.decode(BuildManifest.self, from: data) {
+        if let buildManifest = try? decoder.decode(
+            BuildManifest.self,
+            from: data
+        ) {
             buildVersion = buildManifest.productBuildVersion
             productVersion = buildManifest.productVersion
-//            print("\(thisComponent) :      Build Version: \(buildVersion ?? "<none>")")
+            //            print("\(thisComponent) :      Build Version: \(buildVersion ?? "<none>")")
         }
     }
 
     func loadDistribution() {
-        guard let urlString = distributionURL, let url = URL(string: urlString) else {
+        guard let urlString = distributionURL, let url = URL(string: urlString)
+        else {
             errorMessage = URLError(.badURL).localizedDescription
             print("Product distribution: \(errorMessage ?? "")")
             return
         }
 
         let sessionConfig = URLSessionConfiguration.ephemeral
-        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
+        let session = URLSession(
+            configuration: sessionConfig,
+            delegate: nil,
+            delegateQueue: nil
+        )
 
-        let task = session.dataTask(with: url) { [weak self] data, response, error in
+        let task = session.dataTask(with: url) {
+            [weak self] data, response, error in
             Task { @MainActor [weak self] in
                 guard let self else { return }
                 if let error {
                     errorMessage = error.localizedDescription
                     isLoading = false
                 } else if let response = response as? HTTPURLResponse,
-                          response.statusCode == 200, let data {
+                    response.statusCode == 200, let data
+                {
                     parseDistXML(data: data)
                 } else {
-                    errorMessage = URLError(.badServerResponse).localizedDescription
+                    errorMessage =
+                        URLError(.badServerResponse).localizedDescription
                     isLoading = false
                 }
-                if let errorMessage { print("Product distribution: \(errorMessage)") }
+                if let errorMessage {
+                    print("Product distribution: \(errorMessage)")
+                }
             }
         }
 
@@ -180,7 +200,9 @@ class Product: Codable, Identifiable, ObservableObject {
         let delegate = DistParserDelegate()
         parser.delegate = delegate
         guard parser.parse() else {
-            errorMessage = parser.parserError?.localizedDescription ?? URLError(.cannotParseResponse).localizedDescription
+            errorMessage =
+                parser.parserError?.localizedDescription
+                ?? URLError(.cannotParseResponse).localizedDescription
             isLoading = false
             return
         }

@@ -6,7 +6,6 @@
 //
 
 import AppKit
-
 // import DockProgress
 import Foundation
 
@@ -21,7 +20,11 @@ import Foundation
     @Published var installerURLFiles: [URL]?
     @Published var errorMessage: String?
 
-    lazy var urlSession = URLSession(configuration: URLSessionConfiguration.ephemeral, delegate: self, delegateQueue: nil)
+    lazy var urlSession = URLSession(
+        configuration: URLSessionConfiguration.ephemeral,
+        delegate: self,
+        delegateQueue: nil
+    )
     var downloadTask: URLSessionDownloadTask?
     var byteFormatter = ByteCountFormatter()
 
@@ -123,13 +126,18 @@ import Foundation
 
         // Set dock progress style
         Task { @MainActor in
-            DockProgress.style = .badge(color: .blue, badgeValue: { DownloadManager.getDownloadCount() })
+            DockProgress.style = .badge(
+                color: .blue,
+                badgeValue: { DownloadManager.getDownloadCount() }
+            )
         }
 
         // Try to resume from previous download if resume data exists
         if let resumeData {
             downloadTask = urlSession.downloadTask(withResumeData: resumeData)
-            print("Resuming download of \(filename ?? "InstallerAssistant.pkg")")
+            print(
+                "Resuming download of \(filename ?? "InstallerAssistant.pkg")"
+            )
         } else {
             downloadTask = urlSession.downloadTask(with: url)
             progress = 0.0
@@ -137,7 +145,9 @@ import Foundation
                 DockProgress.progress = 0.0
             }
             localURL = nil
-            print("Starting download of \(filename ?? "InstallerAssistant.pkg")")
+            print(
+                "Starting download of \(filename ?? "InstallerAssistant.pkg")"
+            )
         }
 
         downloadTask?.resume()
@@ -181,18 +191,23 @@ import Foundation
         let tempDir = URL(fileURLWithPath: NSTemporaryDirectory())
 
         // Print temporary directory path
-//        let strTempDir = tempDir.absoluteString
-//        print("Temporary directory: \(strTempDir.dropFirst(7))")
+        //        let strTempDir = tempDir.absoluteString
+        //        print("Temporary directory: \(strTempDir.dropFirst(7))")
 
         do {
-            let tempFiles = try FileManager.default.contentsOfDirectory(at: tempDir, includingPropertiesForKeys: [.isRegularFileKey, .fileSizeKey])
+            let tempFiles = try FileManager.default.contentsOfDirectory(
+                at: tempDir,
+                includingPropertiesForKeys: [.isRegularFileKey, .fileSizeKey]
+            )
             var deletedCount = 0
             var totalSize: Int64 = 0
 
             for file in tempFiles {
                 do {
                     // Only delete regular files (not directories)
-                    let resourceValues = try file.resourceValues(forKeys: [.isRegularFileKey, .fileSizeKey])
+                    let resourceValues = try file.resourceValues(forKeys: [
+                        .isRegularFileKey, .fileSizeKey,
+                    ])
                     guard resourceValues.isRegularFile == true else { continue }
 
                     // Get file size before deletion
@@ -203,16 +218,25 @@ import Foundation
                     totalSize += Int64(fileSize)
                 } catch {
                     // Continue with other files if one fails
-                    print("Failed to delete temp file \(file.lastPathComponent): \(error.localizedDescription)")
+                    print(
+                        "Failed to delete temp file \(file.lastPathComponent): \(error.localizedDescription)"
+                    )
                 }
             }
 
             if deletedCount > 0 {
-                let sizeString = ByteCountFormatter.string(fromByteCount: totalSize, countStyle: .file)
-                print("Cleaned up temporary directory: deleted \(deletedCount) file(s), freed \(sizeString)")
+                let sizeString = ByteCountFormatter.string(
+                    fromByteCount: totalSize,
+                    countStyle: .file
+                )
+                print(
+                    "Cleaned up temporary directory: deleted \(deletedCount) file(s), freed \(sizeString)"
+                )
             }
         } catch {
-            print("Failed to access temporary directory for cleanup: \(error.localizedDescription)")
+            print(
+                "Failed to access temporary directory for cleanup: \(error.localizedDescription)"
+            )
         }
     }
 
@@ -243,13 +267,18 @@ import Foundation
 
         let retryDelay: Double = 5
 
-        print("Connection lost. Retrying download in \(Int(retryDelay))\"... (Attempt \(retryCount)/\(maxRetries))")
+        print(
+            "Connection lost. Retrying download in \(Int(retryDelay))\"... (Attempt \(retryCount)/\(maxRetries))"
+        )
 
         Task { @MainActor [weak self] in
             self?.isRetrying = true
         }
 
-        retryTimer = Timer.scheduledTimer(withTimeInterval: retryDelay, repeats: false) { [weak self] _ in
+        retryTimer = Timer.scheduledTimer(
+            withTimeInterval: retryDelay,
+            repeats: false
+        ) { [weak self] _ in
             Task { @MainActor [weak self] in
                 self?.startDownload()
             }
@@ -259,13 +288,20 @@ import Foundation
     func revealInFinder() {
         if isComplete {
             let destination = Prefs.downloadPath
-            NSWorkspace.shared.selectFile(localURL?.path, inFileViewerRootedAtPath: destination)
+            NSWorkspace.shared.selectFile(
+                localURL?.path,
+                inFileViewerRootedAtPath: destination
+            )
         }
     }
 }
 
 extension DownloadManager: URLSessionDownloadDelegate {
-    func urlSession(_: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+    func urlSession(
+        _: URLSession,
+        downloadTask: URLSessionDownloadTask,
+        didFinishDownloadingTo location: URL
+    ) {
         // Use the stored destination URL that already has security-scoped access
         guard let destination = destinationURL else {
             print("Error: No destination URL available")
@@ -275,7 +311,9 @@ extension DownloadManager: URLSessionDownloadDelegate {
         }
 
         // get the suggest file name or create a uuid string
-        let suggestedFilename = filename ?? downloadTask.response?.suggestedFilename ?? UUID().uuidString
+        let suggestedFilename =
+            filename ?? downloadTask.response?.suggestedFilename
+            ?? UUID().uuidString
 
         do {
             let file = destination.appendingPathComponent(suggestedFilename)
@@ -293,7 +331,9 @@ extension DownloadManager: URLSessionDownloadDelegate {
             try FileManager.default.moveItem(at: location, to: file)
             newURL = file
 
-            print("Finished download of \(filename ?? "InstallerAssistant.pkg")")
+            print(
+                "Finished download of \(filename ?? "InstallerAssistant.pkg")"
+            )
 
             // Decrement active download count on successful completion
             DownloadManager.decrementDownloadCount()
@@ -322,7 +362,15 @@ extension DownloadManager: URLSessionDownloadDelegate {
 
             // Extract folder name from destination path for error message
             let folderName = destination.lastPathComponent
-            let errorMsg = String(format: NSLocalizedString("The file '%@' could not be saved to the '%@' folder. Error: %@", comment: "Download save error"), suggestedFilename, folderName, error.localizedDescription)
+            let errorMsg = String(
+                format: NSLocalizedString(
+                    "The file '%@' could not be saved to the '%@' folder. Error: %@",
+                    comment: "Download save error"
+                ),
+                suggestedFilename,
+                folderName,
+                error.localizedDescription
+            )
 
             Task { @MainActor [weak self] in
                 self?.isDownloading = false
@@ -338,13 +386,20 @@ extension DownloadManager: URLSessionDownloadDelegate {
         }
     }
 
-    func urlSession(_: URLSession, downloadTask _: URLSessionDownloadTask, didWriteData _: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+    func urlSession(
+        _: URLSession,
+        downloadTask _: URLSessionDownloadTask,
+        didWriteData _: Int64,
+        totalBytesWritten: Int64,
+        totalBytesExpectedToWrite: Int64
+    ) {
         // Throttle UI updates to at most 20 per second to avoid flooding the main actor queue
         let now = Date()
         guard now.timeIntervalSince(lastProgressUpdate) >= 0.05 else { return }
         lastProgressUpdate = now
         let prog = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
-        let str = "\(byteFormatter.string(fromByteCount: totalBytesWritten))/\(byteFormatter.string(fromByteCount: totalBytesExpectedToWrite))"
+        let str =
+            "\(byteFormatter.string(fromByteCount: totalBytesWritten))/\(byteFormatter.string(fromByteCount: totalBytesExpectedToWrite))"
         DispatchQueue.main.async { [weak self] in
             self?.progress = prog
             self?.progressString = str
@@ -353,10 +408,16 @@ extension DownloadManager: URLSessionDownloadDelegate {
     }
 
     /// Handle download resumption
-    func urlSession(_: URLSession, downloadTask _: URLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
+    func urlSession(
+        _: URLSession,
+        downloadTask _: URLSessionDownloadTask,
+        didResumeAtOffset fileOffset: Int64,
+        expectedTotalBytes: Int64
+    ) {
         print("Download resumed at offset: \(fileOffset) bytes")
         let prog = Double(fileOffset) / Double(expectedTotalBytes)
-        let str = "\(byteFormatter.string(fromByteCount: fileOffset))/\(byteFormatter.string(fromByteCount: expectedTotalBytes))"
+        let str =
+            "\(byteFormatter.string(fromByteCount: fileOffset))/\(byteFormatter.string(fromByteCount: expectedTotalBytes))"
         DispatchQueue.main.async { [weak self] in
             self?.progress = prog
             self?.progressString = str
@@ -368,12 +429,18 @@ extension DownloadManager: URLSessionDownloadDelegate {
 // MARK: - URLSessionTaskDelegate methods for error handling
 
 extension DownloadManager: URLSessionTaskDelegate {
-    func urlSession(_: URLSession, task _: URLSessionTask, didCompleteWithError error: Error?) {
+    func urlSession(
+        _: URLSession,
+        task _: URLSessionTask,
+        didCompleteWithError error: Error?
+    ) {
         guard let error else { return }
 
         // Ignore cancellation errors — these are expected when the user cancels a download
         let nsError = error as NSError
-        if nsError.domain == NSURLErrorDomain, nsError.code == NSURLErrorCancelled {
+        if nsError.domain == NSURLErrorDomain,
+            nsError.code == NSURLErrorCancelled
+        {
             return
         }
 
@@ -381,15 +448,18 @@ extension DownloadManager: URLSessionTaskDelegate {
         //        print("Download error occurred: the Internet connection has been lost")
 
         // Check if this is a network error that we can recover from
-        let isNetworkError = nsError.domain == NSURLErrorDomain &&
-            (nsError.code == NSURLErrorNotConnectedToInternet ||
-                nsError.code == NSURLErrorNetworkConnectionLost ||
-                nsError.code == NSURLErrorTimedOut ||
-                nsError.code == NSURLErrorCannotConnectToHost)
+        let isNetworkError =
+            nsError.domain == NSURLErrorDomain
+            && (nsError.code == NSURLErrorNotConnectedToInternet
+                || nsError.code == NSURLErrorNetworkConnectionLost
+                || nsError.code == NSURLErrorTimedOut
+                || nsError.code == NSURLErrorCannotConnectToHost)
 
         if isNetworkError {
             // Try to get resume data if available
-            if let resumeDataFromError = (error as NSError).userInfo[NSURLSessionDownloadTaskResumeData] as? Data {
+            if let resumeDataFromError = (error as NSError).userInfo[
+                NSURLSessionDownloadTaskResumeData
+            ] as? Data {
                 resumeData = resumeDataFromError
                 print("Resume data saved for future retry")
             }

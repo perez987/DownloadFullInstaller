@@ -12,9 +12,17 @@ import SwiftUI
 var assertionID: IOPMAssertionID = 0
 var sleepDisabled = false
 
-func disableSystemSleep(reason: String = "Download Full Installer prevents sleep") {
+func disableSystemSleep(
+    reason: String = "Download Full Installer prevents sleep"
+) {
     if !sleepDisabled {
-        sleepDisabled = IOPMAssertionCreateWithName(kIOPMAssertionTypeNoIdleSleep as CFString, IOPMAssertionLevel(kIOPMAssertionLevelOn), reason as CFString, &assertionID) == kIOReturnSuccess
+        sleepDisabled =
+            IOPMAssertionCreateWithName(
+                kIOPMAssertionTypeNoIdleSleep as CFString,
+                IOPMAssertionLevel(kIOPMAssertionLevelOn),
+                reason as CFString,
+                &assertionID
+            ) == kIOReturnSuccess
         let text = "Download Full Installer prevents sleep"
         print(text)
     }

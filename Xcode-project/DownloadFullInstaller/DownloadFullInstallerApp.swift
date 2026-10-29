@@ -19,9 +19,9 @@ struct FetchInstallerPkgApp: App {
 
     init() {
         // Diagnostic logging for sandbox initialization
-//        print("=== FetchInstallerPkgApp init() started ===")
-//        print("App initialization complete - no I/O operations performed")
-//        print("=== FetchInstallerPkgApp init() completed ===")
+        //        print("=== FetchInstallerPkgApp init() started ===")
+        //        print("App initialization complete - no I/O operations performed")
+        //        print("=== FetchInstallerPkgApp init() completed ===")
     }
 
     var body: some Scene {
@@ -39,8 +39,8 @@ struct FetchInstallerPkgApp: App {
                     //					}
                 }
 
-//                .onDisappear {
-//                }
+                //                .onDisappear {
+                //                }
 
                 .sheet(isPresented: $showLanguageSelection) {
                     LanguageSelectionView(
@@ -55,19 +55,29 @@ struct FetchInstallerPkgApp: App {
                     SettingsView()
                 }
         }
-//        .defaultSize(width: 1000, height: 820)
+        //        .defaultSize(width: 1000, height: 820)
         .windowResizability(.contentSize)
         .commands {
             CommandGroup(replacing: .appSettings) {
                 // Settings to select downloads folder
-                Button(NSLocalizedString("Settings", comment: "Menu item to show settings window")) {
+                Button(
+                    NSLocalizedString(
+                        "Settings",
+                        comment: "Menu item to show settings window"
+                    )
+                ) {
                     showSettings = true
                 }
                 .keyboardShortcut(",", modifiers: [.command])
 
                 Divider()
                 // Settings to select language selector
-                Button(NSLocalizedString("Select Language", comment: "Menu item to show language selection")) {
+                Button(
+                    NSLocalizedString(
+                        "Select Language",
+                        comment: "Menu item to show language selection"
+                    )
+                ) {
                     showLanguageSelection = true
                 }
                 .keyboardShortcut("l", modifiers: [.command])

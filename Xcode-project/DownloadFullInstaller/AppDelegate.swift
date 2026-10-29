@@ -16,26 +16,28 @@ enum DefaultsKeys: String {
 @MainActor
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_: Notification) {
-//        print("=== AppDelegate applicationDidFinishLaunching started ===")
+        //        print("=== AppDelegate applicationDidFinishLaunching started ===")
         // Disable sleep mode while app is running
-//        print("Calling disableSystemSleep()...")
+        //        print("Calling disableSystemSleep()...")
         disableSystemSleep()
         print("Calling Prefs.registerDefaults()...")
         Prefs.registerDefaults()
-//        print("=== AppDelegate applicationDidFinishLaunching completed ===")
+        //        print("=== AppDelegate applicationDidFinishLaunching completed ===")
     }
 
-//    func viewDidLoad() {
-//    }
+    //    func viewDidLoad() {
+    //    }
 
     /// Close app from red button (thanks Chris1111)
-    func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {
+    func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication)
+        -> Bool
+    {
         true
     }
 
     func applicationWillTerminate(_: Notification) {
         // Enable sleep mode when app exits
-//        print("Calling enableSystemSleep()...")
+        //        print("Calling enableSystemSleep()...")
         enableSystemSleep()
         // Clean up temporary directory to remove incomplete downloads
         DownloadManager.cleanupAppTempDirectory()
