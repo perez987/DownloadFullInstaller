@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+  <channel>
+    <title>Download Full Installer updates</title>
+    
+    <item>
+      <title>Versión 6.1.0</title>
+      <sparkle:version>0610</sparkle:version>
+      <sparkle:shortVersionString>6.1.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+      <pubDate>Thu, 29 Oct 2026 12:00:00 +0000</pubDate>
+      <enclosure url="https://github.com/perez987/DownloadFullInstaller/releases/download/6.1.0/Download.Full.Installer.6.1.0.dmg" 
+                 sparkle:edSignature="I9eEtjKscHKhAWjUMq9HmGt9yX4M5r6YeKJI9U+kFfEsAr/QTvao+F+Nw9ChVLFaS84rz2GU8j1KlIu2YZBcCA==" 
+                 length="5987425" 
+                 type="application/octet-stream" />
+    </item>
+      
+  </channel>
+</rss>

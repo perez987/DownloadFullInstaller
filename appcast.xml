@@ -2,21 +2,7 @@
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
   <channel>
     <title>Download Full Installer updates</title>
-    
-   <!-- 1. NEWER VERSION (beta release) -->
-    <item>
-      <title>Versión 6.1.0</title>
-      <sparkle:version>0610</sparkle:version>
-      <sparkle:shortVersionString>6.1.0</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
-      <pubDate>Thu, 29 Oct 2026 12:00:00 +0000</pubDate>
-      <enclosure url="https://github.com/perez987/DownloadFullInstaller/releases/download/6.1.0/Download.Full.Installer.6.1.0.dmg" 
-                 sparkle:edSignature="PAazbUKXoc9G0h6Ym2gqw0M9d61MRDVXcpUhm9pUAZXQje5YDVskWIlbBl5tZmljZLWBM6Y4LRGz/AeT5KCWAg==" 
-                 length="5987288" 
-                 type="application/octet-stream" />
-    </item>
 
-    <!-- 2. OFICIAL RELEASE (not beta) -->
     <item>
       <title>Versión 6.0.2</title>
       <sparkle:version>0602</sparkle:version>
