@@ -2,17 +2,18 @@
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
   <channel>
     <title>Download Full Installer update</title>
-	<description><![CDATA[
-		<h2>What's New in Download Full Installer 6.1.0</h2>
+
+    <item>
+      <title>Versión 6.1.0</title>
+      	<description><![CDATA[
+		<h3>What's New in Download Full Installer 6.1.0</h3>
 		<ul>
 			<li>Lower the target to macOS 14.6</li>
 			<li>Add support for High Sierra, Mojave and Catalina installers</li>
 			<li>Replace bundled Sparkle.framework with the Sparkle SPM package</li>
 			<li>Remove app sandboxing environment</li>
 		</ul>
-	]]></description>
-    <item>
-      <title>Versión 6.1.0</title>
+		]]></description>
       <sparkle:version>0610</sparkle:version>
       <sparkle:shortVersionString>6.1.0</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
