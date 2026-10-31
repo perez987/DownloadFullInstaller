@@ -12,13 +12,13 @@ This file is automatically read by GitHub Copilot coding agents (and Claude) whe
 
 There is **one application target** in this repository:
 
-- `DownloadFullInstaller` → requires macOS 14 or later.
+- `DownloadFullInstaller` → requires macOS 13 or later.
 
 ## Tech Stack
 
 - **Language**: Swift 6
 - **UI framework**: SwiftUI (macOS only)
-- **Minimum macOS**: 14 Sonoma
+- **Minimum macOS**: 13 Ventura
 - **Build tool**: Xcode 26+
 - **Auto-updater**: [Sparkle](https://sparkle-project.org/) via Swift Package Manager (`Updater/UpdateController.swift`)
 - **Dock progress**: `DockProgress-5.1.0` (local copy, not a package dependency)
@@ -66,7 +66,7 @@ There is currently no automated test target (XCTest or otherwise). Validation is
 When making changes:
 
 - Ensure the project **compiles without errors or warnings** in Xcode.
-- Verify the relevant user-facing flow works at runtime on macOS 14+.
+- Verify the relevant user-facing flow works at runtime on macOS 13+.
 
 ## Localization
 
