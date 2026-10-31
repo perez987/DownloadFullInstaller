@@ -8,46 +8,51 @@ This file is automatically read by GitHub Copilot coding agents (and Claude) whe
 
 - macOS Intel installer packages (`.pkg`) from Apple's software update catalogs
 - Firmware files (`.ipsw`) to restore Apple Silicon Macs.
+- Multipart Intel installers for older macOS releases when Apple's catalog provides all six components.
 
 There is **one application target** in this repository:
 
-- `DownloadFullInstaller` → requires macOS 15 Sequoia or later.
+- `DownloadFullInstaller` → requires macOS 14 or later.
 
 ## Tech Stack
 
 - **Language**: Swift 6
 - **UI framework**: SwiftUI (macOS only)
-- **Minimum macOS**: 15 Sequoia
+- **Minimum macOS**: 14 Sonoma
 - **Build tool**: Xcode 26+
 - **Auto-updater**: [Sparkle](https://sparkle-project.org/) via Swift Package Manager (`Updater/UpdateController.swift`)
 - **Dock progress**: `DockProgress-5.1.0` (local copy, not a package dependency)
-- **Sandbox**: the target runs in the macOS App Sandbox (see `.entitlements` file)
+- **Sandbox**: the target is NOT sandboxed (no `.entitlements` file); preferences live in `~/Library/Preferences/perez987.DownloadFullInstaller.plist`
 
 ## Project Structure
 
 ```
-DownloadFullInstaller/          # Main target source
+Xcode-project/
+│   DownloadFullInstaller.xcodeproj/
+│   Checks/                         # Standalone validation checks
+│   DownloadFullInstaller/          # Main target source
 │   AppDelegate.swift
 │   DownloadFullInstallerApp.swift   # @main entry point
 │   Prefs.swift                      # UserDefaults keys & helpers
 │   Downloads/
 │       DownloadManager.swift
-│       MultiDownloadManager.swift
+│       MultiDownloadManager.swift   # Shared queue and multipart downloads
 │   Model/                           # Catalog parsing, product model (installers & firmwares)
-│   Views/                           # All SwiftUI views
+│   Views/
+│       MultipartInstallerView.swift # Multipart download and assembly card
 │   Languages/                       # LanguageManager + .lproj string tables
 │   Sleep/                           # Sleep prevention logic
 │   Updater/                         # Sparkle updater controller
-│   DockProgress-4.3.1/              # Dock tile progress overlay
-│
-DownloadFullInstaller.xcodeproj/     # Xcode project
+│   DockProgress/                    # Dock tile progress overlay
+DOCS/                                # User and contributor documentation
+Images/Multipart-macOS/              # Multipart installer screenshots
 ```
 
 ## Building
 
 This project **must be built with Xcode**.
 
-1. Open `DownloadFullInstaller.xcodeproj` in Xcode 16 or later.
+1. Open `Xcode-project/DownloadFullInstaller.xcodeproj` in Xcode 26 or later.
 2. Select the scheme matching the project name.
 3. Build with **⌘B** or **Product → Build**.
 4. Run with **⌘R**.
@@ -61,7 +66,7 @@ There is currently no automated test target (XCTest or otherwise). Validation is
 When making changes:
 
 - Ensure the project **compiles without errors or warnings** in Xcode.
-- Verify the relevant user-facing flow works at runtime on macOS 15+.
+- Verify the relevant user-facing flow works at runtime on macOS 14+.
 
 ## Localization
 
@@ -87,7 +92,7 @@ Rules:
 
 ## Incomplete downloads
 
-Incomplete downloads are cleaned up on app quit (see `AppDelegate.swift`).
+No app-side cleanup: the non-sandboxed temp directory is shared with other apps, so deleting from it is unsafe.
 
 ## Dependencies
 
@@ -100,5 +105,9 @@ Sparkle is resolved through Swift Package Manager. DockProgress remains bundled 
 
 ## Versioning & Changelog
 
-- Version and build numbers are set in each Xcode project's target settings.
-- User-facing release notes are maintained in `CHANGELOG-releases.md`. Update this file when adding notable features or fixes.
+- Version and build numbers are set in `Xcode-project/DownloadFullInstaller.xcodeproj` target settings.
+- User-facing release notes are maintained in `NOTES-<version>.md`. Update the current version's file when adding notable features or fixes.
+
+## Multipart Intel installers
+
+High Sierra, Mojave, and Catalina installers may appear when Apple's selected software update catalog provides all six components. The app downloads them as one grouped item in the shared queue, then can assemble the Intel installer app from `BaseSystem.dmg` and the downloaded components. Availability depends on Apple's catalog; creating the app does not make these installers compatible with Apple Silicon.

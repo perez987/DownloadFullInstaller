@@ -11,5 +11,4 @@
 - Updated interface translations in all 12 supported locales.
 - Made catalog loading independent of the selected release, ignored stale catalog responses, and exposed loading failures with a refresh action.
 - Preserved download replacement prompts, custom destination folders, URL copying, automatic network retries, Dock progress, Sparkle updates, and sleep prevention.
-- Prevented cancellation of one download from cleaning up temporary files belonging to other active downloads
 - Keep the Legacy macOS Installers section collapsed on launch. Use the chevron beside its header to show or hide the five disk-image installers while modern and multipart releases load normally.
