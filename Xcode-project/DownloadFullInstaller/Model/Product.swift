@@ -68,30 +68,32 @@ class Product: Codable, Identifiable, ObservableObject {
         packages.first { $0.url.hasSuffix("InstallESDDmg.pkg") }
     }
 
-    var installAssistantURL: URL? {
-        if let installAssistant = installerASSPackage {
-            //            print("\(thisComponent) : \(installAssistant)")
-            URL(string: installAssistant.url)
-        } else {
-            if let installAssistant = installerESDPackage {
-                //                print("\(thisComponent) : \(installAssistant)")
-                URL(string: installAssistant.url)
-            } else {
-                nil
-            }
+    var isMultipartInstaller: Bool {
+        installerASSPackage == nil
+            && extendedMetaInfo?.osInstall == "com.apple.mpkg.OSInstall"
+    }
+
+    var installerComponents: [Package] {
+        LegacyInstallerComponents.names.compactMap { name in
+            packages.first { URL(string: $0.url)?.lastPathComponent == name }
         }
     }
 
+    var componentFolder: String {
+        let identifier = key ?? id
+        let safeIdentifier = identifier.unicodeScalars.map {
+            CharacterSet.alphanumerics.contains($0) || $0 == "-"
+                ? String($0) : "_"
+        }.joined()
+        return "macOS-\(safeIdentifier)"
+    }
+
+    var installAssistantURL: URL? {
+        installerASSPackage.flatMap { URL(string: $0.url) }
+    }
+
     var installAssistantSize: Int {
-        if installerASSPackage != nil {
-            installerASSPackage?.size ?? 0
-        } else {
-            if installerESDPackage != nil {
-                installerESDPackage?.size ?? 0
-            } else {
-                0
-            }
-        }
+        installerASSPackage?.size ?? 0
     }
 
     func loadBuildManifest() {
@@ -207,7 +209,8 @@ class Product: Codable, Identifiable, ObservableObject {
             return
         }
 
-        osName = delegate.osName
+        osName =
+            nameOS[String(delegate.buildVersion.prefix(2))] ?? delegate.osName
         title = delegate.title
         productVersion = delegate.productVersion
         buildVersion = delegate.buildVersion

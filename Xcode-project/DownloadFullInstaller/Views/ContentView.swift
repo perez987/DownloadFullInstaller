@@ -9,10 +9,16 @@ struct ContentView: View {
     @AppStorage(Prefs.key(.seedProgram)) private var seedProgram = SeedProgram
         .noSeed.rawValue
     @StateObject private var firmwareCatalog = FirmwareCatalog()
+    @ObservedObject private var installerBuilder = LegacyInstallerBuildManager
+        .shared
     @State private var selectedTab = 0
     @State private var selectedRelease: String?
     @State private var isLegacyExpanded = false
     @State private var localizationID = UUID()
+
+    private let multipartInstallerNames: Set<String> = [
+        "High Sierra", "Mojave", "Catalina",
+    ]
 
     private var isInstaller: Bool { selectedTab == 0 }
 
@@ -34,6 +40,48 @@ struct ContentView: View {
         }
     }
 
+    private var displayedInstallers: [Product] {
+        let installers = sucatalog.installers.filter {
+            $0.hasLoaded && $0.osName == selectedRelease
+        }
+        guard let selectedRelease,
+            multipartInstallerNames.contains(selectedRelease),
+            let latestMultipart = installers.filter(\.isMultipartInstaller).max(
+                by: { lhs, rhs in
+                    let versionOrder = (lhs.productVersion ?? "").compare(
+                        rhs.productVersion ?? "",
+                        options: .numeric
+                    )
+                    if versionOrder != .orderedSame {
+                        return versionOrder == .orderedAscending
+                    }
+                    let buildOrder = (lhs.buildVersion ?? "").compare(
+                        rhs.buildVersion ?? "",
+                        options: .numeric
+                    )
+                    if buildOrder != .orderedSame {
+                        return buildOrder == .orderedAscending
+                    }
+                    return lhs.postDate < rhs.postDate
+                })
+        else {
+            return installers
+        }
+        return installers.filter {
+            !$0.isMultipartInstaller || $0.id == latestMultipart.id
+        }
+    }
+
+    private var standardReleases: [String] {
+        isInstaller
+            ? releases.filter { !multipartInstallerNames.contains($0) }
+            : releases
+    }
+
+    private var multipartReleases: [String] {
+        releases.filter { multipartInstallerNames.contains($0) }
+    }
+
     private var isLoading: Bool {
         isInstaller ? sucatalog.isLoading : firmwareCatalog.isLoading
     }
@@ -45,7 +93,7 @@ struct ContentView: View {
     var body: some View {
         HStack(spacing: 0) {
             navigationPane
-                .frame(width: 290)
+                .frame(width: 300)
                 .background(.thinMaterial)
 
             Divider()
@@ -54,6 +102,10 @@ struct ContentView: View {
                 detailPane
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 Divider()
+                if installerBuilder.isBuilding {
+                    ProgressView(installerBuilder.status)
+                        .padding(.top, 12)
+                }
                 DownloadView()
                     .padding(16)
                     .background(.thinMaterial)
@@ -76,6 +128,7 @@ struct ContentView: View {
                 comment: "Main window title"
             )
         )
+        .appAlert(item: $installerBuilder.activeAlert)
         .onAppear {
             if !sucatalog.hasLoaded, !sucatalog.isLoading { sucatalog.load() }
             if !firmwareCatalog.hasLoaded, !firmwareCatalog.isLoading {
@@ -117,7 +170,7 @@ struct ContentView: View {
 
             List(selection: $selectedRelease) {
                 Section {
-                    ForEach(releases, id: \.self) { name in
+                    ForEach(standardReleases, id: \.self) { name in
                         releaseLabel(
                             name: name,
                             version: nameOS[name] ?? "",
@@ -133,6 +186,27 @@ struct ContentView: View {
                         )
                     )
                     .font(.body.weight(.semibold))
+                }
+
+                if isInstaller, !multipartReleases.isEmpty {
+                    Section {
+                        ForEach(multipartReleases, id: \.self) { name in
+                            releaseLabel(
+                                name: name,
+                                version: nameOS[name] ?? "",
+                                legacy: false
+                            )
+                            .tag(name)
+                        }
+                    } header: {
+                        Text(
+                            NSLocalizedString(
+                                "Multipart Legacy Installers",
+                                comment: "Multipart legacy releases section"
+                            )
+                        )
+                        .font(.body.weight(.semibold))
+                    }
                 }
 
                 if isInstaller {
@@ -258,12 +332,12 @@ struct ContentView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(8)
                         } else if isInstaller {
-                            ForEach(
-                                sucatalog.installers.filter {
-                                    $0.hasLoaded && $0.osName == selectedRelease
+                            ForEach(displayedInstallers) { product in
+                                if product.isMultipartInstaller {
+                                    MultipartInstallerView(product: product)
+                                } else {
+                                    InstallerView(product: product)
                                 }
-                            ) { product in
-                                InstallerView(product: product)
                             }
                         } else {
                             ForEach(

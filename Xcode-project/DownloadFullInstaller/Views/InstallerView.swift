@@ -37,8 +37,18 @@ struct InstallerView: View {
             Prefs.stopAccessingDownloadURL(accessStarted)
         }
 
-        // Download history can outlive a file deleted outside the app.
-        isDownloaded = FileManager.default.fileExists(atPath: file.path)
+        // Check if file exists on disk (primary check)
+        if FileManager.default.fileExists(atPath: file.path) {
+            isDownloaded = true
+            return
+        }
+
+        // Also check if this file is in the completed downloads list
+        // This ensures the view updates immediately when a download completes
+        // (before the user dismisses the completion notification)
+        isDownloaded = multiDownloadManager.completedDownloads.contains {
+            $0.localURL == file
+        }
     }
 
     var body: some View {
@@ -203,6 +213,9 @@ struct InstallerView: View {
                 }
             }
         }
+        .padding(16)
+        .glassCard(cornerRadius: 16)
+        .contentShape(Rectangle())
         .contextMenu {
             Button(action: {
                 if let text = product.installAssistantURL?.absoluteString {
@@ -232,8 +245,6 @@ struct InstallerView: View {
                 )
             }
         }
-        .padding(16)
-        .glassCard(cornerRadius: 16)
         // Handle multiple different alerts in a single view using appAlert extension
         .appAlert(item: $activeAlert) { alertType in
             switch alertType {
@@ -342,8 +353,14 @@ struct FirmwareView: View {
             Prefs.stopAccessingDownloadURL(accessStarted)
         }
 
-        // Download history can outlive a file deleted outside the app.
-        isDownloaded = FileManager.default.fileExists(atPath: file.path)
+        if FileManager.default.fileExists(atPath: file.path) {
+            isDownloaded = true
+            return
+        }
+
+        isDownloaded = multiDownloadManager.completedDownloads.contains {
+            $0.localURL == file
+        }
     }
 
     var body: some View {
@@ -461,6 +478,9 @@ struct FirmwareView: View {
                     .font(.body)
                 }
             }
+            .padding(16)
+            .glassCard(cornerRadius: 16)
+            .contentShape(Rectangle())
             .contextMenu {
                 Button(action: {
                     let pb = NSPasteboard.general
@@ -482,8 +502,6 @@ struct FirmwareView: View {
                     )
                 }
             }
-            .padding(16)
-            .glassCard(cornerRadius: 16)
             .appAlert(item: $activeAlert) { alertType in
                 switch alertType {
                 case .replaceFile:

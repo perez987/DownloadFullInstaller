@@ -91,12 +91,130 @@ struct CompletedDownloadItemView: View {
     }
 }
 
+struct MultipartDownloadItemView: View {
+    @ObservedObject var group: MultipartDownloadGroup
+    @ObservedObject private var coordinator = MultipartDownloadCoordinator
+        .shared
+
+    var body: some View {
+        if group.isComplete {
+            HStack(spacing: 10) {
+                Image(systemName: "checkmark.circle.fill")
+                    .foregroundStyle(.green)
+                Text(
+                    String(
+                        format: NSLocalizedString("Downloaded %@", comment: ""),
+                        group.title
+                    )
+                )
+                .lineLimit(1)
+                .truncationMode(.middle)
+                Spacer()
+                Button(NSLocalizedString("Show in Finder", comment: "")) {
+                    let access = Prefs.startAccessingDownloadURL()
+                    defer { Prefs.stopAccessingDownloadURL(access) }
+                    NSWorkspace.shared.activateFileViewerSelecting([
+                        Prefs.downloadURL.appendingPathComponent(group.id)
+                    ])
+                }
+                Button(action: { coordinator.dismiss(group) }) {
+                    Image(systemName: "xmark.circle.fill")
+                }
+                .buttonStyle(.borderless)
+                .foregroundStyle(.secondary)
+                .accessibilityLabel(NSLocalizedString("Dismiss", comment: ""))
+            }
+            .padding(12)
+            .glassSubtle(cornerRadius: 12)
+        } else {
+            VStack(alignment: .leading, spacing: 8) {
+                HStack(spacing: 12) {
+                    Image(systemName: "arrow.down.circle.fill")
+                        .foregroundStyle(.blue)
+                    Text(group.title)
+                        .font(.callout.weight(.medium))
+                        .lineLimit(1)
+                        .truncationMode(.middle)
+                    Spacer()
+                    Button(NSLocalizedString("Cancel", comment: "")) {
+                        coordinator.cancel(group)
+                    }
+                    .buttonStyle(.bordered)
+                    .controlSize(.small)
+                    .help(
+                        String(
+                            format: NSLocalizedString(
+                                "Cancel %@ download",
+                                comment: ""
+                            ),
+                            group.title
+                        )
+                    )
+                }
+                // Component progress is not published to this view, so refresh periodically.
+                TimelineView(.periodic(from: .now, by: 0.2)) { _ in
+                    let progress = group.progress
+                    VStack(alignment: .leading, spacing: 8) {
+                        ProgressView(value: progress)
+                        HStack {
+                            if group.isRetrying {
+                                Text(
+                                    NSLocalizedString(
+                                        "Retrying download...",
+                                        comment: "Retrying a download"
+                                    )
+                                )
+                            } else {
+                                let formatter = Prefs.byteFormatter
+                                Text(
+                                    "\(formatter.string(fromByteCount: Int64(Double(group.totalSize) * progress)))/\(formatter.string(fromByteCount: Int64(group.totalSize)))"
+                                )
+                            }
+                            Spacer()
+                            Text(
+                                progress,
+                                format: .percent.precision(.fractionLength(0))
+                            )
+                            .monospacedDigit()
+                        }
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    }
+                }
+            }
+            .padding(12)
+            .glassSubtle(cornerRadius: 12)
+        }
+    }
+}
+
 struct DownloadView: View {
     @ObservedObject private var manager = MultiDownloadManager.shared
+    @ObservedObject private var coordinator = MultipartDownloadCoordinator
+        .shared
     @State private var activeAlert: AppAlertType?
 
+    private var singleActive: [DownloadItem] {
+        manager.activeDownloads.filter { $0.filename?.contains("/") != true }
+    }
+
+    private var singleCompleted: [DownloadItem] {
+        manager.completedDownloads.filter { $0.filename?.contains("/") != true }
+    }
+
     private var hasDownloads: Bool {
-        !manager.activeDownloads.isEmpty || !manager.completedDownloads.isEmpty
+        !singleActive.isEmpty || !singleCompleted.isEmpty
+            || !coordinator.groups.isEmpty
+    }
+
+    private var listHeight: CGFloat {
+        let activeGroups: Int = coordinator.groups.filter { !$0.isComplete }
+            .count
+        let completedGroups: Int = coordinator.groups.filter { $0.isComplete }
+            .count
+        let activeRows: Int = (singleActive.count + activeGroups) * 104
+        let completedRows: Int = (singleCompleted.count + completedGroups) * 56
+        return min(CGFloat(activeRows + completedRows + 4), 220)
     }
 
     var body: some View {
@@ -126,10 +244,13 @@ struct DownloadView: View {
             if hasDownloads {
                 ScrollView {
                     VStack(spacing: 8) {
-                        ForEach(manager.activeDownloads) { item in
+                        ForEach(coordinator.groups) { group in
+                            MultipartDownloadItemView(group: group)
+                        }
+                        ForEach(singleActive) { item in
                             DownloadItemView(downloadItem: item)
                         }
-                        ForEach(manager.completedDownloads) { item in
+                        ForEach(singleCompleted) { item in
                             CompletedDownloadItemView(
                                 downloadItem: item,
                                 manager: manager
@@ -138,15 +259,7 @@ struct DownloadView: View {
                     }
                     .padding(2)
                 }
-                .frame(
-                    height: min(
-                        CGFloat(
-                            manager.activeDownloads.count * 104 + manager
-                                .completedDownloads.count * 56 + 4
-                        ),
-                        220
-                    )
-                )
+                .frame(height: listHeight)
             } else {
                 Text(
                     NSLocalizedString(

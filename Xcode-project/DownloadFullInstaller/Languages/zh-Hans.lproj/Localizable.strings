@@ -1,7 +1,6 @@
 /* General */
 "" = "";
 "\n\n" = "\n\n";
-" in catalog" = " 在目录中";
 "Download Full Installer" = "Download Full Installer";
 
 /* File Replace */
@@ -16,15 +15,11 @@
 
 /* Download */
 "Downloaded %@" = "已下载 %@";
-"Downloading %@" = "正在下载 %@";
-"Retrying download of InstallAssistant.pkg..." = "正在重试下载 InstallAssistant.pkg...";
 "Show in Finder" = "在访达中显示";
 "Cancel %@ download" = "取消下载 %@";
-"Show the installer in the Downloads folder" = "在下载文件夹中显示安装程序";
 
 /* Language Selection */
 "Language Selection" = "语言选择";
-"Choose a language" = "选择语言";
 "Select Language" = "选择语言";
 "Continue" = "继续";
 
@@ -36,7 +31,6 @@
 /* App Settings */
 "Yes" = "是";
 "Clear app settings?" = "删除设置？";
-"(App preferences will be cleared)" = "（应用程序偏好设置将被清除）";
 "You will lose user settings and saved language." = "您将丢失用户设置和已保存的语言。";
 "Warning" = "警告";
 
@@ -45,16 +39,10 @@
 "Error Creating Installer" = "创建 macOS 安装程序时出错";
 "The installer package %@ does not exist in the %@ folder. Please download it first." = "安装包 %@ 不存在于 %@ 文件夹中。请先下载它。";
 "Success" = "成功";
-"The installer app has been created successfully in /Applications" = "macOS 安装应用程序已成功创建在 /Applications 中";
-"The installer package has been opened. Follow the on-screen instructions to complete the installation" = "安装包已打开。按照屏幕上的说明完成安装";
-"Failed to open the installer package. Please try opening it manually from the Downloads folder" = "无法打开安装包。请尝试从下载文件夹手动打开";
 "Failed to create installer app. Error: %@" = "无法创建 macOS 安装应用程序。错误：%@";
-"No write permission to /Applications folder" = "无权限写入 /Applications 文件夹";
-"Failed to create AppleScript" = "无法创建 AppleScript";
 
 /* Multi-download support */
 "Maximum Downloads Reached" = "已达到最大下载数量";
-"You can only download up to 3 installers at the same time. Please wait for a download to complete before starting a new one." = "您最多只能同时下载3个安装程序。请等待一个下载完成后再开始新的下载。";
 "Dismiss" = "关闭";
 
 /* Visual indicator*/
@@ -70,9 +58,7 @@
 "Choose where to save downloaded installers" = "选择保存下载的安装程序的位置";
 
 /* Legacy macOS installers */
-"Legacy macOS Installers" = "↓ 旧版 macOS 安装程序";
-"Download legacy macOS installers (10.7 - 10.12)" = "下载旧版 macOS 安装程序 (10.7 - 10.12)";
-"Download macOS %@ %@" = "下载 macOS %@ %@";
+"Legacy macOS Installers" = "↓ 旧版 macOS 安装程序（单个文件）";
 
 /* Update Check */
 "Check for Updates..." = "检查更新...";
@@ -93,7 +79,8 @@
 "The file '%@' could not be saved to the '%@' folder. Error: %@" = "无法将文件 '%@' 保存到文件夹 '%@'。错误：%@";
 "macOS Library" = "macOS 资源库";
 "Choose a release to explore." = "选择一个版本以查看详情。";
-"Available Releases" = "↓ 可用版本";
+"Available Releases" = "可用版本";
+"Multipart Legacy Installers" = "旧版 macOS 安装程序（6 个文件）";
 "Refresh" = "刷新";
 "Select a macOS release" = "选择 macOS 版本";
 "Available versions and download options will appear here." = "可用版本和下载选项将显示在此处。";
@@ -109,7 +96,28 @@
 "Active downloads" = "正在进行的下载";
 "No active downloads" = "没有正在进行的下载";
 "You can only run up to 3 downloads at the same time. Please wait for a download to complete before starting a new one." = "最多只能同时进行 3 个下载。请等待一个下载完成后再开始新的下载。";
+"This catalog does not provide all six required installer components. Try the Regular catalog." = "此目录未提供全部六个必需的安装器组件。请尝试使用常规目录。";
 
 /* Apple Configurator Restore */
-"Restore with Apple Configurator" = "使用 Apple Configurator 恢复。";
 "Restore with Apple Configurator: How to" = "使用 Apple Configurator 恢复：操作方法\nmacOS 固件是 IPSW 文件，可通过 Apple Configurator 用于恢复 Apple 芯片 Mac。\n执行此操作需要另一台 Mac 以及一根可同时传输电力和数据的 USB-C 线缆。\n恢复 Apple 芯片 Mac 会抹掉磁盘上的所有内容，用户将丢失所有此前未备份的数据。";
+
+/* In-app multipart installer assembly */
+"%@\n\nCould not remove the incomplete build at %@. Remove it in Finder. Error: %@" = "%@\n\n无法移除位于 %@ 的未完成构建。请在访达中移除。错误：%@";
+"An item already exists at %@. Move it or rename it before creating another installer app." = "%@ 处已存在项目。请先移动或重命名该项目，再创建另一个安装器 App。";
+"Assembling installer app. Copying large files may take several minutes..." = "正在组装安装器 App。复制大文件可能需要几分钟…";
+"BaseSystem.dmg may still be mounted. Eject the Base System image in Finder when finished." = "BaseSystem.dmg 可能仍处于已挂载状态。完成后请在访达中推出 Base System 映像。";
+"Download all six installer components before creating the app." = "请先下载全部六个安装器组件，再创建 App。";
+"InstallInfo.plist has an unsupported payload format. The installer app was not created." = "InstallInfo.plist 的负载格式不受支持。未创建安装器 App。";
+"Installer creation in progress" = "正在创建安装器";
+"Opening BaseSystem.dmg..." = "正在打开 BaseSystem.dmg…";
+"Select the mounted Base System volume containing the Apple installer app for this download." = "请选择已挂载的 Base System 卷，其中包含此次下载对应的 Apple 安装器 App。";
+"The component %@ is missing, incomplete, or not a regular file. Download it again." = "组件 %@ 缺失、不完整或不是常规文件。请重新下载。";
+"The installer app has been created alongside the downloaded %@ components, under the name \"%@\"." = "安装器 App 已创建在已下载的 %@ 组件旁，名称为“%@”。";
+"The installer image could not be ejected. Eject it in Finder. Error: %@" = "无法推出安装器映像。请在访达中推出。错误：%@";
+"These components are being used to create an installer app. Wait for creation to finish before downloading them again." = "这些组件正用于创建安装器 App。请等待创建完成后再重新下载。";
+"This is an Intel installer. Creating the app does not make it compatible with Apple Silicon or unsupported Macs." = "这是 Intel 安装器。创建 App 不会使其与 Apple Silicon 或不受支持的 Mac 兼容。";
+
+/* Multipart components */
+"Download the components again?" = "要重新下载组件吗？";
+"The components of %@ have already been downloaded. Do you want to download them again and replace the existing files?" = "%@ 的全部或部分组件已下载。要重新下载并替换现有文件吗？";
+"The installer app was created at %@." = "安装器应用已创建于 %@。";

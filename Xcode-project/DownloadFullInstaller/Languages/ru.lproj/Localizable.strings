@@ -1,7 +1,6 @@
 /* General */
 "" = "";
 "\n\n" = "\n\n";
-" in catalog" = " в каталоге";
 "Download Full Installer" = "Download Full Installer";
 
 /* File Replace */
@@ -16,15 +15,11 @@
 
 /* Download */
 "Downloaded %@" = "Загружено %@";
-"Downloading %@" = "Загрузка %@";
-"Retrying download of InstallAssistant.pkg..." = "Повторная попытка загрузки InstallAssistant.pkg...";
 "Show in Finder" = "Показать в Finder";
 "Cancel %@ download" = "Отменить загрузку %@";
-"Show the installer in the Downloads folder" = "Показать установщик в папке загрузки";
 
 /* Language Selection */
 "Language Selection" = "Выбор языка";
-"Choose a language" = "Выберите язык";
 "Select Language" = "Выбрать язык";
 "Continue" = "Продолжить";
 
@@ -36,7 +31,6 @@
 /* App Settings */
 "Yes" = "Да";
 "Clear app settings?" = "Очистить настройки?";
-"(App preferences will be cleared)" = "(Настройки приложения будут очищены)";
 "You will lose user settings and saved language." = "Вы потеряете пользовательские настройки и сохраненный язык.";
 "Warning" = "Предупреждение";
 
@@ -45,16 +39,10 @@
 "Error Creating Installer" = "Ошибка создания установщика macOS";
 "The installer package %@ does not exist in the %@ folder. Please download it first." = "Установочный пакет %@ отсутствует в папке %@. Пожалуйста, сначала скачайте его.";
 "Success" = "Успех";
-"The installer app has been created successfully in /Applications" = "Приложение установки macOS успешно создано в /Applications";
-"The installer package has been opened. Follow the on-screen instructions to complete the installation" = "Пакет установки открыт. Следуйте инструкциям на экране для завершения установки";
-"Failed to open the installer package. Please try opening it manually from the Downloads folder" = "Не удалось открыть пакет установки. Попробуйте открыть его вручную из папки загрузки";
 "Failed to create installer app. Error: %@" = "Не удалось создать приложение установки macOS. Ошибка: %@";
-"No write permission to /Applications folder" = "Нет разрешения на запись в папку /Applications";
-"Failed to create AppleScript" = "Не удалось создать AppleScript";
 
 /* Multi-download support */
 "Maximum Downloads Reached" = "Достигнуто максимальное количество загрузок";
-"You can only download up to 3 installers at the same time. Please wait for a download to complete before starting a new one." = "Вы можете загружать только 3 установщика одновременно. Пожалуйста, дождитесь завершения загрузки, прежде чем начать новую.";
 "Dismiss" = "Закрыть";
 
 /* Visual indicator*/
@@ -70,9 +58,7 @@
 "Choose where to save downloaded installers" = "Выберите, где сохранить загруженные установщики";
 
 /* Legacy macOS installers */
-"Legacy macOS Installers" = "↓ Устаревшие установщики macOS";
-"Download legacy macOS installers (10.7 - 10.12)" = "Загрузить устаревшие версии macOS (10.7 - 10.12)";
-"Download macOS %@ %@" = "Загрузить macOS %@ %@";
+"Legacy macOS Installers" = "↓ Устаревшие версии (один файл)";
 
 /* Update Check */
 "Check for Updates..." = "Проверить обновления...";
@@ -93,7 +79,8 @@
 "The file '%@' could not be saved to the '%@' folder. Error: %@" = "Не удалось сохранить файл '%@' в папку '%@'. Ошибка: %@";
 "macOS Library" = "Библиотека macOS";
 "Choose a release to explore." = "Выберите версию для просмотра.";
-"Available Releases" = "↓ Доступные версии";
+"Available Releases" = "Доступные версии";
+"Multipart Legacy Installers" = "Устаревшие версии (6 файлов)";
 "Refresh" = "Обновить";
 "Select a macOS release" = "Выберите версию macOS";
 "Available versions and download options will appear here." = "Здесь появятся доступные версии и варианты загрузки.";
@@ -109,7 +96,28 @@
 "Active downloads" = "Активные загрузки";
 "No active downloads" = "Нет активных загрузок";
 "You can only run up to 3 downloads at the same time. Please wait for a download to complete before starting a new one." = "Можно выполнять не более 3 загрузок одновременно. Дождитесь завершения одной из загрузок, прежде чем начать новую.";
+"This catalog does not provide all six required installer components. Try the Regular catalog." = "В этом каталоге представлены не все шесть необходимых компонентов установщика. Попробуйте стандартный каталог.";
 
 /* Apple Configurator Restore */
-"Restore with Apple Configurator" = "Восстановить с помощью Apple Configurator";
 "Restore with Apple Configurator: How to" = "Восстановить с помощью Apple Configurator:\nПрошивки macOS — это файлы IPSW, которые можно использовать для восстановления Mac с Silicon через Apple Configurator.\nДля этой задачи вам нужен другой Mac и кабель USB C, который передает питание и данные.\nВосстановление Mac с Silicon стирает все данные на диске, и пользователь теряет все данные, которые не были заранее сохранены в резервной копии.";
+
+/* In-app multipart installer assembly */
+"%@\n\nCould not remove the incomplete build at %@. Remove it in Finder. Error: %@" = "%@\n\nНе удалось удалить незавершённую сборку в %@. Удалите её в Finder. Ошибка: %@";
+"An item already exists at %@. Move it or rename it before creating another installer app." = "Элемент уже существует в %@. Переместите или переименуйте его, прежде чем создавать другое установочное приложение.";
+"Assembling installer app. Copying large files may take several minutes..." = "Сборка установочного приложения. Копирование больших файлов может занять несколько минут...";
+"BaseSystem.dmg may still be mounted. Eject the Base System image in Finder when finished." = "Возможно, BaseSystem.dmg всё ещё смонтирован. По завершении извлеките образ Base System в Finder.";
+"Download all six installer components before creating the app." = "Загрузите все шесть компонентов установщика, прежде чем создавать приложение.";
+"InstallInfo.plist has an unsupported payload format. The installer app was not created." = "InstallInfo.plist имеет неподдерживаемый формат данных. Установочное приложение не создано.";
+"Installer creation in progress" = "Создание установщика выполняется";
+"Opening BaseSystem.dmg..." = "Открытие BaseSystem.dmg...";
+"Select the mounted Base System volume containing the Apple installer app for this download." = "Выберите смонтированный том Base System, содержащий установочное приложение Apple для этой загрузки.";
+"The component %@ is missing, incomplete, or not a regular file. Download it again." = "Компонент %@ отсутствует, неполон или не является обычным файлом. Загрузите его снова.";
+"The installer app has been created alongside the downloaded %@ components, under the name \"%@\"." = "Установочное приложение создано рядом с загруженными компонентами %@ под именем \"%@\".";
+"The installer image could not be ejected. Eject it in Finder. Error: %@" = "Не удалось извлечь образ установщика. Извлеките его в Finder. Ошибка: %@";
+"These components are being used to create an installer app. Wait for creation to finish before downloading them again." = "Эти компоненты используются для создания установочного приложения. Дождитесь завершения создания, прежде чем загружать их снова.";
+"This is an Intel installer. Creating the app does not make it compatible with Apple Silicon or unsupported Macs." = "Это установщик для Intel. Создание приложения не делает его совместимым с Apple Silicon или неподдерживаемыми Mac.";
+
+/* Multipart components */
+"Download the components again?" = "Загрузить компоненты снова?";
+"The components of %@ have already been downloaded. Do you want to download them again and replace the existing files?" = "Все или некоторые компоненты %@ уже загружены. Загрузить их снова и заменить существующие файлы?";
+"The installer app was created at %@." = "Приложение установщика создано в %@.";

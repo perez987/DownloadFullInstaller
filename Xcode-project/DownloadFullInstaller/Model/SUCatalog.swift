@@ -93,7 +93,7 @@ class SUCatalog: ObservableObject {
             for (productKey, product) in products {
                 product.key = productKey
                 if let metainfo = product.extendedMetaInfo {
-                    if metainfo.sharedSupport != nil {
+                    if metainfo.isInstaller {
                         if !uniqueInstallersList.contains(productKey) {
                             // this is an installer, add to list
                             uniqueInstallersList.append(productKey)

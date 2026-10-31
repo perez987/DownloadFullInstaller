@@ -35,11 +35,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         true
     }
 
+    func applicationShouldTerminate(_: NSApplication)
+        -> NSApplication.TerminateReply
+    {
+        guard LegacyInstallerBuildManager.shared.isBuilding else {
+            return .terminateNow
+        }
+        let alert = NSAlert()
+        alert.messageText = NSLocalizedString(
+            "Installer creation in progress",
+            comment: "Quit prevented during installer assembly"
+        )
+        alert.informativeText = NSLocalizedString(
+            "Wait for installer creation to finish before quitting. You can cancel in the volume selection dialog before copying begins.",
+            comment: "Quit prevented during installer assembly"
+        )
+        alert.addButton(withTitle: NSLocalizedString("OK", comment: ""))
+        alert.runModal()
+        return .terminateCancel
+    }
+
     func applicationWillTerminate(_: Notification) {
         // Enable sleep mode when app exits
         //        print("Calling enableSystemSleep()...")
         enableSystemSleep()
-        // Clean up temporary directory to remove incomplete downloads
-        DownloadManager.cleanupAppTempDirectory()
     }
 }

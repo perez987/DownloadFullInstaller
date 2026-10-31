@@ -1,7 +1,6 @@
 /* General */
 "" = "";
 "\n\n" = "\n\n";
-" in catalog" = " dans le catalogue";
 "Download Full Installer" = "Download Full Installer";
 
 /* File Replace */
@@ -16,15 +15,11 @@
 
 /* Download */
 "Downloaded %@" = "Téléchargé %@";
-"Downloading %@" = "Téléchargement %@";
-"Retrying download of InstallAssistant.pkg..." = "Nouvelle tentative de téléchargement d'InstallAssistant.pkg...";
 "Show in Finder" = "Afficher dans le Finder";
 "Cancel %@ download" = "Annuler %@ le téléchargement";
-"Show the installer in the Downloads folder" = "Afficher le programme d'installation dans le dossier de téléchargements";
 
 /* Language Selection */
 "Language Selection" = "Sélection de langue";
-"Choose a language" = "Choisissez une langue";
 "Select Language" = "Sélectionner la langue";
 "Continue" = "Continuer";
 
@@ -36,7 +31,6 @@
 /* App Settings */
 "Yes" = "Oui";
 "Clear app settings?" = "Effacer les paramètres?";
-"(App preferences will be cleared)" = "(Les préférences de l'application seront effacées))";
 "You will lose user settings and saved language." = "Vous perdrez les paramètres utilisateur et la langue enregistrée.";
 "Warning" = "Avertissement";
 
@@ -45,16 +39,10 @@
 "Error Creating Installer" = "Erreur lors de la création du programme d'installation de macOS";
 "The installer package %@ does not exist in the %@ folder. Please download it first." = "Le package d'installation %@ n'existe pas dans le dossier %@. Veuillez d'abord le télécharger.";
 "Success" = "Succès";
-"The installer app has been created successfully in /Applications" = "L'application d'installation de macOS a été créée avec succès dans /Applications";
-"The installer package has been opened. Follow the on-screen instructions to complete the installation" = "Le package d'installation est ouvert. Suivez les instructions à l'écran pour terminer l'installation.";
-"Failed to open the installer package. Please try opening it manually from the Downloads folder" = "Impossible d'ouvrir le package d'installation. Veuillez essayer de l'ouvrir manuellement depuis le dossier de téléchargements.";
 "Failed to create installer app. Error: %@" = "Échec de la création de l'application d'installation macOS. Erreur.: %@";
-"No write permission to /Applications folder" = "Aucune autorisation d'écriture sur le dossier /Applications";
-"Failed to create AppleScript" = "Échec de la création d'AppleScript";
 
 /* Multi-download support */
 "Maximum Downloads Reached" = "Nombre maximum de téléchargements atteint";
-"You can only download up to 3 installers at the same time. Please wait for a download to complete before starting a new one." = "Vous ne pouvez télécharger que 3 programmes d'installation en même temps. Veuillez attendre qu'un téléchargement se termine avant d'en démarrer un nouveau.";
 "Dismiss" = "Fermer";
 
 /* Visual indicator*/
@@ -70,15 +58,13 @@
 "Choose where to save downloaded installers" = "Choisissez où enregistrer les installateurs téléchargés";
 
 /* Legacy macOS installers */
-"Legacy macOS Installers" = "↓ Anciennes versions de macOS";
-"Download legacy macOS installers (10.7 - 10.12)" = "Télécharger les anciennes versions de macOS (10.7 - 10.12)";
-"Download macOS %@ %@" = "Télécharger macOS %@ %@";
+"Legacy macOS Installers" = "↓ Anciens installateurs (fichier unique)";
 
 /* Update Check */
 "Check for Updates..." = "Rechercher des mises à jour...";
 
 /* Firmware tab */
-"Installers" = "Installers";
+"Installers" = "Programmes d’installation";
 "Firmwares" = "Firmwares";
 "Download %@ %@ (%@) Firmware" = "Télécharger le firmware %@ %@ (%@)";
 "This firmware has been downloaded" = "Ce firmware a déjà été téléchargé";
@@ -93,7 +79,8 @@
 "The file '%@' could not be saved to the '%@' folder. Error: %@" = "Le fichier '%@' n'a pas pu être enregistré dans le dossier '%@'. Erreur : %@";
 "macOS Library" = "Bibliothèque macOS";
 "Choose a release to explore." = "Choisissez une version à explorer.";
-"Available Releases" = "↓ Versions disponibles";
+"Available Releases" = "Versions disponibles";
+"Multipart Legacy Installers" = "Anciens installateurs (6 fichiers)";
 "Refresh" = "Actualiser";
 "Select a macOS release" = "Sélectionnez une version de macOS";
 "Available versions and download options will appear here." = "Les versions disponibles et les options de téléchargement apparaîtront ici.";
@@ -109,7 +96,28 @@
 "Active downloads" = "Téléchargements actifs";
 "No active downloads" = "Aucun téléchargement actif";
 "You can only run up to 3 downloads at the same time. Please wait for a download to complete before starting a new one." = "Vous pouvez effectuer jusqu'à 3 téléchargements simultanés. Attendez la fin d'un téléchargement avant d'en lancer un autre.";
+"This catalog does not provide all six required installer components. Try the Regular catalog." = "Ce catalogue ne fournit pas les six composants requis pour l’installation. Essayez le catalogue standard.";
 
 /* Apple Configurator Restore */
-"Restore with Apple Configurator" = "Restaurer avec Apple Configurator";
 "Restore with Apple Configurator: How to" = "Restaurer avec Apple Configurator :\nLes firmwares macOS sont des fichiers IPSW qui peuvent être utilisés pour restaurer les Mac Silicon à l’aide d’Apple Configurator.\nPour cette tâche, vous avez besoin d’un autre Mac et d’un câble USB C capable de transmettre l’alimentation ainsi que les données.\nLa restauration d’un Mac Silicon efface tout le contenu du disque et l’utilisateur perd toutes les données qui n’ont pas été sauvegardées auparavant.";
+
+/* In-app multipart installer assembly */
+"%@\n\nCould not remove the incomplete build at %@. Remove it in Finder. Error: %@" = "%@\n\nImpossible de supprimer la version incomplète à l'emplacement %@. Supprimez-la dans le Finder. Erreur : %@";
+"An item already exists at %@. Move it or rename it before creating another installer app." = "Un élément existe déjà à l'emplacement %@. Déplacez-le ou renommez-le avant de créer une autre application d'installation.";
+"Assembling installer app. Copying large files may take several minutes..." = "Assemblage de l'application d'installation. La copie de fichiers volumineux peut prendre plusieurs minutes...";
+"BaseSystem.dmg may still be mounted. Eject the Base System image in Finder when finished." = "BaseSystem.dmg est peut-être toujours monté. Éjectez l'image Base System dans le Finder une fois terminé.";
+"Download all six installer components before creating the app." = "Téléchargez les six composants de l'installateur avant de créer l'application.";
+"InstallInfo.plist has an unsupported payload format. The installer app was not created." = "InstallInfo.plist a un format de contenu non pris en charge. L'application d'installation n'a pas été créée.";
+"Installer creation in progress" = "Création de l'installateur en cours";
+"Opening BaseSystem.dmg..." = "Ouverture de BaseSystem.dmg...";
+"Select the mounted Base System volume containing the Apple installer app for this download." = "Sélectionnez le volume Base System monté contenant l'application d'installation Apple correspondant à ce téléchargement.";
+"The component %@ is missing, incomplete, or not a regular file. Download it again." = "Le composant %@ est manquant, incomplet ou n'est pas un fichier standard. Téléchargez-le à nouveau.";
+"The installer app has been created alongside the downloaded %@ components, under the name \"%@\"." = "L'application d'installation a été créée à côté des composants %@ téléchargés, sous le nom \"%@\".";
+"The installer image could not be ejected. Eject it in Finder. Error: %@" = "L'image de l'installateur n'a pas pu être éjectée. Éjectez-la dans le Finder. Erreur : %@";
+"These components are being used to create an installer app. Wait for creation to finish before downloading them again." = "Ces composants sont utilisés pour créer une application d'installation. Attendez la fin de la création avant de les télécharger à nouveau.";
+"This is an Intel installer. Creating the app does not make it compatible with Apple Silicon or unsupported Macs." = "Il s'agit d'un installateur Intel. Créer l'application ne le rend pas compatible avec Apple Silicon ni avec les Mac non pris en charge.";
+
+/* Multipart components */
+"Download the components again?" = "Télécharger à nouveau les composants ?";
+"The components of %@ have already been downloaded. Do you want to download them again and replace the existing files?" = "Tous ou certains composants de %@ ont déjà été téléchargés. Voulez-vous les télécharger à nouveau et remplacer les fichiers existants ?";
+"The installer app was created at %@." = "L'application d'installation a été créée dans %@.";

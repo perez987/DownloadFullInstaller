@@ -6,7 +6,11 @@
 
 import Foundation
 
-@objc class DistParserDelegate: NSObject, XMLParserDelegate {
+#if canImport(FoundationXML)
+    import FoundationXML
+#endif
+
+class DistParserDelegate: NSObject, XMLParserDelegate {
     enum Elements: String {
         case pkgref = "pkg-ref"
         case auxinfo
@@ -27,6 +31,13 @@ import Foundation
     private var currentString = String()
     private var keysParsed = 0
 
+    func parserDidEndDocument(_: XMLParser) {
+        // Legacy distributions use a localization key instead of a literal title.
+        if title == "SU_TITLE" {
+            title = nameOS[String(buildVersion.prefix(2))] ?? osName
+        }
+    }
+
     func parser(
         _: XMLParser,
         didStartElement elementName: String,
@@ -43,9 +54,6 @@ import Foundation
                     osName =
                         nameOS[String(installerVersion.prefix(2))] ?? "macOS"
                 }
-            }
-            if attributeDict["id"] == "InstallESDDmg" {
-                print("AttribureDict: \(attributeDict)")
             }
         }
 
@@ -79,9 +87,12 @@ import Foundation
         }
 
         if elementName == Elements.string.rawValue {
-            if currentKey == "BUILD" {
+            if currentKey == "BUILD" || currentKey == "macOSProductBuildVersion"
+            {
                 buildVersion = currentString
-            } else if currentKey == "VERSION" {
+            } else if currentKey == "VERSION"
+                || currentKey == "macOSProductVersion"
+            {
                 productVersion = currentString
             }
         }

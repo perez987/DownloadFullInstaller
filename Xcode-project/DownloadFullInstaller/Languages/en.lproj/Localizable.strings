@@ -1,7 +1,6 @@
 /* General */
 "" = "";
 "\n\n" = "\n\n";
-" in catalog" = " in catalog";
 "Download Full Installer" = "Download Full Installer";
 
 /* File Replace */
@@ -16,15 +15,11 @@
 
 /* Download */
 "Downloaded %@" = "Downloaded %@";
-"Downloading %@" = "Downloading %@";
-"Retrying download of InstallAssistant.pkg..." = "Retrying download of InstallAssistant.pkg...";
 "Show in Finder" = "Show in Finder";
 "Cancel %@ download" = "Cancel %@ download";
-"Show the installer in the Downloads folder" = "Show the installer in the download folder";
 
 /* Language Selection */
 "Language Selection" = "Language Selection";
-"Choose a language" = "Choose a language";
 "Select Language" = "Select Language";
 "Continue" = "Continue";
 
@@ -36,7 +31,6 @@
 /* App Settings */
 "Yes" = "Yes";
 "Clear app settings?" = "Clear app settings?";
-"(App preferences will be cleared)" = "(App preferences will be cleared)";
 "You will lose user settings and saved language." = "You will lose user settings and saved language.";
 "Warning" = "Warning";
 
@@ -45,16 +39,10 @@
 "Error Creating Installer" = "Error Creating macOS Installer";
 "The installer package %@ does not exist in the %@ folder. Please download it first." = "The installer package %@ does not exist in the %@ folder. Please download it first.";
 "Success" = "Success";
-"The installer app has been created successfully in /Applications" = "The macOS Install app has been created successfully in /Applications";
-"The installer package has been opened. Follow the on-screen instructions to complete the installation" = "The installer package has been opened. Follow the on-screen instructions to complete the installation";
-"Failed to open the installer package. Please try opening it manually from the Downloads folder" = "Failed to open the installer package. Please try opening it manually from the download folder";
 "Failed to create installer app. Error: %@" = "Failed to create macOS Install app. Error: %@";
-"No write permission to /Applications folder" = "No write permission to /Applications folder";
-"Failed to create AppleScript" = "Failed to create AppleScript";
 
 /* Multi-download support */
 "Maximum Downloads Reached" = "Maximum Downloads Reached";
-"You can only download up to 3 installers at the same time. Please wait for a download to complete before starting a new one." = "You can only download up to 3 installers at the same time. Please wait for a download to complete before starting a new one.";
 "Dismiss" = "Dismiss";
 
 /* Visual indicator*/
@@ -70,9 +58,7 @@
 "Choose where to save downloaded installers" = "Choose where to save the downloaded installers";
 
 /* Legacy macOS installers */
-"Legacy macOS Installers" = "↓ Legacy macOS Installers";
-"Download legacy macOS installers (10.7 - 10.12)" = "Download legacy macOS installers (10.7 - 10.12)";
-"Download macOS %@ %@" = "Download macOS %@ %@";
+"Legacy macOS Installers" = "↓ Legacy macOS Installers (single file)";
 
 /* Update Check */
 "Check for Updates..." = "Check for Updates...";
@@ -93,7 +79,8 @@
 "The file '%@' could not be saved to the '%@' folder. Error: %@" = "The file '%@' could not be saved to the '%@' folder. Error: %@";
 "macOS Library" = "macOS Library";
 "Choose a release to explore." = "Choose a release to explore.";
-"Available Releases" = "↓ Available Releases";
+"Available Releases" = "Available Releases";
+"Multipart Legacy Installers" = "Legacy macOS Installers (6 files)";
 "Refresh" = "Refresh";
 "Select a macOS release" = "Select a macOS release";
 "Available versions and download options will appear here." = "Available versions and download options will appear here.";
@@ -109,7 +96,28 @@
 "Active downloads" = "Active downloads";
 "No active downloads" = "No active downloads";
 "You can only run up to 3 downloads at the same time. Please wait for a download to complete before starting a new one." = "You can only run up to 3 downloads at the same time. Please wait for a download to complete before starting a new one.";
+"This catalog does not provide all six required installer components. Try the Regular catalog." = "This catalog does not provide all six required installer components. Try the Regular catalog.";
 
 /* Apple Configurator Restore */
-"Restore with Apple Configurator" = "Restore with Apple Configurator.";
 "Restore with Apple Configurator: How to" = "Restore with Apple Configurator:\nmacOS firmwares are IPSW files that can be used to restore Silicon Macs using Apple Configurator.\nFor this task, you need another Mac and a USB C cable that can transmit power as well as data.\nRestoring a Silicon Mac erases everything on the drive and the user loses all data that has not been previously backed up.";
+
+/* In-app multipart installer assembly */
+"%@\n\nCould not remove the incomplete build at %@. Remove it in Finder. Error: %@" = "%@\n\nCould not remove the incomplete build at %@. Remove it in Finder. Error: %@";
+"An item already exists at %@. Move it or rename it before creating another installer app." = "An item already exists at %@. Move it or rename it before creating another installer app.";
+"Assembling installer app. Copying large files may take several minutes..." = "Assembling installer app. Copying large files may take several minutes...";
+"BaseSystem.dmg may still be mounted. Eject the Base System image in Finder when finished." = "BaseSystem.dmg may still be mounted. Eject the Base System image in Finder when finished.";
+"Download all six installer components before creating the app." = "Download all six installer components before creating the app.";
+"InstallInfo.plist has an unsupported payload format. The installer app was not created." = "InstallInfo.plist has an unsupported payload format. The installer app was not created.";
+"Installer creation in progress" = "Installer creation in progress";
+"Opening BaseSystem.dmg..." = "Opening BaseSystem.dmg...";
+"Select the mounted Base System volume containing the Apple installer app for this download." = "Select the mounted Base System volume containing the Apple installer app for this download.";
+"The component %@ is missing, incomplete, or not a regular file. Download it again." = "The component %@ is missing, incomplete, or not a regular file. Download it again.";
+"The installer app has been created alongside the downloaded %@ components, under the name \"%@\"." = "The installer app has been created alongside the downloaded %@ components, under the name \"%@\".";
+"The installer image could not be ejected. Eject it in Finder. Error: %@" = "The installer image could not be ejected. Eject it in Finder. Error: %@";
+"These components are being used to create an installer app. Wait for creation to finish before downloading them again." = "These components are being used to create an installer app. Wait for creation to finish before downloading them again.";
+"This is an Intel installer. Creating the app does not make it compatible with Apple Silicon or unsupported Macs." = "This is an Intel installer. Creating the app does not make it compatible with Apple Silicon or unsupported Macs.";
+
+/* Multipart components */
+"Download the components again?" = "Download the components again?";
+"The components of %@ have already been downloaded. Do you want to download them again and replace the existing files?" = "All or some of the components of %@ have already been downloaded. Do you want to download them again and replace the existing files?";
+"The installer app was created at %@." = "The installer app was created at %@.";

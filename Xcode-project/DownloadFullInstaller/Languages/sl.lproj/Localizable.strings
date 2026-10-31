@@ -1,7 +1,6 @@
 /* General */
 "" = "";
 "\n\n" = "\n\n";
-" in catalog" = " v katalogu";
 "Download Full Installer" = "Download Full Installer";
 
 /* File Replace */
@@ -16,15 +15,11 @@
 
 /* Download */
 "Downloaded %@" = "Preneseno %@";
-"Downloading %@" = "Prenašanje %@";
-"Retrying download of InstallAssistant.pkg..." = "Ponovni poskus prenosa datoteke InstallAssistant.pkg...";
 "Show in Finder" = "Prikaži v iskalniku";
 "Cancel %@ download" = "Prekliči prenos %@";
-"Show the installer in the Downloads folder" = "Prikaži namestitveni program v mapi za prenose";
 
 /* Language Selection */
 "Language Selection" = "Izbira jezika";
-"Choose a language" = "Izberite jezik";
 "Select Language" = "Izberite jezik";
 "Continue" = "Nadaljuj";
 
@@ -36,7 +31,6 @@
 /* App Settings */
 "Yes" = "Da";
 "Clear app settings?" = "Želite počistiti nastavitve?";
-"(App preferences will be cleared)" = "(Nastavitve aplikacije bodo izbrisane)";
 "You will lose user settings and saved language." = "Izgubili boste uporabniške nastavitve in shranjeni jezik.";
 "Warning" = "Opozorilo";
 
@@ -45,16 +39,10 @@
 "Error Creating Installer" = "Napaka pri ustvarjanju namestitvenega programa za macOS";
 "The installer package %@ does not exist in the %@ folder. Please download it first." = "Namestitveni paket %@ ne obstaja v mapi %@. Najprej ga prenesite.";
 "Success" = "Uspeh";
-"The installer app has been created successfully in /Applications" = "Aplikacija za namestitev macOS je bila uspešno ustvarjena v /Aplikacijah";
-"The installer package has been opened. Follow the on-screen instructions to complete the installation" = "Namestitveni paket je bil odprt. Za dokončanje namestitve sledite navodilom na zaslonu.";
-"Failed to open the installer package. Please try opening it manually from the Downloads folder" = "Namestitvenega paketa ni bilo mogoče odpreti. Poskusite ga odpreti ročno iz mape za prenose.";
 "Failed to create installer app. Error: %@" = "Ustvarjanje namestitvene aplikacije za macOS ni uspelo. Napaka: %@";
-"No write permission to /Applications folder" = "Ni dovoljenja za pisanje v mapo /Aplikacije";
-"Failed to create AppleScript" = "Ustvarjanje AppleScripta ni uspelo";
 
 /* Multi-download support */
 "Maximum Downloads Reached" = "Doseženo je bilo največje število prenosov";
-"You can only download up to 3 installers at the same time. Please wait for a download to complete before starting a new one." = "Hkrati lahko prenesete največ 3 namestitvene programe. Preden začnete novega, počakajte, da se prenos prejšnjega zaključi.";
 "Dismiss" = "Opusti";
 
 /* Visual indicator*/
@@ -70,15 +58,13 @@
 "Choose where to save downloaded installers" = "Izberite, kam želite shraniti prenesene namestitvene datoteke";
 
 /* Legacy macOS installers */
-"Legacy macOS Installers" = "↓ Starejše različice";
-"Download legacy macOS installers (10.7 - 10.12)" = "Prenesi starejše različice macOS (10.7 - 10.12)";
-"Download macOS %@ %@" = "Prenesi macOS %@ %@";
+"Legacy macOS Installers" = "↓ Starejše različice (ena datoteka)";
 
 /* Update Check */
 "Check for Updates..." = "Preveri posodobitve...";
 
 /* Firmware tab */
-"Installers" = "Installers";
+"Installers" = "Monterji";
 "Firmwares" = "Firmwares";
 "Download %@ %@ (%@) Firmware" = "Prenesi vdelano programsko opremo %@ %@ (%@)";
 "This firmware has been downloaded" = "Ta vdelana programska oprema je že prenesena";
@@ -93,7 +79,8 @@
 "The file '%@' could not be saved to the '%@' folder. Error: %@" = "Datoteke '%@' ni bilo mogoče shraniti v mapo '%@'. Napaka: %@";
 "macOS Library" = "Knjižnica macOS";
 "Choose a release to explore." = "Izberite različico za ogled.";
-"Available Releases" = "↓ Razpoložljive različice";
+"Available Releases" = "Razpoložljive različice";
+"Multipart Legacy Installers" = "Starejše različice (6 datotek)";
 "Refresh" = "Osveži";
 "Select a macOS release" = "Izberite različico macOS";
 "Available versions and download options will appear here." = "Tukaj bodo prikazane razpoložljive različice in možnosti prenosa.";
@@ -109,7 +96,28 @@
 "Active downloads" = "Aktivni prenosi";
 "No active downloads" = "Ni aktivnih prenosov";
 "You can only run up to 3 downloads at the same time. Please wait for a download to complete before starting a new one." = "Hkrati lahko izvajate največ 3 prenose. Pred začetkom novega počakajte, da se eden od prenosov konča.";
+"This catalog does not provide all six required installer components. Try the Regular catalog." = "Ta katalog ne vsebuje vseh šestih zahtevanih komponent namestitvenega programa. Poskusite z običajnim katalogom.";
 
 /* Apple Configurator Restore */
-"Restore with Apple Configurator" = "Obnovi z Apple Configurator";
 "Restore with Apple Configurator: How to" = "Obnovi z Apple Configurator:\nProgramska oprema macOS je v datotekah IPSW, ki jih lahko uporabite za obnovitev Macov s Silicon s pomočjo Apple Configuratorja.\nZa to opravilo potrebujete drug Mac in kabel USB C, ki lahko prenaša napajanje ter podatke.\nObnovitev Maca s Silicon izbriše vse na disku, uporabnik pa izgubi vse podatke, ki prej niso bili varnostno kopirani.";
+
+/* In-app multipart installer assembly */
+"%@\n\nCould not remove the incomplete build at %@. Remove it in Finder. Error: %@" = "%@\n\nNepopolne gradnje na %@ ni bilo mogoče odstraniti. Odstranite jo v Finderju. Napaka: %@";
+"An item already exists at %@. Move it or rename it before creating another installer app." = "Element na %@ že obstaja. Premaknite ga ali preimenujte, preden ustvarite drugo namestitveno aplikacijo.";
+"Assembling installer app. Copying large files may take several minutes..." = "Sestavljanje namestitvene aplikacije. Kopiranje velikih datotek lahko traja nekaj minut...";
+"BaseSystem.dmg may still be mounted. Eject the Base System image in Finder when finished." = "BaseSystem.dmg je morda še vedno priklopljen. Ko končate, izvrzite sliko Base System v Finderju.";
+"Download all six installer components before creating the app." = "Pred ustvarjanjem aplikacije prenesite vseh šest komponent namestitvenega programa.";
+"InstallInfo.plist has an unsupported payload format. The installer app was not created." = "InstallInfo.plist ima nepodprt format vsebine. Namestitvena aplikacija ni bila ustvarjena.";
+"Installer creation in progress" = "Ustvarjanje namestitvenega programa poteka";
+"Opening BaseSystem.dmg..." = "Odpiranje BaseSystem.dmg ...";
+"Select the mounted Base System volume containing the Apple installer app for this download." = "Izberite priklopljen nosilec Base System, ki vsebuje Applovo namestitveno aplikacijo za ta prenos.";
+"The component %@ is missing, incomplete, or not a regular file. Download it again." = "Komponenta %@ manjka, je nepopolna ali ni navadna datoteka. Prenesite jo znova.";
+"The installer app has been created alongside the downloaded %@ components, under the name \"%@\"." = "Namestitvena aplikacija je bila ustvarjena ob prenesenih komponentah %@ z imenom \"%@\".";
+"The installer image could not be ejected. Eject it in Finder. Error: %@" = "Slike namestitvenega programa ni bilo mogoče izvreči. Izvrzite jo v Finderju. Napaka: %@";
+"These components are being used to create an installer app. Wait for creation to finish before downloading them again." = "Te komponente se uporabljajo za ustvarjanje namestitvene aplikacije. Počakajte, da se ustvarjanje konča, preden jih znova prenesete.";
+"This is an Intel installer. Creating the app does not make it compatible with Apple Silicon or unsupported Macs." = "To je namestitveni program za Intel. Ustvarjanje aplikacije ga ne naredi združljivega z Apple Silicon ali nepodprtimi računalniki Mac.";
+
+/* Multipart components */
+"Download the components again?" = "Ali želite komponente prenesti znova?";
+"The components of %@ have already been downloaded. Do you want to download them again and replace the existing files?" = "Vse ali nekatere komponente za %@ so že prenesene. Ali jih želite prenesti znova in zamenjati obstoječe datoteke?";
+"The installer app was created at %@." = "Namestitveni program je bil ustvarjen v %@.";

@@ -14,6 +14,7 @@ import SwiftUI
 enum AppAlertType: Identifiable {
     // InstallerView alerts
     case replaceFile(filename: String)
+    case replaceComponents(name: String)
     case maxDownloads
     case installerCreation(title: String, message: String)
     case downloadError(message: String)
@@ -26,6 +27,8 @@ enum AppAlertType: Identifiable {
         switch self {
         case .replaceFile(let filename):
             "replaceFile_\(filename)"
+        case .replaceComponents(let name):
+            "replaceComponents_\(name)"
         case .maxDownloads:
             "maxDownloads"
         case .installerCreation:
@@ -50,6 +53,8 @@ enum AppAlertType: Identifiable {
                 ),
                 filename
             )
+        case .replaceComponents:
+            NSLocalizedString("Download the components again?", comment: "")
         case .maxDownloads:
             NSLocalizedString("Maximum Downloads Reached", comment: "")
         case .installerCreation(let title, _):
@@ -70,6 +75,14 @@ enum AppAlertType: Identifiable {
             NSLocalizedString(
                 "A file with the same name already exists in that location. Replacing it will overwrite its current contents.",
                 comment: ""
+            )
+        case .replaceComponents(let name):
+            String(
+                format: NSLocalizedString(
+                    "The components of %@ have already been downloaded. Do you want to download them again and replace the existing files?",
+                    comment: ""
+                ),
+                name
             )
         case .maxDownloads:
             NSLocalizedString(
@@ -96,7 +109,8 @@ enum AppAlertType: Identifiable {
     /// Returns whether this alert has a primary action (requires two buttons)
     var hasPrimaryAction: Bool {
         switch self {
-        case .replaceFile, .restartRequired, .warningSettings:
+        case .replaceFile, .replaceComponents, .restartRequired,
+            .warningSettings:
             true
         case .maxDownloads, .installerCreation, .downloadError:
             false
@@ -106,7 +120,7 @@ enum AppAlertType: Identifiable {
     /// Returns the primary button text for alerts with two buttons
     var primaryButtonText: String {
         switch self {
-        case .replaceFile:
+        case .replaceFile, .replaceComponents:
             NSLocalizedString("Replace", comment: "")
         case .restartRequired, .warningSettings:
             NSLocalizedString("OK", comment: "")
@@ -118,7 +132,7 @@ enum AppAlertType: Identifiable {
     /// Returns whether the primary button should be destructive
     var isPrimaryDestructive: Bool {
         switch self {
-        case .replaceFile:
+        case .replaceFile, .replaceComponents:
             true
         default:
             false
@@ -128,7 +142,8 @@ enum AppAlertType: Identifiable {
     /// Returns the cancel/dismiss button text
     var dismissButtonText: String {
         switch self {
-        case .replaceFile, .restartRequired, .warningSettings:
+        case .replaceFile, .replaceComponents, .restartRequired,
+            .warningSettings:
             NSLocalizedString("Cancel", comment: "")
         case .maxDownloads, .installerCreation, .downloadError:
             NSLocalizedString("OK", comment: "")

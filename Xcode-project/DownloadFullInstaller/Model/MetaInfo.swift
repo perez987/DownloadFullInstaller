@@ -9,6 +9,11 @@ import Foundation
 struct MetaInfo: Codable {
     let installAssistantPackageIdentifiers: [String: String]?
 
+    var isInstaller: Bool {
+        sharedSupport?.hasPrefix("com.apple.pkg.InstallAssistant") == true
+            || osInstall == "com.apple.mpkg.OSInstall"
+    }
+
     var installInfo: String? {
         installAssistantPackageIdentifiers?["InstallInfo"]
     }

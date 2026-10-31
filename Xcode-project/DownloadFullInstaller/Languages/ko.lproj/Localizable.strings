@@ -1,7 +1,6 @@
 /* General */
 "" = "";
 "\n\n" = "\n\n";
-" in catalog" = " 카탈로그:";
 "Download Full Installer" = "Download Full Installer";
 
 /* File Replace */
@@ -16,15 +15,11 @@
 
 /* Download */
 "Downloaded %@" = "%@ 다운로드됨";
-"Downloading %@" = "%@ 다운로드됨";
-"Retrying download of InstallAssistant.pkg..." = "InstallAssistant.pkg 다운로드를 다시 시도하는 중...";
 "Show in Finder" = "Finder에서 표시";
 "Cancel %@ download" = "%@ 다운로드 취소";
-"Show the installer in the Downloads folder" = "다운로드 폴더에 설치 프로그램 표시";
 
 /* Language Selection */
 "Language Selection" = "언어 선택";
-"Choose a language" = "언어 선택";
 "Select Language" = "언어 선택";
 "Continue" = "계속";
 
@@ -36,7 +31,6 @@
 /* App Settings */
 "Yes" = "예";
 "Clear app settings?" = "설정을 삭제하시겠습니까?";
-"(App preferences will be cleared)" = "(앱 환경설정이 지워집니다)";
 "You will lose user settings and saved language." = "사용자 설정과 저장된 언어를 잃게 될 것입니다.";
 "Warning" = "경고";
 
@@ -45,16 +39,10 @@
 "Error Creating Installer" = "macOS 설치 프로그램을 만드는 중 오류 발생";
 "The installer package %@ does not exist in the %@ folder. Please download it first." = "%@ 폴더에 설치 패키지 %@가 없습니다. 먼저 다운로드하십시오.";
 "Success" = "성공";
-"The installer app has been created successfully in /Applications" = "macOS 설치 앱이 /Applications 폴더에 성공적으로 생성되었습니다";
-"The installer package has been opened. Follow the on-screen instructions to complete the installation" = "설치 프로그램 패키지가 열렸습니다. 화면의 지시에 따라 설치를 완료하세요";
-"Failed to open the installer package. Please try opening it manually from the Downloads folder" = "설치 프로그램 패키지를 열지 못했습니다. 다운로드 폴더에서 수동으로 열어보세요";
 "Failed to create installer app. Error: %@" = "macOS 설치 앱을 만들지 못했습니다. 오류: %@";
-"No write permission to /Applications folder" = "/Applications 폴더에 쓰기 권한이 없습니다";
-"Failed to create AppleScript" = "AppleScript를 생성하는 데 실패했습니다";
 
 /* Multi-download support */
 "Maximum Downloads Reached" = "최대 다운로드 횟수 도달";
-"You can only download up to 3 installers at the same time. Please wait for a download to complete before starting a new one." = "동시에 최대 3개의 설치 프로그램만 다운로드할 수 있습니다. 새 설치 프로그램을 시작하기 전에 다운로드가 완료될 때까지 기다려 주세요.";
 "Dismiss" = "닫기";
 
 /* Visual indicator*/
@@ -70,9 +58,7 @@
 "Choose where to save downloaded installers" = "다운로드한 설치 프로그램을 저장할 위치 선택";
 
 /* Legacy macOS installers */
-"Legacy macOS Installers" = "↓ 레거시 macOS 설치 프로그램";
-"Download legacy macOS installers (10.7 - 10.12)" = "레거시 macOS 버전 다운로드 (10.7 - 10.12)";
-"Download macOS %@ %@" = "macOS %@ %@ 다운로드";
+"Legacy macOS Installers" = "↓ 레거시 macOS 설치 프로그램 (단일 파일)";
 
 /* Update Check */
 "Check for Updates..." = "업데이트 확인...";
@@ -93,7 +79,8 @@
 "The file '%@' could not be saved to the '%@' folder. Error: %@" = "'%@' 파일을 '%@' 폴더에 저장할 수 없습니다. 오류: %@";
 "macOS Library" = "macOS 라이브러리";
 "Choose a release to explore." = "살펴볼 버전을 선택하세요.";
-"Available Releases" = "↓ 사용 가능한 버전";
+"Available Releases" = "사용 가능한 버전";
+"Multipart Legacy Installers" = "레거시 macOS 설치 프로그램 (6개 파일)";
 "Refresh" = "새로 고침";
 "Select a macOS release" = "macOS 버전 선택";
 "Available versions and download options will appear here." = "사용 가능한 버전과 다운로드 옵션이 여기에 표시됩니다.";
@@ -109,7 +96,28 @@
 "Active downloads" = "진행 중인 다운로드";
 "No active downloads" = "진행 중인 다운로드 없음";
 "You can only run up to 3 downloads at the same time. Please wait for a download to complete before starting a new one." = "동시에 최대 3개까지 다운로드할 수 있습니다. 다운로드가 완료될 때까지 기다린 후 새 다운로드를 시작하세요.";
+"This catalog does not provide all six required installer components. Try the Regular catalog." = "이 카탈로그에는 필요한 설치 프로그램 구성 요소 여섯 개가 모두 포함되어 있지 않습니다. 일반 카탈로그를 사용해 보세요.";
 
 /* Apple Configurator Restore */
-"Restore with Apple Configurator" = "Apple Configurator로 복원";
 "Restore with Apple Configurator: How to" = "Apple Configurator로 복원:\nmacOS 펌웨어는 IPSW 파일이며 Apple Configurator를 사용해 Silicon Mac을 복원하는 데 사용할 수 있습니다.\n이 작업을 위해서는 다른 Mac과 전원 및 데이터 전송이 가능한 USB C 케이블이 필요합니다.\nSilicon Mac을 복원하면 드라이브의 모든 내용이 지워지며, 미리 백업하지 않은 모든 데이터를 잃게 됩니다.";
+
+/* In-app multipart installer assembly */
+"%@\n\nCould not remove the incomplete build at %@. Remove it in Finder. Error: %@" = "%@\n\n%@의 불완전한 빌드를 제거할 수 없습니다. Finder에서 제거하세요. 오류: %@";
+"An item already exists at %@. Move it or rename it before creating another installer app." = "%@에 이미 항목이 있습니다. 다른 설치 앱을 만들기 전에 해당 항목을 이동하거나 이름을 변경하세요.";
+"Assembling installer app. Copying large files may take several minutes..." = "설치 앱을 조립하는 중입니다. 큰 파일을 복사하는 데 몇 분이 걸릴 수 있습니다...";
+"BaseSystem.dmg may still be mounted. Eject the Base System image in Finder when finished." = "BaseSystem.dmg가 아직 마운트되어 있을 수 있습니다. 완료한 후 Finder에서 Base System 이미지를 추출하세요.";
+"Download all six installer components before creating the app." = "앱을 만들기 전에 여섯 개의 설치 프로그램 구성 요소를 모두 다운로드하세요.";
+"InstallInfo.plist has an unsupported payload format. The installer app was not created." = "InstallInfo.plist의 페이로드 형식이 지원되지 않습니다. 설치 앱이 생성되지 않았습니다.";
+"Installer creation in progress" = "설치 프로그램 생성 진행 중";
+"Opening BaseSystem.dmg..." = "BaseSystem.dmg를 여는 중...";
+"Select the mounted Base System volume containing the Apple installer app for this download." = "이 다운로드에 해당하는 Apple 설치 앱이 들어 있는 마운트된 Base System 볼륨을 선택하세요.";
+"The component %@ is missing, incomplete, or not a regular file. Download it again." = "%@ 구성 요소가 없거나, 불완전하거나, 일반 파일이 아닙니다. 다시 다운로드하세요.";
+"The installer app has been created alongside the downloaded %@ components, under the name \"%@\"." = "설치 앱이 다운로드한 %@ 구성 요소와 같은 위치에 \"%@\"(이)라는 이름으로 생성되었습니다.";
+"The installer image could not be ejected. Eject it in Finder. Error: %@" = "설치 프로그램 이미지를 추출할 수 없습니다. Finder에서 추출하세요. 오류: %@";
+"These components are being used to create an installer app. Wait for creation to finish before downloading them again." = "이 구성 요소들은 설치 앱을 만드는 데 사용 중입니다. 생성이 끝날 때까지 기다린 후 다시 다운로드하세요.";
+"This is an Intel installer. Creating the app does not make it compatible with Apple Silicon or unsupported Macs." = "Intel용 설치 프로그램입니다. 앱을 만든다고 해서 Apple Silicon 또는 지원되지 않는 Mac과 호환되지는 않습니다.";
+
+/* Multipart components */
+"Download the components again?" = "구성 요소를 다시 다운로드하시겠습니까?";
+"The components of %@ have already been downloaded. Do you want to download them again and replace the existing files?" = "%@의 구성 요소 전체 또는 일부가 이미 다운로드되었습니다. 다시 다운로드하고 기존 파일을 교체하시겠습니까?";
+"The installer app was created at %@." = "설치 앱이 %@에 생성되었습니다.";

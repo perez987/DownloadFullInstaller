@@ -69,6 +69,10 @@ class DownloadItem: NSObject, ObservableObject, Identifiable, @unchecked Sendabl
 
     func download(url: URL?, replacing: Bool = false) throws {
         guard let url else { throw URLError(.badURL) }
+        guard let filename, !filename.isEmpty, !filename.hasPrefix("/"), !filename.hasSuffix("/"),
+              !filename.split(separator: "/").contains(where: { $0 == ".." || $0 == "." }) else {
+            throw CocoaError(.fileWriteInvalidFileName)
+        }
         downloadURL = url
         isComplete = false
         byteFormatter.countStyle = .file
@@ -81,9 +85,19 @@ class DownloadItem: NSObject, ObservableObject, Identifiable, @unchecked Sendabl
                 && destination.startAccessingSecurityScopedResource()
         }
 
+        // Multipart installers keep Apple's original filenames in a product-specific folder.
+        do {
+            try FileManager.default.createDirectory(
+                at: destination.appendingPathComponent(filename).deletingLastPathComponent(),
+                withIntermediateDirectories: true
+            )
+        } catch {
+            stopAccessingSecurityScope()
+            throw error
+        }
+
         if replacing {
-            let suggestedFilename = filename ?? "InstallerAssistant.pkg"
-            let file = destination.appendingPathComponent(suggestedFilename)
+            let file = destination.appendingPathComponent(filename)
 
             do {
                 if FileManager.default.fileExists(atPath: file.path) {
@@ -375,6 +389,13 @@ class MultiDownloadManager: ObservableObject {
 
     /// Start a new download if slots are available
     func startDownload(url: URL?, filename: String, replacing: Bool = false) throws -> DownloadItem? {
+        guard !LegacyInstallerBuildManager.shared.isUsing(Prefs.downloadURL.appendingPathComponent(filename)) else {
+            throw NSError(
+                domain: "DownloadFullInstaller",
+                code: 2,
+                userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("These components are being used to create an installer app. Wait for creation to finish before downloading them again.", comment: "Installer inputs are in use")]
+            )
+        }
         guard canStartNewDownload else {
             throw NSError(
                 domain: "DownloadFullInstaller",
@@ -407,6 +428,7 @@ class MultiDownloadManager: ObservableObject {
         }
         completedDownloads.append(item)
         updateDockProgress()
+        MultipartDownloadCoordinator.shared.itemCompleted(item)
     }
 
     /// Called when a download is cancelled
@@ -415,6 +437,7 @@ class MultiDownloadManager: ObservableObject {
             activeDownloads.remove(at: index)
         }
         updateDockProgress()
+        MultipartDownloadCoordinator.shared.itemEnded(item)
     }
 
     /// Called when a download fails
@@ -424,6 +447,7 @@ class MultiDownloadManager: ObservableObject {
             activeDownloads.remove(at: index)
         }
         updateDockProgress()
+        MultipartDownloadCoordinator.shared.itemEnded(item)
     }
 
     /// Clear a completed download from the list
@@ -452,5 +476,122 @@ class MultiDownloadManager: ObservableObject {
     /// Update dock progress style to show download count
     private func updateDockProgressStyle() {
         DockProgress.style = .badge(color: .blue, badgeValue: { self.activeDownloads.count })
+    }
+}
+
+// MARK: - Multipart download groups
+
+/// Several component files downloaded as one unit and presented as a single download.
+@MainActor
+final class MultipartDownloadGroup: ObservableObject, Identifiable {
+    struct Component {
+        let url: URL
+        let filename: String
+        let size: Int
+    }
+
+    let id: String
+    let title: String
+    let components: [Component]
+    let replacing: Bool
+    fileprivate(set) var pending: [Component]
+    @Published fileprivate(set) var done = Set<String>()
+    @Published fileprivate(set) var isComplete = false
+
+    init(id: String, title: String, components: [Component], replacing: Bool) {
+        self.id = id
+        self.title = title
+        self.components = components
+        self.replacing = replacing
+        pending = components
+    }
+
+    var totalSize: Int { components.reduce(0) { $0 + $1.size } }
+
+    /// Fraction of the total bytes already downloaded across all components.
+    var progress: Double {
+        let total = Double(totalSize)
+        guard total > 0 else { return 0 }
+        let manager = MultiDownloadManager.shared
+        let bytes = components.reduce(0.0) { sum, component in
+            if done.contains(component.filename) { return sum + Double(component.size) }
+            let active = manager.activeDownloads.first { $0.filename == component.filename }
+            return sum + Double(component.size) * (active?.progress ?? 0)
+        }
+        return min(bytes / total, 1)
+    }
+
+    var isRetrying: Bool {
+        MultiDownloadManager.shared.activeDownloads.contains { $0.isRetrying && $0.filename.map { id == MultipartDownloadCoordinator.groupID(of: $0) } == true }
+    }
+}
+
+/// Queues the components of multipart installers so only the free download slots are used.
+@MainActor
+final class MultipartDownloadCoordinator: ObservableObject {
+    static let shared = MultipartDownloadCoordinator()
+
+    @Published private(set) var groups: [MultipartDownloadGroup] = []
+
+    nonisolated static func groupID(of filename: String) -> String? {
+        filename.contains("/") ? filename.components(separatedBy: "/").first : nil
+    }
+
+    func group(id: String) -> MultipartDownloadGroup? {
+        groups.first { $0.id == id }
+    }
+
+    func isRunning(id: String) -> Bool {
+        group(id: id).map { !$0.isComplete } ?? false
+    }
+
+    func start(id: String, title: String, components: [MultipartDownloadGroup.Component], replacing: Bool) throws {
+        groups.removeAll { $0.id == id }
+        let group = MultipartDownloadGroup(id: id, title: title, components: components, replacing: replacing)
+        groups.append(group)
+        do {
+            try pump(group)
+        } catch {
+            cancel(group)
+            throw error
+        }
+    }
+
+    func cancel(_ group: MultipartDownloadGroup) {
+        group.pending.removeAll()
+        groups.removeAll { $0.id == group.id }
+        for item in MultiDownloadManager.shared.activeDownloads where item.filename.flatMap(Self.groupID) == group.id {
+            item.cancel()
+        }
+    }
+
+    func dismiss(_ group: MultipartDownloadGroup) {
+        groups.removeAll { $0.id == group.id }
+        for item in MultiDownloadManager.shared.completedDownloads where item.filename.flatMap(Self.groupID) == group.id {
+            MultiDownloadManager.shared.clearCompleted(item)
+        }
+    }
+
+    func itemCompleted(_ item: DownloadItem) {
+        guard let filename = item.filename, let id = Self.groupID(of: filename), let group = group(id: id) else { return }
+        group.done.insert(filename)
+        if group.done.count == group.components.count {
+            group.isComplete = true
+        } else {
+            do { try pump(group) } catch { MultiDownloadManager.shared.errorMessage = error.localizedDescription; cancel(group) }
+        }
+    }
+
+    func itemEnded(_ item: DownloadItem) {
+        guard let id = item.filename.flatMap(Self.groupID), let group = group(id: id), !group.isComplete else { return }
+        cancel(group)
+    }
+
+    private func pump(_ group: MultipartDownloadGroup) throws {
+        let manager = MultiDownloadManager.shared
+        while manager.canStartNewDownload, !group.pending.isEmpty {
+            let component = group.pending.removeFirst()
+            _ = try manager.startDownload(url: component.url, filename: component.filename, replacing: group.replacing)
+        }
     }
 }

@@ -3,11 +3,9 @@
 "";
 "\n\n" =
 "\n\n";
-" in catalog" =
 " في الكتالوج";
 "Download Full Installer" =
 "Download Full Installer";
-"Could not load catalog" =
 "تعذر تحميل الكتالوج";
 
 /* File Replace */
@@ -23,7 +21,6 @@
 /* Installer list */
 "Copy %@ %@ (%@) %@ URL" =
 "نسخ رابط %@ %@ (%@) %@";
-"Create application %@ %@ (%@)" =
 "إنشاء التطبيق %@ %@ (%@)";
 "Download %@ %@ (%@) Installer" =
 "تنزيل مثبت %@ %@ (%@)";
@@ -31,21 +28,17 @@
 /* Download */
 "Downloaded %@" =
 "تم تنزيل %@";
-"Downloading %@" =
 "جارٍ تنزيل %@";
-"Retrying download of InstallAssistant.pkg..." =
 "إعادة محاولة تنزيل InstallAssistant.pkg...";
 "Show in Finder" =
 "إظهار في Finder";
 "Cancel %@ download" =
 "إلغاء تنزيل %@";
-"Show the installer in the Downloads folder" =
 "إظهار المثبت في مجلد التنزيلات";
 
 /* Language Selection */
 "Language Selection" =
 "اختيار اللغة";
-"Choose a language" =
 "اختر لغة";
 "Select Language" =
 "تحديد اللغة";
@@ -65,7 +58,6 @@
 "نعم";
 "Clear app settings?" =
 "هل تريد مسح إعدادات التطبيق؟";
-"(App preferences will be cleared)" =
 "(سيتم مسح تفضيلات التطبيق)";
 "You will lose user settings and saved language." =
 "ستفقد إعدادات المستخدم واللغة المحفوظة.";
@@ -81,23 +73,17 @@
 "حزمة التثبيت %@ غير موجودة في مجلد %@. يرجى تنزيلها أولاً.";
 "Success" =
 "نجاح";
-"The installer app has been created successfully in /Applications" =
 "تم إنشاء تطبيق التثبيت بنجاح في /Applications";
-"The installer package has been opened. Follow the on-screen instructions to complete the installation" =
 "تم فتح حزمة التثبيت. اتبع التعليمات التي تظهر على الشاشة لإكمال التثبيت.";
-"Failed to open the installer package. Please try opening it manually from the Downloads folder" =
 "فشل فتح حزمة التثبيت. يرجى محاولة فتحها يدويًا من مجلد التنزيلات.";
 "Failed to create installer app. Error: %@" =
 "فشل إنشاء تطبيق التثبيت. الخطأ: %@";
-"No write permission to /Applications folder" =
 "لا توجد أذونات كتابة إلى مجلد /Applications";
-"Failed to create AppleScript" =
 "فشل إنشاء AppleScript";
 
 /* Multi-download support */
 "Maximum Downloads Reached" =
 "تم الوصول إلى الحد الأقصى للتنزيلات";
-"You can only download up to 3 installers at the same time. Please wait for a download to complete before starting a new one." =
 "يمكنك تنزيل ما يصل إلى 3 مثبتات فقط في نفس الوقت. يرجى الانتظار حتى يكتمل أحد التنزيلات قبل بدء تنزيل جديد.";
 "Dismiss" =
 "تجاهل";
@@ -122,10 +108,8 @@
 
 /* Legacy macOS installers */
 "Legacy macOS Installers" =
-"مثبتات macOS القديمة↓ ";
-"Download legacy macOS installers (10.7 - 10.12)" =
+"مثبتات macOS القديمة (ملف واحد) ↓";
 "تنزيل إصدارات macOS القديمة (10.7 - 10.12)";
-"Download macOS %@ %@" =
 "تنزيل macOS %@ %@";
 
 /* Update Check */
@@ -147,7 +131,8 @@
 "The file '%@' could not be saved to the '%@' folder. Error: %@" = "تعذر حفظ الملف '%@' في المجلد '%@'. الخطأ: %@";
 "macOS Library" = "مكتبة macOS";
 "Choose a release to explore." = "اختر إصدارًا لاستكشافه.";
-"Available Releases" = "الإصدارات المتاحة↓ ";
+"Available Releases" = "الإصدارات المتاحة";
+"Multipart Legacy Installers" = "مثبّتات macOS القديمة (6 ملفات)";
 "Refresh" = "تحديث";
 "Select a macOS release" = "اختر إصدار macOS";
 "Available versions and download options will appear here." = "ستظهر هنا الإصدارات المتاحة وخيارات التنزيل.";
@@ -163,7 +148,28 @@
 "Active downloads" = "التنزيلات النشطة";
 "No active downloads" = "لا توجد تنزيلات نشطة";
 "You can only run up to 3 downloads at the same time. Please wait for a download to complete before starting a new one." = "يمكنك تشغيل ما يصل إلى 3 تنزيلات في الوقت نفسه. انتظر حتى يكتمل أحد التنزيلات قبل بدء تنزيل جديد.";
+"This catalog does not provide all six required installer components. Try the Regular catalog." = "لا يوفر هذا الكتالوج مكونات التثبيت الستة المطلوبة. جرّب الكتالوج العادي.";
 
 /* Apple Configurator Restore */
-"Restore with Apple Configurator" = "الاستعادة باستخدام Apple Configurator";
 "Restore with Apple Configurator: How to" = "الاستعادة باستخدام Apple Configurator:\nبرامج macOS الثابتة هي ملفات IPSW يمكن استخدامها لاستعادة أجهزة Mac المزودة بـ Silicon باستخدام Apple Configurator.\nلهذه المهمة، تحتاج إلى جهاز Mac آخر وكابل USB C يمكنه نقل الطاقة والبيانات.\nاستعادة جهاز Mac المزود بـ Silicon تمسح كل شيء على القرص ويفقد المستخدم جميع البيانات التي لم يتم نسخها احتياطيًا مسبقًا.";
+
+/* In-app multipart installer assembly */
+"%@\n\nCould not remove the incomplete build at %@. Remove it in Finder. Error: %@" = "%@\n\nتعذّرت إزالة الإصدار غير المكتمل في %@. أزِله من Finder. الخطأ: %@";
+"An item already exists at %@. Move it or rename it before creating another installer app." = "يوجد عنصر بالفعل في %@. انقله أو غيّر اسمه قبل إنشاء تطبيق مثبّت آخر.";
+"Assembling installer app. Copying large files may take several minutes..." = "جارٍ تجميع تطبيق المثبّت. قد يستغرق نسخ الملفات الكبيرة عدة دقائق...";
+"BaseSystem.dmg may still be mounted. Eject the Base System image in Finder when finished." = "قد يكون BaseSystem.dmg لا يزال مثبّتًا. أخرج صورة Base System من Finder عند الانتهاء.";
+"Download all six installer components before creating the app." = "نزّل مكونات المثبّت الستة جميعها قبل إنشاء التطبيق.";
+"InstallInfo.plist has an unsupported payload format. The installer app was not created." = "يحتوي InstallInfo.plist على تنسيق بيانات غير مدعوم. لم يتم إنشاء تطبيق المثبّت.";
+"Installer creation in progress" = "جارٍ إنشاء المثبّت";
+"Opening BaseSystem.dmg..." = "جارٍ فتح BaseSystem.dmg...";
+"Select the mounted Base System volume containing the Apple installer app for this download." = "اختر وحدة Base System المثبّتة التي تحتوي على تطبيق المثبّت من Apple الخاص بهذا التنزيل.";
+"The component %@ is missing, incomplete, or not a regular file. Download it again." = "المكوّن %@ مفقود أو غير مكتمل أو ليس ملفًا عاديًا. نزّله مرة أخرى.";
+"The installer app has been created alongside the downloaded %@ components, under the name \"%@\"." = "تم إنشاء تطبيق المثبّت بجانب مكونات %@ التي تم تنزيلها، باسم \"%@\".";
+"The installer image could not be ejected. Eject it in Finder. Error: %@" = "تعذّر إخراج صورة المثبّت. أخرجها من Finder. الخطأ: %@";
+"These components are being used to create an installer app. Wait for creation to finish before downloading them again." = "يجري استخدام هذه المكونات لإنشاء تطبيق مثبّت. انتظر حتى ينتهي الإنشاء قبل تنزيلها مرة أخرى.";
+"This is an Intel installer. Creating the app does not make it compatible with Apple Silicon or unsupported Macs." = "هذا مثبّت Intel. إنشاء التطبيق لا يجعله متوافقًا مع Apple Silicon أو أجهزة Mac غير المدعومة.";
+
+/* Multipart components */
+"Download the components again?" = "هل تريد تنزيل المكونات مرة أخرى؟";
+"The components of %@ have already been downloaded. Do you want to download them again and replace the existing files?" = "تم تنزيل كل مكونات %@ أو بعضها بالفعل. هل تريد تنزيلها مرة أخرى واستبدال الملفات الموجودة؟";
+"The installer app was created at %@." = "تم إنشاء تطبيق المثبّت في %@.";
