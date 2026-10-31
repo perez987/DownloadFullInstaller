@@ -146,8 +146,8 @@ struct MultipartInstallerView: View {
         }
         .appAlert(item: $activeAlert)
         .onAppear(perform: refreshDownloads)
-        .onChange(of: manager.activeDownloadCount) { refreshDownloads() }
-        .onChange(of: manager.completedDownloads) { refreshDownloads() }
+        .onChangeCompat(of: manager.activeDownloadCount) { refreshDownloads() }
+        .onChangeCompat(of: manager.completedDownloads) { refreshDownloads() }
         .onReceive(
             NotificationCenter.default.publisher(for: .downloadPathChanged)
         ) { _ in refreshDownloads() }

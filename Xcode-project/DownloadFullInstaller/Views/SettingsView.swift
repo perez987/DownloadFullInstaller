@@ -150,7 +150,7 @@ struct SettingsView: View {
             // Update display path after view appears, ensuring sandbox is fully initialized
             updateDisplayPath()
         }
-        .onChange(of: downloadPath) {
+        .onChangeCompat(of: downloadPath) {
             updateDisplayPath()
         }
         .fileImporter(

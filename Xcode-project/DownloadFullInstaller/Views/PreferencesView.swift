@@ -43,6 +43,6 @@ struct PreferencesView: View {
                     )
             )
         }
-        .onChange(of: seedProgram) { sucatalog.load() }
+        .onChangeCompat(of: seedProgram) { sucatalog.load() }
     }
 }

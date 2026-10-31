@@ -271,12 +271,24 @@ struct DownloadView: View {
                 .foregroundStyle(.secondary)
             }
         }
-        .onChange(of: manager.errorMessage) {
+        .onChangeCompat(of: manager.errorMessage) {
             if let message = manager.errorMessage {
                 activeAlert = .downloadError(message: message)
                 manager.errorMessage = nil
             }
         }
         .appAlert(item: $activeAlert)
+    }
+}
+
+extension View {
+    /// `onChange` without parameters: new API on macOS 14+, deprecated-form fallback on macOS 13.
+    @ViewBuilder
+    func onChangeCompat<V: Equatable>(of value: V, _ action: @escaping () -> Void) -> some View {
+        if #available(macOS 14.0, *) {
+            self.onChange(of: value) { action() }
+        } else {
+            self.onChange(of: value) { _ in action() }
+        }
     }
 }

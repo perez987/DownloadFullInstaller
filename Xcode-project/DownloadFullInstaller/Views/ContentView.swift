@@ -90,6 +90,47 @@ struct ContentView: View {
         isInstaller ? sucatalog.errorMessage : firmwareCatalog.errorMessage
     }
 
+    @ViewBuilder
+    private var legacySection: some View {
+        if #available(macOS 14.0, *) {
+            Section(isExpanded: $isLegacyExpanded) {
+                legacyRows
+            } header: {
+                legacyHeader
+            }
+        } else {
+            Section {
+                DisclosureGroup(isExpanded: $isLegacyExpanded) {
+                    legacyRows
+                } label: {
+                    legacyHeader
+                }
+            }
+        }
+    }
+
+    private var legacyHeader: some View {
+        Text(
+            NSLocalizedString(
+                "Legacy macOS Installers",
+                comment: "Legacy releases section"
+            )
+        )
+        .font(.body.weight(.semibold))
+    }
+
+    @ViewBuilder
+    private var legacyRows: some View {
+        ForEach(LegacyMacOSVersion.allVersions) { version in
+            releaseLabel(
+                name: version.name,
+                version: version.version,
+                legacy: true
+            )
+            .tag("legacy:\(version.name)")
+        }
+    }
+
     var body: some View {
         HStack(spacing: 0) {
             navigationPane
@@ -135,8 +176,8 @@ struct ContentView: View {
                 firmwareCatalog.load()
             }
         }
-        .onChange(of: selectedTab) { selectedRelease = nil }
-        .onChange(of: seedProgram) { selectedRelease = nil }
+        .onChangeCompat(of: selectedTab) { selectedRelease = nil }
+        .onChangeCompat(of: seedProgram) { selectedRelease = nil }
         .onReceive(NotificationCenter.default.publisher(for: .languageChanged))
         { _ in
             localizationID = UUID()
@@ -210,24 +251,7 @@ struct ContentView: View {
                 }
 
                 if isInstaller {
-                    Section(isExpanded: $isLegacyExpanded) {
-                        ForEach(LegacyMacOSVersion.allVersions) { version in
-                            releaseLabel(
-                                name: version.name,
-                                version: version.version,
-                                legacy: true
-                            )
-                            .tag("legacy:\(version.name)")
-                        }
-                    } header: {
-                        Text(
-                            NSLocalizedString(
-                                "Legacy macOS Installers",
-                                comment: "Legacy releases section"
-                            )
-                        )
-                        .font(.body.weight(.semibold))
-                    }
+                    legacySection
                 }
             }
             .listStyle(.sidebar)

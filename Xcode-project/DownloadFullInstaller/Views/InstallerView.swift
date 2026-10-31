@@ -268,7 +268,7 @@ struct InstallerView: View {
             // Check if downloaded after view appears, ensuring sandbox is fully initialized
             checkIfDownloaded()
         }
-        .onChange(of: multiDownloadManager.completedDownloads) {
+        .onChangeCompat(of: multiDownloadManager.completedDownloads) {
             // Update download status when downloads complete
             checkIfDownloaded()
         }
@@ -523,7 +523,7 @@ struct FirmwareView: View {
             .onAppear {
                 checkIfDownloaded()
             }
-            .onChange(of: multiDownloadManager.completedDownloads) {
+            .onChangeCompat(of: multiDownloadManager.completedDownloads) {
                 checkIfDownloaded()
             }
             .onReceive(
