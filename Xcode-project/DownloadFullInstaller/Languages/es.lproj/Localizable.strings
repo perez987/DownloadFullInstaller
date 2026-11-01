@@ -121,3 +121,7 @@
 "Download the components again?" = "¿Descargar los componentes de nuevo?";
 "The components of %@ have already been downloaded. Do you want to download them again and replace the existing files?" = "Todos o algunos de los componentes de %@ ya se han descargado. ¿Quieres descargarlos de nuevo y reemplazar los archivos existentes?";
 "The installer app was created at %@." = "La aplicación instaladora se creó en %@.";
+
+/* Disk space check */
+"Not Enough Disk Space" = "Espacio en disco insuficiente";
+"The download needs %@ plus %@ of extra free space, but only %@ is available in the download folder. Free up disk space or choose another download location." = "La descarga necesita %@ más %@ de espacio libre adicional, pero solo hay %@ disponibles en la carpeta de descargas. Libera espacio en disco o elige otra ubicación de descarga.";

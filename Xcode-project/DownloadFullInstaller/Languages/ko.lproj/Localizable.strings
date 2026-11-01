@@ -121,3 +121,7 @@
 "Download the components again?" = "구성 요소를 다시 다운로드하시겠습니까?";
 "The components of %@ have already been downloaded. Do you want to download them again and replace the existing files?" = "%@의 구성 요소 전체 또는 일부가 이미 다운로드되었습니다. 다시 다운로드하고 기존 파일을 교체하시겠습니까?";
 "The installer app was created at %@." = "설치 앱이 %@에 생성되었습니다.";
+
+/* Disk space check */
+"Not Enough Disk Space" = "디스크 공간 부족";
+"The download needs %@ plus %@ of extra free space, but only %@ is available in the download folder. Free up disk space or choose another download location." = "다운로드에 %@와(과) 추가 여유 공간 %@이(가) 필요하지만 다운로드 폴더에는 %@만 사용할 수 있습니다. 디스크 공간을 확보하거나 다른 다운로드 위치를 선택하세요.";

@@ -121,3 +121,7 @@
 "Download the components again?" = "Ali želite komponente prenesti znova?";
 "The components of %@ have already been downloaded. Do you want to download them again and replace the existing files?" = "Vse ali nekatere komponente za %@ so že prenesene. Ali jih želite prenesti znova in zamenjati obstoječe datoteke?";
 "The installer app was created at %@." = "Namestitveni program je bil ustvarjen v %@.";
+
+/* Disk space check */
+"Not Enough Disk Space" = "Premalo prostora na disku";
+"The download needs %@ plus %@ of extra free space, but only %@ is available in the download folder. Free up disk space or choose another download location." = "Prenos potrebuje %@ in še %@ dodatnega prostega prostora, vendar je v mapi za prenose na voljo le %@. Sprostite prostor na disku ali izberite drugo mesto prenosa.";

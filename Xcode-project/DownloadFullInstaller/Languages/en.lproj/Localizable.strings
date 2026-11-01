@@ -121,3 +121,7 @@
 "Download the components again?" = "Download the components again?";
 "The components of %@ have already been downloaded. Do you want to download them again and replace the existing files?" = "All or some of the components of %@ have already been downloaded. Do you want to download them again and replace the existing files?";
 "The installer app was created at %@." = "The installer app was created at %@.";
+
+/* Disk space check */
+"Not Enough Disk Space" = "Not Enough Disk Space";
+"The download needs %@ plus %@ of extra free space, but only %@ is available in the download folder. Free up disk space or choose another download location." = "The download needs %@ plus %@ of extra free space, but only %@ is available in the download folder. Free up disk space or choose another download location.";

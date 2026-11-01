@@ -4,8 +4,13 @@
     <title>Download Full Installer update</title>
 
     <item>
-      <title>Versión 6.1.1</title>
+      <title>Versión 6.1.2</title>
       	<description><![CDATA[
+      	<h3>What's New in Download Full Installer 6.1.2</h3>
+		<ul>
+			<li>Add the DMG file size to legacy download cards</li>
+			<li>Add an informational alert when there is insufficient free space</li>
+		</ul>
 		<h3>What's New in Download Full Installer 6.1.1</h3>
 		<ul>
 			<li>Lower the target to macOS 13.5</li>
@@ -17,14 +22,21 @@
 			<li>Replace bundled Sparkle.framework with the Sparkle SPM package</li>
 			<li>Remove app sandboxing environment</li>
 		</ul>
+		<h3>What's New in Download Full Installer 6.1.0</h3>
+		<ul>
+			<li>Lower the target to macOS 14.6</li>
+			<li>Add support for High Sierra, Mojave and Catalina installers</li>
+			<li>Replace bundled Sparkle.framework with the Sparkle SPM package</li>
+			<li>Remove app sandboxing environment</li>
+		</ul>
 		]]></description>
-      <sparkle:version>0611</sparkle:version>
-      <sparkle:shortVersionString>6.1.1</sparkle:shortVersionString>
+      <sparkle:version>0612</sparkle:version>
+      <sparkle:shortVersionString>6.1.2</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
       <pubDate>Mon, 01 Sep 2026 10:00:00 +0000</pubDate>
-      <enclosure url="https://github.com/perez987/DownloadFullInstaller/releases/download/6.1.1/Download.Full.Installer.6.1.1.dmg" 
-                 sparkle:edSignature="4A7MFAHqefImduu1Aq5C4jPLIaeXPbdcdYw4aBklQG1mtEy9OyaTledOl2zHOb/gF6yeu/xFLEUfKJfbR1gtAw==" 
-                 length="6005653" 
+      <enclosure url="https://github.com/perez987/DownloadFullInstaller/releases/download/6.1.2/Download.Full.Installer.6.1.2.dmg" 
+                 sparkle:edSignature="FlypW86yHsIXBUr/aZ04HEox7IE1EuGxg5KCHQDgkIBo0Fhhgd7A2mo84f5Dq3a/jhG4XnNqByJBdA83OJMcCw==" 
+                 length="6027598" 
                  type="application/octet-stream" />
     </item>    
       

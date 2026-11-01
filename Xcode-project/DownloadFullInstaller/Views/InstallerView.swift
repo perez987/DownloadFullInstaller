@@ -72,6 +72,15 @@ struct InstallerView: View {
                         Button(action: {
                             filename = installerFilename
 
+                            if let shortage = DiskSpace.shortage(
+                                forDownloadSize: Int64(
+                                    product.installAssistantSize
+                                )
+                            ) {
+                                activeAlert = shortage
+                                return
+                            }
+
                             if !multiDownloadManager.canStartNewDownload {
                                 activeAlert = .maxDownloads
                                 print(
@@ -382,6 +391,13 @@ struct FirmwareView: View {
                         Spacer(minLength: 4)
 
                         Button(action: {
+                            if let shortage = DiskSpace.shortage(
+                                forDownloadSize: Int64(firmware.size)
+                            ) {
+                                activeAlert = shortage
+                                return
+                            }
+
                             if !multiDownloadManager.canStartNewDownload {
                                 activeAlert = .maxDownloads
                                 return

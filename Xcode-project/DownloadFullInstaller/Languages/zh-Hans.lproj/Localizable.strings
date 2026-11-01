@@ -121,3 +121,7 @@
 "Download the components again?" = "要重新下载组件吗？";
 "The components of %@ have already been downloaded. Do you want to download them again and replace the existing files?" = "%@ 的全部或部分组件已下载。要重新下载并替换现有文件吗？";
 "The installer app was created at %@." = "安装器应用已创建于 %@。";
+
+/* Disk space check */
+"Not Enough Disk Space" = "磁盘空间不足";
+"The download needs %@ plus %@ of extra free space, but only %@ is available in the download folder. Free up disk space or choose another download location." = "下载需要 %@，另外还需 %@ 的额外可用空间，但下载文件夹中只有 %@ 可用。请释放磁盘空间或选择其他下载位置。";

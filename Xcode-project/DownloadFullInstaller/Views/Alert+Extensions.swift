@@ -18,6 +18,7 @@ enum AppAlertType: Identifiable {
     case maxDownloads
     case installerCreation(title: String, message: String)
     case downloadError(message: String)
+    case insufficientSpace(required: Int64, available: Int64)
 
     // LanguageSelectionView alerts
     case restartRequired
@@ -35,6 +36,8 @@ enum AppAlertType: Identifiable {
             "installerCreation"
         case .downloadError:
             "downloadError"
+        case .insufficientSpace:
+            "insufficientSpace"
         case .restartRequired:
             "restartRequired"
         case .warningSettings:
@@ -61,6 +64,8 @@ enum AppAlertType: Identifiable {
             title
         case .downloadError:
             NSLocalizedString("Download Error", comment: "")
+        case .insufficientSpace:
+            NSLocalizedString("Not Enough Disk Space", comment: "")
         case .restartRequired:
             NSLocalizedString("Restart Required", comment: "")
         case .warningSettings:
@@ -93,6 +98,16 @@ enum AppAlertType: Identifiable {
             message
         case .downloadError(let message):
             message
+        case .insufficientSpace(let required, let available):
+            String(
+                format: NSLocalizedString(
+                    "The download needs %@ plus %@ of extra free space, but only %@ is available in the download folder. Free up disk space or choose another download location.",
+                    comment: ""
+                ),
+                Prefs.byteFormatter.string(fromByteCount: required),
+                Prefs.byteFormatter.string(fromByteCount: DiskSpace.margin),
+                Prefs.byteFormatter.string(fromByteCount: available)
+            )
         case .restartRequired:
             NSLocalizedString(
                 "The app must be restarted for changes to take effect.",
@@ -112,7 +127,7 @@ enum AppAlertType: Identifiable {
         case .replaceFile, .replaceComponents, .restartRequired,
             .warningSettings:
             true
-        case .maxDownloads, .installerCreation, .downloadError:
+        case .maxDownloads, .installerCreation, .downloadError, .insufficientSpace:
             false
         }
     }
@@ -145,7 +160,7 @@ enum AppAlertType: Identifiable {
         case .replaceFile, .replaceComponents, .restartRequired,
             .warningSettings:
             NSLocalizedString("Cancel", comment: "")
-        case .maxDownloads, .installerCreation, .downloadError:
+        case .maxDownloads, .installerCreation, .downloadError, .insufficientSpace:
             NSLocalizedString("OK", comment: "")
         }
     }
@@ -215,5 +230,27 @@ extension View {
         alert(item: alertType) { alert in
             alert.createAlert(primaryAction: primaryAction)
         }
+    }
+}
+
+// MARK: - Free disk space check
+
+enum DiskSpace {
+    /// Extra free space required beyond the download size (2 GB)
+    static let margin: Int64 = 2_000_000_000
+
+    /// Returns an `.insufficientSpace` alert if the download folder lacks room for `size` bytes plus the margin.
+    /// Returns nil when there is enough space or the size/capacity is unknown.
+    static func shortage(forDownloadSize size: Int64) -> AppAlertType? {
+        guard size > 0 else { return nil }
+        let accessStarted = Prefs.startAccessingDownloadURL()
+        defer { Prefs.stopAccessingDownloadURL(accessStarted) }
+        let values = try? Prefs.downloadURL.resourceValues(
+            forKeys: [.volumeAvailableCapacityForImportantUsageKey]
+        )
+        guard let available = values?.volumeAvailableCapacityForImportantUsage
+        else { return nil }
+        return available < size + margin
+            ? .insufficientSpace(required: size, available: available) : nil
     }
 }

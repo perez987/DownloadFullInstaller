@@ -170,6 +170,10 @@ struct MultipartInstallerView: View {
     }
 
     private func download() {
+        if let shortage = DiskSpace.shortage(forDownloadSize: Int64(totalSize)) {
+            activeAlert = shortage
+            return
+        }
         let root = Prefs.downloadURL
         let access = Prefs.startAccessingDownloadURL()
         defer { Prefs.stopAccessingDownloadURL(access) }

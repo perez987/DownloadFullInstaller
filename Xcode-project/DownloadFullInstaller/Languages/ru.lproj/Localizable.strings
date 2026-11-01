@@ -121,3 +121,7 @@
 "Download the components again?" = "Загрузить компоненты снова?";
 "The components of %@ have already been downloaded. Do you want to download them again and replace the existing files?" = "Все или некоторые компоненты %@ уже загружены. Загрузить их снова и заменить существующие файлы?";
 "The installer app was created at %@." = "Приложение установщика создано в %@.";
+
+/* Disk space check */
+"Not Enough Disk Space" = "Недостаточно места на диске";
+"The download needs %@ plus %@ of extra free space, but only %@ is available in the download folder. Free up disk space or choose another download location." = "Для загрузки требуется %@ плюс %@ дополнительного свободного места, но в папке загрузок доступно только %@. Освободите место на диске или выберите другое место загрузки.";

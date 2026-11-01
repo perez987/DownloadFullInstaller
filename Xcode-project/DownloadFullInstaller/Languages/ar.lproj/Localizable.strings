@@ -173,3 +173,7 @@
 "Download the components again?" = "هل تريد تنزيل المكونات مرة أخرى؟";
 "The components of %@ have already been downloaded. Do you want to download them again and replace the existing files?" = "تم تنزيل كل مكونات %@ أو بعضها بالفعل. هل تريد تنزيلها مرة أخرى واستبدال الملفات الموجودة؟";
 "The installer app was created at %@." = "تم إنشاء تطبيق المثبّت في %@.";
+
+/* Disk space check */
+"Not Enough Disk Space" = "مساحة القرص غير كافية";
+"The download needs %@ plus %@ of extra free space, but only %@ is available in the download folder. Free up disk space or choose another download location." = "يحتاج التنزيل إلى %@ بالإضافة إلى %@ من المساحة الحرة الإضافية، لكن المتوفر في مجلد التنزيلات %@ فقط. حرّر مساحة على القرص أو اختر موقع تنزيل آخر.";
