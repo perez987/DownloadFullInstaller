@@ -4,8 +4,12 @@
     <title>Download Full Installer update</title>
 
     <item>
-      <title>Versión 6.1.0</title>
+      <title>Versión 6.1.1</title>
       	<description><![CDATA[
+		<h3>What's New in Download Full Installer 6.1.1</h3>
+		<ul>
+			<li>Lower the target to macOS 13.5</li>
+		</ul>
 		<h3>What's New in Download Full Installer 6.1.0</h3>
 		<ul>
 			<li>Lower the target to macOS 14.6</li>
@@ -14,13 +18,13 @@
 			<li>Remove app sandboxing environment</li>
 		</ul>
 		]]></description>
-      <sparkle:version>0610</sparkle:version>
-      <sparkle:shortVersionString>6.1.0</sparkle:shortVersionString>
+      <sparkle:version>0611</sparkle:version>
+      <sparkle:shortVersionString>6.1.1</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
       <pubDate>Mon, 01 Sep 2026 10:00:00 +0000</pubDate>
-      <enclosure url="https://github.com/perez987/DownloadFullInstaller/releases/download/6.1.0/Download.Full.Installer.6.1.0.dmg" 
-                 sparkle:edSignature="juOJc2KgS3vCEs+F/lwlih/JACjMQSJ0+VlE7YHfMeGnnTQ6gwCDqTNbRIIzpSG2pOa1s91fWhxdkNop5MLUCg==" 
-                 length="5992037" 
+      <enclosure url="https://github.com/perez987/DownloadFullInstaller/releases/download/6.1.1/Download.Full.Installer.6.1.1.dmg" 
+                 sparkle:edSignature="4A7MFAHqefImduu1Aq5C4jPLIaeXPbdcdYw4aBklQG1mtEy9OyaTledOl2zHOb/gF6yeu/xFLEUfKJfbR1gtAw==" 
+                 length="6005653" 
                  type="application/octet-stream" />
     </item>    
       
