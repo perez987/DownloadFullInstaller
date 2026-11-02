@@ -144,7 +144,7 @@ struct MultipartInstallerView: View {
                 )
             }
         }
-        .appAlert(item: $activeAlert)
+        .routedAlert(item: $activeAlert)
         .onAppear(perform: refreshDownloads)
         .onChangeCompat(of: manager.activeDownloadCount) { refreshDownloads() }
         .onChangeCompat(of: manager.completedDownloads) { refreshDownloads() }

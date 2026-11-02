@@ -277,7 +277,7 @@ struct DownloadView: View {
                 manager.errorMessage = nil
             }
         }
-        .appAlert(item: $activeAlert)
+        .routedAlert(item: $activeAlert)
     }
 }
 

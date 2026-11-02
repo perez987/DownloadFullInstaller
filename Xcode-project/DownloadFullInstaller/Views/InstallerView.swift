@@ -255,7 +255,7 @@ struct InstallerView: View {
             }
         }
         // Handle multiple different alerts in a single view using appAlert extension
-        .appAlert(item: $activeAlert) { alertType in
+        .routedAlert(item: $activeAlert) { alertType in
             switch alertType {
             case .replaceFile:
                 do {
@@ -518,7 +518,7 @@ struct FirmwareView: View {
                     )
                 }
             }
-            .appAlert(item: $activeAlert) { alertType in
+            .routedAlert(item: $activeAlert) { alertType in
                 switch alertType {
                 case .replaceFile:
                     do {

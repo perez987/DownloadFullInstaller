@@ -169,7 +169,8 @@ struct ContentView: View {
                 comment: "Main window title"
             )
         )
-        .appAlert(item: $installerBuilder.activeAlert)
+        .routedAlert(item: $installerBuilder.activeAlert)
+        .alertHost()
         .onAppear {
             if !sucatalog.hasLoaded, !sucatalog.isLoading { sucatalog.load() }
             if !firmwareCatalog.hasLoaded, !firmwareCatalog.isLoading {

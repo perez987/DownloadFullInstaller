@@ -57,7 +57,7 @@ struct LegacyVersionRow: View {
             }
         }
         .task(id: version.url) { size = await fetchSize() }
-        .appAlert(item: $activeAlert) { alert in
+        .routedAlert(item: $activeAlert) { alert in
             if case .replaceFile = alert { startDownload(replacing: true) }
         }
     }
