@@ -1,0 +1,61 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>Download Full Installer</title>
+        <item>
+            <title>Download Full Installer 6.1.3</title>
+    		<description><![CDATA[
+			<h3>What's New in Download Full Installer 6.1.3</h3>
+			<ul>
+				<li>Fix missing alerts:
+				<ul>
+					<li>max. concurrent downloads</li>
+					<li>can't create installer app</li>
+				</ul>
+				<li>Save latest app window size</li>
+			</ul>
+			<h3>What's New in Download Full Installer 6.1.2</h3>
+			<ul>
+				<li>Add the DMG file size to legacy download cards</li>
+				<li>Add an informational alert when there is insufficient free space</li>
+			</ul>
+			<h3>What's New in Download Full Installer 6.1.1</h3>
+			<ul>
+				<li>Lower the target to macOS 13.5</li>
+			</ul>
+			<h3>What's New in Download Full Installer 6.1.0</h3>
+			<ul>
+				<li>Lower the target to macOS 14.6</li>
+				<li>Add support for High Sierra, Mojave and Catalina installers</li>
+				<li>Replace bundled Sparkle.framework with the Sparkle SPM package</li>
+				<li>Remove app sandboxing environment</li>
+			</ul>
+			]]></description>
+            <pubDate>Mon, 02 Nov 2026 10:04:36 +0100</pubDate>
+            <sparkle:version>0613</sparkle:version>
+            <sparkle:shortVersionString>6.1.3</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.5</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/perez987/DownloadFullInstaller/releases/download/6.1.3/Download.Full.Installer.6.1.3.dmg" length="6094963" type="application/octet-stream" sparkle:edSignature="FwOBxhrwfkiz/xSe9/ADQTqg1/YTdht/Y/jbqTM3MiRi3mpnTNAr6+xJ9pjDOHJ8EI9RP3WI4E89F9O0K4T0Bw=="/>
+            <sparkle:deltas>
+                <enclosure url="https://raw.githubusercontent.com/perez987/DownloadFullInstaller/main/Deltas/Download%20Full%20Installer0613-0612.delta" sparkle:deltaFrom="0612" length="184018" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976464" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="LjxfL5JGHo7Qt0miERaWl3MBYAVsq8PYP9z85qcYjDKEqJRH3V1AR5p6vt61zeYXmj+yCDutfqLPtjuXwCydBQ=="/>
+                <enclosure url="https://raw.githubusercontent.com/perez987/DownloadFullInstaller/main/Deltas/Download%20Full%20Installer0613-0611.delta" sparkle:deltaFrom="0611" length="422734" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="976464" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="oXg1vWmSLxDekeAs6Nl8ikH5SUOxxo6YuARPnFuFj4c9jcxF6j/CeweTLnlZ3SyYmPerX0ySGfN2eTCKoTGPBQ=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
+            <title>6.1.2</title>
+            <pubDate>Mon, 02 Nov 2026 10:05:39 +0100</pubDate>
+            <sparkle:version>0612</sparkle:version>
+            <sparkle:shortVersionString>6.1.2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.5</sparkle:minimumSystemVersion>
+            <enclosure url="https://raw.githubusercontent.com/perez987/DownloadFullInstaller/main/Download.Full.Installer.6.1.2.dmg" length="6027598" type="application/octet-stream" sparkle:edSignature="FlypW86yHsIXBUr/aZ04HEox7IE1EuGxg5KCHQDgkIBo0Fhhgd7A2mo84f5Dq3a/jhG4XnNqByJBdA83OJMcCw=="/>
+        </item>
+        <item>
+            <title>6.1.1</title>
+            <pubDate>Mon, 02 Nov 2026 10:05:45 +0100</pubDate>
+            <sparkle:version>0611</sparkle:version>
+            <sparkle:shortVersionString>6.1.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.5</sparkle:minimumSystemVersion>
+            <enclosure url="https://raw.githubusercontent.com/perez987/DownloadFullInstaller/main/Download.Full.Installer.6.1.1.dmg" length="6005653" type="application/octet-stream" sparkle:edSignature="4A7MFAHqefImduu1Aq5C4jPLIaeXPbdcdYw4aBklQG1mtEy9OyaTledOl2zHOb/gF6yeu/xFLEUfKJfbR1gtAw=="/>
+        </item>
+    </channel>
+</rss>
