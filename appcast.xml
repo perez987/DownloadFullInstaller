@@ -1,8 +1,8 @@
 <?xml version="1.0" standalone="yes"?>
 <rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
     <channel>
-        <title>Download Full Installer</title>
-       <item>
+    <title>Download Full Installer</title>
+		<item>
             <title>Download Full Installer 6.1.3</title>
    			<description><![CDATA[
 				<h3>What's New in Download Full Installer 6.1.3</h3>
@@ -40,6 +40,6 @@
             length="6094963" 
             type="application/octet-stream" 
             sparkle:edSignature="FwOBxhrwfkiz/xSe9/ADQTqg1/YTdht/Y/jbqTM3MiRi3mpnTNAr6+xJ9pjDOHJ8EI9RP3WI4E89F9O0K4T0Bw=="/>
-        </item> 
+    	</item> 
     </channel>
 </rss>
