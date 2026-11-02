@@ -1,11 +1,14 @@
 <?xml version="1.0" standalone="yes"?>
-<?xml version="1.0" encoding="UTF-8"?>
 <rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
     <channel>
     <title>Download Full Installer</title>
 		<item>
-            <title>Download Full Installer 6.1.3</title>
+            <title>Download Full Installer 6.1.4</title>
    			<description xml:lang="en"><![CDATA[
+   				<h3>What's New in Download Full Installer 6.1.4</h3>
+				<ul>
+					<li>Minor UI fixes</li>
+				</ul>
 				<h3>What's New in Download Full Installer 6.1.3</h3>
 				<ul>
 					<li>Fix missing alerts:
@@ -33,6 +36,10 @@
 				</ul>
 			]]></description>
    			<description xml:lang="es"><![CDATA[
+   			   	<h3>Novedades de Download Full Installer 6.1.4</h3>
+				<ul>
+					<li>Cambios menores en la interfaz gráfica</li>
+				</ul>
 				<h3>Novedades de Download Full Installer 6.1.3</h3>
 				<ul>
 					<li>Reparar alertas no funcionantes:
@@ -60,14 +67,14 @@
 				</ul>
 			]]></description>
             <pubDate>Mon, 02 Nov 2026 19:24:24 +0100</pubDate>
-            <sparkle:version>0613</sparkle:version>
-            <sparkle:shortVersionString>6.1.3</sparkle:shortVersionString>
+            <sparkle:version>0614</sparkle:version>
+            <sparkle:shortVersionString>6.1.4</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.5</sparkle:minimumSystemVersion>
             <enclosure 
-            url="https://github.com/perez987/DownloadFullInstaller/releases/download/6.1.3/Download.Full.Installer.6.1.3.dmg" 
-            length="6094963" 
+            url="https://github.com/perez987/DownloadFullInstaller/releases/download/6.1.4/Download.Full.Installer.6.1.4.dmg" 
+            length="6095592" 
             type="application/octet-stream" 
-            sparkle:edSignature="FwOBxhrwfkiz/xSe9/ADQTqg1/YTdht/Y/jbqTM3MiRi3mpnTNAr6+xJ9pjDOHJ8EI9RP3WI4E89F9O0K4T0Bw=="/>
+            sparkle:edSignature="tM4I4ZKlrbPMHw27GYXZeYZ9Ol0tR5+3HWEIbLdve+3s8vxulnQjddHjgDtqbkMZ3HRQkF9shv79mfc1TA8vAg=="/>
     	</item> 
     </channel>
 </rss>
