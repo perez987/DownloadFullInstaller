@@ -127,7 +127,8 @@ enum AppAlertType: Identifiable {
         case .replaceFile, .replaceComponents, .restartRequired,
             .warningSettings:
             true
-        case .maxDownloads, .installerCreation, .downloadError, .insufficientSpace:
+        case .maxDownloads, .installerCreation, .downloadError,
+            .insufficientSpace:
             false
         }
     }
@@ -160,7 +161,8 @@ enum AppAlertType: Identifiable {
         case .replaceFile, .replaceComponents, .restartRequired,
             .warningSettings:
             NSLocalizedString("Cancel", comment: "")
-        case .maxDownloads, .installerCreation, .downloadError, .insufficientSpace:
+        case .maxDownloads, .installerCreation, .downloadError,
+            .insufficientSpace:
             NSLocalizedString("OK", comment: "")
         }
     }

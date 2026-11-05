@@ -157,11 +157,11 @@ struct ContentView: View {
         .background { GlassBackground() }
         .frame(
             minWidth: 950,
-//            idealWidth: 950,
-//            maxWidth: 950,
+            //            idealWidth: 950,
+            //            maxWidth: 950,
             minHeight: 650,
-//            idealHeight: 650,
-//            maxHeight: 672
+            //            idealHeight: 650,
+            //            maxHeight: 672
         )
         .navigationTitle(
             NSLocalizedString(
@@ -433,9 +433,9 @@ struct ContentView: View {
                 .foregroundStyle(.secondary)
             }
             Spacer()
-            if isInstaller, selectedLegacy == nil, 
-                  !multipartInstallerNames.contains(name)
-              {
+            if isInstaller, selectedLegacy == nil,
+                !multipartInstallerNames.contains(name)
+            {
                 Text(seedProgram)
                     .font(.body.weight(.medium))
                     .padding(.horizontal, 12)

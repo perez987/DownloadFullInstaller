@@ -56,7 +56,7 @@ struct FetchInstallerPkgApp: App {
                 }
         }
         //        .defaultSize(width: 1000, height: 820)
-        .windowResizability(.contentSize)
+        //        .windowResizability(.contentSize)
         .commands {
             CommandGroup(replacing: .appSettings) {
                 // Settings to select downloads folder

@@ -284,7 +284,10 @@ struct DownloadView: View {
 extension View {
     /// `onChange` without parameters: new API on macOS 14+, deprecated-form fallback on macOS 13.
     @ViewBuilder
-    func onChangeCompat<V: Equatable>(of value: V, _ action: @escaping () -> Void) -> some View {
+    func onChangeCompat<V: Equatable>(
+        of value: V,
+        _ action: @escaping () -> Void
+    ) -> some View {
         if #available(macOS 14.0, *) {
             self.onChange(of: value) { action() }
         } else {
