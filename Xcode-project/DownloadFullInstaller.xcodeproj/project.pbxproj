@@ -565,7 +565,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 0614;
+				CURRENT_PROJECT_VERSION = 0615;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"DownloadFullInstaller/Preview Content\"";
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -581,7 +581,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.5;
-				MARKETING_VERSION = 6.1.4;
+				MARKETING_VERSION = 6.1.5;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = perez987.DownloadFullInstaller;
 				PRODUCT_NAME = "Download Full Installer";
@@ -601,7 +601,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 0614;
+				CURRENT_PROJECT_VERSION = 0615;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"DownloadFullInstaller/Preview Content\"";
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -617,7 +617,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.5;
-				MARKETING_VERSION = 6.1.4;
+				MARKETING_VERSION = 6.1.5;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = perez987.DownloadFullInstaller;
 				PRODUCT_NAME = "Download Full Installer";
