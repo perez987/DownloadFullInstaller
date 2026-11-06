@@ -3,8 +3,12 @@
     <channel>
     <title>Download Full Installer</title>
 		<item>
-            <title>Download Full Installer 6.1.5</title>
+            <title>Download Full Installer 6.1.6</title>
    			<description xml:lang="en"><![CDATA[
+				<h3>What's New in Download Full Installer 6.1.6</h3>
+				<ul>
+					<li>Fix the saving of the application's most recent window size again</li>
+				</ul>
 				<h3>What's New in Download Full Installer 6.1.5</h3>
 				<ul>
 					<li>Fix the issue where the last window size is not saved</li>
@@ -40,6 +44,11 @@
 				</ul>
 			]]></description>
    			<description xml:lang="es"><![CDATA[
+			<description xml:lang="en"><![CDATA[
+				<h3>Novedades de Download Full Installer 6.1.6</h3>
+				<ul>
+					<li>Mejorar el guardado del tamaño de la última ventana de la app</li>
+				</ul>
    				<h3>Novedades de Download Full Installer 6.1.5</h3>
 				<ul>
 					<li>Corrige el problema por el cual no se guardaba el tamaño de la última ventana</li>
@@ -75,14 +84,14 @@
 				</ul>
 			]]></description>
             <pubDate>Mon, 02 Nov 2026 19:24:24 +0100</pubDate>
-            <sparkle:version>0615</sparkle:version>
-            <sparkle:shortVersionString>6.1.5</sparkle:shortVersionString>
+            <sparkle:version>0616</sparkle:version>
+            <sparkle:shortVersionString>6.1.6</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.5</sparkle:minimumSystemVersion>
             <enclosure 
-            url="https://github.com/perez987/DownloadFullInstaller/releases/download/6.1.5/Download.Full.Installer.6.1.5.dmg" 
-            length="6094995" 
+            url="https://github.com/perez987/DownloadFullInstaller/releases/download/6.1.6/Download.Full.Installer.6.1.6.dmg" 
+            length="6107465" 
             type="application/octet-stream" 
-            sparkle:edSignature="CPM9tUPVotcszkSK+MBRQjv3hmD7l4UJd4i2KNbES8PQjfwjKXyIEgYkFdE5COW2KAzyU9FWY9LMfCOT8vBtBA=="/>
+            sparkle:edSignature="I298jQ3Km18R92ve1GU3oW6XrLzv3lWf1X6KQHwVlkbJH118RRtpknjgTz98E20RcG6hxXw5QfARH28ljmadAQ=="/>
     	</item> 
     </channel>
 </rss>
