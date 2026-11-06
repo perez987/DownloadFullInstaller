@@ -1,7 +1,8 @@
 # Release notes
 
-## Unreleased
+## 6.1.0 (0610)
 
+- Save the main window's latest size in preferences so it is restored after restarting macOS
 - Discover catalog-based multipart Intel installers for High Sierra, Mojave, and Catalina when Apple's `OSInstall` catalog metadata provides them.
 - Download the six required components into separate product folders using the shared download queue. Do not treat an ESD component as a standalone InstallAssistant package.
 - Add in-app multipart installer assembly: open `BaseSystem.dmg` with macOS's DiskImageMounter, authorize its mounted volume, copy the installer app and six components, and patch `InstallInfo.plist`. Publish only a complete bundle in the component folder without overwriting existing apps.
