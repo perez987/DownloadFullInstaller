@@ -69,8 +69,9 @@ This repo exists to keep "Download Full Installer" alive and growing. Picking up
   - Add language selection system
   - Update translations
 - Legacy macOS
-  - Download and assemble catalog-based multipart installers for High Sierra, Mojave, and Catalina when available
-  - Download legacy macOS disk images; read [this](DOCS/Legacy-macos.md)
+  - Download legacy macOS installers while Apple available direct links are available (Sierra, El Capitan, Yosemite, Mountain Lion, and Lion)
+  - Download and assemble catalog-based multipart installers for High Sierra, Mojave, and Catalina while Apple available links are available
+  - For legacy macOS downloads, read [this](DOCS/Legacy-macos.md)
 - Updater
   - Add Sparkle updater system (Swift Package Manager) to check for new releases
 - Security
