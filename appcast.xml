@@ -3,8 +3,12 @@
     <channel>
     <title>Download Full Installer</title>
 		<item>
-            <title>Download Full Installer 6.1.6</title>
+            <title>Download Full Installer 6.1.7</title>
    			<description xml:lang="en"><![CDATA[
+				<h3>What's New in Download Full Installer 6.1.7</h3>
+				<ul>
+					<li>Order installers and firmwares by build number, instead of date time</li>
+				</ul>
 				<h3>What's New in Download Full Installer 6.1.6</h3>
 				<ul>
 					<li>Fix the saving of the application's most recent window size again</li>
@@ -45,6 +49,10 @@
 			]]></description>
    			<description xml:lang="es"><![CDATA[
 			<description xml:lang="en"><![CDATA[
+				<h3>Novedades de Download Full Installer 6.1.7</h3>
+				<ul>
+					<li>Ordenar instaladores y firmwares por nñumero de compilación, no por fecha de publicación</li>
+				</ul>
 				<h3>Novedades de Download Full Installer 6.1.6</h3>
 				<ul>
 					<li>Mejorar el guardado del tamaño de la última ventana de la app</li>
@@ -83,15 +91,15 @@
 					<li>Quitar aislamiento (sandboxing)</li>
 				</ul>
 			]]></description>
-            <pubDate>Mon, 02 Nov 2026 19:24:24 +0100</pubDate>
-            <sparkle:version>0616</sparkle:version>
-            <sparkle:shortVersionString>6.1.6</sparkle:shortVersionString>
+            <pubDate>Mon, 18 Nov 2026 19:24:24 +0100</pubDate>
+            <sparkle:version>0617</sparkle:version>
+            <sparkle:shortVersionString>6.1.7</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.5</sparkle:minimumSystemVersion>
             <enclosure 
-            url="https://github.com/perez987/DownloadFullInstaller/releases/download/6.1.6/Download.Full.Installer.6.1.6.dmg" 
-            length="6107465" 
+            url="https://github.com/perez987/DownloadFullInstaller/releases/download/6.1.7/Download.Full.Installer.6.1.7.dmg" 
+            length="6487343" 
             type="application/octet-stream" 
-            sparkle:edSignature="I298jQ3Km18R92ve1GU3oW6XrLzv3lWf1X6KQHwVlkbJH118RRtpknjgTz98E20RcG6hxXw5QfARH28ljmadAQ=="/>
+            sparkle:edSignature="Ms0nQXNG3yDk1X3tVDsvMZCYpZHyS3QjSLGCxQTijJRBfRUd0NoRWemQiV2uh1AmNd/bshpA+lNLo7/vpJZcDg=="/>
     	</item> 
     </channel>
 </rss>
