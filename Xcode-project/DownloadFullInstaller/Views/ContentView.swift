@@ -43,6 +43,22 @@ struct ContentView: View {
     private var displayedInstallers: [Product] {
         let installers = sucatalog.installers.filter {
             $0.hasLoaded && $0.osName == selectedRelease
+        }.sorted { lhs, rhs in
+             let buildOrder = (lhs.buildVersion ?? "").compare(
+                 rhs.buildVersion ?? "",
+                 options: .numeric
+             )
+             if buildOrder != .orderedSame {
+                 return buildOrder == .orderedDescending
+             }
+             let versionOrder = (lhs.productVersion ?? "").compare(
+                 rhs.productVersion ?? "",
+                 options: .numeric
+             )
+             if versionOrder != .orderedSame {
+                 return versionOrder == .orderedDescending
+             }
+             return lhs.postDate > rhs.postDate
         }
         guard let selectedRelease,
             multipartInstallerNames.contains(selectedRelease),
@@ -69,6 +85,28 @@ struct ContentView: View {
         }
         return installers.filter {
             !$0.isMultipartInstaller || $0.id == latestMultipart.id
+        }
+    }
+    
+    private var displayedFirmwares: [FirmwareProduct] {
+        firmwareCatalog.firmwares.filter {
+            $0.osName == selectedRelease
+        }.sorted { lhs, rhs in
+            let buildOrder = lhs.buildVersion.compare(
+                rhs.buildVersion,
+                options: .numeric
+            )
+            if buildOrder != .orderedSame {
+                return buildOrder == .orderedDescending
+            }
+            let versionOrder = lhs.productVersion.compare(
+                rhs.productVersion,
+                options: .numeric
+            )
+            if versionOrder != .orderedSame {
+                return versionOrder == .orderedDescending
+            }
+            return lhs.postDate > rhs.postDate
         }
     }
 
@@ -365,11 +403,7 @@ struct ContentView: View {
                                 }
                             }
                         } else {
-                            ForEach(
-                                firmwareCatalog.firmwares.filter {
-                                    $0.osName == selectedRelease
-                                }
-                            ) { firmware in
+                            ForEach(displayedFirmwares) { firmware in
                                 FirmwareView(firmware: firmware)
                             }
                         }

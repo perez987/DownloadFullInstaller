@@ -10,5 +10,6 @@
 - Present each multipart installer as one compact card with a single Download and Create Installer App button, and show its six components as one aggregated download (total progress, one Cancel/Show in Finder entry) in the Downloads panel. Components are queued within the 3-download limit.
 - Parse both legacy and modern distribution version/build keys and identify releases from their build numbers
 - Show only the newest available multipart installer for each of High Sierra, Mojave, and Catalina in the detail panel, without changing the catalog or download behavior.
+- Sort installer and firmware listings by build number, newest first, using version and release date to break ties.
 
 Availability depends on Apple's catalogs.
