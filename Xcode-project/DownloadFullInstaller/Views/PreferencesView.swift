@@ -22,17 +22,7 @@ struct PreferencesView: View {
             .pickerStyle(.segmented)
             .labelsHidden()
 
-            Picker(
-                NSLocalizedString(
-                    "Catalog",
-                    comment: "Software update catalog picker"
-                ),
-                selection: $seedProgram
-            ) {
-                ForEach(SeedProgram.allCases) { program in
-                    Text(program.rawValue).tag(program.rawValue)
-                }
-            }
+            CatalogPicker(seedProgram: $seedProgram)
             .disabled(selectedTab != 0)
             .help(
                 selectedTab == 0
@@ -44,5 +34,23 @@ struct PreferencesView: View {
             )
         }
         .onChangeCompat(of: seedProgram) { sucatalog.load() }
+    }
+}
+
+struct CatalogPicker: View {
+    @Binding var seedProgram: String
+
+    var body: some View {
+        Picker(
+            NSLocalizedString(
+                "Catalog",
+                comment: "Software update catalog picker"
+            ),
+            selection: $seedProgram
+        ) {
+            ForEach(SeedProgram.allCases) { program in
+                Text(program.rawValue).tag(program.rawValue)
+            }
+        }
     }
 }

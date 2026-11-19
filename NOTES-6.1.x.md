@@ -11,5 +11,6 @@
 - Parse both legacy and modern distribution version/build keys and identify releases from their build numbers
 - Show only the newest available multipart installer for each of High Sierra, Mojave, and Catalina in the detail panel, without changing the catalog or download behavior.
 - Sort installer and firmware listings by build number, newest first, using version and release date to break ties.
+- Switch catalogs from the installer detail header while keeping the selected release visible as its available versions refresh.
 
 Availability depends on Apple's catalogs.

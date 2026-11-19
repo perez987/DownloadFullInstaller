@@ -44,21 +44,21 @@ struct ContentView: View {
         let installers = sucatalog.installers.filter {
             $0.hasLoaded && $0.osName == selectedRelease
         }.sorted { lhs, rhs in
-             let buildOrder = (lhs.buildVersion ?? "").compare(
-                 rhs.buildVersion ?? "",
-                 options: .numeric
-             )
-             if buildOrder != .orderedSame {
-                 return buildOrder == .orderedDescending
-             }
-             let versionOrder = (lhs.productVersion ?? "").compare(
-                 rhs.productVersion ?? "",
-                 options: .numeric
-             )
-             if versionOrder != .orderedSame {
-                 return versionOrder == .orderedDescending
-             }
-             return lhs.postDate > rhs.postDate
+            let buildOrder = (lhs.buildVersion ?? "").compare(
+                rhs.buildVersion ?? "",
+                options: .numeric
+            )
+            if buildOrder != .orderedSame {
+                return buildOrder == .orderedDescending
+            }
+            let versionOrder = (lhs.productVersion ?? "").compare(
+                rhs.productVersion ?? "",
+                options: .numeric
+            )
+            if versionOrder != .orderedSame {
+                return versionOrder == .orderedDescending
+            }
+            return lhs.postDate > rhs.postDate
         }
         guard let selectedRelease,
             multipartInstallerNames.contains(selectedRelease),
@@ -87,7 +87,7 @@ struct ContentView: View {
             !$0.isMultipartInstaller || $0.id == latestMultipart.id
         }
     }
-    
+
     private var displayedFirmwares: [FirmwareProduct] {
         firmwareCatalog.firmwares.filter {
             $0.osName == selectedRelease
@@ -216,7 +216,6 @@ struct ContentView: View {
             }
         }
         .onChangeCompat(of: selectedTab) { selectedRelease = nil }
-        .onChangeCompat(of: seedProgram) { selectedRelease = nil }
         .onReceive(NotificationCenter.default.publisher(for: .languageChanged))
         { _ in
             localizationID = UUID()
@@ -395,11 +394,28 @@ struct ContentView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(8)
                         } else if isInstaller {
-                            ForEach(displayedInstallers) { product in
-                                if product.isMultipartInstaller {
-                                    MultipartInstallerView(product: product)
+                            if displayedInstallers.isEmpty {
+                                if sucatalog.isLoading {
+                                    ProgressView(
+                                        NSLocalizedString(
+                                            "Loading...",
+                                            comment: "Catalog loading"
+                                        )
+                                    )
                                 } else {
-                                    InstallerView(product: product)
+                                    Text(
+                                        sucatalog.errorMessage
+                                            ?? emptyCatalogMessage
+                                    )
+                                    .foregroundStyle(.secondary)
+                                }
+                            } else {
+                                ForEach(displayedInstallers) { product in
+                                    if product.isMultipartInstaller {
+                                        MultipartInstallerView(product: product)
+                                    } else {
+                                        InstallerView(product: product)
+                                    }
                                 }
                             }
                         } else {
@@ -467,14 +483,10 @@ struct ContentView: View {
                 .foregroundStyle(.secondary)
             }
             Spacer()
-            if isInstaller, selectedLegacy == nil,
-                !multipartInstallerNames.contains(name)
-            {
-                Text(seedProgram)
-                    .font(.body.weight(.medium))
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 7)
-                    .glassSubtle()
+            if isInstaller, selectedLegacy == nil {
+                CatalogPicker(seedProgram: $seedProgram)
+                    .labelsHidden()
+                    .help(NSLocalizedString("Catalog", comment: ""))
             }
         }
         .padding(24)
