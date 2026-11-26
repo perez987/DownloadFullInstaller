@@ -7,17 +7,7 @@
    			<description xml:lang="en"><![CDATA[
 				<h3>What's New in Download Full Installer 6.1.9</h3>
 				<ul>
-					<li>Add catalog picker at the top right of the installer details</li>
-					<li>Add catalog picker at the top right of the installer details</li>
-					<li>Fix the saving of the application's most recent window size again</li>
-					<li>ix the issue where the last window size is not saved</li>
-					<li>Minor UI fixes</li>
-					<li>Fix missing alerts:</li>
-					<li><ul></li>
-					<li><li>max. concurrent downloads</li></li>
-					<li><li>can't create installer app</li></li>
-					<li></ul></li>
-					<li>Save latest app window size</li>
+					<li>Add scripts to automate the creation of releases and the publishing of the DMG file to the GitHub repository</li>
 				</ul>
 				<h3>What's New in Download Full Installer 6.1.8</h3>
 				<ul>

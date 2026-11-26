@@ -11,3 +11,6 @@ Thumbs.db
 
 *.xcuserstate
 .build/
+
+# Release output (built by Scripts/release.sh)
+/Distribute/

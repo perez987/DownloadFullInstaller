@@ -113,6 +113,31 @@ Or this one:
 <br>`Could not verify that Download Full Installer does not contain malicious software.`<br>
 With the recommendation in both cases to move the file to the Trash, read this [document](DOCS/App-damaged.md). -->
 
+### Releasing
+
+Two scripts in `Scripts/` automate a release (macOS only; run them with `./Scripts/…` or `sh Scripts/…`):
+
+- **`release.sh`** archives a Release build, signs it with Developer ID, notarizes and staples the app, then builds `Distribute/Download.Full.Installer.<version>.dmg` and signs, notarizes and staples the DMG too.
+- **`publish.sh`** uploads that DMG to a GitHub Release (tag `<version>`, as in earlier releases), signs it for Sparkle and updates `appcast.xml` on `main`, keeping the earlier release notes.
+
+What they need, all kept out of the repository:
+
+- A *Developer ID Application* certificate in the login keychain.
+- Notarization credentials saved once with `xcrun notarytool store-credentials "notary-profile" --apple-id <Apple ID> --team-id <team>` (the app-specific password is typed at the prompt, never stored in a file).
+- `appdmg` or `create-dmg` from npm (`npm install -g create-dmg` brings both).
+- The Sparkle EdDSA private key in the keychain, and `gh` signed in (`gh auth login`).
+
+Steps:
+
+1. Raise `MARKETING_VERSION` and `CURRENT_PROJECT_VERSION` in the project (Sparkle compares the build number, e.g. `6.1.9` → `0619`).
+2. `./Scripts/release.sh`
+3. `RELEASE_NOTES=$'First change\nSecond change' ./Scripts/publish.sh`
+
+Options for `release.sh`:
+
+- `DMG_TOOL=appdmg` (default) uses the window background in `Xcode-project/Backgrounds/`; `DMG_TOOL=node` uses the standard design of `create-dmg`.
+- `DMG_ONLY=1` reuses the app notarized in the last full run and only rebuilds the DMG, which is handy for trying DMG layouts.
+
 # Original repository README
 (by *scriptingosx*)
 
