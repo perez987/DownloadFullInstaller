@@ -29,6 +29,8 @@ ASSET_BASE="Download.Full.Installer"
 PROJECT="$XCODE_DIR/$SCHEME.xcodeproj"
 REPO=perez987/DownloadFullInstaller
 BRANCH=main                           # SUFeedURL reads appcast.xml from this branch
+# Title of every 6.x GitHub Release: tells them apart from older releases that support macOS 11+.
+RELEASE_TITLE="App for macOS 13+"
 SPARKLE_ACCOUNT="${SPARKLE_ACCOUNT:-ed25519}"
 WORK="$HOME/Library/Caches/DownloadFullInstallerRelease"
 APPCAST="$REPO_ROOT/appcast.xml"
@@ -79,7 +81,7 @@ signature=$("$SIGN_UPDATE" --account "$SPARKLE_ACCOUNT" "$DMG")
 # --- GitHub Release -------------------------------------------------------------------------
 echo "==> Creating GitHub Release $TAG"
 gh release create "$TAG" "$DMG" --repo "$REPO" --target "$BRANCH" \
-  --title "$APP $VERSION" --notes "$notes"
+  --title "$RELEASE_TITLE" --notes "$notes"
 
 # --- Update feed ----------------------------------------------------------------------------
 echo "==> Updating appcast.xml"
