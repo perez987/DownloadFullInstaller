@@ -4,9 +4,7 @@
 #      perez987/DownloadFullInstaller holding Download.Full.Installer.<version>.dmg
 #   2. the Sparkle update feed (appcast.xml at the repository root, on main) pointing at it.
 #
-# Usage (from anywhere), one change per line, either in Scripts/RELEASE_NOTES.txt:
-#   ./Scripts/publish.sh
-# or in a variable, which takes precedence over the file:
+# Usage (from anywhere), one change per line:
 #   RELEASE_NOTES=$'First change\nSecond change' ./Scripts/publish.sh
 # The notes are listed on the GitHub Release and added at the top of the appcast description
 # as "What's New in Download Full Installer <version>" (the earlier history in appcast.xml is
@@ -34,7 +32,6 @@ BRANCH=main                           # SUFeedURL reads appcast.xml from this br
 SPARKLE_ACCOUNT="${SPARKLE_ACCOUNT:-ed25519}"
 WORK="$HOME/Library/Caches/DownloadFullInstallerRelease"
 APPCAST="$REPO_ROOT/appcast.xml"
-NOTES_FILE="$SCRIPT_DIR/RELEASE_NOTES.txt"
 
 # --- Checks ---------------------------------------------------------------------------------
 command -v gh >/dev/null || { echo "gh is missing: brew install gh && gh auth login"; exit 1; }
@@ -64,21 +61,11 @@ if gh release view "$TAG" --repo "$REPO" >/dev/null 2>&1; then
 fi
 
 # --- Release notes --------------------------------------------------------------------------
-# From the RELEASE_NOTES variable if set, otherwise from Scripts/RELEASE_NOTES.txt. In the file,
-# lines starting with # are comments, a leading "- " is dropped, and the line "Version: <x>"
-# must match the project's version so old notes are never published by mistake.
-if [[ -z "${RELEASE_NOTES:-}" && -f "$NOTES_FILE" ]]; then
-  file_version=$(sed -n 's/^[[:space:]]*Version:[[:space:]]*\([^[:space:]]*\).*/\1/p' "$NOTES_FILE" | head -1)
-  [[ "$file_version" == "$VERSION" ]] \
-    || { echo "$NOTES_FILE is for version '${file_version:-?}', the project is $VERSION: update it first."; exit 1; }
-  RELEASE_NOTES=$(grep -v -E '^[[:space:]]*(#|Version:)' "$NOTES_FILE" | sed -E 's/^[[:space:]]*-[[:space:]]+//; s/[[:space:]]+$//')
-  echo "==> Release notes read from $NOTES_FILE"
-fi
 [[ "${RELEASE_NOTES:-}" != *']]>'* ]] || { echo "The release notes can't contain ]]>."; exit 1; }
 changes=("${(@f)${RELEASE_NOTES:-}}")
 changes=(${changes:#})                       # drop empty lines
 # Every version in appcast.xml has its own "What's New" list, so notes are required.
-(( ${#changes} )) || { echo "No release notes: fill in $NOTES_FILE or set RELEASE_NOTES=\$'First change\\nSecond change'."; exit 1; }
+(( ${#changes} )) || { echo "Set RELEASE_NOTES, e.g. RELEASE_NOTES=\$'First change\\nSecond change' $0"; exit 1; }
 notes=$(printf -- '- %s\n' "${changes[@]}")
 
 echo "==> $APP $VERSION ($BUILD) → $REPO $TAG"
