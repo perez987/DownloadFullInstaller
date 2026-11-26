@@ -3,8 +3,13 @@
     <channel>
     <title>Download Full Installer</title>
 		<item>
-            <title>Download Full Installer 6.1.9</title>
+            <title>Download Full Installer 6.2.0</title>
    			<description xml:lang="en"><![CDATA[
+				<h3>What's New in Download Full Installer 6.2.0</h3>
+				<ul>
+					<li>Add scripts to automate the creation of releases and the publishing of the DMG file to the GitHub repository</li>
+					<li>Bump version to 6.1.9</li>
+				</ul>
 				<h3>What's New in Download Full Installer 6.1.9</h3>
 				<ul>
 					<li>Add scripts to automate the creation of releases and the publishing of the DMG file to the GitHub repository</li>
@@ -55,15 +60,15 @@
 					<li>Remove app sandboxing environment</li>
 				</ul>
 			]]></description>
-            <pubDate>Thu, 26 Nov 2026 22:08:55 +0100</pubDate>
-            <sparkle:version>0619</sparkle:version>
-            <sparkle:shortVersionString>6.1.9</sparkle:shortVersionString>
+            <pubDate>Thu, 26 Nov 2026 22:35:19 +0100</pubDate>
+            <sparkle:version>0620</sparkle:version>
+            <sparkle:shortVersionString>6.2.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.5</sparkle:minimumSystemVersion>
             <enclosure 
-            url="https://github.com/perez987/DownloadFullInstaller/releases/download/6.1.9/Download.Full.Installer.6.1.9.dmg" 
-            length="5565226" 
+            url="https://github.com/perez987/DownloadFullInstaller/releases/download/6.2.0/Download.Full.Installer.6.2.0.dmg" 
+            length="5565236" 
             type="application/octet-stream" 
-            sparkle:edSignature="V6XLtyiMfg8v8HuEtcsuW+K/4VkX0v/9FZXAfLrRbE/K75zxjXD41FnMu/tzyxDXJRgF/mth9d5imIntaCPwDg=="/>
+            sparkle:edSignature="QQEoZv3LFkyH0KU8/GRCTxP+yjhlDKOrpR65zkbccX416/eqKqcP6ZhL1EW5eeoCc2Yu1k9ewDXw08YAbSsfCw=="/>
     	</item> 
     </channel>
 </rss>
