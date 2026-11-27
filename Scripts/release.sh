@@ -15,9 +15,6 @@
 #                     background@2x.png) and icon layout. Writes the window layout (.DS_Store)
 #                     directly, without scripting Finder, so it works on Tahoe on Intel.
 #   node              sindresorhus' create-dmg (npm) with its own standard design.
-#   shell             the shell create-dmg (github.com/create-dmg/create-dmg) installed as
-#                     /usr/local/bin/create-dmg-sh. Lays out the window through Finder/AppleScript,
-#                     which on Tahoe Intel ends up with the plain default window.
 #
 # Needs, all kept OUT of this repository:
 #   - a "Developer ID Application" certificate (team ER43ZD2S4U) in the login keychain
@@ -76,14 +73,10 @@ case "$DMG_TOOL" in
     [[ -f "$BG" && -f "$BG2" ]] || { echo "Missing $BG or $BG2"; exit 1; }
     ;;
   node)
-    command -v create-dmg >/dev/null && ! create-dmg --help 2>&1 | grep -q -- '--window-pos' \
+    command -v create-dmg >/dev/null \
       || { echo "The npm create-dmg is missing: npm install -g create-dmg"; exit 1; }
     ;;
-  shell)
-    command -v create-dmg-sh >/dev/null \
-      || { echo "create-dmg-sh is missing (shell create-dmg renamed in /usr/local/bin)"; exit 1; }
-    ;;
-  *) echo "Unknown DMG_TOOL=$DMG_TOOL (use appdmg, node or shell)"; exit 1 ;;
+  *) echo "Unknown DMG_TOOL=$DMG_TOOL (use appdmg or node)"; exit 1 ;;
 esac
 
 # Submits a file to Apple's notary service and fails if it isn't accepted.
@@ -188,33 +181,6 @@ JSON
     made=("$WORK"/node-dmg/*.dmg(N))
     (( ${#made} == 1 )) || { echo "create-dmg didn't leave one DMG in $WORK/node-dmg"; exit 1; }
     mv "$made[1]" "$DMG"
-    ;;
-  shell)
-    STAGE="$WORK/dmg"
-    rm -rf "$STAGE"
-    mkdir -p "$STAGE"
-    cp -R "$APP_PATH" "$STAGE/"
-    dmg_args=(--volname "$APP" --window-pos 200 120 --icon-size 148 --text-size 13
-              --icon "$APP.app" 160 205 --hide-extension "$APP.app" --app-drop-link 440 205)
-    if [[ -f "$BG" && -f "$BG2" ]]; then
-      # Finder takes one background file; a TIFF holding both sizes stays sharp on Retina displays.
-      sips -s dpiWidth 72 -s dpiHeight 72 "$BG" --out "$WORK/background.png" >/dev/null
-      sips -s dpiWidth 144 -s dpiHeight 144 "$BG2" --out "$WORK/background@2x.png" >/dev/null
-      tiffutil -cathidpicheck "$WORK/background.png" "$WORK/background@2x.png" -out "$WORK/background.tiff" >/dev/null
-      # 600 × 412 points: the 380-point background plus the 32-point title bar.
-      dmg_args+=(--background "$WORK/background.tiff" --window-size 600 412)
-    else
-      dmg_args+=(--window-size 600 400)
-    fi
-    # Finder may time out (-1712) the first time macOS asks whether Terminal may control it:
-    # try a second time before giving up.
-    for attempt in 1 2; do
-      rm -f "$DMG"
-      create-dmg-sh "${dmg_args[@]}" "$DMG" "$STAGE" && break
-      (( attempt == 2 )) && { echo "create-dmg-sh failed. Allow Terminal to control Finder in System Settings > Privacy & Security > Automation."; exit 1; }
-      echo "==> create-dmg-sh failed; retrying in 5 seconds"
-      sleep 5
-    done
     ;;
 esac
 [[ -f "$DMG" ]] || { echo "No DMG was made at $DMG"; exit 1; }
