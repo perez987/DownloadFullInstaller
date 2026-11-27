@@ -4,11 +4,11 @@
 #   <repo>/Distribute/Download.Full.Installer.<version>.dmg
 # Then publish.sh uploads it to a GitHub Release and updates the Sparkle feed (appcast.xml).
 #
-# Usage (from anywhere):
-#   ./Scripts/release.sh                    full run: archive, export, notarize app, DMG
-#   DMG_ONLY=1 ./Scripts/release.sh         reuse the app already notarized in the cache
+# Usage:
+#   ./release.sh                    full run: archive, export, notarize app, DMG
+#   DMG_ONLY=1 ./release.sh         reuse the app already notarized in the cache
 #                                           and only rebuild, sign and notarize the DMG
-#   DMG_TOOL=node ./Scripts/release.sh      choose how the DMG is made (see below)
+#   DMG_TOOL=node ./release.sh      choose how the DMG is made (see below)
 #
 # DMG_TOOL:
 #   appdmg (default)  appdmg (npm) with our own background (Xcode-project/Backgrounds/background.png and
@@ -194,4 +194,4 @@ echo "==> What Gatekeeper will say on another Mac"
 spctl --assess --type open --context context:primary-signature --verbose=2 "$DMG"
 spctl --assess --type execute --verbose=2 "$APP_PATH"
 echo "==> Done: $DMG"
-echo "    Next: RELEASE_NOTES=\$'First change\\nSecond change' ./Scripts/publish.sh"
+echo "    Next: RELEASE_NOTES=\$'First line of the release notes\\nSecond line of the release notes' ./publish.sh"
