@@ -118,7 +118,7 @@ With the recommendation in both cases to move the file to the Trash, read this [
 
 ### Releasing
 
-Two scripts in `Scripts/` automate a release (macOS only; run them with `./Scripts/…` or `sh Scripts/…`):
+Two scripts in `Scripts/` automate a release (macOS only; run them opening Terminal in the Scripts folder → `./script.sh` or `sh script.sh`):
 
 - **`release.sh`** archives a Release build, signs it with Developer ID, notarizes and staples the app, then builds `Distribute/Download.Full.Installer.<version>.dmg` and signs, notarizes and staples the DMG too.
 - **`publish.sh`** uploads that DMG to a GitHub Release (tag `<version>`, as in earlier releases), signs it for Sparkle and updates `appcast.xml` on `main`, keeping the earlier release notes.
