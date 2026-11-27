@@ -86,7 +86,6 @@ Catalog-based High Sierra/Mojave/Catalina installers appear in the installer lis
 
 Legacy macOS disk-image downloads are listed separately under **Legacy macOS Installers** below current releases in the left-hand installer list. This section is collapsed on launch; use the chevron to expand it. Select a release to download its disk image using the shared download queue. Open the downloaded DMG in Finder and run its package to create the installer app. These downloads are independent of the selected software update catalog
 
-
 ### Create Installer App Feature
 
 After downloading an `InstallAssistant.pkg` file, you can create the macOS installer application (e.g., "Install macOS Sonoma.app") directly from within Download Full Installer:
